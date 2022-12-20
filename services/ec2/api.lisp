@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/ec2/api)
 (common-lisp:progn
  (common-lisp:defclass ec2-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "ec2"))
  (common-lisp:export 'ec2-request))
+(common-lisp:progn
+ (common-lisp:define-condition ec2-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'ec2-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (accept-reserved-instances-exchange-quote-request
@@ -34598,7 +34604,7 @@
                                                         "POST" "/"
                                                         "AcceptReservedInstancesExchangeQuote"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'accept-reserved-instances-exchange-quote))
 (common-lisp:progn
  (common-lisp:defun accept-vpc-peering-connection
@@ -34618,7 +34624,7 @@
                                                         "POST" "/"
                                                         "AcceptVpcPeeringConnection"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'accept-vpc-peering-connection))
 (common-lisp:progn
  (common-lisp:defun allocate-address
@@ -34636,7 +34642,7 @@
                                                         "POST" "/"
                                                         "AllocateAddress"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'allocate-address))
 (common-lisp:progn
  (common-lisp:defun allocate-hosts
@@ -34657,7 +34663,7 @@
                                                         "POST" "/"
                                                         "AllocateHosts"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'allocate-hosts))
 (common-lisp:progn
  (common-lisp:defun assign-ipv6addresses
@@ -34678,7 +34684,7 @@
                                                         "POST" "/"
                                                         "AssignIpv6Addresses"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'assign-ipv6addresses))
 (common-lisp:progn
  (common-lisp:defun assign-private-ip-addresses
@@ -34700,7 +34706,7 @@
                                                         "POST" "/"
                                                         "AssignPrivateIpAddresses"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'assign-private-ip-addresses))
 (common-lisp:progn
  (common-lisp:defun associate-address
@@ -34722,7 +34728,7 @@
                                                         "POST" "/"
                                                         "AssociateAddress"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'associate-address))
 (common-lisp:progn
  (common-lisp:defun associate-dhcp-options
@@ -34740,7 +34746,7 @@
                                                         "POST" "/"
                                                         "AssociateDhcpOptions"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'associate-dhcp-options))
 (common-lisp:progn
  (common-lisp:defun associate-iam-instance-profile
@@ -34760,7 +34766,7 @@
                                                         "POST" "/"
                                                         "AssociateIamInstanceProfile"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'associate-iam-instance-profile))
 (common-lisp:progn
  (common-lisp:defun associate-route-table
@@ -34779,7 +34785,7 @@
                                                         "POST" "/"
                                                         "AssociateRouteTable"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'associate-route-table))
 (common-lisp:progn
  (common-lisp:defun associate-subnet-cidr-block
@@ -34798,7 +34804,7 @@
                                                         "POST" "/"
                                                         "AssociateSubnetCidrBlock"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'associate-subnet-cidr-block))
 (common-lisp:progn
  (common-lisp:defun associate-vpc-cidr-block
@@ -34817,7 +34823,7 @@
                                                         "POST" "/"
                                                         "AssociateVpcCidrBlock"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'associate-vpc-cidr-block))
 (common-lisp:progn
  (common-lisp:defun attach-classic-link-vpc
@@ -34836,7 +34842,7 @@
                                                         "POST" "/"
                                                         "AttachClassicLinkVpc"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'attach-classic-link-vpc))
 (common-lisp:progn
  (common-lisp:defun attach-internet-gateway
@@ -34855,7 +34861,7 @@
                                                         "POST" "/"
                                                         "AttachInternetGateway"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'attach-internet-gateway))
 (common-lisp:progn
  (common-lisp:defun attach-network-interface
@@ -34876,7 +34882,7 @@
                                                         "POST" "/"
                                                         "AttachNetworkInterface"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'attach-network-interface))
 (common-lisp:progn
  (common-lisp:defun attach-volume
@@ -34895,7 +34901,7 @@
                                                         "POST" "/"
                                                         "AttachVolume"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'attach-volume))
 (common-lisp:progn
  (common-lisp:defun attach-vpn-gateway
@@ -34913,7 +34919,7 @@
                                                         "POST" "/"
                                                         "AttachVpnGateway"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'attach-vpn-gateway))
 (common-lisp:progn
  (common-lisp:defun authorize-security-group-egress
@@ -34937,7 +34943,7 @@
                                                         "POST" "/"
                                                         "AuthorizeSecurityGroupEgress"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'authorize-security-group-egress))
 (common-lisp:progn
  (common-lisp:defun authorize-security-group-ingress
@@ -34961,7 +34967,7 @@
                                                         "POST" "/"
                                                         "AuthorizeSecurityGroupIngress"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'authorize-security-group-ingress))
 (common-lisp:progn
  (common-lisp:defun bundle-instance
@@ -34979,7 +34985,7 @@
                                                         "POST" "/"
                                                         "BundleInstance"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'bundle-instance))
 (common-lisp:progn
  (common-lisp:defun cancel-bundle-task
@@ -34997,7 +35003,7 @@
                                                         "POST" "/"
                                                         "CancelBundleTask"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'cancel-bundle-task))
 (common-lisp:progn
  (common-lisp:defun cancel-conversion-task
@@ -35017,7 +35023,7 @@
                                                         "POST" "/"
                                                         "CancelConversionTask"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'cancel-conversion-task))
 (common-lisp:progn
  (common-lisp:defun cancel-export-task
@@ -35035,7 +35041,7 @@
                                                         "POST" "/"
                                                         "CancelExportTask"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'cancel-export-task))
 (common-lisp:progn
  (common-lisp:defun cancel-import-task
@@ -35054,7 +35060,7 @@
                                                         "POST" "/"
                                                         "CancelImportTask"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'cancel-import-task))
 (common-lisp:progn
  (common-lisp:defun cancel-reserved-instances-listing
@@ -35073,7 +35079,7 @@
                                                         "POST" "/"
                                                         "CancelReservedInstancesListing"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'cancel-reserved-instances-listing))
 (common-lisp:progn
  (common-lisp:defun cancel-spot-fleet-requests
@@ -35094,7 +35100,7 @@
                                                         "POST" "/"
                                                         "CancelSpotFleetRequests"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'cancel-spot-fleet-requests))
 (common-lisp:progn
  (common-lisp:defun cancel-spot-instance-requests
@@ -35114,7 +35120,7 @@
                                                         "POST" "/"
                                                         "CancelSpotInstanceRequests"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'cancel-spot-instance-requests))
 (common-lisp:progn
  (common-lisp:defun confirm-product-instance
@@ -35133,7 +35139,7 @@
                                                         "POST" "/"
                                                         "ConfirmProductInstance"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'confirm-product-instance))
 (common-lisp:progn
  (common-lisp:defun copy-image
@@ -35153,7 +35159,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CopyImage"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'copy-image))
 (common-lisp:progn
  (common-lisp:defun copy-snapshot
@@ -35175,7 +35181,7 @@
                                                         "POST" "/"
                                                         "CopySnapshot"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'copy-snapshot))
 (common-lisp:progn
  (common-lisp:defun create-customer-gateway
@@ -35193,7 +35199,7 @@
                                                         "POST" "/"
                                                         "CreateCustomerGateway"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-customer-gateway))
 (common-lisp:progn
  (common-lisp:defun create-default-vpc
@@ -35211,7 +35217,7 @@
                                                         "POST" "/"
                                                         "CreateDefaultVpc"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-default-vpc))
 (common-lisp:progn
  (common-lisp:defun create-dhcp-options
@@ -35229,7 +35235,7 @@
                                                         "POST" "/"
                                                         "CreateDhcpOptions"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-dhcp-options))
 (common-lisp:progn
  (common-lisp:defun create-egress-only-internet-gateway
@@ -35248,7 +35254,7 @@
                                                         "POST" "/"
                                                         "CreateEgressOnlyInternetGateway"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-egress-only-internet-gateway))
 (common-lisp:progn
  (common-lisp:defun create-flow-logs
@@ -35269,7 +35275,7 @@
                                                         "POST" "/"
                                                         "CreateFlowLogs"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-flow-logs))
 (common-lisp:progn
  (common-lisp:defun create-fpga-image
@@ -35290,7 +35296,7 @@
                                                         "POST" "/"
                                                         "CreateFpgaImage"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-fpga-image))
 (common-lisp:progn
  (common-lisp:defun create-image
@@ -35311,7 +35317,7 @@
                                                         "POST" "/"
                                                         "CreateImage"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-image))
 (common-lisp:progn
  (common-lisp:defun create-instance-export-task
@@ -35333,7 +35339,7 @@
                                                         "POST" "/"
                                                         "CreateInstanceExportTask"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-instance-export-task))
 (common-lisp:progn
  (common-lisp:defun create-internet-gateway
@@ -35351,7 +35357,7 @@
                                                         "POST" "/"
                                                         "CreateInternetGateway"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-internet-gateway))
 (common-lisp:progn
  (common-lisp:defun create-key-pair
@@ -35369,7 +35375,7 @@
                                                         "POST" "/"
                                                         "CreateKeyPair"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-key-pair))
 (common-lisp:progn
  (common-lisp:defun create-nat-gateway
@@ -35388,7 +35394,7 @@
                                                         "POST" "/"
                                                         "CreateNatGateway"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-nat-gateway))
 (common-lisp:progn
  (common-lisp:defun create-network-acl
@@ -35406,7 +35412,7 @@
                                                         "POST" "/"
                                                         "CreateNetworkAcl"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-network-acl))
 (common-lisp:progn
  (common-lisp:defun create-network-acl-entry
@@ -35429,7 +35435,7 @@
                                                         "POST" "/"
                                                         "CreateNetworkAclEntry"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-network-acl-entry))
 (common-lisp:progn
  (common-lisp:defun create-network-interface
@@ -35453,7 +35459,7 @@
                                                         "POST" "/"
                                                         "CreateNetworkInterface"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-network-interface))
 (common-lisp:progn
  (common-lisp:defun create-network-interface-permission
@@ -35475,7 +35481,7 @@
                                                         "POST" "/"
                                                         "CreateNetworkInterfacePermission"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-network-interface-permission))
 (common-lisp:progn
  (common-lisp:defun create-placement-group
@@ -35493,7 +35499,7 @@
                                                         "POST" "/"
                                                         "CreatePlacementGroup"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-placement-group))
 (common-lisp:progn
  (common-lisp:defun create-reserved-instances-listing
@@ -35515,7 +35521,7 @@
                                                         "POST" "/"
                                                         "CreateReservedInstancesListing"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-reserved-instances-listing))
 (common-lisp:progn
  (common-lisp:defun create-route
@@ -35541,7 +35547,7 @@
                                                         "POST" "/"
                                                         "CreateRoute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-route))
 (common-lisp:progn
  (common-lisp:defun create-route-table
@@ -35559,7 +35565,7 @@
                                                         "POST" "/"
                                                         "CreateRouteTable"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-route-table))
 (common-lisp:progn
  (common-lisp:defun create-security-group
@@ -35578,7 +35584,7 @@
                                                         "POST" "/"
                                                         "CreateSecurityGroup"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-security-group))
 (common-lisp:progn
  (common-lisp:defun create-snapshot
@@ -35596,7 +35602,7 @@
                                                         "POST" "/"
                                                         "CreateSnapshot"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-snapshot))
 (common-lisp:progn
  (common-lisp:defun create-spot-datafeed-subscription
@@ -35615,7 +35621,7 @@
                                                         "POST" "/"
                                                         "CreateSpotDatafeedSubscription"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-spot-datafeed-subscription))
 (common-lisp:progn
  (common-lisp:defun create-subnet
@@ -35636,7 +35642,7 @@
                                                         "POST" "/"
                                                         "CreateSubnet"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-subnet))
 (common-lisp:progn
  (common-lisp:defun create-tags
@@ -35653,7 +35659,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CreateTags"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-tags))
 (common-lisp:progn
  (common-lisp:defun create-volume
@@ -35675,7 +35681,7 @@
                                                         "POST" "/"
                                                         "CreateVolume"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-volume))
 (common-lisp:progn
  (common-lisp:defun create-vpc
@@ -35695,7 +35701,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CreateVpc"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-vpc))
 (common-lisp:progn
  (common-lisp:defun create-vpc-endpoint
@@ -35716,7 +35722,7 @@
                                                         "POST" "/"
                                                         "CreateVpcEndpoint"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-vpc-endpoint))
 (common-lisp:progn
  (common-lisp:defun create-vpc-peering-connection
@@ -35736,7 +35742,7 @@
                                                         "POST" "/"
                                                         "CreateVpcPeeringConnection"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-vpc-peering-connection))
 (common-lisp:progn
  (common-lisp:defun create-vpn-connection
@@ -35757,7 +35763,7 @@
                                                         "POST" "/"
                                                         "CreateVpnConnection"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-vpn-connection))
 (common-lisp:progn
  (common-lisp:defun create-vpn-connection-route
@@ -35777,7 +35783,7 @@
                                                         "POST" "/"
                                                         "CreateVpnConnectionRoute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-vpn-connection-route))
 (common-lisp:progn
  (common-lisp:defun create-vpn-gateway
@@ -35795,7 +35801,7 @@
                                                         "POST" "/"
                                                         "CreateVpnGateway"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-vpn-gateway))
 (common-lisp:progn
  (common-lisp:defun delete-customer-gateway
@@ -35813,7 +35819,7 @@
                                                         "POST" "/"
                                                         "DeleteCustomerGateway"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-customer-gateway))
 (common-lisp:progn
  (common-lisp:defun delete-dhcp-options
@@ -35831,7 +35837,7 @@
                                                         "POST" "/"
                                                         "DeleteDhcpOptions"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-dhcp-options))
 (common-lisp:progn
  (common-lisp:defun delete-egress-only-internet-gateway
@@ -35851,7 +35857,7 @@
                                                         "POST" "/"
                                                         "DeleteEgressOnlyInternetGateway"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-egress-only-internet-gateway))
 (common-lisp:progn
  (common-lisp:defun delete-flow-logs
@@ -35869,7 +35875,7 @@
                                                         "POST" "/"
                                                         "DeleteFlowLogs"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-flow-logs))
 (common-lisp:progn
  (common-lisp:defun delete-internet-gateway
@@ -35887,7 +35893,7 @@
                                                         "POST" "/"
                                                         "DeleteInternetGateway"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-internet-gateway))
 (common-lisp:progn
  (common-lisp:defun delete-key-pair
@@ -35905,7 +35911,7 @@
                                                         "POST" "/"
                                                         "DeleteKeyPair"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-key-pair))
 (common-lisp:progn
  (common-lisp:defun delete-nat-gateway
@@ -35923,7 +35929,7 @@
                                                         "POST" "/"
                                                         "DeleteNatGateway"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-nat-gateway))
 (common-lisp:progn
  (common-lisp:defun delete-network-acl
@@ -35941,7 +35947,7 @@
                                                         "POST" "/"
                                                         "DeleteNetworkAcl"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-network-acl))
 (common-lisp:progn
  (common-lisp:defun delete-network-acl-entry
@@ -35961,7 +35967,7 @@
                                                         "POST" "/"
                                                         "DeleteNetworkAclEntry"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-network-acl-entry))
 (common-lisp:progn
  (common-lisp:defun delete-network-interface
@@ -35979,7 +35985,7 @@
                                                         "POST" "/"
                                                         "DeleteNetworkInterface"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-network-interface))
 (common-lisp:progn
  (common-lisp:defun delete-network-interface-permission
@@ -36000,7 +36006,7 @@
                                                         "POST" "/"
                                                         "DeleteNetworkInterfacePermission"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-network-interface-permission))
 (common-lisp:progn
  (common-lisp:defun delete-placement-group
@@ -36018,7 +36024,7 @@
                                                         "POST" "/"
                                                         "DeletePlacementGroup"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-placement-group))
 (common-lisp:progn
  (common-lisp:defun delete-route
@@ -36039,7 +36045,7 @@
                                                         "POST" "/"
                                                         "DeleteRoute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-route))
 (common-lisp:progn
  (common-lisp:defun delete-route-table
@@ -36057,7 +36063,7 @@
                                                         "POST" "/"
                                                         "DeleteRouteTable"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-route-table))
 (common-lisp:progn
  (common-lisp:defun delete-security-group
@@ -36075,7 +36081,7 @@
                                                         "POST" "/"
                                                         "DeleteSecurityGroup"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-security-group))
 (common-lisp:progn
  (common-lisp:defun delete-snapshot
@@ -36093,7 +36099,7 @@
                                                         "POST" "/"
                                                         "DeleteSnapshot"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-snapshot))
 (common-lisp:progn
  (common-lisp:defun delete-spot-datafeed-subscription
@@ -36112,7 +36118,7 @@
                                                         "POST" "/"
                                                         "DeleteSpotDatafeedSubscription"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-spot-datafeed-subscription))
 (common-lisp:progn
  (common-lisp:defun delete-subnet
@@ -36130,7 +36136,7 @@
                                                         "POST" "/"
                                                         "DeleteSubnet"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-subnet))
 (common-lisp:progn
  (common-lisp:defun delete-tags
@@ -36147,7 +36153,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteTags"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-tags))
 (common-lisp:progn
  (common-lisp:defun delete-volume
@@ -36165,7 +36171,7 @@
                                                         "POST" "/"
                                                         "DeleteVolume"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-volume))
 (common-lisp:progn
  (common-lisp:defun delete-vpc
@@ -36182,7 +36188,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteVpc"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-vpc))
 (common-lisp:progn
  (common-lisp:defun delete-vpc-endpoints
@@ -36200,7 +36206,7 @@
                                                         "POST" "/"
                                                         "DeleteVpcEndpoints"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-vpc-endpoints))
 (common-lisp:progn
  (common-lisp:defun delete-vpc-peering-connection
@@ -36220,7 +36226,7 @@
                                                         "POST" "/"
                                                         "DeleteVpcPeeringConnection"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-vpc-peering-connection))
 (common-lisp:progn
  (common-lisp:defun delete-vpn-connection
@@ -36238,7 +36244,7 @@
                                                         "POST" "/"
                                                         "DeleteVpnConnection"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-vpn-connection))
 (common-lisp:progn
  (common-lisp:defun delete-vpn-connection-route
@@ -36258,7 +36264,7 @@
                                                         "POST" "/"
                                                         "DeleteVpnConnectionRoute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-vpn-connection-route))
 (common-lisp:progn
  (common-lisp:defun delete-vpn-gateway
@@ -36276,7 +36282,7 @@
                                                         "POST" "/"
                                                         "DeleteVpnGateway"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-vpn-gateway))
 (common-lisp:progn
  (common-lisp:defun deregister-image
@@ -36294,7 +36300,7 @@
                                                         "POST" "/"
                                                         "DeregisterImage"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'deregister-image))
 (common-lisp:progn
  (common-lisp:defun describe-account-attributes
@@ -36313,7 +36319,7 @@
                                                         "POST" "/"
                                                         "DescribeAccountAttributes"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-account-attributes))
 (common-lisp:progn
  (common-lisp:defun describe-addresses
@@ -36333,7 +36339,7 @@
                                                         "POST" "/"
                                                         "DescribeAddresses"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-addresses))
 (common-lisp:progn
  (common-lisp:defun describe-availability-zones
@@ -36352,7 +36358,7 @@
                                                         "POST" "/"
                                                         "DescribeAvailabilityZones"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-availability-zones))
 (common-lisp:progn
  (common-lisp:defun describe-bundle-tasks
@@ -36370,7 +36376,7 @@
                                                         "POST" "/"
                                                         "DescribeBundleTasks"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-bundle-tasks))
 (common-lisp:progn
  (common-lisp:defun describe-classic-link-instances
@@ -36392,7 +36398,7 @@
                                                         "POST" "/"
                                                         "DescribeClassicLinkInstances"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-classic-link-instances))
 (common-lisp:progn
  (common-lisp:defun describe-conversion-tasks
@@ -36411,7 +36417,7 @@
                                                         "POST" "/"
                                                         "DescribeConversionTasks"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-conversion-tasks))
 (common-lisp:progn
  (common-lisp:defun describe-customer-gateways
@@ -36431,7 +36437,7 @@
                                                         "POST" "/"
                                                         "DescribeCustomerGateways"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-customer-gateways))
 (common-lisp:progn
  (common-lisp:defun describe-dhcp-options
@@ -36450,7 +36456,7 @@
                                                         "POST" "/"
                                                         "DescribeDhcpOptions"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-dhcp-options))
 (common-lisp:progn
  (common-lisp:defun describe-egress-only-internet-gateways
@@ -36472,7 +36478,7 @@
                                                         "POST" "/"
                                                         "DescribeEgressOnlyInternetGateways"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-egress-only-internet-gateways))
 (common-lisp:progn
  (common-lisp:defun describe-elastic-gpus
@@ -36493,7 +36499,7 @@
                                                         "POST" "/"
                                                         "DescribeElasticGpus"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-elastic-gpus))
 (common-lisp:progn
  (common-lisp:defun describe-export-tasks
@@ -36511,7 +36517,7 @@
                                                         "POST" "/"
                                                         "DescribeExportTasks"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-export-tasks))
 (common-lisp:progn
  (common-lisp:defun describe-flow-logs
@@ -36531,7 +36537,7 @@
                                                         "POST" "/"
                                                         "DescribeFlowLogs"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-flow-logs))
 (common-lisp:progn
  (common-lisp:defun describe-fpga-images
@@ -36552,7 +36558,7 @@
                                                         "POST" "/"
                                                         "DescribeFpgaImages"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-fpga-images))
 (common-lisp:progn
  (common-lisp:defun describe-host-reservation-offerings
@@ -36574,7 +36580,7 @@
                                                         "POST" "/"
                                                         "DescribeHostReservationOfferings"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-host-reservation-offerings))
 (common-lisp:progn
  (common-lisp:defun describe-host-reservations
@@ -36596,7 +36602,7 @@
                                                         "POST" "/"
                                                         "DescribeHostReservations"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-host-reservations))
 (common-lisp:progn
  (common-lisp:defun describe-hosts
@@ -36615,7 +36621,7 @@
                                                         "POST" "/"
                                                         "DescribeHosts"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-hosts))
 (common-lisp:progn
  (common-lisp:defun describe-iam-instance-profile-associations
@@ -36636,7 +36642,7 @@
                                                         "POST" "/"
                                                         "DescribeIamInstanceProfileAssociations"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-iam-instance-profile-associations))
 (common-lisp:progn
  (common-lisp:defun describe-id-format
@@ -36654,7 +36660,7 @@
                                                         "POST" "/"
                                                         "DescribeIdFormat"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-id-format))
 (common-lisp:progn
  (common-lisp:defun describe-identity-id-format
@@ -36673,7 +36679,7 @@
                                                         "POST" "/"
                                                         "DescribeIdentityIdFormat"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-identity-id-format))
 (common-lisp:progn
  (common-lisp:defun describe-image-attribute
@@ -36691,7 +36697,7 @@
                                                         "POST" "/"
                                                         "DescribeImageAttribute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-image-attribute))
 (common-lisp:progn
  (common-lisp:defun describe-images
@@ -36711,7 +36717,7 @@
                                                         "POST" "/"
                                                         "DescribeImages"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-images))
 (common-lisp:progn
  (common-lisp:defun describe-import-image-tasks
@@ -36733,7 +36739,7 @@
                                                         "POST" "/"
                                                         "DescribeImportImageTasks"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-import-image-tasks))
 (common-lisp:progn
  (common-lisp:defun describe-import-snapshot-tasks
@@ -36755,7 +36761,7 @@
                                                         "POST" "/"
                                                         "DescribeImportSnapshotTasks"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-import-snapshot-tasks))
 (common-lisp:progn
  (common-lisp:defun describe-instance-attribute
@@ -36774,7 +36780,7 @@
                                                         "POST" "/"
                                                         "DescribeInstanceAttribute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-instance-attribute))
 (common-lisp:progn
  (common-lisp:defun describe-instance-status
@@ -36795,7 +36801,7 @@
                                                         "POST" "/"
                                                         "DescribeInstanceStatus"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-instance-status))
 (common-lisp:progn
  (common-lisp:defun describe-instances
@@ -36816,7 +36822,7 @@
                                                         "POST" "/"
                                                         "DescribeInstances"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-instances))
 (common-lisp:progn
  (common-lisp:defun describe-internet-gateways
@@ -36836,7 +36842,7 @@
                                                         "POST" "/"
                                                         "DescribeInternetGateways"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-internet-gateways))
 (common-lisp:progn
  (common-lisp:defun describe-key-pairs
@@ -36854,7 +36860,7 @@
                                                         "POST" "/"
                                                         "DescribeKeyPairs"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-key-pairs))
 (common-lisp:progn
  (common-lisp:defun describe-moving-addresses
@@ -36875,7 +36881,7 @@
                                                         "POST" "/"
                                                         "DescribeMovingAddresses"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-moving-addresses))
 (common-lisp:progn
  (common-lisp:defun describe-nat-gateways
@@ -36895,7 +36901,7 @@
                                                         "POST" "/"
                                                         "DescribeNatGateways"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-nat-gateways))
 (common-lisp:progn
  (common-lisp:defun describe-network-acls
@@ -36914,7 +36920,7 @@
                                                         "POST" "/"
                                                         "DescribeNetworkAcls"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-network-acls))
 (common-lisp:progn
  (common-lisp:defun describe-network-interface-attribute
@@ -36934,7 +36940,7 @@
                                                         "POST" "/"
                                                         "DescribeNetworkInterfaceAttribute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-network-interface-attribute))
 (common-lisp:progn
  (common-lisp:defun describe-network-interface-permissions
@@ -36956,7 +36962,7 @@
                                                         "POST" "/"
                                                         "DescribeNetworkInterfacePermissions"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-network-interface-permissions))
 (common-lisp:progn
  (common-lisp:defun describe-network-interfaces
@@ -36976,7 +36982,7 @@
                                                         "POST" "/"
                                                         "DescribeNetworkInterfaces"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-network-interfaces))
 (common-lisp:progn
  (common-lisp:defun describe-placement-groups
@@ -36995,7 +37001,7 @@
                                                         "POST" "/"
                                                         "DescribePlacementGroups"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-placement-groups))
 (common-lisp:progn
  (common-lisp:defun describe-prefix-lists
@@ -37016,7 +37022,7 @@
                                                         "POST" "/"
                                                         "DescribePrefixLists"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-prefix-lists))
 (common-lisp:progn
  (common-lisp:defun describe-regions
@@ -37034,7 +37040,7 @@
                                                         "POST" "/"
                                                         "DescribeRegions"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-regions))
 (common-lisp:progn
  (common-lisp:defun describe-reserved-instances
@@ -37056,7 +37062,7 @@
                                                         "POST" "/"
                                                         "DescribeReservedInstances"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-reserved-instances))
 (common-lisp:progn
  (common-lisp:defun describe-reserved-instances-listings
@@ -37078,7 +37084,7 @@
                                                         "POST" "/"
                                                         "DescribeReservedInstancesListings"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-reserved-instances-listings))
 (common-lisp:progn
  (common-lisp:defun describe-reserved-instances-modifications
@@ -37100,7 +37106,7 @@
                                                         "POST" "/"
                                                         "DescribeReservedInstancesModifications"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-reserved-instances-modifications))
 (common-lisp:progn
  (common-lisp:defun describe-reserved-instances-offerings
@@ -37128,7 +37134,7 @@
                                                         "POST" "/"
                                                         "DescribeReservedInstancesOfferings"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-reserved-instances-offerings))
 (common-lisp:progn
  (common-lisp:defun describe-route-tables
@@ -37147,7 +37153,7 @@
                                                         "POST" "/"
                                                         "DescribeRouteTables"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-route-tables))
 (common-lisp:progn
  (common-lisp:defun describe-scheduled-instance-availability
@@ -37172,7 +37178,7 @@
                                                         "POST" "/"
                                                         "DescribeScheduledInstanceAvailability"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-scheduled-instance-availability))
 (common-lisp:progn
  (common-lisp:defun describe-scheduled-instances
@@ -37194,7 +37200,7 @@
                                                         "POST" "/"
                                                         "DescribeScheduledInstances"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-scheduled-instances))
 (common-lisp:progn
  (common-lisp:defun describe-security-group-references
@@ -37213,7 +37219,7 @@
                                                         "POST" "/"
                                                         "DescribeSecurityGroupReferences"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-security-group-references))
 (common-lisp:progn
  (common-lisp:defun describe-security-groups
@@ -37232,7 +37238,7 @@
                                                         "POST" "/"
                                                         "DescribeSecurityGroups"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-security-groups))
 (common-lisp:progn
  (common-lisp:defun describe-snapshot-attribute
@@ -37251,7 +37257,7 @@
                                                         "POST" "/"
                                                         "DescribeSnapshotAttribute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-snapshot-attribute))
 (common-lisp:progn
  (common-lisp:defun describe-snapshots
@@ -37272,7 +37278,7 @@
                                                         "POST" "/"
                                                         "DescribeSnapshots"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-snapshots))
 (common-lisp:progn
  (common-lisp:defun describe-spot-datafeed-subscription
@@ -37291,7 +37297,7 @@
                                                         "POST" "/"
                                                         "DescribeSpotDatafeedSubscription"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-spot-datafeed-subscription))
 (common-lisp:progn
  (common-lisp:defun describe-spot-fleet-instances
@@ -37313,7 +37319,7 @@
                                                         "POST" "/"
                                                         "DescribeSpotFleetInstances"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-spot-fleet-instances))
 (common-lisp:progn
  (common-lisp:defun describe-spot-fleet-request-history
@@ -37335,7 +37341,7 @@
                                                         "POST" "/"
                                                         "DescribeSpotFleetRequestHistory"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-spot-fleet-request-history))
 (common-lisp:progn
  (common-lisp:defun describe-spot-fleet-requests
@@ -37357,7 +37363,7 @@
                                                         "POST" "/"
                                                         "DescribeSpotFleetRequests"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-spot-fleet-requests))
 (common-lisp:progn
  (common-lisp:defun describe-spot-instance-requests
@@ -37378,7 +37384,7 @@
                                                         "POST" "/"
                                                         "DescribeSpotInstanceRequests"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-spot-instance-requests))
 (common-lisp:progn
  (common-lisp:defun describe-spot-price-history
@@ -37401,7 +37407,7 @@
                                                         "POST" "/"
                                                         "DescribeSpotPriceHistory"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-spot-price-history))
 (common-lisp:progn
  (common-lisp:defun describe-stale-security-groups
@@ -37421,7 +37427,7 @@
                                                         "POST" "/"
                                                         "DescribeStaleSecurityGroups"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-stale-security-groups))
 (common-lisp:progn
  (common-lisp:defun describe-subnets
@@ -37439,7 +37445,7 @@
                                                         "POST" "/"
                                                         "DescribeSubnets"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-subnets))
 (common-lisp:progn
  (common-lisp:defun describe-tags
@@ -37458,7 +37464,7 @@
                                                         "POST" "/"
                                                         "DescribeTags"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
  (common-lisp:defun describe-volume-attribute
@@ -37477,7 +37483,7 @@
                                                         "POST" "/"
                                                         "DescribeVolumeAttribute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-volume-attribute))
 (common-lisp:progn
  (common-lisp:defun describe-volume-status
@@ -37497,7 +37503,7 @@
                                                         "POST" "/"
                                                         "DescribeVolumeStatus"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-volume-status))
 (common-lisp:progn
  (common-lisp:defun describe-volumes
@@ -37517,7 +37523,7 @@
                                                         "POST" "/"
                                                         "DescribeVolumes"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-volumes))
 (common-lisp:progn
  (common-lisp:defun describe-volumes-modifications
@@ -37538,7 +37544,7 @@
                                                         "POST" "/"
                                                         "DescribeVolumesModifications"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-volumes-modifications))
 (common-lisp:progn
  (common-lisp:defun describe-vpc-attribute
@@ -37556,7 +37562,7 @@
                                                         "POST" "/"
                                                         "DescribeVpcAttribute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-vpc-attribute))
 (common-lisp:progn
  (common-lisp:defun describe-vpc-classic-link
@@ -37575,7 +37581,7 @@
                                                         "POST" "/"
                                                         "DescribeVpcClassicLink"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-vpc-classic-link))
 (common-lisp:progn
  (common-lisp:defun describe-vpc-classic-link-dns-support
@@ -37594,7 +37600,7 @@
                                                         "POST" "/"
                                                         "DescribeVpcClassicLinkDnsSupport"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-vpc-classic-link-dns-support))
 (common-lisp:progn
  (common-lisp:defun describe-vpc-endpoint-services
@@ -37613,7 +37619,7 @@
                                                         "POST" "/"
                                                         "DescribeVpcEndpointServices"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-vpc-endpoint-services))
 (common-lisp:progn
  (common-lisp:defun describe-vpc-endpoints
@@ -37634,7 +37640,7 @@
                                                         "POST" "/"
                                                         "DescribeVpcEndpoints"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-vpc-endpoints))
 (common-lisp:progn
  (common-lisp:defun describe-vpc-peering-connections
@@ -37655,7 +37661,7 @@
                                                         "POST" "/"
                                                         "DescribeVpcPeeringConnections"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-vpc-peering-connections))
 (common-lisp:progn
  (common-lisp:defun describe-vpcs
@@ -37673,7 +37679,7 @@
                                                         "POST" "/"
                                                         "DescribeVpcs"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-vpcs))
 (common-lisp:progn
  (common-lisp:defun describe-vpn-connections
@@ -37692,7 +37698,7 @@
                                                         "POST" "/"
                                                         "DescribeVpnConnections"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-vpn-connections))
 (common-lisp:progn
  (common-lisp:defun describe-vpn-gateways
@@ -37711,7 +37717,7 @@
                                                         "POST" "/"
                                                         "DescribeVpnGateways"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-vpn-gateways))
 (common-lisp:progn
  (common-lisp:defun detach-classic-link-vpc
@@ -37729,7 +37735,7 @@
                                                         "POST" "/"
                                                         "DetachClassicLinkVpc"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'detach-classic-link-vpc))
 (common-lisp:progn
  (common-lisp:defun detach-internet-gateway
@@ -37748,7 +37754,7 @@
                                                         "POST" "/"
                                                         "DetachInternetGateway"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'detach-internet-gateway))
 (common-lisp:progn
  (common-lisp:defun detach-network-interface
@@ -37766,7 +37772,7 @@
                                                         "POST" "/"
                                                         "DetachNetworkInterface"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'detach-network-interface))
 (common-lisp:progn
  (common-lisp:defun detach-volume
@@ -37786,7 +37792,7 @@
                                                         "POST" "/"
                                                         "DetachVolume"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'detach-volume))
 (common-lisp:progn
  (common-lisp:defun detach-vpn-gateway
@@ -37804,7 +37810,7 @@
                                                         "POST" "/"
                                                         "DetachVpnGateway"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'detach-vpn-gateway))
 (common-lisp:progn
  (common-lisp:defun disable-vgw-route-propagation
@@ -37823,7 +37829,7 @@
                                                         "POST" "/"
                                                         "DisableVgwRoutePropagation"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'disable-vgw-route-propagation))
 (common-lisp:progn
  (common-lisp:defun disable-vpc-classic-link
@@ -37841,7 +37847,7 @@
                                                         "POST" "/"
                                                         "DisableVpcClassicLink"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'disable-vpc-classic-link))
 (common-lisp:progn
  (common-lisp:defun disable-vpc-classic-link-dns-support
@@ -37860,7 +37866,7 @@
                                                         "POST" "/"
                                                         "DisableVpcClassicLinkDnsSupport"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'disable-vpc-classic-link-dns-support))
 (common-lisp:progn
  (common-lisp:defun disassociate-address
@@ -37879,7 +37885,7 @@
                                                         "POST" "/"
                                                         "DisassociateAddress"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'disassociate-address))
 (common-lisp:progn
  (common-lisp:defun disassociate-iam-instance-profile
@@ -37898,7 +37904,7 @@
                                                         "POST" "/"
                                                         "DisassociateIamInstanceProfile"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'disassociate-iam-instance-profile))
 (common-lisp:progn
  (common-lisp:defun disassociate-route-table
@@ -37916,7 +37922,7 @@
                                                         "POST" "/"
                                                         "DisassociateRouteTable"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'disassociate-route-table))
 (common-lisp:progn
  (common-lisp:defun disassociate-subnet-cidr-block
@@ -37935,7 +37941,7 @@
                                                         "POST" "/"
                                                         "DisassociateSubnetCidrBlock"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'disassociate-subnet-cidr-block))
 (common-lisp:progn
  (common-lisp:defun disassociate-vpc-cidr-block
@@ -37954,7 +37960,7 @@
                                                         "POST" "/"
                                                         "DisassociateVpcCidrBlock"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'disassociate-vpc-cidr-block))
 (common-lisp:progn
  (common-lisp:defun enable-vgw-route-propagation
@@ -37973,7 +37979,7 @@
                                                         "POST" "/"
                                                         "EnableVgwRoutePropagation"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'enable-vgw-route-propagation))
 (common-lisp:progn
  (common-lisp:defun enable-volume-io
@@ -37991,7 +37997,7 @@
                                                         "POST" "/"
                                                         "EnableVolumeIO"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'enable-volume-io))
 (common-lisp:progn
  (common-lisp:defun enable-vpc-classic-link
@@ -38009,7 +38015,7 @@
                                                         "POST" "/"
                                                         "EnableVpcClassicLink"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'enable-vpc-classic-link))
 (common-lisp:progn
  (common-lisp:defun enable-vpc-classic-link-dns-support
@@ -38028,7 +38034,7 @@
                                                         "POST" "/"
                                                         "EnableVpcClassicLinkDnsSupport"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'enable-vpc-classic-link-dns-support))
 (common-lisp:progn
  (common-lisp:defun get-console-output
@@ -38046,7 +38052,7 @@
                                                         "POST" "/"
                                                         "GetConsoleOutput"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-console-output))
 (common-lisp:progn
  (common-lisp:defun get-console-screenshot
@@ -38064,7 +38070,7 @@
                                                         "POST" "/"
                                                         "GetConsoleScreenshot"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-console-screenshot))
 (common-lisp:progn
  (common-lisp:defun get-host-reservation-purchase-preview
@@ -38083,7 +38089,7 @@
                                                         "POST" "/"
                                                         "GetHostReservationPurchasePreview"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-host-reservation-purchase-preview))
 (common-lisp:progn
  (common-lisp:defun get-password-data
@@ -38101,7 +38107,7 @@
                                                         "POST" "/"
                                                         "GetPasswordData"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-password-data))
 (common-lisp:progn
  (common-lisp:defun get-reserved-instances-exchange-quote
@@ -38123,7 +38129,7 @@
                                                         "POST" "/"
                                                         "GetReservedInstancesExchangeQuote"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-reserved-instances-exchange-quote))
 (common-lisp:progn
  (common-lisp:defun import-image
@@ -38145,7 +38151,7 @@
                                                         "POST" "/"
                                                         "ImportImage"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'import-image))
 (common-lisp:progn
  (common-lisp:defun import-instance
@@ -38166,7 +38172,7 @@
                                                         "POST" "/"
                                                         "ImportInstance"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'import-instance))
 (common-lisp:progn
  (common-lisp:defun import-key-pair
@@ -38185,7 +38191,7 @@
                                                         "POST" "/"
                                                         "ImportKeyPair"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'import-key-pair))
 (common-lisp:progn
  (common-lisp:defun import-snapshot
@@ -38206,7 +38212,7 @@
                                                         "POST" "/"
                                                         "ImportSnapshot"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'import-snapshot))
 (common-lisp:progn
  (common-lisp:defun import-volume
@@ -38226,7 +38232,7 @@
                                                         "POST" "/"
                                                         "ImportVolume"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'import-volume))
 (common-lisp:progn
  (common-lisp:defun modify-hosts
@@ -38244,7 +38250,7 @@
                                                         "POST" "/"
                                                         "ModifyHosts"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'modify-hosts))
 (common-lisp:progn
  (common-lisp:defun modify-id-format
@@ -38262,7 +38268,7 @@
                                                         "POST" "/"
                                                         "ModifyIdFormat"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'modify-id-format))
 (common-lisp:progn
  (common-lisp:defun modify-identity-id-format
@@ -38282,7 +38288,7 @@
                                                         "POST" "/"
                                                         "ModifyIdentityIdFormat"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'modify-identity-id-format))
 (common-lisp:progn
  (common-lisp:defun modify-image-attribute
@@ -38304,7 +38310,7 @@
                                                         "POST" "/"
                                                         "ModifyImageAttribute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'modify-image-attribute))
 (common-lisp:progn
  (common-lisp:defun modify-instance-attribute
@@ -38331,7 +38337,7 @@
                                                         "POST" "/"
                                                         "ModifyInstanceAttribute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'modify-instance-attribute))
 (common-lisp:progn
  (common-lisp:defun modify-instance-placement
@@ -38351,7 +38357,7 @@
                                                         "POST" "/"
                                                         "ModifyInstancePlacement"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'modify-instance-placement))
 (common-lisp:progn
  (common-lisp:defun modify-network-interface-attribute
@@ -38373,7 +38379,7 @@
                                                         "POST" "/"
                                                         "ModifyNetworkInterfaceAttribute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'modify-network-interface-attribute))
 (common-lisp:progn
  (common-lisp:defun modify-reserved-instances
@@ -38395,7 +38401,7 @@
                                                         "POST" "/"
                                                         "ModifyReservedInstances"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'modify-reserved-instances))
 (common-lisp:progn
  (common-lisp:defun modify-snapshot-attribute
@@ -38417,7 +38423,7 @@
                                                         "POST" "/"
                                                         "ModifySnapshotAttribute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'modify-snapshot-attribute))
 (common-lisp:progn
  (common-lisp:defun modify-spot-fleet-request
@@ -38439,7 +38445,7 @@
                                                         "POST" "/"
                                                         "ModifySpotFleetRequest"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'modify-spot-fleet-request))
 (common-lisp:progn
  (common-lisp:defun modify-subnet-attribute
@@ -38460,7 +38466,7 @@
                                                         "POST" "/"
                                                         "ModifySubnetAttribute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'modify-subnet-attribute))
 (common-lisp:progn
  (common-lisp:defun modify-volume
@@ -38479,7 +38485,7 @@
                                                         "POST" "/"
                                                         "ModifyVolume"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'modify-volume))
 (common-lisp:progn
  (common-lisp:defun modify-volume-attribute
@@ -38498,7 +38504,7 @@
                                                         "POST" "/"
                                                         "ModifyVolumeAttribute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'modify-volume-attribute))
 (common-lisp:progn
  (common-lisp:defun modify-vpc-attribute
@@ -38518,7 +38524,7 @@
                                                         "POST" "/"
                                                         "ModifyVpcAttribute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'modify-vpc-attribute))
 (common-lisp:progn
  (common-lisp:defun modify-vpc-endpoint
@@ -38540,7 +38546,7 @@
                                                         "POST" "/"
                                                         "ModifyVpcEndpoint"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'modify-vpc-endpoint))
 (common-lisp:progn
  (common-lisp:defun modify-vpc-peering-connection-options
@@ -38563,7 +38569,7 @@
                                                         "POST" "/"
                                                         "ModifyVpcPeeringConnectionOptions"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'modify-vpc-peering-connection-options))
 (common-lisp:progn
  (common-lisp:defun monitor-instances
@@ -38581,7 +38587,7 @@
                                                         "POST" "/"
                                                         "MonitorInstances"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'monitor-instances))
 (common-lisp:progn
  (common-lisp:defun move-address-to-vpc
@@ -38599,7 +38605,7 @@
                                                         "POST" "/"
                                                         "MoveAddressToVpc"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'move-address-to-vpc))
 (common-lisp:progn
  (common-lisp:defun purchase-host-reservation
@@ -38621,7 +38627,7 @@
                                                         "POST" "/"
                                                         "PurchaseHostReservation"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'purchase-host-reservation))
 (common-lisp:progn
  (common-lisp:defun purchase-reserved-instances-offering
@@ -38643,7 +38649,7 @@
                                                         "POST" "/"
                                                         "PurchaseReservedInstancesOffering"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'purchase-reserved-instances-offering))
 (common-lisp:progn
  (common-lisp:defun purchase-scheduled-instances
@@ -38663,7 +38669,7 @@
                                                         "POST" "/"
                                                         "PurchaseScheduledInstances"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'purchase-scheduled-instances))
 (common-lisp:progn
  (common-lisp:defun reboot-instances
@@ -38681,7 +38687,7 @@
                                                         "POST" "/"
                                                         "RebootInstances"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'reboot-instances))
 (common-lisp:progn
  (common-lisp:defun register-image
@@ -38705,7 +38711,7 @@
                                                         "POST" "/"
                                                         "RegisterImage"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'register-image))
 (common-lisp:progn
  (common-lisp:defun reject-vpc-peering-connection
@@ -38725,7 +38731,7 @@
                                                         "POST" "/"
                                                         "RejectVpcPeeringConnection"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'reject-vpc-peering-connection))
 (common-lisp:progn
  (common-lisp:defun release-address
@@ -38744,7 +38750,7 @@
                                                         "POST" "/"
                                                         "ReleaseAddress"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'release-address))
 (common-lisp:progn
  (common-lisp:defun release-hosts
@@ -38762,7 +38768,7 @@
                                                         "POST" "/"
                                                         "ReleaseHosts"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'release-hosts))
 (common-lisp:progn
  (common-lisp:defun replace-iam-instance-profile-association
@@ -38782,7 +38788,7 @@
                                                         "POST" "/"
                                                         "ReplaceIamInstanceProfileAssociation"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'replace-iam-instance-profile-association))
 (common-lisp:progn
  (common-lisp:defun replace-network-acl-association
@@ -38802,7 +38808,7 @@
                                                         "POST" "/"
                                                         "ReplaceNetworkAclAssociation"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'replace-network-acl-association))
 (common-lisp:progn
  (common-lisp:defun replace-network-acl-entry
@@ -38826,7 +38832,7 @@
                                                         "POST" "/"
                                                         "ReplaceNetworkAclEntry"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'replace-network-acl-entry))
 (common-lisp:progn
  (common-lisp:defun replace-route
@@ -38852,7 +38858,7 @@
                                                         "POST" "/"
                                                         "ReplaceRoute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'replace-route))
 (common-lisp:progn
  (common-lisp:defun replace-route-table-association
@@ -38872,7 +38878,7 @@
                                                         "POST" "/"
                                                         "ReplaceRouteTableAssociation"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'replace-route-table-association))
 (common-lisp:progn
  (common-lisp:defun report-instance-status
@@ -38893,7 +38899,7 @@
                                                         "POST" "/"
                                                         "ReportInstanceStatus"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'report-instance-status))
 (common-lisp:progn
  (common-lisp:defun request-spot-fleet
@@ -38912,7 +38918,7 @@
                                                         "POST" "/"
                                                         "RequestSpotFleet"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'request-spot-fleet))
 (common-lisp:progn
  (common-lisp:defun request-spot-instances
@@ -38936,7 +38942,7 @@
                                                         "POST" "/"
                                                         "RequestSpotInstances"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'request-spot-instances))
 (common-lisp:progn
  (common-lisp:defun reset-image-attribute
@@ -38954,7 +38960,7 @@
                                                         "POST" "/"
                                                         "ResetImageAttribute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'reset-image-attribute))
 (common-lisp:progn
  (common-lisp:defun reset-instance-attribute
@@ -38972,7 +38978,7 @@
                                                         "POST" "/"
                                                         "ResetInstanceAttribute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'reset-instance-attribute))
 (common-lisp:progn
  (common-lisp:defun reset-network-interface-attribute
@@ -38993,7 +38999,7 @@
                                                         "POST" "/"
                                                         "ResetNetworkInterfaceAttribute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'reset-network-interface-attribute))
 (common-lisp:progn
  (common-lisp:defun reset-snapshot-attribute
@@ -39011,7 +39017,7 @@
                                                         "POST" "/"
                                                         "ResetSnapshotAttribute"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'reset-snapshot-attribute))
 (common-lisp:progn
  (common-lisp:defun restore-address-to-classic
@@ -39030,7 +39036,7 @@
                                                         "POST" "/"
                                                         "RestoreAddressToClassic"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'restore-address-to-classic))
 (common-lisp:progn
  (common-lisp:defun revoke-security-group-egress
@@ -39054,7 +39060,7 @@
                                                         "POST" "/"
                                                         "RevokeSecurityGroupEgress"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'revoke-security-group-egress))
 (common-lisp:progn
  (common-lisp:defun revoke-security-group-ingress
@@ -39078,7 +39084,7 @@
                                                         "POST" "/"
                                                         "RevokeSecurityGroupIngress"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'revoke-security-group-ingress))
 (common-lisp:progn
  (common-lisp:defun run-instances
@@ -39111,7 +39117,7 @@
                                                         "POST" "/"
                                                         "RunInstances"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'run-instances))
 (common-lisp:progn
  (common-lisp:defun run-scheduled-instances
@@ -39132,7 +39138,7 @@
                                                         "POST" "/"
                                                         "RunScheduledInstances"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'run-scheduled-instances))
 (common-lisp:progn
  (common-lisp:defun start-instances
@@ -39151,7 +39157,7 @@
                                                         "POST" "/"
                                                         "StartInstances"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'start-instances))
 (common-lisp:progn
  (common-lisp:defun stop-instances
@@ -39169,7 +39175,7 @@
                                                         "POST" "/"
                                                         "StopInstances"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'stop-instances))
 (common-lisp:progn
  (common-lisp:defun terminate-instances
@@ -39187,7 +39193,7 @@
                                                         "POST" "/"
                                                         "TerminateInstances"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'terminate-instances))
 (common-lisp:progn
  (common-lisp:defun unassign-ipv6addresses
@@ -39206,7 +39212,7 @@
                                                         "POST" "/"
                                                         "UnassignIpv6Addresses"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'unassign-ipv6addresses))
 (common-lisp:progn
  (common-lisp:defun unassign-private-ip-addresses
@@ -39227,7 +39233,7 @@
                                                         "POST" "/"
                                                         "UnassignPrivateIpAddresses"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'unassign-private-ip-addresses))
 (common-lisp:progn
  (common-lisp:defun unmonitor-instances
@@ -39245,5 +39251,5 @@
                                                         "POST" "/"
                                                         "UnmonitorInstances"
                                                         "2016-11-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'unmonitor-instances))

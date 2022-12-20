@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/meteringmarketplace/api)
 (common-lisp:progn
  (common-lisp:defclass meteringmarketplace-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "meteringmarketplace"))
  (common-lisp:export 'meteringmarketplace-request))
+(common-lisp:progn
+ (common-lisp:define-condition meteringmarketplace-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'meteringmarketplace-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-meter-usage-request (:copier common-lisp:nil)
@@ -95,251 +101,67 @@
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:deftype customer-identifier () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (duplicate-request-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-duplicate-request-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition duplicate-request-exception
+     (meteringmarketplace-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       duplicate-request-exception-message)))
  (common-lisp:export
   (common-lisp:list 'duplicate-request-exception
-                    'make-duplicate-request-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-request-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-request-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-request-exception))
-   common-lisp:nil))
+                    'duplicate-request-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (expired-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-expired-token-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition expired-token-exception
+     (meteringmarketplace-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       expired-token-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'expired-token-exception 'make-expired-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          expired-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          expired-token-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          expired-token-exception))
-   common-lisp:nil))
+  (common-lisp:list 'expired-token-exception 'expired-token-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-service-error-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-service-error-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition internal-service-error-exception
+     (meteringmarketplace-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-service-error-exception-message)))
  (common-lisp:export
   (common-lisp:list 'internal-service-error-exception
-                    'make-internal-service-error-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-error-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-error-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-error-exception))
-   common-lisp:nil))
+                    'internal-service-error-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-customer-identifier-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-customer-identifier-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition invalid-customer-identifier-exception
+     (meteringmarketplace-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-customer-identifier-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-customer-identifier-exception
-                    'make-invalid-customer-identifier-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-customer-identifier-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-customer-identifier-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-customer-identifier-exception))
-   common-lisp:nil))
+                    'invalid-customer-identifier-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-endpoint-region-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-endpoint-region-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition invalid-endpoint-region-exception
+     (meteringmarketplace-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-endpoint-region-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-endpoint-region-exception
-                    'make-invalid-endpoint-region-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-endpoint-region-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-endpoint-region-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-endpoint-region-exception))
-   common-lisp:nil))
+                    'invalid-endpoint-region-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-product-code-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-product-code-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition invalid-product-code-exception
+     (meteringmarketplace-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-product-code-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-product-code-exception
-                    'make-invalid-product-code-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-product-code-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-product-code-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-product-code-exception))
-   common-lisp:nil))
+                    'invalid-product-code-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-token-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition invalid-token-exception
+     (meteringmarketplace-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-token-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-token-exception 'make-invalid-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-token-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-token-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-token-exception 'invalid-token-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-usage-dimension-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-usage-dimension-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition invalid-usage-dimension-exception
+     (meteringmarketplace-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-usage-dimension-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-usage-dimension-exception
-                    'make-invalid-usage-dimension-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-usage-dimension-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-usage-dimension-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-usage-dimension-exception))
-   common-lisp:nil))
+                    'invalid-usage-dimension-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (meter-usage-request (:copier common-lisp:nil)
@@ -497,61 +319,21 @@
    common-lisp:nil))
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (throttling-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-throttling-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition throttling-exception
+     (meteringmarketplace-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       throttling-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'throttling-exception 'make-throttling-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input throttling-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input throttling-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input throttling-exception))
-   common-lisp:nil))
+  (common-lisp:list 'throttling-exception 'throttling-exception-message)))
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (timestamp-out-of-bounds-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-timestamp-out-of-bounds-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition timestamp-out-of-bounds-exception
+     (meteringmarketplace-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       timestamp-out-of-bounds-exception-message)))
  (common-lisp:export
   (common-lisp:list 'timestamp-out-of-bounds-exception
-                    'make-timestamp-out-of-bounds-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          timestamp-out-of-bounds-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          timestamp-out-of-bounds-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          timestamp-out-of-bounds-exception))
-   common-lisp:nil))
+                    'timestamp-out-of-bounds-exception-message)))
 (common-lisp:deftype usage-dimension () 'common-lisp:string)
 (common-lisp:deftype usage-quantity () 'common-lisp:integer)
 (common-lisp:progn
@@ -678,7 +460,14 @@
        (aws-sdk/generator/shape:make-request-with-input
         'meteringmarketplace-request aws-sdk/generator/operation::input "POST"
         "/" "BatchMeterUsage" "2016-01-14"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceErrorException" . internal-service-error-exception)
+        ("InvalidProductCodeException" . invalid-product-code-exception)
+        ("InvalidUsageDimensionException" . invalid-usage-dimension-exception)
+        ("InvalidCustomerIdentifierException"
+         . invalid-customer-identifier-exception)
+        ("TimestampOutOfBoundsException" . timestamp-out-of-bounds-exception)
+        ("ThrottlingException" . throttling-exception)))))
  (common-lisp:export 'batch-meter-usage))
 (common-lisp:progn
  (common-lisp:defun meter-usage
@@ -697,7 +486,14 @@
        (aws-sdk/generator/shape:make-request-with-input
         'meteringmarketplace-request aws-sdk/generator/operation::input "POST"
         "/" "MeterUsage" "2016-01-14"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceErrorException" . internal-service-error-exception)
+        ("InvalidProductCodeException" . invalid-product-code-exception)
+        ("InvalidUsageDimensionException" . invalid-usage-dimension-exception)
+        ("InvalidEndpointRegionException" . invalid-endpoint-region-exception)
+        ("TimestampOutOfBoundsException" . timestamp-out-of-bounds-exception)
+        ("DuplicateRequestException" . duplicate-request-exception)
+        ("ThrottlingException" . throttling-exception)))))
  (common-lisp:export 'meter-usage))
 (common-lisp:progn
  (common-lisp:defun resolve-customer
@@ -713,5 +509,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'meteringmarketplace-request aws-sdk/generator/operation::input "POST"
         "/" "ResolveCustomer" "2016-01-14"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidTokenException" . invalid-token-exception)
+        ("ExpiredTokenException" . expired-token-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("InternalServiceErrorException"
+         . internal-service-error-exception)))))
  (common-lisp:export 'resolve-customer))

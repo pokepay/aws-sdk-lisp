@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/es/api)
 (common-lisp:progn
  (common-lisp:defclass es-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "es"))
  (common-lisp:export 'es-request))
+(common-lisp:progn
+ (common-lisp:define-condition es-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'es-error))
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -174,28 +180,12 @@
                           advanced-options-status))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (base-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-base-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
- (common-lisp:export (common-lisp:list 'base-exception 'make-base-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input base-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input base-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input base-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition base-exception
+     (es-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       base-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'base-exception 'base-exception-message)))
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -609,27 +599,10 @@
                           describe-elasticsearch-instance-type-limits-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disabled-operation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-disabled-operation-exception-")))
- (common-lisp:export
-  (common-lisp:list 'disabled-operation-exception
-                    'make-disabled-operation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          disabled-operation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          disabled-operation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          disabled-operation-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition disabled-operation-exception
+     (es-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'disabled-operation-exception)))
 (common-lisp:deftype domain-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -1228,62 +1201,20 @@
 (common-lisp:deftype instance-role () 'common-lisp:string)
 (common-lisp:deftype integer-class () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-exception-")))
- (common-lisp:export
-  (common-lisp:list 'internal-exception 'make-internal-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input internal-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input internal-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input internal-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition internal-exception
+     (es-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'internal-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-type-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-type-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-type-exception 'make-invalid-type-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-type-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-type-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-type-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-type-exception
+     (es-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-type-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition limit-exceeded-exception
+     (es-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'limit-exceeded-exception)))
 (common-lisp:deftype limit-name () 'common-lisp:string)
 (common-lisp:deftype limit-value () 'common-lisp:string)
 (common-lisp:progn
@@ -1650,49 +1581,15 @@
                         ((aws-sdk/generator/shape::input remove-tags-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-already-exists-exception-")))
- (common-lisp:export
-  (common-lisp:list 'resource-already-exists-exception
-                    'make-resource-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition resource-already-exists-exception
+     (es-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-already-exists-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition resource-not-found-exception
+     (es-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-not-found-exception)))
 (common-lisp:deftype service-url () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -2003,20 +1900,10 @@
    common-lisp:nil))
 (common-lisp:deftype update-timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-exception-")))
- (common-lisp:export
-  (common-lisp:list 'validation-exception 'make-validation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input validation-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition validation-exception
+     (es-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'validation-exception)))
 (common-lisp:deftype volume-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defun add-tags
@@ -2035,7 +1922,11 @@
                                                         "/2015-01-01/tags"
                                                         "AddTags"
                                                         "2015-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BaseException" . base-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ValidationException" . validation-exception)
+        ("InternalException" . internal-exception)))))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
  (common-lisp:defun create-elasticsearch-domain
@@ -2060,7 +1951,14 @@
                                                         "/2015-01-01/es/domain"
                                                         "CreateElasticsearchDomain"
                                                         "2015-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BaseException" . base-exception)
+        ("DisabledOperationException" . disabled-operation-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'create-elasticsearch-domain))
 (common-lisp:progn
  (common-lisp:defun delete-elasticsearch-domain
@@ -2089,7 +1987,11 @@
                                                              'domain-name))))
                                                         "DeleteElasticsearchDomain"
                                                         "2015-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'delete-elasticsearch-domain))
 (common-lisp:progn
  (common-lisp:defun describe-elasticsearch-domain
@@ -2118,7 +2020,11 @@
                                                              'domain-name))))
                                                         "DescribeElasticsearchDomain"
                                                         "2015-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-elasticsearch-domain))
 (common-lisp:progn
  (common-lisp:defun describe-elasticsearch-domain-config
@@ -2147,7 +2053,11 @@
                                                              'domain-name))))
                                                         "DescribeElasticsearchDomainConfig"
                                                         "2015-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-elasticsearch-domain-config))
 (common-lisp:progn
  (common-lisp:defun describe-elasticsearch-domains
@@ -2167,7 +2077,10 @@
                                                         "/2015-01-01/es/domain-info"
                                                         "DescribeElasticsearchDomains"
                                                         "2015-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-elasticsearch-domains))
 (common-lisp:progn
  (common-lisp:defun describe-elasticsearch-instance-type-limits
@@ -2202,7 +2115,13 @@
                                                              'instance-type))))
                                                         "DescribeElasticsearchInstanceTypeLimits"
                                                         "2015-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-elasticsearch-instance-type-limits))
 (common-lisp:progn
  (common-lisp:defun list-domain-names ()
@@ -2212,7 +2131,9 @@
                                 "/2015-01-01/domain" :params
                                 `(("Action" ,@"ListDomainNames")
                                   ("Version" ,@"2015-01-01"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("BaseException" . base-exception)
+      ("ValidationException" . validation-exception))))
  (common-lisp:export 'list-domain-names))
 (common-lisp:progn
  (common-lisp:defun list-elasticsearch-instance-types
@@ -2244,7 +2165,11 @@
                                                              'elasticsearch-version))))
                                                         "ListElasticsearchInstanceTypes"
                                                         "2015-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'list-elasticsearch-instance-types))
 (common-lisp:progn
  (common-lisp:defun list-elasticsearch-versions
@@ -2264,7 +2189,11 @@
                                                         "/2015-01-01/es/versions"
                                                         "ListElasticsearchVersions"
                                                         "2015-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'list-elasticsearch-versions))
 (common-lisp:progn
  (common-lisp:defun list-tags
@@ -2283,7 +2212,11 @@
                                                         "/2015-01-01/tags/"
                                                         "ListTags"
                                                         "2015-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BaseException" . base-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)
+        ("InternalException" . internal-exception)))))
  (common-lisp:export 'list-tags))
 (common-lisp:progn
  (common-lisp:defun remove-tags
@@ -2302,7 +2235,10 @@
                                                         "/2015-01-01/tags-removal"
                                                         "RemoveTags"
                                                         "2015-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BaseException" . base-exception)
+        ("ValidationException" . validation-exception)
+        ("InternalException" . internal-exception)))))
  (common-lisp:export 'remove-tags))
 (common-lisp:progn
  (common-lisp:defun update-elasticsearch-domain-config
@@ -2335,5 +2271,11 @@
                                                              'domain-name))))
                                                         "UpdateElasticsearchDomainConfig"
                                                         "2015-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'update-elasticsearch-domain-config))

@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/s3/api)
 (common-lisp:progn
  (common-lisp:defclass s3-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "s3"))
  (common-lisp:export 's3-request))
+(common-lisp:progn
+ (common-lisp:define-condition s3-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 's3-error))
 (common-lisp:deftype abort-date () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -467,48 +473,15 @@
    common-lisp:nil))
 (common-lisp:deftype bucket-accelerate-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (bucket-already-exists (:copier common-lisp:nil)
-      (:conc-name "struct-shape-bucket-already-exists-")))
- (common-lisp:export
-  (common-lisp:list 'bucket-already-exists 'make-bucket-already-exists))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          bucket-already-exists))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          bucket-already-exists))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          bucket-already-exists))
-   common-lisp:nil))
+ (common-lisp:define-condition bucket-already-exists
+     (s3-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'bucket-already-exists)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (bucket-already-owned-by-you (:copier common-lisp:nil)
-      (:conc-name "struct-shape-bucket-already-owned-by-you-")))
- (common-lisp:export
-  (common-lisp:list 'bucket-already-owned-by-you
-                    'make-bucket-already-owned-by-you))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          bucket-already-owned-by-you))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          bucket-already-owned-by-you))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          bucket-already-owned-by-you))
-   common-lisp:nil))
+ (common-lisp:define-condition bucket-already-owned-by-you
+     (s3-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'bucket-already-owned-by-you)))
 (common-lisp:deftype bucket-canned-acl () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -6442,47 +6415,20 @@
 (common-lisp:deftype next-upload-id-marker () 'common-lisp:string)
 (common-lisp:deftype next-version-id-marker () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-bucket (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-bucket-")))
- (common-lisp:export (common-lisp:list 'no-such-bucket 'make-no-such-bucket))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input no-such-bucket))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input no-such-bucket))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input no-such-bucket))
-   common-lisp:nil))
+ (common-lisp:define-condition no-such-bucket
+     (s3-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'no-such-bucket)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-key (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-key-")))
- (common-lisp:export (common-lisp:list 'no-such-key 'make-no-such-key))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input no-such-key))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input no-such-key))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input no-such-key))
-   common-lisp:nil))
+ (common-lisp:define-condition no-such-key
+     (s3-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'no-such-key)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-upload (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-upload-")))
- (common-lisp:export (common-lisp:list 'no-such-upload 'make-no-such-upload))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input no-such-upload))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input no-such-upload))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input no-such-upload))
-   common-lisp:nil))
+ (common-lisp:define-condition no-such-upload
+     (s3-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'no-such-upload)))
 (common-lisp:progn
  (common-lisp:defstruct
      (noncurrent-version-expiration (:copier common-lisp:nil)
@@ -6760,27 +6706,10 @@
                         ((aws-sdk/generator/shape::input object))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (object-already-in-active-tier-error (:copier common-lisp:nil)
-      (:conc-name "struct-shape-object-already-in-active-tier-error-")))
- (common-lisp:export
-  (common-lisp:list 'object-already-in-active-tier-error
-                    'make-object-already-in-active-tier-error))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          object-already-in-active-tier-error))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          object-already-in-active-tier-error))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          object-already-in-active-tier-error))
-   common-lisp:nil))
+ (common-lisp:define-condition object-already-in-active-tier-error
+     (s3-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'object-already-in-active-tier-error)))
 (common-lisp:deftype object-canned-acl () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -6832,27 +6761,10 @@
                            (trivial-types:proper-list object))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (object-not-in-active-tier-error (:copier common-lisp:nil)
-      (:conc-name "struct-shape-object-not-in-active-tier-error-")))
- (common-lisp:export
-  (common-lisp:list 'object-not-in-active-tier-error
-                    'make-object-not-in-active-tier-error))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          object-not-in-active-tier-error))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          object-not-in-active-tier-error))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          object-not-in-active-tier-error))
-   common-lisp:nil))
+ (common-lisp:define-condition object-not-in-active-tier-error
+     (s3-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'object-not-in-active-tier-error)))
 (common-lisp:deftype object-storage-class () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -9612,7 +9524,7 @@
                                                             'key)))
                                                         "AbortMultipartUpload"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil '(("NoSuchUpload" . no-such-upload)))))
  (common-lisp:export 'abort-multipart-upload))
 (common-lisp:progn
  (common-lisp:defun complete-multipart-upload
@@ -9647,7 +9559,7 @@
                                                             'key)))
                                                         "CompleteMultipartUpload"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'complete-multipart-upload))
 (common-lisp:progn
  (common-lisp:defun copy-object
@@ -9700,7 +9612,8 @@
                                                             'key)))
                                                         "CopyObject"
                                                         "2006-03-01"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'copy-object))
 (common-lisp:progn
  (common-lisp:defun create-bucket
@@ -9732,7 +9645,9 @@
                                                              'bucket))))
                                                         "CreateBucket"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)))))
  (common-lisp:export 'create-bucket))
 (common-lisp:progn
  (common-lisp:defun create-multipart-upload
@@ -9776,7 +9691,7 @@
                                                             'key)))
                                                         "CreateMultipartUpload"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'create-multipart-upload))
 (common-lisp:progn
  (common-lisp:defun delete-bucket
@@ -9804,7 +9719,7 @@
                                                              'bucket))))
                                                         "DeleteBucket"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-bucket))
 (common-lisp:progn
  (common-lisp:defun delete-bucket-analytics-configuration
@@ -9833,7 +9748,7 @@
                                                              'bucket))))
                                                         "DeleteBucketAnalyticsConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-bucket-analytics-configuration))
 (common-lisp:progn
  (common-lisp:defun delete-bucket-cors
@@ -9861,7 +9776,7 @@
                                                              'bucket))))
                                                         "DeleteBucketCors"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-bucket-cors))
 (common-lisp:progn
  (common-lisp:defun delete-bucket-inventory-configuration
@@ -9890,7 +9805,7 @@
                                                              'bucket))))
                                                         "DeleteBucketInventoryConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-bucket-inventory-configuration))
 (common-lisp:progn
  (common-lisp:defun delete-bucket-lifecycle
@@ -9918,7 +9833,7 @@
                                                              'bucket))))
                                                         "DeleteBucketLifecycle"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-bucket-lifecycle))
 (common-lisp:progn
  (common-lisp:defun delete-bucket-metrics-configuration
@@ -9947,7 +9862,7 @@
                                                              'bucket))))
                                                         "DeleteBucketMetricsConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-bucket-metrics-configuration))
 (common-lisp:progn
  (common-lisp:defun delete-bucket-policy
@@ -9975,7 +9890,7 @@
                                                              'bucket))))
                                                         "DeleteBucketPolicy"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-bucket-policy))
 (common-lisp:progn
  (common-lisp:defun delete-bucket-replication
@@ -10004,7 +9919,7 @@
                                                              'bucket))))
                                                         "DeleteBucketReplication"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-bucket-replication))
 (common-lisp:progn
  (common-lisp:defun delete-bucket-tagging
@@ -10032,7 +9947,7 @@
                                                              'bucket))))
                                                         "DeleteBucketTagging"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-bucket-tagging))
 (common-lisp:progn
  (common-lisp:defun delete-bucket-website
@@ -10060,7 +9975,7 @@
                                                              'bucket))))
                                                         "DeleteBucketWebsite"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-bucket-website))
 (common-lisp:progn
  (common-lisp:defun delete-object
@@ -10092,7 +10007,7 @@
                                                             'key)))
                                                         "DeleteObject"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-object))
 (common-lisp:progn
  (common-lisp:defun delete-object-tagging
@@ -10123,7 +10038,7 @@
                                                             'key)))
                                                         "DeleteObjectTagging"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-object-tagging))
 (common-lisp:progn
  (common-lisp:defun delete-objects
@@ -10152,7 +10067,7 @@
                                                              'bucket))))
                                                         "DeleteObjects"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-objects))
 (common-lisp:progn
  (common-lisp:defun get-bucket-accelerate-configuration
@@ -10181,7 +10096,7 @@
                                                              'bucket))))
                                                         "GetBucketAccelerateConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-bucket-accelerate-configuration))
 (common-lisp:progn
  (common-lisp:defun get-bucket-acl
@@ -10209,7 +10124,7 @@
                                                              'bucket))))
                                                         "GetBucketAcl"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-bucket-acl))
 (common-lisp:progn
  (common-lisp:defun get-bucket-analytics-configuration
@@ -10238,7 +10153,7 @@
                                                              'bucket))))
                                                         "GetBucketAnalyticsConfiguration"
                                                         "2006-03-01"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-bucket-analytics-configuration))
 (common-lisp:progn
  (common-lisp:defun get-bucket-cors
@@ -10266,7 +10181,7 @@
                                                              'bucket))))
                                                         "GetBucketCors"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-bucket-cors))
 (common-lisp:progn
  (common-lisp:defun get-bucket-inventory-configuration
@@ -10295,7 +10210,7 @@
                                                              'bucket))))
                                                         "GetBucketInventoryConfiguration"
                                                         "2006-03-01"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-bucket-inventory-configuration))
 (common-lisp:progn
  (common-lisp:defun get-bucket-lifecycle
@@ -10323,7 +10238,7 @@
                                                              'bucket))))
                                                         "GetBucketLifecycle"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-bucket-lifecycle))
 (common-lisp:progn
  (common-lisp:defun get-bucket-lifecycle-configuration
@@ -10352,7 +10267,7 @@
                                                              'bucket))))
                                                         "GetBucketLifecycleConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-bucket-lifecycle-configuration))
 (common-lisp:progn
  (common-lisp:defun get-bucket-location
@@ -10380,7 +10295,7 @@
                                                              'bucket))))
                                                         "GetBucketLocation"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-bucket-location))
 (common-lisp:progn
  (common-lisp:defun get-bucket-logging
@@ -10408,7 +10323,7 @@
                                                              'bucket))))
                                                         "GetBucketLogging"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-bucket-logging))
 (common-lisp:progn
  (common-lisp:defun get-bucket-metrics-configuration
@@ -10437,7 +10352,7 @@
                                                              'bucket))))
                                                         "GetBucketMetricsConfiguration"
                                                         "2006-03-01"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-bucket-metrics-configuration))
 (common-lisp:progn
  (common-lisp:defun get-bucket-notification
@@ -10466,7 +10381,7 @@
                                                              'bucket))))
                                                         "GetBucketNotification"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-bucket-notification))
 (common-lisp:progn
  (common-lisp:defun get-bucket-notification-configuration
@@ -10495,7 +10410,7 @@
                                                              'bucket))))
                                                         "GetBucketNotificationConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-bucket-notification-configuration))
 (common-lisp:progn
  (common-lisp:defun get-bucket-policy
@@ -10523,7 +10438,7 @@
                                                              'bucket))))
                                                         "GetBucketPolicy"
                                                         "2006-03-01"))
-      "string" common-lisp:nil)))
+      "string" common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-bucket-policy))
 (common-lisp:progn
  (common-lisp:defun get-bucket-replication
@@ -10551,7 +10466,7 @@
                                                              'bucket))))
                                                         "GetBucketReplication"
                                                         "2006-03-01"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-bucket-replication))
 (common-lisp:progn
  (common-lisp:defun get-bucket-request-payment
@@ -10580,7 +10495,7 @@
                                                              'bucket))))
                                                         "GetBucketRequestPayment"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-bucket-request-payment))
 (common-lisp:progn
  (common-lisp:defun get-bucket-tagging
@@ -10608,7 +10523,7 @@
                                                              'bucket))))
                                                         "GetBucketTagging"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-bucket-tagging))
 (common-lisp:progn
  (common-lisp:defun get-bucket-versioning
@@ -10636,7 +10551,7 @@
                                                              'bucket))))
                                                         "GetBucketVersioning"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-bucket-versioning))
 (common-lisp:progn
  (common-lisp:defun get-bucket-website
@@ -10664,7 +10579,7 @@
                                                              'bucket))))
                                                         "GetBucketWebsite"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-bucket-website))
 (common-lisp:progn
  (common-lisp:defun get-object
@@ -10707,7 +10622,7 @@
                                                             'key)))
                                                         "GetObject"
                                                         "2006-03-01"))
-      "blob" common-lisp:nil)))
+      "blob" common-lisp:nil '(("NoSuchKey" . no-such-key)))))
  (common-lisp:export 'get-object))
 (common-lisp:progn
  (common-lisp:defun get-object-acl
@@ -10739,7 +10654,7 @@
                                                             'key)))
                                                         "GetObjectAcl"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil '(("NoSuchKey" . no-such-key)))))
  (common-lisp:export 'get-object-acl))
 (common-lisp:progn
  (common-lisp:defun get-object-tagging
@@ -10770,7 +10685,7 @@
                                                             'key)))
                                                         "GetObjectTagging"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-object-tagging))
 (common-lisp:progn
  (common-lisp:defun get-object-torrent
@@ -10801,7 +10716,7 @@
                                                             'key)))
                                                         "GetObjectTorrent"
                                                         "2006-03-01"))
-      "blob" common-lisp:nil)))
+      "blob" common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'get-object-torrent))
 (common-lisp:progn
  (common-lisp:defun head-bucket
@@ -10829,7 +10744,7 @@
                                                              'bucket))))
                                                         "HeadBucket"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil '(("NoSuchBucket" . no-such-bucket)))))
  (common-lisp:export 'head-bucket))
 (common-lisp:progn
  (common-lisp:defun head-object
@@ -10866,7 +10781,7 @@
                                                             'key)))
                                                         "HeadObject"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil '(("NoSuchKey" . no-such-key)))))
  (common-lisp:export 'head-object))
 (common-lisp:progn
  (common-lisp:defun list-bucket-analytics-configurations
@@ -10895,7 +10810,7 @@
                                                              'bucket))))
                                                         "ListBucketAnalyticsConfigurations"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'list-bucket-analytics-configurations))
 (common-lisp:progn
  (common-lisp:defun list-bucket-inventory-configurations
@@ -10924,7 +10839,7 @@
                                                              'bucket))))
                                                         "ListBucketInventoryConfigurations"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'list-bucket-inventory-configurations))
 (common-lisp:progn
  (common-lisp:defun list-bucket-metrics-configurations
@@ -10953,7 +10868,7 @@
                                                              'bucket))))
                                                         "ListBucketMetricsConfigurations"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'list-bucket-metrics-configurations))
 (common-lisp:progn
  (common-lisp:defun list-buckets ()
@@ -10962,7 +10877,7 @@
      (common-lisp:make-instance 's3-request :method "GET" :path "/" :params
                                 `(("Action" ,@"ListBuckets")
                                   ("Version" ,@"2006-03-01"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil 'common-lisp:nil))
  (common-lisp:export 'list-buckets))
 (common-lisp:progn
  (common-lisp:defun list-multipart-uploads
@@ -10993,7 +10908,7 @@
                                                              'bucket))))
                                                         "ListMultipartUploads"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'list-multipart-uploads))
 (common-lisp:progn
  (common-lisp:defun list-object-versions
@@ -11024,7 +10939,7 @@
                                                              'bucket))))
                                                         "ListObjectVersions"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'list-object-versions))
 (common-lisp:progn
  (common-lisp:defun list-objects
@@ -11055,7 +10970,7 @@
                                                              'bucket))))
                                                         "ListObjects"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil '(("NoSuchBucket" . no-such-bucket)))))
  (common-lisp:export 'list-objects))
 (common-lisp:progn
  (common-lisp:defun list-objects-v2
@@ -11087,7 +11002,7 @@
                                                              'bucket))))
                                                         "ListObjectsV2"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil '(("NoSuchBucket" . no-such-bucket)))))
  (common-lisp:export 'list-objects-v2))
 (common-lisp:progn
  (common-lisp:defun list-parts
@@ -11121,7 +11036,7 @@
                                                             'key)))
                                                         "ListParts"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'list-parts))
 (common-lisp:progn
  (common-lisp:defun put-bucket-accelerate-configuration
@@ -11151,7 +11066,7 @@
                                                              'bucket))))
                                                         "PutBucketAccelerateConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'put-bucket-accelerate-configuration))
 (common-lisp:progn
  (common-lisp:defun put-bucket-acl
@@ -11183,7 +11098,7 @@
                                                              'bucket))))
                                                         "PutBucketAcl"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'put-bucket-acl))
 (common-lisp:progn
  (common-lisp:defun put-bucket-analytics-configuration
@@ -11213,7 +11128,7 @@
                                                              'bucket))))
                                                         "PutBucketAnalyticsConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'put-bucket-analytics-configuration))
 (common-lisp:progn
  (common-lisp:defun put-bucket-cors
@@ -11242,7 +11157,7 @@
                                                              'bucket))))
                                                         "PutBucketCors"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'put-bucket-cors))
 (common-lisp:progn
  (common-lisp:defun put-bucket-inventory-configuration
@@ -11272,7 +11187,7 @@
                                                              'bucket))))
                                                         "PutBucketInventoryConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'put-bucket-inventory-configuration))
 (common-lisp:progn
  (common-lisp:defun put-bucket-lifecycle
@@ -11302,7 +11217,7 @@
                                                              'bucket))))
                                                         "PutBucketLifecycle"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'put-bucket-lifecycle))
 (common-lisp:progn
  (common-lisp:defun put-bucket-lifecycle-configuration
@@ -11331,7 +11246,7 @@
                                                              'bucket))))
                                                         "PutBucketLifecycleConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'put-bucket-lifecycle-configuration))
 (common-lisp:progn
  (common-lisp:defun put-bucket-logging
@@ -11360,7 +11275,7 @@
                                                              'bucket))))
                                                         "PutBucketLogging"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'put-bucket-logging))
 (common-lisp:progn
  (common-lisp:defun put-bucket-metrics-configuration
@@ -11390,7 +11305,7 @@
                                                              'bucket))))
                                                         "PutBucketMetricsConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'put-bucket-metrics-configuration))
 (common-lisp:progn
  (common-lisp:defun put-bucket-notification
@@ -11420,7 +11335,7 @@
                                                              'bucket))))
                                                         "PutBucketNotification"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'put-bucket-notification))
 (common-lisp:progn
  (common-lisp:defun put-bucket-notification-configuration
@@ -11450,7 +11365,7 @@
                                                              'bucket))))
                                                         "PutBucketNotificationConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'put-bucket-notification-configuration))
 (common-lisp:progn
  (common-lisp:defun put-bucket-policy
@@ -11478,7 +11393,7 @@
                                                              'bucket))))
                                                         "PutBucketPolicy"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'put-bucket-policy))
 (common-lisp:progn
  (common-lisp:defun put-bucket-replication
@@ -11508,7 +11423,7 @@
                                                              'bucket))))
                                                         "PutBucketReplication"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'put-bucket-replication))
 (common-lisp:progn
  (common-lisp:defun put-bucket-request-payment
@@ -11539,7 +11454,7 @@
                                                              'bucket))))
                                                         "PutBucketRequestPayment"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'put-bucket-request-payment))
 (common-lisp:progn
  (common-lisp:defun put-bucket-tagging
@@ -11567,7 +11482,7 @@
                                                              'bucket))))
                                                         "PutBucketTagging"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'put-bucket-tagging))
 (common-lisp:progn
  (common-lisp:defun put-bucket-versioning
@@ -11597,7 +11512,7 @@
                                                              'bucket))))
                                                         "PutBucketVersioning"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'put-bucket-versioning))
 (common-lisp:progn
  (common-lisp:defun put-bucket-website
@@ -11626,7 +11541,7 @@
                                                              'bucket))))
                                                         "PutBucketWebsite"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'put-bucket-website))
 (common-lisp:progn
  (common-lisp:defun put-object
@@ -11670,7 +11585,7 @@
                                                             'key)))
                                                         "PutObject"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'put-object))
 (common-lisp:progn
  (common-lisp:defun put-object-acl
@@ -11706,7 +11621,7 @@
                                                             'key)))
                                                         "PutObjectAcl"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil '(("NoSuchKey" . no-such-key)))))
  (common-lisp:export 'put-object-acl))
 (common-lisp:progn
  (common-lisp:defun put-object-tagging
@@ -11739,7 +11654,7 @@
                                                             'key)))
                                                         "PutObjectTagging"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'put-object-tagging))
 (common-lisp:progn
  (common-lisp:defun restore-object
@@ -11773,7 +11688,9 @@
                                                             'key)))
                                                         "RestoreObject"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)))))
  (common-lisp:export 'restore-object))
 (common-lisp:progn
  (common-lisp:defun upload-part
@@ -11809,7 +11726,7 @@
                                                             'key)))
                                                         "UploadPart"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'upload-part))
 (common-lisp:progn
  (common-lisp:defun upload-part-copy
@@ -11853,5 +11770,5 @@
                                                             'key)))
                                                         "UploadPartCopy"
                                                         "2006-03-01"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'upload-part-copy))

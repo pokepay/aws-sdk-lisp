@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/route53/api)
 (common-lisp:progn
  (common-lisp:defclass route53-request (aws-sdk/request:request)
                        common-lisp:nil (:default-initargs :service "route53"))
  (common-lisp:export 'route53-request))
+(common-lisp:progn
+ (common-lisp:define-condition route53-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'route53-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (alarm-identifier (:copier common-lisp:nil)
@@ -528,90 +534,27 @@
 (common-lisp:deftype cloud-watch-region () 'common-lisp:string)
 (common-lisp:deftype comparison-operator () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (concurrent-modification (:copier common-lisp:nil)
-      (:conc-name "struct-shape-concurrent-modification-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition concurrent-modification
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       concurrent-modification-message)))
  (common-lisp:export
-  (common-lisp:list 'concurrent-modification 'make-concurrent-modification))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification))
-   common-lisp:nil))
+  (common-lisp:list 'concurrent-modification 'concurrent-modification-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (conflicting-domain-exists (:copier common-lisp:nil)
-      (:conc-name "struct-shape-conflicting-domain-exists-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition conflicting-domain-exists
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       conflicting-domain-exists-message)))
  (common-lisp:export
   (common-lisp:list 'conflicting-domain-exists
-                    'make-conflicting-domain-exists))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          conflicting-domain-exists))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          conflicting-domain-exists))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          conflicting-domain-exists))
-   common-lisp:nil))
+                    'conflicting-domain-exists-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (conflicting-types (:copier common-lisp:nil)
-      (:conc-name "struct-shape-conflicting-types-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition conflicting-types
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       conflicting-types-message)))
  (common-lisp:export
-  (common-lisp:list 'conflicting-types 'make-conflicting-types))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input conflicting-types))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input conflicting-types))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input conflicting-types))
-   common-lisp:nil))
+  (common-lisp:list 'conflicting-types 'conflicting-types-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-health-check-request (:copier common-lisp:nil)
@@ -1285,97 +1228,28 @@
                         ((aws-sdk/generator/shape::input delegation-set))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delegation-set-already-created (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delegation-set-already-created-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition delegation-set-already-created
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       delegation-set-already-created-message)))
  (common-lisp:export
   (common-lisp:list 'delegation-set-already-created
-                    'make-delegation-set-already-created))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          delegation-set-already-created))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          delegation-set-already-created))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          delegation-set-already-created))
-   common-lisp:nil))
+                    'delegation-set-already-created-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delegation-set-already-reusable (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delegation-set-already-reusable-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition delegation-set-already-reusable
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       delegation-set-already-reusable-message)))
  (common-lisp:export
   (common-lisp:list 'delegation-set-already-reusable
-                    'make-delegation-set-already-reusable))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          delegation-set-already-reusable))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          delegation-set-already-reusable))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          delegation-set-already-reusable))
-   common-lisp:nil))
+                    'delegation-set-already-reusable-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delegation-set-in-use (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delegation-set-in-use-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition delegation-set-in-use
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       delegation-set-in-use-message)))
  (common-lisp:export
-  (common-lisp:list 'delegation-set-in-use 'make-delegation-set-in-use))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          delegation-set-in-use))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          delegation-set-in-use))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          delegation-set-in-use))
-   common-lisp:nil))
+  (common-lisp:list 'delegation-set-in-use 'delegation-set-in-use-message)))
 (common-lisp:progn
  (common-lisp:deftype delegation-set-name-servers ()
    '(trivial-types:proper-list dnsname))
@@ -1385,67 +1259,21 @@
                            (trivial-types:proper-list dnsname))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delegation-set-not-available (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delegation-set-not-available-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition delegation-set-not-available
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       delegation-set-not-available-message)))
  (common-lisp:export
   (common-lisp:list 'delegation-set-not-available
-                    'make-delegation-set-not-available))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          delegation-set-not-available))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          delegation-set-not-available))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          delegation-set-not-available))
-   common-lisp:nil))
+                    'delegation-set-not-available-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delegation-set-not-reusable (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delegation-set-not-reusable-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition delegation-set-not-reusable
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       delegation-set-not-reusable-message)))
  (common-lisp:export
   (common-lisp:list 'delegation-set-not-reusable
-                    'make-delegation-set-not-reusable))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          delegation-set-not-reusable))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          delegation-set-not-reusable))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          delegation-set-not-reusable))
-   common-lisp:nil))
+                    'delegation-set-not-reusable-message)))
 (common-lisp:progn
  (common-lisp:deftype delegation-sets ()
    '(trivial-types:proper-list delegation-set))
@@ -2789,36 +2617,13 @@
                         ((aws-sdk/generator/shape::input health-check))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (health-check-already-exists (:copier common-lisp:nil)
-      (:conc-name "struct-shape-health-check-already-exists-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition health-check-already-exists
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       health-check-already-exists-message)))
  (common-lisp:export
   (common-lisp:list 'health-check-already-exists
-                    'make-health-check-already-exists))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          health-check-already-exists))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          health-check-already-exists))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          health-check-already-exists))
-   common-lisp:nil))
+                    'health-check-already-exists-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (health-check-config (:copier common-lisp:nil)
@@ -2981,29 +2786,12 @@
 (common-lisp:deftype health-check-count () 'common-lisp:integer)
 (common-lisp:deftype health-check-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (health-check-in-use (:copier common-lisp:nil)
-      (:conc-name "struct-shape-health-check-in-use-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition health-check-in-use
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       health-check-in-use-message)))
  (common-lisp:export
-  (common-lisp:list 'health-check-in-use 'make-health-check-in-use))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input health-check-in-use))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input health-check-in-use))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input health-check-in-use))
-   common-lisp:nil))
+  (common-lisp:list 'health-check-in-use 'health-check-in-use-message)))
 (common-lisp:deftype health-check-nonce () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -3074,36 +2862,13 @@
 (common-lisp:deftype health-check-type () 'common-lisp:string)
 (common-lisp:deftype health-check-version () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (health-check-version-mismatch (:copier common-lisp:nil)
-      (:conc-name "struct-shape-health-check-version-mismatch-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition health-check-version-mismatch
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       health-check-version-mismatch-message)))
  (common-lisp:export
   (common-lisp:list 'health-check-version-mismatch
-                    'make-health-check-version-mismatch))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          health-check-version-mismatch))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          health-check-version-mismatch))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          health-check-version-mismatch))
-   common-lisp:nil))
+                    'health-check-version-mismatch-message)))
 (common-lisp:progn
  (common-lisp:deftype health-checks ()
    '(trivial-types:proper-list health-check))
@@ -3174,36 +2939,13 @@
                         ((aws-sdk/generator/shape::input hosted-zone))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (hosted-zone-already-exists (:copier common-lisp:nil)
-      (:conc-name "struct-shape-hosted-zone-already-exists-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition hosted-zone-already-exists
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       hosted-zone-already-exists-message)))
  (common-lisp:export
   (common-lisp:list 'hosted-zone-already-exists
-                    'make-hosted-zone-already-exists))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          hosted-zone-already-exists))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          hosted-zone-already-exists))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          hosted-zone-already-exists))
-   common-lisp:nil))
+                    'hosted-zone-already-exists-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (hosted-zone-config (:copier common-lisp:nil)
@@ -3239,65 +2981,19 @@
    common-lisp:nil))
 (common-lisp:deftype hosted-zone-count () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (hosted-zone-not-empty (:copier common-lisp:nil)
-      (:conc-name "struct-shape-hosted-zone-not-empty-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition hosted-zone-not-empty
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       hosted-zone-not-empty-message)))
  (common-lisp:export
-  (common-lisp:list 'hosted-zone-not-empty 'make-hosted-zone-not-empty))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          hosted-zone-not-empty))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          hosted-zone-not-empty))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          hosted-zone-not-empty))
-   common-lisp:nil))
+  (common-lisp:list 'hosted-zone-not-empty 'hosted-zone-not-empty-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (hosted-zone-not-found (:copier common-lisp:nil)
-      (:conc-name "struct-shape-hosted-zone-not-found-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition hosted-zone-not-found
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       hosted-zone-not-found-message)))
  (common-lisp:export
-  (common-lisp:list 'hosted-zone-not-found 'make-hosted-zone-not-found))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          hosted-zone-not-found))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          hosted-zone-not-found))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          hosted-zone-not-found))
-   common-lisp:nil))
+  (common-lisp:list 'hosted-zone-not-found 'hosted-zone-not-found-message)))
 (common-lisp:deftype hosted-zone-rrset-count () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:deftype hosted-zones () '(trivial-types:proper-list hosted-zone))
@@ -3309,267 +3005,81 @@
 (common-lisp:deftype ipaddress () 'common-lisp:string)
 (common-lisp:deftype ipaddress-cidr () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (incompatible-version (:copier common-lisp:nil)
-      (:conc-name "struct-shape-incompatible-version-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition incompatible-version
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       incompatible-version-message)))
  (common-lisp:export
-  (common-lisp:list 'incompatible-version 'make-incompatible-version))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input incompatible-version))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input incompatible-version))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input incompatible-version))
-   common-lisp:nil))
+  (common-lisp:list 'incompatible-version 'incompatible-version-message)))
 (common-lisp:deftype insufficient-data-health-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-argument (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-argument-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-argument
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-argument-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-argument 'make-invalid-argument))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-argument))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-argument))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-argument))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-argument 'invalid-argument-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-change-batch (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-change-batch-"))
-   (messages common-lisp:nil :type
-    (common-lisp:or error-messages common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-change-batch
+     (route53-error)
+     ((messages :initarg :messages :initform common-lisp:nil :reader
+       invalid-change-batch-messages)
+      (message :initarg :message :initform common-lisp:nil :reader
+       invalid-change-batch-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-change-batch 'make-invalid-change-batch))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-change-batch))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-change-batch))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'messages))
-      (common-lisp:list
-       (common-lisp:cons "messages"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-change-batch))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-change-batch 'invalid-change-batch-messages
+                    'invalid-change-batch-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-domain-name (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-domain-name-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-domain-name
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-domain-name-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-domain-name 'make-invalid-domain-name))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-domain-name))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-domain-name))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-domain-name))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-domain-name 'invalid-domain-name-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-input-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
- (common-lisp:export (common-lisp:list 'invalid-input 'make-invalid-input))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-input))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-input))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-input))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-input
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-input-message)))
+ (common-lisp:export (common-lisp:list 'invalid-input 'invalid-input-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-pagination-token (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-pagination-token-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-pagination-token
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-pagination-token-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-pagination-token 'make-invalid-pagination-token))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-pagination-token))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-pagination-token))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-pagination-token))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-pagination-token
+                    'invalid-pagination-token-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-traffic-policy-document (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-traffic-policy-document-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-traffic-policy-document
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-traffic-policy-document-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-traffic-policy-document
-                    'make-invalid-traffic-policy-document))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-traffic-policy-document))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-traffic-policy-document))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-traffic-policy-document))
-   common-lisp:nil))
+                    'invalid-traffic-policy-document-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-vpcid (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-vpcid-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
- (common-lisp:export (common-lisp:list 'invalid-vpcid 'make-invalid-vpcid))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-vpcid))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-vpcid))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-vpcid))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-vpcid
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-vpcid-message)))
+ (common-lisp:export (common-lisp:list 'invalid-vpcid 'invalid-vpcid-message)))
 (common-lisp:deftype inverted () 'common-lisp:boolean)
 (common-lisp:deftype is-private-zone () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (last-vpcassociation (:copier common-lisp:nil)
-      (:conc-name "struct-shape-last-vpcassociation-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition last-vpcassociation
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       last-vpcassociation-message)))
  (common-lisp:export
-  (common-lisp:list 'last-vpcassociation 'make-last-vpcassociation))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input last-vpcassociation))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input last-vpcassociation))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input last-vpcassociation))
-   common-lisp:nil))
+  (common-lisp:list 'last-vpcassociation 'last-vpcassociation-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (limits-exceeded (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limits-exceeded-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
- (common-lisp:export (common-lisp:list 'limits-exceeded 'make-limits-exceeded))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input limits-exceeded))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input limits-exceeded))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input limits-exceeded))
-   common-lisp:nil))
+ (common-lisp:define-condition limits-exceeded
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limits-exceeded-message)))
+ (common-lisp:export
+  (common-lisp:list 'limits-exceeded 'limits-exceeded-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-geo-locations-request (:copier common-lisp:nil)
@@ -4895,222 +4405,64 @@
 (common-lisp:deftype nameserver () 'common-lisp:string)
 (common-lisp:deftype namespace () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-change (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-change-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
- (common-lisp:export (common-lisp:list 'no-such-change 'make-no-such-change))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input no-such-change))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input no-such-change))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input no-such-change))
-   common-lisp:nil))
-(common-lisp:progn
- (common-lisp:defstruct
-     (no-such-delegation-set (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-delegation-set-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition no-such-change
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       no-such-change-message)))
  (common-lisp:export
-  (common-lisp:list 'no-such-delegation-set 'make-no-such-delegation-set))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-delegation-set))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-delegation-set))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-delegation-set))
-   common-lisp:nil))
+  (common-lisp:list 'no-such-change 'no-such-change-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-geo-location (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-geo-location-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition no-such-delegation-set
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       no-such-delegation-set-message)))
  (common-lisp:export
-  (common-lisp:list 'no-such-geo-location 'make-no-such-geo-location))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input no-such-geo-location))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input no-such-geo-location))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input no-such-geo-location))
-   common-lisp:nil))
+  (common-lisp:list 'no-such-delegation-set 'no-such-delegation-set-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-health-check (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-health-check-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition no-such-geo-location
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       no-such-geo-location-message)))
  (common-lisp:export
-  (common-lisp:list 'no-such-health-check 'make-no-such-health-check))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input no-such-health-check))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input no-such-health-check))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input no-such-health-check))
-   common-lisp:nil))
+  (common-lisp:list 'no-such-geo-location 'no-such-geo-location-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-hosted-zone (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-hosted-zone-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition no-such-health-check
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       no-such-health-check-message)))
  (common-lisp:export
-  (common-lisp:list 'no-such-hosted-zone 'make-no-such-hosted-zone))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input no-such-hosted-zone))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input no-such-hosted-zone))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input no-such-hosted-zone))
-   common-lisp:nil))
+  (common-lisp:list 'no-such-health-check 'no-such-health-check-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-traffic-policy (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-traffic-policy-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition no-such-hosted-zone
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       no-such-hosted-zone-message)))
  (common-lisp:export
-  (common-lisp:list 'no-such-traffic-policy 'make-no-such-traffic-policy))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-traffic-policy))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-traffic-policy))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-traffic-policy))
-   common-lisp:nil))
+  (common-lisp:list 'no-such-hosted-zone 'no-such-hosted-zone-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-traffic-policy-instance (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-traffic-policy-instance-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition no-such-traffic-policy
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       no-such-traffic-policy-message)))
+ (common-lisp:export
+  (common-lisp:list 'no-such-traffic-policy 'no-such-traffic-policy-message)))
+(common-lisp:progn
+ (common-lisp:define-condition no-such-traffic-policy-instance
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       no-such-traffic-policy-instance-message)))
  (common-lisp:export
   (common-lisp:list 'no-such-traffic-policy-instance
-                    'make-no-such-traffic-policy-instance))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-traffic-policy-instance))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-traffic-policy-instance))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-traffic-policy-instance))
-   common-lisp:nil))
+                    'no-such-traffic-policy-instance-message)))
 (common-lisp:deftype nonce () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (not-authorized-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-not-authorized-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition not-authorized-exception
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       not-authorized-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'not-authorized-exception 'make-not-authorized-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          not-authorized-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          not-authorized-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          not-authorized-exception))
-   common-lisp:nil))
+  (common-lisp:list 'not-authorized-exception
+                    'not-authorized-exception-message)))
 (common-lisp:deftype page-marker () 'common-lisp:string)
 (common-lisp:deftype page-max-items () 'common-lisp:string)
 (common-lisp:deftype page-truncated () 'common-lisp:boolean)
@@ -5118,67 +4470,21 @@
 (common-lisp:deftype period () 'common-lisp:integer)
 (common-lisp:deftype port () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (prior-request-not-complete (:copier common-lisp:nil)
-      (:conc-name "struct-shape-prior-request-not-complete-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition prior-request-not-complete
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       prior-request-not-complete-message)))
  (common-lisp:export
   (common-lisp:list 'prior-request-not-complete
-                    'make-prior-request-not-complete))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          prior-request-not-complete))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          prior-request-not-complete))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          prior-request-not-complete))
-   common-lisp:nil))
+                    'prior-request-not-complete-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (public-zone-vpcassociation (:copier common-lisp:nil)
-      (:conc-name "struct-shape-public-zone-vpcassociation-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition public-zone-vpcassociation
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       public-zone-vpcassociation-message)))
  (common-lisp:export
   (common-lisp:list 'public-zone-vpcassociation
-                    'make-public-zone-vpcassociation))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          public-zone-vpcassociation))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          public-zone-vpcassociation))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          public-zone-vpcassociation))
-   common-lisp:nil))
+                    'public-zone-vpcassociation-message)))
 (common-lisp:deftype rdata () 'common-lisp:string)
 (common-lisp:deftype rrtype () 'common-lisp:string)
 (common-lisp:progn
@@ -5622,183 +4928,51 @@
    common-lisp:nil))
 (common-lisp:deftype threshold () 'common-lisp:double-float)
 (common-lisp:progn
- (common-lisp:defstruct
-     (throttling-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-throttling-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition throttling-exception
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       throttling-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'throttling-exception 'make-throttling-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input throttling-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input throttling-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input throttling-exception))
-   common-lisp:nil))
+  (common-lisp:list 'throttling-exception 'throttling-exception-message)))
 (common-lisp:deftype time-stamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-health-checks (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-health-checks-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition too-many-health-checks
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-health-checks-message)))
  (common-lisp:export
-  (common-lisp:list 'too-many-health-checks 'make-too-many-health-checks))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-health-checks))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-health-checks))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-health-checks))
-   common-lisp:nil))
+  (common-lisp:list 'too-many-health-checks 'too-many-health-checks-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-hosted-zones (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-hosted-zones-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition too-many-hosted-zones
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-hosted-zones-message)))
  (common-lisp:export
-  (common-lisp:list 'too-many-hosted-zones 'make-too-many-hosted-zones))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-hosted-zones))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-hosted-zones))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-hosted-zones))
-   common-lisp:nil))
+  (common-lisp:list 'too-many-hosted-zones 'too-many-hosted-zones-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-traffic-policies (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-traffic-policies-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition too-many-traffic-policies
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-traffic-policies-message)))
  (common-lisp:export
   (common-lisp:list 'too-many-traffic-policies
-                    'make-too-many-traffic-policies))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-traffic-policies))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-traffic-policies))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-traffic-policies))
-   common-lisp:nil))
+                    'too-many-traffic-policies-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-traffic-policy-instances (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-traffic-policy-instances-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition too-many-traffic-policy-instances
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-traffic-policy-instances-message)))
  (common-lisp:export
   (common-lisp:list 'too-many-traffic-policy-instances
-                    'make-too-many-traffic-policy-instances))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-traffic-policy-instances))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-traffic-policy-instances))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-traffic-policy-instances))
-   common-lisp:nil))
+                    'too-many-traffic-policy-instances-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-vpcassociation-authorizations (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-vpcassociation-authorizations-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition too-many-vpcassociation-authorizations
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-vpcassociation-authorizations-message)))
  (common-lisp:export
   (common-lisp:list 'too-many-vpcassociation-authorizations
-                    'make-too-many-vpcassociation-authorizations))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-vpcassociation-authorizations))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-vpcassociation-authorizations))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-vpcassociation-authorizations))
-   common-lisp:nil))
+                    'too-many-vpcassociation-authorizations-message)))
 (common-lisp:progn
  (common-lisp:deftype traffic-policies ()
    '(trivial-types:proper-list traffic-policy))
@@ -5876,69 +5050,23 @@
                         ((aws-sdk/generator/shape::input traffic-policy))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (traffic-policy-already-exists (:copier common-lisp:nil)
-      (:conc-name "struct-shape-traffic-policy-already-exists-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition traffic-policy-already-exists
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       traffic-policy-already-exists-message)))
  (common-lisp:export
   (common-lisp:list 'traffic-policy-already-exists
-                    'make-traffic-policy-already-exists))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          traffic-policy-already-exists))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          traffic-policy-already-exists))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          traffic-policy-already-exists))
-   common-lisp:nil))
+                    'traffic-policy-already-exists-message)))
 (common-lisp:deftype traffic-policy-comment () 'common-lisp:string)
 (common-lisp:deftype traffic-policy-document () 'common-lisp:string)
 (common-lisp:deftype traffic-policy-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (traffic-policy-in-use (:copier common-lisp:nil)
-      (:conc-name "struct-shape-traffic-policy-in-use-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition traffic-policy-in-use
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       traffic-policy-in-use-message)))
  (common-lisp:export
-  (common-lisp:list 'traffic-policy-in-use 'make-traffic-policy-in-use))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          traffic-policy-in-use))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          traffic-policy-in-use))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          traffic-policy-in-use))
-   common-lisp:nil))
+  (common-lisp:list 'traffic-policy-in-use 'traffic-policy-in-use-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (traffic-policy-instance (:copier common-lisp:nil)
@@ -6044,36 +5172,13 @@
                           traffic-policy-instance))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (traffic-policy-instance-already-exists (:copier common-lisp:nil)
-      (:conc-name "struct-shape-traffic-policy-instance-already-exists-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition traffic-policy-instance-already-exists
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       traffic-policy-instance-already-exists-message)))
  (common-lisp:export
   (common-lisp:list 'traffic-policy-instance-already-exists
-                    'make-traffic-policy-instance-already-exists))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          traffic-policy-instance-already-exists))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          traffic-policy-instance-already-exists))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          traffic-policy-instance-already-exists))
-   common-lisp:nil))
+                    'traffic-policy-instance-already-exists-message)))
 (common-lisp:deftype traffic-policy-instance-count () 'common-lisp:integer)
 (common-lisp:deftype traffic-policy-instance-id () 'common-lisp:string)
 (common-lisp:deftype traffic-policy-instance-state () 'common-lisp:string)
@@ -6594,66 +5699,21 @@
                         ((aws-sdk/generator/shape::input vpc))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (vpcassociation-authorization-not-found (:copier common-lisp:nil)
-      (:conc-name "struct-shape-vpcassociation-authorization-not-found-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition vpcassociation-authorization-not-found
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       vpcassociation-authorization-not-found-message)))
  (common-lisp:export
   (common-lisp:list 'vpcassociation-authorization-not-found
-                    'make-vpcassociation-authorization-not-found))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          vpcassociation-authorization-not-found))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          vpcassociation-authorization-not-found))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          vpcassociation-authorization-not-found))
-   common-lisp:nil))
+                    'vpcassociation-authorization-not-found-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (vpcassociation-not-found (:copier common-lisp:nil)
-      (:conc-name "struct-shape-vpcassociation-not-found-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition vpcassociation-not-found
+     (route53-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       vpcassociation-not-found-message)))
  (common-lisp:export
-  (common-lisp:list 'vpcassociation-not-found 'make-vpcassociation-not-found))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          vpcassociation-not-found))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          vpcassociation-not-found))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          vpcassociation-not-found))
-   common-lisp:nil))
+  (common-lisp:list 'vpcassociation-not-found
+                    'vpcassociation-not-found-message)))
 (common-lisp:deftype vpcid () 'common-lisp:string)
 (common-lisp:deftype vpcregion () 'common-lisp:string)
 (common-lisp:progn
@@ -6690,7 +5750,13 @@
                                                              'id))))
                                                         "AssociateVPCWithHostedZone"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchHostedZone" . no-such-hosted-zone)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("InvalidVPCId" . invalid-vpcid) ("InvalidInput" . invalid-input)
+        ("PublicZoneVPCAssociation" . public-zone-vpcassociation)
+        ("ConflictingDomainExists" . conflicting-domain-exists)
+        ("LimitsExceeded" . limits-exceeded)))))
  (common-lisp:export 'associate-vpcwith-hosted-zone))
 (common-lisp:progn
  (common-lisp:defun change-resource-record-sets
@@ -6719,7 +5785,12 @@
                                                              'id))))
                                                         "ChangeResourceRecordSets"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchHostedZone" . no-such-hosted-zone)
+        ("NoSuchHealthCheck" . no-such-health-check)
+        ("InvalidChangeBatch" . invalid-change-batch)
+        ("InvalidInput" . invalid-input)
+        ("PriorRequestNotComplete" . prior-request-not-complete)))))
  (common-lisp:export 'change-resource-record-sets))
 (common-lisp:progn
  (common-lisp:defun change-tags-for-resource
@@ -6753,7 +5824,12 @@
                                                              'resource-id))))
                                                         "ChangeTagsForResource"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("NoSuchHealthCheck" . no-such-health-check)
+        ("NoSuchHostedZone" . no-such-hosted-zone)
+        ("PriorRequestNotComplete" . prior-request-not-complete)
+        ("ThrottlingException" . throttling-exception)))))
  (common-lisp:export 'change-tags-for-resource))
 (common-lisp:progn
  (common-lisp:defun create-health-check
@@ -6773,7 +5849,10 @@
                                                         "/2013-04-01/healthcheck"
                                                         "CreateHealthCheck"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("TooManyHealthChecks" . too-many-health-checks)
+        ("HealthCheckAlreadyExists" . health-check-already-exists)
+        ("InvalidInput" . invalid-input)))))
  (common-lisp:export 'create-health-check))
 (common-lisp:progn
  (common-lisp:defun create-hosted-zone
@@ -6795,7 +5874,15 @@
                                                         "/2013-04-01/hostedzone"
                                                         "CreateHostedZone"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidDomainName" . invalid-domain-name)
+        ("HostedZoneAlreadyExists" . hosted-zone-already-exists)
+        ("TooManyHostedZones" . too-many-hosted-zones)
+        ("InvalidVPCId" . invalid-vpcid) ("InvalidInput" . invalid-input)
+        ("DelegationSetNotAvailable" . delegation-set-not-available)
+        ("ConflictingDomainExists" . conflicting-domain-exists)
+        ("NoSuchDelegationSet" . no-such-delegation-set)
+        ("DelegationSetNotReusable" . delegation-set-not-reusable)))))
  (common-lisp:export 'create-hosted-zone))
 (common-lisp:progn
  (common-lisp:defun create-reusable-delegation-set
@@ -6816,7 +5903,13 @@
                                                         "/2013-04-01/delegationset"
                                                         "CreateReusableDelegationSet"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DelegationSetAlreadyCreated" . delegation-set-already-created)
+        ("LimitsExceeded" . limits-exceeded)
+        ("HostedZoneNotFound" . hosted-zone-not-found)
+        ("InvalidArgument" . invalid-argument) ("InvalidInput" . invalid-input)
+        ("DelegationSetNotAvailable" . delegation-set-not-available)
+        ("DelegationSetAlreadyReusable" . delegation-set-already-reusable)))))
  (common-lisp:export 'create-reusable-delegation-set))
 (common-lisp:progn
  (common-lisp:defun create-traffic-policy
@@ -6835,7 +5928,11 @@
                                                         "/2013-04-01/trafficpolicy"
                                                         "CreateTrafficPolicy"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("TooManyTrafficPolicies" . too-many-traffic-policies)
+        ("TrafficPolicyAlreadyExists" . traffic-policy-already-exists)
+        ("InvalidTrafficPolicyDocument" . invalid-traffic-policy-document)))))
  (common-lisp:export 'create-traffic-policy))
 (common-lisp:progn
  (common-lisp:defun create-traffic-policy-instance
@@ -6858,7 +5955,13 @@
                                                         "/2013-04-01/trafficpolicyinstance"
                                                         "CreateTrafficPolicyInstance"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchHostedZone" . no-such-hosted-zone)
+        ("InvalidInput" . invalid-input)
+        ("TooManyTrafficPolicyInstances" . too-many-traffic-policy-instances)
+        ("NoSuchTrafficPolicy" . no-such-traffic-policy)
+        ("TrafficPolicyInstanceAlreadyExists"
+         . traffic-policy-instance-already-exists)))))
  (common-lisp:export 'create-traffic-policy-instance))
 (common-lisp:progn
  (common-lisp:defun create-traffic-policy-version
@@ -6887,7 +5990,11 @@
                                                              'id))))
                                                         "CreateTrafficPolicyVersion"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchTrafficPolicy" . no-such-traffic-policy)
+        ("InvalidInput" . invalid-input)
+        ("ConcurrentModification" . concurrent-modification)
+        ("InvalidTrafficPolicyDocument" . invalid-traffic-policy-document)))))
  (common-lisp:export 'create-traffic-policy-version))
 (common-lisp:progn
  (common-lisp:defun create-vpcassociation-authorization
@@ -6916,7 +6023,12 @@
                                                              'id))))
                                                         "CreateVPCAssociationAuthorization"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ConcurrentModification" . concurrent-modification)
+        ("TooManyVPCAssociationAuthorizations"
+         . too-many-vpcassociation-authorizations)
+        ("NoSuchHostedZone" . no-such-hosted-zone)
+        ("InvalidVPCId" . invalid-vpcid) ("InvalidInput" . invalid-input)))))
  (common-lisp:export 'create-vpcassociation-authorization))
 (common-lisp:progn
  (common-lisp:defun delete-health-check
@@ -6944,7 +6056,10 @@
                                                              'health-check-id))))
                                                         "DeleteHealthCheck"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchHealthCheck" . no-such-health-check)
+        ("HealthCheckInUse" . health-check-in-use)
+        ("InvalidInput" . invalid-input)))))
  (common-lisp:export 'delete-health-check))
 (common-lisp:progn
  (common-lisp:defun delete-hosted-zone
@@ -6972,7 +6087,12 @@
                                                              'id))))
                                                         "DeleteHostedZone"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchHostedZone" . no-such-hosted-zone)
+        ("HostedZoneNotEmpty" . hosted-zone-not-empty)
+        ("PriorRequestNotComplete" . prior-request-not-complete)
+        ("InvalidInput" . invalid-input)
+        ("InvalidDomainName" . invalid-domain-name)))))
  (common-lisp:export 'delete-hosted-zone))
 (common-lisp:progn
  (common-lisp:defun delete-reusable-delegation-set
@@ -7001,7 +6121,11 @@
                                                              'id))))
                                                         "DeleteReusableDelegationSet"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchDelegationSet" . no-such-delegation-set)
+        ("DelegationSetInUse" . delegation-set-in-use)
+        ("DelegationSetNotReusable" . delegation-set-not-reusable)
+        ("InvalidInput" . invalid-input)))))
  (common-lisp:export 'delete-reusable-delegation-set))
 (common-lisp:progn
  (common-lisp:defun delete-traffic-policy
@@ -7033,7 +6157,11 @@
                                                              'version))))
                                                         "DeleteTrafficPolicy"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchTrafficPolicy" . no-such-traffic-policy)
+        ("InvalidInput" . invalid-input)
+        ("TrafficPolicyInUse" . traffic-policy-in-use)
+        ("ConcurrentModification" . concurrent-modification)))))
  (common-lisp:export 'delete-traffic-policy))
 (common-lisp:progn
  (common-lisp:defun delete-traffic-policy-instance
@@ -7062,7 +6190,10 @@
                                                              'id))))
                                                         "DeleteTrafficPolicyInstance"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchTrafficPolicyInstance" . no-such-traffic-policy-instance)
+        ("InvalidInput" . invalid-input)
+        ("PriorRequestNotComplete" . prior-request-not-complete)))))
  (common-lisp:export 'delete-traffic-policy-instance))
 (common-lisp:progn
  (common-lisp:defun delete-vpcassociation-authorization
@@ -7091,7 +6222,12 @@
                                                              'id))))
                                                         "DeleteVPCAssociationAuthorization"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ConcurrentModification" . concurrent-modification)
+        ("VPCAssociationAuthorizationNotFound"
+         . vpcassociation-authorization-not-found)
+        ("NoSuchHostedZone" . no-such-hosted-zone)
+        ("InvalidVPCId" . invalid-vpcid) ("InvalidInput" . invalid-input)))))
  (common-lisp:export 'delete-vpcassociation-authorization))
 (common-lisp:progn
  (common-lisp:defun disassociate-vpcfrom-hosted-zone
@@ -7120,7 +6256,12 @@
                                                              'id))))
                                                         "DisassociateVPCFromHostedZone"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchHostedZone" . no-such-hosted-zone)
+        ("InvalidVPCId" . invalid-vpcid)
+        ("VPCAssociationNotFound" . vpcassociation-not-found)
+        ("LastVPCAssociation" . last-vpcassociation)
+        ("InvalidInput" . invalid-input)))))
  (common-lisp:export 'disassociate-vpcfrom-hosted-zone))
 (common-lisp:progn
  (common-lisp:defun get-change
@@ -7148,7 +6289,8 @@
                                                              'id))))
                                                         "GetChange"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchChange" . no-such-change) ("InvalidInput" . invalid-input)))))
  (common-lisp:export 'get-change))
 (common-lisp:progn
  (common-lisp:defun get-checker-ip-ranges ()
@@ -7158,7 +6300,7 @@
                                 "/2013-04-01/checkeripranges" :params
                                 `(("Action" ,@"GetCheckerIpRanges")
                                   ("Version" ,@"2013-04-01"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil 'common-lisp:nil))
  (common-lisp:export 'get-checker-ip-ranges))
 (common-lisp:progn
  (common-lisp:defun get-geo-location
@@ -7179,7 +6321,9 @@
                                                         "/2013-04-01/geolocation"
                                                         "GetGeoLocation"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchGeoLocation" . no-such-geo-location)
+        ("InvalidInput" . invalid-input)))))
  (common-lisp:export 'get-geo-location))
 (common-lisp:progn
  (common-lisp:defun get-health-check
@@ -7207,7 +6351,10 @@
                                                              'health-check-id))))
                                                         "GetHealthCheck"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchHealthCheck" . no-such-health-check)
+        ("InvalidInput" . invalid-input)
+        ("IncompatibleVersion" . incompatible-version)))))
  (common-lisp:export 'get-health-check))
 (common-lisp:progn
  (common-lisp:defun get-health-check-count ()
@@ -7217,7 +6364,7 @@
                                 "/2013-04-01/healthcheckcount" :params
                                 `(("Action" ,@"GetHealthCheckCount")
                                   ("Version" ,@"2013-04-01"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil 'common-lisp:nil))
  (common-lisp:export 'get-health-check-count))
 (common-lisp:progn
  (common-lisp:defun get-health-check-last-failure-reason
@@ -7246,7 +6393,9 @@
                                                              'health-check-id))))
                                                         "GetHealthCheckLastFailureReason"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchHealthCheck" . no-such-health-check)
+        ("InvalidInput" . invalid-input)))))
  (common-lisp:export 'get-health-check-last-failure-reason))
 (common-lisp:progn
  (common-lisp:defun get-health-check-status
@@ -7274,7 +6423,9 @@
                                                              'health-check-id))))
                                                         "GetHealthCheckStatus"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchHealthCheck" . no-such-health-check)
+        ("InvalidInput" . invalid-input)))))
  (common-lisp:export 'get-health-check-status))
 (common-lisp:progn
  (common-lisp:defun get-hosted-zone
@@ -7302,7 +6453,9 @@
                                                              'id))))
                                                         "GetHostedZone"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchHostedZone" . no-such-hosted-zone)
+        ("InvalidInput" . invalid-input)))))
  (common-lisp:export 'get-hosted-zone))
 (common-lisp:progn
  (common-lisp:defun get-hosted-zone-count ()
@@ -7312,7 +6465,7 @@
                                 "/2013-04-01/hostedzonecount" :params
                                 `(("Action" ,@"GetHostedZoneCount")
                                   ("Version" ,@"2013-04-01"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil '(("InvalidInput" . invalid-input))))
  (common-lisp:export 'get-hosted-zone-count))
 (common-lisp:progn
  (common-lisp:defun get-reusable-delegation-set
@@ -7341,7 +6494,10 @@
                                                              'id))))
                                                         "GetReusableDelegationSet"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchDelegationSet" . no-such-delegation-set)
+        ("DelegationSetNotReusable" . delegation-set-not-reusable)
+        ("InvalidInput" . invalid-input)))))
  (common-lisp:export 'get-reusable-delegation-set))
 (common-lisp:progn
  (common-lisp:defun get-traffic-policy
@@ -7373,7 +6529,9 @@
                                                              'version))))
                                                         "GetTrafficPolicy"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchTrafficPolicy" . no-such-traffic-policy)
+        ("InvalidInput" . invalid-input)))))
  (common-lisp:export 'get-traffic-policy))
 (common-lisp:progn
  (common-lisp:defun get-traffic-policy-instance
@@ -7402,7 +6560,9 @@
                                                              'id))))
                                                         "GetTrafficPolicyInstance"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchTrafficPolicyInstance" . no-such-traffic-policy-instance)
+        ("InvalidInput" . invalid-input)))))
  (common-lisp:export 'get-traffic-policy-instance))
 (common-lisp:progn
  (common-lisp:defun get-traffic-policy-instance-count ()
@@ -7413,7 +6573,7 @@
                                 :params
                                 `(("Action" ,@"GetTrafficPolicyInstanceCount")
                                   ("Version" ,@"2013-04-01"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil 'common-lisp:nil))
  (common-lisp:export 'get-traffic-policy-instance-count))
 (common-lisp:progn
  (common-lisp:defun list-geo-locations
@@ -7435,7 +6595,7 @@
                                                         "/2013-04-01/geolocations"
                                                         "ListGeoLocations"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil '(("InvalidInput" . invalid-input)))))
  (common-lisp:export 'list-geo-locations))
 (common-lisp:progn
  (common-lisp:defun list-health-checks
@@ -7454,7 +6614,9 @@
                                                         "/2013-04-01/healthcheck"
                                                         "ListHealthChecks"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("IncompatibleVersion" . incompatible-version)))))
  (common-lisp:export 'list-health-checks))
 (common-lisp:progn
  (common-lisp:defun list-hosted-zones
@@ -7474,7 +6636,10 @@
                                                         "/2013-04-01/hostedzone"
                                                         "ListHostedZones"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("NoSuchDelegationSet" . no-such-delegation-set)
+        ("DelegationSetNotReusable" . delegation-set-not-reusable)))))
  (common-lisp:export 'list-hosted-zones))
 (common-lisp:progn
  (common-lisp:defun list-hosted-zones-by-name
@@ -7495,7 +6660,9 @@
                                                         "/2013-04-01/hostedzonesbyname"
                                                         "ListHostedZonesByName"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("InvalidDomainName" . invalid-domain-name)))))
  (common-lisp:export 'list-hosted-zones-by-name))
 (common-lisp:progn
  (common-lisp:defun list-resource-record-sets
@@ -7527,7 +6694,9 @@
                                                              'id))))
                                                         "ListResourceRecordSets"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchHostedZone" . no-such-hosted-zone)
+        ("InvalidInput" . invalid-input)))))
  (common-lisp:export 'list-resource-record-sets))
 (common-lisp:progn
  (common-lisp:defun list-reusable-delegation-sets
@@ -7547,7 +6716,7 @@
                                                         "/2013-04-01/delegationset"
                                                         "ListReusableDelegationSets"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil '(("InvalidInput" . invalid-input)))))
  (common-lisp:export 'list-reusable-delegation-sets))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-resource
@@ -7579,7 +6748,12 @@
                                                              'resource-id))))
                                                         "ListTagsForResource"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("NoSuchHealthCheck" . no-such-health-check)
+        ("NoSuchHostedZone" . no-such-hosted-zone)
+        ("PriorRequestNotComplete" . prior-request-not-complete)
+        ("ThrottlingException" . throttling-exception)))))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-resources
@@ -7607,7 +6781,12 @@
                                                              'resource-type))))
                                                         "ListTagsForResources"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("NoSuchHealthCheck" . no-such-health-check)
+        ("NoSuchHostedZone" . no-such-hosted-zone)
+        ("PriorRequestNotComplete" . prior-request-not-complete)
+        ("ThrottlingException" . throttling-exception)))))
  (common-lisp:export 'list-tags-for-resources))
 (common-lisp:progn
  (common-lisp:defun list-traffic-policies
@@ -7627,7 +6806,7 @@
                                                         "/2013-04-01/trafficpolicies"
                                                         "ListTrafficPolicies"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil '(("InvalidInput" . invalid-input)))))
  (common-lisp:export 'list-traffic-policies))
 (common-lisp:progn
  (common-lisp:defun list-traffic-policy-instances
@@ -7652,7 +6831,9 @@
                                                         "/2013-04-01/trafficpolicyinstances"
                                                         "ListTrafficPolicyInstances"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("NoSuchTrafficPolicyInstance" . no-such-traffic-policy-instance)))))
  (common-lisp:export 'list-traffic-policy-instances))
 (common-lisp:progn
  (common-lisp:defun list-traffic-policy-instances-by-hosted-zone
@@ -7676,7 +6857,10 @@
                                                         "/2013-04-01/trafficpolicyinstances/hostedzone"
                                                         "ListTrafficPolicyInstancesByHostedZone"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("NoSuchTrafficPolicyInstance" . no-such-traffic-policy-instance)
+        ("NoSuchHostedZone" . no-such-hosted-zone)))))
  (common-lisp:export 'list-traffic-policy-instances-by-hosted-zone))
 (common-lisp:progn
  (common-lisp:defun list-traffic-policy-instances-by-policy
@@ -7701,7 +6885,10 @@
                                                         "/2013-04-01/trafficpolicyinstances/trafficpolicy"
                                                         "ListTrafficPolicyInstancesByPolicy"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("NoSuchTrafficPolicyInstance" . no-such-traffic-policy-instance)
+        ("NoSuchTrafficPolicy" . no-such-traffic-policy)))))
  (common-lisp:export 'list-traffic-policy-instances-by-policy))
 (common-lisp:progn
  (common-lisp:defun list-traffic-policy-versions
@@ -7732,7 +6919,9 @@
                                                              'id))))
                                                         "ListTrafficPolicyVersions"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("NoSuchTrafficPolicy" . no-such-traffic-policy)))))
  (common-lisp:export 'list-traffic-policy-versions))
 (common-lisp:progn
  (common-lisp:defun list-vpcassociation-authorizations
@@ -7762,7 +6951,10 @@
                                                              'id))))
                                                         "ListVPCAssociationAuthorizations"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchHostedZone" . no-such-hosted-zone)
+        ("InvalidInput" . invalid-input)
+        ("InvalidPaginationToken" . invalid-pagination-token)))))
  (common-lisp:export 'list-vpcassociation-authorizations))
 (common-lisp:progn
  (common-lisp:defun test-dnsanswer
@@ -7784,7 +6976,9 @@
                                                         "/2013-04-01/testdnsanswer"
                                                         "TestDNSAnswer"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchHostedZone" . no-such-hosted-zone)
+        ("InvalidInput" . invalid-input)))))
  (common-lisp:export 'test-dnsanswer))
 (common-lisp:progn
  (common-lisp:defun update-health-check
@@ -7820,7 +7014,10 @@
                                                              'health-check-id))))
                                                         "UpdateHealthCheck"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchHealthCheck" . no-such-health-check)
+        ("InvalidInput" . invalid-input)
+        ("HealthCheckVersionMismatch" . health-check-version-mismatch)))))
  (common-lisp:export 'update-health-check))
 (common-lisp:progn
  (common-lisp:defun update-hosted-zone-comment
@@ -7849,7 +7046,9 @@
                                                              'id))))
                                                         "UpdateHostedZoneComment"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchHostedZone" . no-such-hosted-zone)
+        ("InvalidInput" . invalid-input)))))
  (common-lisp:export 'update-hosted-zone-comment))
 (common-lisp:progn
  (common-lisp:defun update-traffic-policy-comment
@@ -7882,7 +7081,10 @@
                                                              'version))))
                                                         "UpdateTrafficPolicyComment"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("NoSuchTrafficPolicy" . no-such-traffic-policy)
+        ("ConcurrentModification" . concurrent-modification)))))
  (common-lisp:export 'update-traffic-policy-comment))
 (common-lisp:progn
  (common-lisp:defun update-traffic-policy-instance
@@ -7913,5 +7115,10 @@
                                                              'id))))
                                                         "UpdateTrafficPolicyInstance"
                                                         "2013-04-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("NoSuchTrafficPolicy" . no-such-traffic-policy)
+        ("NoSuchTrafficPolicyInstance" . no-such-traffic-policy-instance)
+        ("PriorRequestNotComplete" . prior-request-not-complete)
+        ("ConflictingTypes" . conflicting-types)))))
  (common-lisp:export 'update-traffic-policy-instance))

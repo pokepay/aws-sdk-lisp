@@ -6,44 +6,28 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/lex-models/api)
 (common-lisp:progn
  (common-lisp:defclass lex-models-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "lex-models"))
  (common-lisp:export 'lex-models-request))
+(common-lisp:progn
+ (common-lisp:define-condition lex-models-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'lex-models-error))
 (common-lisp:deftype alias-name () 'common-lisp:string)
 (common-lisp:deftype alias-name-or-list-all () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (bad-request-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-bad-request-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition bad-request-exception
+     (lex-models-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       bad-request-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'bad-request-exception 'make-bad-request-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          bad-request-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          bad-request-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          bad-request-exception))
-   common-lisp:nil))
+  (common-lisp:list 'bad-request-exception 'bad-request-exception-message)))
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -471,28 +455,12 @@
                         ((aws-sdk/generator/shape::input code-hook))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (conflict-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-conflict-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition conflict-exception
+     (lex-models-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       conflict-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'conflict-exception 'make-conflict-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input conflict-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input conflict-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input conflict-exception))
-   common-lisp:nil))
+  (common-lisp:list 'conflict-exception 'conflict-exception-message)))
 (common-lisp:deftype content-string () 'common-lisp:string)
 (common-lisp:deftype content-type () 'common-lisp:string)
 (common-lisp:deftype count () 'common-lisp:integer)
@@ -2870,71 +2838,25 @@
                            (trivial-types:proper-list utterance))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-failure-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-failure-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition internal-failure-exception
+     (lex-models-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-failure-exception-message)))
  (common-lisp:export
   (common-lisp:list 'internal-failure-exception
-                    'make-internal-failure-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-failure-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-failure-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-failure-exception))
-   common-lisp:nil))
+                    'internal-failure-exception-message)))
 (common-lisp:deftype lambda-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (retry-after-seconds common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (lex-models-error)
+     ((retry-after-seconds :initarg :retry-after-seconds :initform
+       common-lisp:nil :reader limit-exceeded-exception-retry-after-seconds)
+      (message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'retry-after-seconds))
-      (common-lisp:cons "Retry-After" aws-sdk/generator/shape::value))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception
+                    'limit-exceeded-exception-retry-after-seconds
+                    'limit-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype list-of-utterance ()
    '(trivial-types:proper-list utterance-data))
@@ -3002,59 +2924,21 @@
 (common-lisp:deftype name () 'common-lisp:string)
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-not-found-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition not-found-exception
+     (lex-models-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       not-found-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'not-found-exception 'make-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   common-lisp:nil))
+  (common-lisp:list 'not-found-exception 'not-found-exception-message)))
 (common-lisp:deftype numerical-version () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (precondition-failed-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-precondition-failed-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition precondition-failed-exception
+     (lex-models-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       precondition-failed-exception-message)))
  (common-lisp:export
   (common-lisp:list 'precondition-failed-exception
-                    'make-precondition-failed-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          precondition-failed-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          precondition-failed-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          precondition-failed-exception))
-   common-lisp:nil))
+                    'precondition-failed-exception-message)))
 (common-lisp:deftype priority () 'common-lisp:integer)
 (common-lisp:deftype process-behavior () 'common-lisp:string)
 (common-lisp:progn
@@ -3881,45 +3765,16 @@
    common-lisp:nil))
 (common-lisp:deftype reference-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-in-use-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-in-use-exception-"))
-   (reference-type common-lisp:nil :type
-    (common-lisp:or reference-type common-lisp:null))
-   (example-reference common-lisp:nil :type
-    (common-lisp:or resource-reference common-lisp:null)))
+ (common-lisp:define-condition resource-in-use-exception
+     (lex-models-error)
+     ((reference-type :initarg :reference-type :initform common-lisp:nil
+       :reader resource-in-use-exception-reference-type)
+      (example-reference :initarg :example-reference :initform common-lisp:nil
+       :reader resource-in-use-exception-example-reference)))
  (common-lisp:export
   (common-lisp:list 'resource-in-use-exception
-                    'make-resource-in-use-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'reference-type))
-      (common-lisp:list
-       (common-lisp:cons "referenceType"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'example-reference))
-      (common-lisp:list
-       (common-lisp:cons "exampleReference"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   common-lisp:nil))
+                    'resource-in-use-exception-reference-type
+                    'resource-in-use-exception-example-reference)))
 (common-lisp:progn
  (common-lisp:defstruct
      (resource-reference (:copier common-lisp:nil)
@@ -4289,7 +4144,13 @@
                                                              'name))))
                                                         "CreateBotVersion"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)))))
  (common-lisp:export 'create-bot-version))
 (common-lisp:progn
  (common-lisp:defun create-intent-version
@@ -4317,7 +4178,13 @@
                                                              'name))))
                                                         "CreateIntentVersion"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)))))
  (common-lisp:export 'create-intent-version))
 (common-lisp:progn
  (common-lisp:defun create-slot-type-version
@@ -4345,7 +4212,13 @@
                                                              'name))))
                                                         "CreateSlotTypeVersion"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)))))
  (common-lisp:export 'create-slot-type-version))
 (common-lisp:progn
  (common-lisp:defun delete-bot
@@ -4373,7 +4246,13 @@
                                                              'name))))
                                                         "DeleteBot"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'delete-bot))
 (common-lisp:progn
  (common-lisp:defun delete-bot-alias
@@ -4405,7 +4284,13 @@
                                                              'name))))
                                                         "DeleteBotAlias"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'delete-bot-alias))
 (common-lisp:progn
  (common-lisp:defun delete-bot-channel-association
@@ -4442,7 +4327,12 @@
                                                              'name))))
                                                         "DeleteBotChannelAssociation"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)))))
  (common-lisp:export 'delete-bot-channel-association))
 (common-lisp:progn
  (common-lisp:defun delete-bot-version
@@ -4474,7 +4364,13 @@
                                                              'version))))
                                                         "DeleteBotVersion"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'delete-bot-version))
 (common-lisp:progn
  (common-lisp:defun delete-intent
@@ -4502,7 +4398,13 @@
                                                              'name))))
                                                         "DeleteIntent"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'delete-intent))
 (common-lisp:progn
  (common-lisp:defun delete-intent-version
@@ -4534,7 +4436,13 @@
                                                              'version))))
                                                         "DeleteIntentVersion"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'delete-intent-version))
 (common-lisp:progn
  (common-lisp:defun delete-slot-type
@@ -4562,7 +4470,13 @@
                                                              'name))))
                                                         "DeleteSlotType"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'delete-slot-type))
 (common-lisp:progn
  (common-lisp:defun delete-slot-type-version
@@ -4594,7 +4508,13 @@
                                                              'version))))
                                                         "DeleteSlotTypeVersion"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'delete-slot-type-version))
 (common-lisp:progn
  (common-lisp:defun delete-utterances
@@ -4626,7 +4546,11 @@
                                                              'user-id))))
                                                         "DeleteUtterances"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)))))
  (common-lisp:export 'delete-utterances))
 (common-lisp:progn
  (common-lisp:defun get-bot
@@ -4657,7 +4581,11 @@
                                                              aws-sdk/generator/operation::input
                                                              'versionoralias))))
                                                         "GetBot" "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)))))
  (common-lisp:export 'get-bot))
 (common-lisp:progn
  (common-lisp:defun get-bot-alias
@@ -4689,7 +4617,11 @@
                                                              'name))))
                                                         "GetBotAlias"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)))))
  (common-lisp:export 'get-bot-alias))
 (common-lisp:progn
  (common-lisp:defun get-bot-aliases
@@ -4719,7 +4651,10 @@
                                                              'bot-name))))
                                                         "GetBotAliases"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)))))
  (common-lisp:export 'get-bot-aliases))
 (common-lisp:progn
  (common-lisp:defun get-bot-channel-association
@@ -4756,7 +4691,11 @@
                                                              'name))))
                                                         "GetBotChannelAssociation"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)))))
  (common-lisp:export 'get-bot-channel-association))
 (common-lisp:progn
  (common-lisp:defun get-bot-channel-associations
@@ -4792,7 +4731,10 @@
                                                              'alias-name))))
                                                         "GetBotChannelAssociations"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)))))
  (common-lisp:export 'get-bot-channel-associations))
 (common-lisp:progn
  (common-lisp:defun get-bot-versions
@@ -4820,7 +4762,11 @@
                                                              'name))))
                                                         "GetBotVersions"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)))))
  (common-lisp:export 'get-bot-versions))
 (common-lisp:progn
  (common-lisp:defun get-bots
@@ -4839,7 +4785,11 @@
                                                         "GET" "/bots/"
                                                         "GetBots"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)))))
  (common-lisp:export 'get-bots))
 (common-lisp:progn
  (common-lisp:defun get-builtin-intent
@@ -4867,7 +4817,11 @@
                                                              'signature))))
                                                         "GetBuiltinIntent"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)))))
  (common-lisp:export 'get-builtin-intent))
 (common-lisp:progn
  (common-lisp:defun get-builtin-intents
@@ -4888,7 +4842,10 @@
                                                         "/builtins/intents/"
                                                         "GetBuiltinIntents"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)))))
  (common-lisp:export 'get-builtin-intents))
 (common-lisp:progn
  (common-lisp:defun get-builtin-slot-types
@@ -4909,7 +4866,10 @@
                                                         "/builtins/slottypes/"
                                                         "GetBuiltinSlotTypes"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)))))
  (common-lisp:export 'get-builtin-slot-types))
 (common-lisp:progn
  (common-lisp:defun get-intent
@@ -4941,7 +4901,11 @@
                                                              'version))))
                                                         "GetIntent"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)))))
  (common-lisp:export 'get-intent))
 (common-lisp:progn
  (common-lisp:defun get-intent-versions
@@ -4969,7 +4933,11 @@
                                                              'name))))
                                                         "GetIntentVersions"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)))))
  (common-lisp:export 'get-intent-versions))
 (common-lisp:progn
  (common-lisp:defun get-intents
@@ -4988,7 +4956,11 @@
                                                         "GET" "/intents/"
                                                         "GetIntents"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)))))
  (common-lisp:export 'get-intents))
 (common-lisp:progn
  (common-lisp:defun get-slot-type
@@ -5020,7 +4992,11 @@
                                                              'version))))
                                                         "GetSlotType"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)))))
  (common-lisp:export 'get-slot-type))
 (common-lisp:progn
  (common-lisp:defun get-slot-type-versions
@@ -5048,7 +5024,11 @@
                                                              'name))))
                                                         "GetSlotTypeVersions"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)))))
  (common-lisp:export 'get-slot-type-versions))
 (common-lisp:progn
  (common-lisp:defun get-slot-types
@@ -5067,7 +5047,11 @@
                                                         "GET" "/slottypes/"
                                                         "GetSlotTypes"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)))))
  (common-lisp:export 'get-slot-types))
 (common-lisp:progn
  (common-lisp:defun get-utterances-view
@@ -5096,7 +5080,10 @@
                                                              'botname))))
                                                         "GetUtterancesView"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)))))
  (common-lisp:export 'get-utterances-view))
 (common-lisp:progn
  (common-lisp:defun put-bot
@@ -5129,7 +5116,12 @@
                                                              aws-sdk/generator/operation::input
                                                              'name))))
                                                         "PutBot" "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)))))
  (common-lisp:export 'put-bot))
 (common-lisp:progn
  (common-lisp:defun put-bot-alias
@@ -5163,7 +5155,12 @@
                                                              'name))))
                                                         "PutBotAlias"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)))))
  (common-lisp:export 'put-bot-alias))
 (common-lisp:progn
  (common-lisp:defun put-intent
@@ -5198,7 +5195,12 @@
                                                              'name))))
                                                         "PutIntent"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)))))
  (common-lisp:export 'put-intent))
 (common-lisp:progn
  (common-lisp:defun put-slot-type
@@ -5228,5 +5230,10 @@
                                                              'name))))
                                                         "PutSlotType"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("BadRequestException" . bad-request-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)))))
  (common-lisp:export 'put-slot-type))

@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/cloudformation/api)
 (common-lisp:progn
  (common-lisp:defclass cloudformation-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "cloudformation"))
  (common-lisp:export 'cloudformation-request))
+(common-lisp:progn
+ (common-lisp:define-condition cloudformation-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'cloudformation-error))
 (common-lisp:deftype account () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -104,26 +110,10 @@
                            (trivial-types:proper-list allowed-value))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-already-exists-exception-")))
- (common-lisp:export
-  (common-lisp:list 'already-exists-exception 'make-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          already-exists-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition already-exists-exception
+     (cloudformation-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'already-exists-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (cancel-update-stack-input (:copier common-lisp:nil)
@@ -210,27 +200,10 @@
 (common-lisp:deftype change-set-name () 'common-lisp:string)
 (common-lisp:deftype change-set-name-or-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (change-set-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-change-set-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'change-set-not-found-exception
-                    'make-change-set-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          change-set-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          change-set-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          change-set-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition change-set-not-found-exception
+     (cloudformation-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'change-set-not-found-exception)))
 (common-lisp:deftype change-set-status () 'common-lisp:string)
 (common-lisp:deftype change-set-status-reason () 'common-lisp:string)
 (common-lisp:progn
@@ -1006,27 +979,10 @@
                           create-stack-set-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (created-but-modified-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-created-but-modified-exception-")))
- (common-lisp:export
-  (common-lisp:list 'created-but-modified-exception
-                    'make-created-but-modified-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          created-but-modified-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          created-but-modified-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          created-but-modified-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition created-but-modified-exception
+     (cloudformation-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'created-but-modified-exception)))
 (common-lisp:deftype creation-time () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -2597,93 +2553,26 @@
                            (trivial-types:proper-list stack-name))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (insufficient-capabilities-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-insufficient-capabilities-exception-")))
- (common-lisp:export
-  (common-lisp:list 'insufficient-capabilities-exception
-                    'make-insufficient-capabilities-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-capabilities-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-capabilities-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-capabilities-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition insufficient-capabilities-exception
+     (cloudformation-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'insufficient-capabilities-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-change-set-status-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-change-set-status-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-change-set-status-exception
-                    'make-invalid-change-set-status-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-change-set-status-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-change-set-status-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-change-set-status-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-change-set-status-exception
+     (cloudformation-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-change-set-status-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-operation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-operation-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-operation-exception
-                    'make-invalid-operation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-operation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-operation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-operation-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-operation-exception
+     (cloudformation-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-operation-exception)))
 (common-lisp:deftype last-updated-time () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition limit-exceeded-exception
+     (cloudformation-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'limit-exceeded-exception)))
 (common-lisp:deftype limit-name () 'common-lisp:string)
 (common-lisp:deftype limit-value () 'common-lisp:integer)
 (common-lisp:progn
@@ -3421,27 +3310,10 @@
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:deftype metadata () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (name-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-name-already-exists-exception-")))
- (common-lisp:export
-  (common-lisp:list 'name-already-exists-exception
-                    'make-name-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          name-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          name-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          name-already-exists-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition name-already-exists-exception
+     (cloudformation-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'name-already-exists-exception)))
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:deftype no-echo () 'common-lisp:boolean)
 (common-lisp:deftype notification-arn () 'common-lisp:string)
@@ -3455,71 +3327,20 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype on-failure () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (operation-id-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-operation-id-already-exists-exception-")))
- (common-lisp:export
-  (common-lisp:list 'operation-id-already-exists-exception
-                    'make-operation-id-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-id-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-id-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-id-already-exists-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition operation-id-already-exists-exception
+     (cloudformation-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'operation-id-already-exists-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (operation-in-progress-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-operation-in-progress-exception-")))
- (common-lisp:export
-  (common-lisp:list 'operation-in-progress-exception
-                    'make-operation-in-progress-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-in-progress-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-in-progress-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-in-progress-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition operation-in-progress-exception
+     (cloudformation-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'operation-in-progress-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (operation-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-operation-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'operation-not-found-exception
-                    'make-operation-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition operation-not-found-exception
+     (cloudformation-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'operation-not-found-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (output (:copier common-lisp:nil) (:conc-name "struct-shape-output-"))
@@ -4435,27 +4256,10 @@
                         ((aws-sdk/generator/shape::input stack-instance))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (stack-instance-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stack-instance-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'stack-instance-not-found-exception
-                    'make-stack-instance-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          stack-instance-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          stack-instance-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          stack-instance-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition stack-instance-not-found-exception
+     (cloudformation-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'stack-instance-not-found-exception)))
 (common-lisp:deftype stack-instance-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype stack-instance-summaries ()
@@ -4936,49 +4740,15 @@
 (common-lisp:deftype stack-set-name () 'common-lisp:string)
 (common-lisp:deftype stack-set-name-or-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (stack-set-not-empty-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stack-set-not-empty-exception-")))
- (common-lisp:export
-  (common-lisp:list 'stack-set-not-empty-exception
-                    'make-stack-set-not-empty-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          stack-set-not-empty-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          stack-set-not-empty-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          stack-set-not-empty-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition stack-set-not-empty-exception
+     (cloudformation-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'stack-set-not-empty-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (stack-set-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stack-set-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'stack-set-not-found-exception
-                    'make-stack-set-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          stack-set-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          stack-set-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          stack-set-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition stack-set-not-found-exception
+     (cloudformation-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'stack-set-not-found-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (stack-set-operation (:copier common-lisp:nil)
@@ -5471,26 +5241,10 @@
                            (trivial-types:proper-list template-stage))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (stale-request-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stale-request-exception-")))
- (common-lisp:export
-  (common-lisp:list 'stale-request-exception 'make-stale-request-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          stale-request-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          stale-request-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          stale-request-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition stale-request-exception
+     (cloudformation-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'stale-request-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (stop-stack-set-operation-input (:copier common-lisp:nil)
@@ -5658,27 +5412,10 @@
 (common-lisp:deftype timeout-minutes () 'common-lisp:integer)
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (token-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-token-already-exists-exception-")))
- (common-lisp:export
-  (common-lisp:list 'token-already-exists-exception
-                    'make-token-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          token-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          token-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          token-already-exists-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition token-already-exists-exception
+     (cloudformation-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'token-already-exists-exception)))
 (common-lisp:deftype transform-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype transforms-list ()
@@ -6131,7 +5868,8 @@
                                                         "POST" "/"
                                                         "CancelUpdateStack"
                                                         "2010-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'cancel-update-stack))
 (common-lisp:progn
  (common-lisp:defun continue-update-rollback
@@ -6152,7 +5890,8 @@
                                                         "POST" "/"
                                                         "ContinueUpdateRollback"
                                                         "2010-05-15"))
-      common-lisp:nil "ContinueUpdateRollbackResult")))
+      common-lisp:nil "ContinueUpdateRollbackResult"
+      '(("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'continue-update-rollback))
 (common-lisp:progn
  (common-lisp:defun create-change-set
@@ -6177,7 +5916,11 @@
                                                         "POST" "/"
                                                         "CreateChangeSet"
                                                         "2010-05-15"))
-      common-lisp:nil "CreateChangeSetResult")))
+      common-lisp:nil "CreateChangeSetResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'create-change-set))
 (common-lisp:progn
  (common-lisp:defun create-stack
@@ -6203,7 +5946,12 @@
                                                         "POST" "/"
                                                         "CreateStack"
                                                         "2010-05-15"))
-      common-lisp:nil "CreateStackResult")))
+      common-lisp:nil "CreateStackResult"
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)))))
  (common-lisp:export 'create-stack))
 (common-lisp:progn
  (common-lisp:defun create-stack-instances
@@ -6224,7 +5972,14 @@
                                                         "POST" "/"
                                                         "CreateStackInstances"
                                                         "2010-05-15"))
-      common-lisp:nil "CreateStackInstancesResult")))
+      common-lisp:nil "CreateStackInstancesResult"
+      '(("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'create-stack-instances))
 (common-lisp:progn
  (common-lisp:defun create-stack-set
@@ -6246,7 +6001,10 @@
                                                         "POST" "/"
                                                         "CreateStackSet"
                                                         "2010-05-15"))
-      common-lisp:nil "CreateStackSetResult")))
+      common-lisp:nil "CreateStackSetResult"
+      '(("NameAlreadyExistsException" . name-already-exists-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'create-stack-set))
 (common-lisp:progn
  (common-lisp:defun delete-change-set
@@ -6264,7 +6022,9 @@
                                                         "POST" "/"
                                                         "DeleteChangeSet"
                                                         "2010-05-15"))
-      common-lisp:nil "DeleteChangeSetResult")))
+      common-lisp:nil "DeleteChangeSetResult"
+      '(("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)))))
  (common-lisp:export 'delete-change-set))
 (common-lisp:progn
  (common-lisp:defun delete-stack
@@ -6285,7 +6045,8 @@
                                                         "POST" "/"
                                                         "DeleteStack"
                                                         "2010-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'delete-stack))
 (common-lisp:progn
  (common-lisp:defun delete-stack-instances
@@ -6306,7 +6067,13 @@
                                                         "POST" "/"
                                                         "DeleteStackInstances"
                                                         "2010-05-15"))
-      common-lisp:nil "DeleteStackInstancesResult")))
+      common-lisp:nil "DeleteStackInstancesResult"
+      '(("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("InvalidOperationException" . invalid-operation-exception)))))
  (common-lisp:export 'delete-stack-instances))
 (common-lisp:progn
  (common-lisp:defun delete-stack-set
@@ -6324,7 +6091,9 @@
                                                         "POST" "/"
                                                         "DeleteStackSet"
                                                         "2010-05-15"))
-      common-lisp:nil "DeleteStackSetResult")))
+      common-lisp:nil "DeleteStackSetResult"
+      '(("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)))))
  (common-lisp:export 'delete-stack-set))
 (common-lisp:progn
  (common-lisp:defun describe-account-limits
@@ -6342,7 +6111,7 @@
                                                         "POST" "/"
                                                         "DescribeAccountLimits"
                                                         "2010-05-15"))
-      common-lisp:nil "DescribeAccountLimitsResult")))
+      common-lisp:nil "DescribeAccountLimitsResult" 'common-lisp:nil)))
  (common-lisp:export 'describe-account-limits))
 (common-lisp:progn
  (common-lisp:defun describe-change-set
@@ -6361,7 +6130,8 @@
                                                         "POST" "/"
                                                         "DescribeChangeSet"
                                                         "2010-05-15"))
-      common-lisp:nil "DescribeChangeSetResult")))
+      common-lisp:nil "DescribeChangeSetResult"
+      '(("ChangeSetNotFoundException" . change-set-not-found-exception)))))
  (common-lisp:export 'describe-change-set))
 (common-lisp:progn
  (common-lisp:defun describe-stack-events
@@ -6379,7 +6149,7 @@
                                                         "POST" "/"
                                                         "DescribeStackEvents"
                                                         "2010-05-15"))
-      common-lisp:nil "DescribeStackEventsResult")))
+      common-lisp:nil "DescribeStackEventsResult" 'common-lisp:nil)))
  (common-lisp:export 'describe-stack-events))
 (common-lisp:progn
  (common-lisp:defun describe-stack-instance
@@ -6400,7 +6170,10 @@
                                                         "POST" "/"
                                                         "DescribeStackInstance"
                                                         "2010-05-15"))
-      common-lisp:nil "DescribeStackInstanceResult")))
+      common-lisp:nil "DescribeStackInstanceResult"
+      '(("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StackInstanceNotFoundException"
+         . stack-instance-not-found-exception)))))
  (common-lisp:export 'describe-stack-instance))
 (common-lisp:progn
  (common-lisp:defun describe-stack-resource
@@ -6418,7 +6191,7 @@
                                                         "POST" "/"
                                                         "DescribeStackResource"
                                                         "2010-05-15"))
-      common-lisp:nil "DescribeStackResourceResult")))
+      common-lisp:nil "DescribeStackResourceResult" 'common-lisp:nil)))
  (common-lisp:export 'describe-stack-resource))
 (common-lisp:progn
  (common-lisp:defun describe-stack-resources
@@ -6439,7 +6212,7 @@
                                                         "POST" "/"
                                                         "DescribeStackResources"
                                                         "2010-05-15"))
-      common-lisp:nil "DescribeStackResourcesResult")))
+      common-lisp:nil "DescribeStackResourcesResult" 'common-lisp:nil)))
  (common-lisp:export 'describe-stack-resources))
 (common-lisp:progn
  (common-lisp:defun describe-stack-set
@@ -6457,7 +6230,8 @@
                                                         "POST" "/"
                                                         "DescribeStackSet"
                                                         "2010-05-15"))
-      common-lisp:nil "DescribeStackSetResult")))
+      common-lisp:nil "DescribeStackSetResult"
+      '(("StackSetNotFoundException" . stack-set-not-found-exception)))))
  (common-lisp:export 'describe-stack-set))
 (common-lisp:progn
  (common-lisp:defun describe-stack-set-operation
@@ -6476,7 +6250,9 @@
                                                         "POST" "/"
                                                         "DescribeStackSetOperation"
                                                         "2010-05-15"))
-      common-lisp:nil "DescribeStackSetOperationResult")))
+      common-lisp:nil "DescribeStackSetOperationResult"
+      '(("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)))))
  (common-lisp:export 'describe-stack-set-operation))
 (common-lisp:progn
  (common-lisp:defun describe-stacks
@@ -6494,7 +6270,7 @@
                                                         "POST" "/"
                                                         "DescribeStacks"
                                                         "2010-05-15"))
-      common-lisp:nil "DescribeStacksResult")))
+      common-lisp:nil "DescribeStacksResult" 'common-lisp:nil)))
  (common-lisp:export 'describe-stacks))
 (common-lisp:progn
  (common-lisp:defun estimate-template-cost
@@ -6513,7 +6289,7 @@
                                                         "POST" "/"
                                                         "EstimateTemplateCost"
                                                         "2010-05-15"))
-      common-lisp:nil "EstimateTemplateCostResult")))
+      common-lisp:nil "EstimateTemplateCostResult" 'common-lisp:nil)))
  (common-lisp:export 'estimate-template-cost))
 (common-lisp:progn
  (common-lisp:defun execute-change-set
@@ -6533,7 +6309,13 @@
                                                         "POST" "/"
                                                         "ExecuteChangeSet"
                                                         "2010-05-15"))
-      common-lisp:nil "ExecuteChangeSetResult")))
+      common-lisp:nil "ExecuteChangeSetResult"
+      '(("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'execute-change-set))
 (common-lisp:progn
  (common-lisp:defun get-stack-policy
@@ -6551,7 +6333,7 @@
                                                         "POST" "/"
                                                         "GetStackPolicy"
                                                         "2010-05-15"))
-      common-lisp:nil "GetStackPolicyResult")))
+      common-lisp:nil "GetStackPolicyResult" 'common-lisp:nil)))
  (common-lisp:export 'get-stack-policy))
 (common-lisp:progn
  (common-lisp:defun get-template
@@ -6571,7 +6353,8 @@
                                                         "POST" "/"
                                                         "GetTemplate"
                                                         "2010-05-15"))
-      common-lisp:nil "GetTemplateResult")))
+      common-lisp:nil "GetTemplateResult"
+      '(("ChangeSetNotFoundException" . change-set-not-found-exception)))))
  (common-lisp:export 'get-template))
 (common-lisp:progn
  (common-lisp:defun get-template-summary
@@ -6592,7 +6375,8 @@
                                                         "POST" "/"
                                                         "GetTemplateSummary"
                                                         "2010-05-15"))
-      common-lisp:nil "GetTemplateSummaryResult")))
+      common-lisp:nil "GetTemplateSummaryResult"
+      '(("StackSetNotFoundException" . stack-set-not-found-exception)))))
  (common-lisp:export 'get-template-summary))
 (common-lisp:progn
  (common-lisp:defun list-change-sets
@@ -6610,7 +6394,7 @@
                                                         "POST" "/"
                                                         "ListChangeSets"
                                                         "2010-05-15"))
-      common-lisp:nil "ListChangeSetsResult")))
+      common-lisp:nil "ListChangeSetsResult" 'common-lisp:nil)))
  (common-lisp:export 'list-change-sets))
 (common-lisp:progn
  (common-lisp:defun list-exports
@@ -6628,7 +6412,7 @@
                                                         "POST" "/"
                                                         "ListExports"
                                                         "2010-05-15"))
-      common-lisp:nil "ListExportsResult")))
+      common-lisp:nil "ListExportsResult" 'common-lisp:nil)))
  (common-lisp:export 'list-exports))
 (common-lisp:progn
  (common-lisp:defun list-imports
@@ -6646,7 +6430,7 @@
                                                         "POST" "/"
                                                         "ListImports"
                                                         "2010-05-15"))
-      common-lisp:nil "ListImportsResult")))
+      common-lisp:nil "ListImportsResult" 'common-lisp:nil)))
  (common-lisp:export 'list-imports))
 (common-lisp:progn
  (common-lisp:defun list-stack-instances
@@ -6667,7 +6451,8 @@
                                                         "POST" "/"
                                                         "ListStackInstances"
                                                         "2010-05-15"))
-      common-lisp:nil "ListStackInstancesResult")))
+      common-lisp:nil "ListStackInstancesResult"
+      '(("StackSetNotFoundException" . stack-set-not-found-exception)))))
  (common-lisp:export 'list-stack-instances))
 (common-lisp:progn
  (common-lisp:defun list-stack-resources
@@ -6685,7 +6470,7 @@
                                                         "POST" "/"
                                                         "ListStackResources"
                                                         "2010-05-15"))
-      common-lisp:nil "ListStackResourcesResult")))
+      common-lisp:nil "ListStackResourcesResult" 'common-lisp:nil)))
  (common-lisp:export 'list-stack-resources))
 (common-lisp:progn
  (common-lisp:defun list-stack-set-operation-results
@@ -6706,7 +6491,9 @@
                                                         "POST" "/"
                                                         "ListStackSetOperationResults"
                                                         "2010-05-15"))
-      common-lisp:nil "ListStackSetOperationResultsResult")))
+      common-lisp:nil "ListStackSetOperationResultsResult"
+      '(("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)))))
  (common-lisp:export 'list-stack-set-operation-results))
 (common-lisp:progn
  (common-lisp:defun list-stack-set-operations
@@ -6725,7 +6512,8 @@
                                                         "POST" "/"
                                                         "ListStackSetOperations"
                                                         "2010-05-15"))
-      common-lisp:nil "ListStackSetOperationsResult")))
+      common-lisp:nil "ListStackSetOperationsResult"
+      '(("StackSetNotFoundException" . stack-set-not-found-exception)))))
  (common-lisp:export 'list-stack-set-operations))
 (common-lisp:progn
  (common-lisp:defun list-stack-sets
@@ -6743,7 +6531,7 @@
                                                         "POST" "/"
                                                         "ListStackSets"
                                                         "2010-05-15"))
-      common-lisp:nil "ListStackSetsResult")))
+      common-lisp:nil "ListStackSetsResult" 'common-lisp:nil)))
  (common-lisp:export 'list-stack-sets))
 (common-lisp:progn
  (common-lisp:defun list-stacks
@@ -6760,7 +6548,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListStacks"
                                                         "2010-05-15"))
-      common-lisp:nil "ListStacksResult")))
+      common-lisp:nil "ListStacksResult" 'common-lisp:nil)))
  (common-lisp:export 'list-stacks))
 (common-lisp:progn
  (common-lisp:defun set-stack-policy
@@ -6780,7 +6568,7 @@
                                                         "POST" "/"
                                                         "SetStackPolicy"
                                                         "2010-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'set-stack-policy))
 (common-lisp:progn
  (common-lisp:defun signal-resource
@@ -6800,7 +6588,7 @@
                                                         "POST" "/"
                                                         "SignalResource"
                                                         "2010-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'signal-resource))
 (common-lisp:progn
  (common-lisp:defun stop-stack-set-operation
@@ -6818,7 +6606,10 @@
                                                         "POST" "/"
                                                         "StopStackSetOperation"
                                                         "2010-05-15"))
-      common-lisp:nil "StopStackSetOperationResult")))
+      common-lisp:nil "StopStackSetOperationResult"
+      '(("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("InvalidOperationException" . invalid-operation-exception)))))
  (common-lisp:export 'stop-stack-set-operation))
 (common-lisp:progn
  (common-lisp:defun update-stack
@@ -6845,7 +6636,10 @@
                                                         "POST" "/"
                                                         "UpdateStack"
                                                         "2010-05-15"))
-      common-lisp:nil "UpdateStackResult")))
+      common-lisp:nil "UpdateStackResult"
+      '(("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'update-stack))
 (common-lisp:progn
  (common-lisp:defun update-stack-set
@@ -6868,7 +6662,13 @@
                                                         "POST" "/"
                                                         "UpdateStackSet"
                                                         "2010-05-15"))
-      common-lisp:nil "UpdateStackSetResult")))
+      common-lisp:nil "UpdateStackSetResult"
+      '(("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("InvalidOperationException" . invalid-operation-exception)))))
  (common-lisp:export 'update-stack-set))
 (common-lisp:progn
  (common-lisp:defun validate-template
@@ -6886,5 +6686,5 @@
                                                         "POST" "/"
                                                         "ValidateTemplate"
                                                         "2010-05-15"))
-      common-lisp:nil "ValidateTemplateResult")))
+      common-lisp:nil "ValidateTemplateResult" 'common-lisp:nil)))
  (common-lisp:export 'validate-template))

@@ -6,44 +6,27 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/workspaces/api)
 (common-lisp:progn
  (common-lisp:defclass workspaces-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "workspaces"))
  (common-lisp:export 'workspaces-request))
+(common-lisp:progn
+ (common-lisp:define-condition workspaces-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'workspaces-error))
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (access-denied-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-access-denied-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition access-denied-exception
+     (workspaces-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       access-denied-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'access-denied-exception 'make-access-denied-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   common-lisp:nil))
+  (common-lisp:list 'access-denied-exception 'access-denied-exception-message)))
 (common-lisp:deftype alias () 'common-lisp:string)
 (common-lisp:deftype boolean-object () 'common-lisp:boolean)
 (common-lisp:deftype bundle-id () 'common-lisp:string)
@@ -926,67 +909,21 @@
                           failed-workspace-change-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-values-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-values-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition invalid-parameter-values-exception
+     (workspaces-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-parameter-values-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-values-exception
-                    'make-invalid-parameter-values-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-values-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-values-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-values-exception))
-   common-lisp:nil))
+                    'invalid-parameter-values-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-resource-state-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-resource-state-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition invalid-resource-state-exception
+     (workspaces-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-resource-state-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-resource-state-exception
-                    'make-invalid-resource-state-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-resource-state-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-resource-state-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-resource-state-exception))
-   common-lisp:nil))
+                    'invalid-resource-state-exception-message)))
 (common-lisp:deftype ip-address () 'common-lisp:string)
 (common-lisp:deftype limit () 'common-lisp:integer)
 (common-lisp:progn
@@ -1055,36 +992,13 @@
    common-lisp:nil))
 (common-lisp:deftype non-empty-string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (operation-in-progress-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-operation-in-progress-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition operation-in-progress-exception
+     (workspaces-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       operation-in-progress-exception-message)))
  (common-lisp:export
   (common-lisp:list 'operation-in-progress-exception
-                    'make-operation-in-progress-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-in-progress-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-in-progress-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-in-progress-exception))
-   common-lisp:nil))
+                    'operation-in-progress-exception-message)))
 (common-lisp:deftype pagination-token () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -1277,116 +1191,35 @@
    common-lisp:nil))
 (common-lisp:deftype registration-code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition resource-limit-exceeded-exception
+     (workspaces-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-limit-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-limit-exceeded-exception
-                    'make-resource-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-limit-exceeded-exception))
-   common-lisp:nil))
+                    'resource-limit-exceeded-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null))
-   (resource-id common-lisp:nil :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+ (common-lisp:define-condition resource-not-found-exception
+     (workspaces-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-not-found-exception-message)
+      (resource-id :initarg :resource-id :initform common-lisp:nil :reader
+       resource-not-found-exception-resource-id)))
  (common-lisp:export
   (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'resource-id))
-      (common-lisp:list
-       (common-lisp:cons "ResourceId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+                    'resource-not-found-exception-message
+                    'resource-not-found-exception-resource-id)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-unavailable-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-unavailable-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null))
-   (resource-id common-lisp:nil :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+ (common-lisp:define-condition resource-unavailable-exception
+     (workspaces-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-unavailable-exception-message)
+      (resource-id :initarg :resource-id :initform common-lisp:nil :reader
+       resource-unavailable-exception-resource-id)))
  (common-lisp:export
   (common-lisp:list 'resource-unavailable-exception
-                    'make-resource-unavailable-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-unavailable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-unavailable-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'resource-id))
-      (common-lisp:list
-       (common-lisp:cons "ResourceId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-unavailable-exception))
-   common-lisp:nil))
+                    'resource-unavailable-exception-message
+                    'resource-unavailable-exception-resource-id)))
 (common-lisp:deftype running-mode () 'common-lisp:string)
 (common-lisp:deftype running-mode-auto-stop-timeout-in-minutes ()
   'common-lisp:integer)
@@ -1730,37 +1563,13 @@
    common-lisp:nil))
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (unsupported-workspace-configuration-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-unsupported-workspace-configuration-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition unsupported-workspace-configuration-exception
+     (workspaces-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unsupported-workspace-configuration-exception-message)))
  (common-lisp:export
   (common-lisp:list 'unsupported-workspace-configuration-exception
-                    'make-unsupported-workspace-configuration-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-workspace-configuration-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-workspace-configuration-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-workspace-configuration-exception))
-   common-lisp:nil))
+                    'unsupported-workspace-configuration-exception-message)))
 (common-lisp:deftype user-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -2358,7 +2167,12 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CreateTags"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValuesException"
+         . invalid-parameter-values-exception)
+        ("ResourceLimitExceededException"
+         . resource-limit-exceeded-exception)))))
  (common-lisp:export 'create-tags))
 (common-lisp:progn
  (common-lisp:defun create-workspaces
@@ -2376,7 +2190,10 @@
                                                         "POST" "/"
                                                         "CreateWorkspaces"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("InvalidParameterValuesException"
+         . invalid-parameter-values-exception)))))
  (common-lisp:export 'create-workspaces))
 (common-lisp:progn
  (common-lisp:defun delete-tags
@@ -2393,7 +2210,10 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteTags"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValuesException"
+         . invalid-parameter-values-exception)))))
  (common-lisp:export 'delete-tags))
 (common-lisp:progn
  (common-lisp:defun describe-tags
@@ -2411,7 +2231,8 @@
                                                         "POST" "/"
                                                         "DescribeTags"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
  (common-lisp:defun describe-workspace-bundles
@@ -2430,7 +2251,9 @@
                                                         "POST" "/"
                                                         "DescribeWorkspaceBundles"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValuesException"
+         . invalid-parameter-values-exception)))))
  (common-lisp:export 'describe-workspace-bundles))
 (common-lisp:progn
  (common-lisp:defun describe-workspace-directories
@@ -2449,7 +2272,9 @@
                                                         "POST" "/"
                                                         "DescribeWorkspaceDirectories"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValuesException"
+         . invalid-parameter-values-exception)))))
  (common-lisp:export 'describe-workspace-directories))
 (common-lisp:progn
  (common-lisp:defun describe-workspaces
@@ -2470,7 +2295,10 @@
                                                         "POST" "/"
                                                         "DescribeWorkspaces"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValuesException"
+         . invalid-parameter-values-exception)
+        ("ResourceUnavailableException" . resource-unavailable-exception)))))
  (common-lisp:export 'describe-workspaces))
 (common-lisp:progn
  (common-lisp:defun describe-workspaces-connection-status
@@ -2489,7 +2317,9 @@
                                                         "POST" "/"
                                                         "DescribeWorkspacesConnectionStatus"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValuesException"
+         . invalid-parameter-values-exception)))))
  (common-lisp:export 'describe-workspaces-connection-status))
 (common-lisp:progn
  (common-lisp:defun modify-workspace-properties
@@ -2509,7 +2339,16 @@
                                                         "POST" "/"
                                                         "ModifyWorkspaceProperties"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValuesException"
+         . invalid-parameter-values-exception)
+        ("InvalidResourceStateException" . invalid-resource-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("UnsupportedWorkspaceConfigurationException"
+         . unsupported-workspace-configuration-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceUnavailableException" . resource-unavailable-exception)))))
  (common-lisp:export 'modify-workspace-properties))
 (common-lisp:progn
  (common-lisp:defun reboot-workspaces
@@ -2527,7 +2366,7 @@
                                                         "POST" "/"
                                                         "RebootWorkspaces"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'reboot-workspaces))
 (common-lisp:progn
  (common-lisp:defun rebuild-workspaces
@@ -2545,7 +2384,7 @@
                                                         "POST" "/"
                                                         "RebuildWorkspaces"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'rebuild-workspaces))
 (common-lisp:progn
  (common-lisp:defun start-workspaces
@@ -2563,7 +2402,7 @@
                                                         "POST" "/"
                                                         "StartWorkspaces"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'start-workspaces))
 (common-lisp:progn
  (common-lisp:defun stop-workspaces
@@ -2581,7 +2420,7 @@
                                                         "POST" "/"
                                                         "StopWorkspaces"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'stop-workspaces))
 (common-lisp:progn
  (common-lisp:defun terminate-workspaces
@@ -2599,5 +2438,5 @@
                                                         "POST" "/"
                                                         "TerminateWorkspaces"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'terminate-workspaces))

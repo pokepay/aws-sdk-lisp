@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/budgets/api)
 (common-lisp:progn
  (common-lisp:defclass budgets-request (aws-sdk/request:request)
                        common-lisp:nil (:default-initargs :service "budgets"))
  (common-lisp:export 'budgets-request))
+(common-lisp:progn
+ (common-lisp:define-condition budgets-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'budgets-error))
 (common-lisp:deftype account-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -422,36 +428,13 @@
                           create-subscriber-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (creation-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-creation-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition creation-limit-exceeded-exception
+     (budgets-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       creation-limit-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'creation-limit-exceeded-exception
-                    'make-creation-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          creation-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          creation-limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          creation-limit-exceeded-exception))
-   common-lisp:nil))
+                    'creation-limit-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-budget-request (:copier common-lisp:nil)
@@ -1034,187 +1017,56 @@
                            (trivial-types:proper-list generic-string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (duplicate-record-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-duplicate-record-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition duplicate-record-exception
+     (budgets-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       duplicate-record-exception-message)))
  (common-lisp:export
   (common-lisp:list 'duplicate-record-exception
-                    'make-duplicate-record-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-record-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-record-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-record-exception))
-   common-lisp:nil))
+                    'duplicate-record-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (expired-next-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-expired-next-token-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition expired-next-token-exception
+     (budgets-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       expired-next-token-exception-message)))
  (common-lisp:export
   (common-lisp:list 'expired-next-token-exception
-                    'make-expired-next-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          expired-next-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          expired-next-token-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          expired-next-token-exception))
-   common-lisp:nil))
+                    'expired-next-token-exception-message)))
 (common-lisp:deftype generic-boolean () 'common-lisp:boolean)
 (common-lisp:deftype generic-string () 'common-lisp:string)
 (common-lisp:deftype generic-timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-error-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-error-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition internal-error-exception
+     (budgets-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-error-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'internal-error-exception 'make-internal-error-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-error-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-error-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-error-exception))
-   common-lisp:nil))
+  (common-lisp:list 'internal-error-exception
+                    'internal-error-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-next-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-next-token-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition invalid-next-token-exception
+     (budgets-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-next-token-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-next-token-exception
-                    'make-invalid-next-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   common-lisp:nil))
+                    'invalid-next-token-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition invalid-parameter-exception
+     (budgets-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-parameter-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-exception
-                    'make-invalid-parameter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   common-lisp:nil))
+                    'invalid-parameter-exception-message)))
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition not-found-exception
+     (budgets-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       not-found-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'not-found-exception 'make-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   common-lisp:nil))
+  (common-lisp:list 'not-found-exception 'not-found-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (notification (:copier common-lisp:nil)
@@ -1669,7 +1521,11 @@
                                                         "POST" "/"
                                                         "CreateBudget"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("CreationLimitExceededException" . creation-limit-exceeded-exception)
+        ("DuplicateRecordException" . duplicate-record-exception)))))
  (common-lisp:export 'create-budget))
 (common-lisp:progn
  (common-lisp:defun create-notification
@@ -1689,7 +1545,12 @@
                                                         "POST" "/"
                                                         "CreateNotification"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalErrorException" . internal-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("NotFoundException" . not-found-exception)
+        ("CreationLimitExceededException" . creation-limit-exceeded-exception)
+        ("DuplicateRecordException" . duplicate-record-exception)))))
  (common-lisp:export 'create-notification))
 (common-lisp:progn
  (common-lisp:defun create-subscriber
@@ -1709,7 +1570,12 @@
                                                         "POST" "/"
                                                         "CreateSubscriber"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalErrorException" . internal-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("CreationLimitExceededException" . creation-limit-exceeded-exception)
+        ("DuplicateRecordException" . duplicate-record-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'create-subscriber))
 (common-lisp:progn
  (common-lisp:defun delete-budget
@@ -1727,7 +1593,10 @@
                                                         "POST" "/"
                                                         "DeleteBudget"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalErrorException" . internal-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'delete-budget))
 (common-lisp:progn
  (common-lisp:defun delete-notification
@@ -1746,7 +1615,10 @@
                                                         "POST" "/"
                                                         "DeleteNotification"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'delete-notification))
 (common-lisp:progn
  (common-lisp:defun delete-subscriber
@@ -1766,7 +1638,10 @@
                                                         "POST" "/"
                                                         "DeleteSubscriber"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalErrorException" . internal-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'delete-subscriber))
 (common-lisp:progn
  (common-lisp:defun describe-budget
@@ -1784,7 +1659,10 @@
                                                         "POST" "/"
                                                         "DescribeBudget"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalErrorException" . internal-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'describe-budget))
 (common-lisp:progn
  (common-lisp:defun describe-budgets
@@ -1803,7 +1681,12 @@
                                                         "POST" "/"
                                                         "DescribeBudgets"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalErrorException" . internal-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("ExpiredNextTokenException" . expired-next-token-exception)))))
  (common-lisp:export 'describe-budgets))
 (common-lisp:progn
  (common-lisp:defun describe-notifications-for-budget
@@ -1824,7 +1707,12 @@
                                                         "POST" "/"
                                                         "DescribeNotificationsForBudget"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalErrorException" . internal-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("ExpiredNextTokenException" . expired-next-token-exception)))))
  (common-lisp:export 'describe-notifications-for-budget))
 (common-lisp:progn
  (common-lisp:defun describe-subscribers-for-notification
@@ -1846,7 +1734,12 @@
                                                         "POST" "/"
                                                         "DescribeSubscribersForNotification"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalErrorException" . internal-error-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("ExpiredNextTokenException" . expired-next-token-exception)))))
  (common-lisp:export 'describe-subscribers-for-notification))
 (common-lisp:progn
  (common-lisp:defun update-budget
@@ -1864,7 +1757,10 @@
                                                         "POST" "/"
                                                         "UpdateBudget"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalErrorException" . internal-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'update-budget))
 (common-lisp:progn
  (common-lisp:defun update-notification
@@ -1885,7 +1781,10 @@
                                                         "POST" "/"
                                                         "UpdateNotification"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalErrorException" . internal-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'update-notification))
 (common-lisp:progn
  (common-lisp:defun update-subscriber
@@ -1906,5 +1805,8 @@
                                                         "POST" "/"
                                                         "UpdateSubscriber"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalErrorException" . internal-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'update-subscriber))

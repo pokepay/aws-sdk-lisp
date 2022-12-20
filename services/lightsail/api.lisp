@@ -6,7 +6,8 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/lightsail/api)
 (common-lisp:progn
  (common-lisp:defclass lightsail-request (aws-sdk/request:request)
@@ -14,121 +15,44 @@
                        (:default-initargs :service "lightsail"))
  (common-lisp:export 'lightsail-request))
 (common-lisp:progn
- (common-lisp:defstruct
-     (access-denied-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-access-denied-exception-"))
-   (code common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (docs common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (tip common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition lightsail-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'lightsail-error))
+(common-lisp:progn
+ (common-lisp:define-condition access-denied-exception
+     (lightsail-error)
+     ((code :initarg :code :initform common-lisp:nil :reader
+       access-denied-exception-code)
+      (docs :initarg :docs :initform common-lisp:nil :reader
+       access-denied-exception-docs)
+      (message :initarg :message :initform common-lisp:nil :reader
+       access-denied-exception-message)
+      (tip :initarg :tip :initform common-lisp:nil :reader
+       access-denied-exception-tip)))
  (common-lisp:export
-  (common-lisp:list 'access-denied-exception 'make-access-denied-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'docs))
-      (common-lisp:list
-       (common-lisp:cons "docs"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'tip))
-      (common-lisp:list
-       (common-lisp:cons "tip"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   common-lisp:nil))
+  (common-lisp:list 'access-denied-exception 'access-denied-exception-code
+                    'access-denied-exception-docs
+                    'access-denied-exception-message
+                    'access-denied-exception-tip)))
 (common-lisp:deftype access-direction () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (account-setup-in-progress-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-account-setup-in-progress-exception-"))
-   (code common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (docs common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (tip common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition account-setup-in-progress-exception
+     (lightsail-error)
+     ((code :initarg :code :initform common-lisp:nil :reader
+       account-setup-in-progress-exception-code)
+      (docs :initarg :docs :initform common-lisp:nil :reader
+       account-setup-in-progress-exception-docs)
+      (message :initarg :message :initform common-lisp:nil :reader
+       account-setup-in-progress-exception-message)
+      (tip :initarg :tip :initform common-lisp:nil :reader
+       account-setup-in-progress-exception-tip)))
  (common-lisp:export
   (common-lisp:list 'account-setup-in-progress-exception
-                    'make-account-setup-in-progress-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          account-setup-in-progress-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          account-setup-in-progress-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'docs))
-      (common-lisp:list
-       (common-lisp:cons "docs"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'tip))
-      (common-lisp:list
-       (common-lisp:cons "tip"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          account-setup-in-progress-exception))
-   common-lisp:nil))
+                    'account-setup-in-progress-exception-code
+                    'account-setup-in-progress-exception-docs
+                    'account-setup-in-progress-exception-message
+                    'account-setup-in-progress-exception-tip)))
 (common-lisp:progn
  (common-lisp:defstruct
      (allocate-static-ip-request (:copier common-lisp:nil)
@@ -3954,62 +3878,21 @@
                         ((aws-sdk/generator/shape::input instance-state))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-input-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-input-exception-"))
-   (code common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (docs common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (tip common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-input-exception
+     (lightsail-error)
+     ((code :initarg :code :initform common-lisp:nil :reader
+       invalid-input-exception-code)
+      (docs :initarg :docs :initform common-lisp:nil :reader
+       invalid-input-exception-docs)
+      (message :initarg :message :initform common-lisp:nil :reader
+       invalid-input-exception-message)
+      (tip :initarg :tip :initform common-lisp:nil :reader
+       invalid-input-exception-tip)))
  (common-lisp:export
-  (common-lisp:list 'invalid-input-exception 'make-invalid-input-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'docs))
-      (common-lisp:list
-       (common-lisp:cons "docs"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'tip))
-      (common-lisp:list
-       (common-lisp:cons "tip"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-input-exception 'invalid-input-exception-code
+                    'invalid-input-exception-docs
+                    'invalid-input-exception-message
+                    'invalid-input-exception-tip)))
 (common-lisp:deftype ip-address () 'common-lisp:string)
 (common-lisp:deftype ip-v6address () 'common-lisp:string)
 (common-lisp:progn
@@ -4264,56 +4147,20 @@
 (common-lisp:deftype network-protocol () 'common-lisp:string)
 (common-lisp:deftype non-empty-string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-not-found-exception-"))
-   (code common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (docs common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (tip common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition not-found-exception
+     (lightsail-error)
+     ((code :initarg :code :initform common-lisp:nil :reader
+       not-found-exception-code)
+      (docs :initarg :docs :initform common-lisp:nil :reader
+       not-found-exception-docs)
+      (message :initarg :message :initform common-lisp:nil :reader
+       not-found-exception-message)
+      (tip :initarg :tip :initform common-lisp:nil :reader
+       not-found-exception-tip)))
  (common-lisp:export
-  (common-lisp:list 'not-found-exception 'make-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'docs))
-      (common-lisp:list
-       (common-lisp:cons "docs"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'tip))
-      (common-lisp:list
-       (common-lisp:cons "tip"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   common-lisp:nil))
+  (common-lisp:list 'not-found-exception 'not-found-exception-code
+                    'not-found-exception-docs 'not-found-exception-message
+                    'not-found-exception-tip)))
 (common-lisp:progn
  (common-lisp:defstruct
      (open-instance-public-ports-request (:copier common-lisp:nil)
@@ -4508,63 +4355,22 @@
                         ((aws-sdk/generator/shape::input operation))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (operation-failure-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-operation-failure-exception-"))
-   (code common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (docs common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (tip common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition operation-failure-exception
+     (lightsail-error)
+     ((code :initarg :code :initform common-lisp:nil :reader
+       operation-failure-exception-code)
+      (docs :initarg :docs :initform common-lisp:nil :reader
+       operation-failure-exception-docs)
+      (message :initarg :message :initform common-lisp:nil :reader
+       operation-failure-exception-message)
+      (tip :initarg :tip :initform common-lisp:nil :reader
+       operation-failure-exception-tip)))
  (common-lisp:export
   (common-lisp:list 'operation-failure-exception
-                    'make-operation-failure-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-failure-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-failure-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'docs))
-      (common-lisp:list
-       (common-lisp:cons "docs"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'tip))
-      (common-lisp:list
-       (common-lisp:cons "tip"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-failure-exception))
-   common-lisp:nil))
+                    'operation-failure-exception-code
+                    'operation-failure-exception-docs
+                    'operation-failure-exception-message
+                    'operation-failure-exception-tip)))
 (common-lisp:progn
  (common-lisp:deftype operation-list () '(trivial-types:proper-list operation))
  (common-lisp:defun |make-operation-list|
@@ -4954,56 +4760,20 @@
 (common-lisp:deftype resource-name () 'common-lisp:string)
 (common-lisp:deftype resource-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-exception-"))
-   (code common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (docs common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (tip common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition service-exception
+     (lightsail-error)
+     ((code :initarg :code :initform common-lisp:nil :reader
+       service-exception-code)
+      (docs :initarg :docs :initform common-lisp:nil :reader
+       service-exception-docs)
+      (message :initarg :message :initform common-lisp:nil :reader
+       service-exception-message)
+      (tip :initarg :tip :initform common-lisp:nil :reader
+       service-exception-tip)))
  (common-lisp:export
-  (common-lisp:list 'service-exception 'make-service-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input service-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input service-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'docs))
-      (common-lisp:list
-       (common-lisp:cons "docs"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'tip))
-      (common-lisp:list
-       (common-lisp:cons "tip"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input service-exception))
-   common-lisp:nil))
+  (common-lisp:list 'service-exception 'service-exception-code
+                    'service-exception-docs 'service-exception-message
+                    'service-exception-tip)))
 (common-lisp:progn
  (common-lisp:defstruct
      (start-instance-request (:copier common-lisp:nil)
@@ -5228,63 +4998,21 @@
                            (trivial-types:proper-list common-lisp:string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unauthenticated-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unauthenticated-exception-"))
-   (code common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (docs common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (tip common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition unauthenticated-exception
+     (lightsail-error)
+     ((code :initarg :code :initform common-lisp:nil :reader
+       unauthenticated-exception-code)
+      (docs :initarg :docs :initform common-lisp:nil :reader
+       unauthenticated-exception-docs)
+      (message :initarg :message :initform common-lisp:nil :reader
+       unauthenticated-exception-message)
+      (tip :initarg :tip :initform common-lisp:nil :reader
+       unauthenticated-exception-tip)))
  (common-lisp:export
-  (common-lisp:list 'unauthenticated-exception
-                    'make-unauthenticated-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthenticated-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthenticated-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'docs))
-      (common-lisp:list
-       (common-lisp:cons "docs"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'tip))
-      (common-lisp:list
-       (common-lisp:cons "tip"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthenticated-exception))
-   common-lisp:nil))
+  (common-lisp:list 'unauthenticated-exception 'unauthenticated-exception-code
+                    'unauthenticated-exception-docs
+                    'unauthenticated-exception-message
+                    'unauthenticated-exception-tip)))
 (common-lisp:progn
  (common-lisp:defstruct
      (unpeer-vpc-request (:copier common-lisp:nil)
@@ -5417,7 +5145,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "AllocateStaticIp"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'allocate-static-ip))
 (common-lisp:progn
  (common-lisp:defun attach-static-ip
@@ -5435,7 +5171,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "AttachStaticIp"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'attach-static-ip))
 (common-lisp:progn
  (common-lisp:defun close-instance-public-ports
@@ -5454,7 +5198,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CloseInstancePublicPorts"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'close-instance-public-ports))
 (common-lisp:progn
  (common-lisp:defun create-domain
@@ -5472,7 +5224,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CreateDomain"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'create-domain))
 (common-lisp:progn
  (common-lisp:defun create-domain-entry
@@ -5490,7 +5250,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CreateDomainEntry"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'create-domain-entry))
 (common-lisp:progn
  (common-lisp:defun create-instance-snapshot
@@ -5509,7 +5277,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CreateInstanceSnapshot"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'create-instance-snapshot))
 (common-lisp:progn
  (common-lisp:defun create-instances
@@ -5531,7 +5307,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CreateInstances"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'create-instances))
 (common-lisp:progn
  (common-lisp:defun create-instances-from-snapshot
@@ -5553,7 +5337,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CreateInstancesFromSnapshot"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'create-instances-from-snapshot))
 (common-lisp:progn
  (common-lisp:defun create-key-pair
@@ -5571,7 +5363,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CreateKeyPair"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'create-key-pair))
 (common-lisp:progn
  (common-lisp:defun delete-domain
@@ -5589,7 +5389,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DeleteDomain"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'delete-domain))
 (common-lisp:progn
  (common-lisp:defun delete-domain-entry
@@ -5607,7 +5415,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DeleteDomainEntry"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'delete-domain-entry))
 (common-lisp:progn
  (common-lisp:defun delete-instance
@@ -5625,7 +5441,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DeleteInstance"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'delete-instance))
 (common-lisp:progn
  (common-lisp:defun delete-instance-snapshot
@@ -5643,7 +5467,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DeleteInstanceSnapshot"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'delete-instance-snapshot))
 (common-lisp:progn
  (common-lisp:defun delete-key-pair
@@ -5661,7 +5493,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DeleteKeyPair"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'delete-key-pair))
 (common-lisp:progn
  (common-lisp:defun detach-static-ip
@@ -5679,7 +5519,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DetachStaticIp"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'detach-static-ip))
 (common-lisp:progn
  (common-lisp:defun download-default-key-pair ()
@@ -5689,7 +5537,14 @@ common-lisp:nil
                                 :params
                                 `(("Action" ,@"DownloadDefaultKeyPair")
                                   ("Version" ,@"2016-11-28"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("ServiceException" . service-exception)
+      ("InvalidInputException" . invalid-input-exception)
+      ("NotFoundException" . not-found-exception)
+      ("OperationFailureException" . operation-failure-exception)
+      ("AccessDeniedException" . access-denied-exception)
+      ("AccountSetupInProgressException" . account-setup-in-progress-exception)
+      ("UnauthenticatedException" . unauthenticated-exception))))
  (common-lisp:export 'download-default-key-pair))
 (common-lisp:progn
  (common-lisp:defun get-active-names
@@ -5707,7 +5562,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetActiveNames"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-active-names))
 (common-lisp:progn
  (common-lisp:defun get-blueprints
@@ -5725,7 +5588,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetBlueprints"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-blueprints))
 (common-lisp:progn
  (common-lisp:defun get-bundles
@@ -5742,7 +5613,15 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetBundles"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-bundles))
 (common-lisp:progn
  (common-lisp:defun get-domain
@@ -5759,7 +5638,15 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetDomain"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-domain))
 (common-lisp:progn
  (common-lisp:defun get-domains
@@ -5776,7 +5663,15 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetDomains"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-domains))
 (common-lisp:progn
  (common-lisp:defun get-instance
@@ -5794,7 +5689,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetInstance"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-instance))
 (common-lisp:progn
  (common-lisp:defun get-instance-access-details
@@ -5813,7 +5716,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetInstanceAccessDetails"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-instance-access-details))
 (common-lisp:progn
  (common-lisp:defun get-instance-metric-data
@@ -5834,7 +5745,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetInstanceMetricData"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-instance-metric-data))
 (common-lisp:progn
  (common-lisp:defun get-instance-port-states
@@ -5852,7 +5771,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetInstancePortStates"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-instance-port-states))
 (common-lisp:progn
  (common-lisp:defun get-instance-snapshot
@@ -5870,7 +5797,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetInstanceSnapshot"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-instance-snapshot))
 (common-lisp:progn
  (common-lisp:defun get-instance-snapshots
@@ -5888,7 +5823,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetInstanceSnapshots"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-instance-snapshots))
 (common-lisp:progn
  (common-lisp:defun get-instance-state
@@ -5906,7 +5849,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetInstanceState"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-instance-state))
 (common-lisp:progn
  (common-lisp:defun get-instances
@@ -5924,7 +5875,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetInstances"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-instances))
 (common-lisp:progn
  (common-lisp:defun get-key-pair
@@ -5941,7 +5900,15 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetKeyPair"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-key-pair))
 (common-lisp:progn
  (common-lisp:defun get-key-pairs
@@ -5959,7 +5926,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetKeyPairs"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-key-pairs))
 (common-lisp:progn
  (common-lisp:defun get-operation
@@ -5977,7 +5952,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetOperation"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-operation))
 (common-lisp:progn
  (common-lisp:defun get-operations
@@ -5995,7 +5978,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetOperations"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-operations))
 (common-lisp:progn
  (common-lisp:defun get-operations-for-resource
@@ -6014,7 +6005,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetOperationsForResource"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-operations-for-resource))
 (common-lisp:progn
  (common-lisp:defun get-regions
@@ -6031,7 +6030,15 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetRegions"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-regions))
 (common-lisp:progn
  (common-lisp:defun get-static-ip
@@ -6049,7 +6056,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetStaticIp"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-static-ip))
 (common-lisp:progn
  (common-lisp:defun get-static-ips
@@ -6067,7 +6082,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetStaticIps"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'get-static-ips))
 (common-lisp:progn
  (common-lisp:defun import-key-pair
@@ -6086,7 +6109,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ImportKeyPair"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'import-key-pair))
 (common-lisp:progn
  (common-lisp:defun is-vpc-peered ()
@@ -6096,7 +6127,14 @@ common-lisp:nil
                                 :params
                                 `(("Action" ,@"IsVpcPeered")
                                   ("Version" ,@"2016-11-28"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("ServiceException" . service-exception)
+      ("InvalidInputException" . invalid-input-exception)
+      ("NotFoundException" . not-found-exception)
+      ("OperationFailureException" . operation-failure-exception)
+      ("AccessDeniedException" . access-denied-exception)
+      ("AccountSetupInProgressException" . account-setup-in-progress-exception)
+      ("UnauthenticatedException" . unauthenticated-exception))))
  (common-lisp:export 'is-vpc-peered))
 (common-lisp:progn
  (common-lisp:defun open-instance-public-ports
@@ -6115,7 +6153,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "OpenInstancePublicPorts"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'open-instance-public-ports))
 (common-lisp:progn
  (common-lisp:defun peer-vpc ()
@@ -6125,7 +6171,14 @@ common-lisp:nil
                                 :params
                                 `(("Action" ,@"PeerVpc")
                                   ("Version" ,@"2016-11-28"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("ServiceException" . service-exception)
+      ("InvalidInputException" . invalid-input-exception)
+      ("NotFoundException" . not-found-exception)
+      ("OperationFailureException" . operation-failure-exception)
+      ("AccessDeniedException" . access-denied-exception)
+      ("AccountSetupInProgressException" . account-setup-in-progress-exception)
+      ("UnauthenticatedException" . unauthenticated-exception))))
  (common-lisp:export 'peer-vpc))
 (common-lisp:progn
  (common-lisp:defun put-instance-public-ports
@@ -6144,7 +6197,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "PutInstancePublicPorts"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'put-instance-public-ports))
 (common-lisp:progn
  (common-lisp:defun reboot-instance
@@ -6162,7 +6223,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "RebootInstance"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'reboot-instance))
 (common-lisp:progn
  (common-lisp:defun release-static-ip
@@ -6180,7 +6249,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ReleaseStaticIp"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'release-static-ip))
 (common-lisp:progn
  (common-lisp:defun start-instance
@@ -6198,7 +6275,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "StartInstance"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'start-instance))
 (common-lisp:progn
  (common-lisp:defun stop-instance
@@ -6216,7 +6301,15 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "StopInstance"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'stop-instance))
 (common-lisp:progn
  (common-lisp:defun unpeer-vpc ()
@@ -6226,7 +6319,14 @@ common-lisp:nil
                                 :params
                                 `(("Action" ,@"UnpeerVpc")
                                   ("Version" ,@"2016-11-28"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("ServiceException" . service-exception)
+      ("InvalidInputException" . invalid-input-exception)
+      ("NotFoundException" . not-found-exception)
+      ("OperationFailureException" . operation-failure-exception)
+      ("AccessDeniedException" . access-denied-exception)
+      ("AccountSetupInProgressException" . account-setup-in-progress-exception)
+      ("UnauthenticatedException" . unauthenticated-exception))))
  (common-lisp:export 'unpeer-vpc))
 (common-lisp:progn
  (common-lisp:defun update-domain-entry
@@ -6244,5 +6344,13 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "UpdateDomainEntry"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServiceException" . service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NotFoundException" . not-found-exception)
+        ("OperationFailureException" . operation-failure-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountSetupInProgressException"
+         . account-setup-in-progress-exception)
+        ("UnauthenticatedException" . unauthenticated-exception)))))
  (common-lisp:export 'update-domain-entry))

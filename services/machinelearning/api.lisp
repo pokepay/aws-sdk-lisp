@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/machinelearning/api)
 (common-lisp:progn
  (common-lisp:defclass machinelearning-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "machinelearning"))
  (common-lisp:export 'machinelearning-request))
+(common-lisp:progn
+ (common-lisp:define-condition machinelearning-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'machinelearning-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (add-tags-input (:copier common-lisp:nil)
@@ -3226,191 +3232,56 @@
                         ((aws-sdk/generator/shape::input get-mlmodel-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (idempotent-parameter-mismatch-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-idempotent-parameter-mismatch-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null))
-   (code common-lisp:nil :type (common-lisp:or error-code common-lisp:null)))
+ (common-lisp:define-condition idempotent-parameter-mismatch-exception
+     (machinelearning-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       idempotent-parameter-mismatch-exception-message)
+      (code :initarg :code :initform common-lisp:nil :reader
+       idempotent-parameter-mismatch-exception-code)))
  (common-lisp:export
   (common-lisp:list 'idempotent-parameter-mismatch-exception
-                    'make-idempotent-parameter-mismatch-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          idempotent-parameter-mismatch-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          idempotent-parameter-mismatch-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          idempotent-parameter-mismatch-exception))
-   common-lisp:nil))
+                    'idempotent-parameter-mismatch-exception-message
+                    'idempotent-parameter-mismatch-exception-code)))
 (common-lisp:deftype integer-type () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-server-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-server-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null))
-   (code common-lisp:nil :type (common-lisp:or error-code common-lisp:null)))
+ (common-lisp:define-condition internal-server-exception
+     (machinelearning-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-server-exception-message)
+      (code :initarg :code :initform common-lisp:nil :reader
+       internal-server-exception-code)))
  (common-lisp:export
   (common-lisp:list 'internal-server-exception
-                    'make-internal-server-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-exception))
-   common-lisp:nil))
+                    'internal-server-exception-message
+                    'internal-server-exception-code)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-input-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-input-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null))
-   (code common-lisp:nil :type (common-lisp:or error-code common-lisp:null)))
+ (common-lisp:define-condition invalid-input-exception
+     (machinelearning-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-input-exception-message)
+      (code :initarg :code :initform common-lisp:nil :reader
+       invalid-input-exception-code)))
  (common-lisp:export
-  (common-lisp:list 'invalid-input-exception 'make-invalid-input-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-input-exception 'invalid-input-exception-message
+                    'invalid-input-exception-code)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-tag-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-tag-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-tag-exception
+     (machinelearning-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-tag-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-tag-exception 'make-invalid-tag-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-tag-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-tag-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-tag-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-tag-exception 'invalid-tag-exception-message)))
 (common-lisp:deftype label () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null))
-   (code common-lisp:nil :type (common-lisp:or error-code common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (machinelearning-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)
+      (code :initarg :code :initform common-lisp:nil :reader
+       limit-exceeded-exception-code)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception 'limit-exceeded-exception-message
+                    'limit-exceeded-exception-code)))
 (common-lisp:deftype long-type () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -3759,36 +3630,13 @@
                         ((aws-sdk/generator/shape::input prediction))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (predictor-not-mounted-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-predictor-not-mounted-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition predictor-not-mounted-exception
+     (machinelearning-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       predictor-not-mounted-exception-message)))
  (common-lisp:export
   (common-lisp:list 'predictor-not-mounted-exception
-                    'make-predictor-not-mounted-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          predictor-not-mounted-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          predictor-not-mounted-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          predictor-not-mounted-exception))
-   common-lisp:nil))
+                    'predictor-not-mounted-exception-message)))
 (common-lisp:deftype presigned-s3url () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -4321,44 +4169,16 @@
    common-lisp:nil))
 (common-lisp:deftype redshift-select-sql-query () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null))
-   (code common-lisp:nil :type (common-lisp:or error-code common-lisp:null)))
+ (common-lisp:define-condition resource-not-found-exception
+     (machinelearning-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-not-found-exception-message)
+      (code :initarg :code :initform common-lisp:nil :reader
+       resource-not-found-exception-code)))
  (common-lisp:export
   (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+                    'resource-not-found-exception-message
+                    'resource-not-found-exception-code)))
 (common-lisp:deftype role-arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -4462,36 +4282,13 @@
                            (trivial-types:proper-list tag-key))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition tag-limit-exceeded-exception
+     (machinelearning-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       tag-limit-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'tag-limit-exceeded-exception
-                    'make-tag-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          tag-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          tag-limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          tag-limit-exceeded-exception))
-   common-lisp:nil))
+                    'tag-limit-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype tag-list () '(trivial-types:proper-list tag))
  (common-lisp:defun |make-tag-list|
@@ -4812,7 +4609,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "AddTags" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
  (common-lisp:defun create-batch-prediction
@@ -4831,7 +4633,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "CreateBatchPrediction" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)))))
  (common-lisp:export 'create-batch-prediction))
 (common-lisp:progn
  (common-lisp:defun create-data-source-from-rds
@@ -4850,7 +4656,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "CreateDataSourceFromRDS" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)))))
  (common-lisp:export 'create-data-source-from-rds))
 (common-lisp:progn
  (common-lisp:defun create-data-source-from-redshift
@@ -4870,7 +4680,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "CreateDataSourceFromRedshift" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)))))
  (common-lisp:export 'create-data-source-from-redshift))
 (common-lisp:progn
  (common-lisp:defun create-data-source-from-s3
@@ -4889,7 +4703,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "CreateDataSourceFromS3" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)))))
  (common-lisp:export 'create-data-source-from-s3))
 (common-lisp:progn
  (common-lisp:defun create-evaluation
@@ -4908,7 +4726,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "CreateEvaluation" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)))))
  (common-lisp:export 'create-evaluation))
 (common-lisp:progn
  (common-lisp:defun create-mlmodel
@@ -4927,7 +4749,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "CreateMLModel" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)))))
  (common-lisp:export 'create-mlmodel))
 (common-lisp:progn
  (common-lisp:defun create-realtime-endpoint
@@ -4943,7 +4769,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "CreateRealtimeEndpoint" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'create-realtime-endpoint))
 (common-lisp:progn
  (common-lisp:defun delete-batch-prediction
@@ -4959,7 +4788,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteBatchPrediction" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'delete-batch-prediction))
 (common-lisp:progn
  (common-lisp:defun delete-data-source
@@ -4975,7 +4807,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteDataSource" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'delete-data-source))
 (common-lisp:progn
  (common-lisp:defun delete-evaluation
@@ -4991,7 +4826,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteEvaluation" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'delete-evaluation))
 (common-lisp:progn
  (common-lisp:defun delete-mlmodel
@@ -5007,7 +4845,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteMLModel" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'delete-mlmodel))
 (common-lisp:progn
  (common-lisp:defun delete-realtime-endpoint
@@ -5023,7 +4864,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteRealtimeEndpoint" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'delete-realtime-endpoint))
 (common-lisp:progn
  (common-lisp:defun delete-tags
@@ -5040,7 +4884,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteTags" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'delete-tags))
 (common-lisp:progn
  (common-lisp:defun describe-batch-predictions
@@ -5059,7 +4907,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeBatchPredictions" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'describe-batch-predictions))
 (common-lisp:progn
  (common-lisp:defun describe-data-sources
@@ -5078,7 +4928,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeDataSources" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'describe-data-sources))
 (common-lisp:progn
  (common-lisp:defun describe-evaluations
@@ -5097,7 +4949,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeEvaluations" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'describe-evaluations))
 (common-lisp:progn
  (common-lisp:defun describe-mlmodels
@@ -5116,7 +4970,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeMLModels" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'describe-mlmodels))
 (common-lisp:progn
  (common-lisp:defun describe-tags
@@ -5132,7 +4988,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeTags" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
  (common-lisp:defun get-batch-prediction
@@ -5148,7 +5007,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "GetBatchPrediction" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'get-batch-prediction))
 (common-lisp:progn
  (common-lisp:defun get-data-source
@@ -5164,7 +5026,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "GetDataSource" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'get-data-source))
 (common-lisp:progn
  (common-lisp:defun get-evaluation
@@ -5180,7 +5045,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "GetEvaluation" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'get-evaluation))
 (common-lisp:progn
  (common-lisp:defun get-mlmodel
@@ -5196,7 +5064,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "GetMLModel" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'get-mlmodel))
 (common-lisp:progn
  (common-lisp:defun predict
@@ -5213,7 +5084,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "Predict" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)))))
  (common-lisp:export 'predict))
 (common-lisp:progn
  (common-lisp:defun update-batch-prediction
@@ -5231,7 +5107,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateBatchPrediction" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'update-batch-prediction))
 (common-lisp:progn
  (common-lisp:defun update-data-source
@@ -5248,7 +5127,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateDataSource" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'update-data-source))
 (common-lisp:progn
  (common-lisp:defun update-evaluation
@@ -5264,7 +5146,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateEvaluation" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'update-evaluation))
 (common-lisp:progn
  (common-lisp:defun update-mlmodel
@@ -5281,5 +5166,8 @@
        (aws-sdk/generator/shape:make-request-with-input
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateMLModel" "2014-12-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerException" . internal-server-exception)))))
  (common-lisp:export 'update-mlmodel))

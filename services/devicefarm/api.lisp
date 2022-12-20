@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/devicefarm/api)
 (common-lisp:progn
  (common-lisp:defclass devicefarm-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "devicefarm"))
  (common-lisp:export 'devicefarm-request))
+(common-lisp:progn
+ (common-lisp:define-condition devicefarm-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'devicefarm-error))
 (common-lisp:deftype awsaccount-number () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -107,28 +113,12 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype app-packages-cleanup () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (argument-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-argument-exception-"))
-   (message common-lisp:nil :type (common-lisp:or message common-lisp:null)))
+ (common-lisp:define-condition argument-exception
+     (devicefarm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       argument-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'argument-exception 'make-argument-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input argument-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input argument-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input argument-exception))
-   common-lisp:nil))
+  (common-lisp:list 'argument-exception 'argument-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (artifact (:copier common-lisp:nil) (:conc-name "struct-shape-artifact-"))
@@ -2242,34 +2232,12 @@
                         ((aws-sdk/generator/shape::input get-upload-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (idempotency-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-idempotency-exception-"))
-   (message common-lisp:nil :type (common-lisp:or message common-lisp:null)))
+ (common-lisp:define-condition idempotency-exception
+     (devicefarm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       idempotency-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'idempotency-exception 'make-idempotency-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          idempotency-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          idempotency-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          idempotency-exception))
-   common-lisp:nil))
+  (common-lisp:list 'idempotency-exception 'idempotency-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (incompatibility-message (:copier common-lisp:nil)
@@ -2511,34 +2479,13 @@
                            (trivial-types:proper-list job))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (message common-lisp:nil :type (common-lisp:or message common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (devicefarm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception
+                    'limit-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-artifacts-request (:copier common-lisp:nil)
@@ -3909,57 +3856,19 @@
                            (trivial-types:proper-list network-profile))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (not-eligible-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-not-eligible-exception-"))
-   (message common-lisp:nil :type (common-lisp:or message common-lisp:null)))
+ (common-lisp:define-condition not-eligible-exception
+     (devicefarm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       not-eligible-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'not-eligible-exception 'make-not-eligible-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          not-eligible-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          not-eligible-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          not-eligible-exception))
-   common-lisp:nil))
+  (common-lisp:list 'not-eligible-exception 'not-eligible-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-not-found-exception-"))
-   (message common-lisp:nil :type (common-lisp:or message common-lisp:null)))
+ (common-lisp:define-condition not-found-exception
+     (devicefarm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       not-found-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'not-found-exception 'make-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   common-lisp:nil))
+  (common-lisp:list 'not-found-exception 'not-found-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (offering (:copier common-lisp:nil) (:conc-name "struct-shape-offering-"))
@@ -5249,35 +5158,13 @@
                         ((aws-sdk/generator/shape::input schedule-run-test))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-account-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-account-exception-"))
-   (message common-lisp:nil :type (common-lisp:or message common-lisp:null)))
+ (common-lisp:define-condition service-account-exception
+     (devicefarm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       service-account-exception-message)))
  (common-lisp:export
   (common-lisp:list 'service-account-exception
-                    'make-service-account-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-account-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-account-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-account-exception))
-   common-lisp:nil))
+                    'service-account-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (stop-remote-access-session-request (:copier common-lisp:nil)
@@ -6141,7 +6028,11 @@
                                                         "POST" "/"
                                                         "CreateDevicePool"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'create-device-pool))
 (common-lisp:progn
  (common-lisp:defun create-network-profile
@@ -6167,7 +6058,11 @@
                                                         "POST" "/"
                                                         "CreateNetworkProfile"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'create-network-profile))
 (common-lisp:progn
  (common-lisp:defun create-project
@@ -6186,7 +6081,11 @@
                                                         "POST" "/"
                                                         "CreateProject"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'create-project))
 (common-lisp:progn
  (common-lisp:defun create-remote-access-session
@@ -6207,7 +6106,11 @@
                                                         "POST" "/"
                                                         "CreateRemoteAccessSession"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'create-remote-access-session))
 (common-lisp:progn
  (common-lisp:defun create-upload
@@ -6226,7 +6129,11 @@
                                                         "POST" "/"
                                                         "CreateUpload"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'create-upload))
 (common-lisp:progn
  (common-lisp:defun delete-device-pool
@@ -6244,7 +6151,11 @@
                                                         "POST" "/"
                                                         "DeleteDevicePool"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'delete-device-pool))
 (common-lisp:progn
  (common-lisp:defun delete-network-profile
@@ -6262,7 +6173,11 @@
                                                         "POST" "/"
                                                         "DeleteNetworkProfile"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'delete-network-profile))
 (common-lisp:progn
  (common-lisp:defun delete-project
@@ -6280,7 +6195,11 @@
                                                         "POST" "/"
                                                         "DeleteProject"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'delete-project))
 (common-lisp:progn
  (common-lisp:defun delete-remote-access-session
@@ -6299,7 +6218,11 @@
                                                         "POST" "/"
                                                         "DeleteRemoteAccessSession"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'delete-remote-access-session))
 (common-lisp:progn
  (common-lisp:defun delete-run
@@ -6316,7 +6239,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteRun"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'delete-run))
 (common-lisp:progn
  (common-lisp:defun delete-upload
@@ -6334,7 +6261,11 @@
                                                         "POST" "/"
                                                         "DeleteUpload"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'delete-upload))
 (common-lisp:progn
  (common-lisp:defun get-account-settings ()
@@ -6344,7 +6275,11 @@
                                 :params
                                 `(("Action" ,@"GetAccountSettings")
                                   ("Version" ,@"2015-06-23"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("ArgumentException" . argument-exception)
+      ("NotFoundException" . not-found-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("ServiceAccountException" . service-account-exception))))
  (common-lisp:export 'get-account-settings))
 (common-lisp:progn
  (common-lisp:defun get-device
@@ -6361,7 +6296,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetDevice"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-device))
 (common-lisp:progn
  (common-lisp:defun get-device-pool
@@ -6379,7 +6318,11 @@
                                                         "POST" "/"
                                                         "GetDevicePool"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-device-pool))
 (common-lisp:progn
  (common-lisp:defun get-device-pool-compatibility
@@ -6399,7 +6342,11 @@
                                                         "POST" "/"
                                                         "GetDevicePoolCompatibility"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-device-pool-compatibility))
 (common-lisp:progn
  (common-lisp:defun get-job
@@ -6416,7 +6363,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetJob"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-job))
 (common-lisp:progn
  (common-lisp:defun get-network-profile
@@ -6434,7 +6385,11 @@
                                                         "POST" "/"
                                                         "GetNetworkProfile"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-network-profile))
 (common-lisp:progn
  (common-lisp:defun get-offering-status
@@ -6452,7 +6407,12 @@
                                                         "POST" "/"
                                                         "GetOfferingStatus"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-offering-status))
 (common-lisp:progn
  (common-lisp:defun get-project
@@ -6469,7 +6429,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetProject"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-project))
 (common-lisp:progn
  (common-lisp:defun get-remote-access-session
@@ -6488,7 +6452,11 @@
                                                         "POST" "/"
                                                         "GetRemoteAccessSession"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-remote-access-session))
 (common-lisp:progn
  (common-lisp:defun get-run
@@ -6505,7 +6473,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetRun"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-run))
 (common-lisp:progn
  (common-lisp:defun get-suite
@@ -6522,7 +6494,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetSuite"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-suite))
 (common-lisp:progn
  (common-lisp:defun get-test
@@ -6539,7 +6515,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetTest"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-test))
 (common-lisp:progn
  (common-lisp:defun get-upload
@@ -6556,7 +6536,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetUpload"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-upload))
 (common-lisp:progn
  (common-lisp:defun install-to-remote-access-session
@@ -6576,7 +6560,11 @@
                                                         "POST" "/"
                                                         "InstallToRemoteAccessSession"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'install-to-remote-access-session))
 (common-lisp:progn
  (common-lisp:defun list-artifacts
@@ -6594,7 +6582,11 @@
                                                         "POST" "/"
                                                         "ListArtifacts"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-artifacts))
 (common-lisp:progn
  (common-lisp:defun list-device-pools
@@ -6612,7 +6604,11 @@
                                                         "POST" "/"
                                                         "ListDevicePools"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-device-pools))
 (common-lisp:progn
  (common-lisp:defun list-devices
@@ -6630,7 +6626,11 @@
                                                         "POST" "/"
                                                         "ListDevices"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-devices))
 (common-lisp:progn
  (common-lisp:defun list-jobs
@@ -6647,7 +6647,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListJobs"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-jobs))
 (common-lisp:progn
  (common-lisp:defun list-network-profiles
@@ -6665,7 +6669,11 @@
                                                         "POST" "/"
                                                         "ListNetworkProfiles"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-network-profiles))
 (common-lisp:progn
  (common-lisp:defun list-offering-promotions
@@ -6683,7 +6691,12 @@
                                                         "POST" "/"
                                                         "ListOfferingPromotions"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-offering-promotions))
 (common-lisp:progn
  (common-lisp:defun list-offering-transactions
@@ -6702,7 +6715,12 @@
                                                         "POST" "/"
                                                         "ListOfferingTransactions"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-offering-transactions))
 (common-lisp:progn
  (common-lisp:defun list-offerings
@@ -6720,7 +6738,12 @@
                                                         "POST" "/"
                                                         "ListOfferings"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-offerings))
 (common-lisp:progn
  (common-lisp:defun list-projects
@@ -6738,7 +6761,11 @@
                                                         "POST" "/"
                                                         "ListProjects"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-projects))
 (common-lisp:progn
  (common-lisp:defun list-remote-access-sessions
@@ -6757,7 +6784,11 @@
                                                         "POST" "/"
                                                         "ListRemoteAccessSessions"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-remote-access-sessions))
 (common-lisp:progn
  (common-lisp:defun list-runs
@@ -6774,7 +6805,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListRuns"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-runs))
 (common-lisp:progn
  (common-lisp:defun list-samples
@@ -6792,7 +6827,11 @@
                                                         "POST" "/"
                                                         "ListSamples"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-samples))
 (common-lisp:progn
  (common-lisp:defun list-suites
@@ -6809,7 +6848,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListSuites"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-suites))
 (common-lisp:progn
  (common-lisp:defun list-tests
@@ -6826,7 +6869,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListTests"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-tests))
 (common-lisp:progn
  (common-lisp:defun list-unique-problems
@@ -6844,7 +6891,11 @@
                                                         "POST" "/"
                                                         "ListUniqueProblems"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-unique-problems))
 (common-lisp:progn
  (common-lisp:defun list-uploads
@@ -6862,7 +6913,11 @@
                                                         "POST" "/"
                                                         "ListUploads"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-uploads))
 (common-lisp:progn
  (common-lisp:defun purchase-offering
@@ -6882,7 +6937,12 @@
                                                         "POST" "/"
                                                         "PurchaseOffering"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'purchase-offering))
 (common-lisp:progn
  (common-lisp:defun renew-offering
@@ -6900,7 +6960,12 @@
                                                         "POST" "/"
                                                         "RenewOffering"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'renew-offering))
 (common-lisp:progn
  (common-lisp:defun schedule-run
@@ -6921,7 +6986,12 @@
                                                         "POST" "/"
                                                         "ScheduleRun"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("IdempotencyException" . idempotency-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'schedule-run))
 (common-lisp:progn
  (common-lisp:defun stop-remote-access-session
@@ -6940,7 +7010,11 @@
                                                         "POST" "/"
                                                         "StopRemoteAccessSession"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'stop-remote-access-session))
 (common-lisp:progn
  (common-lisp:defun stop-run
@@ -6957,7 +7031,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "StopRun"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'stop-run))
 (common-lisp:progn
  (common-lisp:defun update-device-pool
@@ -6975,7 +7053,11 @@
                                                         "POST" "/"
                                                         "UpdateDevicePool"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'update-device-pool))
 (common-lisp:progn
  (common-lisp:defun update-network-profile
@@ -7000,7 +7082,11 @@
                                                         "POST" "/"
                                                         "UpdateNetworkProfile"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'update-network-profile))
 (common-lisp:progn
  (common-lisp:defun update-project
@@ -7019,5 +7105,9 @@
                                                         "POST" "/"
                                                         "UpdateProject"
                                                         "2015-06-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ArgumentException" . argument-exception)
+        ("NotFoundException" . not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'update-project))

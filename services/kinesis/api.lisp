@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/kinesis/api)
 (common-lisp:progn
  (common-lisp:defclass kinesis-request (aws-sdk/request:request)
                        common-lisp:nil (:default-initargs :service "kinesis"))
  (common-lisp:export 'kinesis-request))
+(common-lisp:progn
+ (common-lisp:define-condition kinesis-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'kinesis-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (add-tags-to-stream-input (:copier common-lisp:nil)
@@ -460,36 +466,13 @@
 (common-lisp:deftype error-code () 'common-lisp:string)
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (expired-iterator-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-expired-iterator-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition expired-iterator-exception
+     (kinesis-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       expired-iterator-exception-message)))
  (common-lisp:export
   (common-lisp:list 'expired-iterator-exception
-                    'make-expired-iterator-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          expired-iterator-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          expired-iterator-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          expired-iterator-exception))
-   common-lisp:nil))
+                    'expired-iterator-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-records-input (:copier common-lisp:nil)
@@ -741,243 +724,66 @@
                           increase-stream-retention-period-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-argument-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-argument-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-argument-exception
+     (kinesis-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-argument-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-argument-exception
-                    'make-invalid-argument-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-argument-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-argument-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-argument-exception))
-   common-lisp:nil))
+                    'invalid-argument-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (kmsaccess-denied-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kmsaccess-denied-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition kmsaccess-denied-exception
+     (kinesis-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       kmsaccess-denied-exception-message)))
  (common-lisp:export
   (common-lisp:list 'kmsaccess-denied-exception
-                    'make-kmsaccess-denied-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmsaccess-denied-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmsaccess-denied-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmsaccess-denied-exception))
-   common-lisp:nil))
+                    'kmsaccess-denied-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (kmsdisabled-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kmsdisabled-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition kmsdisabled-exception
+     (kinesis-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       kmsdisabled-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'kmsdisabled-exception 'make-kmsdisabled-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmsdisabled-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmsdisabled-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmsdisabled-exception))
-   common-lisp:nil))
+  (common-lisp:list 'kmsdisabled-exception 'kmsdisabled-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (kmsinvalid-state-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kmsinvalid-state-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition kmsinvalid-state-exception
+     (kinesis-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       kmsinvalid-state-exception-message)))
  (common-lisp:export
   (common-lisp:list 'kmsinvalid-state-exception
-                    'make-kmsinvalid-state-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmsinvalid-state-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmsinvalid-state-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmsinvalid-state-exception))
-   common-lisp:nil))
+                    'kmsinvalid-state-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (kmsnot-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kmsnot-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition kmsnot-found-exception
+     (kinesis-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       kmsnot-found-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'kmsnot-found-exception 'make-kmsnot-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmsnot-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmsnot-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmsnot-found-exception))
-   common-lisp:nil))
+  (common-lisp:list 'kmsnot-found-exception 'kmsnot-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (kmsopt-in-required (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kmsopt-in-required-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition kmsopt-in-required
+     (kinesis-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       kmsopt-in-required-message)))
  (common-lisp:export
-  (common-lisp:list 'kmsopt-in-required 'make-kmsopt-in-required))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input kmsopt-in-required))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input kmsopt-in-required))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input kmsopt-in-required))
-   common-lisp:nil))
+  (common-lisp:list 'kmsopt-in-required 'kmsopt-in-required-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (kmsthrottling-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kmsthrottling-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition kmsthrottling-exception
+     (kinesis-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       kmsthrottling-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'kmsthrottling-exception 'make-kmsthrottling-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmsthrottling-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmsthrottling-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmsthrottling-exception))
-   common-lisp:nil))
+  (common-lisp:list 'kmsthrottling-exception 'kmsthrottling-exception-message)))
 (common-lisp:deftype key-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (kinesis-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception
+                    'limit-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-streams-input (:copier common-lisp:nil)
@@ -1194,36 +1000,13 @@
 (common-lisp:deftype partition-key () 'common-lisp:string)
 (common-lisp:deftype positive-integer-object () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (provisioned-throughput-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-provisioned-throughput-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition provisioned-throughput-exceeded-exception
+     (kinesis-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       provisioned-throughput-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'provisioned-throughput-exceeded-exception
-                    'make-provisioned-throughput-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          provisioned-throughput-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          provisioned-throughput-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          provisioned-throughput-exceeded-exception))
-   common-lisp:nil))
+                    'provisioned-throughput-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (put-record-input (:copier common-lisp:nil)
@@ -1632,67 +1415,21 @@
                           remove-tags-from-stream-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-in-use-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-in-use-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition resource-in-use-exception
+     (kinesis-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-in-use-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-in-use-exception
-                    'make-resource-in-use-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   common-lisp:nil))
+                    'resource-in-use-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition resource-not-found-exception
+     (kinesis-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+                    'resource-not-found-exception-message)))
 (common-lisp:deftype scaling-type () 'common-lisp:string)
 (common-lisp:deftype sequence-number () 'common-lisp:string)
 (common-lisp:progn
@@ -2237,7 +1974,11 @@
                                                         "POST" "/"
                                                         "AddTagsToStream"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'add-tags-to-stream))
 (common-lisp:progn
  (common-lisp:defun create-stream
@@ -2255,7 +1996,10 @@
                                                         "POST" "/"
                                                         "CreateStream"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceInUseException" . resource-in-use-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)))))
  (common-lisp:export 'create-stream))
 (common-lisp:progn
  (common-lisp:defun decrease-stream-retention-period
@@ -2275,7 +2019,10 @@
                                                         "POST" "/"
                                                         "DecreaseStreamRetentionPeriod"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)))))
  (common-lisp:export 'decrease-stream-retention-period))
 (common-lisp:progn
  (common-lisp:defun delete-stream
@@ -2293,7 +2040,9 @@
                                                         "POST" "/"
                                                         "DeleteStream"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'delete-stream))
 (common-lisp:progn
  (common-lisp:defun describe-limits ()
@@ -2303,7 +2052,8 @@
                                 :params
                                 `(("Action" ,@"DescribeLimits")
                                   ("Version" ,@"2013-12-02"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("LimitExceededException" . limit-exceeded-exception))))
  (common-lisp:export 'describe-limits))
 (common-lisp:progn
  (common-lisp:defun describe-stream
@@ -2323,7 +2073,9 @@
                                                         "POST" "/"
                                                         "DescribeStream"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'describe-stream))
 (common-lisp:progn
  (common-lisp:defun disable-enhanced-monitoring
@@ -2343,7 +2095,11 @@
                                                         "POST" "/"
                                                         "DisableEnhancedMonitoring"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidArgumentException" . invalid-argument-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'disable-enhanced-monitoring))
 (common-lisp:progn
  (common-lisp:defun enable-enhanced-monitoring
@@ -2362,7 +2118,11 @@
                                                         "POST" "/"
                                                         "EnableEnhancedMonitoring"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidArgumentException" . invalid-argument-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'enable-enhanced-monitoring))
 (common-lisp:progn
  (common-lisp:defun get-records
@@ -2379,7 +2139,18 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetRecords"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ExpiredIteratorException" . expired-iterator-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("KMSOptInRequired" . kmsopt-in-required)
+        ("KMSThrottlingException" . kmsthrottling-exception)))))
  (common-lisp:export 'get-records))
 (common-lisp:progn
  (common-lisp:defun get-shard-iterator
@@ -2400,7 +2171,11 @@
                                                         "POST" "/"
                                                         "GetShardIterator"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)))))
  (common-lisp:export 'get-shard-iterator))
 (common-lisp:progn
  (common-lisp:defun increase-stream-retention-period
@@ -2420,7 +2195,10 @@
                                                         "POST" "/"
                                                         "IncreaseStreamRetentionPeriod"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)))))
  (common-lisp:export 'increase-stream-retention-period))
 (common-lisp:progn
  (common-lisp:defun list-streams
@@ -2439,7 +2217,8 @@
                                                         "POST" "/"
                                                         "ListStreams"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'list-streams))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-stream
@@ -2459,7 +2238,10 @@
                                                         "POST" "/"
                                                         "ListTagsForStream"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'list-tags-for-stream))
 (common-lisp:progn
  (common-lisp:defun merge-shards
@@ -2479,7 +2261,11 @@
                                                         "POST" "/"
                                                         "MergeShards"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'merge-shards))
 (common-lisp:progn
  (common-lisp:defun put-record
@@ -2499,7 +2285,17 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "PutRecord"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("KMSOptInRequired" . kmsopt-in-required)
+        ("KMSThrottlingException" . kmsthrottling-exception)))))
  (common-lisp:export 'put-record))
 (common-lisp:progn
  (common-lisp:defun put-records
@@ -2516,7 +2312,17 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "PutRecords"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("KMSOptInRequired" . kmsopt-in-required)
+        ("KMSThrottlingException" . kmsthrottling-exception)))))
  (common-lisp:export 'put-records))
 (common-lisp:progn
  (common-lisp:defun remove-tags-from-stream
@@ -2534,7 +2340,11 @@
                                                         "POST" "/"
                                                         "RemoveTagsFromStream"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'remove-tags-from-stream))
 (common-lisp:progn
  (common-lisp:defun split-shard
@@ -2553,7 +2363,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "SplitShard"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'split-shard))
 (common-lisp:progn
  (common-lisp:defun start-stream-encryption
@@ -2572,7 +2386,17 @@
                                                         "POST" "/"
                                                         "StartStreamEncryption"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidArgumentException" . invalid-argument-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("KMSOptInRequired" . kmsopt-in-required)
+        ("KMSThrottlingException" . kmsthrottling-exception)))))
  (common-lisp:export 'start-stream-encryption))
 (common-lisp:progn
  (common-lisp:defun stop-stream-encryption
@@ -2591,7 +2415,11 @@
                                                         "POST" "/"
                                                         "StopStreamEncryption"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidArgumentException" . invalid-argument-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'stop-stream-encryption))
 (common-lisp:progn
  (common-lisp:defun update-shard-count
@@ -2611,5 +2439,9 @@
                                                         "POST" "/"
                                                         "UpdateShardCount"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidArgumentException" . invalid-argument-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'update-shard-count))

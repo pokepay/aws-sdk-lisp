@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/glacier/api)
 (common-lisp:progn
  (common-lisp:defclass glacier-request (aws-sdk/request:request)
                        common-lisp:nil (:default-initargs :service "glacier"))
  (common-lisp:export 'glacier-request))
+(common-lisp:progn
+ (common-lisp:define-condition glacier-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'glacier-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (abort-multipart-upload-input (:copier common-lisp:nil)
@@ -1244,103 +1250,33 @@
                           initiate-vault-lock-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (insufficient-capacity-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-insufficient-capacity-exception-"))
-   (type common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (code common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition insufficient-capacity-exception
+     (glacier-error)
+     ((type :initarg :type :initform common-lisp:nil :reader
+       insufficient-capacity-exception-type)
+      (code :initarg :code :initform common-lisp:nil :reader
+       insufficient-capacity-exception-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       insufficient-capacity-exception-message)))
  (common-lisp:export
   (common-lisp:list 'insufficient-capacity-exception
-                    'make-insufficient-capacity-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-capacity-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-capacity-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'type))
-      (common-lisp:list
-       (common-lisp:cons "type"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-capacity-exception))
-   common-lisp:nil))
+                    'insufficient-capacity-exception-type
+                    'insufficient-capacity-exception-code
+                    'insufficient-capacity-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-value-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-value-exception-"))
-   (type common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (code common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-parameter-value-exception
+     (glacier-error)
+     ((type :initarg :type :initform common-lisp:nil :reader
+       invalid-parameter-value-exception-type)
+      (code :initarg :code :initform common-lisp:nil :reader
+       invalid-parameter-value-exception-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       invalid-parameter-value-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-value-exception
-                    'make-invalid-parameter-value-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-value-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-value-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'type))
-      (common-lisp:list
-       (common-lisp:cons "type"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-value-exception))
-   common-lisp:nil))
+                    'invalid-parameter-value-exception-type
+                    'invalid-parameter-value-exception-code
+                    'invalid-parameter-value-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (inventory-retrieval-job-description (:copier common-lisp:nil)
@@ -1562,53 +1498,18 @@
                         ((aws-sdk/generator/shape::input job-parameters))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (type common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (code common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (glacier-error)
+     ((type :initarg :type :initform common-lisp:nil :reader
+       limit-exceeded-exception-type)
+      (code :initarg :code :initform common-lisp:nil :reader
+       limit-exceeded-exception-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'type))
-      (common-lisp:list
-       (common-lisp:cons "type"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception 'limit-exceeded-exception-type
+                    'limit-exceeded-exception-code
+                    'limit-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-jobs-input (:copier common-lisp:nil)
@@ -2006,54 +1907,19 @@
                         ((aws-sdk/generator/shape::input list-vaults-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (missing-parameter-value-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-missing-parameter-value-exception-"))
-   (type common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (code common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition missing-parameter-value-exception
+     (glacier-error)
+     ((type :initarg :type :initform common-lisp:nil :reader
+       missing-parameter-value-exception-type)
+      (code :initarg :code :initform common-lisp:nil :reader
+       missing-parameter-value-exception-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       missing-parameter-value-exception-message)))
  (common-lisp:export
   (common-lisp:list 'missing-parameter-value-exception
-                    'make-missing-parameter-value-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-parameter-value-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-parameter-value-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'type))
-      (common-lisp:list
-       (common-lisp:cons "type"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-parameter-value-exception))
-   common-lisp:nil))
+                    'missing-parameter-value-exception-type
+                    'missing-parameter-value-exception-code
+                    'missing-parameter-value-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype notification-event-list ()
    '(trivial-types:proper-list common-lisp:string))
@@ -2105,54 +1971,18 @@
                         ((aws-sdk/generator/shape::input part-list-element))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (policy-enforced-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-policy-enforced-exception-"))
-   (type common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (code common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition policy-enforced-exception
+     (glacier-error)
+     ((type :initarg :type :initform common-lisp:nil :reader
+       policy-enforced-exception-type)
+      (code :initarg :code :initform common-lisp:nil :reader
+       policy-enforced-exception-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       policy-enforced-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'policy-enforced-exception
-                    'make-policy-enforced-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-enforced-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-enforced-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'type))
-      (common-lisp:list
-       (common-lisp:cons "type"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-enforced-exception))
-   common-lisp:nil))
+  (common-lisp:list 'policy-enforced-exception 'policy-enforced-exception-type
+                    'policy-enforced-exception-code
+                    'policy-enforced-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (provisioned-capacity-description (:copier common-lisp:nil)
@@ -2299,152 +2129,46 @@
                           remove-tags-from-vault-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (request-timeout-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-request-timeout-exception-"))
-   (type common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (code common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition request-timeout-exception
+     (glacier-error)
+     ((type :initarg :type :initform common-lisp:nil :reader
+       request-timeout-exception-type)
+      (code :initarg :code :initform common-lisp:nil :reader
+       request-timeout-exception-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       request-timeout-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'request-timeout-exception
-                    'make-request-timeout-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          request-timeout-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          request-timeout-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'type))
-      (common-lisp:list
-       (common-lisp:cons "type"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          request-timeout-exception))
-   common-lisp:nil))
+  (common-lisp:list 'request-timeout-exception 'request-timeout-exception-type
+                    'request-timeout-exception-code
+                    'request-timeout-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-"))
-   (type common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (code common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition resource-not-found-exception
+     (glacier-error)
+     ((type :initarg :type :initform common-lisp:nil :reader
+       resource-not-found-exception-type)
+      (code :initarg :code :initform common-lisp:nil :reader
+       resource-not-found-exception-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       resource-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'type))
-      (common-lisp:list
-       (common-lisp:cons "type"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+                    'resource-not-found-exception-type
+                    'resource-not-found-exception-code
+                    'resource-not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-unavailable-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-unavailable-exception-"))
-   (type common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (code common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition service-unavailable-exception
+     (glacier-error)
+     ((type :initarg :type :initform common-lisp:nil :reader
+       service-unavailable-exception-type)
+      (code :initarg :code :initform common-lisp:nil :reader
+       service-unavailable-exception-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       service-unavailable-exception-message)))
  (common-lisp:export
   (common-lisp:list 'service-unavailable-exception
-                    'make-service-unavailable-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'type))
-      (common-lisp:list
-       (common-lisp:cons "type"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   common-lisp:nil))
+                    'service-unavailable-exception-type
+                    'service-unavailable-exception-code
+                    'service-unavailable-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (set-data-retrieval-policy-input (:copier common-lisp:nil)
@@ -2893,7 +2617,11 @@ common-lisp:nil
                                                              'upload-id))))
                                                         "AbortMultipartUpload"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'abort-multipart-upload))
 (common-lisp:progn
  (common-lisp:defun abort-vault-lock
@@ -2925,7 +2653,11 @@ common-lisp:nil
                                                              'vault-name))))
                                                         "AbortVaultLock"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'abort-vault-lock))
 (common-lisp:progn
  (common-lisp:defun add-tags-to-vault
@@ -2957,7 +2689,12 @@ common-lisp:nil
                                                              'vault-name))))
                                                         "AddTagsToVault"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'add-tags-to-vault))
 (common-lisp:progn
  (common-lisp:defun complete-multipart-upload
@@ -2996,7 +2733,11 @@ common-lisp:nil
                                                              'upload-id))))
                                                         "CompleteMultipartUpload"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'complete-multipart-upload))
 (common-lisp:progn
  (common-lisp:defun complete-vault-lock
@@ -3032,7 +2773,11 @@ common-lisp:nil
                                                              'lock-id))))
                                                         "CompleteVaultLock"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'complete-vault-lock))
 (common-lisp:progn
  (common-lisp:defun create-vault
@@ -3064,7 +2809,11 @@ common-lisp:nil
                                                              'vault-name))))
                                                         "CreateVault"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'create-vault))
 (common-lisp:progn
  (common-lisp:defun delete-archive
@@ -3101,7 +2850,11 @@ common-lisp:nil
                                                              'archive-id))))
                                                         "DeleteArchive"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-archive))
 (common-lisp:progn
  (common-lisp:defun delete-vault
@@ -3133,7 +2886,11 @@ common-lisp:nil
                                                              'vault-name))))
                                                         "DeleteVault"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-vault))
 (common-lisp:progn
  (common-lisp:defun delete-vault-access-policy
@@ -3165,7 +2922,11 @@ common-lisp:nil
                                                              'vault-name))))
                                                         "DeleteVaultAccessPolicy"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-vault-access-policy))
 (common-lisp:progn
  (common-lisp:defun delete-vault-notifications
@@ -3197,7 +2958,11 @@ common-lisp:nil
                                                              'vault-name))))
                                                         "DeleteVaultNotifications"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-vault-notifications))
 (common-lisp:progn
  (common-lisp:defun describe-job
@@ -3233,7 +2998,11 @@ common-lisp:nil
                                                              'job-id))))
                                                         "DescribeJob"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-job))
 (common-lisp:progn
  (common-lisp:defun describe-vault
@@ -3265,7 +3034,11 @@ common-lisp:nil
                                                              'vault-name))))
                                                         "DescribeVault"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-vault))
 (common-lisp:progn
  (common-lisp:defun get-data-retrieval-policy
@@ -3293,7 +3066,10 @@ common-lisp:nil
                                                              'account-id))))
                                                         "GetDataRetrievalPolicy"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'get-data-retrieval-policy))
 (common-lisp:progn
  (common-lisp:defun get-job-output
@@ -3330,7 +3106,11 @@ common-lisp:nil
                                                              'job-id))))
                                                         "GetJobOutput"
                                                         "2012-06-01"))
-      "blob" common-lisp:nil)))
+      "blob" common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'get-job-output))
 (common-lisp:progn
  (common-lisp:defun get-vault-access-policy
@@ -3362,7 +3142,11 @@ common-lisp:nil
                                                              'vault-name))))
                                                         "GetVaultAccessPolicy"
                                                         "2012-06-01"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'get-vault-access-policy))
 (common-lisp:progn
  (common-lisp:defun get-vault-lock
@@ -3394,7 +3178,11 @@ common-lisp:nil
                                                              'vault-name))))
                                                         "GetVaultLock"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'get-vault-lock))
 (common-lisp:progn
  (common-lisp:defun get-vault-notifications
@@ -3426,7 +3214,11 @@ common-lisp:nil
                                                              'vault-name))))
                                                         "GetVaultNotifications"
                                                         "2012-06-01"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'get-vault-notifications))
 (common-lisp:progn
  (common-lisp:defun initiate-job
@@ -3459,7 +3251,13 @@ common-lisp:nil
                                                              'vault-name))))
                                                         "InitiateJob"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("InsufficientCapacityException" . insufficient-capacity-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'initiate-job))
 (common-lisp:progn
  (common-lisp:defun initiate-multipart-upload
@@ -3494,7 +3292,11 @@ common-lisp:nil
                                                              'vault-name))))
                                                         "InitiateMultipartUpload"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'initiate-multipart-upload))
 (common-lisp:progn
  (common-lisp:defun initiate-vault-lock
@@ -3526,7 +3328,11 @@ common-lisp:nil
                                                              'vault-name))))
                                                         "InitiateVaultLock"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'initiate-vault-lock))
 (common-lisp:progn
  (common-lisp:defun list-jobs
@@ -3561,7 +3367,11 @@ common-lisp:nil
                                                              'vault-name))))
                                                         "ListJobs"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'list-jobs))
 (common-lisp:progn
  (common-lisp:defun list-multipart-uploads
@@ -3594,7 +3404,11 @@ common-lisp:nil
                                                              'vault-name))))
                                                         "ListMultipartUploads"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'list-multipart-uploads))
 (common-lisp:progn
  (common-lisp:defun list-parts
@@ -3632,7 +3446,11 @@ common-lisp:nil
                                                              'upload-id))))
                                                         "ListParts"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'list-parts))
 (common-lisp:progn
  (common-lisp:defun list-provisioned-capacity
@@ -3660,7 +3478,10 @@ common-lisp:nil
                                                              'account-id))))
                                                         "ListProvisionedCapacity"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'list-provisioned-capacity))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-vault
@@ -3692,7 +3513,11 @@ common-lisp:nil
                                                              'vault-name))))
                                                         "ListTagsForVault"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'list-tags-for-vault))
 (common-lisp:progn
  (common-lisp:defun list-vaults
@@ -3720,7 +3545,11 @@ common-lisp:nil
                                                              'account-id))))
                                                         "ListVaults"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'list-vaults))
 (common-lisp:progn
  (common-lisp:defun purchase-provisioned-capacity
@@ -3749,7 +3578,11 @@ common-lisp:nil
                                                              'account-id))))
                                                         "PurchaseProvisionedCapacity"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'purchase-provisioned-capacity))
 (common-lisp:progn
  (common-lisp:defun remove-tags-from-vault
@@ -3781,7 +3614,11 @@ common-lisp:nil
                                                              'vault-name))))
                                                         "RemoveTagsFromVault"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'remove-tags-from-vault))
 (common-lisp:progn
  (common-lisp:defun set-data-retrieval-policy
@@ -3809,7 +3646,10 @@ common-lisp:nil
                                                              'account-id))))
                                                         "SetDataRetrievalPolicy"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'set-data-retrieval-policy))
 (common-lisp:progn
  (common-lisp:defun set-vault-access-policy
@@ -3841,7 +3681,11 @@ common-lisp:nil
                                                              'vault-name))))
                                                         "SetVaultAccessPolicy"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'set-vault-access-policy))
 (common-lisp:progn
  (common-lisp:defun set-vault-notifications
@@ -3875,7 +3719,11 @@ common-lisp:nil
                                                              'vault-name))))
                                                         "SetVaultNotifications"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'set-vault-notifications))
 (common-lisp:progn
  (common-lisp:defun upload-archive
@@ -3910,7 +3758,12 @@ common-lisp:nil
                                                              'vault-name))))
                                                         "UploadArchive"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'upload-archive))
 (common-lisp:progn
  (common-lisp:defun upload-multipart-part
@@ -3949,5 +3802,10 @@ common-lisp:nil
                                                              'upload-id))))
                                                         "UploadMultipartPart"
                                                         "2012-06-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'upload-multipart-part))

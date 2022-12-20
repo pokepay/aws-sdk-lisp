@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/opsworkscm/api)
 (common-lisp:progn
  (common-lisp:defclass opsworkscm-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "opsworkscm"))
  (common-lisp:export 'opsworkscm-request))
+(common-lisp:progn
+ (common-lisp:define-condition opsworkscm-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'opsworkscm-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (account-attribute (:copier common-lisp:nil)
@@ -1275,94 +1281,29 @@
 (common-lisp:deftype instance-profile-arn () 'common-lisp:string)
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-next-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-next-token-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition invalid-next-token-exception
+     (opsworkscm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-next-token-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-next-token-exception
-                    'make-invalid-next-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   common-lisp:nil))
+                    'invalid-next-token-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-state-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-state-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition invalid-state-exception
+     (opsworkscm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-state-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-state-exception 'make-invalid-state-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-state-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-state-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-state-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-state-exception 'invalid-state-exception-message)))
 (common-lisp:deftype key-pair () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (opsworkscm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception
+                    'limit-exceeded-exception-message)))
 (common-lisp:deftype maintenance-status () 'common-lisp:string)
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:deftype next-token () 'common-lisp:string)
@@ -1370,65 +1311,21 @@
 (common-lisp:deftype node-association-status-token () 'common-lisp:string)
 (common-lisp:deftype node-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-already-exists-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition resource-already-exists-exception
+     (opsworkscm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-already-exists-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-already-exists-exception
-                    'make-resource-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-exception))
-   common-lisp:nil))
+                    'resource-already-exists-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition resource-not-found-exception
+     (opsworkscm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+                    'resource-not-found-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (restore-server-request (:copier common-lisp:nil)
@@ -2042,28 +1939,12 @@
                           update-server-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition validation-exception
+     (opsworkscm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       validation-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'validation-exception 'make-validation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input validation-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input validation-exception))
-   common-lisp:nil))
+  (common-lisp:list 'validation-exception 'validation-exception-message)))
 (common-lisp:progn
  (common-lisp:defun associate-node
                     (
@@ -2081,7 +1962,10 @@
                                                         "POST" "/"
                                                         "AssociateNode"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidStateException" . invalid-state-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'associate-node))
 (common-lisp:progn
  (common-lisp:defun create-backup
@@ -2099,7 +1983,11 @@
                                                         "POST" "/"
                                                         "CreateBackup"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidStateException" . invalid-state-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'create-backup))
 (common-lisp:progn
  (common-lisp:defun create-server
@@ -2127,7 +2015,11 @@
                                                         "POST" "/"
                                                         "CreateServer"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'create-server))
 (common-lisp:progn
  (common-lisp:defun delete-backup
@@ -2145,7 +2037,10 @@
                                                         "POST" "/"
                                                         "DeleteBackup"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidStateException" . invalid-state-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'delete-backup))
 (common-lisp:progn
  (common-lisp:defun delete-server
@@ -2163,7 +2058,10 @@
                                                         "POST" "/"
                                                         "DeleteServer"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidStateException" . invalid-state-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'delete-server))
 (common-lisp:progn
  (common-lisp:defun describe-account-attributes ()
@@ -2173,7 +2071,7 @@
                                 :params
                                 `(("Action" ,@"DescribeAccountAttributes")
                                   ("Version" ,@"2016-11-01"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil 'common-lisp:nil))
  (common-lisp:export 'describe-account-attributes))
 (common-lisp:progn
  (common-lisp:defun describe-backups
@@ -2193,7 +2091,10 @@
                                                         "POST" "/"
                                                         "DescribeBackups"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'describe-backups))
 (common-lisp:progn
  (common-lisp:defun describe-events
@@ -2212,7 +2113,10 @@
                                                         "POST" "/"
                                                         "DescribeEvents"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
  (common-lisp:defun describe-node-association-status
@@ -2233,7 +2137,9 @@
                                                         "POST" "/"
                                                         "DescribeNodeAssociationStatus"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-node-association-status))
 (common-lisp:progn
  (common-lisp:defun describe-servers
@@ -2252,7 +2158,10 @@
                                                         "POST" "/"
                                                         "DescribeServers"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'describe-servers))
 (common-lisp:progn
  (common-lisp:defun disassociate-node
@@ -2271,7 +2180,10 @@
                                                         "POST" "/"
                                                         "DisassociateNode"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidStateException" . invalid-state-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'disassociate-node))
 (common-lisp:progn
  (common-lisp:defun restore-server
@@ -2291,7 +2203,10 @@
                                                         "POST" "/"
                                                         "RestoreServer"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidStateException" . invalid-state-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'restore-server))
 (common-lisp:progn
  (common-lisp:defun start-maintenance
@@ -2309,7 +2224,10 @@
                                                         "POST" "/"
                                                         "StartMaintenance"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidStateException" . invalid-state-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'start-maintenance))
 (common-lisp:progn
  (common-lisp:defun update-server
@@ -2331,7 +2249,10 @@
                                                         "POST" "/"
                                                         "UpdateServer"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidStateException" . invalid-state-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'update-server))
 (common-lisp:progn
  (common-lisp:defun update-server-engine-attributes
@@ -2352,5 +2273,8 @@
                                                         "POST" "/"
                                                         "UpdateServerEngineAttributes"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidStateException" . invalid-state-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'update-server-engine-attributes))

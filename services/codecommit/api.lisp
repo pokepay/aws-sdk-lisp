@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/codecommit/api)
 (common-lisp:progn
  (common-lisp:defclass codecommit-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "codecommit"))
  (common-lisp:export 'codecommit-request))
+(common-lisp:progn
+ (common-lisp:define-condition codecommit-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'codecommit-error))
 (common-lisp:deftype account-id () 'common-lisp:string)
 (common-lisp:deftype additional-data () 'common-lisp:string)
 (common-lisp:deftype arn () 'common-lisp:string)
@@ -89,49 +95,15 @@
                           batch-get-repositories-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (blob-id-does-not-exist-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-blob-id-does-not-exist-exception-")))
- (common-lisp:export
-  (common-lisp:list 'blob-id-does-not-exist-exception
-                    'make-blob-id-does-not-exist-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          blob-id-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          blob-id-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          blob-id-does-not-exist-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition blob-id-does-not-exist-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'blob-id-does-not-exist-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (blob-id-required-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-blob-id-required-exception-")))
- (common-lisp:export
-  (common-lisp:list 'blob-id-required-exception
-                    'make-blob-id-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          blob-id-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          blob-id-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          blob-id-required-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition blob-id-required-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'blob-id-required-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (blob-metadata (:copier common-lisp:nil)
@@ -171,27 +143,10 @@
                         ((aws-sdk/generator/shape::input blob-metadata))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (branch-does-not-exist-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-branch-does-not-exist-exception-")))
- (common-lisp:export
-  (common-lisp:list 'branch-does-not-exist-exception
-                    'make-branch-does-not-exist-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          branch-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          branch-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          branch-does-not-exist-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition branch-does-not-exist-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'branch-does-not-exist-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (branch-info (:copier common-lisp:nil)
@@ -226,27 +181,10 @@
    common-lisp:nil))
 (common-lisp:deftype branch-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (branch-name-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-branch-name-exists-exception-")))
- (common-lisp:export
-  (common-lisp:list 'branch-name-exists-exception
-                    'make-branch-name-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          branch-name-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          branch-name-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          branch-name-exists-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition branch-name-exists-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'branch-name-exists-exception)))
 (common-lisp:progn
  (common-lisp:deftype branch-name-list ()
    '(trivial-types:proper-list branch-name))
@@ -256,27 +194,10 @@
                            (trivial-types:proper-list branch-name))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (branch-name-required-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-branch-name-required-exception-")))
- (common-lisp:export
-  (common-lisp:list 'branch-name-required-exception
-                    'make-branch-name-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          branch-name-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          branch-name-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          branch-name-required-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition branch-name-required-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'branch-name-required-exception)))
 (common-lisp:deftype change-type-enum () 'common-lisp:string)
 (common-lisp:deftype clone-url-http () 'common-lisp:string)
 (common-lisp:deftype clone-url-ssh () 'common-lisp:string)
@@ -345,95 +266,27 @@
                         ((aws-sdk/generator/shape::input commit))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (commit-does-not-exist-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-commit-does-not-exist-exception-")))
- (common-lisp:export
-  (common-lisp:list 'commit-does-not-exist-exception
-                    'make-commit-does-not-exist-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          commit-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          commit-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          commit-does-not-exist-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition commit-does-not-exist-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'commit-does-not-exist-exception)))
 (common-lisp:deftype commit-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (commit-id-does-not-exist-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-commit-id-does-not-exist-exception-")))
- (common-lisp:export
-  (common-lisp:list 'commit-id-does-not-exist-exception
-                    'make-commit-id-does-not-exist-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          commit-id-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          commit-id-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          commit-id-does-not-exist-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition commit-id-does-not-exist-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'commit-id-does-not-exist-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (commit-id-required-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-commit-id-required-exception-")))
- (common-lisp:export
-  (common-lisp:list 'commit-id-required-exception
-                    'make-commit-id-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          commit-id-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          commit-id-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          commit-id-required-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition commit-id-required-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'commit-id-required-exception)))
 (common-lisp:deftype commit-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (commit-required-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-commit-required-exception-")))
- (common-lisp:export
-  (common-lisp:list 'commit-required-exception
-                    'make-commit-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          commit-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          commit-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          commit-required-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition commit-required-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'commit-required-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-branch-input (:copier common-lisp:nil)
@@ -659,137 +512,37 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype email () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (encryption-integrity-checks-failed-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-encryption-integrity-checks-failed-exception-")))
+ (common-lisp:define-condition encryption-integrity-checks-failed-exception
+     (codecommit-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'encryption-integrity-checks-failed-exception
-                    'make-encryption-integrity-checks-failed-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          encryption-integrity-checks-failed-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          encryption-integrity-checks-failed-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          encryption-integrity-checks-failed-exception))
-   common-lisp:nil))
+  (common-lisp:list 'encryption-integrity-checks-failed-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (encryption-key-access-denied-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-encryption-key-access-denied-exception-")))
+ (common-lisp:define-condition encryption-key-access-denied-exception
+     (codecommit-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'encryption-key-access-denied-exception
-                    'make-encryption-key-access-denied-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          encryption-key-access-denied-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          encryption-key-access-denied-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          encryption-key-access-denied-exception))
-   common-lisp:nil))
+  (common-lisp:list 'encryption-key-access-denied-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (encryption-key-disabled-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-encryption-key-disabled-exception-")))
- (common-lisp:export
-  (common-lisp:list 'encryption-key-disabled-exception
-                    'make-encryption-key-disabled-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          encryption-key-disabled-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          encryption-key-disabled-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          encryption-key-disabled-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition encryption-key-disabled-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'encryption-key-disabled-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (encryption-key-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-encryption-key-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'encryption-key-not-found-exception
-                    'make-encryption-key-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          encryption-key-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          encryption-key-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          encryption-key-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition encryption-key-not-found-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'encryption-key-not-found-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (encryption-key-unavailable-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-encryption-key-unavailable-exception-")))
- (common-lisp:export
-  (common-lisp:list 'encryption-key-unavailable-exception
-                    'make-encryption-key-unavailable-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          encryption-key-unavailable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          encryption-key-unavailable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          encryption-key-unavailable-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition encryption-key-unavailable-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'encryption-key-unavailable-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (file-too-large-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-file-too-large-exception-")))
- (common-lisp:export
-  (common-lisp:list 'file-too-large-exception 'make-file-too-large-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          file-too-large-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          file-too-large-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          file-too-large-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition file-too-large-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'file-too-large-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-blob-input (:copier common-lisp:nil)
@@ -1210,384 +963,97 @@
                           get-repository-triggers-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-blob-id-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-blob-id-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-blob-id-exception
-                    'make-invalid-blob-id-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-blob-id-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-blob-id-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-blob-id-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-blob-id-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-blob-id-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-branch-name-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-branch-name-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-branch-name-exception
-                    'make-invalid-branch-name-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-branch-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-branch-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-branch-name-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-branch-name-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-branch-name-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-commit-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-commit-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-commit-exception 'make-invalid-commit-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-commit-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-commit-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-commit-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-commit-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-commit-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-commit-id-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-commit-id-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-commit-id-exception
-                    'make-invalid-commit-id-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-commit-id-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-commit-id-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-commit-id-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-commit-id-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-commit-id-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-continuation-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-continuation-token-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-continuation-token-exception
-                    'make-invalid-continuation-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-continuation-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-continuation-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-continuation-token-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-continuation-token-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-continuation-token-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-max-results-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-max-results-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-max-results-exception
-                    'make-invalid-max-results-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-max-results-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-max-results-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-max-results-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-max-results-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-max-results-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-order-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-order-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-order-exception 'make-invalid-order-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-order-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-order-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-order-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-order-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-order-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-path-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-path-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-path-exception 'make-invalid-path-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-path-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-path-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-path-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-path-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-path-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-repository-description-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-repository-description-exception-")))
+ (common-lisp:define-condition invalid-repository-description-exception
+     (codecommit-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-repository-description-exception
-                    'make-invalid-repository-description-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-description-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-description-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-description-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-repository-description-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-repository-name-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-repository-name-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-repository-name-exception
-                    'make-invalid-repository-name-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-name-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-repository-name-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-repository-name-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-repository-trigger-branch-name-exception
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-invalid-repository-trigger-branch-name-exception-")))
+ (common-lisp:define-condition invalid-repository-trigger-branch-name-exception
+     (codecommit-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-repository-trigger-branch-name-exception
-                    'make-invalid-repository-trigger-branch-name-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-trigger-branch-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-trigger-branch-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-trigger-branch-name-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-repository-trigger-branch-name-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-repository-trigger-custom-data-exception
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-invalid-repository-trigger-custom-data-exception-")))
+ (common-lisp:define-condition invalid-repository-trigger-custom-data-exception
+     (codecommit-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-repository-trigger-custom-data-exception
-                    'make-invalid-repository-trigger-custom-data-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-trigger-custom-data-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-trigger-custom-data-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-trigger-custom-data-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-repository-trigger-custom-data-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-repository-trigger-destination-arn-exception
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-invalid-repository-trigger-destination-arn-exception-")))
+ (common-lisp:define-condition invalid-repository-trigger-destination-arn-exception
+     (codecommit-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-repository-trigger-destination-arn-exception
-                    'make-invalid-repository-trigger-destination-arn-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-trigger-destination-arn-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-trigger-destination-arn-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-trigger-destination-arn-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-repository-trigger-destination-arn-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-repository-trigger-events-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-invalid-repository-trigger-events-exception-")))
+ (common-lisp:define-condition invalid-repository-trigger-events-exception
+     (codecommit-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-repository-trigger-events-exception
-                    'make-invalid-repository-trigger-events-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-trigger-events-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-trigger-events-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-trigger-events-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-repository-trigger-events-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-repository-trigger-name-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-repository-trigger-name-exception-")))
+ (common-lisp:define-condition invalid-repository-trigger-name-exception
+     (codecommit-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-repository-trigger-name-exception
-                    'make-invalid-repository-trigger-name-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-trigger-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-trigger-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-trigger-name-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-repository-trigger-name-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-repository-trigger-region-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-invalid-repository-trigger-region-exception-")))
+ (common-lisp:define-condition invalid-repository-trigger-region-exception
+     (codecommit-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-repository-trigger-region-exception
-                    'make-invalid-repository-trigger-region-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-trigger-region-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-trigger-region-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-repository-trigger-region-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-repository-trigger-region-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-sort-by-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-sort-by-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-sort-by-exception
-                    'make-invalid-sort-by-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sort-by-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sort-by-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sort-by-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-sort-by-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-sort-by-exception)))
 (common-lisp:deftype last-modified-date () 'common-lisp:string)
 (common-lisp:deftype limit () 'common-lisp:integer)
 (common-lisp:progn
@@ -1743,73 +1209,22 @@
                           list-repositories-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (maximum-branches-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-maximum-branches-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'maximum-branches-exceeded-exception
-                    'make-maximum-branches-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          maximum-branches-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          maximum-branches-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          maximum-branches-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition maximum-branches-exceeded-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'maximum-branches-exceeded-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (maximum-repository-names-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-maximum-repository-names-exceeded-exception-")))
+ (common-lisp:define-condition maximum-repository-names-exceeded-exception
+     (codecommit-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'maximum-repository-names-exceeded-exception
-                    'make-maximum-repository-names-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          maximum-repository-names-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          maximum-repository-names-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          maximum-repository-names-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'maximum-repository-names-exceeded-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (maximum-repository-triggers-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-maximum-repository-triggers-exceeded-exception-")))
+ (common-lisp:define-condition maximum-repository-triggers-exceeded-exception
+     (codecommit-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'maximum-repository-triggers-exceeded-exception
-                    'make-maximum-repository-triggers-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          maximum-repository-triggers-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          maximum-repository-triggers-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          maximum-repository-triggers-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'maximum-repository-triggers-exceeded-exception)))
 (common-lisp:deftype message () 'common-lisp:string)
 (common-lisp:deftype mode () 'common-lisp:string)
 (common-lisp:deftype name () 'common-lisp:string)
@@ -1825,27 +1240,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype path () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (path-does-not-exist-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-path-does-not-exist-exception-")))
- (common-lisp:export
-  (common-lisp:list 'path-does-not-exist-exception
-                    'make-path-does-not-exist-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          path-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          path-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          path-does-not-exist-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition path-does-not-exist-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'path-does-not-exist-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (put-repository-triggers-input (:copier common-lisp:nil)
@@ -1919,50 +1317,16 @@
    common-lisp:nil))
 (common-lisp:deftype repository-description () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (repository-does-not-exist-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-repository-does-not-exist-exception-")))
- (common-lisp:export
-  (common-lisp:list 'repository-does-not-exist-exception
-                    'make-repository-does-not-exist-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-does-not-exist-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition repository-does-not-exist-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'repository-does-not-exist-exception)))
 (common-lisp:deftype repository-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (repository-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-repository-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'repository-limit-exceeded-exception
-                    'make-repository-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition repository-limit-exceeded-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'repository-limit-exceeded-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (repository-metadata (:copier common-lisp:nil)
@@ -2078,27 +1442,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype repository-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (repository-name-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-repository-name-exists-exception-")))
- (common-lisp:export
-  (common-lisp:list 'repository-name-exists-exception
-                    'make-repository-name-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-name-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-name-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-name-exists-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition repository-name-exists-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'repository-name-exists-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (repository-name-id-pair (:copier common-lisp:nil)
@@ -2155,49 +1502,15 @@
                            (trivial-types:proper-list repository-name))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (repository-name-required-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-repository-name-required-exception-")))
- (common-lisp:export
-  (common-lisp:list 'repository-name-required-exception
-                    'make-repository-name-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-name-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-name-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-name-required-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition repository-name-required-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'repository-name-required-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (repository-names-required-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-repository-names-required-exception-")))
- (common-lisp:export
-  (common-lisp:list 'repository-names-required-exception
-                    'make-repository-names-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-names-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-names-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-names-required-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition repository-names-required-exception
+     (codecommit-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'repository-names-required-exception)))
 (common-lisp:progn
  (common-lisp:deftype repository-not-found-list ()
    '(trivial-types:proper-list repository-name))
@@ -2267,54 +1580,18 @@
                         ((aws-sdk/generator/shape::input repository-trigger))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (repository-trigger-branch-name-list-required-exception
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-repository-trigger-branch-name-list-required-exception-")))
+ (common-lisp:define-condition repository-trigger-branch-name-list-required-exception
+     (codecommit-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'repository-trigger-branch-name-list-required-exception
-                    'make-repository-trigger-branch-name-list-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-trigger-branch-name-list-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-trigger-branch-name-list-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-trigger-branch-name-list-required-exception))
-   common-lisp:nil))
+  (common-lisp:list 'repository-trigger-branch-name-list-required-exception)))
 (common-lisp:deftype repository-trigger-custom-data () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (repository-trigger-destination-arn-required-exception
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-repository-trigger-destination-arn-required-exception-")))
+ (common-lisp:define-condition repository-trigger-destination-arn-required-exception
+     (codecommit-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'repository-trigger-destination-arn-required-exception
-                    'make-repository-trigger-destination-arn-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-trigger-destination-arn-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-trigger-destination-arn-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-trigger-destination-arn-required-exception))
-   common-lisp:nil))
+  (common-lisp:list 'repository-trigger-destination-arn-required-exception)))
 (common-lisp:deftype repository-trigger-event-enum () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype repository-trigger-event-list ()
@@ -2326,29 +1603,11 @@
                             repository-trigger-event-enum))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (repository-trigger-events-list-required-exception
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-repository-trigger-events-list-required-exception-")))
+ (common-lisp:define-condition repository-trigger-events-list-required-exception
+     (codecommit-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'repository-trigger-events-list-required-exception
-                    'make-repository-trigger-events-list-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-trigger-events-list-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-trigger-events-list-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-trigger-events-list-required-exception))
-   common-lisp:nil))
+  (common-lisp:list 'repository-trigger-events-list-required-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (repository-trigger-execution-failure (:copier common-lisp:nil)
@@ -2411,27 +1670,11 @@
                            (trivial-types:proper-list repository-trigger-name))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (repository-trigger-name-required-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-repository-trigger-name-required-exception-")))
+ (common-lisp:define-condition repository-trigger-name-required-exception
+     (codecommit-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'repository-trigger-name-required-exception
-                    'make-repository-trigger-name-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-trigger-name-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-trigger-name-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-trigger-name-required-exception))
-   common-lisp:nil))
+  (common-lisp:list 'repository-trigger-name-required-exception)))
 (common-lisp:deftype repository-triggers-configuration-id ()
   'common-lisp:string)
 (common-lisp:progn
@@ -2443,28 +1686,11 @@
                            (trivial-types:proper-list repository-trigger))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (repository-triggers-list-required-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-repository-triggers-list-required-exception-")))
+ (common-lisp:define-condition repository-triggers-list-required-exception
+     (codecommit-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'repository-triggers-list-required-exception
-                    'make-repository-triggers-list-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-triggers-list-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-triggers-list-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-triggers-list-required-exception))
-   common-lisp:nil))
+  (common-lisp:list 'repository-triggers-list-required-exception)))
 (common-lisp:deftype sort-by-enum () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -2724,7 +1950,20 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "BatchGetRepositories"
                                                         "2015-04-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("RepositoryNamesRequiredException"
+         . repository-names-required-exception)
+        ("MaximumRepositoryNamesExceededException"
+         . maximum-repository-names-exceeded-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("EncryptionIntegrityChecksFailedException"
+         . encryption-integrity-checks-failed-exception)
+        ("EncryptionKeyAccessDeniedException"
+         . encryption-key-access-denied-exception)
+        ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
+        ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
+        ("EncryptionKeyUnavailableException"
+         . encryption-key-unavailable-exception)))))
  (common-lisp:export 'batch-get-repositories))
 (common-lisp:progn
  (common-lisp:defun create-branch
@@ -2743,7 +1982,26 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CreateBranch"
                                                         "2015-04-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("BranchNameRequiredException" . branch-name-required-exception)
+        ("BranchNameExistsException" . branch-name-exists-exception)
+        ("InvalidBranchNameException" . invalid-branch-name-exception)
+        ("CommitIdRequiredException" . commit-id-required-exception)
+        ("CommitDoesNotExistException" . commit-does-not-exist-exception)
+        ("InvalidCommitIdException" . invalid-commit-id-exception)
+        ("EncryptionIntegrityChecksFailedException"
+         . encryption-integrity-checks-failed-exception)
+        ("EncryptionKeyAccessDeniedException"
+         . encryption-key-access-denied-exception)
+        ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
+        ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
+        ("EncryptionKeyUnavailableException"
+         . encryption-key-unavailable-exception)))))
  (common-lisp:export 'create-branch))
 (common-lisp:progn
  (common-lisp:defun create-repository
@@ -2762,7 +2020,23 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CreateRepository"
                                                         "2015-04-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("RepositoryNameExistsException" . repository-name-exists-exception)
+        ("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("InvalidRepositoryDescriptionException"
+         . invalid-repository-description-exception)
+        ("RepositoryLimitExceededException"
+         . repository-limit-exceeded-exception)
+        ("EncryptionIntegrityChecksFailedException"
+         . encryption-integrity-checks-failed-exception)
+        ("EncryptionKeyAccessDeniedException"
+         . encryption-key-access-denied-exception)
+        ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
+        ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
+        ("EncryptionKeyUnavailableException"
+         . encryption-key-unavailable-exception)))))
  (common-lisp:export 'create-repository))
 (common-lisp:progn
  (common-lisp:defun delete-repository
@@ -2780,7 +2054,18 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DeleteRepository"
                                                         "2015-04-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("EncryptionIntegrityChecksFailedException"
+         . encryption-integrity-checks-failed-exception)
+        ("EncryptionKeyAccessDeniedException"
+         . encryption-key-access-denied-exception)
+        ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
+        ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
+        ("EncryptionKeyUnavailableException"
+         . encryption-key-unavailable-exception)))))
  (common-lisp:export 'delete-repository))
 (common-lisp:progn
  (common-lisp:defun get-blob
@@ -2797,7 +2082,24 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetBlob"
                                                         "2015-04-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("BlobIdRequiredException" . blob-id-required-exception)
+        ("InvalidBlobIdException" . invalid-blob-id-exception)
+        ("BlobIdDoesNotExistException" . blob-id-does-not-exist-exception)
+        ("EncryptionIntegrityChecksFailedException"
+         . encryption-integrity-checks-failed-exception)
+        ("EncryptionKeyAccessDeniedException"
+         . encryption-key-access-denied-exception)
+        ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
+        ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
+        ("EncryptionKeyUnavailableException"
+         . encryption-key-unavailable-exception)
+        ("FileTooLargeException" . file-too-large-exception)))))
  (common-lisp:export 'get-blob))
 (common-lisp:progn
  (common-lisp:defun get-branch
@@ -2814,7 +2116,23 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetBranch"
                                                         "2015-04-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("BranchNameRequiredException" . branch-name-required-exception)
+        ("InvalidBranchNameException" . invalid-branch-name-exception)
+        ("BranchDoesNotExistException" . branch-does-not-exist-exception)
+        ("EncryptionIntegrityChecksFailedException"
+         . encryption-integrity-checks-failed-exception)
+        ("EncryptionKeyAccessDeniedException"
+         . encryption-key-access-denied-exception)
+        ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
+        ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
+        ("EncryptionKeyUnavailableException"
+         . encryption-key-unavailable-exception)))))
  (common-lisp:export 'get-branch))
 (common-lisp:progn
  (common-lisp:defun get-commit
@@ -2831,7 +2149,23 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetCommit"
                                                         "2015-04-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("CommitIdRequiredException" . commit-id-required-exception)
+        ("InvalidCommitIdException" . invalid-commit-id-exception)
+        ("CommitIdDoesNotExistException" . commit-id-does-not-exist-exception)
+        ("EncryptionIntegrityChecksFailedException"
+         . encryption-integrity-checks-failed-exception)
+        ("EncryptionKeyAccessDeniedException"
+         . encryption-key-access-denied-exception)
+        ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
+        ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
+        ("EncryptionKeyUnavailableException"
+         . encryption-key-unavailable-exception)))))
  (common-lisp:export 'get-commit))
 (common-lisp:progn
  (common-lisp:defun get-differences
@@ -2853,7 +2187,29 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetDifferences"
                                                         "2015-04-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("InvalidContinuationTokenException"
+         . invalid-continuation-token-exception)
+        ("InvalidMaxResultsException" . invalid-max-results-exception)
+        ("InvalidCommitIdException" . invalid-commit-id-exception)
+        ("CommitRequiredException" . commit-required-exception)
+        ("InvalidCommitException" . invalid-commit-exception)
+        ("CommitDoesNotExistException" . commit-does-not-exist-exception)
+        ("InvalidPathException" . invalid-path-exception)
+        ("PathDoesNotExistException" . path-does-not-exist-exception)
+        ("EncryptionIntegrityChecksFailedException"
+         . encryption-integrity-checks-failed-exception)
+        ("EncryptionKeyAccessDeniedException"
+         . encryption-key-access-denied-exception)
+        ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
+        ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
+        ("EncryptionKeyUnavailableException"
+         . encryption-key-unavailable-exception)))))
  (common-lisp:export 'get-differences))
 (common-lisp:progn
  (common-lisp:defun get-repository
@@ -2871,7 +2227,20 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetRepository"
                                                         "2015-04-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("EncryptionIntegrityChecksFailedException"
+         . encryption-integrity-checks-failed-exception)
+        ("EncryptionKeyAccessDeniedException"
+         . encryption-key-access-denied-exception)
+        ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
+        ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
+        ("EncryptionKeyUnavailableException"
+         . encryption-key-unavailable-exception)))))
  (common-lisp:export 'get-repository))
 (common-lisp:progn
  (common-lisp:defun get-repository-triggers
@@ -2889,7 +2258,20 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetRepositoryTriggers"
                                                         "2015-04-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("EncryptionIntegrityChecksFailedException"
+         . encryption-integrity-checks-failed-exception)
+        ("EncryptionKeyAccessDeniedException"
+         . encryption-key-access-denied-exception)
+        ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
+        ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
+        ("EncryptionKeyUnavailableException"
+         . encryption-key-unavailable-exception)))))
  (common-lisp:export 'get-repository-triggers))
 (common-lisp:progn
  (common-lisp:defun list-branches
@@ -2907,7 +2289,22 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ListBranches"
                                                         "2015-04-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("EncryptionIntegrityChecksFailedException"
+         . encryption-integrity-checks-failed-exception)
+        ("EncryptionKeyAccessDeniedException"
+         . encryption-key-access-denied-exception)
+        ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
+        ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
+        ("EncryptionKeyUnavailableException"
+         . encryption-key-unavailable-exception)
+        ("InvalidContinuationTokenException"
+         . invalid-continuation-token-exception)))))
  (common-lisp:export 'list-branches))
 (common-lisp:progn
  (common-lisp:defun list-repositories
@@ -2925,7 +2322,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ListRepositories"
                                                         "2015-04-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidOrderException" . invalid-order-exception)
+        ("InvalidContinuationTokenException"
+         . invalid-continuation-token-exception)))))
  (common-lisp:export 'list-repositories))
 (common-lisp:progn
  (common-lisp:defun put-repository-triggers
@@ -2943,7 +2344,46 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "PutRepositoryTriggers"
                                                         "2015-04-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("RepositoryTriggersListRequiredException"
+         . repository-triggers-list-required-exception)
+        ("MaximumRepositoryTriggersExceededException"
+         . maximum-repository-triggers-exceeded-exception)
+        ("InvalidRepositoryTriggerNameException"
+         . invalid-repository-trigger-name-exception)
+        ("InvalidRepositoryTriggerDestinationArnException"
+         . invalid-repository-trigger-destination-arn-exception)
+        ("InvalidRepositoryTriggerRegionException"
+         . invalid-repository-trigger-region-exception)
+        ("InvalidRepositoryTriggerCustomDataException"
+         . invalid-repository-trigger-custom-data-exception)
+        ("MaximumBranchesExceededException"
+         . maximum-branches-exceeded-exception)
+        ("InvalidRepositoryTriggerBranchNameException"
+         . invalid-repository-trigger-branch-name-exception)
+        ("InvalidRepositoryTriggerEventsException"
+         . invalid-repository-trigger-events-exception)
+        ("RepositoryTriggerNameRequiredException"
+         . repository-trigger-name-required-exception)
+        ("RepositoryTriggerDestinationArnRequiredException"
+         . repository-trigger-destination-arn-required-exception)
+        ("RepositoryTriggerBranchNameListRequiredException"
+         . repository-trigger-branch-name-list-required-exception)
+        ("RepositoryTriggerEventsListRequiredException"
+         . repository-trigger-events-list-required-exception)
+        ("EncryptionIntegrityChecksFailedException"
+         . encryption-integrity-checks-failed-exception)
+        ("EncryptionKeyAccessDeniedException"
+         . encryption-key-access-denied-exception)
+        ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
+        ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
+        ("EncryptionKeyUnavailableException"
+         . encryption-key-unavailable-exception)))))
  (common-lisp:export 'put-repository-triggers))
 (common-lisp:progn
  (common-lisp:defun test-repository-triggers
@@ -2961,7 +2401,46 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "TestRepositoryTriggers"
                                                         "2015-04-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("RepositoryTriggersListRequiredException"
+         . repository-triggers-list-required-exception)
+        ("MaximumRepositoryTriggersExceededException"
+         . maximum-repository-triggers-exceeded-exception)
+        ("InvalidRepositoryTriggerNameException"
+         . invalid-repository-trigger-name-exception)
+        ("InvalidRepositoryTriggerDestinationArnException"
+         . invalid-repository-trigger-destination-arn-exception)
+        ("InvalidRepositoryTriggerRegionException"
+         . invalid-repository-trigger-region-exception)
+        ("InvalidRepositoryTriggerCustomDataException"
+         . invalid-repository-trigger-custom-data-exception)
+        ("MaximumBranchesExceededException"
+         . maximum-branches-exceeded-exception)
+        ("InvalidRepositoryTriggerBranchNameException"
+         . invalid-repository-trigger-branch-name-exception)
+        ("InvalidRepositoryTriggerEventsException"
+         . invalid-repository-trigger-events-exception)
+        ("RepositoryTriggerNameRequiredException"
+         . repository-trigger-name-required-exception)
+        ("RepositoryTriggerDestinationArnRequiredException"
+         . repository-trigger-destination-arn-required-exception)
+        ("RepositoryTriggerBranchNameListRequiredException"
+         . repository-trigger-branch-name-list-required-exception)
+        ("RepositoryTriggerEventsListRequiredException"
+         . repository-trigger-events-list-required-exception)
+        ("EncryptionIntegrityChecksFailedException"
+         . encryption-integrity-checks-failed-exception)
+        ("EncryptionKeyAccessDeniedException"
+         . encryption-key-access-denied-exception)
+        ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
+        ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
+        ("EncryptionKeyUnavailableException"
+         . encryption-key-unavailable-exception)))))
  (common-lisp:export 'test-repository-triggers))
 (common-lisp:progn
  (common-lisp:defun update-default-branch
@@ -2980,7 +2459,23 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "UpdateDefaultBranch"
                                                         "2015-04-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("BranchNameRequiredException" . branch-name-required-exception)
+        ("InvalidBranchNameException" . invalid-branch-name-exception)
+        ("BranchDoesNotExistException" . branch-does-not-exist-exception)
+        ("EncryptionIntegrityChecksFailedException"
+         . encryption-integrity-checks-failed-exception)
+        ("EncryptionKeyAccessDeniedException"
+         . encryption-key-access-denied-exception)
+        ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
+        ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
+        ("EncryptionKeyUnavailableException"
+         . encryption-key-unavailable-exception)))))
  (common-lisp:export 'update-default-branch))
 (common-lisp:progn
  (common-lisp:defun update-repository-description
@@ -3000,7 +2495,22 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "UpdateRepositoryDescription"
                                                         "2015-04-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("InvalidRepositoryDescriptionException"
+         . invalid-repository-description-exception)
+        ("EncryptionIntegrityChecksFailedException"
+         . encryption-integrity-checks-failed-exception)
+        ("EncryptionKeyAccessDeniedException"
+         . encryption-key-access-denied-exception)
+        ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
+        ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
+        ("EncryptionKeyUnavailableException"
+         . encryption-key-unavailable-exception)))))
  (common-lisp:export 'update-repository-description))
 (common-lisp:progn
  (common-lisp:defun update-repository-name
@@ -3018,5 +2528,12 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "UpdateRepositoryName"
                                                         "2015-04-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("RepositoryNameExistsException" . repository-name-exists-exception)
+        ("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("InvalidRepositoryNameException"
+         . invalid-repository-name-exception)))))
  (common-lisp:export 'update-repository-name))

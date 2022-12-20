@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/sqs/api)
 (common-lisp:progn
  (common-lisp:defclass sqs-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "sqs"))
  (common-lisp:export 'sqs-request))
+(common-lisp:progn
+ (common-lisp:define-condition sqs-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'sqs-error))
 (common-lisp:progn
  (common-lisp:deftype awsaccount-id-list ()
    '(trivial-types:proper-list string))
@@ -93,48 +99,15 @@
                            (trivial-types:proper-list queue-attribute-name))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-entry-ids-not-distinct (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-entry-ids-not-distinct-")))
- (common-lisp:export
-  (common-lisp:list 'batch-entry-ids-not-distinct
-                    'make-batch-entry-ids-not-distinct))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          batch-entry-ids-not-distinct))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          batch-entry-ids-not-distinct))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          batch-entry-ids-not-distinct))
-   common-lisp:nil))
+ (common-lisp:define-condition batch-entry-ids-not-distinct
+     (sqs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'batch-entry-ids-not-distinct)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-request-too-long (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-request-too-long-")))
- (common-lisp:export
-  (common-lisp:list 'batch-request-too-long 'make-batch-request-too-long))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          batch-request-too-long))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          batch-request-too-long))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          batch-request-too-long))
-   common-lisp:nil))
+ (common-lisp:define-condition batch-request-too-long
+     (sqs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'batch-request-too-long)))
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-result-error-entry (:copier common-lisp:nil)
@@ -730,20 +703,10 @@
                         ((aws-sdk/generator/shape::input delete-queue-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (empty-batch-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-empty-batch-request-")))
- (common-lisp:export
-  (common-lisp:list 'empty-batch-request 'make-empty-batch-request))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input empty-batch-request))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input empty-batch-request))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input empty-batch-request))
-   common-lisp:nil))
+ (common-lisp:define-condition empty-batch-request
+     (sqs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'empty-batch-request)))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-queue-attributes-request (:copier common-lisp:nil)
@@ -880,83 +843,25 @@
    common-lisp:nil))
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-attribute-name (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-attribute-name-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-attribute-name 'make-invalid-attribute-name))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-attribute-name))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-attribute-name))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-attribute-name))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-attribute-name
+     (sqs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-attribute-name)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-batch-entry-id (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-batch-entry-id-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-batch-entry-id 'make-invalid-batch-entry-id))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-batch-entry-id))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-batch-entry-id))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-batch-entry-id))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-batch-entry-id
+     (sqs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-batch-entry-id)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-id-format (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-id-format-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-id-format 'make-invalid-id-format))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-id-format))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-id-format))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-id-format))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-id-format
+     (sqs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-id-format)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-message-contents (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-message-contents-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-message-contents 'make-invalid-message-contents))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-message-contents))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-message-contents))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-message-contents))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-message-contents
+     (sqs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-message-contents)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-dead-letter-source-queues-request (:copier common-lisp:nil)
@@ -1232,20 +1137,10 @@
                            (trivial-types:proper-list message))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (message-not-inflight (:copier common-lisp:nil)
-      (:conc-name "struct-shape-message-not-inflight-")))
- (common-lisp:export
-  (common-lisp:list 'message-not-inflight 'make-message-not-inflight))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input message-not-inflight))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input message-not-inflight))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input message-not-inflight))
-   common-lisp:nil))
+ (common-lisp:define-condition message-not-inflight
+     (sqs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'message-not-inflight)))
 (common-lisp:progn
  (common-lisp:deftype message-system-attribute-map () 'common-lisp:hash-table)
  (common-lisp:defun |make-message-system-attribute-map|
@@ -1256,40 +1151,15 @@
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:deftype message-system-attribute-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (over-limit (:copier common-lisp:nil)
-      (:conc-name "struct-shape-over-limit-")))
- (common-lisp:export (common-lisp:list 'over-limit 'make-over-limit))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input over-limit))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input over-limit))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input over-limit))
-   common-lisp:nil))
+ (common-lisp:define-condition over-limit
+     (sqs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'over-limit)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (purge-queue-in-progress (:copier common-lisp:nil)
-      (:conc-name "struct-shape-purge-queue-in-progress-")))
- (common-lisp:export
-  (common-lisp:list 'purge-queue-in-progress 'make-purge-queue-in-progress))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          purge-queue-in-progress))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          purge-queue-in-progress))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          purge-queue-in-progress))
-   common-lisp:nil))
+ (common-lisp:define-condition purge-queue-in-progress
+     (sqs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'purge-queue-in-progress)))
 (common-lisp:progn
  (common-lisp:defstruct
      (purge-queue-request (:copier common-lisp:nil)
@@ -1324,56 +1194,20 @@
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:deftype queue-attribute-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (queue-deleted-recently (:copier common-lisp:nil)
-      (:conc-name "struct-shape-queue-deleted-recently-")))
- (common-lisp:export
-  (common-lisp:list 'queue-deleted-recently 'make-queue-deleted-recently))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          queue-deleted-recently))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          queue-deleted-recently))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          queue-deleted-recently))
-   common-lisp:nil))
+ (common-lisp:define-condition queue-deleted-recently
+     (sqs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'queue-deleted-recently)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (queue-does-not-exist (:copier common-lisp:nil)
-      (:conc-name "struct-shape-queue-does-not-exist-")))
- (common-lisp:export
-  (common-lisp:list 'queue-does-not-exist 'make-queue-does-not-exist))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input queue-does-not-exist))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input queue-does-not-exist))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input queue-does-not-exist))
-   common-lisp:nil))
+ (common-lisp:define-condition queue-does-not-exist
+     (sqs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'queue-does-not-exist)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (queue-name-exists (:copier common-lisp:nil)
-      (:conc-name "struct-shape-queue-name-exists-")))
- (common-lisp:export
-  (common-lisp:list 'queue-name-exists 'make-queue-name-exists))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input queue-name-exists))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input queue-name-exists))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input queue-name-exists))
-   common-lisp:nil))
+ (common-lisp:define-condition queue-name-exists
+     (sqs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'queue-name-exists)))
 (common-lisp:progn
  (common-lisp:deftype queue-url-list () '(trivial-types:proper-list string))
  (common-lisp:defun |make-queue-url-list|
@@ -1382,27 +1216,10 @@
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (receipt-handle-is-invalid (:copier common-lisp:nil)
-      (:conc-name "struct-shape-receipt-handle-is-invalid-")))
- (common-lisp:export
-  (common-lisp:list 'receipt-handle-is-invalid
-                    'make-receipt-handle-is-invalid))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          receipt-handle-is-invalid))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          receipt-handle-is-invalid))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          receipt-handle-is-invalid))
-   common-lisp:nil))
+ (common-lisp:define-condition receipt-handle-is-invalid
+     (sqs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'receipt-handle-is-invalid)))
 (common-lisp:progn
  (common-lisp:defstruct
      (receive-message-request (:copier common-lisp:nil)
@@ -1973,48 +1790,15 @@
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-entries-in-batch-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-entries-in-batch-request-")))
- (common-lisp:export
-  (common-lisp:list 'too-many-entries-in-batch-request
-                    'make-too-many-entries-in-batch-request))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-entries-in-batch-request))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-entries-in-batch-request))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-entries-in-batch-request))
-   common-lisp:nil))
+ (common-lisp:define-condition too-many-entries-in-batch-request
+     (sqs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'too-many-entries-in-batch-request)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unsupported-operation (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unsupported-operation-")))
- (common-lisp:export
-  (common-lisp:list 'unsupported-operation 'make-unsupported-operation))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-operation))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-operation))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-operation))
-   common-lisp:nil))
+ (common-lisp:define-condition unsupported-operation
+     (sqs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'unsupported-operation)))
 (common-lisp:progn
  (common-lisp:defun add-permission
                     (
@@ -2032,7 +1816,7 @@
                                                         "POST" "/"
                                                         "AddPermission"
                                                         "2012-11-05"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil '(("OverLimit" . over-limit)))))
  (common-lisp:export 'add-permission))
 (common-lisp:progn
  (common-lisp:defun change-message-visibility
@@ -2053,7 +1837,9 @@
                                                         "POST" "/"
                                                         "ChangeMessageVisibility"
                                                         "2012-11-05"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("MessageNotInflight" . message-not-inflight)
+        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)))))
  (common-lisp:export 'change-message-visibility))
 (common-lisp:progn
  (common-lisp:defun change-message-visibility-batch
@@ -2072,7 +1858,11 @@
                                                         "POST" "/"
                                                         "ChangeMessageVisibilityBatch"
                                                         "2012-11-05"))
-      common-lisp:nil "ChangeMessageVisibilityBatchResult")))
+      common-lisp:nil "ChangeMessageVisibilityBatchResult"
+      '(("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
+        ("EmptyBatchRequest" . empty-batch-request)
+        ("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
+        ("InvalidBatchEntryId" . invalid-batch-entry-id)))))
  (common-lisp:export 'change-message-visibility-batch))
 (common-lisp:progn
  (common-lisp:defun create-queue
@@ -2090,7 +1880,9 @@
                                                         "POST" "/"
                                                         "CreateQueue"
                                                         "2012-11-05"))
-      common-lisp:nil "CreateQueueResult")))
+      common-lisp:nil "CreateQueueResult"
+      '(("QueueDeletedRecently" . queue-deleted-recently)
+        ("QueueNameExists" . queue-name-exists)))))
  (common-lisp:export 'create-queue))
 (common-lisp:progn
  (common-lisp:defun delete-message
@@ -2108,7 +1900,9 @@
                                                         "POST" "/"
                                                         "DeleteMessage"
                                                         "2012-11-05"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidIdFormat" . invalid-id-format)
+        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)))))
  (common-lisp:export 'delete-message))
 (common-lisp:progn
  (common-lisp:defun delete-message-batch
@@ -2126,7 +1920,11 @@
                                                         "POST" "/"
                                                         "DeleteMessageBatch"
                                                         "2012-11-05"))
-      common-lisp:nil "DeleteMessageBatchResult")))
+      common-lisp:nil "DeleteMessageBatchResult"
+      '(("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
+        ("EmptyBatchRequest" . empty-batch-request)
+        ("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
+        ("InvalidBatchEntryId" . invalid-batch-entry-id)))))
  (common-lisp:export 'delete-message-batch))
 (common-lisp:progn
  (common-lisp:defun delete-queue
@@ -2144,7 +1942,7 @@
                                                         "POST" "/"
                                                         "DeleteQueue"
                                                         "2012-11-05"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-queue))
 (common-lisp:progn
  (common-lisp:defun get-queue-attributes
@@ -2162,7 +1960,8 @@
                                                         "POST" "/"
                                                         "GetQueueAttributes"
                                                         "2012-11-05"))
-      common-lisp:nil "GetQueueAttributesResult")))
+      common-lisp:nil "GetQueueAttributesResult"
+      '(("InvalidAttributeName" . invalid-attribute-name)))))
  (common-lisp:export 'get-queue-attributes))
 (common-lisp:progn
  (common-lisp:defun get-queue-url
@@ -2181,7 +1980,8 @@
                                                         "POST" "/"
                                                         "GetQueueUrl"
                                                         "2012-11-05"))
-      common-lisp:nil "GetQueueUrlResult")))
+      common-lisp:nil "GetQueueUrlResult"
+      '(("QueueDoesNotExist" . queue-does-not-exist)))))
  (common-lisp:export 'get-queue-url))
 (common-lisp:progn
  (common-lisp:defun list-dead-letter-source-queues
@@ -2200,7 +2000,8 @@
                                                         "POST" "/"
                                                         "ListDeadLetterSourceQueues"
                                                         "2012-11-05"))
-      common-lisp:nil "ListDeadLetterSourceQueuesResult")))
+      common-lisp:nil "ListDeadLetterSourceQueuesResult"
+      '(("QueueDoesNotExist" . queue-does-not-exist)))))
  (common-lisp:export 'list-dead-letter-source-queues))
 (common-lisp:progn
  (common-lisp:defun list-queues
@@ -2217,7 +2018,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListQueues"
                                                         "2012-11-05"))
-      common-lisp:nil "ListQueuesResult")))
+      common-lisp:nil "ListQueuesResult" 'common-lisp:nil)))
  (common-lisp:export 'list-queues))
 (common-lisp:progn
  (common-lisp:defun purge-queue
@@ -2234,7 +2035,9 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "PurgeQueue"
                                                         "2012-11-05"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("QueueDoesNotExist" . queue-does-not-exist)
+        ("PurgeQueueInProgress" . purge-queue-in-progress)))))
  (common-lisp:export 'purge-queue))
 (common-lisp:progn
  (common-lisp:defun receive-message
@@ -2258,7 +2061,7 @@
                                                         "POST" "/"
                                                         "ReceiveMessage"
                                                         "2012-11-05"))
-      common-lisp:nil "ReceiveMessageResult")))
+      common-lisp:nil "ReceiveMessageResult" '(("OverLimit" . over-limit)))))
  (common-lisp:export 'receive-message))
 (common-lisp:progn
  (common-lisp:defun remove-permission
@@ -2276,7 +2079,7 @@
                                                         "POST" "/"
                                                         "RemovePermission"
                                                         "2012-11-05"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'remove-permission))
 (common-lisp:progn
  (common-lisp:defun send-message
@@ -2298,7 +2101,9 @@
                                                         "POST" "/"
                                                         "SendMessage"
                                                         "2012-11-05"))
-      common-lisp:nil "SendMessageResult")))
+      common-lisp:nil "SendMessageResult"
+      '(("InvalidMessageContents" . invalid-message-contents)
+        ("UnsupportedOperation" . unsupported-operation)))))
  (common-lisp:export 'send-message))
 (common-lisp:progn
  (common-lisp:defun send-message-batch
@@ -2316,7 +2121,13 @@
                                                         "POST" "/"
                                                         "SendMessageBatch"
                                                         "2012-11-05"))
-      common-lisp:nil "SendMessageBatchResult")))
+      common-lisp:nil "SendMessageBatchResult"
+      '(("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
+        ("EmptyBatchRequest" . empty-batch-request)
+        ("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
+        ("BatchRequestTooLong" . batch-request-too-long)
+        ("InvalidBatchEntryId" . invalid-batch-entry-id)
+        ("UnsupportedOperation" . unsupported-operation)))))
  (common-lisp:export 'send-message-batch))
 (common-lisp:progn
  (common-lisp:defun set-queue-attributes
@@ -2334,5 +2145,6 @@
                                                         "POST" "/"
                                                         "SetQueueAttributes"
                                                         "2012-11-05"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidAttributeName" . invalid-attribute-name)))))
  (common-lisp:export 'set-queue-attributes))

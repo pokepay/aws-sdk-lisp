@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/storagegateway/api)
 (common-lisp:progn
  (common-lisp:defclass storagegateway-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "storagegateway"))
  (common-lisp:export 'storagegateway-request))
+(common-lisp:progn
+ (common-lisp:define-condition storagegateway-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'storagegateway-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (activate-gateway-input (:copier common-lisp:nil)
@@ -3673,84 +3679,26 @@
                            (trivial-types:proper-list initiator))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-server-error (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-server-error-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (error common-lisp:nil :type
-    (common-lisp:or storage-gateway-error common-lisp:null)))
+ (common-lisp:define-condition internal-server-error
+     (storagegateway-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-server-error-message)
+      (error :initarg :error :initform common-lisp:nil :reader
+       internal-server-error-error)))
  (common-lisp:export
-  (common-lisp:list 'internal-server-error 'make-internal-server-error))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error))
-      (common-lisp:list
-       (common-lisp:cons "error"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   common-lisp:nil))
+  (common-lisp:list 'internal-server-error 'internal-server-error-message
+                    'internal-server-error-error)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-gateway-request-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-gateway-request-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (error common-lisp:nil :type
-    (common-lisp:or storage-gateway-error common-lisp:null)))
+ (common-lisp:define-condition invalid-gateway-request-exception
+     (storagegateway-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-gateway-request-exception-message)
+      (error :initarg :error :initform common-lisp:nil :reader
+       invalid-gateway-request-exception-error)))
  (common-lisp:export
   (common-lisp:list 'invalid-gateway-request-exception
-                    'make-invalid-gateway-request-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-gateway-request-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-gateway-request-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error))
-      (common-lisp:list
-       (common-lisp:cons "error"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-gateway-request-exception))
-   common-lisp:nil))
+                    'invalid-gateway-request-exception-message
+                    'invalid-gateway-request-exception-error)))
 (common-lisp:deftype iqn-name () 'common-lisp:string)
 (common-lisp:deftype kmskey () 'common-lisp:string)
 (common-lisp:deftype last-software-update () 'common-lisp:string)
@@ -4932,45 +4880,16 @@
    common-lisp:nil))
 (common-lisp:deftype role () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-unavailable-error (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-unavailable-error-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (error common-lisp:nil :type
-    (common-lisp:or storage-gateway-error common-lisp:null)))
+ (common-lisp:define-condition service-unavailable-error
+     (storagegateway-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       service-unavailable-error-message)
+      (error :initarg :error :initform common-lisp:nil :reader
+       service-unavailable-error-error)))
  (common-lisp:export
   (common-lisp:list 'service-unavailable-error
-                    'make-service-unavailable-error))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-error))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-error))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error))
-      (common-lisp:list
-       (common-lisp:cons "error"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-error))
-   common-lisp:nil))
+                    'service-unavailable-error-message
+                    'service-unavailable-error-error)))
 (common-lisp:progn
  (common-lisp:defstruct
      (set-local-console-password-input (:copier common-lisp:nil)
@@ -6745,7 +6664,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ActivateGateway"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'activate-gateway))
 (common-lisp:progn
  (common-lisp:defun add-cache
@@ -6762,7 +6683,9 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "AddCache"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'add-cache))
 (common-lisp:progn
  (common-lisp:defun add-tags-to-resource
@@ -6780,7 +6703,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "AddTagsToResource"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'add-tags-to-resource))
 (common-lisp:progn
  (common-lisp:defun add-upload-buffer
@@ -6798,7 +6723,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "AddUploadBuffer"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'add-upload-buffer))
 (common-lisp:progn
  (common-lisp:defun add-working-storage
@@ -6816,7 +6743,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "AddWorkingStorage"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'add-working-storage))
 (common-lisp:progn
  (common-lisp:defun cancel-archival
@@ -6834,7 +6763,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CancelArchival"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'cancel-archival))
 (common-lisp:progn
  (common-lisp:defun cancel-retrieval
@@ -6852,7 +6783,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CancelRetrieval"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'cancel-retrieval))
 (common-lisp:progn
  (common-lisp:defun create-cachedi-scsivolume
@@ -6874,7 +6807,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CreateCachediSCSIVolume"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'create-cachedi-scsivolume))
 (common-lisp:progn
  (common-lisp:defun create-nfsfile-share
@@ -6897,7 +6832,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CreateNFSFileShare"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'create-nfsfile-share))
 (common-lisp:progn
  (common-lisp:defun create-snapshot
@@ -6916,7 +6853,10 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CreateSnapshot"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ServiceUnavailableError" . service-unavailable-error)))))
  (common-lisp:export 'create-snapshot))
 (common-lisp:progn
  (common-lisp:defun create-snapshot-from-volume-recovery-point
@@ -6936,7 +6876,10 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CreateSnapshotFromVolumeRecoveryPoint"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ServiceUnavailableError" . service-unavailable-error)))))
  (common-lisp:export 'create-snapshot-from-volume-recovery-point))
 (common-lisp:progn
  (common-lisp:defun create-storedi-scsivolume
@@ -6957,7 +6900,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CreateStorediSCSIVolume"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'create-storedi-scsivolume))
 (common-lisp:progn
  (common-lisp:defun create-tape-with-barcode
@@ -6977,7 +6922,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CreateTapeWithBarcode"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'create-tape-with-barcode))
 (common-lisp:progn
  (common-lisp:defun create-tapes
@@ -6998,7 +6945,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CreateTapes"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'create-tapes))
 (common-lisp:progn
  (common-lisp:defun delete-bandwidth-rate-limit
@@ -7017,7 +6966,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DeleteBandwidthRateLimit"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'delete-bandwidth-rate-limit))
 (common-lisp:progn
  (common-lisp:defun delete-chap-credentials
@@ -7035,7 +6986,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DeleteChapCredentials"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'delete-chap-credentials))
 (common-lisp:progn
  (common-lisp:defun delete-file-share
@@ -7053,7 +7006,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DeleteFileShare"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'delete-file-share))
 (common-lisp:progn
  (common-lisp:defun delete-gateway
@@ -7071,7 +7026,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DeleteGateway"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'delete-gateway))
 (common-lisp:progn
  (common-lisp:defun delete-snapshot-schedule
@@ -7089,7 +7046,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DeleteSnapshotSchedule"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'delete-snapshot-schedule))
 (common-lisp:progn
  (common-lisp:defun delete-tape
@@ -7106,7 +7065,9 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteTape"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'delete-tape))
 (common-lisp:progn
  (common-lisp:defun delete-tape-archive
@@ -7124,7 +7085,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DeleteTapeArchive"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'delete-tape-archive))
 (common-lisp:progn
  (common-lisp:defun delete-volume
@@ -7142,7 +7105,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DeleteVolume"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'delete-volume))
 (common-lisp:progn
  (common-lisp:defun describe-bandwidth-rate-limit
@@ -7161,7 +7126,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeBandwidthRateLimit"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-bandwidth-rate-limit))
 (common-lisp:progn
  (common-lisp:defun describe-cache
@@ -7179,7 +7146,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeCache"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-cache))
 (common-lisp:progn
  (common-lisp:defun describe-cachedi-scsivolumes
@@ -7198,7 +7167,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeCachediSCSIVolumes"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-cachedi-scsivolumes))
 (common-lisp:progn
  (common-lisp:defun describe-chap-credentials
@@ -7216,7 +7187,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeChapCredentials"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-chap-credentials))
 (common-lisp:progn
  (common-lisp:defun describe-gateway-information
@@ -7235,7 +7208,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeGatewayInformation"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-gateway-information))
 (common-lisp:progn
  (common-lisp:defun describe-maintenance-start-time
@@ -7254,7 +7229,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeMaintenanceStartTime"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-maintenance-start-time))
 (common-lisp:progn
  (common-lisp:defun describe-nfsfile-shares
@@ -7272,7 +7249,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeNFSFileShares"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-nfsfile-shares))
 (common-lisp:progn
  (common-lisp:defun describe-snapshot-schedule
@@ -7290,7 +7269,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeSnapshotSchedule"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-snapshot-schedule))
 (common-lisp:progn
  (common-lisp:defun describe-storedi-scsivolumes
@@ -7309,7 +7290,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeStorediSCSIVolumes"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-storedi-scsivolumes))
 (common-lisp:progn
  (common-lisp:defun describe-tape-archives
@@ -7327,7 +7310,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeTapeArchives"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-tape-archives))
 (common-lisp:progn
  (common-lisp:defun describe-tape-recovery-points
@@ -7346,7 +7331,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeTapeRecoveryPoints"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-tape-recovery-points))
 (common-lisp:progn
  (common-lisp:defun describe-tapes
@@ -7365,7 +7352,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeTapes"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-tapes))
 (common-lisp:progn
  (common-lisp:defun describe-upload-buffer
@@ -7383,7 +7372,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeUploadBuffer"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-upload-buffer))
 (common-lisp:progn
  (common-lisp:defun describe-vtldevices
@@ -7402,7 +7393,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeVTLDevices"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-vtldevices))
 (common-lisp:progn
  (common-lisp:defun describe-working-storage
@@ -7420,7 +7413,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeWorkingStorage"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-working-storage))
 (common-lisp:progn
  (common-lisp:defun disable-gateway
@@ -7438,7 +7433,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DisableGateway"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'disable-gateway))
 (common-lisp:progn
  (common-lisp:defun list-file-shares
@@ -7456,7 +7453,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ListFileShares"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'list-file-shares))
 (common-lisp:progn
  (common-lisp:defun list-gateways
@@ -7474,7 +7473,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ListGateways"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'list-gateways))
 (common-lisp:progn
  (common-lisp:defun list-local-disks
@@ -7492,7 +7493,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ListLocalDisks"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'list-local-disks))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-resource
@@ -7510,7 +7513,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ListTagsForResource"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
  (common-lisp:defun list-tapes
@@ -7527,7 +7532,9 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListTapes"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'list-tapes))
 (common-lisp:progn
  (common-lisp:defun list-volume-initiators
@@ -7545,7 +7552,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ListVolumeInitiators"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'list-volume-initiators))
 (common-lisp:progn
  (common-lisp:defun list-volume-recovery-points
@@ -7564,7 +7573,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ListVolumeRecoveryPoints"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'list-volume-recovery-points))
 (common-lisp:progn
  (common-lisp:defun list-volumes
@@ -7582,7 +7593,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ListVolumes"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'list-volumes))
 (common-lisp:progn
  (common-lisp:defun refresh-cache
@@ -7600,7 +7613,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "RefreshCache"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'refresh-cache))
 (common-lisp:progn
  (common-lisp:defun remove-tags-from-resource
@@ -7618,7 +7633,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "RemoveTagsFromResource"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'remove-tags-from-resource))
 (common-lisp:progn
  (common-lisp:defun reset-cache
@@ -7635,7 +7652,9 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ResetCache"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'reset-cache))
 (common-lisp:progn
  (common-lisp:defun retrieve-tape-archive
@@ -7653,7 +7672,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "RetrieveTapeArchive"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'retrieve-tape-archive))
 (common-lisp:progn
  (common-lisp:defun retrieve-tape-recovery-point
@@ -7672,7 +7693,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "RetrieveTapeRecoveryPoint"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'retrieve-tape-recovery-point))
 (common-lisp:progn
  (common-lisp:defun set-local-console-password
@@ -7691,7 +7714,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "SetLocalConsolePassword"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'set-local-console-password))
 (common-lisp:progn
  (common-lisp:defun shutdown-gateway
@@ -7709,7 +7734,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ShutdownGateway"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'shutdown-gateway))
 (common-lisp:progn
  (common-lisp:defun start-gateway
@@ -7727,7 +7754,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "StartGateway"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'start-gateway))
 (common-lisp:progn
  (common-lisp:defun update-bandwidth-rate-limit
@@ -7751,7 +7780,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "UpdateBandwidthRateLimit"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'update-bandwidth-rate-limit))
 (common-lisp:progn
  (common-lisp:defun update-chap-credentials
@@ -7773,7 +7804,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "UpdateChapCredentials"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'update-chap-credentials))
 (common-lisp:progn
  (common-lisp:defun update-gateway-information
@@ -7793,7 +7826,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "UpdateGatewayInformation"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'update-gateway-information))
 (common-lisp:progn
  (common-lisp:defun update-gateway-software-now
@@ -7812,7 +7847,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "UpdateGatewaySoftwareNow"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'update-gateway-software-now))
 (common-lisp:progn
  (common-lisp:defun update-maintenance-start-time
@@ -7833,7 +7870,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "UpdateMaintenanceStartTime"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'update-maintenance-start-time))
 (common-lisp:progn
  (common-lisp:defun update-nfsfile-share
@@ -7856,7 +7895,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "UpdateNFSFileShare"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'update-nfsfile-share))
 (common-lisp:progn
  (common-lisp:defun update-snapshot-schedule
@@ -7877,7 +7918,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "UpdateSnapshotSchedule"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'update-snapshot-schedule))
 (common-lisp:progn
  (common-lisp:defun update-vtldevice-type
@@ -7895,5 +7938,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "UpdateVTLDeviceType"
                                                         "2013-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidGatewayRequestException" . invalid-gateway-request-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'update-vtldevice-type))

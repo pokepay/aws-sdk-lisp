@@ -6,73 +6,34 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/runtime.lex/api)
 (common-lisp:progn
  (common-lisp:defclass runtime.lex-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "runtime.lex"))
  (common-lisp:export 'runtime.lex-request))
+(common-lisp:progn
+ (common-lisp:define-condition runtime.lex-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'runtime.lex-error))
 (common-lisp:deftype accept () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (bad-gateway-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-bad-gateway-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition bad-gateway-exception
+     (runtime.lex-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       bad-gateway-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'bad-gateway-exception 'make-bad-gateway-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          bad-gateway-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          bad-gateway-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          bad-gateway-exception))
-   common-lisp:nil))
+  (common-lisp:list 'bad-gateway-exception 'bad-gateway-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (bad-request-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-bad-request-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition bad-request-exception
+     (runtime.lex-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       bad-request-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'bad-request-exception 'make-bad-request-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          bad-request-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          bad-request-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          bad-request-exception))
-   common-lisp:nil))
+  (common-lisp:list 'bad-request-exception 'bad-request-exception-message)))
 (common-lisp:deftype blob-stream ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:deftype bot-alias () 'common-lisp:string)
@@ -111,60 +72,21 @@
 (common-lisp:deftype button-text-string-with-length () 'common-lisp:string)
 (common-lisp:deftype button-value-string-with-length () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (conflict-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-conflict-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition conflict-exception
+     (runtime.lex-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       conflict-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'conflict-exception 'make-conflict-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input conflict-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input conflict-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input conflict-exception))
-   common-lisp:nil))
+  (common-lisp:list 'conflict-exception 'conflict-exception-message)))
 (common-lisp:deftype content-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (dependency-failed-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dependency-failed-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition dependency-failed-exception
+     (runtime.lex-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       dependency-failed-exception-message)))
  (common-lisp:export
   (common-lisp:list 'dependency-failed-exception
-                    'make-dependency-failed-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dependency-failed-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dependency-failed-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dependency-failed-exception))
-   common-lisp:nil))
+                    'dependency-failed-exception-message)))
 (common-lisp:deftype dialog-state () 'common-lisp:string)
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
@@ -230,152 +152,46 @@
 (common-lisp:deftype http-content-type () 'common-lisp:string)
 (common-lisp:deftype intent-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-failure-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-failure-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition internal-failure-exception
+     (runtime.lex-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-failure-exception-message)))
  (common-lisp:export
   (common-lisp:list 'internal-failure-exception
-                    'make-internal-failure-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-failure-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-failure-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-failure-exception))
-   common-lisp:nil))
+                    'internal-failure-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (retry-after-seconds common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (runtime.lex-error)
+     ((retry-after-seconds :initarg :retry-after-seconds :initform
+       common-lisp:nil :reader limit-exceeded-exception-retry-after-seconds)
+      (message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'retry-after-seconds))
-      (common-lisp:cons "Retry-After" aws-sdk/generator/shape::value))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception
+                    'limit-exceeded-exception-retry-after-seconds
+                    'limit-exceeded-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (loop-detected-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-loop-detected-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition loop-detected-exception
+     (runtime.lex-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       loop-detected-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'loop-detected-exception 'make-loop-detected-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          loop-detected-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          loop-detected-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          loop-detected-exception))
-   common-lisp:nil))
+  (common-lisp:list 'loop-detected-exception 'loop-detected-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (not-acceptable-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-not-acceptable-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition not-acceptable-exception
+     (runtime.lex-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       not-acceptable-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'not-acceptable-exception 'make-not-acceptable-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          not-acceptable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          not-acceptable-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          not-acceptable-exception))
-   common-lisp:nil))
+  (common-lisp:list 'not-acceptable-exception
+                    'not-acceptable-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-not-found-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition not-found-exception
+     (runtime.lex-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       not-found-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'not-found-exception 'make-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   common-lisp:nil))
+  (common-lisp:list 'not-found-exception 'not-found-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (post-content-request (:copier common-lisp:nil)
@@ -621,35 +437,13 @@
                         ((aws-sdk/generator/shape::input post-text-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (request-timeout-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-request-timeout-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition request-timeout-exception
+     (runtime.lex-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       request-timeout-exception-message)))
  (common-lisp:export
   (common-lisp:list 'request-timeout-exception
-                    'make-request-timeout-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          request-timeout-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          request-timeout-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          request-timeout-exception))
-   common-lisp:nil))
+                    'request-timeout-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (response-card (:copier common-lisp:nil)
@@ -702,35 +496,13 @@
 (common-lisp:deftype string-with-length () 'common-lisp:string)
 (common-lisp:deftype text () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (unsupported-media-type-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unsupported-media-type-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition unsupported-media-type-exception
+     (runtime.lex-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unsupported-media-type-exception-message)))
  (common-lisp:export
   (common-lisp:list 'unsupported-media-type-exception
-                    'make-unsupported-media-type-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-media-type-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-media-type-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-media-type-exception))
-   common-lisp:nil))
+                    'unsupported-media-type-exception-message)))
 (common-lisp:deftype user-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype |genericAttachmentList| ()
@@ -784,7 +556,18 @@
                                                              'user-id))))
                                                         "PostContent"
                                                         "2016-11-28"))
-      "blob" common-lisp:nil)))
+      "blob" common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("BadRequestException" . bad-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("ConflictException" . conflict-exception)
+        ("UnsupportedMediaTypeException" . unsupported-media-type-exception)
+        ("NotAcceptableException" . not-acceptable-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("DependencyFailedException" . dependency-failed-exception)
+        ("BadGatewayException" . bad-gateway-exception)
+        ("LoopDetectedException" . loop-detected-exception)))))
  (common-lisp:export 'post-content))
 (common-lisp:progn
  (common-lisp:defun post-text
@@ -823,5 +606,13 @@
                                                              'user-id))))
                                                         "PostText"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("BadRequestException" . bad-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("ConflictException" . conflict-exception)
+        ("DependencyFailedException" . dependency-failed-exception)
+        ("BadGatewayException" . bad-gateway-exception)
+        ("LoopDetectedException" . loop-detected-exception)))))
  (common-lisp:export 'post-text))

@@ -6,37 +6,26 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/events/api)
 (common-lisp:progn
  (common-lisp:defclass events-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "events"))
  (common-lisp:export 'events-request))
+(common-lisp:progn
+ (common-lisp:define-condition events-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'events-error))
 (common-lisp:deftype action () 'common-lisp:string)
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (concurrent-modification-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-concurrent-modification-exception-")))
- (common-lisp:export
-  (common-lisp:list 'concurrent-modification-exception
-                    'make-concurrent-modification-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition concurrent-modification-exception
+     (events-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'concurrent-modification-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-rule-request (:copier common-lisp:nil)
@@ -369,42 +358,15 @@
 (common-lisp:deftype input-transformer-path-key () 'common-lisp:string)
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-exception-")))
- (common-lisp:export
-  (common-lisp:list 'internal-exception 'make-internal-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input internal-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input internal-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input internal-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition internal-exception
+     (events-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'internal-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-event-pattern-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-event-pattern-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-event-pattern-exception
-                    'make-invalid-event-pattern-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-event-pattern-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-event-pattern-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-event-pattern-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-event-pattern-exception
+     (events-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-event-pattern-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (kinesis-parameters (:copier common-lisp:nil)
@@ -430,26 +392,10 @@
                         ((aws-sdk/generator/shape::input kinesis-parameters))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition limit-exceeded-exception
+     (events-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'limit-exceeded-exception)))
 (common-lisp:deftype limit-max100 () 'common-lisp:integer)
 (common-lisp:deftype limit-min1 () 'common-lisp:integer)
 (common-lisp:progn
@@ -707,27 +653,10 @@
    common-lisp:nil))
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (policy-length-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-policy-length-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'policy-length-exceeded-exception
-                    'make-policy-length-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-length-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-length-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-length-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition policy-length-exceeded-exception
+     (events-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'policy-length-exceeded-exception)))
 (common-lisp:deftype principal () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -1341,27 +1270,10 @@
                             remove-targets-result-entry))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition resource-not-found-exception
+     (events-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-not-found-exception)))
 (common-lisp:deftype role-arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -1744,7 +1656,9 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteRule"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InternalException" . internal-exception)))))
  (common-lisp:export 'delete-rule))
 (common-lisp:progn
  (common-lisp:defun describe-event-bus ()
@@ -1754,7 +1668,9 @@
                                 :params
                                 `(("Action" ,@"DescribeEventBus")
                                   ("Version" ,@"2015-10-07"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("ResourceNotFoundException" . resource-not-found-exception)
+      ("InternalException" . internal-exception))))
  (common-lisp:export 'describe-event-bus))
 (common-lisp:progn
  (common-lisp:defun describe-rule
@@ -1772,7 +1688,9 @@
                                                         "POST" "/"
                                                         "DescribeRule"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalException" . internal-exception)))))
  (common-lisp:export 'describe-rule))
 (common-lisp:progn
  (common-lisp:defun disable-rule
@@ -1790,7 +1708,10 @@
                                                         "POST" "/"
                                                         "DisableRule"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InternalException" . internal-exception)))))
  (common-lisp:export 'disable-rule))
 (common-lisp:progn
  (common-lisp:defun enable-rule
@@ -1807,7 +1728,10 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "EnableRule"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InternalException" . internal-exception)))))
  (common-lisp:export 'enable-rule))
 (common-lisp:progn
  (common-lisp:defun list-rule-names-by-target
@@ -1826,7 +1750,8 @@
                                                         "POST" "/"
                                                         "ListRuleNamesByTarget"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)))))
  (common-lisp:export 'list-rule-names-by-target))
 (common-lisp:progn
  (common-lisp:defun list-rules
@@ -1843,7 +1768,8 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListRules"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)))))
  (common-lisp:export 'list-rules))
 (common-lisp:progn
  (common-lisp:defun list-targets-by-rule
@@ -1861,7 +1787,9 @@
                                                         "POST" "/"
                                                         "ListTargetsByRule"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalException" . internal-exception)))))
  (common-lisp:export 'list-targets-by-rule))
 (common-lisp:progn
  (common-lisp:defun put-events
@@ -1878,7 +1806,8 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "PutEvents"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)))))
  (common-lisp:export 'put-events))
 (common-lisp:progn
  (common-lisp:defun put-permission
@@ -1896,7 +1825,10 @@
                                                         "POST" "/"
                                                         "PutPermission"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("InternalException" . internal-exception)))))
  (common-lisp:export 'put-permission))
 (common-lisp:progn
  (common-lisp:defun put-rule
@@ -1916,7 +1848,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "PutRule"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidEventPatternException" . invalid-event-pattern-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InternalException" . internal-exception)))))
  (common-lisp:export 'put-rule))
 (common-lisp:progn
  (common-lisp:defun put-targets
@@ -1933,7 +1869,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "PutTargets"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalException" . internal-exception)))))
  (common-lisp:export 'put-targets))
 (common-lisp:progn
  (common-lisp:defun remove-permission
@@ -1951,7 +1891,9 @@
                                                         "POST" "/"
                                                         "RemovePermission"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalException" . internal-exception)))))
  (common-lisp:export 'remove-permission))
 (common-lisp:progn
  (common-lisp:defun remove-targets
@@ -1969,7 +1911,10 @@
                                                         "POST" "/"
                                                         "RemoveTargets"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InternalException" . internal-exception)))))
  (common-lisp:export 'remove-targets))
 (common-lisp:progn
  (common-lisp:defun test-event-pattern
@@ -1987,5 +1932,7 @@
                                                         "POST" "/"
                                                         "TestEventPattern"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidEventPatternException" . invalid-event-pattern-exception)
+        ("InternalException" . internal-exception)))))
  (common-lisp:export 'test-event-pattern))

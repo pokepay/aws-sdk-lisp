@@ -6,42 +6,25 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/mgh/api)
 (common-lisp:progn
  (common-lisp:defclass mgh-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "mgh"))
  (common-lisp:export 'mgh-request))
 (common-lisp:progn
- (common-lisp:defstruct
-     (access-denied-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-access-denied-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition mgh-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'mgh-error))
+(common-lisp:progn
+ (common-lisp:define-condition access-denied-exception
+     (mgh-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       access-denied-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'access-denied-exception 'make-access-denied-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   common-lisp:nil))
+  (common-lisp:list 'access-denied-exception 'access-denied-exception-message)))
 (common-lisp:deftype application-id () 'common-lisp:string)
 (common-lisp:deftype application-status () 'common-lisp:string)
 (common-lisp:progn
@@ -728,29 +711,12 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype dry-run () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (dry-run-operation (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dry-run-operation-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition dry-run-operation
+     (mgh-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       dry-run-operation-message)))
  (common-lisp:export
-  (common-lisp:list 'dry-run-operation 'make-dry-run-operation))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input dry-run-operation))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input dry-run-operation))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input dry-run-operation))
-   common-lisp:nil))
+  (common-lisp:list 'dry-run-operation 'dry-run-operation-message)))
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -825,65 +791,19 @@
                           import-migration-task-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-server-error (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-server-error-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition internal-server-error
+     (mgh-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-server-error-message)))
  (common-lisp:export
-  (common-lisp:list 'internal-server-error 'make-internal-server-error))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   common-lisp:nil))
+  (common-lisp:list 'internal-server-error 'internal-server-error-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-input-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-input-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-input-exception
+     (mgh-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-input-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-input-exception 'make-invalid-input-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-input-exception 'invalid-input-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype latest-resource-attribute-list ()
    '(trivial-types:proper-list resource-attribute))
@@ -1575,35 +1495,12 @@
                           notify-migration-task-state-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (policy-error-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-policy-error-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition policy-error-exception
+     (mgh-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       policy-error-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'policy-error-exception 'make-policy-error-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-error-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-error-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-error-exception))
-   common-lisp:nil))
+  (common-lisp:list 'policy-error-exception 'policy-error-exception-message)))
 (common-lisp:deftype progress-percent () 'common-lisp:integer)
 (common-lisp:deftype progress-update-stream () 'common-lisp:string)
 (common-lisp:progn
@@ -1775,67 +1672,21 @@
 (common-lisp:deftype resource-attribute-value () 'common-lisp:string)
 (common-lisp:deftype resource-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition resource-not-found-exception
+     (mgh-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+                    'resource-not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-unavailable-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-unavailable-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition service-unavailable-exception
+     (mgh-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       service-unavailable-exception-message)))
  (common-lisp:export
   (common-lisp:list 'service-unavailable-exception
-                    'make-service-unavailable-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   common-lisp:nil))
+                    'service-unavailable-exception-message)))
 (common-lisp:deftype status () 'common-lisp:string)
 (common-lisp:deftype status-detail () 'common-lisp:string)
 (common-lisp:progn
@@ -1880,35 +1731,12 @@
    common-lisp:nil))
 (common-lisp:deftype token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (unauthorized-operation (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unauthorized-operation-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition unauthorized-operation
+     (mgh-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unauthorized-operation-message)))
  (common-lisp:export
-  (common-lisp:list 'unauthorized-operation 'make-unauthorized-operation))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-operation))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-operation))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-operation))
-   common-lisp:nil))
+  (common-lisp:list 'unauthorized-operation 'unauthorized-operation-message)))
 (common-lisp:deftype update-date-time () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defun associate-created-artifact
@@ -1930,7 +1758,14 @@
                                                         "POST" "/"
                                                         "AssociateCreatedArtifact"
                                                         "2017-05-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("DryRunOperation" . dry-run-operation)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'associate-created-artifact))
 (common-lisp:progn
  (common-lisp:defun associate-discovered-resource
@@ -1952,7 +1787,15 @@
                                                         "POST" "/"
                                                         "AssociateDiscoveredResource"
                                                         "2017-05-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("DryRunOperation" . dry-run-operation)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("InvalidInputException" . invalid-input-exception)
+        ("PolicyErrorException" . policy-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'associate-discovered-resource))
 (common-lisp:progn
  (common-lisp:defun create-progress-update-stream
@@ -1972,7 +1815,13 @@
                                                         "POST" "/"
                                                         "CreateProgressUpdateStream"
                                                         "2017-05-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("DryRunOperation" . dry-run-operation)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("InvalidInputException" . invalid-input-exception)))))
  (common-lisp:export 'create-progress-update-stream))
 (common-lisp:progn
  (common-lisp:defun delete-progress-update-stream
@@ -1992,7 +1841,14 @@
                                                         "POST" "/"
                                                         "DeleteProgressUpdateStream"
                                                         "2017-05-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("DryRunOperation" . dry-run-operation)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'delete-progress-update-stream))
 (common-lisp:progn
  (common-lisp:defun describe-application-state
@@ -2011,7 +1867,13 @@
                                                         "POST" "/"
                                                         "DescribeApplicationState"
                                                         "2017-05-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("PolicyErrorException" . policy-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-application-state))
 (common-lisp:progn
  (common-lisp:defun describe-migration-task
@@ -2031,7 +1893,12 @@
                                                         "POST" "/"
                                                         "DescribeMigrationTask"
                                                         "2017-05-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-migration-task))
 (common-lisp:progn
  (common-lisp:defun disassociate-created-artifact
@@ -2053,7 +1920,14 @@
                                                         "POST" "/"
                                                         "DisassociateCreatedArtifact"
                                                         "2017-05-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("DryRunOperation" . dry-run-operation)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'disassociate-created-artifact))
 (common-lisp:progn
  (common-lisp:defun disassociate-discovered-resource
@@ -2075,7 +1949,14 @@
                                                         "POST" "/"
                                                         "DisassociateDiscoveredResource"
                                                         "2017-05-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("DryRunOperation" . dry-run-operation)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'disassociate-discovered-resource))
 (common-lisp:progn
  (common-lisp:defun import-migration-task
@@ -2095,7 +1976,14 @@
                                                         "POST" "/"
                                                         "ImportMigrationTask"
                                                         "2017-05-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("DryRunOperation" . dry-run-operation)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'import-migration-task))
 (common-lisp:progn
  (common-lisp:defun list-created-artifacts
@@ -2116,7 +2004,12 @@
                                                         "POST" "/"
                                                         "ListCreatedArtifacts"
                                                         "2017-05-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'list-created-artifacts))
 (common-lisp:progn
  (common-lisp:defun list-discovered-resources
@@ -2138,7 +2031,12 @@
                                                         "POST" "/"
                                                         "ListDiscoveredResources"
                                                         "2017-05-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'list-discovered-resources))
 (common-lisp:progn
  (common-lisp:defun list-migration-tasks
@@ -2157,7 +2055,13 @@
                                                         "POST" "/"
                                                         "ListMigrationTasks"
                                                         "2017-05-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("PolicyErrorException" . policy-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'list-migration-tasks))
 (common-lisp:progn
  (common-lisp:defun list-progress-update-streams
@@ -2176,7 +2080,11 @@
                                                         "POST" "/"
                                                         "ListProgressUpdateStreams"
                                                         "2017-05-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InvalidInputException" . invalid-input-exception)))))
  (common-lisp:export 'list-progress-update-streams))
 (common-lisp:progn
  (common-lisp:defun notify-application-state
@@ -2194,7 +2102,15 @@
                                                         "POST" "/"
                                                         "NotifyApplicationState"
                                                         "2017-05-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("DryRunOperation" . dry-run-operation)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("InvalidInputException" . invalid-input-exception)
+        ("PolicyErrorException" . policy-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'notify-application-state))
 (common-lisp:progn
  (common-lisp:defun notify-migration-task-state
@@ -2217,7 +2133,14 @@
                                                         "POST" "/"
                                                         "NotifyMigrationTaskState"
                                                         "2017-05-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("DryRunOperation" . dry-run-operation)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'notify-migration-task-state))
 (common-lisp:progn
  (common-lisp:defun put-resource-attributes
@@ -2238,5 +2161,12 @@
                                                         "POST" "/"
                                                         "PutResourceAttributes"
                                                         "2017-05-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("DryRunOperation" . dry-run-operation)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'put-resource-attributes))

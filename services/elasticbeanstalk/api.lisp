@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/elasticbeanstalk/api)
 (common-lisp:progn
  (common-lisp:defclass elasticbeanstalk-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "elasticbeanstalk"))
  (common-lisp:export 'elasticbeanstalk-request))
+(common-lisp:progn
+ (common-lisp:define-condition elasticbeanstalk-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'elasticbeanstalk-error))
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -980,27 +986,11 @@
    common-lisp:nil))
 (common-lisp:deftype cname-availability () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (code-build-not-in-service-region-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-code-build-not-in-service-region-exception-")))
+ (common-lisp:define-condition code-build-not-in-service-region-exception
+     (elasticbeanstalk-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'code-build-not-in-service-region-exception
-                    'make-code-build-not-in-service-region-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          code-build-not-in-service-region-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          code-build-not-in-service-region-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          code-build-not-in-service-region-exception))
-   common-lisp:nil))
+  (common-lisp:list 'code-build-not-in-service-region-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (compose-environments-message (:copier common-lisp:nil)
@@ -3321,36 +3311,13 @@
 (common-lisp:deftype description () 'common-lisp:string)
 (common-lisp:deftype ec2instance-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (elastic-beanstalk-service-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-elastic-beanstalk-service-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition elastic-beanstalk-service-exception
+     (elasticbeanstalk-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       elastic-beanstalk-service-exception-message)))
  (common-lisp:export
   (common-lisp:list 'elastic-beanstalk-service-exception
-                    'make-elastic-beanstalk-service-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          elastic-beanstalk-service-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          elastic-beanstalk-service-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          elastic-beanstalk-service-exception))
-   common-lisp:nil))
+                    'elastic-beanstalk-service-exception-message)))
 (common-lisp:deftype endpoint-url () 'common-lisp:string)
 (common-lisp:deftype environment-arn () 'common-lisp:string)
 (common-lisp:progn
@@ -4221,50 +4188,16 @@
                             instances-health-attribute))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (insufficient-privileges-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-insufficient-privileges-exception-")))
- (common-lisp:export
-  (common-lisp:list 'insufficient-privileges-exception
-                    'make-insufficient-privileges-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-privileges-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-privileges-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-privileges-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition insufficient-privileges-exception
+     (elasticbeanstalk-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'insufficient-privileges-exception)))
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-request-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-request-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-request-exception
-                    'make-invalid-request-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-request-exception
+     (elasticbeanstalk-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-request-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (latency (:copier common-lisp:nil) (:conc-name "struct-shape-latency-"))
@@ -4798,27 +4731,11 @@
                             managed-action-history-item))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (managed-action-invalid-state-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-managed-action-invalid-state-exception-")))
+ (common-lisp:define-condition managed-action-invalid-state-exception
+     (elasticbeanstalk-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'managed-action-invalid-state-exception
-                    'make-managed-action-invalid-state-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          managed-action-invalid-state-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          managed-action-invalid-state-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          managed-action-invalid-state-exception))
-   common-lisp:nil))
+  (common-lisp:list 'managed-action-invalid-state-exception)))
 (common-lisp:progn
  (common-lisp:deftype managed-actions ()
    '(trivial-types:proper-list managed-action))
@@ -4921,27 +4838,10 @@
 (common-lisp:deftype operating-system-name () 'common-lisp:string)
 (common-lisp:deftype operating-system-version () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (operation-in-progress-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-operation-in-progress-exception-")))
- (common-lisp:export
-  (common-lisp:list 'operation-in-progress-exception
-                    'make-operation-in-progress-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-in-progress-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-in-progress-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-in-progress-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition operation-in-progress-exception
+     (elasticbeanstalk-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'operation-in-progress-exception)))
 (common-lisp:deftype option-namespace () 'common-lisp:string)
 (common-lisp:deftype option-restriction-max-length () 'common-lisp:integer)
 (common-lisp:deftype option-restriction-max-value () 'common-lisp:integer)
@@ -5467,28 +5367,11 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype platform-version () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (platform-version-still-referenced-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-platform-version-still-referenced-exception-")))
+ (common-lisp:define-condition platform-version-still-referenced-exception
+     (elasticbeanstalk-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'platform-version-still-referenced-exception
-                    'make-platform-version-still-referenced-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          platform-version-still-referenced-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          platform-version-still-referenced-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          platform-version-still-referenced-exception))
-   common-lisp:nil))
+  (common-lisp:list 'platform-version-still-referenced-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (queue (:copier common-lisp:nil) (:conc-name "struct-shape-queue-"))
@@ -5774,49 +5657,16 @@
                         ((aws-sdk/generator/shape::input s3location))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (s3location-not-in-service-region-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-s3location-not-in-service-region-exception-")))
+ (common-lisp:define-condition s3location-not-in-service-region-exception
+     (elasticbeanstalk-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 's3location-not-in-service-region-exception
-                    'make-s3location-not-in-service-region-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          s3location-not-in-service-region-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          s3location-not-in-service-region-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          s3location-not-in-service-region-exception))
-   common-lisp:nil))
+  (common-lisp:list 's3location-not-in-service-region-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (s3subscription-required-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-s3subscription-required-exception-")))
- (common-lisp:export
-  (common-lisp:list 's3subscription-required-exception
-                    'make-s3subscription-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          s3subscription-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          s3subscription-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          s3subscription-required-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition s3subscription-required-exception
+     (elasticbeanstalk-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 's3subscription-required-exception)))
 (common-lisp:deftype sample-timestamp () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -6026,27 +5876,10 @@
                           source-build-information))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (source-bundle-deletion-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-source-bundle-deletion-exception-")))
- (common-lisp:export
-  (common-lisp:list 'source-bundle-deletion-exception
-                    'make-source-bundle-deletion-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          source-bundle-deletion-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          source-bundle-deletion-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          source-bundle-deletion-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition source-bundle-deletion-exception
+     (elasticbeanstalk-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'source-bundle-deletion-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (source-configuration (:copier common-lisp:nil)
@@ -6349,137 +6182,37 @@
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:deftype token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-application-versions-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-application-versions-exception-")))
+ (common-lisp:define-condition too-many-application-versions-exception
+     (elasticbeanstalk-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'too-many-application-versions-exception
-                    'make-too-many-application-versions-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-application-versions-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-application-versions-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-application-versions-exception))
-   common-lisp:nil))
+  (common-lisp:list 'too-many-application-versions-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-applications-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-applications-exception-")))
- (common-lisp:export
-  (common-lisp:list 'too-many-applications-exception
-                    'make-too-many-applications-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-applications-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-applications-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-applications-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition too-many-applications-exception
+     (elasticbeanstalk-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'too-many-applications-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-buckets-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-buckets-exception-")))
- (common-lisp:export
-  (common-lisp:list 'too-many-buckets-exception
-                    'make-too-many-buckets-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-buckets-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-buckets-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-buckets-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition too-many-buckets-exception
+     (elasticbeanstalk-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'too-many-buckets-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-configuration-templates-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-configuration-templates-exception-")))
+ (common-lisp:define-condition too-many-configuration-templates-exception
+     (elasticbeanstalk-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'too-many-configuration-templates-exception
-                    'make-too-many-configuration-templates-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-configuration-templates-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-configuration-templates-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-configuration-templates-exception))
-   common-lisp:nil))
+  (common-lisp:list 'too-many-configuration-templates-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-environments-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-environments-exception-")))
- (common-lisp:export
-  (common-lisp:list 'too-many-environments-exception
-                    'make-too-many-environments-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-environments-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-environments-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-environments-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition too-many-environments-exception
+     (elasticbeanstalk-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'too-many-environments-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-platforms-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-platforms-exception-")))
- (common-lisp:export
-  (common-lisp:list 'too-many-platforms-exception
-                    'make-too-many-platforms-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-platforms-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-platforms-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-platforms-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition too-many-platforms-exception
+     (elasticbeanstalk-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'too-many-platforms-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (trigger (:copier common-lisp:nil) (:conc-name "struct-shape-trigger-"))
@@ -6991,7 +6724,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "AbortEnvironmentUpdate" "2010-12-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InsufficientPrivilegesException"
+         . insufficient-privileges-exception)))))
  (common-lisp:export 'abort-environment-update))
 (common-lisp:progn
  (common-lisp:defun apply-environment-managed-action
@@ -7010,7 +6745,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "ApplyEnvironmentManagedAction" "2010-12-01"))
-      common-lisp:nil "ApplyEnvironmentManagedActionResult")))
+      common-lisp:nil "ApplyEnvironmentManagedActionResult"
+      '(("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)))))
  (common-lisp:export 'apply-environment-managed-action))
 (common-lisp:progn
  (common-lisp:defun check-dnsavailability
@@ -7026,7 +6765,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "CheckDNSAvailability" "2010-12-01"))
-      common-lisp:nil "CheckDNSAvailabilityResult")))
+      common-lisp:nil "CheckDNSAvailabilityResult" 'common-lisp:nil)))
  (common-lisp:export 'check-dnsavailability))
 (common-lisp:progn
  (common-lisp:defun compose-environments
@@ -7044,7 +6783,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "ComposeEnvironments" "2010-12-01"))
-      common-lisp:nil "ComposeEnvironmentsResult")))
+      common-lisp:nil "ComposeEnvironmentsResult"
+      '(("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("InsufficientPrivilegesException"
+         . insufficient-privileges-exception)))))
  (common-lisp:export 'compose-environments))
 (common-lisp:progn
  (common-lisp:defun create-application
@@ -7063,7 +6805,8 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "CreateApplication" "2010-12-01"))
-      common-lisp:nil "CreateApplicationResult")))
+      common-lisp:nil "CreateApplicationResult"
+      '(("TooManyApplicationsException" . too-many-applications-exception)))))
  (common-lisp:export 'create-application))
 (common-lisp:progn
  (common-lisp:defun create-application-version
@@ -7085,7 +6828,15 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "CreateApplicationVersion" "2010-12-01"))
-      common-lisp:nil "CreateApplicationVersionResult")))
+      common-lisp:nil "CreateApplicationVersionResult"
+      '(("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)))))
  (common-lisp:export 'create-application-version))
 (common-lisp:progn
  (common-lisp:defun create-configuration-template
@@ -7107,7 +6858,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "CreateConfigurationTemplate" "2010-12-01"))
-      common-lisp:nil "CreateConfigurationTemplateResult")))
+      common-lisp:nil "CreateConfigurationTemplateResult"
+      '(("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)))))
  (common-lisp:export 'create-configuration-template))
 (common-lisp:progn
  (common-lisp:defun create-environment
@@ -7129,7 +6884,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "CreateEnvironment" "2010-12-01"))
-      common-lisp:nil "CreateEnvironmentResult")))
+      common-lisp:nil "CreateEnvironmentResult"
+      '(("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("InsufficientPrivilegesException"
+         . insufficient-privileges-exception)))))
  (common-lisp:export 'create-environment))
 (common-lisp:progn
  (common-lisp:defun create-platform-version
@@ -7149,7 +6907,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "CreatePlatformVersion" "2010-12-01"))
-      common-lisp:nil "CreatePlatformVersionResult")))
+      common-lisp:nil "CreatePlatformVersionResult"
+      '(("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'create-platform-version))
 (common-lisp:progn
  (common-lisp:defun create-storage-location ()
@@ -7159,7 +6921,11 @@
                                 "/" :params
                                 `(("Action" ,@"CreateStorageLocation")
                                   ("Version" ,@"2010-12-01"))))
-    common-lisp:nil "CreateStorageLocationResult"))
+    common-lisp:nil "CreateStorageLocationResult"
+    '(("TooManyBucketsException" . too-many-buckets-exception)
+      ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+      ("InsufficientPrivilegesException"
+       . insufficient-privileges-exception))))
  (common-lisp:export 'create-storage-location))
 (common-lisp:progn
  (common-lisp:defun delete-application
@@ -7176,7 +6942,8 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteApplication" "2010-12-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("OperationInProgressException" . operation-in-progress-exception)))))
  (common-lisp:export 'delete-application))
 (common-lisp:progn
  (common-lisp:defun delete-application-version
@@ -7196,7 +6963,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteApplicationVersion" "2010-12-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)))))
  (common-lisp:export 'delete-application-version))
 (common-lisp:progn
  (common-lisp:defun delete-configuration-template
@@ -7213,7 +6985,8 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteConfigurationTemplate" "2010-12-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("OperationInProgressException" . operation-in-progress-exception)))))
  (common-lisp:export 'delete-configuration-template))
 (common-lisp:progn
  (common-lisp:defun delete-environment-configuration
@@ -7231,7 +7004,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteEnvironmentConfiguration" "2010-12-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-environment-configuration))
 (common-lisp:progn
  (common-lisp:defun delete-platform-version
@@ -7247,7 +7020,13 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DeletePlatformVersion" "2010-12-01"))
-      common-lisp:nil "DeletePlatformVersionResult")))
+      common-lisp:nil "DeletePlatformVersionResult"
+      '(("OperationInProgressException" . operation-in-progress-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)))))
  (common-lisp:export 'delete-platform-version))
 (common-lisp:progn
  (common-lisp:defun describe-application-versions
@@ -7267,7 +7046,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeApplicationVersions" "2010-12-01"))
-      common-lisp:nil "DescribeApplicationVersionsResult")))
+      common-lisp:nil "DescribeApplicationVersionsResult" 'common-lisp:nil)))
  (common-lisp:export 'describe-application-versions))
 (common-lisp:progn
  (common-lisp:defun describe-applications
@@ -7283,7 +7062,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeApplications" "2010-12-01"))
-      common-lisp:nil "DescribeApplicationsResult")))
+      common-lisp:nil "DescribeApplicationsResult" 'common-lisp:nil)))
  (common-lisp:export 'describe-applications))
 (common-lisp:progn
  (common-lisp:defun describe-configuration-options
@@ -7303,7 +7082,8 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeConfigurationOptions" "2010-12-01"))
-      common-lisp:nil "DescribeConfigurationOptionsResult")))
+      common-lisp:nil "DescribeConfigurationOptionsResult"
+      '(("TooManyBucketsException" . too-many-buckets-exception)))))
  (common-lisp:export 'describe-configuration-options))
 (common-lisp:progn
  (common-lisp:defun describe-configuration-settings
@@ -7322,7 +7102,8 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeConfigurationSettings" "2010-12-01"))
-      common-lisp:nil "DescribeConfigurationSettingsResult")))
+      common-lisp:nil "DescribeConfigurationSettingsResult"
+      '(("TooManyBucketsException" . too-many-buckets-exception)))))
  (common-lisp:export 'describe-configuration-settings))
 (common-lisp:progn
  (common-lisp:defun describe-environment-health
@@ -7341,7 +7122,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeEnvironmentHealth" "2010-12-01"))
-      common-lisp:nil "DescribeEnvironmentHealthResult")))
+      common-lisp:nil "DescribeEnvironmentHealthResult"
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)))))
  (common-lisp:export 'describe-environment-health))
 (common-lisp:progn
  (common-lisp:defun describe-environment-managed-action-history
@@ -7361,7 +7145,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeEnvironmentManagedActionHistory" "2010-12-01"))
-      common-lisp:nil "DescribeEnvironmentManagedActionHistoryResult")))
+      common-lisp:nil "DescribeEnvironmentManagedActionHistoryResult"
+      '(("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)))))
  (common-lisp:export 'describe-environment-managed-action-history))
 (common-lisp:progn
  (common-lisp:defun describe-environment-managed-actions
@@ -7379,7 +7165,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeEnvironmentManagedActions" "2010-12-01"))
-      common-lisp:nil "DescribeEnvironmentManagedActionsResult")))
+      common-lisp:nil "DescribeEnvironmentManagedActionsResult"
+      '(("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)))))
  (common-lisp:export 'describe-environment-managed-actions))
 (common-lisp:progn
  (common-lisp:defun describe-environment-resources
@@ -7397,7 +7185,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeEnvironmentResources" "2010-12-01"))
-      common-lisp:nil "DescribeEnvironmentResourcesResult")))
+      common-lisp:nil "DescribeEnvironmentResourcesResult"
+      '(("InsufficientPrivilegesException"
+         . insufficient-privileges-exception)))))
  (common-lisp:export 'describe-environment-resources))
 (common-lisp:progn
  (common-lisp:defun describe-environments
@@ -7418,7 +7208,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeEnvironments" "2010-12-01"))
-      common-lisp:nil "DescribeEnvironmentsResult")))
+      common-lisp:nil "DescribeEnvironmentsResult" 'common-lisp:nil)))
  (common-lisp:export 'describe-environments))
 (common-lisp:progn
  (common-lisp:defun describe-events
@@ -7440,7 +7230,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeEvents" "2010-12-01"))
-      common-lisp:nil "DescribeEventsResult")))
+      common-lisp:nil "DescribeEventsResult" 'common-lisp:nil)))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
  (common-lisp:defun describe-instances-health
@@ -7460,7 +7250,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeInstancesHealth" "2010-12-01"))
-      common-lisp:nil "DescribeInstancesHealthResult")))
+      common-lisp:nil "DescribeInstancesHealthResult"
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)))))
  (common-lisp:export 'describe-instances-health))
 (common-lisp:progn
  (common-lisp:defun describe-platform-version
@@ -7477,7 +7270,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribePlatformVersion" "2010-12-01"))
-      common-lisp:nil "DescribePlatformVersionResult")))
+      common-lisp:nil "DescribePlatformVersionResult"
+      '(("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)))))
  (common-lisp:export 'describe-platform-version))
 (common-lisp:progn
  (common-lisp:defun list-available-solution-stacks ()
@@ -7487,7 +7283,7 @@
                                 "/" :params
                                 `(("Action" ,@"ListAvailableSolutionStacks")
                                   ("Version" ,@"2010-12-01"))))
-    common-lisp:nil "ListAvailableSolutionStacksResult"))
+    common-lisp:nil "ListAvailableSolutionStacksResult" 'common-lisp:nil))
  (common-lisp:export 'list-available-solution-stacks))
 (common-lisp:progn
  (common-lisp:defun list-platform-versions
@@ -7503,7 +7299,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "ListPlatformVersions" "2010-12-01"))
-      common-lisp:nil "ListPlatformVersionsResult")))
+      common-lisp:nil "ListPlatformVersionsResult"
+      '(("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)))))
  (common-lisp:export 'list-platform-versions))
 (common-lisp:progn
  (common-lisp:defun rebuild-environment
@@ -7520,7 +7319,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "RebuildEnvironment" "2010-12-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InsufficientPrivilegesException"
+         . insufficient-privileges-exception)))))
  (common-lisp:export 'rebuild-environment))
 (common-lisp:progn
  (common-lisp:defun request-environment-info
@@ -7538,7 +7339,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "RequestEnvironmentInfo" "2010-12-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'request-environment-info))
 (common-lisp:progn
  (common-lisp:defun restart-app-server
@@ -7555,7 +7356,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "RestartAppServer" "2010-12-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'restart-app-server))
 (common-lisp:progn
  (common-lisp:defun retrieve-environment-info
@@ -7574,7 +7375,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "RetrieveEnvironmentInfo" "2010-12-01"))
-      common-lisp:nil "RetrieveEnvironmentInfoResult")))
+      common-lisp:nil "RetrieveEnvironmentInfoResult" 'common-lisp:nil)))
  (common-lisp:export 'retrieve-environment-info))
 (common-lisp:progn
  (common-lisp:defun swap-environment-cnames
@@ -7594,7 +7395,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "SwapEnvironmentCNAMEs" "2010-12-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'swap-environment-cnames))
 (common-lisp:progn
  (common-lisp:defun terminate-environment
@@ -7613,7 +7414,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "TerminateEnvironment" "2010-12-01"))
-      common-lisp:nil "TerminateEnvironmentResult")))
+      common-lisp:nil "TerminateEnvironmentResult"
+      '(("InsufficientPrivilegesException"
+         . insufficient-privileges-exception)))))
  (common-lisp:export 'terminate-environment))
 (common-lisp:progn
  (common-lisp:defun update-application
@@ -7629,7 +7432,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateApplication" "2010-12-01"))
-      common-lisp:nil "UpdateApplicationResult")))
+      common-lisp:nil "UpdateApplicationResult" 'common-lisp:nil)))
  (common-lisp:export 'update-application))
 (common-lisp:progn
  (common-lisp:defun update-application-resource-lifecycle
@@ -7648,7 +7451,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateApplicationResourceLifecycle" "2010-12-01"))
-      common-lisp:nil "UpdateApplicationResourceLifecycleResult")))
+      common-lisp:nil "UpdateApplicationResourceLifecycleResult"
+      '(("InsufficientPrivilegesException"
+         . insufficient-privileges-exception)))))
  (common-lisp:export 'update-application-resource-lifecycle))
 (common-lisp:progn
  (common-lisp:defun update-application-version
@@ -7667,7 +7472,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateApplicationVersion" "2010-12-01"))
-      common-lisp:nil "UpdateApplicationVersionResult")))
+      common-lisp:nil "UpdateApplicationVersionResult" 'common-lisp:nil)))
  (common-lisp:export 'update-application-version))
 (common-lisp:progn
  (common-lisp:defun update-configuration-template
@@ -7687,7 +7492,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateConfigurationTemplate" "2010-12-01"))
-      common-lisp:nil "UpdateConfigurationTemplateResult")))
+      common-lisp:nil "UpdateConfigurationTemplateResult"
+      '(("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)))))
  (common-lisp:export 'update-configuration-template))
 (common-lisp:progn
  (common-lisp:defun update-environment
@@ -7709,7 +7516,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateEnvironment" "2010-12-01"))
-      common-lisp:nil "UpdateEnvironmentResult")))
+      common-lisp:nil "UpdateEnvironmentResult"
+      '(("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)))))
  (common-lisp:export 'update-environment))
 (common-lisp:progn
  (common-lisp:defun validate-configuration-settings
@@ -7729,5 +7538,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "ValidateConfigurationSettings" "2010-12-01"))
-      common-lisp:nil "ValidateConfigurationSettingsResult")))
+      common-lisp:nil "ValidateConfigurationSettingsResult"
+      '(("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)))))
  (common-lisp:export 'validate-configuration-settings))

@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/cloudhsmv2/api)
 (common-lisp:progn
  (common-lisp:defclass cloudhsmv2-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "cloudhsmv2"))
  (common-lisp:export 'cloudhsmv2-request))
+(common-lisp:progn
+ (common-lisp:define-condition cloudhsmv2-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'cloudhsmv2-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (backup (:copier common-lisp:nil) (:conc-name "struct-shape-backup-"))
@@ -134,160 +140,45 @@
                         ((aws-sdk/generator/shape::input certificates))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cloud-hsm-access-denied-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cloud-hsm-access-denied-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition cloud-hsm-access-denied-exception
+     (cloudhsmv2-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       cloud-hsm-access-denied-exception-message)))
  (common-lisp:export
   (common-lisp:list 'cloud-hsm-access-denied-exception
-                    'make-cloud-hsm-access-denied-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-hsm-access-denied-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-hsm-access-denied-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-hsm-access-denied-exception))
-   common-lisp:nil))
+                    'cloud-hsm-access-denied-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cloud-hsm-internal-failure-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cloud-hsm-internal-failure-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition cloud-hsm-internal-failure-exception
+     (cloudhsmv2-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       cloud-hsm-internal-failure-exception-message)))
  (common-lisp:export
   (common-lisp:list 'cloud-hsm-internal-failure-exception
-                    'make-cloud-hsm-internal-failure-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-hsm-internal-failure-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-hsm-internal-failure-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-hsm-internal-failure-exception))
-   common-lisp:nil))
+                    'cloud-hsm-internal-failure-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cloud-hsm-invalid-request-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cloud-hsm-invalid-request-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition cloud-hsm-invalid-request-exception
+     (cloudhsmv2-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       cloud-hsm-invalid-request-exception-message)))
  (common-lisp:export
   (common-lisp:list 'cloud-hsm-invalid-request-exception
-                    'make-cloud-hsm-invalid-request-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-hsm-invalid-request-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-hsm-invalid-request-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-hsm-invalid-request-exception))
-   common-lisp:nil))
+                    'cloud-hsm-invalid-request-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cloud-hsm-resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cloud-hsm-resource-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition cloud-hsm-resource-not-found-exception
+     (cloudhsmv2-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       cloud-hsm-resource-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'cloud-hsm-resource-not-found-exception
-                    'make-cloud-hsm-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-hsm-resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-hsm-resource-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-hsm-resource-not-found-exception))
-   common-lisp:nil))
+                    'cloud-hsm-resource-not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cloud-hsm-service-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cloud-hsm-service-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition cloud-hsm-service-exception
+     (cloudhsmv2-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       cloud-hsm-service-exception-message)))
  (common-lisp:export
   (common-lisp:list 'cloud-hsm-service-exception
-                    'make-cloud-hsm-service-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-hsm-service-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-hsm-service-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-hsm-service-exception))
-   common-lisp:nil))
+                    'cloud-hsm-service-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (cluster (:copier common-lisp:nil) (:conc-name "struct-shape-cluster-"))
@@ -1346,7 +1237,16 @@
                                                         "POST" "/"
                                                         "CreateCluster"
                                                         "2017-04-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("CloudHsmInternalFailureException"
+         . cloud-hsm-internal-failure-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
+        ("CloudHsmResourceNotFoundException"
+         . cloud-hsm-resource-not-found-exception)
+        ("CloudHsmInvalidRequestException"
+         . cloud-hsm-invalid-request-exception)
+        ("CloudHsmAccessDeniedException"
+         . cloud-hsm-access-denied-exception)))))
  (common-lisp:export 'create-cluster))
 (common-lisp:progn
  (common-lisp:defun create-hsm
@@ -1364,7 +1264,16 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CreateHsm"
                                                         "2017-04-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("CloudHsmInternalFailureException"
+         . cloud-hsm-internal-failure-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
+        ("CloudHsmInvalidRequestException"
+         . cloud-hsm-invalid-request-exception)
+        ("CloudHsmResourceNotFoundException"
+         . cloud-hsm-resource-not-found-exception)
+        ("CloudHsmAccessDeniedException"
+         . cloud-hsm-access-denied-exception)))))
  (common-lisp:export 'create-hsm))
 (common-lisp:progn
  (common-lisp:defun delete-cluster
@@ -1382,7 +1291,16 @@
                                                         "POST" "/"
                                                         "DeleteCluster"
                                                         "2017-04-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("CloudHsmInternalFailureException"
+         . cloud-hsm-internal-failure-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
+        ("CloudHsmResourceNotFoundException"
+         . cloud-hsm-resource-not-found-exception)
+        ("CloudHsmInvalidRequestException"
+         . cloud-hsm-invalid-request-exception)
+        ("CloudHsmAccessDeniedException"
+         . cloud-hsm-access-denied-exception)))))
  (common-lisp:export 'delete-cluster))
 (common-lisp:progn
  (common-lisp:defun delete-hsm
@@ -1400,7 +1318,16 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteHsm"
                                                         "2017-04-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("CloudHsmInternalFailureException"
+         . cloud-hsm-internal-failure-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
+        ("CloudHsmResourceNotFoundException"
+         . cloud-hsm-resource-not-found-exception)
+        ("CloudHsmInvalidRequestException"
+         . cloud-hsm-invalid-request-exception)
+        ("CloudHsmAccessDeniedException"
+         . cloud-hsm-access-denied-exception)))))
  (common-lisp:export 'delete-hsm))
 (common-lisp:progn
  (common-lisp:defun describe-backups
@@ -1418,7 +1345,16 @@
                                                         "POST" "/"
                                                         "DescribeBackups"
                                                         "2017-04-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("CloudHsmInternalFailureException"
+         . cloud-hsm-internal-failure-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
+        ("CloudHsmResourceNotFoundException"
+         . cloud-hsm-resource-not-found-exception)
+        ("CloudHsmInvalidRequestException"
+         . cloud-hsm-invalid-request-exception)
+        ("CloudHsmAccessDeniedException"
+         . cloud-hsm-access-denied-exception)))))
  (common-lisp:export 'describe-backups))
 (common-lisp:progn
  (common-lisp:defun describe-clusters
@@ -1436,7 +1372,14 @@
                                                         "POST" "/"
                                                         "DescribeClusters"
                                                         "2017-04-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("CloudHsmInternalFailureException"
+         . cloud-hsm-internal-failure-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
+        ("CloudHsmInvalidRequestException"
+         . cloud-hsm-invalid-request-exception)
+        ("CloudHsmAccessDeniedException"
+         . cloud-hsm-access-denied-exception)))))
  (common-lisp:export 'describe-clusters))
 (common-lisp:progn
  (common-lisp:defun initialize-cluster
@@ -1455,7 +1398,16 @@
                                                         "POST" "/"
                                                         "InitializeCluster"
                                                         "2017-04-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("CloudHsmInternalFailureException"
+         . cloud-hsm-internal-failure-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
+        ("CloudHsmResourceNotFoundException"
+         . cloud-hsm-resource-not-found-exception)
+        ("CloudHsmInvalidRequestException"
+         . cloud-hsm-invalid-request-exception)
+        ("CloudHsmAccessDeniedException"
+         . cloud-hsm-access-denied-exception)))))
  (common-lisp:export 'initialize-cluster))
 (common-lisp:progn
  (common-lisp:defun list-tags
@@ -1473,7 +1425,16 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListTags"
                                                         "2017-04-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("CloudHsmInternalFailureException"
+         . cloud-hsm-internal-failure-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
+        ("CloudHsmResourceNotFoundException"
+         . cloud-hsm-resource-not-found-exception)
+        ("CloudHsmInvalidRequestException"
+         . cloud-hsm-invalid-request-exception)
+        ("CloudHsmAccessDeniedException"
+         . cloud-hsm-access-denied-exception)))))
  (common-lisp:export 'list-tags))
 (common-lisp:progn
  (common-lisp:defun tag-resource
@@ -1491,7 +1452,16 @@
                                                         "POST" "/"
                                                         "TagResource"
                                                         "2017-04-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("CloudHsmInternalFailureException"
+         . cloud-hsm-internal-failure-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
+        ("CloudHsmResourceNotFoundException"
+         . cloud-hsm-resource-not-found-exception)
+        ("CloudHsmInvalidRequestException"
+         . cloud-hsm-invalid-request-exception)
+        ("CloudHsmAccessDeniedException"
+         . cloud-hsm-access-denied-exception)))))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
  (common-lisp:defun untag-resource
@@ -1509,5 +1479,14 @@
                                                         "POST" "/"
                                                         "UntagResource"
                                                         "2017-04-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("CloudHsmInternalFailureException"
+         . cloud-hsm-internal-failure-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
+        ("CloudHsmResourceNotFoundException"
+         . cloud-hsm-resource-not-found-exception)
+        ("CloudHsmInvalidRequestException"
+         . cloud-hsm-invalid-request-exception)
+        ("CloudHsmAccessDeniedException"
+         . cloud-hsm-access-denied-exception)))))
  (common-lisp:export 'untag-resource))

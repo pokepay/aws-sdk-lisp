@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/directconnect/api)
 (common-lisp:progn
  (common-lisp:defclass directconnect-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "directconnect"))
  (common-lisp:export 'directconnect-request))
+(common-lisp:progn
+ (common-lisp:define-condition directconnect-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'directconnect-error))
 (common-lisp:deftype asn () 'common-lisp:integer)
 (common-lisp:deftype address-family () 'common-lisp:string)
 (common-lisp:progn
@@ -1867,67 +1873,21 @@
                           describe-virtual-interfaces-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (direct-connect-client-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-direct-connect-client-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition direct-connect-client-exception
+     (directconnect-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       direct-connect-client-exception-message)))
  (common-lisp:export
   (common-lisp:list 'direct-connect-client-exception
-                    'make-direct-connect-client-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          direct-connect-client-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          direct-connect-client-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          direct-connect-client-exception))
-   common-lisp:nil))
+                    'direct-connect-client-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (direct-connect-server-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-direct-connect-server-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition direct-connect-server-exception
+     (directconnect-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       direct-connect-server-exception-message)))
  (common-lisp:export
   (common-lisp:list 'direct-connect-server-exception
-                    'make-direct-connect-server-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          direct-connect-server-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          direct-connect-server-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          direct-connect-server-exception))
-   common-lisp:nil))
+                    'direct-connect-server-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (disassociate-connection-from-lag-request (:copier common-lisp:nil)
@@ -1969,27 +1929,10 @@
                           disassociate-connection-from-lag-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (duplicate-tag-keys-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-duplicate-tag-keys-exception-")))
- (common-lisp:export
-  (common-lisp:list 'duplicate-tag-keys-exception
-                    'make-duplicate-tag-keys-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-tag-keys-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-tag-keys-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-tag-keys-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition duplicate-tag-keys-exception
+     (directconnect-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'duplicate-tag-keys-exception)))
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -2988,26 +2931,10 @@
    common-lisp:nil))
 (common-lisp:deftype tag-value () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-tags-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-tags-exception-")))
- (common-lisp:export
-  (common-lisp:list 'too-many-tags-exception 'make-too-many-tags-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-tags-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-tags-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-tags-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition too-many-tags-exception
+     (directconnect-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'too-many-tags-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (untag-resource-request (:copier common-lisp:nil)
@@ -3405,7 +3332,9 @@
                                                         "POST" "/"
                                                         "AllocateConnectionOnInterconnect"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'allocate-connection-on-interconnect))
 (common-lisp:progn
  (common-lisp:defun allocate-hosted-connection
@@ -3427,7 +3356,9 @@
                                                         "POST" "/"
                                                         "AllocateHostedConnection"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'allocate-hosted-connection))
 (common-lisp:progn
  (common-lisp:defun allocate-private-virtual-interface
@@ -3449,7 +3380,9 @@
                                                         "POST" "/"
                                                         "AllocatePrivateVirtualInterface"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'allocate-private-virtual-interface))
 (common-lisp:progn
  (common-lisp:defun allocate-public-virtual-interface
@@ -3471,7 +3404,9 @@
                                                         "POST" "/"
                                                         "AllocatePublicVirtualInterface"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'allocate-public-virtual-interface))
 (common-lisp:progn
  (common-lisp:defun associate-connection-with-lag
@@ -3490,7 +3425,9 @@
                                                         "POST" "/"
                                                         "AssociateConnectionWithLag"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'associate-connection-with-lag))
 (common-lisp:progn
  (common-lisp:defun associate-hosted-connection
@@ -3510,7 +3447,9 @@
                                                         "POST" "/"
                                                         "AssociateHostedConnection"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'associate-hosted-connection))
 (common-lisp:progn
  (common-lisp:defun associate-virtual-interface
@@ -3530,7 +3469,9 @@
                                                         "POST" "/"
                                                         "AssociateVirtualInterface"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'associate-virtual-interface))
 (common-lisp:progn
  (common-lisp:defun confirm-connection
@@ -3548,7 +3489,9 @@
                                                         "POST" "/"
                                                         "ConfirmConnection"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'confirm-connection))
 (common-lisp:progn
  (common-lisp:defun confirm-private-virtual-interface
@@ -3568,7 +3511,9 @@
                                                         "POST" "/"
                                                         "ConfirmPrivateVirtualInterface"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'confirm-private-virtual-interface))
 (common-lisp:progn
  (common-lisp:defun confirm-public-virtual-interface
@@ -3587,7 +3532,9 @@
                                                         "POST" "/"
                                                         "ConfirmPublicVirtualInterface"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'confirm-public-virtual-interface))
 (common-lisp:progn
  (common-lisp:defun create-bgppeer
@@ -3606,7 +3553,9 @@
                                                         "POST" "/"
                                                         "CreateBGPPeer"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'create-bgppeer))
 (common-lisp:progn
  (common-lisp:defun create-connection
@@ -3626,7 +3575,9 @@
                                                         "POST" "/"
                                                         "CreateConnection"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'create-connection))
 (common-lisp:progn
  (common-lisp:defun create-interconnect
@@ -3646,7 +3597,9 @@
                                                         "POST" "/"
                                                         "CreateInterconnect"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'create-interconnect))
 (common-lisp:progn
  (common-lisp:defun create-lag
@@ -3666,7 +3619,9 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CreateLag"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'create-lag))
 (common-lisp:progn
  (common-lisp:defun create-private-virtual-interface
@@ -3687,7 +3642,9 @@
                                                         "POST" "/"
                                                         "CreatePrivateVirtualInterface"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'create-private-virtual-interface))
 (common-lisp:progn
  (common-lisp:defun create-public-virtual-interface
@@ -3708,7 +3665,9 @@
                                                         "POST" "/"
                                                         "CreatePublicVirtualInterface"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'create-public-virtual-interface))
 (common-lisp:progn
  (common-lisp:defun delete-bgppeer
@@ -3728,7 +3687,9 @@
                                                         "POST" "/"
                                                         "DeleteBGPPeer"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'delete-bgppeer))
 (common-lisp:progn
  (common-lisp:defun delete-connection
@@ -3746,7 +3707,9 @@
                                                         "POST" "/"
                                                         "DeleteConnection"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'delete-connection))
 (common-lisp:progn
  (common-lisp:defun delete-interconnect
@@ -3764,7 +3727,9 @@
                                                         "POST" "/"
                                                         "DeleteInterconnect"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'delete-interconnect))
 (common-lisp:progn
  (common-lisp:defun delete-lag
@@ -3781,7 +3746,9 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteLag"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'delete-lag))
 (common-lisp:progn
  (common-lisp:defun delete-virtual-interface
@@ -3799,7 +3766,9 @@
                                                         "POST" "/"
                                                         "DeleteVirtualInterface"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'delete-virtual-interface))
 (common-lisp:progn
  (common-lisp:defun describe-connection-loa
@@ -3819,7 +3788,9 @@
                                                         "POST" "/"
                                                         "DescribeConnectionLoa"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'describe-connection-loa))
 (common-lisp:progn
  (common-lisp:defun describe-connections
@@ -3837,7 +3808,9 @@
                                                         "POST" "/"
                                                         "DescribeConnections"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'describe-connections))
 (common-lisp:progn
  (common-lisp:defun describe-connections-on-interconnect
@@ -3856,7 +3829,9 @@
                                                         "POST" "/"
                                                         "DescribeConnectionsOnInterconnect"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'describe-connections-on-interconnect))
 (common-lisp:progn
  (common-lisp:defun describe-hosted-connections
@@ -3875,7 +3850,9 @@
                                                         "POST" "/"
                                                         "DescribeHostedConnections"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'describe-hosted-connections))
 (common-lisp:progn
  (common-lisp:defun describe-interconnect-loa
@@ -3896,7 +3873,9 @@
                                                         "POST" "/"
                                                         "DescribeInterconnectLoa"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'describe-interconnect-loa))
 (common-lisp:progn
  (common-lisp:defun describe-interconnects
@@ -3914,7 +3893,9 @@
                                                         "POST" "/"
                                                         "DescribeInterconnects"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'describe-interconnects))
 (common-lisp:progn
  (common-lisp:defun describe-lags
@@ -3932,7 +3913,9 @@
                                                         "POST" "/"
                                                         "DescribeLags"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'describe-lags))
 (common-lisp:progn
  (common-lisp:defun describe-loa
@@ -3952,7 +3935,9 @@
                                                         "POST" "/"
                                                         "DescribeLoa"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'describe-loa))
 (common-lisp:progn
  (common-lisp:defun describe-locations ()
@@ -3962,7 +3947,9 @@
                                 :params
                                 `(("Action" ,@"DescribeLocations")
                                   ("Version" ,@"2012-10-25"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("DirectConnectServerException" . direct-connect-server-exception)
+      ("DirectConnectClientException" . direct-connect-client-exception))))
  (common-lisp:export 'describe-locations))
 (common-lisp:progn
  (common-lisp:defun describe-tags
@@ -3980,7 +3967,9 @@
                                                         "POST" "/"
                                                         "DescribeTags"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
  (common-lisp:defun describe-virtual-gateways ()
@@ -3990,7 +3979,9 @@
                                 :params
                                 `(("Action" ,@"DescribeVirtualGateways")
                                   ("Version" ,@"2012-10-25"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("DirectConnectServerException" . direct-connect-server-exception)
+      ("DirectConnectClientException" . direct-connect-client-exception))))
  (common-lisp:export 'describe-virtual-gateways))
 (common-lisp:progn
  (common-lisp:defun describe-virtual-interfaces
@@ -4010,7 +4001,9 @@
                                                         "POST" "/"
                                                         "DescribeVirtualInterfaces"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'describe-virtual-interfaces))
 (common-lisp:progn
  (common-lisp:defun disassociate-connection-from-lag
@@ -4029,7 +4022,9 @@
                                                         "POST" "/"
                                                         "DisassociateConnectionFromLag"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'disassociate-connection-from-lag))
 (common-lisp:progn
  (common-lisp:defun tag-resource
@@ -4047,7 +4042,11 @@
                                                         "POST" "/"
                                                         "TagResource"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
  (common-lisp:defun untag-resource
@@ -4065,7 +4064,9 @@
                                                         "POST" "/"
                                                         "UntagResource"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
  (common-lisp:defun update-lag
@@ -4082,5 +4083,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "UpdateLag"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectConnectServerException" . direct-connect-server-exception)
+        ("DirectConnectClientException" . direct-connect-client-exception)))))
  (common-lisp:export 'update-lag))

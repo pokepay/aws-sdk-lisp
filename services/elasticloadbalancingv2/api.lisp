@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/elasticloadbalancingv2/api)
 (common-lisp:progn
  (common-lisp:defclass elasticloadbalancingv2-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "elasticloadbalancingv2"))
  (common-lisp:export 'elasticloadbalancingv2-request))
+(common-lisp:progn
+ (common-lisp:define-condition elasticloadbalancingv2-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'elasticloadbalancingv2-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (action (:copier common-lisp:nil) (:conc-name "struct-shape-action-"))
@@ -173,27 +179,10 @@
                            (trivial-types:proper-list certificate))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (certificate-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-certificate-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'certificate-not-found-exception
-                    'make-certificate-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          certificate-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          certificate-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          certificate-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition certificate-not-found-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'certificate-not-found-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (cipher (:copier common-lisp:nil) (:conc-name "struct-shape-cipher-"))
@@ -1742,249 +1731,67 @@
    common-lisp:nil))
 (common-lisp:deftype description () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (duplicate-listener-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-duplicate-listener-exception-")))
- (common-lisp:export
-  (common-lisp:list 'duplicate-listener-exception
-                    'make-duplicate-listener-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-listener-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-listener-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-listener-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition duplicate-listener-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'duplicate-listener-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (duplicate-load-balancer-name-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-duplicate-load-balancer-name-exception-")))
+ (common-lisp:define-condition duplicate-load-balancer-name-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'duplicate-load-balancer-name-exception
-                    'make-duplicate-load-balancer-name-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-load-balancer-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-load-balancer-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-load-balancer-name-exception))
-   common-lisp:nil))
+  (common-lisp:list 'duplicate-load-balancer-name-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (duplicate-tag-keys-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-duplicate-tag-keys-exception-")))
- (common-lisp:export
-  (common-lisp:list 'duplicate-tag-keys-exception
-                    'make-duplicate-tag-keys-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-tag-keys-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-tag-keys-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-tag-keys-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition duplicate-tag-keys-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'duplicate-tag-keys-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (duplicate-target-group-name-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-duplicate-target-group-name-exception-")))
- (common-lisp:export
-  (common-lisp:list 'duplicate-target-group-name-exception
-                    'make-duplicate-target-group-name-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-target-group-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-target-group-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-target-group-name-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition duplicate-target-group-name-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'duplicate-target-group-name-exception)))
 (common-lisp:deftype health-check-interval-seconds () 'common-lisp:integer)
 (common-lisp:deftype health-check-port () 'common-lisp:string)
 (common-lisp:deftype health-check-threshold-count () 'common-lisp:integer)
 (common-lisp:deftype health-check-timeout-seconds () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (health-unavailable-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-health-unavailable-exception-")))
- (common-lisp:export
-  (common-lisp:list 'health-unavailable-exception
-                    'make-health-unavailable-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          health-unavailable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          health-unavailable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          health-unavailable-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition health-unavailable-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'health-unavailable-exception)))
 (common-lisp:deftype http-code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (incompatible-protocols-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-incompatible-protocols-exception-")))
- (common-lisp:export
-  (common-lisp:list 'incompatible-protocols-exception
-                    'make-incompatible-protocols-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          incompatible-protocols-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          incompatible-protocols-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          incompatible-protocols-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition incompatible-protocols-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'incompatible-protocols-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-configuration-request-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-configuration-request-exception-")))
+ (common-lisp:define-condition invalid-configuration-request-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-configuration-request-exception
-                    'make-invalid-configuration-request-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-configuration-request-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-configuration-request-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-configuration-request-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-configuration-request-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-scheme-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-scheme-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-scheme-exception 'make-invalid-scheme-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-scheme-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-scheme-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-scheme-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-scheme-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-scheme-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-security-group-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-security-group-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-security-group-exception
-                    'make-invalid-security-group-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-security-group-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-security-group-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-security-group-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-security-group-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-security-group-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-subnet-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-subnet-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-subnet-exception 'make-invalid-subnet-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-subnet-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-subnet-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-subnet-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-subnet-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-subnet-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-target-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-target-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-target-exception 'make-invalid-target-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-target-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-target-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-target-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-target-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-target-exception)))
 (common-lisp:deftype ip-address-type () 'common-lisp:string)
 (common-lisp:deftype is-default () 'common-lisp:boolean)
 (common-lisp:progn
@@ -2116,27 +1923,10 @@
                            (trivial-types:proper-list listener-arn))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (listener-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-listener-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'listener-not-found-exception
-                    'make-listener-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          listener-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          listener-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          listener-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition listener-not-found-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'listener-not-found-exception)))
 (common-lisp:progn
  (common-lisp:deftype listeners () '(trivial-types:proper-list listener))
  (common-lisp:defun |make-listeners|
@@ -2333,27 +2123,10 @@
                            (trivial-types:proper-list load-balancer-name))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (load-balancer-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-load-balancer-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'load-balancer-not-found-exception
-                    'make-load-balancer-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          load-balancer-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          load-balancer-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          load-balancer-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition load-balancer-not-found-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'load-balancer-not-found-exception)))
 (common-lisp:deftype load-balancer-scheme-enum () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -2872,52 +2645,18 @@
    common-lisp:nil))
 (common-lisp:deftype name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (operation-not-permitted-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-operation-not-permitted-exception-")))
- (common-lisp:export
-  (common-lisp:list 'operation-not-permitted-exception
-                    'make-operation-not-permitted-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-not-permitted-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-not-permitted-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-not-permitted-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition operation-not-permitted-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'operation-not-permitted-exception)))
 (common-lisp:deftype page-size () 'common-lisp:integer)
 (common-lisp:deftype path () 'common-lisp:string)
 (common-lisp:deftype port () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (priority-in-use-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-priority-in-use-exception-")))
- (common-lisp:export
-  (common-lisp:list 'priority-in-use-exception
-                    'make-priority-in-use-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          priority-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          priority-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          priority-in-use-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition priority-in-use-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'priority-in-use-exception)))
 (common-lisp:deftype protocol-enum () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -3037,27 +2776,10 @@
                            (trivial-types:proper-list resource-arn))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-in-use-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-in-use-exception-")))
- (common-lisp:export
-  (common-lisp:list 'resource-in-use-exception
-                    'make-resource-in-use-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition resource-in-use-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-in-use-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (rule (:copier common-lisp:nil) (:conc-name "struct-shape-rule-"))
@@ -3162,26 +2884,10 @@
                            (trivial-types:proper-list rule-condition))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (rule-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-rule-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'rule-not-found-exception 'make-rule-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          rule-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          rule-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          rule-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition rule-not-found-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'rule-not-found-exception)))
 (common-lisp:deftype rule-priority () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:deftype rule-priority-list ()
@@ -3231,27 +2937,10 @@
                            (trivial-types:proper-list rule))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (sslpolicy-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-sslpolicy-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'sslpolicy-not-found-exception
-                    'make-sslpolicy-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          sslpolicy-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          sslpolicy-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          sslpolicy-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition sslpolicy-not-found-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'sslpolicy-not-found-exception)))
 (common-lisp:deftype security-group-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype security-groups ()
@@ -3591,27 +3280,10 @@
 (common-lisp:deftype string-value () 'common-lisp:string)
 (common-lisp:deftype subnet-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (subnet-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-subnet-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'subnet-not-found-exception
-                    'make-subnet-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition subnet-not-found-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'subnet-not-found-exception)))
 (common-lisp:progn
  (common-lisp:deftype subnets () '(trivial-types:proper-list subnet-id))
  (common-lisp:defun |make-subnets|
@@ -3896,27 +3568,11 @@
                            (trivial-types:proper-list target-group-arn))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (target-group-association-limit-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-target-group-association-limit-exception-")))
+ (common-lisp:define-condition target-group-association-limit-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'target-group-association-limit-exception
-                    'make-target-group-association-limit-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          target-group-association-limit-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          target-group-association-limit-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          target-group-association-limit-exception))
-   common-lisp:nil))
+  (common-lisp:list 'target-group-association-limit-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (target-group-attribute (:copier common-lisp:nil)
@@ -3976,27 +3632,10 @@
                            (trivial-types:proper-list target-group-name))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (target-group-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-target-group-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'target-group-not-found-exception
-                    'make-target-group-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          target-group-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          target-group-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          target-group-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition target-group-not-found-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'target-group-not-found-exception)))
 (common-lisp:progn
  (common-lisp:deftype target-groups ()
    '(trivial-types:proper-list target-group))
@@ -4108,202 +3747,51 @@
 (common-lisp:deftype target-health-state-enum () 'common-lisp:string)
 (common-lisp:deftype target-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-certificates-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-certificates-exception-")))
- (common-lisp:export
-  (common-lisp:list 'too-many-certificates-exception
-                    'make-too-many-certificates-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-certificates-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-certificates-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-certificates-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition too-many-certificates-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'too-many-certificates-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-listeners-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-listeners-exception-")))
- (common-lisp:export
-  (common-lisp:list 'too-many-listeners-exception
-                    'make-too-many-listeners-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-listeners-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-listeners-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-listeners-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition too-many-listeners-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'too-many-listeners-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-load-balancers-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-load-balancers-exception-")))
- (common-lisp:export
-  (common-lisp:list 'too-many-load-balancers-exception
-                    'make-too-many-load-balancers-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-load-balancers-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-load-balancers-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-load-balancers-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition too-many-load-balancers-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'too-many-load-balancers-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-registrations-for-target-id-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-too-many-registrations-for-target-id-exception-")))
+ (common-lisp:define-condition too-many-registrations-for-target-id-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'too-many-registrations-for-target-id-exception
-                    'make-too-many-registrations-for-target-id-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-registrations-for-target-id-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-registrations-for-target-id-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-registrations-for-target-id-exception))
-   common-lisp:nil))
+  (common-lisp:list 'too-many-registrations-for-target-id-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-rules-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-rules-exception-")))
- (common-lisp:export
-  (common-lisp:list 'too-many-rules-exception 'make-too-many-rules-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-rules-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-rules-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-rules-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition too-many-rules-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'too-many-rules-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-tags-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-tags-exception-")))
- (common-lisp:export
-  (common-lisp:list 'too-many-tags-exception 'make-too-many-tags-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-tags-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-tags-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-tags-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition too-many-tags-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'too-many-tags-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-target-groups-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-target-groups-exception-")))
- (common-lisp:export
-  (common-lisp:list 'too-many-target-groups-exception
-                    'make-too-many-target-groups-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-target-groups-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-target-groups-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-target-groups-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition too-many-target-groups-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'too-many-target-groups-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-targets-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-targets-exception-")))
- (common-lisp:export
-  (common-lisp:list 'too-many-targets-exception
-                    'make-too-many-targets-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-targets-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-targets-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-targets-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition too-many-targets-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'too-many-targets-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unsupported-protocol-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unsupported-protocol-exception-")))
- (common-lisp:export
-  (common-lisp:list 'unsupported-protocol-exception
-                    'make-unsupported-protocol-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-protocol-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-protocol-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-protocol-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition unsupported-protocol-exception
+     (elasticloadbalancingv2-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'unsupported-protocol-exception)))
 (common-lisp:deftype vpc-id () 'common-lisp:string)
 (common-lisp:deftype zone-name () 'common-lisp:string)
 (common-lisp:progn
@@ -4320,7 +3808,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "AddTags" "2015-12-01"))
-      common-lisp:nil "AddTagsResult")))
+      common-lisp:nil "AddTagsResult"
+      '(("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)))))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
  (common-lisp:defun create-listener
@@ -4339,7 +3831,22 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "CreateListener" "2015-12-01"))
-      common-lisp:nil "CreateListenerResult")))
+      common-lisp:nil "CreateListenerResult"
+      '(("DuplicateListenerException" . duplicate-listener-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("CertificateNotFoundException" . certificate-not-found-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)))))
  (common-lisp:export 'create-listener))
 (common-lisp:progn
  (common-lisp:defun create-load-balancer
@@ -4358,7 +3865,18 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "CreateLoadBalancer" "2015-12-01"))
-      common-lisp:nil "CreateLoadBalancerResult")))
+      common-lisp:nil "CreateLoadBalancerResult"
+      '(("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)))))
  (common-lisp:export 'create-load-balancer))
 (common-lisp:progn
  (common-lisp:defun create-rule
@@ -4375,7 +3893,18 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "CreateRule" "2015-12-01"))
-      common-lisp:nil "CreateRuleResult")))
+      common-lisp:nil "CreateRuleResult"
+      '(("PriorityInUseException" . priority-in-use-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)))))
  (common-lisp:export 'create-rule))
 (common-lisp:progn
  (common-lisp:defun create-target-group
@@ -4398,7 +3927,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "CreateTargetGroup" "2015-12-01"))
-      common-lisp:nil "CreateTargetGroupResult")))
+      common-lisp:nil "CreateTargetGroupResult"
+      '(("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)))))
  (common-lisp:export 'create-target-group))
 (common-lisp:progn
  (common-lisp:defun delete-listener
@@ -4414,7 +3946,8 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DeleteListener" "2015-12-01"))
-      common-lisp:nil "DeleteListenerResult")))
+      common-lisp:nil "DeleteListenerResult"
+      '(("ListenerNotFoundException" . listener-not-found-exception)))))
  (common-lisp:export 'delete-listener))
 (common-lisp:progn
  (common-lisp:defun delete-load-balancer
@@ -4430,7 +3963,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DeleteLoadBalancer" "2015-12-01"))
-      common-lisp:nil "DeleteLoadBalancerResult")))
+      common-lisp:nil "DeleteLoadBalancerResult"
+      '(("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException"
+         . operation-not-permitted-exception)))))
  (common-lisp:export 'delete-load-balancer))
 (common-lisp:progn
  (common-lisp:defun delete-rule
@@ -4446,7 +3982,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DeleteRule" "2015-12-01"))
-      common-lisp:nil "DeleteRuleResult")))
+      common-lisp:nil "DeleteRuleResult"
+      '(("RuleNotFoundException" . rule-not-found-exception)
+        ("OperationNotPermittedException"
+         . operation-not-permitted-exception)))))
  (common-lisp:export 'delete-rule))
 (common-lisp:progn
  (common-lisp:defun delete-target-group
@@ -4462,7 +4001,8 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DeleteTargetGroup" "2015-12-01"))
-      common-lisp:nil "DeleteTargetGroupResult")))
+      common-lisp:nil "DeleteTargetGroupResult"
+      '(("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'delete-target-group))
 (common-lisp:progn
  (common-lisp:defun deregister-targets
@@ -4478,7 +4018,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DeregisterTargets" "2015-12-01"))
-      common-lisp:nil "DeregisterTargetsResult")))
+      common-lisp:nil "DeregisterTargetsResult"
+      '(("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("InvalidTargetException" . invalid-target-exception)))))
  (common-lisp:export 'deregister-targets))
 (common-lisp:progn
  (common-lisp:defun describe-account-limits
@@ -4494,7 +4036,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeAccountLimits" "2015-12-01"))
-      common-lisp:nil "DescribeAccountLimitsResult")))
+      common-lisp:nil "DescribeAccountLimitsResult" 'common-lisp:nil)))
  (common-lisp:export 'describe-account-limits))
 (common-lisp:progn
  (common-lisp:defun describe-listeners
@@ -4512,7 +4054,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeListeners" "2015-12-01"))
-      common-lisp:nil "DescribeListenersResult")))
+      common-lisp:nil "DescribeListenersResult"
+      '(("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException"
+         . load-balancer-not-found-exception)))))
  (common-lisp:export 'describe-listeners))
 (common-lisp:progn
  (common-lisp:defun describe-load-balancer-attributes
@@ -4529,7 +4074,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeLoadBalancerAttributes" "2015-12-01"))
-      common-lisp:nil "DescribeLoadBalancerAttributesResult")))
+      common-lisp:nil "DescribeLoadBalancerAttributesResult"
+      '(("LoadBalancerNotFoundException"
+         . load-balancer-not-found-exception)))))
  (common-lisp:export 'describe-load-balancer-attributes))
 (common-lisp:progn
  (common-lisp:defun describe-load-balancers
@@ -4547,7 +4094,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeLoadBalancers" "2015-12-01"))
-      common-lisp:nil "DescribeLoadBalancersResult")))
+      common-lisp:nil "DescribeLoadBalancersResult"
+      '(("LoadBalancerNotFoundException"
+         . load-balancer-not-found-exception)))))
  (common-lisp:export 'describe-load-balancers))
 (common-lisp:progn
  (common-lisp:defun describe-rules
@@ -4564,7 +4113,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeRules" "2015-12-01"))
-      common-lisp:nil "DescribeRulesResult")))
+      common-lisp:nil "DescribeRulesResult"
+      '(("ListenerNotFoundException" . listener-not-found-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)))))
  (common-lisp:export 'describe-rules))
 (common-lisp:progn
  (common-lisp:defun describe-sslpolicies
@@ -4580,7 +4131,8 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeSSLPolicies" "2015-12-01"))
-      common-lisp:nil "DescribeSSLPoliciesResult")))
+      common-lisp:nil "DescribeSSLPoliciesResult"
+      '(("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)))))
  (common-lisp:export 'describe-sslpolicies))
 (common-lisp:progn
  (common-lisp:defun describe-tags
@@ -4596,7 +4148,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeTags" "2015-12-01"))
-      common-lisp:nil "DescribeTagsResult")))
+      common-lisp:nil "DescribeTagsResult"
+      '(("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)))))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
  (common-lisp:defun describe-target-group-attributes
@@ -4613,7 +4169,8 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeTargetGroupAttributes" "2015-12-01"))
-      common-lisp:nil "DescribeTargetGroupAttributesResult")))
+      common-lisp:nil "DescribeTargetGroupAttributesResult"
+      '(("TargetGroupNotFoundException" . target-group-not-found-exception)))))
  (common-lisp:export 'describe-target-group-attributes))
 (common-lisp:progn
  (common-lisp:defun describe-target-groups
@@ -4632,7 +4189,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeTargetGroups" "2015-12-01"))
-      common-lisp:nil "DescribeTargetGroupsResult")))
+      common-lisp:nil "DescribeTargetGroupsResult"
+      '(("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)))))
  (common-lisp:export 'describe-target-groups))
 (common-lisp:progn
  (common-lisp:defun describe-target-health
@@ -4648,7 +4207,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeTargetHealth" "2015-12-01"))
-      common-lisp:nil "DescribeTargetHealthResult")))
+      common-lisp:nil "DescribeTargetHealthResult"
+      '(("InvalidTargetException" . invalid-target-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)))))
  (common-lisp:export 'describe-target-health))
 (common-lisp:progn
  (common-lisp:defun modify-listener
@@ -4667,7 +4229,22 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "ModifyListener" "2015-12-01"))
-      common-lisp:nil "ModifyListenerResult")))
+      common-lisp:nil "ModifyListenerResult"
+      '(("DuplicateListenerException" . duplicate-listener-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("CertificateNotFoundException" . certificate-not-found-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)))))
  (common-lisp:export 'modify-listener))
 (common-lisp:progn
  (common-lisp:defun modify-load-balancer-attributes
@@ -4684,7 +4261,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "ModifyLoadBalancerAttributes" "2015-12-01"))
-      common-lisp:nil "ModifyLoadBalancerAttributesResult")))
+      common-lisp:nil "ModifyLoadBalancerAttributesResult"
+      '(("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)))))
  (common-lisp:export 'modify-load-balancer-attributes))
 (common-lisp:progn
  (common-lisp:defun modify-rule
@@ -4700,7 +4280,15 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "ModifyRule" "2015-12-01"))
-      common-lisp:nil "ModifyRuleResult")))
+      common-lisp:nil "ModifyRuleResult"
+      '(("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)))))
  (common-lisp:export 'modify-rule))
 (common-lisp:progn
  (common-lisp:defun modify-target-group
@@ -4723,7 +4311,8 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "ModifyTargetGroup" "2015-12-01"))
-      common-lisp:nil "ModifyTargetGroupResult")))
+      common-lisp:nil "ModifyTargetGroupResult"
+      '(("TargetGroupNotFoundException" . target-group-not-found-exception)))))
  (common-lisp:export 'modify-target-group))
 (common-lisp:progn
  (common-lisp:defun modify-target-group-attributes
@@ -4740,7 +4329,8 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "ModifyTargetGroupAttributes" "2015-12-01"))
-      common-lisp:nil "ModifyTargetGroupAttributesResult")))
+      common-lisp:nil "ModifyTargetGroupAttributesResult"
+      '(("TargetGroupNotFoundException" . target-group-not-found-exception)))))
  (common-lisp:export 'modify-target-group-attributes))
 (common-lisp:progn
  (common-lisp:defun register-targets
@@ -4756,7 +4346,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "RegisterTargets" "2015-12-01"))
-      common-lisp:nil "RegisterTargetsResult")))
+      common-lisp:nil "RegisterTargetsResult"
+      '(("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)))))
  (common-lisp:export 'register-targets))
 (common-lisp:progn
  (common-lisp:defun remove-tags
@@ -4772,7 +4367,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "RemoveTags" "2015-12-01"))
-      common-lisp:nil "RemoveTagsResult")))
+      common-lisp:nil "RemoveTagsResult"
+      '(("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("TooManyTagsException" . too-many-tags-exception)))))
  (common-lisp:export 'remove-tags))
 (common-lisp:progn
  (common-lisp:defun set-ip-address-type
@@ -4789,7 +4389,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "SetIpAddressType" "2015-12-01"))
-      common-lisp:nil "SetIpAddressTypeResult")))
+      common-lisp:nil "SetIpAddressTypeResult"
+      '(("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)))))
  (common-lisp:export 'set-ip-address-type))
 (common-lisp:progn
  (common-lisp:defun set-rule-priorities
@@ -4805,7 +4409,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "SetRulePriorities" "2015-12-01"))
-      common-lisp:nil "SetRulePrioritiesResult")))
+      common-lisp:nil "SetRulePrioritiesResult"
+      '(("RuleNotFoundException" . rule-not-found-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("OperationNotPermittedException"
+         . operation-not-permitted-exception)))))
  (common-lisp:export 'set-rule-priorities))
 (common-lisp:progn
  (common-lisp:defun set-security-groups
@@ -4822,7 +4430,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "SetSecurityGroups" "2015-12-01"))
-      common-lisp:nil "SetSecurityGroupsResult")))
+      common-lisp:nil "SetSecurityGroupsResult"
+      '(("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSecurityGroupException"
+         . invalid-security-group-exception)))))
  (common-lisp:export 'set-security-groups))
 (common-lisp:progn
  (common-lisp:defun set-subnets
@@ -4838,5 +4451,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "SetSubnets" "2015-12-01"))
-      common-lisp:nil "SetSubnetsResult")))
+      common-lisp:nil "SetSubnetsResult"
+      '(("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)))))
  (common-lisp:export 'set-subnets))

@@ -6,7 +6,8 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/rekognition/api)
 (common-lisp:progn
  (common-lisp:defclass rekognition-request (aws-sdk/request:request)
@@ -14,26 +15,15 @@
                        (:default-initargs :service "rekognition"))
  (common-lisp:export 'rekognition-request))
 (common-lisp:progn
- (common-lisp:defstruct
-     (access-denied-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-access-denied-exception-")))
- (common-lisp:export
-  (common-lisp:list 'access-denied-exception 'make-access-denied-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition rekognition-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'rekognition-error))
+(common-lisp:progn
+ (common-lisp:define-condition access-denied-exception
+     (rekognition-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'access-denied-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (age-range (:copier common-lisp:nil)
@@ -1481,27 +1471,10 @@
                         ((aws-sdk/generator/shape::input image-quality))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (image-too-large-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-image-too-large-exception-")))
- (common-lisp:export
-  (common-lisp:list 'image-too-large-exception
-                    'make-image-too-large-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          image-too-large-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          image-too-large-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          image-too-large-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition image-too-large-exception
+     (rekognition-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'image-too-large-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (index-faces-request (:copier common-lisp:nil)
@@ -1589,114 +1562,30 @@
                         ((aws-sdk/generator/shape::input index-faces-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-server-error (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-server-error-")))
- (common-lisp:export
-  (common-lisp:list 'internal-server-error 'make-internal-server-error))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   common-lisp:nil))
+ (common-lisp:define-condition internal-server-error
+     (rekognition-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'internal-server-error)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-image-format-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-image-format-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-image-format-exception
-                    'make-invalid-image-format-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-image-format-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-image-format-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-image-format-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-image-format-exception
+     (rekognition-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-image-format-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-pagination-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-pagination-token-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-pagination-token-exception
-                    'make-invalid-pagination-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-pagination-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-pagination-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-pagination-token-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-pagination-token-exception
+     (rekognition-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-pagination-token-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-parameter-exception
-                    'make-invalid-parameter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-parameter-exception
+     (rekognition-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-parameter-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-s3object-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-s3object-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-s3object-exception
-                    'make-invalid-s3object-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-s3object-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-s3object-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-s3object-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-s3object-exception
+     (rekognition-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-s3object-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (label (:copier common-lisp:nil) (:conc-name "struct-shape-label-"))
@@ -2083,27 +1972,11 @@
                         ((aws-sdk/generator/shape::input pose))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (provisioned-throughput-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-provisioned-throughput-exceeded-exception-")))
+ (common-lisp:define-condition provisioned-throughput-exceeded-exception
+     (rekognition-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'provisioned-throughput-exceeded-exception
-                    'make-provisioned-throughput-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          provisioned-throughput-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          provisioned-throughput-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          provisioned-throughput-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'provisioned-throughput-exceeded-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (recognize-celebrities-request (:copier common-lisp:nil)
@@ -2187,49 +2060,15 @@
    common-lisp:nil))
 (common-lisp:deftype rekognition-unique-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-already-exists-exception-")))
- (common-lisp:export
-  (common-lisp:list 'resource-already-exists-exception
-                    'make-resource-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition resource-already-exists-exception
+     (rekognition-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-already-exists-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition resource-not-found-exception
+     (rekognition-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-not-found-exception)))
 (common-lisp:deftype s3bucket () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -2535,20 +2374,10 @@
                         ((aws-sdk/generator/shape::input sunglasses))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (throttling-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-throttling-exception-")))
- (common-lisp:export
-  (common-lisp:list 'throttling-exception 'make-throttling-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input throttling-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input throttling-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input throttling-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition throttling-exception
+     (rekognition-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'throttling-exception)))
 (common-lisp:deftype uinteger () 'common-lisp:integer)
 (common-lisp:deftype url () 'common-lisp:string)
 (common-lisp:progn
@@ -2576,7 +2405,16 @@
                                                         "POST" "/"
                                                         "CompareFaces"
                                                         "2016-06-27"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidS3ObjectException" . invalid-s3object-exception)
+        ("ImageTooLargeException" . image-too-large-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ThrottlingException" . throttling-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)))))
  (common-lisp:export 'compare-faces))
 (common-lisp:progn
  (common-lisp:defun create-collection
@@ -2594,7 +2432,15 @@
                                                         "POST" "/"
                                                         "CreateCollection"
                                                         "2016-06-27"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ThrottlingException" . throttling-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceAlreadyExistsException"
+         . resource-already-exists-exception)))))
  (common-lisp:export 'create-collection))
 (common-lisp:progn
  (common-lisp:defun delete-collection
@@ -2612,7 +2458,14 @@
                                                         "POST" "/"
                                                         "DeleteCollection"
                                                         "2016-06-27"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ThrottlingException" . throttling-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'delete-collection))
 (common-lisp:progn
  (common-lisp:defun delete-faces
@@ -2630,7 +2483,14 @@
                                                         "POST" "/"
                                                         "DeleteFaces"
                                                         "2016-06-27"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ThrottlingException" . throttling-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'delete-faces))
 (common-lisp:progn
  (common-lisp:defun detect-faces
@@ -2648,7 +2508,16 @@
                                                         "POST" "/"
                                                         "DetectFaces"
                                                         "2016-06-27"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidS3ObjectException" . invalid-s3object-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ImageTooLargeException" . image-too-large-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ThrottlingException" . throttling-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)))))
  (common-lisp:export 'detect-faces))
 (common-lisp:progn
  (common-lisp:defun detect-labels
@@ -2667,7 +2536,16 @@
                                                         "POST" "/"
                                                         "DetectLabels"
                                                         "2016-06-27"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidS3ObjectException" . invalid-s3object-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ImageTooLargeException" . image-too-large-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ThrottlingException" . throttling-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)))))
  (common-lisp:export 'detect-labels))
 (common-lisp:progn
  (common-lisp:defun detect-moderation-labels
@@ -2685,7 +2563,16 @@
                                                         "POST" "/"
                                                         "DetectModerationLabels"
                                                         "2016-06-27"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidS3ObjectException" . invalid-s3object-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ImageTooLargeException" . image-too-large-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ThrottlingException" . throttling-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)))))
  (common-lisp:export 'detect-moderation-labels))
 (common-lisp:progn
  (common-lisp:defun get-celebrity-info
@@ -2703,7 +2590,14 @@
                                                         "POST" "/"
                                                         "GetCelebrityInfo"
                                                         "2016-06-27"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ThrottlingException" . throttling-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'get-celebrity-info))
 (common-lisp:progn
  (common-lisp:defun index-faces
@@ -2723,7 +2617,17 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "IndexFaces"
                                                         "2016-06-27"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidS3ObjectException" . invalid-s3object-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ImageTooLargeException" . image-too-large-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ThrottlingException" . throttling-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)))))
  (common-lisp:export 'index-faces))
 (common-lisp:progn
  (common-lisp:defun list-collections
@@ -2741,7 +2645,16 @@
                                                         "POST" "/"
                                                         "ListCollections"
                                                         "2016-06-27"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ThrottlingException" . throttling-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("InvalidPaginationTokenException"
+         . invalid-pagination-token-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'list-collections))
 (common-lisp:progn
  (common-lisp:defun list-faces
@@ -2759,7 +2672,16 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListFaces"
                                                         "2016-06-27"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ThrottlingException" . throttling-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("InvalidPaginationTokenException"
+         . invalid-pagination-token-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'list-faces))
 (common-lisp:progn
  (common-lisp:defun recognize-celebrities
@@ -2777,7 +2699,17 @@
                                                         "POST" "/"
                                                         "RecognizeCelebrities"
                                                         "2016-06-27"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidS3ObjectException" . invalid-s3object-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)
+        ("ImageTooLargeException" . image-too-large-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ThrottlingException" . throttling-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)))))
  (common-lisp:export 'recognize-celebrities))
 (common-lisp:progn
  (common-lisp:defun search-faces
@@ -2798,7 +2730,14 @@
                                                         "POST" "/"
                                                         "SearchFaces"
                                                         "2016-06-27"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ThrottlingException" . throttling-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'search-faces))
 (common-lisp:progn
  (common-lisp:defun search-faces-by-image
@@ -2818,5 +2757,15 @@
                                                         "POST" "/"
                                                         "SearchFacesByImage"
                                                         "2016-06-27"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidS3ObjectException" . invalid-s3object-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ImageTooLargeException" . image-too-large-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ThrottlingException" . throttling-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)))))
  (common-lisp:export 'search-faces-by-image))

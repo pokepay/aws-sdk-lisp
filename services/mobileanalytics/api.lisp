@@ -6,7 +6,8 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/mobileanalytics/api)
 (common-lisp:progn
  (common-lisp:defclass mobileanalytics-request (aws-sdk/request:request)
@@ -14,34 +15,17 @@
                        (:default-initargs :service "mobileanalytics"))
  (common-lisp:export 'mobileanalytics-request))
 (common-lisp:progn
- (common-lisp:defstruct
-     (bad-request-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-bad-request-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition mobileanalytics-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'mobileanalytics-error))
+(common-lisp:progn
+ (common-lisp:define-condition bad-request-exception
+     (mobileanalytics-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       bad-request-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'bad-request-exception 'make-bad-request-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          bad-request-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          bad-request-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          bad-request-exception))
-   common-lisp:nil))
+  (common-lisp:list 'bad-request-exception 'bad-request-exception-message)))
 (common-lisp:deftype double () 'common-lisp:double-float)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -240,5 +224,6 @@
        (aws-sdk/generator/shape:make-request-with-input
         'mobileanalytics-request aws-sdk/generator/operation::input "POST"
         "/2014-06-05/events" "PutEvents" "2014-06-05"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BadRequestException" . bad-request-exception)))))
  (common-lisp:export 'put-events))

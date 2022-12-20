@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/config/api)
 (common-lisp:progn
  (common-lisp:defclass config-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "config"))
  (common-lisp:export 'config-request))
+(common-lisp:progn
+ (common-lisp:define-condition config-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'config-error))
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:deftype account-id () 'common-lisp:string)
 (common-lisp:deftype all-supported () 'common-lisp:boolean)
@@ -2820,337 +2826,87 @@
    common-lisp:nil))
 (common-lisp:deftype include-global-resource-types () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (insufficient-delivery-policy-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-insufficient-delivery-policy-exception-")))
+ (common-lisp:define-condition insufficient-delivery-policy-exception
+     (config-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'insufficient-delivery-policy-exception
-                    'make-insufficient-delivery-policy-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-delivery-policy-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-delivery-policy-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-delivery-policy-exception))
-   common-lisp:nil))
+  (common-lisp:list 'insufficient-delivery-policy-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (insufficient-permissions-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-insufficient-permissions-exception-")))
- (common-lisp:export
-  (common-lisp:list 'insufficient-permissions-exception
-                    'make-insufficient-permissions-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-permissions-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-permissions-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-permissions-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition insufficient-permissions-exception
+     (config-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'insufficient-permissions-exception)))
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-configuration-recorder-name-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-invalid-configuration-recorder-name-exception-")))
+ (common-lisp:define-condition invalid-configuration-recorder-name-exception
+     (config-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-configuration-recorder-name-exception
-                    'make-invalid-configuration-recorder-name-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-configuration-recorder-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-configuration-recorder-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-configuration-recorder-name-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-configuration-recorder-name-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-delivery-channel-name-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-delivery-channel-name-exception-")))
+ (common-lisp:define-condition invalid-delivery-channel-name-exception
+     (config-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-delivery-channel-name-exception
-                    'make-invalid-delivery-channel-name-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-delivery-channel-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-delivery-channel-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-delivery-channel-name-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-delivery-channel-name-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-limit-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-limit-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-limit-exception 'make-invalid-limit-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-limit-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-limit-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-limit-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-limit-exception
+     (config-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-limit-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-next-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-next-token-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-next-token-exception
-                    'make-invalid-next-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-next-token-exception
+     (config-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-next-token-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-value-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-value-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-parameter-value-exception
-                    'make-invalid-parameter-value-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-value-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-value-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-value-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-parameter-value-exception
+     (config-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-parameter-value-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-recording-group-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-recording-group-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-recording-group-exception
-                    'make-invalid-recording-group-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-recording-group-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-recording-group-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-recording-group-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-recording-group-exception
+     (config-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-recording-group-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-result-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-result-token-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-result-token-exception
-                    'make-invalid-result-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-result-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-result-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-result-token-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-result-token-exception
+     (config-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-result-token-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-role-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-role-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-role-exception 'make-invalid-role-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-role-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-role-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-role-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-role-exception
+     (config-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-role-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-s3key-prefix-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-s3key-prefix-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-s3key-prefix-exception
-                    'make-invalid-s3key-prefix-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-s3key-prefix-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-s3key-prefix-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-s3key-prefix-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-s3key-prefix-exception
+     (config-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-s3key-prefix-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-snstopic-arnexception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-snstopic-arnexception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-snstopic-arnexception
-                    'make-invalid-snstopic-arnexception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-snstopic-arnexception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-snstopic-arnexception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-snstopic-arnexception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-snstopic-arnexception
+     (config-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-snstopic-arnexception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-time-range-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-time-range-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-time-range-exception
-                    'make-invalid-time-range-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-time-range-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-time-range-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-time-range-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-time-range-exception
+     (config-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-time-range-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (last-delivery-channel-delete-failed-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-last-delivery-channel-delete-failed-exception-")))
+ (common-lisp:define-condition last-delivery-channel-delete-failed-exception
+     (config-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'last-delivery-channel-delete-failed-exception
-                    'make-last-delivery-channel-delete-failed-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          last-delivery-channel-delete-failed-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          last-delivery-channel-delete-failed-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          last-delivery-channel-delete-failed-exception))
-   common-lisp:nil))
+  (common-lisp:list 'last-delivery-channel-delete-failed-exception)))
 (common-lisp:deftype later-time () 'common-lisp:string)
 (common-lisp:deftype limit () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition limit-exceeded-exception
+     (config-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'limit-exceeded-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-discovered-resources-request (:copier common-lisp:nil)
@@ -3270,235 +3026,66 @@
    common-lisp:nil))
 (common-lisp:deftype long () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (max-number-of-config-rules-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-max-number-of-config-rules-exceeded-exception-")))
+ (common-lisp:define-condition max-number-of-config-rules-exceeded-exception
+     (config-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'max-number-of-config-rules-exceeded-exception
-                    'make-max-number-of-config-rules-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          max-number-of-config-rules-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          max-number-of-config-rules-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          max-number-of-config-rules-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'max-number-of-config-rules-exceeded-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (max-number-of-configuration-recorders-exceeded-exception
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-max-number-of-configuration-recorders-exceeded-exception-")))
+ (common-lisp:define-condition max-number-of-configuration-recorders-exceeded-exception
+     (config-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'max-number-of-configuration-recorders-exceeded-exception
-                    'make-max-number-of-configuration-recorders-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          max-number-of-configuration-recorders-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          max-number-of-configuration-recorders-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          max-number-of-configuration-recorders-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'max-number-of-configuration-recorders-exceeded-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (max-number-of-delivery-channels-exceeded-exception
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-max-number-of-delivery-channels-exceeded-exception-")))
+ (common-lisp:define-condition max-number-of-delivery-channels-exceeded-exception
+     (config-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'max-number-of-delivery-channels-exceeded-exception
-                    'make-max-number-of-delivery-channels-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          max-number-of-delivery-channels-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          max-number-of-delivery-channels-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          max-number-of-delivery-channels-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'max-number-of-delivery-channels-exceeded-exception)))
 (common-lisp:deftype maximum-execution-frequency () 'common-lisp:string)
 (common-lisp:deftype message-type () 'common-lisp:string)
 (common-lisp:deftype name () 'common-lisp:string)
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-available-configuration-recorder-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-no-available-configuration-recorder-exception-")))
+ (common-lisp:define-condition no-available-configuration-recorder-exception
+     (config-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'no-available-configuration-recorder-exception
-                    'make-no-available-configuration-recorder-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-available-configuration-recorder-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-available-configuration-recorder-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-available-configuration-recorder-exception))
-   common-lisp:nil))
+  (common-lisp:list 'no-available-configuration-recorder-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-available-delivery-channel-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-available-delivery-channel-exception-")))
+ (common-lisp:define-condition no-available-delivery-channel-exception
+     (config-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'no-available-delivery-channel-exception
-                    'make-no-available-delivery-channel-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-available-delivery-channel-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-available-delivery-channel-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-available-delivery-channel-exception))
-   common-lisp:nil))
+  (common-lisp:list 'no-available-delivery-channel-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-running-configuration-recorder-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-no-running-configuration-recorder-exception-")))
+ (common-lisp:define-condition no-running-configuration-recorder-exception
+     (config-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'no-running-configuration-recorder-exception
-                    'make-no-running-configuration-recorder-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-running-configuration-recorder-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-running-configuration-recorder-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-running-configuration-recorder-exception))
-   common-lisp:nil))
+  (common-lisp:list 'no-running-configuration-recorder-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-bucket-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-bucket-exception-")))
- (common-lisp:export
-  (common-lisp:list 'no-such-bucket-exception 'make-no-such-bucket-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-bucket-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-bucket-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-bucket-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition no-such-bucket-exception
+     (config-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'no-such-bucket-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-config-rule-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-config-rule-exception-")))
- (common-lisp:export
-  (common-lisp:list 'no-such-config-rule-exception
-                    'make-no-such-config-rule-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-config-rule-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-config-rule-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-config-rule-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition no-such-config-rule-exception
+     (config-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'no-such-config-rule-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-configuration-recorder-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-configuration-recorder-exception-")))
+ (common-lisp:define-condition no-such-configuration-recorder-exception
+     (config-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'no-such-configuration-recorder-exception
-                    'make-no-such-configuration-recorder-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-configuration-recorder-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-configuration-recorder-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-configuration-recorder-exception))
-   common-lisp:nil))
+  (common-lisp:list 'no-such-configuration-recorder-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-delivery-channel-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-delivery-channel-exception-")))
- (common-lisp:export
-  (common-lisp:list 'no-such-delivery-channel-exception
-                    'make-no-such-delivery-channel-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-delivery-channel-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-delivery-channel-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-delivery-channel-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition no-such-delivery-channel-exception
+     (config-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'no-such-delivery-channel-exception)))
 (common-lisp:deftype ordering-timestamp () 'common-lisp:string)
 (common-lisp:deftype owner () 'common-lisp:string)
 (common-lisp:progn
@@ -3904,50 +3491,16 @@
                            (trivial-types:proper-list resource-identifier))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-in-use-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-in-use-exception-")))
- (common-lisp:export
-  (common-lisp:list 'resource-in-use-exception
-                    'make-resource-in-use-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition resource-in-use-exception
+     (config-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-in-use-exception)))
 (common-lisp:deftype resource-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-discovered-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-discovered-exception-")))
- (common-lisp:export
-  (common-lisp:list 'resource-not-discovered-exception
-                    'make-resource-not-discovered-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-discovered-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-discovered-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-discovered-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition resource-not-discovered-exception
+     (config-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-not-discovered-exception)))
 (common-lisp:deftype resource-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype resource-type-list ()
@@ -4250,20 +3803,10 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-exception-")))
- (common-lisp:export
-  (common-lisp:list 'validation-exception 'make-validation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input validation-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition validation-exception
+     (config-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'validation-exception)))
 (common-lisp:deftype value () 'common-lisp:string)
 (common-lisp:deftype version () 'common-lisp:string)
 (common-lisp:progn
@@ -4282,7 +3825,9 @@
                                                         "POST" "/"
                                                         "DeleteConfigRule"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchConfigRuleException" . no-such-config-rule-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'delete-config-rule))
 (common-lisp:progn
  (common-lisp:defun delete-configuration-recorder
@@ -4301,7 +3846,9 @@
                                                         "POST" "/"
                                                         "DeleteConfigurationRecorder"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchConfigurationRecorderException"
+         . no-such-configuration-recorder-exception)))))
  (common-lisp:export 'delete-configuration-recorder))
 (common-lisp:progn
  (common-lisp:defun delete-delivery-channel
@@ -4319,7 +3866,10 @@
                                                         "POST" "/"
                                                         "DeleteDeliveryChannel"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
+        ("LastDeliveryChannelDeleteFailedException"
+         . last-delivery-channel-delete-failed-exception)))))
  (common-lisp:export 'delete-delivery-channel))
 (common-lisp:progn
  (common-lisp:defun delete-evaluation-results
@@ -4338,7 +3888,9 @@
                                                         "POST" "/"
                                                         "DeleteEvaluationResults"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchConfigRuleException" . no-such-config-rule-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'delete-evaluation-results))
 (common-lisp:progn
  (common-lisp:defun deliver-config-snapshot
@@ -4356,7 +3908,12 @@
                                                         "POST" "/"
                                                         "DeliverConfigSnapshot"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
+        ("NoAvailableConfigurationRecorderException"
+         . no-available-configuration-recorder-exception)
+        ("NoRunningConfigurationRecorderException"
+         . no-running-configuration-recorder-exception)))))
  (common-lisp:export 'deliver-config-snapshot))
 (common-lisp:progn
  (common-lisp:defun describe-compliance-by-config-rule
@@ -4377,7 +3934,10 @@
                                                         "POST" "/"
                                                         "DescribeComplianceByConfigRule"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'describe-compliance-by-config-rule))
 (common-lisp:progn
  (common-lisp:defun describe-compliance-by-resource
@@ -4399,7 +3959,9 @@
                                                         "POST" "/"
                                                         "DescribeComplianceByResource"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'describe-compliance-by-resource))
 (common-lisp:progn
  (common-lisp:defun describe-config-rule-evaluation-status
@@ -4419,7 +3981,10 @@
                                                         "POST" "/"
                                                         "DescribeConfigRuleEvaluationStatus"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchConfigRuleException" . no-such-config-rule-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'describe-config-rule-evaluation-status))
 (common-lisp:progn
  (common-lisp:defun describe-config-rules
@@ -4437,7 +4002,9 @@
                                                         "POST" "/"
                                                         "DescribeConfigRules"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchConfigRuleException" . no-such-config-rule-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'describe-config-rules))
 (common-lisp:progn
  (common-lisp:defun describe-configuration-recorder-status
@@ -4456,7 +4023,9 @@
                                                         "POST" "/"
                                                         "DescribeConfigurationRecorderStatus"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchConfigurationRecorderException"
+         . no-such-configuration-recorder-exception)))))
  (common-lisp:export 'describe-configuration-recorder-status))
 (common-lisp:progn
  (common-lisp:defun describe-configuration-recorders
@@ -4475,7 +4044,9 @@
                                                         "POST" "/"
                                                         "DescribeConfigurationRecorders"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchConfigurationRecorderException"
+         . no-such-configuration-recorder-exception)))))
  (common-lisp:export 'describe-configuration-recorders))
 (common-lisp:progn
  (common-lisp:defun describe-delivery-channel-status
@@ -4494,7 +4065,9 @@
                                                         "POST" "/"
                                                         "DescribeDeliveryChannelStatus"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchDeliveryChannelException"
+         . no-such-delivery-channel-exception)))))
  (common-lisp:export 'describe-delivery-channel-status))
 (common-lisp:progn
  (common-lisp:defun describe-delivery-channels
@@ -4513,7 +4086,9 @@
                                                         "POST" "/"
                                                         "DescribeDeliveryChannels"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchDeliveryChannelException"
+         . no-such-delivery-channel-exception)))))
  (common-lisp:export 'describe-delivery-channels))
 (common-lisp:progn
  (common-lisp:defun get-compliance-details-by-config-rule
@@ -4534,7 +4109,10 @@
                                                         "POST" "/"
                                                         "GetComplianceDetailsByConfigRule"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("NoSuchConfigRuleException" . no-such-config-rule-exception)))))
  (common-lisp:export 'get-compliance-details-by-config-rule))
 (common-lisp:progn
  (common-lisp:defun get-compliance-details-by-resource
@@ -4556,7 +4134,9 @@
                                                         "POST" "/"
                                                         "GetComplianceDetailsByResource"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValueException"
+         . invalid-parameter-value-exception)))))
  (common-lisp:export 'get-compliance-details-by-resource))
 (common-lisp:progn
  (common-lisp:defun get-compliance-summary-by-config-rule ()
@@ -4567,7 +4147,7 @@
                                 `(("Action"
                                    ,@"GetComplianceSummaryByConfigRule")
                                   ("Version" ,@"2014-11-12"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil 'common-lisp:nil))
  (common-lisp:export 'get-compliance-summary-by-config-rule))
 (common-lisp:progn
  (common-lisp:defun get-compliance-summary-by-resource-type
@@ -4586,7 +4166,9 @@
                                                         "POST" "/"
                                                         "GetComplianceSummaryByResourceType"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValueException"
+         . invalid-parameter-value-exception)))))
  (common-lisp:export 'get-compliance-summary-by-resource-type))
 (common-lisp:progn
  (common-lisp:defun get-discovered-resource-counts
@@ -4606,7 +4188,10 @@
                                                         "POST" "/"
                                                         "GetDiscoveredResourceCounts"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("InvalidLimitException" . invalid-limit-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'get-discovered-resource-counts))
 (common-lisp:progn
  (common-lisp:defun get-resource-config-history
@@ -4628,7 +4213,15 @@
                                                         "POST" "/"
                                                         "GetResourceConfigHistory"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidLimitException" . invalid-limit-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("NoAvailableConfigurationRecorderException"
+         . no-available-configuration-recorder-exception)
+        ("ResourceNotDiscoveredException"
+         . resource-not-discovered-exception)))))
  (common-lisp:export 'get-resource-config-history))
 (common-lisp:progn
  (common-lisp:defun list-discovered-resources
@@ -4650,7 +4243,12 @@
                                                         "POST" "/"
                                                         "ListDiscoveredResources"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("InvalidLimitException" . invalid-limit-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("NoAvailableConfigurationRecorderException"
+         . no-available-configuration-recorder-exception)))))
  (common-lisp:export 'list-discovered-resources))
 (common-lisp:progn
  (common-lisp:defun put-config-rule
@@ -4668,7 +4266,15 @@
                                                         "POST" "/"
                                                         "PutConfigRule"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MaxNumberOfConfigRulesExceededException"
+         . max-number-of-config-rules-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("NoAvailableConfigurationRecorderException"
+         . no-available-configuration-recorder-exception)))))
  (common-lisp:export 'put-config-rule))
 (common-lisp:progn
  (common-lisp:defun put-configuration-recorder
@@ -4687,7 +4293,14 @@
                                                         "POST" "/"
                                                         "PutConfigurationRecorder"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("MaxNumberOfConfigurationRecordersExceededException"
+         . max-number-of-configuration-recorders-exceeded-exception)
+        ("InvalidConfigurationRecorderNameException"
+         . invalid-configuration-recorder-name-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidRecordingGroupException"
+         . invalid-recording-group-exception)))))
  (common-lisp:export 'put-configuration-recorder))
 (common-lisp:progn
  (common-lisp:defun put-delivery-channel
@@ -4705,7 +4318,18 @@
                                                         "POST" "/"
                                                         "PutDeliveryChannel"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("MaxNumberOfDeliveryChannelsExceededException"
+         . max-number-of-delivery-channels-exceeded-exception)
+        ("NoAvailableConfigurationRecorderException"
+         . no-available-configuration-recorder-exception)
+        ("InvalidDeliveryChannelNameException"
+         . invalid-delivery-channel-name-exception)
+        ("NoSuchBucketException" . no-such-bucket-exception)
+        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
+        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
+        ("InsufficientDeliveryPolicyException"
+         . insufficient-delivery-policy-exception)))))
  (common-lisp:export 'put-delivery-channel))
 (common-lisp:progn
  (common-lisp:defun put-evaluations
@@ -4724,7 +4348,10 @@
                                                         "POST" "/"
                                                         "PutEvaluations"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidResultTokenException" . invalid-result-token-exception)
+        ("NoSuchConfigRuleException" . no-such-config-rule-exception)))))
  (common-lisp:export 'put-evaluations))
 (common-lisp:progn
  (common-lisp:defun start-config-rules-evaluation
@@ -4743,7 +4370,12 @@
                                                         "POST" "/"
                                                         "StartConfigRulesEvaluation"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchConfigRuleException" . no-such-config-rule-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("InvalidParameterValueException"
+         . invalid-parameter-value-exception)))))
  (common-lisp:export 'start-config-rules-evaluation))
 (common-lisp:progn
  (common-lisp:defun start-configuration-recorder
@@ -4762,7 +4394,11 @@
                                                         "POST" "/"
                                                         "StartConfigurationRecorder"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchConfigurationRecorderException"
+         . no-such-configuration-recorder-exception)
+        ("NoAvailableDeliveryChannelException"
+         . no-available-delivery-channel-exception)))))
  (common-lisp:export 'start-configuration-recorder))
 (common-lisp:progn
  (common-lisp:defun stop-configuration-recorder
@@ -4781,5 +4417,7 @@
                                                         "POST" "/"
                                                         "StopConfigurationRecorder"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchConfigurationRecorderException"
+         . no-such-configuration-recorder-exception)))))
  (common-lisp:export 'stop-configuration-recorder))

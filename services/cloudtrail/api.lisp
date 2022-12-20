@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/cloudtrail/api)
 (common-lisp:progn
  (common-lisp:defclass cloudtrail-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "cloudtrail"))
  (common-lisp:export 'cloudtrail-request))
+(common-lisp:progn
+ (common-lisp:define-condition cloudtrail-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'cloudtrail-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (add-tags-request (:copier common-lisp:nil)
@@ -65,50 +71,16 @@
 (common-lisp:deftype byte-buffer ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cloud-trail-arninvalid-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cloud-trail-arninvalid-exception-")))
- (common-lisp:export
-  (common-lisp:list 'cloud-trail-arninvalid-exception
-                    'make-cloud-trail-arninvalid-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-trail-arninvalid-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-trail-arninvalid-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-trail-arninvalid-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition cloud-trail-arninvalid-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'cloud-trail-arninvalid-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cloud-watch-logs-delivery-unavailable-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-cloud-watch-logs-delivery-unavailable-exception-")))
+ (common-lisp:define-condition cloud-watch-logs-delivery-unavailable-exception
+     (cloudtrail-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'cloud-watch-logs-delivery-unavailable-exception
-                    'make-cloud-watch-logs-delivery-unavailable-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-watch-logs-delivery-unavailable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-watch-logs-delivery-unavailable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-watch-logs-delivery-unavailable-exception))
-   common-lisp:nil))
+  (common-lisp:list 'cloud-watch-logs-delivery-unavailable-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-trail-request (:copier common-lisp:nil)
@@ -930,483 +902,121 @@
                           get-trail-status-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (insufficient-encryption-policy-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-insufficient-encryption-policy-exception-")))
+ (common-lisp:define-condition insufficient-encryption-policy-exception
+     (cloudtrail-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'insufficient-encryption-policy-exception
-                    'make-insufficient-encryption-policy-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-encryption-policy-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-encryption-policy-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-encryption-policy-exception))
-   common-lisp:nil))
+  (common-lisp:list 'insufficient-encryption-policy-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (insufficient-s3bucket-policy-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-insufficient-s3bucket-policy-exception-")))
+ (common-lisp:define-condition insufficient-s3bucket-policy-exception
+     (cloudtrail-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'insufficient-s3bucket-policy-exception
-                    'make-insufficient-s3bucket-policy-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-s3bucket-policy-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-s3bucket-policy-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-s3bucket-policy-exception))
-   common-lisp:nil))
+  (common-lisp:list 'insufficient-s3bucket-policy-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (insufficient-sns-topic-policy-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-insufficient-sns-topic-policy-exception-")))
+ (common-lisp:define-condition insufficient-sns-topic-policy-exception
+     (cloudtrail-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'insufficient-sns-topic-policy-exception
-                    'make-insufficient-sns-topic-policy-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-sns-topic-policy-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-sns-topic-policy-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-sns-topic-policy-exception))
-   common-lisp:nil))
+  (common-lisp:list 'insufficient-sns-topic-policy-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-cloud-watch-logs-log-group-arn-exception
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-invalid-cloud-watch-logs-log-group-arn-exception-")))
+ (common-lisp:define-condition invalid-cloud-watch-logs-log-group-arn-exception
+     (cloudtrail-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-cloud-watch-logs-log-group-arn-exception
-                    'make-invalid-cloud-watch-logs-log-group-arn-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-cloud-watch-logs-log-group-arn-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-cloud-watch-logs-log-group-arn-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-cloud-watch-logs-log-group-arn-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-cloud-watch-logs-log-group-arn-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-cloud-watch-logs-role-arn-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-invalid-cloud-watch-logs-role-arn-exception-")))
+ (common-lisp:define-condition invalid-cloud-watch-logs-role-arn-exception
+     (cloudtrail-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-cloud-watch-logs-role-arn-exception
-                    'make-invalid-cloud-watch-logs-role-arn-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-cloud-watch-logs-role-arn-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-cloud-watch-logs-role-arn-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-cloud-watch-logs-role-arn-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-cloud-watch-logs-role-arn-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-event-selectors-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-event-selectors-exception-")))
+ (common-lisp:define-condition invalid-event-selectors-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-event-selectors-exception)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-home-region-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-home-region-exception)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-kms-key-id-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-kms-key-id-exception)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-lookup-attributes-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-lookup-attributes-exception)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-max-results-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-max-results-exception)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-next-token-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-next-token-exception)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-parameter-combination-exception
+     (cloudtrail-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-event-selectors-exception
-                    'make-invalid-event-selectors-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-event-selectors-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-event-selectors-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-event-selectors-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-parameter-combination-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-home-region-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-home-region-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-home-region-exception
-                    'make-invalid-home-region-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-home-region-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-home-region-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-home-region-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-s3bucket-name-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-s3bucket-name-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-kms-key-id-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-kms-key-id-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-kms-key-id-exception
-                    'make-invalid-kms-key-id-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-kms-key-id-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-kms-key-id-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-kms-key-id-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-s3prefix-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-s3prefix-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-lookup-attributes-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-lookup-attributes-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-lookup-attributes-exception
-                    'make-invalid-lookup-attributes-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-lookup-attributes-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-lookup-attributes-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-lookup-attributes-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-sns-topic-name-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-sns-topic-name-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-max-results-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-max-results-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-max-results-exception
-                    'make-invalid-max-results-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-max-results-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-max-results-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-max-results-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-tag-parameter-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-tag-parameter-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-next-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-next-token-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-next-token-exception
-                    'make-invalid-next-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-time-range-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-time-range-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-combination-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-combination-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-parameter-combination-exception
-                    'make-invalid-parameter-combination-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-combination-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-combination-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-combination-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-token-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-token-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-s3bucket-name-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-s3bucket-name-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-s3bucket-name-exception
-                    'make-invalid-s3bucket-name-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-s3bucket-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-s3bucket-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-s3bucket-name-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-trail-name-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-trail-name-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-s3prefix-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-s3prefix-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-s3prefix-exception
-                    'make-invalid-s3prefix-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-s3prefix-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-s3prefix-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-s3prefix-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition kms-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'kms-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-sns-topic-name-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-sns-topic-name-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-sns-topic-name-exception
-                    'make-invalid-sns-topic-name-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sns-topic-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sns-topic-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sns-topic-name-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition kms-key-disabled-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'kms-key-disabled-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-tag-parameter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-tag-parameter-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-tag-parameter-exception
-                    'make-invalid-tag-parameter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-tag-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-tag-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-tag-parameter-exception))
-   common-lisp:nil))
-(common-lisp:progn
- (common-lisp:defstruct
-     (invalid-time-range-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-time-range-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-time-range-exception
-                    'make-invalid-time-range-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-time-range-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-time-range-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-time-range-exception))
-   common-lisp:nil))
-(common-lisp:progn
- (common-lisp:defstruct
-     (invalid-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-token-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-token-exception 'make-invalid-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-token-exception))
-   common-lisp:nil))
-(common-lisp:progn
- (common-lisp:defstruct
-     (invalid-trail-name-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-trail-name-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-trail-name-exception
-                    'make-invalid-trail-name-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-trail-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-trail-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-trail-name-exception))
-   common-lisp:nil))
-(common-lisp:progn
- (common-lisp:defstruct
-     (kms-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kms-exception-")))
- (common-lisp:export (common-lisp:list 'kms-exception 'make-kms-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input kms-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input kms-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input kms-exception))
-   common-lisp:nil))
-(common-lisp:progn
- (common-lisp:defstruct
-     (kms-key-disabled-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kms-key-disabled-exception-")))
- (common-lisp:export
-  (common-lisp:list 'kms-key-disabled-exception
-                    'make-kms-key-disabled-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          kms-key-disabled-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          kms-key-disabled-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          kms-key-disabled-exception))
-   common-lisp:nil))
-(common-lisp:progn
- (common-lisp:defstruct
-     (kms-key-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kms-key-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'kms-key-not-found-exception
-                    'make-kms-key-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          kms-key-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          kms-key-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          kms-key-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition kms-key-not-found-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'kms-key-not-found-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-public-keys-request (:copier common-lisp:nil)
@@ -1701,51 +1311,17 @@
    common-lisp:nil))
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (maximum-number-of-trails-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-maximum-number-of-trails-exceeded-exception-")))
+ (common-lisp:define-condition maximum-number-of-trails-exceeded-exception
+     (cloudtrail-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'maximum-number-of-trails-exceeded-exception
-                    'make-maximum-number-of-trails-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          maximum-number-of-trails-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          maximum-number-of-trails-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          maximum-number-of-trails-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'maximum-number-of-trails-exceeded-exception)))
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (operation-not-permitted-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-operation-not-permitted-exception-")))
- (common-lisp:export
-  (common-lisp:list 'operation-not-permitted-exception
-                    'make-operation-not-permitted-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-not-permitted-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-not-permitted-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-not-permitted-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition operation-not-permitted-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'operation-not-permitted-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (public-key (:copier common-lisp:nil)
@@ -1977,27 +1553,10 @@
                            (trivial-types:proper-list resource))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition resource-not-found-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-not-found-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (resource-tag (:copier common-lisp:nil)
@@ -2038,49 +1597,15 @@
                            (trivial-types:proper-list resource-tag))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-type-not-supported-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-type-not-supported-exception-")))
- (common-lisp:export
-  (common-lisp:list 'resource-type-not-supported-exception
-                    'make-resource-type-not-supported-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-type-not-supported-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-type-not-supported-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-type-not-supported-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition resource-type-not-supported-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-type-not-supported-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (s3bucket-does-not-exist-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-s3bucket-does-not-exist-exception-")))
- (common-lisp:export
-  (common-lisp:list 's3bucket-does-not-exist-exception
-                    'make-s3bucket-does-not-exist-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          s3bucket-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          s3bucket-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          s3bucket-does-not-exist-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition s3bucket-does-not-exist-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 's3bucket-does-not-exist-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (start-logging-request (:copier common-lisp:nil)
@@ -2209,27 +1734,10 @@
                         ((aws-sdk/generator/shape::input tag))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tags-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tags-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'tags-limit-exceeded-exception
-                    'make-tags-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          tags-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          tags-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          tags-limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition tags-limit-exceeded-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'tags-limit-exceeded-exception)))
 (common-lisp:progn
  (common-lisp:deftype tags-list () '(trivial-types:proper-list tag))
  (common-lisp:defun |make-tags-list|
@@ -2379,27 +1887,10 @@
                         ((aws-sdk/generator/shape::input trail))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (trail-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-trail-already-exists-exception-")))
- (common-lisp:export
-  (common-lisp:list 'trail-already-exists-exception
-                    'make-trail-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          trail-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          trail-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          trail-already-exists-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition trail-already-exists-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'trail-already-exists-exception)))
 (common-lisp:progn
  (common-lisp:deftype trail-list () '(trivial-types:proper-list trail))
  (common-lisp:defun |make-trail-list|
@@ -2415,71 +1906,20 @@
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (trail-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-trail-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'trail-not-found-exception
-                    'make-trail-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          trail-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          trail-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          trail-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition trail-not-found-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'trail-not-found-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (trail-not-provided-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-trail-not-provided-exception-")))
- (common-lisp:export
-  (common-lisp:list 'trail-not-provided-exception
-                    'make-trail-not-provided-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          trail-not-provided-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          trail-not-provided-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          trail-not-provided-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition trail-not-provided-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'trail-not-provided-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unsupported-operation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unsupported-operation-exception-")))
- (common-lisp:export
-  (common-lisp:list 'unsupported-operation-exception
-                    'make-unsupported-operation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-operation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-operation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-operation-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition unsupported-operation-exception
+     (cloudtrail-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'unsupported-operation-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-trail-request (:copier common-lisp:nil)
@@ -2735,7 +2175,17 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "AddTags"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("CloudTrailARNInvalidException" . cloud-trail-arninvalid-exception)
+        ("ResourceTypeNotSupportedException"
+         . resource-type-not-supported-exception)
+        ("TagsLimitExceededException" . tags-limit-exceeded-exception)
+        ("InvalidTrailNameException" . invalid-trail-name-exception)
+        ("InvalidTagParameterException" . invalid-tag-parameter-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)
+        ("OperationNotPermittedException"
+         . operation-not-permitted-exception)))))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
  (common-lisp:defun create-trail
@@ -2761,7 +2211,37 @@
                                                         "POST" "/"
                                                         "CreateTrail"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("MaximumNumberOfTrailsExceededException"
+         . maximum-number-of-trails-exceeded-exception)
+        ("TrailAlreadyExistsException" . trail-already-exists-exception)
+        ("S3BucketDoesNotExistException" . s3bucket-does-not-exist-exception)
+        ("InsufficientS3BucketPolicyException"
+         . insufficient-s3bucket-policy-exception)
+        ("InsufficientSnsTopicPolicyException"
+         . insufficient-sns-topic-policy-exception)
+        ("InsufficientEncryptionPolicyException"
+         . insufficient-encryption-policy-exception)
+        ("InvalidS3BucketNameException" . invalid-s3bucket-name-exception)
+        ("InvalidS3PrefixException" . invalid-s3prefix-exception)
+        ("InvalidSnsTopicNameException" . invalid-sns-topic-name-exception)
+        ("InvalidKmsKeyIdException" . invalid-kms-key-id-exception)
+        ("InvalidTrailNameException" . invalid-trail-name-exception)
+        ("TrailNotProvidedException" . trail-not-provided-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("KmsKeyNotFoundException" . kms-key-not-found-exception)
+        ("KmsKeyDisabledException" . kms-key-disabled-exception)
+        ("KmsException" . kms-exception)
+        ("InvalidCloudWatchLogsLogGroupArnException"
+         . invalid-cloud-watch-logs-log-group-arn-exception)
+        ("InvalidCloudWatchLogsRoleArnException"
+         . invalid-cloud-watch-logs-role-arn-exception)
+        ("CloudWatchLogsDeliveryUnavailableException"
+         . cloud-watch-logs-delivery-unavailable-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)
+        ("OperationNotPermittedException"
+         . operation-not-permitted-exception)))))
  (common-lisp:export 'create-trail))
 (common-lisp:progn
  (common-lisp:defun delete-trail
@@ -2779,7 +2259,10 @@
                                                         "POST" "/"
                                                         "DeleteTrail"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("TrailNotFoundException" . trail-not-found-exception)
+        ("InvalidTrailNameException" . invalid-trail-name-exception)
+        ("InvalidHomeRegionException" . invalid-home-region-exception)))))
  (common-lisp:export 'delete-trail))
 (common-lisp:progn
  (common-lisp:defun describe-trails
@@ -2798,7 +2281,10 @@
                                                         "POST" "/"
                                                         "DescribeTrails"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnsupportedOperationException" . unsupported-operation-exception)
+        ("OperationNotPermittedException"
+         . operation-not-permitted-exception)))))
  (common-lisp:export 'describe-trails))
 (common-lisp:progn
  (common-lisp:defun get-event-selectors
@@ -2816,7 +2302,12 @@
                                                         "POST" "/"
                                                         "GetEventSelectors"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("TrailNotFoundException" . trail-not-found-exception)
+        ("InvalidTrailNameException" . invalid-trail-name-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)
+        ("OperationNotPermittedException"
+         . operation-not-permitted-exception)))))
  (common-lisp:export 'get-event-selectors))
 (common-lisp:progn
  (common-lisp:defun get-trail-status
@@ -2834,7 +2325,9 @@
                                                         "POST" "/"
                                                         "GetTrailStatus"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("TrailNotFoundException" . trail-not-found-exception)
+        ("InvalidTrailNameException" . invalid-trail-name-exception)))))
  (common-lisp:export 'get-trail-status))
 (common-lisp:progn
  (common-lisp:defun list-public-keys
@@ -2852,7 +2345,11 @@
                                                         "POST" "/"
                                                         "ListPublicKeys"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("InvalidTokenException" . invalid-token-exception)))))
  (common-lisp:export 'list-public-keys))
 (common-lisp:progn
  (common-lisp:defun list-tags
@@ -2869,7 +2366,15 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListTags"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("CloudTrailARNInvalidException" . cloud-trail-arninvalid-exception)
+        ("ResourceTypeNotSupportedException"
+         . resource-type-not-supported-exception)
+        ("InvalidTrailNameException" . invalid-trail-name-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("InvalidTokenException" . invalid-token-exception)))))
  (common-lisp:export 'list-tags))
 (common-lisp:progn
  (common-lisp:defun lookup-events
@@ -2890,7 +2395,12 @@
                                                         "POST" "/"
                                                         "LookupEvents"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidLookupAttributesException"
+         . invalid-lookup-attributes-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidMaxResultsException" . invalid-max-results-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'lookup-events))
 (common-lisp:progn
  (common-lisp:defun put-event-selectors
@@ -2908,7 +2418,14 @@
                                                         "POST" "/"
                                                         "PutEventSelectors"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("TrailNotFoundException" . trail-not-found-exception)
+        ("InvalidTrailNameException" . invalid-trail-name-exception)
+        ("InvalidHomeRegionException" . invalid-home-region-exception)
+        ("InvalidEventSelectorsException" . invalid-event-selectors-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)
+        ("OperationNotPermittedException"
+         . operation-not-permitted-exception)))))
  (common-lisp:export 'put-event-selectors))
 (common-lisp:progn
  (common-lisp:defun remove-tags
@@ -2925,7 +2442,16 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "RemoveTags"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("CloudTrailARNInvalidException" . cloud-trail-arninvalid-exception)
+        ("ResourceTypeNotSupportedException"
+         . resource-type-not-supported-exception)
+        ("InvalidTrailNameException" . invalid-trail-name-exception)
+        ("InvalidTagParameterException" . invalid-tag-parameter-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)
+        ("OperationNotPermittedException"
+         . operation-not-permitted-exception)))))
  (common-lisp:export 'remove-tags))
 (common-lisp:progn
  (common-lisp:defun start-logging
@@ -2943,7 +2469,10 @@
                                                         "POST" "/"
                                                         "StartLogging"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("TrailNotFoundException" . trail-not-found-exception)
+        ("InvalidTrailNameException" . invalid-trail-name-exception)
+        ("InvalidHomeRegionException" . invalid-home-region-exception)))))
  (common-lisp:export 'start-logging))
 (common-lisp:progn
  (common-lisp:defun stop-logging
@@ -2961,7 +2490,10 @@
                                                         "POST" "/"
                                                         "StopLogging"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("TrailNotFoundException" . trail-not-found-exception)
+        ("InvalidTrailNameException" . invalid-trail-name-exception)
+        ("InvalidHomeRegionException" . invalid-home-region-exception)))))
  (common-lisp:export 'stop-logging))
 (common-lisp:progn
  (common-lisp:defun update-trail
@@ -2987,5 +2519,34 @@
                                                         "POST" "/"
                                                         "UpdateTrail"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("S3BucketDoesNotExistException" . s3bucket-does-not-exist-exception)
+        ("InsufficientS3BucketPolicyException"
+         . insufficient-s3bucket-policy-exception)
+        ("InsufficientSnsTopicPolicyException"
+         . insufficient-sns-topic-policy-exception)
+        ("InsufficientEncryptionPolicyException"
+         . insufficient-encryption-policy-exception)
+        ("TrailNotFoundException" . trail-not-found-exception)
+        ("InvalidS3BucketNameException" . invalid-s3bucket-name-exception)
+        ("InvalidS3PrefixException" . invalid-s3prefix-exception)
+        ("InvalidSnsTopicNameException" . invalid-sns-topic-name-exception)
+        ("InvalidKmsKeyIdException" . invalid-kms-key-id-exception)
+        ("InvalidTrailNameException" . invalid-trail-name-exception)
+        ("TrailNotProvidedException" . trail-not-provided-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidHomeRegionException" . invalid-home-region-exception)
+        ("KmsKeyNotFoundException" . kms-key-not-found-exception)
+        ("KmsKeyDisabledException" . kms-key-disabled-exception)
+        ("KmsException" . kms-exception)
+        ("InvalidCloudWatchLogsLogGroupArnException"
+         . invalid-cloud-watch-logs-log-group-arn-exception)
+        ("InvalidCloudWatchLogsRoleArnException"
+         . invalid-cloud-watch-logs-role-arn-exception)
+        ("CloudWatchLogsDeliveryUnavailableException"
+         . cloud-watch-logs-delivery-unavailable-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)
+        ("OperationNotPermittedException"
+         . operation-not-permitted-exception)))))
  (common-lisp:export 'update-trail))

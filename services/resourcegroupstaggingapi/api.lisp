@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/resourcegroupstaggingapi/api)
 (common-lisp:progn
  (common-lisp:defclass resourcegroupstaggingapi-request
                        (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "resourcegroupstaggingapi"))
  (common-lisp:export 'resourcegroupstaggingapi-request))
+(common-lisp:progn
+ (common-lisp:define-condition resourcegroupstaggingapi-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'resourcegroupstaggingapi-error))
 (common-lisp:deftype amazon-resource-type () 'common-lisp:string)
 (common-lisp:deftype error-code () 'common-lisp:string)
 (common-lisp:deftype error-message () 'common-lisp:string)
@@ -291,99 +297,30 @@
                           get-tag-values-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-service-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-service-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition internal-service-exception
+     (resourcegroupstaggingapi-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-service-exception-message)))
  (common-lisp:export
   (common-lisp:list 'internal-service-exception
-                    'make-internal-service-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-exception))
-   common-lisp:nil))
+                    'internal-service-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition invalid-parameter-exception
+     (resourcegroupstaggingapi-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-parameter-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-exception
-                    'make-invalid-parameter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   common-lisp:nil))
+                    'invalid-parameter-exception-message)))
 (common-lisp:deftype pagination-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (pagination-token-expired-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-pagination-token-expired-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition pagination-token-expired-exception
+     (resourcegroupstaggingapi-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       pagination-token-expired-exception-message)))
  (common-lisp:export
   (common-lisp:list 'pagination-token-expired-exception
-                    'make-pagination-token-expired-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          pagination-token-expired-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          pagination-token-expired-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          pagination-token-expired-exception))
-   common-lisp:nil))
+                    'pagination-token-expired-exception-message)))
 (common-lisp:deftype resource-arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype resource-arnlist ()
@@ -619,29 +556,12 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype tags-per-page () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (throttled-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-throttled-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition throttled-exception
+     (resourcegroupstaggingapi-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       throttled-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'throttled-exception 'make-throttled-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input throttled-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input throttled-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input throttled-exception))
-   common-lisp:nil))
+  (common-lisp:list 'throttled-exception 'throttled-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (untag-resources-input (:copier common-lisp:nil)
@@ -729,7 +649,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'resourcegroupstaggingapi-request aws-sdk/generator/operation::input
         "POST" "/" "GetResources" "2017-01-26"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ThrottledException" . throttled-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("PaginationTokenExpiredException"
+         . pagination-token-expired-exception)))))
  (common-lisp:export 'get-resources))
 (common-lisp:progn
  (common-lisp:defun get-tag-keys
@@ -745,7 +670,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'resourcegroupstaggingapi-request aws-sdk/generator/operation::input
         "POST" "/" "GetTagKeys" "2017-01-26"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ThrottledException" . throttled-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("PaginationTokenExpiredException"
+         . pagination-token-expired-exception)))))
  (common-lisp:export 'get-tag-keys))
 (common-lisp:progn
  (common-lisp:defun get-tag-values
@@ -761,7 +691,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'resourcegroupstaggingapi-request aws-sdk/generator/operation::input
         "POST" "/" "GetTagValues" "2017-01-26"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ThrottledException" . throttled-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("PaginationTokenExpiredException"
+         . pagination-token-expired-exception)))))
  (common-lisp:export 'get-tag-values))
 (common-lisp:progn
  (common-lisp:defun tag-resources
@@ -777,7 +712,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'resourcegroupstaggingapi-request aws-sdk/generator/operation::input
         "POST" "/" "TagResources" "2017-01-26"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ThrottledException" . throttled-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'tag-resources))
 (common-lisp:progn
  (common-lisp:defun untag-resources
@@ -793,5 +731,8 @@
        (aws-sdk/generator/shape:make-request-with-input
         'resourcegroupstaggingapi-request aws-sdk/generator/operation::input
         "POST" "/" "UntagResources" "2017-01-26"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ThrottledException" . throttled-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'untag-resources))

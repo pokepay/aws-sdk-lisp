@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/ecs/api)
 (common-lisp:progn
  (common-lisp:defclass ecs-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "ecs"))
  (common-lisp:export 'ecs-request))
+(common-lisp:progn
+ (common-lisp:define-condition ecs-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'ecs-error))
 (common-lisp:deftype agent-update-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -62,27 +68,10 @@
                         ((aws-sdk/generator/shape::input attribute))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (attribute-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-attribute-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'attribute-limit-exceeded-exception
-                    'make-attribute-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          attribute-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          attribute-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          attribute-limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition attribute-limit-exceeded-exception
+     (ecs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'attribute-limit-exceeded-exception)))
 (common-lisp:progn
  (common-lisp:deftype attributes () '(trivial-types:proper-list attribute))
  (common-lisp:defun |make-attributes|
@@ -94,28 +83,12 @@
 (common-lisp:deftype boxed-boolean () 'common-lisp:boolean)
 (common-lisp:deftype boxed-integer () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (client-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-client-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition client-exception
+     (ecs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       client-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'client-exception 'make-client-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input client-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input client-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input client-exception))
-   common-lisp:nil))
+  (common-lisp:list 'client-exception 'client-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (cluster (:copier common-lisp:nil) (:conc-name "struct-shape-cluster-"))
@@ -193,72 +166,21 @@
                         ((aws-sdk/generator/shape::input cluster))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cluster-contains-container-instances-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-cluster-contains-container-instances-exception-")))
+ (common-lisp:define-condition cluster-contains-container-instances-exception
+     (ecs-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'cluster-contains-container-instances-exception
-                    'make-cluster-contains-container-instances-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-contains-container-instances-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-contains-container-instances-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-contains-container-instances-exception))
-   common-lisp:nil))
+  (common-lisp:list 'cluster-contains-container-instances-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cluster-contains-services-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cluster-contains-services-exception-")))
- (common-lisp:export
-  (common-lisp:list 'cluster-contains-services-exception
-                    'make-cluster-contains-services-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-contains-services-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-contains-services-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-contains-services-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition cluster-contains-services-exception
+     (ecs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'cluster-contains-services-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cluster-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cluster-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'cluster-not-found-exception
-                    'make-cluster-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition cluster-not-found-exception
+     (ecs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'cluster-not-found-exception)))
 (common-lisp:progn
  (common-lisp:deftype clusters () '(trivial-types:proper-list cluster))
  (common-lisp:defun |make-clusters|
@@ -2047,27 +1969,10 @@
    common-lisp:nil))
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-parameter-exception
-                    'make-invalid-parameter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-parameter-exception
+     (ecs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-parameter-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (key-value-pair (:copier common-lisp:nil)
@@ -2891,27 +2796,10 @@
 (common-lisp:deftype log-driver () 'common-lisp:string)
 (common-lisp:deftype long () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (missing-version-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-missing-version-exception-")))
- (common-lisp:export
-  (common-lisp:list 'missing-version-exception
-                    'make-missing-version-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-version-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-version-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-version-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition missing-version-exception
+     (ecs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'missing-version-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (mount-point (:copier common-lisp:nil)
@@ -3020,27 +2908,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype network-mode () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-update-available-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-update-available-exception-")))
- (common-lisp:export
-  (common-lisp:list 'no-update-available-exception
-                    'make-no-update-available-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-update-available-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-update-available-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-update-available-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition no-update-available-exception
+     (ecs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'no-update-available-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (placement-constraint (:copier common-lisp:nil)
@@ -3664,28 +3535,12 @@
                         ((aws-sdk/generator/shape::input run-task-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (server-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-server-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition server-exception
+     (ecs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       server-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'server-exception 'make-server-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input server-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input server-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input server-exception))
-   common-lisp:nil))
+  (common-lisp:list 'server-exception 'server-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (service (:copier common-lisp:nil) (:conc-name "struct-shape-service-"))
@@ -3889,49 +3744,15 @@
                            (trivial-types:proper-list service-event))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-not-active-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-not-active-exception-")))
- (common-lisp:export
-  (common-lisp:list 'service-not-active-exception
-                    'make-service-not-active-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-not-active-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-not-active-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-not-active-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition service-not-active-exception
+     (ecs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'service-not-active-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'service-not-found-exception
-                    'make-service-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition service-not-found-exception
+     (ecs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'service-not-found-exception)))
 (common-lisp:progn
  (common-lisp:deftype services () '(trivial-types:proper-list service))
  (common-lisp:defun |make-services|
@@ -4306,27 +4127,10 @@
                           submit-task-state-change-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (target-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-target-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'target-not-found-exception
-                    'make-target-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          target-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          target-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          target-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition target-not-found-exception
+     (ecs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'target-not-found-exception)))
 (common-lisp:deftype target-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -4875,27 +4679,10 @@
                           update-container-instances-state-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-in-progress-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-in-progress-exception-")))
- (common-lisp:export
-  (common-lisp:list 'update-in-progress-exception
-                    'make-update-in-progress-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          update-in-progress-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          update-in-progress-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          update-in-progress-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition update-in-progress-exception
+     (ecs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'update-in-progress-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-service-request (:copier common-lisp:nil)
@@ -5124,7 +4911,10 @@
                                                         "POST" "/"
                                                         "CreateCluster"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)))))
  (common-lisp:export 'create-cluster))
 (common-lisp:progn
  (common-lisp:defun create-service
@@ -5148,7 +4938,11 @@
                                                         "POST" "/"
                                                         "CreateService"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClusterNotFoundException" . cluster-not-found-exception)))))
  (common-lisp:export 'create-service))
 (common-lisp:progn
  (common-lisp:defun delete-attributes
@@ -5166,7 +4960,10 @@
                                                         "POST" "/"
                                                         "DeleteAttributes"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ClusterNotFoundException" . cluster-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)))))
  (common-lisp:export 'delete-attributes))
 (common-lisp:progn
  (common-lisp:defun delete-cluster
@@ -5184,7 +4981,15 @@
                                                         "POST" "/"
                                                         "DeleteCluster"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClusterNotFoundException" . cluster-not-found-exception)
+        ("ClusterContainsContainerInstancesException"
+         . cluster-contains-container-instances-exception)
+        ("ClusterContainsServicesException"
+         . cluster-contains-services-exception)))))
  (common-lisp:export 'delete-cluster))
 (common-lisp:progn
  (common-lisp:defun delete-service
@@ -5202,7 +5007,12 @@
                                                         "POST" "/"
                                                         "DeleteService"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClusterNotFoundException" . cluster-not-found-exception)
+        ("ServiceNotFoundException" . service-not-found-exception)))))
  (common-lisp:export 'delete-service))
 (common-lisp:progn
  (common-lisp:defun deregister-container-instance
@@ -5222,7 +5032,11 @@
                                                         "POST" "/"
                                                         "DeregisterContainerInstance"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClusterNotFoundException" . cluster-not-found-exception)))))
  (common-lisp:export 'deregister-container-instance))
 (common-lisp:progn
  (common-lisp:defun deregister-task-definition
@@ -5241,7 +5055,10 @@
                                                         "POST" "/"
                                                         "DeregisterTaskDefinition"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)))))
  (common-lisp:export 'deregister-task-definition))
 (common-lisp:progn
  (common-lisp:defun describe-clusters
@@ -5259,7 +5076,10 @@
                                                         "POST" "/"
                                                         "DescribeClusters"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)))))
  (common-lisp:export 'describe-clusters))
 (common-lisp:progn
  (common-lisp:defun describe-container-instances
@@ -5278,7 +5098,11 @@
                                                         "POST" "/"
                                                         "DescribeContainerInstances"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClusterNotFoundException" . cluster-not-found-exception)))))
  (common-lisp:export 'describe-container-instances))
 (common-lisp:progn
  (common-lisp:defun describe-services
@@ -5296,7 +5120,11 @@
                                                         "POST" "/"
                                                         "DescribeServices"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClusterNotFoundException" . cluster-not-found-exception)))))
  (common-lisp:export 'describe-services))
 (common-lisp:progn
  (common-lisp:defun describe-task-definition
@@ -5314,7 +5142,10 @@
                                                         "POST" "/"
                                                         "DescribeTaskDefinition"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)))))
  (common-lisp:export 'describe-task-definition))
 (common-lisp:progn
  (common-lisp:defun describe-tasks
@@ -5332,7 +5163,11 @@
                                                         "POST" "/"
                                                         "DescribeTasks"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClusterNotFoundException" . cluster-not-found-exception)))))
  (common-lisp:export 'describe-tasks))
 (common-lisp:progn
  (common-lisp:defun discover-poll-endpoint
@@ -5350,7 +5185,9 @@
                                                         "POST" "/"
                                                         "DiscoverPollEndpoint"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)))))
  (common-lisp:export 'discover-poll-endpoint))
 (common-lisp:progn
  (common-lisp:defun list-attributes
@@ -5371,7 +5208,9 @@
                                                         "POST" "/"
                                                         "ListAttributes"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ClusterNotFoundException" . cluster-not-found-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)))))
  (common-lisp:export 'list-attributes))
 (common-lisp:progn
  (common-lisp:defun list-clusters
@@ -5389,7 +5228,10 @@
                                                         "POST" "/"
                                                         "ListClusters"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)))))
  (common-lisp:export 'list-clusters))
 (common-lisp:progn
  (common-lisp:defun list-container-instances
@@ -5409,7 +5251,11 @@
                                                         "POST" "/"
                                                         "ListContainerInstances"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClusterNotFoundException" . cluster-not-found-exception)))))
  (common-lisp:export 'list-container-instances))
 (common-lisp:progn
  (common-lisp:defun list-services
@@ -5427,7 +5273,11 @@
                                                         "POST" "/"
                                                         "ListServices"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClusterNotFoundException" . cluster-not-found-exception)))))
  (common-lisp:export 'list-services))
 (common-lisp:progn
  (common-lisp:defun list-task-definition-families
@@ -5448,7 +5298,10 @@
                                                         "POST" "/"
                                                         "ListTaskDefinitionFamilies"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)))))
  (common-lisp:export 'list-task-definition-families))
 (common-lisp:progn
  (common-lisp:defun list-task-definitions
@@ -5468,7 +5321,10 @@
                                                         "POST" "/"
                                                         "ListTaskDefinitions"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)))))
  (common-lisp:export 'list-task-definitions))
 (common-lisp:progn
  (common-lisp:defun list-tasks
@@ -5489,7 +5345,12 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListTasks"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClusterNotFoundException" . cluster-not-found-exception)
+        ("ServiceNotFoundException" . service-not-found-exception)))))
  (common-lisp:export 'list-tasks))
 (common-lisp:progn
  (common-lisp:defun put-attributes
@@ -5507,7 +5368,12 @@
                                                         "POST" "/"
                                                         "PutAttributes"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ClusterNotFoundException" . cluster-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
+        ("AttributeLimitExceededException"
+         . attribute-limit-exceeded-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)))))
  (common-lisp:export 'put-attributes))
 (common-lisp:progn
  (common-lisp:defun register-container-instance
@@ -5531,7 +5397,9 @@
                                                         "POST" "/"
                                                         "RegisterContainerInstance"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)))))
  (common-lisp:export 'register-container-instance))
 (common-lisp:progn
  (common-lisp:defun register-task-definition
@@ -5552,7 +5420,10 @@
                                                         "POST" "/"
                                                         "RegisterTaskDefinition"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)))))
  (common-lisp:export 'register-task-definition))
 (common-lisp:progn
  (common-lisp:defun run-task
@@ -5572,7 +5443,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "RunTask"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClusterNotFoundException" . cluster-not-found-exception)))))
  (common-lisp:export 'run-task))
 (common-lisp:progn
  (common-lisp:defun start-task
@@ -5592,7 +5467,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "StartTask"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClusterNotFoundException" . cluster-not-found-exception)))))
  (common-lisp:export 'start-task))
 (common-lisp:progn
  (common-lisp:defun stop-task
@@ -5609,7 +5488,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "StopTask"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClusterNotFoundException" . cluster-not-found-exception)))))
  (common-lisp:export 'stop-task))
 (common-lisp:progn
  (common-lisp:defun submit-container-state-change
@@ -5631,7 +5514,9 @@
                                                         "POST" "/"
                                                         "SubmitContainerStateChange"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)))))
  (common-lisp:export 'submit-container-state-change))
 (common-lisp:progn
  (common-lisp:defun submit-task-state-change
@@ -5649,7 +5534,9 @@
                                                         "POST" "/"
                                                         "SubmitTaskStateChange"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)))))
  (common-lisp:export 'submit-task-state-change))
 (common-lisp:progn
  (common-lisp:defun update-container-agent
@@ -5667,7 +5554,14 @@
                                                         "POST" "/"
                                                         "UpdateContainerAgent"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClusterNotFoundException" . cluster-not-found-exception)
+        ("UpdateInProgressException" . update-in-progress-exception)
+        ("NoUpdateAvailableException" . no-update-available-exception)
+        ("MissingVersionException" . missing-version-exception)))))
  (common-lisp:export 'update-container-agent))
 (common-lisp:progn
  (common-lisp:defun update-container-instances-state
@@ -5687,7 +5581,11 @@
                                                         "POST" "/"
                                                         "UpdateContainerInstancesState"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClusterNotFoundException" . cluster-not-found-exception)))))
  (common-lisp:export 'update-container-instances-state))
 (common-lisp:progn
  (common-lisp:defun update-service
@@ -5708,5 +5606,11 @@
                                                         "POST" "/"
                                                         "UpdateService"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("ClientException" . client-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClusterNotFoundException" . cluster-not-found-exception)
+        ("ServiceNotFoundException" . service-not-found-exception)
+        ("ServiceNotActiveException" . service-not-active-exception)))))
  (common-lisp:export 'update-service))

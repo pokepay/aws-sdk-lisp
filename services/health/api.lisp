@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/health/api)
 (common-lisp:progn
  (common-lisp:defclass health-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "health"))
  (common-lisp:export 'health-request))
+(common-lisp:progn
+ (common-lisp:define-condition health-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'health-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (affected-entity (:copier common-lisp:nil)
@@ -1284,59 +1290,20 @@
                            (trivial-types:proper-list event-type))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-pagination-token (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-pagination-token-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-pagination-token
+     (health-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-pagination-token-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-pagination-token 'make-invalid-pagination-token))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-pagination-token))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-pagination-token))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-pagination-token))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-pagination-token
+                    'invalid-pagination-token-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unsupported-locale (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unsupported-locale-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition unsupported-locale
+     (health-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unsupported-locale-message)))
  (common-lisp:export
-  (common-lisp:list 'unsupported-locale 'make-unsupported-locale))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input unsupported-locale))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input unsupported-locale))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input unsupported-locale))
-   common-lisp:nil))
+  (common-lisp:list 'unsupported-locale 'unsupported-locale-message)))
 (common-lisp:deftype |accountId| () 'common-lisp:string)
 (common-lisp:deftype |aggregateValue| () 'common-lisp:string)
 (common-lisp:deftype |availabilityZone| () 'common-lisp:string)
@@ -1487,7 +1454,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeAffectedEntities"
                                                         "2016-08-04"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidPaginationToken" . invalid-pagination-token)
+        ("UnsupportedLocale" . unsupported-locale)))))
  (common-lisp:export 'describe-affected-entities))
 (common-lisp:progn
  (common-lisp:defun describe-entity-aggregates
@@ -1506,7 +1475,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeEntityAggregates"
                                                         "2016-08-04"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-entity-aggregates))
 (common-lisp:progn
  (common-lisp:defun describe-event-aggregates
@@ -1527,7 +1496,8 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeEventAggregates"
                                                         "2016-08-04"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidPaginationToken" . invalid-pagination-token)))))
  (common-lisp:export 'describe-event-aggregates))
 (common-lisp:progn
  (common-lisp:defun describe-event-details
@@ -1545,7 +1515,8 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeEventDetails"
                                                         "2016-08-04"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnsupportedLocale" . unsupported-locale)))))
  (common-lisp:export 'describe-event-details))
 (common-lisp:progn
  (common-lisp:defun describe-event-types
@@ -1564,7 +1535,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeEventTypes"
                                                         "2016-08-04"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidPaginationToken" . invalid-pagination-token)
+        ("UnsupportedLocale" . unsupported-locale)))))
  (common-lisp:export 'describe-event-types))
 (common-lisp:progn
  (common-lisp:defun describe-events
@@ -1583,5 +1556,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeEvents"
                                                         "2016-08-04"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidPaginationToken" . invalid-pagination-token)
+        ("UnsupportedLocale" . unsupported-locale)))))
  (common-lisp:export 'describe-events))

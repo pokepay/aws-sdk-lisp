@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/support/api)
 (common-lisp:progn
  (common-lisp:defclass support-request (aws-sdk/request:request)
                        common-lisp:nil (:default-initargs :service "support"))
  (common-lisp:export 'support-request))
+(common-lisp:progn
+ (common-lisp:define-condition support-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'support-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (add-attachments-to-set-request (:copier common-lisp:nil)
@@ -246,66 +252,20 @@
    common-lisp:nil))
 (common-lisp:deftype attachment-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (attachment-id-not-found (:copier common-lisp:nil)
-      (:conc-name "struct-shape-attachment-id-not-found-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition attachment-id-not-found
+     (support-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       attachment-id-not-found-message)))
  (common-lisp:export
-  (common-lisp:list 'attachment-id-not-found 'make-attachment-id-not-found))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          attachment-id-not-found))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          attachment-id-not-found))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          attachment-id-not-found))
-   common-lisp:nil))
+  (common-lisp:list 'attachment-id-not-found 'attachment-id-not-found-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (attachment-limit-exceeded (:copier common-lisp:nil)
-      (:conc-name "struct-shape-attachment-limit-exceeded-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition attachment-limit-exceeded
+     (support-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       attachment-limit-exceeded-message)))
  (common-lisp:export
   (common-lisp:list 'attachment-limit-exceeded
-                    'make-attachment-limit-exceeded))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          attachment-limit-exceeded))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          attachment-limit-exceeded))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          attachment-limit-exceeded))
-   common-lisp:nil))
+                    'attachment-limit-exceeded-message)))
 (common-lisp:progn
  (common-lisp:deftype attachment-set ()
    '(trivial-types:proper-list attachment-details))
@@ -315,98 +275,29 @@
                            (trivial-types:proper-list attachment-details))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (attachment-set-expired (:copier common-lisp:nil)
-      (:conc-name "struct-shape-attachment-set-expired-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition attachment-set-expired
+     (support-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       attachment-set-expired-message)))
  (common-lisp:export
-  (common-lisp:list 'attachment-set-expired 'make-attachment-set-expired))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          attachment-set-expired))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          attachment-set-expired))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          attachment-set-expired))
-   common-lisp:nil))
+  (common-lisp:list 'attachment-set-expired 'attachment-set-expired-message)))
 (common-lisp:deftype attachment-set-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (attachment-set-id-not-found (:copier common-lisp:nil)
-      (:conc-name "struct-shape-attachment-set-id-not-found-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition attachment-set-id-not-found
+     (support-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       attachment-set-id-not-found-message)))
  (common-lisp:export
   (common-lisp:list 'attachment-set-id-not-found
-                    'make-attachment-set-id-not-found))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          attachment-set-id-not-found))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          attachment-set-id-not-found))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          attachment-set-id-not-found))
-   common-lisp:nil))
+                    'attachment-set-id-not-found-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (attachment-set-size-limit-exceeded (:copier common-lisp:nil)
-      (:conc-name "struct-shape-attachment-set-size-limit-exceeded-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition attachment-set-size-limit-exceeded
+     (support-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       attachment-set-size-limit-exceeded-message)))
  (common-lisp:export
   (common-lisp:list 'attachment-set-size-limit-exceeded
-                    'make-attachment-set-size-limit-exceeded))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          attachment-set-size-limit-exceeded))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          attachment-set-size-limit-exceeded))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          attachment-set-size-limit-exceeded))
-   common-lisp:nil))
+                    'attachment-set-size-limit-exceeded-message)))
 (common-lisp:progn
  (common-lisp:deftype attachments () '(trivial-types:proper-list attachment))
  (common-lisp:defun |make-attachments|
@@ -417,36 +308,13 @@
 (common-lisp:deftype before-time () 'common-lisp:string)
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (case-creation-limit-exceeded (:copier common-lisp:nil)
-      (:conc-name "struct-shape-case-creation-limit-exceeded-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition case-creation-limit-exceeded
+     (support-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       case-creation-limit-exceeded-message)))
  (common-lisp:export
   (common-lisp:list 'case-creation-limit-exceeded
-                    'make-case-creation-limit-exceeded))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          case-creation-limit-exceeded))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          case-creation-limit-exceeded))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          case-creation-limit-exceeded))
-   common-lisp:nil))
+                    'case-creation-limit-exceeded-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (case-details (:copier common-lisp:nil)
@@ -575,29 +443,12 @@
                            (trivial-types:proper-list case-id))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (case-id-not-found (:copier common-lisp:nil)
-      (:conc-name "struct-shape-case-id-not-found-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition case-id-not-found
+     (support-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       case-id-not-found-message)))
  (common-lisp:export
-  (common-lisp:list 'case-id-not-found 'make-case-id-not-found))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input case-id-not-found))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input case-id-not-found))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input case-id-not-found))
-   common-lisp:nil))
+  (common-lisp:list 'case-id-not-found 'case-id-not-found-message)))
 (common-lisp:progn
  (common-lisp:deftype case-list () '(trivial-types:proper-list case-details))
  (common-lisp:defun |make-case-list|
@@ -842,36 +693,13 @@
 (common-lisp:deftype data ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-attachment-limit-exceeded (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-attachment-limit-exceeded-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition describe-attachment-limit-exceeded
+     (support-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       describe-attachment-limit-exceeded-message)))
  (common-lisp:export
   (common-lisp:list 'describe-attachment-limit-exceeded
-                    'make-describe-attachment-limit-exceeded))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          describe-attachment-limit-exceeded))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          describe-attachment-limit-exceeded))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          describe-attachment-limit-exceeded))
-   common-lisp:nil))
+                    'describe-attachment-limit-exceeded-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-attachment-request (:copier common-lisp:nil)
@@ -1588,35 +1416,12 @@
 (common-lisp:deftype include-communications () 'common-lisp:boolean)
 (common-lisp:deftype include-resolved-cases () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-server-error (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-server-error-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition internal-server-error
+     (support-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-server-error-message)))
  (common-lisp:export
-  (common-lisp:list 'internal-server-error 'make-internal-server-error))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   common-lisp:nil))
+  (common-lisp:list 'internal-server-error 'internal-server-error-message)))
 (common-lisp:deftype issue-type () 'common-lisp:string)
 (common-lisp:deftype language () 'common-lisp:string)
 (common-lisp:deftype long () 'common-lisp:integer)
@@ -2426,7 +2231,12 @@
                                                         "POST" "/"
                                                         "AddAttachmentsToSet"
                                                         "2013-04-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerError" . internal-server-error)
+        ("AttachmentSetIdNotFound" . attachment-set-id-not-found)
+        ("AttachmentSetExpired" . attachment-set-expired)
+        ("AttachmentSetSizeLimitExceeded" . attachment-set-size-limit-exceeded)
+        ("AttachmentLimitExceeded" . attachment-limit-exceeded)))))
  (common-lisp:export 'add-attachments-to-set))
 (common-lisp:progn
  (common-lisp:defun add-communication-to-case
@@ -2448,7 +2258,11 @@
                                                         "POST" "/"
                                                         "AddCommunicationToCase"
                                                         "2013-04-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerError" . internal-server-error)
+        ("CaseIdNotFound" . case-id-not-found)
+        ("AttachmentSetIdNotFound" . attachment-set-id-not-found)
+        ("AttachmentSetExpired" . attachment-set-expired)))))
  (common-lisp:export 'add-communication-to-case))
 (common-lisp:progn
  (common-lisp:defun create-case
@@ -2470,7 +2284,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CreateCase"
                                                         "2013-04-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerError" . internal-server-error)
+        ("CaseCreationLimitExceeded" . case-creation-limit-exceeded)
+        ("AttachmentSetIdNotFound" . attachment-set-id-not-found)
+        ("AttachmentSetExpired" . attachment-set-expired)))))
  (common-lisp:export 'create-case))
 (common-lisp:progn
  (common-lisp:defun describe-attachment
@@ -2488,7 +2306,11 @@
                                                         "POST" "/"
                                                         "DescribeAttachment"
                                                         "2013-04-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerError" . internal-server-error)
+        ("DescribeAttachmentLimitExceeded"
+         . describe-attachment-limit-exceeded)
+        ("AttachmentIdNotFound" . attachment-id-not-found)))))
  (common-lisp:export 'describe-attachment))
 (common-lisp:progn
  (common-lisp:defun describe-cases
@@ -2511,7 +2333,9 @@
                                                         "POST" "/"
                                                         "DescribeCases"
                                                         "2013-04-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerError" . internal-server-error)
+        ("CaseIdNotFound" . case-id-not-found)))))
  (common-lisp:export 'describe-cases))
 (common-lisp:progn
  (common-lisp:defun describe-communications
@@ -2532,7 +2356,9 @@
                                                         "POST" "/"
                                                         "DescribeCommunications"
                                                         "2013-04-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerError" . internal-server-error)
+        ("CaseIdNotFound" . case-id-not-found)))))
  (common-lisp:export 'describe-communications))
 (common-lisp:progn
  (common-lisp:defun describe-services
@@ -2550,7 +2376,8 @@
                                                         "POST" "/"
                                                         "DescribeServices"
                                                         "2013-04-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-services))
 (common-lisp:progn
  (common-lisp:defun describe-severity-levels
@@ -2568,7 +2395,8 @@
                                                         "POST" "/"
                                                         "DescribeSeverityLevels"
                                                         "2013-04-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-severity-levels))
 (common-lisp:progn
  (common-lisp:defun describe-trusted-advisor-check-refresh-statuses
@@ -2587,7 +2415,8 @@
                                                         "POST" "/"
                                                         "DescribeTrustedAdvisorCheckRefreshStatuses"
                                                         "2013-04-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-trusted-advisor-check-refresh-statuses))
 (common-lisp:progn
  (common-lisp:defun describe-trusted-advisor-check-result
@@ -2606,7 +2435,8 @@
                                                         "POST" "/"
                                                         "DescribeTrustedAdvisorCheckResult"
                                                         "2013-04-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-trusted-advisor-check-result))
 (common-lisp:progn
  (common-lisp:defun describe-trusted-advisor-check-summaries
@@ -2625,7 +2455,8 @@
                                                         "POST" "/"
                                                         "DescribeTrustedAdvisorCheckSummaries"
                                                         "2013-04-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-trusted-advisor-check-summaries))
 (common-lisp:progn
  (common-lisp:defun describe-trusted-advisor-checks
@@ -2644,7 +2475,8 @@
                                                         "POST" "/"
                                                         "DescribeTrustedAdvisorChecks"
                                                         "2013-04-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-trusted-advisor-checks))
 (common-lisp:progn
  (common-lisp:defun refresh-trusted-advisor-check
@@ -2663,7 +2495,8 @@
                                                         "POST" "/"
                                                         "RefreshTrustedAdvisorCheck"
                                                         "2013-04-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'refresh-trusted-advisor-check))
 (common-lisp:progn
  (common-lisp:defun resolve-case
@@ -2681,5 +2514,7 @@
                                                         "POST" "/"
                                                         "ResolveCase"
                                                         "2013-04-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerError" . internal-server-error)
+        ("CaseIdNotFound" . case-id-not-found)))))
  (common-lisp:export 'resolve-case))

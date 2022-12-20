@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/snowball/api)
 (common-lisp:progn
  (common-lisp:defclass snowball-request (aws-sdk/request:request)
                        common-lisp:nil (:default-initargs :service "snowball"))
  (common-lisp:export 'snowball-request))
+(common-lisp:progn
+ (common-lisp:define-condition snowball-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'snowball-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (address (:copier common-lisp:nil) (:conc-name "struct-shape-address-"))
@@ -244,35 +250,13 @@
    common-lisp:nil))
 (common-lisp:deftype cluster-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (cluster-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cluster-limit-exceeded-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition cluster-limit-exceeded-exception
+     (snowball-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       cluster-limit-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'cluster-limit-exceeded-exception
-                    'make-cluster-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-limit-exceeded-exception))
-   common-lisp:nil))
+                    'cluster-limit-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (cluster-list-entry (:copier common-lisp:nil)
@@ -1334,155 +1318,45 @@
    common-lisp:nil))
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-address-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-address-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition invalid-address-exception
+     (snowball-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-address-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-address-exception
-                    'make-invalid-address-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-address-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-address-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-address-exception))
-   common-lisp:nil))
+                    'invalid-address-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-input-combination-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-input-combination-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition invalid-input-combination-exception
+     (snowball-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-input-combination-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-input-combination-exception
-                    'make-invalid-input-combination-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-combination-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-combination-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-combination-exception))
-   common-lisp:nil))
+                    'invalid-input-combination-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-job-state-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-job-state-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition invalid-job-state-exception
+     (snowball-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-job-state-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-job-state-exception
-                    'make-invalid-job-state-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-job-state-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-job-state-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-job-state-exception))
-   common-lisp:nil))
+                    'invalid-job-state-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-next-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-next-token-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition invalid-next-token-exception
+     (snowball-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-next-token-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-next-token-exception
-                    'make-invalid-next-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   common-lisp:nil))
+                    'invalid-next-token-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-resource-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-resource-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition invalid-resource-exception
+     (snowball-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-resource-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-resource-exception
-                    'make-invalid-resource-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-resource-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-resource-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-resource-exception))
-   common-lisp:nil))
+                    'invalid-resource-exception-message)))
 (common-lisp:deftype job-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -1822,35 +1696,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype job-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (kmsrequest-failed-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kmsrequest-failed-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition kmsrequest-failed-exception
+     (snowball-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       kmsrequest-failed-exception-message)))
  (common-lisp:export
   (common-lisp:list 'kmsrequest-failed-exception
-                    'make-kmsrequest-failed-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmsrequest-failed-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmsrequest-failed-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmsrequest-failed-exception))
-   common-lisp:nil))
+                    'kmsrequest-failed-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (key-range (:copier common-lisp:nil)
@@ -2309,35 +2161,13 @@
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (unsupported-address-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unsupported-address-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition unsupported-address-exception
+     (snowball-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unsupported-address-exception-message)))
  (common-lisp:export
   (common-lisp:list 'unsupported-address-exception
-                    'make-unsupported-address-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-address-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-address-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-address-exception))
-   common-lisp:nil))
+                    'unsupported-address-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-cluster-request (:copier common-lisp:nil)
@@ -2578,7 +2408,10 @@
                                                         "POST" "/"
                                                         "CancelCluster"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("KMSRequestFailedException" . kmsrequest-failed-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidResourceException" . invalid-resource-exception)))))
  (common-lisp:export 'cancel-cluster))
 (common-lisp:progn
  (common-lisp:defun cancel-job
@@ -2595,7 +2428,10 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CancelJob"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("KMSRequestFailedException" . kmsrequest-failed-exception)))))
  (common-lisp:export 'cancel-job))
 (common-lisp:progn
  (common-lisp:defun create-address
@@ -2613,7 +2449,9 @@
                                                         "POST" "/"
                                                         "CreateAddress"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidAddressException" . invalid-address-exception)
+        ("UnsupportedAddressException" . unsupported-address-exception)))))
  (common-lisp:export 'create-address))
 (common-lisp:progn
  (common-lisp:defun create-cluster
@@ -2636,7 +2474,11 @@
                                                         "POST" "/"
                                                         "CreateCluster"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)
+        ("KMSRequestFailedException" . kmsrequest-failed-exception)
+        ("InvalidInputCombinationException"
+         . invalid-input-combination-exception)))))
  (common-lisp:export 'create-cluster))
 (common-lisp:progn
  (common-lisp:defun create-job
@@ -2659,7 +2501,13 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CreateJob"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)
+        ("KMSRequestFailedException" . kmsrequest-failed-exception)
+        ("InvalidInputCombinationException"
+         . invalid-input-combination-exception)
+        ("ClusterLimitExceededException"
+         . cluster-limit-exceeded-exception)))))
  (common-lisp:export 'create-job))
 (common-lisp:progn
  (common-lisp:defun describe-address
@@ -2677,7 +2525,8 @@
                                                         "POST" "/"
                                                         "DescribeAddress"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)))))
  (common-lisp:export 'describe-address))
 (common-lisp:progn
  (common-lisp:defun describe-addresses
@@ -2695,7 +2544,9 @@
                                                         "POST" "/"
                                                         "DescribeAddresses"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'describe-addresses))
 (common-lisp:progn
  (common-lisp:defun describe-cluster
@@ -2713,7 +2564,8 @@
                                                         "POST" "/"
                                                         "DescribeCluster"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)))))
  (common-lisp:export 'describe-cluster))
 (common-lisp:progn
  (common-lisp:defun describe-job
@@ -2731,7 +2583,8 @@
                                                         "POST" "/"
                                                         "DescribeJob"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)))))
  (common-lisp:export 'describe-job))
 (common-lisp:progn
  (common-lisp:defun get-job-manifest
@@ -2749,7 +2602,9 @@
                                                         "POST" "/"
                                                         "GetJobManifest"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)))))
  (common-lisp:export 'get-job-manifest))
 (common-lisp:progn
  (common-lisp:defun get-job-unlock-code
@@ -2767,7 +2622,9 @@
                                                         "POST" "/"
                                                         "GetJobUnlockCode"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)))))
  (common-lisp:export 'get-job-unlock-code))
 (common-lisp:progn
  (common-lisp:defun get-snowball-usage ()
@@ -2777,7 +2634,7 @@
                                 :params
                                 `(("Action" ,@"GetSnowballUsage")
                                   ("Version" ,@"2016-06-30"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil 'common-lisp:nil))
  (common-lisp:export 'get-snowball-usage))
 (common-lisp:progn
  (common-lisp:defun list-cluster-jobs
@@ -2796,7 +2653,9 @@
                                                         "POST" "/"
                                                         "ListClusterJobs"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-cluster-jobs))
 (common-lisp:progn
  (common-lisp:defun list-clusters
@@ -2814,7 +2673,8 @@
                                                         "POST" "/"
                                                         "ListClusters"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-clusters))
 (common-lisp:progn
  (common-lisp:defun list-jobs
@@ -2831,7 +2691,8 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListJobs"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-jobs))
 (common-lisp:progn
  (common-lisp:defun update-cluster
@@ -2853,7 +2714,12 @@
                                                         "POST" "/"
                                                         "UpdateCluster"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("KMSRequestFailedException" . kmsrequest-failed-exception)
+        ("InvalidInputCombinationException"
+         . invalid-input-combination-exception)))))
  (common-lisp:export 'update-cluster))
 (common-lisp:progn
  (common-lisp:defun update-job
@@ -2875,5 +2741,12 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "UpdateJob"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("KMSRequestFailedException" . kmsrequest-failed-exception)
+        ("InvalidInputCombinationException"
+         . invalid-input-combination-exception)
+        ("ClusterLimitExceededException"
+         . cluster-limit-exceeded-exception)))))
  (common-lisp:export 'update-job))

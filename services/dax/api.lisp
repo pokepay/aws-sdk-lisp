@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/dax/api)
 (common-lisp:progn
  (common-lisp:defclass dax-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "dax"))
  (common-lisp:export 'dax-request))
+(common-lisp:progn
+ (common-lisp:define-condition dax-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'dax-error))
 (common-lisp:progn
  (common-lisp:deftype availability-zone-list ()
    '(trivial-types:proper-list string))
@@ -178,27 +184,10 @@
                         ((aws-sdk/generator/shape::input cluster))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cluster-already-exists-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cluster-already-exists-fault-")))
- (common-lisp:export
-  (common-lisp:list 'cluster-already-exists-fault
-                    'make-cluster-already-exists-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-already-exists-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition cluster-already-exists-fault
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'cluster-already-exists-fault)))
 (common-lisp:progn
  (common-lisp:deftype cluster-list () '(trivial-types:proper-list cluster))
  (common-lisp:defun |make-cluster-list|
@@ -214,48 +203,16 @@
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cluster-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cluster-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'cluster-not-found-fault 'make-cluster-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition cluster-not-found-fault
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'cluster-not-found-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cluster-quota-for-customer-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cluster-quota-for-customer-exceeded-fault-")))
+ (common-lisp:define-condition cluster-quota-for-customer-exceeded-fault
+     (dax-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'cluster-quota-for-customer-exceeded-fault
-                    'make-cluster-quota-for-customer-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-quota-for-customer-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-quota-for-customer-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          cluster-quota-for-customer-exceeded-fault))
-   common-lisp:nil))
+  (common-lisp:list 'cluster-quota-for-customer-exceeded-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-cluster-request (:copier common-lisp:nil)
@@ -1560,186 +1517,53 @@
                           increase-replication-factor-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (insufficient-cluster-capacity-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-insufficient-cluster-capacity-fault-")))
- (common-lisp:export
-  (common-lisp:list 'insufficient-cluster-capacity-fault
-                    'make-insufficient-cluster-capacity-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-cluster-capacity-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-cluster-capacity-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-cluster-capacity-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition insufficient-cluster-capacity-fault
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'insufficient-cluster-capacity-fault)))
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:deftype integer-optional () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-arnfault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-arnfault-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-arnfault 'make-invalid-arnfault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-arnfault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-arnfault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-arnfault))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-arnfault
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-arnfault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-cluster-state-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-cluster-state-fault-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-cluster-state-fault
-                    'make-invalid-cluster-state-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-cluster-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-cluster-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-cluster-state-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-cluster-state-fault
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-cluster-state-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-combination-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-combination-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or aws-query-error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-parameter-combination-exception
+     (dax-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-parameter-combination-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-combination-exception
-                    'make-invalid-parameter-combination-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-combination-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-combination-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-combination-exception))
-   common-lisp:nil))
+                    'invalid-parameter-combination-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-group-state-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-group-state-fault-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-parameter-group-state-fault
-                    'make-invalid-parameter-group-state-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-group-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-group-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-group-state-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-parameter-group-state-fault
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-parameter-group-state-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-value-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-value-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or aws-query-error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-parameter-value-exception
+     (dax-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-parameter-value-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-value-exception
-                    'make-invalid-parameter-value-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-value-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-value-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-value-exception))
-   common-lisp:nil))
+                    'invalid-parameter-value-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-subnet (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-subnet-")))
- (common-lisp:export (common-lisp:list 'invalid-subnet 'make-invalid-subnet))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-subnet))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-subnet))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-subnet))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-subnet
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-subnet)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-vpcnetwork-state-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-vpcnetwork-state-fault-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-vpcnetwork-state-fault
-                    'make-invalid-vpcnetwork-state-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-vpcnetwork-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-vpcnetwork-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-vpcnetwork-state-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-vpcnetwork-state-fault
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-vpcnetwork-state-fault)))
 (common-lisp:deftype is-modifiable () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype key-list () '(trivial-types:proper-list string))
@@ -1892,64 +1716,21 @@
                            (trivial-types:proper-list node))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (node-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-node-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'node-not-found-fault 'make-node-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input node-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input node-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input node-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition node-not-found-fault
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'node-not-found-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (node-quota-for-cluster-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-node-quota-for-cluster-exceeded-fault-")))
- (common-lisp:export
-  (common-lisp:list 'node-quota-for-cluster-exceeded-fault
-                    'make-node-quota-for-cluster-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          node-quota-for-cluster-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          node-quota-for-cluster-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          node-quota-for-cluster-exceeded-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition node-quota-for-cluster-exceeded-fault
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'node-quota-for-cluster-exceeded-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (node-quota-for-customer-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-node-quota-for-customer-exceeded-fault-")))
+ (common-lisp:define-condition node-quota-for-customer-exceeded-fault
+     (dax-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'node-quota-for-customer-exceeded-fault
-                    'make-node-quota-for-customer-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          node-quota-for-customer-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          node-quota-for-customer-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          node-quota-for-customer-exceeded-fault))
-   common-lisp:nil))
+  (common-lisp:list 'node-quota-for-customer-exceeded-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (node-type-specific-value (:copier common-lisp:nil)
@@ -2171,27 +1952,10 @@
                         ((aws-sdk/generator/shape::input parameter-group))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (parameter-group-already-exists-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-parameter-group-already-exists-fault-")))
- (common-lisp:export
-  (common-lisp:list 'parameter-group-already-exists-fault
-                    'make-parameter-group-already-exists-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          parameter-group-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          parameter-group-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          parameter-group-already-exists-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition parameter-group-already-exists-fault
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'parameter-group-already-exists-fault)))
 (common-lisp:progn
  (common-lisp:deftype parameter-group-list ()
    '(trivial-types:proper-list parameter-group))
@@ -2209,49 +1973,15 @@
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (parameter-group-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-parameter-group-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'parameter-group-not-found-fault
-                    'make-parameter-group-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          parameter-group-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          parameter-group-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          parameter-group-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition parameter-group-not-found-fault
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'parameter-group-not-found-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (parameter-group-quota-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-parameter-group-quota-exceeded-fault-")))
- (common-lisp:export
-  (common-lisp:list 'parameter-group-quota-exceeded-fault
-                    'make-parameter-group-quota-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          parameter-group-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          parameter-group-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          parameter-group-quota-exceeded-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition parameter-group-quota-exceeded-fault
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'parameter-group-quota-exceeded-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (parameter-group-status (:copier common-lisp:nil)
@@ -2547,49 +2277,15 @@
                         ((aws-sdk/generator/shape::input subnet-group))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (subnet-group-already-exists-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-subnet-group-already-exists-fault-")))
- (common-lisp:export
-  (common-lisp:list 'subnet-group-already-exists-fault
-                    'make-subnet-group-already-exists-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-group-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-group-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-group-already-exists-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition subnet-group-already-exists-fault
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'subnet-group-already-exists-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (subnet-group-in-use-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-subnet-group-in-use-fault-")))
- (common-lisp:export
-  (common-lisp:list 'subnet-group-in-use-fault
-                    'make-subnet-group-in-use-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-group-in-use-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-group-in-use-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-group-in-use-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition subnet-group-in-use-fault
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'subnet-group-in-use-fault)))
 (common-lisp:progn
  (common-lisp:deftype subnet-group-list ()
    '(trivial-types:proper-list subnet-group))
@@ -2607,49 +2303,15 @@
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (subnet-group-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-subnet-group-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'subnet-group-not-found-fault
-                    'make-subnet-group-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-group-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-group-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-group-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition subnet-group-not-found-fault
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'subnet-group-not-found-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (subnet-group-quota-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-subnet-group-quota-exceeded-fault-")))
- (common-lisp:export
-  (common-lisp:list 'subnet-group-quota-exceeded-fault
-                    'make-subnet-group-quota-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-group-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-group-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-group-quota-exceeded-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition subnet-group-quota-exceeded-fault
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'subnet-group-quota-exceeded-fault)))
 (common-lisp:progn
  (common-lisp:deftype subnet-identifier-list ()
    '(trivial-types:proper-list string))
@@ -2659,19 +2321,10 @@
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (subnet-in-use (:copier common-lisp:nil)
-      (:conc-name "struct-shape-subnet-in-use-")))
- (common-lisp:export (common-lisp:list 'subnet-in-use 'make-subnet-in-use))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input subnet-in-use))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input subnet-in-use))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input subnet-in-use))
-   common-lisp:nil))
+ (common-lisp:define-condition subnet-in-use
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'subnet-in-use)))
 (common-lisp:progn
  (common-lisp:deftype subnet-list () '(trivial-types:proper-list subnet))
  (common-lisp:defun |make-subnet-list|
@@ -2680,27 +2333,10 @@
                            (trivial-types:proper-list subnet))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (subnet-quota-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-subnet-quota-exceeded-fault-")))
- (common-lisp:export
-  (common-lisp:list 'subnet-quota-exceeded-fault
-                    'make-subnet-quota-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-quota-exceeded-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition subnet-quota-exceeded-fault
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'subnet-quota-exceeded-fault)))
 (common-lisp:deftype tstamp () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -2739,42 +2375,15 @@
                            (trivial-types:proper-list tag))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'tag-not-found-fault 'make-tag-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input tag-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input tag-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input tag-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition tag-not-found-fault
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'tag-not-found-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-quota-per-resource-exceeded (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-quota-per-resource-exceeded-")))
- (common-lisp:export
-  (common-lisp:list 'tag-quota-per-resource-exceeded
-                    'make-tag-quota-per-resource-exceeded))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          tag-quota-per-resource-exceeded))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          tag-quota-per-resource-exceeded))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          tag-quota-per-resource-exceeded))
-   common-lisp:nil))
+ (common-lisp:define-condition tag-quota-per-resource-exceeded
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'tag-quota-per-resource-exceeded)))
 (common-lisp:progn
  (common-lisp:defstruct
      (tag-resource-request (:copier common-lisp:nil)
@@ -3199,7 +2808,26 @@
                                                         "POST" "/"
                                                         "CreateCluster"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)))))
  (common-lisp:export 'create-cluster))
 (common-lisp:progn
  (common-lisp:defun create-parameter-group
@@ -3218,7 +2846,16 @@
                                                         "POST" "/"
                                                         "CreateParameterGroup"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)))))
  (common-lisp:export 'create-parameter-group))
 (common-lisp:progn
  (common-lisp:defun create-subnet-group
@@ -3237,7 +2874,11 @@
                                                         "POST" "/"
                                                         "CreateSubnetGroup"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("InvalidSubnet" . invalid-subnet)))))
  (common-lisp:export 'create-subnet-group))
 (common-lisp:progn
  (common-lisp:defun decrease-replication-factor
@@ -3259,7 +2900,13 @@
                                                         "POST" "/"
                                                         "DecreaseReplicationFactor"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)))))
  (common-lisp:export 'decrease-replication-factor))
 (common-lisp:progn
  (common-lisp:defun delete-cluster
@@ -3277,7 +2924,12 @@
                                                         "POST" "/"
                                                         "DeleteCluster"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)))))
  (common-lisp:export 'delete-cluster))
 (common-lisp:progn
  (common-lisp:defun delete-parameter-group
@@ -3295,7 +2947,13 @@
                                                         "POST" "/"
                                                         "DeleteParameterGroup"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)))))
  (common-lisp:export 'delete-parameter-group))
 (common-lisp:progn
  (common-lisp:defun delete-subnet-group
@@ -3313,7 +2971,9 @@
                                                         "POST" "/"
                                                         "DeleteSubnetGroup"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)))))
  (common-lisp:export 'delete-subnet-group))
 (common-lisp:progn
  (common-lisp:defun describe-clusters
@@ -3332,7 +2992,11 @@
                                                         "POST" "/"
                                                         "DescribeClusters"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)))))
  (common-lisp:export 'describe-clusters))
 (common-lisp:progn
  (common-lisp:defun describe-default-parameters
@@ -3351,7 +3015,10 @@
                                                         "POST" "/"
                                                         "DescribeDefaultParameters"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)))))
  (common-lisp:export 'describe-default-parameters))
 (common-lisp:progn
  (common-lisp:defun describe-events
@@ -3372,7 +3039,10 @@
                                                         "POST" "/"
                                                         "DescribeEvents"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)))))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
  (common-lisp:defun describe-parameter-groups
@@ -3393,7 +3063,11 @@
                                                         "POST" "/"
                                                         "DescribeParameterGroups"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)))))
  (common-lisp:export 'describe-parameter-groups))
 (common-lisp:progn
  (common-lisp:defun describe-parameters
@@ -3413,7 +3087,11 @@
                                                         "POST" "/"
                                                         "DescribeParameters"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)))))
  (common-lisp:export 'describe-parameters))
 (common-lisp:progn
  (common-lisp:defun describe-subnet-groups
@@ -3433,7 +3111,8 @@
                                                         "POST" "/"
                                                         "DescribeSubnetGroups"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)))))
  (common-lisp:export 'describe-subnet-groups))
 (common-lisp:progn
  (common-lisp:defun increase-replication-factor
@@ -3455,7 +3134,19 @@
                                                         "POST" "/"
                                                         "IncreaseReplicationFactor"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)))))
  (common-lisp:export 'increase-replication-factor))
 (common-lisp:progn
  (common-lisp:defun list-tags
@@ -3472,7 +3163,13 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListTags"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)))))
  (common-lisp:export 'list-tags))
 (common-lisp:progn
  (common-lisp:defun reboot-node
@@ -3489,7 +3186,13 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "RebootNode"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)))))
  (common-lisp:export 'reboot-node))
 (common-lisp:progn
  (common-lisp:defun tag-resource
@@ -3507,7 +3210,14 @@
                                                         "POST" "/"
                                                         "TagResource"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)))))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
  (common-lisp:defun untag-resource
@@ -3525,7 +3235,14 @@
                                                         "POST" "/"
                                                         "UntagResource"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)))))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
  (common-lisp:defun update-cluster
@@ -3549,7 +3266,15 @@
                                                         "POST" "/"
                                                         "UpdateCluster"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)))))
  (common-lisp:export 'update-cluster))
 (common-lisp:progn
  (common-lisp:defun update-parameter-group
@@ -3569,7 +3294,13 @@
                                                         "POST" "/"
                                                         "UpdateParameterGroup"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)))))
  (common-lisp:export 'update-parameter-group))
 (common-lisp:progn
  (common-lisp:defun update-subnet-group
@@ -3588,5 +3319,8 @@
                                                         "POST" "/"
                                                         "UpdateSubnetGroup"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use) ("InvalidSubnet" . invalid-subnet)))))
  (common-lisp:export 'update-subnet-group))

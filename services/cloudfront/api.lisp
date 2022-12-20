@@ -6,7 +6,8 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/cloudfront/api)
 (common-lisp:progn
  (common-lisp:defclass cloudfront-request (aws-sdk/request:request)
@@ -14,28 +15,16 @@
                        (:default-initargs :service "cloudfront"))
  (common-lisp:export 'cloudfront-request))
 (common-lisp:progn
- (common-lisp:defstruct
-     (access-denied (:copier common-lisp:nil)
-      (:conc-name "struct-shape-access-denied-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
- (common-lisp:export (common-lisp:list 'access-denied 'make-access-denied))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input access-denied))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input access-denied))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input access-denied))
-   common-lisp:nil))
+ (common-lisp:define-condition cloudfront-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'cloudfront-error))
+(common-lisp:progn
+ (common-lisp:define-condition access-denied
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       access-denied-message)))
+ (common-lisp:export (common-lisp:list 'access-denied 'access-denied-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (active-trusted-signers (:copier common-lisp:nil)
@@ -171,52 +160,19 @@
                            (trivial-types:proper-list common-lisp:string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-too-large (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-too-large-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
- (common-lisp:export (common-lisp:list 'batch-too-large 'make-batch-too-large))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input batch-too-large))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input batch-too-large))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input batch-too-large))
-   common-lisp:nil))
-(common-lisp:progn
- (common-lisp:defstruct
-     (cnamealready-exists (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cnamealready-exists-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition batch-too-large
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       batch-too-large-message)))
  (common-lisp:export
-  (common-lisp:list 'cnamealready-exists 'make-cnamealready-exists))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input cnamealready-exists))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input cnamealready-exists))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input cnamealready-exists))
-   common-lisp:nil))
+  (common-lisp:list 'batch-too-large 'batch-too-large-message)))
+(common-lisp:progn
+ (common-lisp:define-condition cnamealready-exists
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       cnamealready-exists-message)))
+ (common-lisp:export
+  (common-lisp:list 'cnamealready-exists 'cnamealready-exists-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (cache-behavior (:copier common-lisp:nil)
@@ -467,38 +423,13 @@
                           cloud-front-origin-access-identity))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cloud-front-origin-access-identity-already-exists
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-cloud-front-origin-access-identity-already-exists-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition cloud-front-origin-access-identity-already-exists
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       cloud-front-origin-access-identity-already-exists-message)))
  (common-lisp:export
   (common-lisp:list 'cloud-front-origin-access-identity-already-exists
-                    'make-cloud-front-origin-access-identity-already-exists))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-front-origin-access-identity-already-exists))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-front-origin-access-identity-already-exists))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-front-origin-access-identity-already-exists))
-   common-lisp:nil))
+                    'cloud-front-origin-access-identity-already-exists-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (cloud-front-origin-access-identity-config (:copier common-lisp:nil)
@@ -540,36 +471,13 @@
                           cloud-front-origin-access-identity-config))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cloud-front-origin-access-identity-in-use (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cloud-front-origin-access-identity-in-use-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition cloud-front-origin-access-identity-in-use
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       cloud-front-origin-access-identity-in-use-message)))
  (common-lisp:export
   (common-lisp:list 'cloud-front-origin-access-identity-in-use
-                    'make-cloud-front-origin-access-identity-in-use))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-front-origin-access-identity-in-use))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-front-origin-access-identity-in-use))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          cloud-front-origin-access-identity-in-use))
-   common-lisp:nil))
+                    'cloud-front-origin-access-identity-in-use-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (cloud-front-origin-access-identity-list (:copier common-lisp:nil)
@@ -1763,36 +1671,13 @@
                         ((aws-sdk/generator/shape::input distribution))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (distribution-already-exists (:copier common-lisp:nil)
-      (:conc-name "struct-shape-distribution-already-exists-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition distribution-already-exists
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       distribution-already-exists-message)))
  (common-lisp:export
   (common-lisp:list 'distribution-already-exists
-                    'make-distribution-already-exists))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          distribution-already-exists))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          distribution-already-exists))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          distribution-already-exists))
-   common-lisp:nil))
+                    'distribution-already-exists-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (distribution-config (:copier common-lisp:nil)
@@ -2064,36 +1949,13 @@
                         ((aws-sdk/generator/shape::input distribution-list))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (distribution-not-disabled (:copier common-lisp:nil)
-      (:conc-name "struct-shape-distribution-not-disabled-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition distribution-not-disabled
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       distribution-not-disabled-message)))
  (common-lisp:export
   (common-lisp:list 'distribution-not-disabled
-                    'make-distribution-not-disabled))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          distribution-not-disabled))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          distribution-not-disabled))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          distribution-not-disabled))
-   common-lisp:nil))
+                    'distribution-not-disabled-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (distribution-summary (:copier common-lisp:nil)
@@ -2852,722 +2714,193 @@
    common-lisp:nil))
 (common-lisp:deftype http-version () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (illegal-update (:copier common-lisp:nil)
-      (:conc-name "struct-shape-illegal-update-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
- (common-lisp:export (common-lisp:list 'illegal-update 'make-illegal-update))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input illegal-update))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input illegal-update))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input illegal-update))
-   common-lisp:nil))
-(common-lisp:progn
- (common-lisp:defstruct
-     (inconsistent-quantities (:copier common-lisp:nil)
-      (:conc-name "struct-shape-inconsistent-quantities-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition illegal-update
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       illegal-update-message)))
  (common-lisp:export
-  (common-lisp:list 'inconsistent-quantities 'make-inconsistent-quantities))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          inconsistent-quantities))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          inconsistent-quantities))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          inconsistent-quantities))
-   common-lisp:nil))
+  (common-lisp:list 'illegal-update 'illegal-update-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-argument (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-argument-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition inconsistent-quantities
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       inconsistent-quantities-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-argument 'make-invalid-argument))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-argument))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-argument))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-argument))
-   common-lisp:nil))
+  (common-lisp:list 'inconsistent-quantities 'inconsistent-quantities-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-default-root-object (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-default-root-object-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-argument
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-argument-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-argument 'invalid-argument-message)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-default-root-object
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-default-root-object-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-default-root-object
-                    'make-invalid-default-root-object))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-default-root-object))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-default-root-object))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-default-root-object))
-   common-lisp:nil))
+                    'invalid-default-root-object-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-error-code (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-error-code-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-error-code
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-error-code-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-error-code 'make-invalid-error-code))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-error-code))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-error-code))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-error-code))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-error-code 'invalid-error-code-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-forward-cookies (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-forward-cookies-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-forward-cookies
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-forward-cookies-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-forward-cookies 'make-invalid-forward-cookies))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-forward-cookies))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-forward-cookies))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-forward-cookies))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-forward-cookies 'invalid-forward-cookies-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-geo-restriction-parameter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-geo-restriction-parameter-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-geo-restriction-parameter
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-geo-restriction-parameter-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-geo-restriction-parameter
-                    'make-invalid-geo-restriction-parameter))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-geo-restriction-parameter))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-geo-restriction-parameter))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-geo-restriction-parameter))
-   common-lisp:nil))
+                    'invalid-geo-restriction-parameter-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-headers-for-s3origin (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-headers-for-s3origin-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-headers-for-s3origin
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-headers-for-s3origin-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-headers-for-s3origin
-                    'make-invalid-headers-for-s3origin))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-headers-for-s3origin))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-headers-for-s3origin))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-headers-for-s3origin))
-   common-lisp:nil))
+                    'invalid-headers-for-s3origin-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-if-match-version (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-if-match-version-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-if-match-version
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-if-match-version-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-if-match-version 'make-invalid-if-match-version))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-if-match-version))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-if-match-version))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-if-match-version))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-if-match-version
+                    'invalid-if-match-version-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-lambda-function-association (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-lambda-function-association-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-lambda-function-association
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-lambda-function-association-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-lambda-function-association
-                    'make-invalid-lambda-function-association))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-lambda-function-association))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-lambda-function-association))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-lambda-function-association))
-   common-lisp:nil))
+                    'invalid-lambda-function-association-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-location-code (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-location-code-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-location-code
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-location-code-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-location-code 'make-invalid-location-code))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-location-code))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-location-code))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-location-code))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-location-code 'invalid-location-code-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-minimum-protocol-version (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-minimum-protocol-version-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-minimum-protocol-version
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-minimum-protocol-version-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-minimum-protocol-version
-                    'make-invalid-minimum-protocol-version))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-minimum-protocol-version))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-minimum-protocol-version))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-minimum-protocol-version))
-   common-lisp:nil))
+                    'invalid-minimum-protocol-version-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-origin (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-origin-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
- (common-lisp:export (common-lisp:list 'invalid-origin 'make-invalid-origin))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-origin))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-origin))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-origin))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-origin
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-origin-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-origin 'invalid-origin-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-origin-access-identity (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-origin-access-identity-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-origin-access-identity
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-origin-access-identity-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-origin-access-identity
-                    'make-invalid-origin-access-identity))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-origin-access-identity))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-origin-access-identity))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-origin-access-identity))
-   common-lisp:nil))
+                    'invalid-origin-access-identity-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-origin-keepalive-timeout (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-origin-keepalive-timeout-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-origin-keepalive-timeout
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-origin-keepalive-timeout-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-origin-keepalive-timeout
-                    'make-invalid-origin-keepalive-timeout))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-origin-keepalive-timeout))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-origin-keepalive-timeout))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-origin-keepalive-timeout))
-   common-lisp:nil))
+                    'invalid-origin-keepalive-timeout-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-origin-read-timeout (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-origin-read-timeout-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-origin-read-timeout
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-origin-read-timeout-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-origin-read-timeout
-                    'make-invalid-origin-read-timeout))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-origin-read-timeout))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-origin-read-timeout))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-origin-read-timeout))
-   common-lisp:nil))
+                    'invalid-origin-read-timeout-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-protocol-settings (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-protocol-settings-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-protocol-settings
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-protocol-settings-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-protocol-settings
-                    'make-invalid-protocol-settings))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-protocol-settings))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-protocol-settings))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-protocol-settings))
-   common-lisp:nil))
+                    'invalid-protocol-settings-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-query-string-parameters (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-query-string-parameters-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-query-string-parameters
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-query-string-parameters-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-query-string-parameters
-                    'make-invalid-query-string-parameters))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-query-string-parameters))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-query-string-parameters))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-query-string-parameters))
-   common-lisp:nil))
+                    'invalid-query-string-parameters-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-relative-path (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-relative-path-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-relative-path
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-relative-path-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-relative-path 'make-invalid-relative-path))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-relative-path))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-relative-path))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-relative-path))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-relative-path 'invalid-relative-path-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-required-protocol (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-required-protocol-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-required-protocol
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-required-protocol-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-required-protocol
-                    'make-invalid-required-protocol))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-required-protocol))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-required-protocol))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-required-protocol))
-   common-lisp:nil))
+                    'invalid-required-protocol-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-response-code (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-response-code-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-response-code
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-response-code-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-response-code 'make-invalid-response-code))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-response-code))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-response-code))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-response-code))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-response-code 'invalid-response-code-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-ttlorder (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-ttlorder-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-ttlorder
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-ttlorder-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-ttlorder 'make-invalid-ttlorder))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-ttlorder))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-ttlorder))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-ttlorder))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-ttlorder 'invalid-ttlorder-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-tagging (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-tagging-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
- (common-lisp:export (common-lisp:list 'invalid-tagging 'make-invalid-tagging))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-tagging))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-tagging))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-tagging))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-tagging
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-tagging-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-tagging 'invalid-tagging-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-viewer-certificate (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-viewer-certificate-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-viewer-certificate
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-viewer-certificate-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-viewer-certificate
-                    'make-invalid-viewer-certificate))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-viewer-certificate))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-viewer-certificate))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-viewer-certificate))
-   common-lisp:nil))
+                    'invalid-viewer-certificate-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-web-aclid (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-web-aclid-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-web-aclid
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-web-aclid-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-web-aclid 'make-invalid-web-aclid))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-web-aclid))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-web-aclid))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-web-aclid))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-web-aclid 'invalid-web-aclid-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (invalidation (:copier common-lisp:nil)
@@ -4320,185 +3653,55 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype minimum-protocol-version () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (missing-body (:copier common-lisp:nil)
-      (:conc-name "struct-shape-missing-body-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
- (common-lisp:export (common-lisp:list 'missing-body 'make-missing-body))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input missing-body))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input missing-body))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input missing-body))
-   common-lisp:nil))
+ (common-lisp:define-condition missing-body
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       missing-body-message)))
+ (common-lisp:export (common-lisp:list 'missing-body 'missing-body-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-cloud-front-origin-access-identity (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-cloud-front-origin-access-identity-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition no-such-cloud-front-origin-access-identity
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       no-such-cloud-front-origin-access-identity-message)))
  (common-lisp:export
   (common-lisp:list 'no-such-cloud-front-origin-access-identity
-                    'make-no-such-cloud-front-origin-access-identity))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-cloud-front-origin-access-identity))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-cloud-front-origin-access-identity))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-cloud-front-origin-access-identity))
-   common-lisp:nil))
+                    'no-such-cloud-front-origin-access-identity-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-distribution (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-distribution-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition no-such-distribution
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       no-such-distribution-message)))
  (common-lisp:export
-  (common-lisp:list 'no-such-distribution 'make-no-such-distribution))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input no-such-distribution))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input no-such-distribution))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input no-such-distribution))
-   common-lisp:nil))
+  (common-lisp:list 'no-such-distribution 'no-such-distribution-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-invalidation (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-invalidation-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition no-such-invalidation
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       no-such-invalidation-message)))
  (common-lisp:export
-  (common-lisp:list 'no-such-invalidation 'make-no-such-invalidation))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input no-such-invalidation))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input no-such-invalidation))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input no-such-invalidation))
-   common-lisp:nil))
+  (common-lisp:list 'no-such-invalidation 'no-such-invalidation-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-origin (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-origin-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
- (common-lisp:export (common-lisp:list 'no-such-origin 'make-no-such-origin))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input no-such-origin))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input no-such-origin))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input no-such-origin))
-   common-lisp:nil))
-(common-lisp:progn
- (common-lisp:defstruct
-     (no-such-resource (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-resource-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition no-such-origin
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       no-such-origin-message)))
  (common-lisp:export
-  (common-lisp:list 'no-such-resource 'make-no-such-resource))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input no-such-resource))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input no-such-resource))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input no-such-resource))
-   common-lisp:nil))
+  (common-lisp:list 'no-such-origin 'no-such-origin-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-streaming-distribution (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-streaming-distribution-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition no-such-resource
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       no-such-resource-message)))
+ (common-lisp:export
+  (common-lisp:list 'no-such-resource 'no-such-resource-message)))
+(common-lisp:progn
+ (common-lisp:define-condition no-such-streaming-distribution
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       no-such-streaming-distribution-message)))
  (common-lisp:export
   (common-lisp:list 'no-such-streaming-distribution
-                    'make-no-such-streaming-distribution))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-streaming-distribution))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-streaming-distribution))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-streaming-distribution))
-   common-lisp:nil))
+                    'no-such-streaming-distribution-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (origin (:copier common-lisp:nil) (:conc-name "struct-shape-origin-"))
@@ -4718,29 +3921,12 @@
                         ((aws-sdk/generator/shape::input paths))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (precondition-failed (:copier common-lisp:nil)
-      (:conc-name "struct-shape-precondition-failed-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition precondition-failed
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       precondition-failed-message)))
  (common-lisp:export
-  (common-lisp:list 'precondition-failed 'make-precondition-failed))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input precondition-failed))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input precondition-failed))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input precondition-failed))
-   common-lisp:nil))
+  (common-lisp:list 'precondition-failed 'precondition-failed-message)))
 (common-lisp:deftype price-class () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -5008,36 +4194,13 @@
                           streaming-distribution))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (streaming-distribution-already-exists (:copier common-lisp:nil)
-      (:conc-name "struct-shape-streaming-distribution-already-exists-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition streaming-distribution-already-exists
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       streaming-distribution-already-exists-message)))
  (common-lisp:export
   (common-lisp:list 'streaming-distribution-already-exists
-                    'make-streaming-distribution-already-exists))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          streaming-distribution-already-exists))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          streaming-distribution-already-exists))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          streaming-distribution-already-exists))
-   common-lisp:nil))
+                    'streaming-distribution-already-exists-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (streaming-distribution-config (:copier common-lisp:nil)
@@ -5250,36 +4413,13 @@
                           streaming-distribution-list))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (streaming-distribution-not-disabled (:copier common-lisp:nil)
-      (:conc-name "struct-shape-streaming-distribution-not-disabled-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition streaming-distribution-not-disabled
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       streaming-distribution-not-disabled-message)))
  (common-lisp:export
   (common-lisp:list 'streaming-distribution-not-disabled
-                    'make-streaming-distribution-not-disabled))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          streaming-distribution-not-disabled))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          streaming-distribution-not-disabled))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          streaming-distribution-not-disabled))
-   common-lisp:nil))
+                    'streaming-distribution-not-disabled-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (streaming-distribution-summary (:copier common-lisp:nil)
@@ -5574,523 +4714,138 @@
                         ((aws-sdk/generator/shape::input tags))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-cache-behaviors (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-cache-behaviors-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition too-many-cache-behaviors
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-cache-behaviors-message)))
  (common-lisp:export
-  (common-lisp:list 'too-many-cache-behaviors 'make-too-many-cache-behaviors))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-cache-behaviors))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-cache-behaviors))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-cache-behaviors))
-   common-lisp:nil))
+  (common-lisp:list 'too-many-cache-behaviors
+                    'too-many-cache-behaviors-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-certificates (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-certificates-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition too-many-certificates
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-certificates-message)))
  (common-lisp:export
-  (common-lisp:list 'too-many-certificates 'make-too-many-certificates))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-certificates))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-certificates))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-certificates))
-   common-lisp:nil))
+  (common-lisp:list 'too-many-certificates 'too-many-certificates-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-cloud-front-origin-access-identities (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-too-many-cloud-front-origin-access-identities-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition too-many-cloud-front-origin-access-identities
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-cloud-front-origin-access-identities-message)))
  (common-lisp:export
   (common-lisp:list 'too-many-cloud-front-origin-access-identities
-                    'make-too-many-cloud-front-origin-access-identities))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-cloud-front-origin-access-identities))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-cloud-front-origin-access-identities))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-cloud-front-origin-access-identities))
-   common-lisp:nil))
+                    'too-many-cloud-front-origin-access-identities-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-cookie-names-in-white-list (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-cookie-names-in-white-list-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition too-many-cookie-names-in-white-list
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-cookie-names-in-white-list-message)))
  (common-lisp:export
   (common-lisp:list 'too-many-cookie-names-in-white-list
-                    'make-too-many-cookie-names-in-white-list))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-cookie-names-in-white-list))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-cookie-names-in-white-list))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-cookie-names-in-white-list))
-   common-lisp:nil))
+                    'too-many-cookie-names-in-white-list-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-distribution-cnames (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-distribution-cnames-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition too-many-distribution-cnames
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-distribution-cnames-message)))
  (common-lisp:export
   (common-lisp:list 'too-many-distribution-cnames
-                    'make-too-many-distribution-cnames))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-distribution-cnames))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-distribution-cnames))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-distribution-cnames))
-   common-lisp:nil))
+                    'too-many-distribution-cnames-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-distributions (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-distributions-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition too-many-distributions
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-distributions-message)))
  (common-lisp:export
-  (common-lisp:list 'too-many-distributions 'make-too-many-distributions))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-distributions))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-distributions))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-distributions))
-   common-lisp:nil))
+  (common-lisp:list 'too-many-distributions 'too-many-distributions-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-distributions-with-lambda-associations (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-too-many-distributions-with-lambda-associations-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition too-many-distributions-with-lambda-associations
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-distributions-with-lambda-associations-message)))
  (common-lisp:export
   (common-lisp:list 'too-many-distributions-with-lambda-associations
-                    'make-too-many-distributions-with-lambda-associations))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-distributions-with-lambda-associations))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-distributions-with-lambda-associations))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-distributions-with-lambda-associations))
-   common-lisp:nil))
+                    'too-many-distributions-with-lambda-associations-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-headers-in-forwarded-values (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-headers-in-forwarded-values-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition too-many-headers-in-forwarded-values
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-headers-in-forwarded-values-message)))
  (common-lisp:export
   (common-lisp:list 'too-many-headers-in-forwarded-values
-                    'make-too-many-headers-in-forwarded-values))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-headers-in-forwarded-values))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-headers-in-forwarded-values))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-headers-in-forwarded-values))
-   common-lisp:nil))
+                    'too-many-headers-in-forwarded-values-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-invalidations-in-progress (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-invalidations-in-progress-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition too-many-invalidations-in-progress
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-invalidations-in-progress-message)))
  (common-lisp:export
   (common-lisp:list 'too-many-invalidations-in-progress
-                    'make-too-many-invalidations-in-progress))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-invalidations-in-progress))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-invalidations-in-progress))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-invalidations-in-progress))
-   common-lisp:nil))
+                    'too-many-invalidations-in-progress-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-lambda-function-associations (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-lambda-function-associations-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition too-many-lambda-function-associations
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-lambda-function-associations-message)))
  (common-lisp:export
   (common-lisp:list 'too-many-lambda-function-associations
-                    'make-too-many-lambda-function-associations))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-lambda-function-associations))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-lambda-function-associations))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-lambda-function-associations))
-   common-lisp:nil))
+                    'too-many-lambda-function-associations-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-origin-custom-headers (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-origin-custom-headers-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition too-many-origin-custom-headers
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-origin-custom-headers-message)))
  (common-lisp:export
   (common-lisp:list 'too-many-origin-custom-headers
-                    'make-too-many-origin-custom-headers))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-origin-custom-headers))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-origin-custom-headers))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-origin-custom-headers))
-   common-lisp:nil))
+                    'too-many-origin-custom-headers-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-origins (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-origins-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition too-many-origins
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-origins-message)))
  (common-lisp:export
-  (common-lisp:list 'too-many-origins 'make-too-many-origins))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input too-many-origins))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input too-many-origins))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input too-many-origins))
-   common-lisp:nil))
+  (common-lisp:list 'too-many-origins 'too-many-origins-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-query-string-parameters (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-query-string-parameters-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition too-many-query-string-parameters
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-query-string-parameters-message)))
  (common-lisp:export
   (common-lisp:list 'too-many-query-string-parameters
-                    'make-too-many-query-string-parameters))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-query-string-parameters))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-query-string-parameters))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-query-string-parameters))
-   common-lisp:nil))
+                    'too-many-query-string-parameters-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-streaming-distribution-cnames (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-streaming-distribution-cnames-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition too-many-streaming-distribution-cnames
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-streaming-distribution-cnames-message)))
  (common-lisp:export
   (common-lisp:list 'too-many-streaming-distribution-cnames
-                    'make-too-many-streaming-distribution-cnames))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-streaming-distribution-cnames))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-streaming-distribution-cnames))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-streaming-distribution-cnames))
-   common-lisp:nil))
+                    'too-many-streaming-distribution-cnames-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-streaming-distributions (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-streaming-distributions-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition too-many-streaming-distributions
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-streaming-distributions-message)))
  (common-lisp:export
   (common-lisp:list 'too-many-streaming-distributions
-                    'make-too-many-streaming-distributions))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-streaming-distributions))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-streaming-distributions))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-streaming-distributions))
-   common-lisp:nil))
+                    'too-many-streaming-distributions-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-trusted-signers (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-trusted-signers-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition too-many-trusted-signers
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-trusted-signers-message)))
  (common-lisp:export
-  (common-lisp:list 'too-many-trusted-signers 'make-too-many-trusted-signers))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-trusted-signers))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-trusted-signers))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-trusted-signers))
-   common-lisp:nil))
+  (common-lisp:list 'too-many-trusted-signers
+                    'too-many-trusted-signers-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (trusted-signer-does-not-exist (:copier common-lisp:nil)
-      (:conc-name "struct-shape-trusted-signer-does-not-exist-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition trusted-signer-does-not-exist
+     (cloudfront-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       trusted-signer-does-not-exist-message)))
  (common-lisp:export
   (common-lisp:list 'trusted-signer-does-not-exist
-                    'make-trusted-signer-does-not-exist))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          trusted-signer-does-not-exist))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          trusted-signer-does-not-exist))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          trusted-signer-does-not-exist))
-   common-lisp:nil))
+                    'trusted-signer-does-not-exist-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (trusted-signers (:copier common-lisp:nil)
@@ -6516,7 +5271,14 @@ common-lisp:nil
                                                         "/2017-03-25/origin-access-identity/cloudfront"
                                                         "CreateCloudFrontOriginAccessIdentity"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("MissingBody" . missing-body)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("InvalidArgument" . invalid-argument)
+        ("InconsistentQuantities" . inconsistent-quantities)))))
  (common-lisp:export 'create-cloud-front-origin-access-identity))
 (common-lisp:progn
  (common-lisp:defun create-distribution
@@ -6535,7 +5297,51 @@ common-lisp:nil
                                                         "/2017-03-25/distribution"
                                                         "CreateDistribution"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("CNAMEAlreadyExists" . cnamealready-exists)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("AccessDenied" . access-denied)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("MissingBody" . missing-body)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("NoSuchOrigin" . no-such-origin) ("TooManyOrigins" . too-many-origins)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("TooManyCertificates" . too-many-certificates)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidWebACLId" . invalid-web-aclid)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidOriginKeepaliveTimeout"
+         . invalid-origin-keepalive-timeout)))))
  (common-lisp:export 'create-distribution))
 (common-lisp:progn
  (common-lisp:defun create-distribution-with-tags
@@ -6555,7 +5361,52 @@ common-lisp:nil
                                                         "/2017-03-25/distribution?WithTags"
                                                         "CreateDistributionWithTags"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("CNAMEAlreadyExists" . cnamealready-exists)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("AccessDenied" . access-denied)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("MissingBody" . missing-body)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("NoSuchOrigin" . no-such-origin) ("TooManyOrigins" . too-many-origins)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("TooManyCertificates" . too-many-certificates)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidWebACLId" . invalid-web-aclid)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("InvalidTagging" . invalid-tagging)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidOriginKeepaliveTimeout"
+         . invalid-origin-keepalive-timeout)))))
  (common-lisp:export 'create-distribution-with-tags))
 (common-lisp:progn
  (common-lisp:defun create-invalidation
@@ -6584,7 +5435,13 @@ common-lisp:nil
                                                              'distribution-id))))
                                                         "CreateInvalidation"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("AccessDenied" . access-denied) ("MissingBody" . missing-body)
+        ("InvalidArgument" . invalid-argument)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("BatchTooLarge" . batch-too-large)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("InconsistentQuantities" . inconsistent-quantities)))))
  (common-lisp:export 'create-invalidation))
 (common-lisp:progn
  (common-lisp:defun create-streaming-distribution
@@ -6604,7 +5461,21 @@ common-lisp:nil
                                                         "/2017-03-25/streaming-distribution"
                                                         "CreateStreamingDistribution"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("CNAMEAlreadyExists" . cnamealready-exists)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("AccessDenied" . access-denied)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)
+        ("MissingBody" . missing-body)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("InvalidArgument" . invalid-argument)
+        ("InconsistentQuantities" . inconsistent-quantities)))))
  (common-lisp:export 'create-streaming-distribution))
 (common-lisp:progn
  (common-lisp:defun create-streaming-distribution-with-tags
@@ -6625,7 +5496,22 @@ common-lisp:nil
                                                         "/2017-03-25/streaming-distribution?WithTags"
                                                         "CreateStreamingDistributionWithTags"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("CNAMEAlreadyExists" . cnamealready-exists)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("AccessDenied" . access-denied)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)
+        ("MissingBody" . missing-body)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("InvalidArgument" . invalid-argument)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidTagging" . invalid-tagging)))))
  (common-lisp:export 'create-streaming-distribution-with-tags))
 (common-lisp:progn
  (common-lisp:defun delete-cloud-front-origin-access-identity
@@ -6654,7 +5540,14 @@ common-lisp:nil
                                                              'id))))
                                                         "DeleteCloudFrontOriginAccessIdentity"
                                                         "2017-03-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDenied" . access-denied)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("PreconditionFailed" . precondition-failed)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)))))
  (common-lisp:export 'delete-cloud-front-origin-access-identity))
 (common-lisp:progn
  (common-lisp:defun delete-distribution
@@ -6682,7 +5575,12 @@ common-lisp:nil
                                                              'id))))
                                                         "DeleteDistribution"
                                                         "2017-03-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDenied" . access-denied)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("PreconditionFailed" . precondition-failed)))))
  (common-lisp:export 'delete-distribution))
 (common-lisp:progn
  (common-lisp:defun delete-streaming-distribution
@@ -6711,7 +5609,13 @@ common-lisp:nil
                                                              'id))))
                                                         "DeleteStreamingDistribution"
                                                         "2017-03-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDenied" . access-denied)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)))))
  (common-lisp:export 'delete-streaming-distribution))
 (common-lisp:progn
  (common-lisp:defun get-cloud-front-origin-access-identity
@@ -6740,7 +5644,10 @@ common-lisp:nil
                                                              'id))))
                                                         "GetCloudFrontOriginAccessIdentity"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("AccessDenied" . access-denied)))))
  (common-lisp:export 'get-cloud-front-origin-access-identity))
 (common-lisp:progn
  (common-lisp:defun get-cloud-front-origin-access-identity-config
@@ -6769,7 +5676,10 @@ common-lisp:nil
                                                              'id))))
                                                         "GetCloudFrontOriginAccessIdentityConfig"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("AccessDenied" . access-denied)))))
  (common-lisp:export 'get-cloud-front-origin-access-identity-config))
 (common-lisp:progn
  (common-lisp:defun get-distribution
@@ -6797,7 +5707,9 @@ common-lisp:nil
                                                              'id))))
                                                         "GetDistribution"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("NoSuchDistribution" . no-such-distribution)
+        ("AccessDenied" . access-denied)))))
  (common-lisp:export 'get-distribution))
 (common-lisp:progn
  (common-lisp:defun get-distribution-config
@@ -6825,7 +5737,9 @@ common-lisp:nil
                                                              'id))))
                                                         "GetDistributionConfig"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("NoSuchDistribution" . no-such-distribution)
+        ("AccessDenied" . access-denied)))))
  (common-lisp:export 'get-distribution-config))
 (common-lisp:progn
  (common-lisp:defun get-invalidation
@@ -6857,7 +5771,10 @@ common-lisp:nil
                                                              'id))))
                                                         "GetInvalidation"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("AccessDenied" . access-denied)))))
  (common-lisp:export 'get-invalidation))
 (common-lisp:progn
  (common-lisp:defun get-streaming-distribution
@@ -6886,7 +5803,9 @@ common-lisp:nil
                                                              'id))))
                                                         "GetStreamingDistribution"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("AccessDenied" . access-denied)))))
  (common-lisp:export 'get-streaming-distribution))
 (common-lisp:progn
  (common-lisp:defun get-streaming-distribution-config
@@ -6915,7 +5834,9 @@ common-lisp:nil
                                                              'id))))
                                                         "GetStreamingDistributionConfig"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("AccessDenied" . access-denied)))))
  (common-lisp:export 'get-streaming-distribution-config))
 (common-lisp:progn
  (common-lisp:defun list-cloud-front-origin-access-identities
@@ -6935,7 +5856,7 @@ common-lisp:nil
                                                         "/2017-03-25/origin-access-identity/cloudfront"
                                                         "ListCloudFrontOriginAccessIdentities"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil '(("InvalidArgument" . invalid-argument)))))
  (common-lisp:export 'list-cloud-front-origin-access-identities))
 (common-lisp:progn
  (common-lisp:defun list-distributions
@@ -6954,7 +5875,7 @@ common-lisp:nil
                                                         "/2017-03-25/distribution"
                                                         "ListDistributions"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil '(("InvalidArgument" . invalid-argument)))))
  (common-lisp:export 'list-distributions))
 (common-lisp:progn
  (common-lisp:defun list-distributions-by-web-aclid
@@ -6983,7 +5904,9 @@ common-lisp:nil
                                                              'web-aclid))))
                                                         "ListDistributionsByWebACLId"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("InvalidArgument" . invalid-argument)
+        ("InvalidWebACLId" . invalid-web-aclid)))))
  (common-lisp:export 'list-distributions-by-web-aclid))
 (common-lisp:progn
  (common-lisp:defun list-invalidations
@@ -7012,7 +5935,10 @@ common-lisp:nil
                                                              'distribution-id))))
                                                         "ListInvalidations"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("InvalidArgument" . invalid-argument)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("AccessDenied" . access-denied)))))
  (common-lisp:export 'list-invalidations))
 (common-lisp:progn
  (common-lisp:defun list-streaming-distributions
@@ -7032,7 +5958,7 @@ common-lisp:nil
                                                         "/2017-03-25/streaming-distribution"
                                                         "ListStreamingDistributions"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil '(("InvalidArgument" . invalid-argument)))))
  (common-lisp:export 'list-streaming-distributions))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-resource
@@ -7051,7 +5977,10 @@ common-lisp:nil
                                                         "/2017-03-25/tagging"
                                                         "ListTagsForResource"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("AccessDenied" . access-denied) ("InvalidArgument" . invalid-argument)
+        ("InvalidTagging" . invalid-tagging)
+        ("NoSuchResource" . no-such-resource)))))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
  (common-lisp:defun tag-resource
@@ -7070,7 +5999,10 @@ common-lisp:nil
                                                         "/2017-03-25/tagging?Operation=Tag"
                                                         "TagResource"
                                                         "2017-03-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDenied" . access-denied) ("InvalidArgument" . invalid-argument)
+        ("InvalidTagging" . invalid-tagging)
+        ("NoSuchResource" . no-such-resource)))))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
  (common-lisp:defun untag-resource
@@ -7089,7 +6021,10 @@ common-lisp:nil
                                                         "/2017-03-25/tagging?Operation=Untag"
                                                         "UntagResource"
                                                         "2017-03-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDenied" . access-denied) ("InvalidArgument" . invalid-argument)
+        ("InvalidTagging" . invalid-tagging)
+        ("NoSuchResource" . no-such-resource)))))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
  (common-lisp:defun update-cloud-front-origin-access-identity
@@ -7121,7 +6056,15 @@ common-lisp:nil
                                                              'id))))
                                                         "UpdateCloudFrontOriginAccessIdentity"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("AccessDenied" . access-denied) ("IllegalUpdate" . illegal-update)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("PreconditionFailed" . precondition-failed)
+        ("InvalidArgument" . invalid-argument)
+        ("InconsistentQuantities" . inconsistent-quantities)))))
  (common-lisp:export 'update-cloud-front-origin-access-identity))
 (common-lisp:progn
  (common-lisp:defun update-distribution
@@ -7150,7 +6093,51 @@ common-lisp:nil
                                                              'id))))
                                                         "UpdateDistribution"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("AccessDenied" . access-denied)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("IllegalUpdate" . illegal-update)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("MissingBody" . missing-body)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("NoSuchOrigin" . no-such-origin) ("TooManyOrigins" . too-many-origins)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("TooManyCertificates" . too-many-certificates)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidWebACLId" . invalid-web-aclid)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidOriginKeepaliveTimeout"
+         . invalid-origin-keepalive-timeout)))))
  (common-lisp:export 'update-distribution))
 (common-lisp:progn
  (common-lisp:defun update-streaming-distribution
@@ -7181,5 +6168,19 @@ common-lisp:nil
                                                              'id))))
                                                         "UpdateStreamingDistribution"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("AccessDenied" . access-denied)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("IllegalUpdate" . illegal-update)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("MissingBody" . missing-body)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)
+        ("InconsistentQuantities" . inconsistent-quantities)))))
  (common-lisp:export 'update-streaming-distribution))

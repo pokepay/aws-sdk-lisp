@@ -6,46 +6,29 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/elasticfilesystem/api)
 (common-lisp:progn
  (common-lisp:defclass elasticfilesystem-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "elasticfilesystem"))
  (common-lisp:export 'elasticfilesystem-request))
+(common-lisp:progn
+ (common-lisp:define-condition elasticfilesystem-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'elasticfilesystem-error))
 (common-lisp:deftype aws-account-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (bad-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-bad-request-"))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
- (common-lisp:export (common-lisp:list 'bad-request 'make-bad-request))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input bad-request))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input bad-request))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "ErrorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input bad-request))
-   common-lisp:nil))
+ (common-lisp:define-condition bad-request
+     (elasticfilesystem-error)
+     ((error-code :initarg :error-code :initform common-lisp:nil :reader
+       bad-request-error-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       bad-request-message)))
+ (common-lisp:export
+  (common-lisp:list 'bad-request 'bad-request-error-code 'bad-request-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-file-system-request (:copier common-lisp:nil)
@@ -264,38 +247,15 @@
                         ((aws-sdk/generator/shape::input delete-tags-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dependency-timeout (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dependency-timeout-"))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition dependency-timeout
+     (elasticfilesystem-error)
+     ((error-code :initarg :error-code :initform common-lisp:nil :reader
+       dependency-timeout-error-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       dependency-timeout-message)))
  (common-lisp:export
-  (common-lisp:list 'dependency-timeout 'make-dependency-timeout))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input dependency-timeout))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input dependency-timeout))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "ErrorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input dependency-timeout))
-   common-lisp:nil))
+  (common-lisp:list 'dependency-timeout 'dependency-timeout-error-code
+                    'dependency-timeout-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-file-systems-request (:copier common-lisp:nil)
@@ -584,54 +544,19 @@
 (common-lisp:deftype error-code () 'common-lisp:string)
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (file-system-already-exists (:copier common-lisp:nil)
-      (:conc-name "struct-shape-file-system-already-exists-"))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null))
-   (file-system-id (common-lisp:error ":file-system-id is required") :type
-    (common-lisp:or file-system-id common-lisp:null)))
+ (common-lisp:define-condition file-system-already-exists
+     (elasticfilesystem-error)
+     ((error-code :initarg :error-code :initform common-lisp:nil :reader
+       file-system-already-exists-error-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       file-system-already-exists-message)
+      (file-system-id :initarg :file-system-id :initform common-lisp:nil
+       :reader file-system-already-exists-file-system-id)))
  (common-lisp:export
   (common-lisp:list 'file-system-already-exists
-                    'make-file-system-already-exists))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          file-system-already-exists))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          file-system-already-exists))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "ErrorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'file-system-id))
-      (common-lisp:list
-       (common-lisp:cons "FileSystemId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          file-system-already-exists))
-   common-lisp:nil))
+                    'file-system-already-exists-error-code
+                    'file-system-already-exists-message
+                    'file-system-already-exists-file-system-id)))
 (common-lisp:progn
  (common-lisp:defstruct
      (file-system-description (:copier common-lisp:nil)
@@ -763,117 +688,36 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype file-system-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (file-system-in-use (:copier common-lisp:nil)
-      (:conc-name "struct-shape-file-system-in-use-"))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition file-system-in-use
+     (elasticfilesystem-error)
+     ((error-code :initarg :error-code :initform common-lisp:nil :reader
+       file-system-in-use-error-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       file-system-in-use-message)))
  (common-lisp:export
-  (common-lisp:list 'file-system-in-use 'make-file-system-in-use))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input file-system-in-use))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input file-system-in-use))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "ErrorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input file-system-in-use))
-   common-lisp:nil))
+  (common-lisp:list 'file-system-in-use 'file-system-in-use-error-code
+                    'file-system-in-use-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (file-system-limit-exceeded (:copier common-lisp:nil)
-      (:conc-name "struct-shape-file-system-limit-exceeded-"))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition file-system-limit-exceeded
+     (elasticfilesystem-error)
+     ((error-code :initarg :error-code :initform common-lisp:nil :reader
+       file-system-limit-exceeded-error-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       file-system-limit-exceeded-message)))
  (common-lisp:export
   (common-lisp:list 'file-system-limit-exceeded
-                    'make-file-system-limit-exceeded))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          file-system-limit-exceeded))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          file-system-limit-exceeded))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "ErrorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          file-system-limit-exceeded))
-   common-lisp:nil))
+                    'file-system-limit-exceeded-error-code
+                    'file-system-limit-exceeded-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (file-system-not-found (:copier common-lisp:nil)
-      (:conc-name "struct-shape-file-system-not-found-"))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition file-system-not-found
+     (elasticfilesystem-error)
+     ((error-code :initarg :error-code :initform common-lisp:nil :reader
+       file-system-not-found-error-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       file-system-not-found-message)))
  (common-lisp:export
-  (common-lisp:list 'file-system-not-found 'make-file-system-not-found))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          file-system-not-found))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          file-system-not-found))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "ErrorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          file-system-not-found))
-   common-lisp:nil))
+  (common-lisp:list 'file-system-not-found 'file-system-not-found-error-code
+                    'file-system-not-found-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (file-system-size (:copier common-lisp:nil)
@@ -909,158 +753,48 @@
    common-lisp:nil))
 (common-lisp:deftype file-system-size-value () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (incorrect-file-system-life-cycle-state (:copier common-lisp:nil)
-      (:conc-name "struct-shape-incorrect-file-system-life-cycle-state-"))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition incorrect-file-system-life-cycle-state
+     (elasticfilesystem-error)
+     ((error-code :initarg :error-code :initform common-lisp:nil :reader
+       incorrect-file-system-life-cycle-state-error-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       incorrect-file-system-life-cycle-state-message)))
  (common-lisp:export
   (common-lisp:list 'incorrect-file-system-life-cycle-state
-                    'make-incorrect-file-system-life-cycle-state))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          incorrect-file-system-life-cycle-state))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          incorrect-file-system-life-cycle-state))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "ErrorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          incorrect-file-system-life-cycle-state))
-   common-lisp:nil))
+                    'incorrect-file-system-life-cycle-state-error-code
+                    'incorrect-file-system-life-cycle-state-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (incorrect-mount-target-state (:copier common-lisp:nil)
-      (:conc-name "struct-shape-incorrect-mount-target-state-"))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition incorrect-mount-target-state
+     (elasticfilesystem-error)
+     ((error-code :initarg :error-code :initform common-lisp:nil :reader
+       incorrect-mount-target-state-error-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       incorrect-mount-target-state-message)))
  (common-lisp:export
   (common-lisp:list 'incorrect-mount-target-state
-                    'make-incorrect-mount-target-state))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          incorrect-mount-target-state))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          incorrect-mount-target-state))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "ErrorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          incorrect-mount-target-state))
-   common-lisp:nil))
+                    'incorrect-mount-target-state-error-code
+                    'incorrect-mount-target-state-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-server-error (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-server-error-"))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition internal-server-error
+     (elasticfilesystem-error)
+     ((error-code :initarg :error-code :initform common-lisp:nil :reader
+       internal-server-error-error-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       internal-server-error-message)))
  (common-lisp:export
-  (common-lisp:list 'internal-server-error 'make-internal-server-error))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "ErrorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   common-lisp:nil))
+  (common-lisp:list 'internal-server-error 'internal-server-error-error-code
+                    'internal-server-error-message)))
 (common-lisp:deftype ip-address () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (ip-address-in-use (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ip-address-in-use-"))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition ip-address-in-use
+     (elasticfilesystem-error)
+     ((error-code :initarg :error-code :initform common-lisp:nil :reader
+       ip-address-in-use-error-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       ip-address-in-use-message)))
  (common-lisp:export
-  (common-lisp:list 'ip-address-in-use 'make-ip-address-in-use))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input ip-address-in-use))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input ip-address-in-use))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "ErrorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input ip-address-in-use))
-   common-lisp:nil))
+  (common-lisp:list 'ip-address-in-use 'ip-address-in-use-error-code
+                    'ip-address-in-use-message)))
 (common-lisp:deftype kms-key-id () 'common-lisp:string)
 (common-lisp:deftype life-cycle-state () 'common-lisp:string)
 (common-lisp:deftype marker () 'common-lisp:string)
@@ -1099,44 +833,15 @@
                           modify-mount-target-security-groups-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (mount-target-conflict (:copier common-lisp:nil)
-      (:conc-name "struct-shape-mount-target-conflict-"))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition mount-target-conflict
+     (elasticfilesystem-error)
+     ((error-code :initarg :error-code :initform common-lisp:nil :reader
+       mount-target-conflict-error-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       mount-target-conflict-message)))
  (common-lisp:export
-  (common-lisp:list 'mount-target-conflict 'make-mount-target-conflict))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          mount-target-conflict))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          mount-target-conflict))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "ErrorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          mount-target-conflict))
-   common-lisp:nil))
+  (common-lisp:list 'mount-target-conflict 'mount-target-conflict-error-code
+                    'mount-target-conflict-message)))
 (common-lisp:deftype mount-target-count () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -1234,206 +939,62 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype mount-target-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (mount-target-not-found (:copier common-lisp:nil)
-      (:conc-name "struct-shape-mount-target-not-found-"))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition mount-target-not-found
+     (elasticfilesystem-error)
+     ((error-code :initarg :error-code :initform common-lisp:nil :reader
+       mount-target-not-found-error-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       mount-target-not-found-message)))
  (common-lisp:export
-  (common-lisp:list 'mount-target-not-found 'make-mount-target-not-found))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          mount-target-not-found))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          mount-target-not-found))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "ErrorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          mount-target-not-found))
-   common-lisp:nil))
+  (common-lisp:list 'mount-target-not-found 'mount-target-not-found-error-code
+                    'mount-target-not-found-message)))
 (common-lisp:deftype network-interface-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (network-interface-limit-exceeded (:copier common-lisp:nil)
-      (:conc-name "struct-shape-network-interface-limit-exceeded-"))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition network-interface-limit-exceeded
+     (elasticfilesystem-error)
+     ((error-code :initarg :error-code :initform common-lisp:nil :reader
+       network-interface-limit-exceeded-error-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       network-interface-limit-exceeded-message)))
  (common-lisp:export
   (common-lisp:list 'network-interface-limit-exceeded
-                    'make-network-interface-limit-exceeded))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          network-interface-limit-exceeded))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          network-interface-limit-exceeded))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "ErrorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          network-interface-limit-exceeded))
-   common-lisp:nil))
+                    'network-interface-limit-exceeded-error-code
+                    'network-interface-limit-exceeded-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-free-addresses-in-subnet (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-free-addresses-in-subnet-"))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition no-free-addresses-in-subnet
+     (elasticfilesystem-error)
+     ((error-code :initarg :error-code :initform common-lisp:nil :reader
+       no-free-addresses-in-subnet-error-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       no-free-addresses-in-subnet-message)))
  (common-lisp:export
   (common-lisp:list 'no-free-addresses-in-subnet
-                    'make-no-free-addresses-in-subnet))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-free-addresses-in-subnet))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-free-addresses-in-subnet))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "ErrorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-free-addresses-in-subnet))
-   common-lisp:nil))
+                    'no-free-addresses-in-subnet-error-code
+                    'no-free-addresses-in-subnet-message)))
 (common-lisp:deftype performance-mode () 'common-lisp:string)
 (common-lisp:deftype security-group () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (security-group-limit-exceeded (:copier common-lisp:nil)
-      (:conc-name "struct-shape-security-group-limit-exceeded-"))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition security-group-limit-exceeded
+     (elasticfilesystem-error)
+     ((error-code :initarg :error-code :initform common-lisp:nil :reader
+       security-group-limit-exceeded-error-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       security-group-limit-exceeded-message)))
  (common-lisp:export
   (common-lisp:list 'security-group-limit-exceeded
-                    'make-security-group-limit-exceeded))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          security-group-limit-exceeded))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          security-group-limit-exceeded))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "ErrorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          security-group-limit-exceeded))
-   common-lisp:nil))
+                    'security-group-limit-exceeded-error-code
+                    'security-group-limit-exceeded-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (security-group-not-found (:copier common-lisp:nil)
-      (:conc-name "struct-shape-security-group-not-found-"))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition security-group-not-found
+     (elasticfilesystem-error)
+     ((error-code :initarg :error-code :initform common-lisp:nil :reader
+       security-group-not-found-error-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       security-group-not-found-message)))
  (common-lisp:export
-  (common-lisp:list 'security-group-not-found 'make-security-group-not-found))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          security-group-not-found))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          security-group-not-found))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "ErrorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          security-group-not-found))
-   common-lisp:nil))
+  (common-lisp:list 'security-group-not-found
+                    'security-group-not-found-error-code
+                    'security-group-not-found-message)))
 (common-lisp:progn
  (common-lisp:deftype security-groups ()
    '(trivial-types:proper-list security-group))
@@ -1444,38 +1005,15 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype subnet-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (subnet-not-found (:copier common-lisp:nil)
-      (:conc-name "struct-shape-subnet-not-found-"))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition subnet-not-found
+     (elasticfilesystem-error)
+     ((error-code :initarg :error-code :initform common-lisp:nil :reader
+       subnet-not-found-error-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       subnet-not-found-message)))
  (common-lisp:export
-  (common-lisp:list 'subnet-not-found 'make-subnet-not-found))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input subnet-not-found))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input subnet-not-found))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "ErrorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input subnet-not-found))
-   common-lisp:nil))
+  (common-lisp:list 'subnet-not-found 'subnet-not-found-error-code
+                    'subnet-not-found-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (tag (:copier common-lisp:nil) (:conc-name "struct-shape-tag-"))
@@ -1525,45 +1063,16 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (unsupported-availability-zone (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unsupported-availability-zone-"))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition unsupported-availability-zone
+     (elasticfilesystem-error)
+     ((error-code :initarg :error-code :initform common-lisp:nil :reader
+       unsupported-availability-zone-error-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       unsupported-availability-zone-message)))
  (common-lisp:export
   (common-lisp:list 'unsupported-availability-zone
-                    'make-unsupported-availability-zone))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-availability-zone))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-availability-zone))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "ErrorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-availability-zone))
-   common-lisp:nil))
+                    'unsupported-availability-zone-error-code
+                    'unsupported-availability-zone-message)))
 (common-lisp:progn
  (common-lisp:defun create-file-system
                     (
@@ -1581,7 +1090,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticfilesystem-request aws-sdk/generator/operation::input "POST"
         "/2015-02-01/file-systems" "CreateFileSystem" "2015-02-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BadRequest" . bad-request)
+        ("InternalServerError" . internal-server-error)
+        ("FileSystemAlreadyExists" . file-system-already-exists)
+        ("FileSystemLimitExceeded" . file-system-limit-exceeded)))))
  (common-lisp:export 'create-file-system))
 (common-lisp:progn
  (common-lisp:defun create-mount-target
@@ -1600,7 +1113,20 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticfilesystem-request aws-sdk/generator/operation::input "POST"
         "/2015-02-01/mount-targets" "CreateMountTarget" "2015-02-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BadRequest" . bad-request)
+        ("InternalServerError" . internal-server-error)
+        ("FileSystemNotFound" . file-system-not-found)
+        ("IncorrectFileSystemLifeCycleState"
+         . incorrect-file-system-life-cycle-state)
+        ("MountTargetConflict" . mount-target-conflict)
+        ("SubnetNotFound" . subnet-not-found)
+        ("NoFreeAddressesInSubnet" . no-free-addresses-in-subnet)
+        ("IpAddressInUse" . ip-address-in-use)
+        ("NetworkInterfaceLimitExceeded" . network-interface-limit-exceeded)
+        ("SecurityGroupLimitExceeded" . security-group-limit-exceeded)
+        ("SecurityGroupNotFound" . security-group-not-found)
+        ("UnsupportedAvailabilityZone" . unsupported-availability-zone)))))
  (common-lisp:export 'create-mount-target))
 (common-lisp:progn
  (common-lisp:defun create-tags
@@ -1622,7 +1148,10 @@
                                 aws-sdk/generator/operation::input
                                 'file-system-id))))
         "CreateTags" "2015-02-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BadRequest" . bad-request)
+        ("InternalServerError" . internal-server-error)
+        ("FileSystemNotFound" . file-system-not-found)))))
  (common-lisp:export 'create-tags))
 (common-lisp:progn
  (common-lisp:defun delete-file-system
@@ -1644,7 +1173,11 @@
                                 aws-sdk/generator/operation::input
                                 'file-system-id))))
         "DeleteFileSystem" "2015-02-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BadRequest" . bad-request)
+        ("InternalServerError" . internal-server-error)
+        ("FileSystemNotFound" . file-system-not-found)
+        ("FileSystemInUse" . file-system-in-use)))))
  (common-lisp:export 'delete-file-system))
 (common-lisp:progn
  (common-lisp:defun delete-mount-target
@@ -1666,7 +1199,11 @@
                                 aws-sdk/generator/operation::input
                                 'mount-target-id))))
         "DeleteMountTarget" "2015-02-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BadRequest" . bad-request)
+        ("InternalServerError" . internal-server-error)
+        ("DependencyTimeout" . dependency-timeout)
+        ("MountTargetNotFound" . mount-target-not-found)))))
  (common-lisp:export 'delete-mount-target))
 (common-lisp:progn
  (common-lisp:defun delete-tags
@@ -1688,7 +1225,10 @@
                                 aws-sdk/generator/operation::input
                                 'file-system-id))))
         "DeleteTags" "2015-02-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BadRequest" . bad-request)
+        ("InternalServerError" . internal-server-error)
+        ("FileSystemNotFound" . file-system-not-found)))))
  (common-lisp:export 'delete-tags))
 (common-lisp:progn
  (common-lisp:defun describe-file-systems
@@ -1706,7 +1246,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticfilesystem-request aws-sdk/generator/operation::input "GET"
         "/2015-02-01/file-systems" "DescribeFileSystems" "2015-02-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BadRequest" . bad-request)
+        ("InternalServerError" . internal-server-error)
+        ("FileSystemNotFound" . file-system-not-found)))))
  (common-lisp:export 'describe-file-systems))
 (common-lisp:progn
  (common-lisp:defun describe-mount-target-security-groups
@@ -1730,7 +1273,11 @@
                                 aws-sdk/generator/operation::input
                                 'mount-target-id))))
         "DescribeMountTargetSecurityGroups" "2015-02-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BadRequest" . bad-request)
+        ("InternalServerError" . internal-server-error)
+        ("MountTargetNotFound" . mount-target-not-found)
+        ("IncorrectMountTargetState" . incorrect-mount-target-state)))))
  (common-lisp:export 'describe-mount-target-security-groups))
 (common-lisp:progn
  (common-lisp:defun describe-mount-targets
@@ -1748,7 +1295,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticfilesystem-request aws-sdk/generator/operation::input "GET"
         "/2015-02-01/mount-targets" "DescribeMountTargets" "2015-02-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BadRequest" . bad-request)
+        ("InternalServerError" . internal-server-error)
+        ("FileSystemNotFound" . file-system-not-found)
+        ("MountTargetNotFound" . mount-target-not-found)))))
  (common-lisp:export 'describe-mount-targets))
 (common-lisp:progn
  (common-lisp:defun describe-tags
@@ -1771,7 +1322,10 @@
                                 aws-sdk/generator/operation::input
                                 'file-system-id))))
         "DescribeTags" "2015-02-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BadRequest" . bad-request)
+        ("InternalServerError" . internal-server-error)
+        ("FileSystemNotFound" . file-system-not-found)))))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
  (common-lisp:defun modify-mount-target-security-groups
@@ -1796,5 +1350,11 @@
                                 aws-sdk/generator/operation::input
                                 'mount-target-id))))
         "ModifyMountTargetSecurityGroups" "2015-02-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BadRequest" . bad-request)
+        ("InternalServerError" . internal-server-error)
+        ("MountTargetNotFound" . mount-target-not-found)
+        ("IncorrectMountTargetState" . incorrect-mount-target-state)
+        ("SecurityGroupLimitExceeded" . security-group-limit-exceeded)
+        ("SecurityGroupNotFound" . security-group-not-found)))))
  (common-lisp:export 'modify-mount-target-security-groups))

@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/application-autoscaling/api)
 (common-lisp:progn
  (common-lisp:defclass application-autoscaling-request
                        (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "application-autoscaling"))
  (common-lisp:export 'application-autoscaling-request))
+(common-lisp:progn
+ (common-lisp:define-condition application-autoscaling-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'application-autoscaling-error))
 (common-lisp:deftype adjustment-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -53,36 +59,13 @@
                            (trivial-types:proper-list alarm))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (concurrent-update-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-concurrent-update-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition concurrent-update-exception
+     (application-autoscaling-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       concurrent-update-exception-message)))
  (common-lisp:export
   (common-lisp:list 'concurrent-update-exception
-                    'make-concurrent-update-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-update-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-update-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-update-exception))
-   common-lisp:nil))
+                    'concurrent-update-exception-message)))
 (common-lisp:deftype cooldown () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -633,128 +616,37 @@
    common-lisp:nil))
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (failed-resource-access-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-failed-resource-access-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition failed-resource-access-exception
+     (application-autoscaling-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       failed-resource-access-exception-message)))
  (common-lisp:export
   (common-lisp:list 'failed-resource-access-exception
-                    'make-failed-resource-access-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          failed-resource-access-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          failed-resource-access-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          failed-resource-access-exception))
-   common-lisp:nil))
+                    'failed-resource-access-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-service-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-service-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition internal-service-exception
+     (application-autoscaling-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-service-exception-message)))
  (common-lisp:export
   (common-lisp:list 'internal-service-exception
-                    'make-internal-service-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-exception))
-   common-lisp:nil))
+                    'internal-service-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-next-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-next-token-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-next-token-exception
+     (application-autoscaling-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-next-token-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-next-token-exception
-                    'make-invalid-next-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   common-lisp:nil))
+                    'invalid-next-token-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (application-autoscaling-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception
+                    'limit-exceeded-exception-message)))
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:deftype metric-aggregation-type () 'common-lisp:string)
 (common-lisp:progn
@@ -808,36 +700,13 @@
 (common-lisp:deftype metric-unit () 'common-lisp:string)
 (common-lisp:deftype min-adjustment-magnitude () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (object-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-object-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition object-not-found-exception
+     (application-autoscaling-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       object-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'object-not-found-exception
-                    'make-object-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          object-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          object-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          object-not-found-exception))
-   common-lisp:nil))
+                    'object-not-found-exception-message)))
 (common-lisp:deftype policy-name () 'common-lisp:string)
 (common-lisp:deftype policy-type () 'common-lisp:string)
 (common-lisp:progn
@@ -1635,29 +1504,12 @@
    common-lisp:nil))
 (common-lisp:deftype timestamp-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition validation-exception
+     (application-autoscaling-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       validation-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'validation-exception 'make-validation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input validation-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input validation-exception))
-   common-lisp:nil))
+  (common-lisp:list 'validation-exception 'validation-exception-message)))
 (common-lisp:deftype xml-string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defun delete-scaling-policy
@@ -1676,7 +1528,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'application-autoscaling-request aws-sdk/generator/operation::input
         "POST" "/" "DeleteScalingPolicy" "2016-02-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("ObjectNotFoundException" . object-not-found-exception)
+        ("ConcurrentUpdateException" . concurrent-update-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'delete-scaling-policy))
 (common-lisp:progn
  (common-lisp:defun deregister-scalable-target
@@ -1695,7 +1551,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'application-autoscaling-request aws-sdk/generator/operation::input
         "POST" "/" "DeregisterScalableTarget" "2016-02-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("ObjectNotFoundException" . object-not-found-exception)
+        ("ConcurrentUpdateException" . concurrent-update-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'deregister-scalable-target))
 (common-lisp:progn
  (common-lisp:defun describe-scalable-targets
@@ -1715,7 +1575,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'application-autoscaling-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeScalableTargets" "2016-02-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("ConcurrentUpdateException" . concurrent-update-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'describe-scalable-targets))
 (common-lisp:progn
  (common-lisp:defun describe-scaling-activities
@@ -1735,7 +1599,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'application-autoscaling-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeScalingActivities" "2016-02-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("ConcurrentUpdateException" . concurrent-update-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'describe-scaling-activities))
 (common-lisp:progn
  (common-lisp:defun describe-scaling-policies
@@ -1755,7 +1623,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'application-autoscaling-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeScalingPolicies" "2016-02-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("FailedResourceAccessException" . failed-resource-access-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("ConcurrentUpdateException" . concurrent-update-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'describe-scaling-policies))
 (common-lisp:progn
  (common-lisp:defun put-scaling-policy
@@ -1777,7 +1650,13 @@
        (aws-sdk/generator/shape:make-request-with-input
         'application-autoscaling-request aws-sdk/generator/operation::input
         "POST" "/" "PutScalingPolicy" "2016-02-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ObjectNotFoundException" . object-not-found-exception)
+        ("ConcurrentUpdateException" . concurrent-update-exception)
+        ("FailedResourceAccessException" . failed-resource-access-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'put-scaling-policy))
 (common-lisp:progn
  (common-lisp:defun register-scalable-target
@@ -1796,5 +1675,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'application-autoscaling-request aws-sdk/generator/operation::input
         "POST" "/" "RegisterScalableTarget" "2016-02-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ConcurrentUpdateException" . concurrent-update-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'register-scalable-target))

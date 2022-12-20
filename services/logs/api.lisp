@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/logs/api)
 (common-lisp:progn
  (common-lisp:defclass logs-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "logs"))
  (common-lisp:export 'logs-request))
+(common-lisp:progn
+ (common-lisp:define-condition logs-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'logs-error))
 (common-lisp:deftype access-policy () 'common-lisp:string)
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
@@ -241,37 +247,14 @@
                           create-log-stream-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (data-already-accepted-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-data-already-accepted-exception-"))
-   (expected-sequence-token common-lisp:nil :type
-    (common-lisp:or sequence-token common-lisp:null)))
+ (common-lisp:define-condition data-already-accepted-exception
+     (logs-error)
+     ((expected-sequence-token :initarg :expected-sequence-token :initform
+       common-lisp:nil :reader
+       data-already-accepted-exception-expected-sequence-token)))
  (common-lisp:export
   (common-lisp:list 'data-already-accepted-exception
-                    'make-data-already-accepted-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          data-already-accepted-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          data-already-accepted-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input
-                           'expected-sequence-token))
-      (common-lisp:list
-       (common-lisp:cons "expectedSequenceToken"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          data-already-accepted-exception))
-   common-lisp:nil))
+                    'data-already-accepted-exception-expected-sequence-token)))
 (common-lisp:deftype days () 'common-lisp:integer)
 (common-lisp:deftype default-value () 'common-lisp:double-float)
 (common-lisp:progn
@@ -1756,102 +1739,29 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype interleaved () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-operation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-operation-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-operation-exception
-                    'make-invalid-operation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-operation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-operation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-operation-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-operation-exception
+     (logs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-operation-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-parameter-exception
-                    'make-invalid-parameter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-parameter-exception
+     (logs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-parameter-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-sequence-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-sequence-token-exception-"))
-   (expected-sequence-token common-lisp:nil :type
-    (common-lisp:or sequence-token common-lisp:null)))
+ (common-lisp:define-condition invalid-sequence-token-exception
+     (logs-error)
+     ((expected-sequence-token :initarg :expected-sequence-token :initform
+       common-lisp:nil :reader
+       invalid-sequence-token-exception-expected-sequence-token)))
  (common-lisp:export
   (common-lisp:list 'invalid-sequence-token-exception
-                    'make-invalid-sequence-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sequence-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sequence-token-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input
-                           'expected-sequence-token))
-      (common-lisp:list
-       (common-lisp:cons "expectedSequenceToken"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sequence-token-exception))
-   common-lisp:nil))
+                    'invalid-sequence-token-exception-expected-sequence-token)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition limit-exceeded-exception
+     (logs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'limit-exceeded-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-log-group-request (:copier common-lisp:nil)
@@ -2282,27 +2192,10 @@
 (common-lisp:deftype metric-value () 'common-lisp:string)
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (operation-aborted-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-operation-aborted-exception-")))
- (common-lisp:export
-  (common-lisp:list 'operation-aborted-exception
-                    'make-operation-aborted-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-aborted-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-aborted-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-aborted-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition operation-aborted-exception
+     (logs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'operation-aborted-exception)))
 (common-lisp:deftype order-by () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -2796,49 +2689,15 @@
                           rejected-log-events-info))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-already-exists-exception-")))
- (common-lisp:export
-  (common-lisp:list 'resource-already-exists-exception
-                    'make-resource-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition resource-already-exists-exception
+     (logs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-already-exists-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition resource-not-found-exception
+     (logs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-not-found-exception)))
 (common-lisp:deftype role-arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -2883,27 +2742,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype sequence-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-unavailable-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-unavailable-exception-")))
- (common-lisp:export
-  (common-lisp:list 'service-unavailable-exception
-                    'make-service-unavailable-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition service-unavailable-exception
+     (logs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'service-unavailable-exception)))
 (common-lisp:deftype start-from-head () 'common-lisp:boolean)
 (common-lisp:deftype stored-bytes () 'common-lisp:integer)
 (common-lisp:progn
@@ -3184,7 +3026,11 @@
                                                         "POST" "/"
                                                         "CancelExportTask"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'cancel-export-task))
 (common-lisp:progn
  (common-lisp:defun create-export-task
@@ -3206,7 +3052,14 @@
                                                         "POST" "/"
                                                         "CreateExportTask"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceAlreadyExistsException"
+         . resource-already-exists-exception)))))
  (common-lisp:export 'create-export-task))
 (common-lisp:progn
  (common-lisp:defun create-log-group
@@ -3224,7 +3077,12 @@
                                                         "POST" "/"
                                                         "CreateLogGroup"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'create-log-group))
 (common-lisp:progn
  (common-lisp:defun create-log-stream
@@ -3242,7 +3100,11 @@
                                                         "POST" "/"
                                                         "CreateLogStream"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'create-log-stream))
 (common-lisp:progn
  (common-lisp:defun delete-destination
@@ -3260,7 +3122,11 @@
                                                         "POST" "/"
                                                         "DeleteDestination"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-destination))
 (common-lisp:progn
  (common-lisp:defun delete-log-group
@@ -3278,7 +3144,11 @@
                                                         "POST" "/"
                                                         "DeleteLogGroup"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-log-group))
 (common-lisp:progn
  (common-lisp:defun delete-log-stream
@@ -3296,7 +3166,11 @@
                                                         "POST" "/"
                                                         "DeleteLogStream"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-log-stream))
 (common-lisp:progn
  (common-lisp:defun delete-metric-filter
@@ -3314,7 +3188,11 @@
                                                         "POST" "/"
                                                         "DeleteMetricFilter"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-metric-filter))
 (common-lisp:progn
  (common-lisp:defun delete-retention-policy
@@ -3332,7 +3210,11 @@
                                                         "POST" "/"
                                                         "DeleteRetentionPolicy"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-retention-policy))
 (common-lisp:progn
  (common-lisp:defun delete-subscription-filter
@@ -3351,7 +3233,11 @@
                                                         "POST" "/"
                                                         "DeleteSubscriptionFilter"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-subscription-filter))
 (common-lisp:progn
  (common-lisp:defun describe-destinations
@@ -3370,7 +3256,9 @@
                                                         "POST" "/"
                                                         "DescribeDestinations"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-destinations))
 (common-lisp:progn
  (common-lisp:defun describe-export-tasks
@@ -3389,7 +3277,9 @@
                                                         "POST" "/"
                                                         "DescribeExportTasks"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-export-tasks))
 (common-lisp:progn
  (common-lisp:defun describe-log-groups
@@ -3408,7 +3298,9 @@
                                                         "POST" "/"
                                                         "DescribeLogGroups"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-log-groups))
 (common-lisp:progn
  (common-lisp:defun describe-log-streams
@@ -3429,7 +3321,10 @@
                                                         "POST" "/"
                                                         "DescribeLogStreams"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-log-streams))
 (common-lisp:progn
  (common-lisp:defun describe-metric-filters
@@ -3450,7 +3345,10 @@
                                                         "POST" "/"
                                                         "DescribeMetricFilters"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-metric-filters))
 (common-lisp:progn
  (common-lisp:defun describe-subscription-filters
@@ -3471,7 +3369,10 @@
                                                         "POST" "/"
                                                         "DescribeSubscriptionFilters"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-subscription-filters))
 (common-lisp:progn
  (common-lisp:defun filter-log-events
@@ -3493,7 +3394,10 @@
                                                         "POST" "/"
                                                         "FilterLogEvents"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'filter-log-events))
 (common-lisp:progn
  (common-lisp:defun get-log-events
@@ -3514,7 +3418,10 @@
                                                         "POST" "/"
                                                         "GetLogEvents"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'get-log-events))
 (common-lisp:progn
  (common-lisp:defun list-tags-log-group
@@ -3532,7 +3439,9 @@
                                                         "POST" "/"
                                                         "ListTagsLogGroup"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'list-tags-log-group))
 (common-lisp:progn
  (common-lisp:defun put-destination
@@ -3551,7 +3460,10 @@
                                                         "POST" "/"
                                                         "PutDestination"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-destination))
 (common-lisp:progn
  (common-lisp:defun put-destination-policy
@@ -3569,7 +3481,10 @@
                                                         "POST" "/"
                                                         "PutDestinationPolicy"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-destination-policy))
 (common-lisp:progn
  (common-lisp:defun put-log-events
@@ -3590,7 +3505,12 @@
                                                         "POST" "/"
                                                         "PutLogEvents"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-log-events))
 (common-lisp:progn
  (common-lisp:defun put-metric-filter
@@ -3611,7 +3531,12 @@
                                                         "POST" "/"
                                                         "PutMetricFilter"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-metric-filter))
 (common-lisp:progn
  (common-lisp:defun put-retention-policy
@@ -3630,7 +3555,11 @@
                                                         "POST" "/"
                                                         "PutRetentionPolicy"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-retention-policy))
 (common-lisp:progn
  (common-lisp:defun put-subscription-filter
@@ -3651,7 +3580,12 @@
                                                         "POST" "/"
                                                         "PutSubscriptionFilter"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-subscription-filter))
 (common-lisp:progn
  (common-lisp:defun tag-log-group
@@ -3669,7 +3603,9 @@
                                                         "POST" "/"
                                                         "TagLogGroup"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)))))
  (common-lisp:export 'tag-log-group))
 (common-lisp:progn
  (common-lisp:defun test-metric-filter
@@ -3688,7 +3624,9 @@
                                                         "POST" "/"
                                                         "TestMetricFilter"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'test-metric-filter))
 (common-lisp:progn
  (common-lisp:defun untag-log-group
@@ -3706,5 +3644,6 @@
                                                         "POST" "/"
                                                         "UntagLogGroup"
                                                         "2014-03-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'untag-log-group))

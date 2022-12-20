@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/cognito-identity/api)
 (common-lisp:progn
  (common-lisp:defclass cognito-identity-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "cognito-identity"))
  (common-lisp:export 'cognito-identity-request))
+(common-lisp:progn
+ (common-lisp:define-condition cognito-identity-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'cognito-identity-error))
 (common-lisp:deftype arnstring () 'common-lisp:string)
 (common-lisp:deftype access-key-string () 'common-lisp:string)
 (common-lisp:deftype account-id () 'common-lisp:string)
@@ -83,35 +89,13 @@
 (common-lisp:deftype cognito-identity-provider-token-check ()
   'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (concurrent-modification-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-concurrent-modification-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition concurrent-modification-exception
+     (cognito-identity-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       concurrent-modification-exception-message)))
  (common-lisp:export
   (common-lisp:list 'concurrent-modification-exception
-                    'make-concurrent-modification-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   common-lisp:nil))
+                    'concurrent-modification-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-identity-pool-input (:copier common-lisp:nil)
@@ -412,35 +396,13 @@
    common-lisp:nil))
 (common-lisp:deftype developer-provider-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (developer-user-already-registered-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-developer-user-already-registered-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition developer-user-already-registered-exception
+     (cognito-identity-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       developer-user-already-registered-exception-message)))
  (common-lisp:export
   (common-lisp:list 'developer-user-already-registered-exception
-                    'make-developer-user-already-registered-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          developer-user-already-registered-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          developer-user-already-registered-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          developer-user-already-registered-exception))
-   common-lisp:nil))
+                    'developer-user-already-registered-exception-message)))
 (common-lisp:deftype developer-user-identifier () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype developer-user-identifier-list ()
@@ -453,35 +415,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype error-code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (external-service-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-external-service-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition external-service-exception
+     (cognito-identity-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       external-service-exception-message)))
  (common-lisp:export
   (common-lisp:list 'external-service-exception
-                    'make-external-service-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          external-service-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          external-service-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          external-service-exception))
-   common-lisp:nil))
+                    'external-service-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-credentials-for-identity-input (:copier common-lisp:nil)
@@ -1113,124 +1053,37 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-error-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-error-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition internal-error-exception
+     (cognito-identity-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-error-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'internal-error-exception 'make-internal-error-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-error-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-error-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-error-exception))
-   common-lisp:nil))
+  (common-lisp:list 'internal-error-exception
+                    'internal-error-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-identity-pool-configuration-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-invalid-identity-pool-configuration-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition invalid-identity-pool-configuration-exception
+     (cognito-identity-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-identity-pool-configuration-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-identity-pool-configuration-exception
-                    'make-invalid-identity-pool-configuration-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-identity-pool-configuration-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-identity-pool-configuration-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-identity-pool-configuration-exception))
-   common-lisp:nil))
+                    'invalid-identity-pool-configuration-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition invalid-parameter-exception
+     (cognito-identity-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-parameter-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-exception
-                    'make-invalid-parameter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   common-lisp:nil))
+                    'invalid-parameter-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (cognito-identity-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception
+                    'limit-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-identities-input (:copier common-lisp:nil)
@@ -1704,34 +1557,13 @@
                           merge-developer-identities-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (not-authorized-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-not-authorized-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition not-authorized-exception
+     (cognito-identity-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       not-authorized-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'not-authorized-exception 'make-not-authorized-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          not-authorized-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          not-authorized-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          not-authorized-exception))
-   common-lisp:nil))
+  (common-lisp:list 'not-authorized-exception
+                    'not-authorized-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype oidcprovider-list ()
    '(trivial-types:proper-list arnstring))
@@ -1744,65 +1576,21 @@
 (common-lisp:deftype pagination-key () 'common-lisp:string)
 (common-lisp:deftype query-limit () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-conflict-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-conflict-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition resource-conflict-exception
+     (cognito-identity-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-conflict-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-conflict-exception
-                    'make-resource-conflict-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-conflict-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-conflict-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-conflict-exception))
-   common-lisp:nil))
+                    'resource-conflict-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition resource-not-found-exception
+     (cognito-identity-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+                    'resource-not-found-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (role-mapping (:copier common-lisp:nil)
@@ -1954,35 +1742,13 @@
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:deftype token-duration () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-requests-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-requests-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition too-many-requests-exception
+     (cognito-identity-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-requests-exception-message)))
  (common-lisp:export
   (common-lisp:list 'too-many-requests-exception
-                    'make-too-many-requests-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-requests-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-requests-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-requests-exception))
-   common-lisp:nil))
+                    'too-many-requests-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (unlink-developer-identity-input (:copier common-lisp:nil)
@@ -2161,7 +1927,13 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "CreateIdentityPool" "2014-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'create-identity-pool))
 (common-lisp:progn
  (common-lisp:defun delete-identities
@@ -2177,7 +1949,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteIdentities" "2014-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("InternalErrorException" . internal-error-exception)))))
  (common-lisp:export 'delete-identities))
 (common-lisp:progn
  (common-lisp:defun delete-identity-pool
@@ -2193,7 +1968,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteIdentityPool" "2014-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("InternalErrorException" . internal-error-exception)))))
  (common-lisp:export 'delete-identity-pool))
 (common-lisp:progn
  (common-lisp:defun describe-identity
@@ -2209,7 +1989,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeIdentity" "2014-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("InternalErrorException" . internal-error-exception)))))
  (common-lisp:export 'describe-identity))
 (common-lisp:progn
  (common-lisp:defun describe-identity-pool
@@ -2225,7 +2010,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeIdentityPool" "2014-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("InternalErrorException" . internal-error-exception)))))
  (common-lisp:export 'describe-identity-pool))
 (common-lisp:progn
  (common-lisp:defun get-credentials-for-identity
@@ -2243,7 +2033,16 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "GetCredentialsForIdentity" "2014-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("InvalidIdentityPoolConfigurationException"
+         . invalid-identity-pool-configuration-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("ExternalServiceException" . external-service-exception)))))
  (common-lisp:export 'get-credentials-for-identity))
 (common-lisp:progn
  (common-lisp:defun get-id
@@ -2260,7 +2059,15 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "GetId" "2014-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ExternalServiceException" . external-service-exception)))))
  (common-lisp:export 'get-id))
 (common-lisp:progn
  (common-lisp:defun get-identity-pool-roles
@@ -2276,7 +2083,13 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "GetIdentityPoolRoles" "2014-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("InternalErrorException" . internal-error-exception)))))
  (common-lisp:export 'get-identity-pool-roles))
 (common-lisp:progn
  (common-lisp:defun get-open-id-token
@@ -2292,7 +2105,14 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "GetOpenIdToken" "2014-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("ExternalServiceException" . external-service-exception)))))
  (common-lisp:export 'get-open-id-token))
 (common-lisp:progn
  (common-lisp:defun get-open-id-token-for-developer-identity
@@ -2311,7 +2131,15 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "GetOpenIdTokenForDeveloperIdentity" "2014-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("DeveloperUserAlreadyRegisteredException"
+         . developer-user-already-registered-exception)))))
  (common-lisp:export 'get-open-id-token-for-developer-identity))
 (common-lisp:progn
  (common-lisp:defun list-identities
@@ -2330,7 +2158,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "ListIdentities" "2014-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("InternalErrorException" . internal-error-exception)))))
  (common-lisp:export 'list-identities))
 (common-lisp:progn
  (common-lisp:defun list-identity-pools
@@ -2346,7 +2179,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "ListIdentityPools" "2014-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("InternalErrorException" . internal-error-exception)))))
  (common-lisp:export 'list-identity-pools))
 (common-lisp:progn
  (common-lisp:defun lookup-developer-identity
@@ -2365,7 +2202,13 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "LookupDeveloperIdentity" "2014-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("InternalErrorException" . internal-error-exception)))))
  (common-lisp:export 'lookup-developer-identity))
 (common-lisp:progn
  (common-lisp:defun merge-developer-identities
@@ -2385,7 +2228,13 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "MergeDeveloperIdentities" "2014-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("InternalErrorException" . internal-error-exception)))))
  (common-lisp:export 'merge-developer-identities))
 (common-lisp:progn
  (common-lisp:defun set-identity-pool-roles
@@ -2402,7 +2251,15 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "SetIdentityPoolRoles" "2014-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("ConcurrentModificationException"
+         . concurrent-modification-exception)))))
  (common-lisp:export 'set-identity-pool-roles))
 (common-lisp:progn
  (common-lisp:defun unlink-developer-identity
@@ -2421,7 +2278,13 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "UnlinkDeveloperIdentity" "2014-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("InternalErrorException" . internal-error-exception)))))
  (common-lisp:export 'unlink-developer-identity))
 (common-lisp:progn
  (common-lisp:defun unlink-identity
@@ -2438,7 +2301,14 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "UnlinkIdentity" "2014-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("ExternalServiceException" . external-service-exception)))))
  (common-lisp:export 'unlink-identity))
 (common-lisp:progn
  (common-lisp:defun update-identity-pool
@@ -2461,5 +2331,13 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateIdentityPool" "2014-06-30"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'update-identity-pool))

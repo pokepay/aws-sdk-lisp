@@ -6,42 +6,25 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/glue/api)
 (common-lisp:progn
  (common-lisp:defclass glue-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "glue"))
  (common-lisp:export 'glue-request))
 (common-lisp:progn
- (common-lisp:defstruct
-     (access-denied-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-access-denied-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or message-string common-lisp:null)))
+ (common-lisp:define-condition glue-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'glue-error))
+(common-lisp:progn
+ (common-lisp:define-condition access-denied-exception
+     (glue-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       access-denied-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'access-denied-exception 'make-access-denied-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   common-lisp:nil))
+  (common-lisp:list 'access-denied-exception 'access-denied-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (action (:copier common-lisp:nil) (:conc-name "struct-shape-action-"))
@@ -81,35 +64,13 @@
                            (trivial-types:proper-list action))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-already-exists-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or message-string common-lisp:null)))
+ (common-lisp:define-condition already-exists-exception
+     (glue-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       already-exists-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'already-exists-exception 'make-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          already-exists-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          already-exists-exception))
-   common-lisp:nil))
+  (common-lisp:list 'already-exists-exception
+                    'already-exists-exception-message)))
 (common-lisp:deftype attempt-count () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -919,67 +880,21 @@
 (common-lisp:deftype column-values-string () 'common-lisp:string)
 (common-lisp:deftype comment-string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (concurrent-modification-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-concurrent-modification-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or message-string common-lisp:null)))
+ (common-lisp:define-condition concurrent-modification-exception
+     (glue-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       concurrent-modification-exception-message)))
  (common-lisp:export
   (common-lisp:list 'concurrent-modification-exception
-                    'make-concurrent-modification-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   common-lisp:nil))
+                    'concurrent-modification-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (concurrent-runs-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-concurrent-runs-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or message-string common-lisp:null)))
+ (common-lisp:define-condition concurrent-runs-exceeded-exception
+     (glue-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       concurrent-runs-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'concurrent-runs-exceeded-exception
-                    'make-concurrent-runs-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-runs-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-runs-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-runs-exceeded-exception))
-   common-lisp:nil))
+                    'concurrent-runs-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (condition (:copier common-lisp:nil)
@@ -1495,99 +1410,30 @@
                            (trivial-types:proper-list name-string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (crawler-not-running-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-crawler-not-running-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or message-string common-lisp:null)))
+ (common-lisp:define-condition crawler-not-running-exception
+     (glue-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       crawler-not-running-exception-message)))
  (common-lisp:export
   (common-lisp:list 'crawler-not-running-exception
-                    'make-crawler-not-running-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          crawler-not-running-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          crawler-not-running-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          crawler-not-running-exception))
-   common-lisp:nil))
+                    'crawler-not-running-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (crawler-running-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-crawler-running-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or message-string common-lisp:null)))
+ (common-lisp:define-condition crawler-running-exception
+     (glue-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       crawler-running-exception-message)))
  (common-lisp:export
   (common-lisp:list 'crawler-running-exception
-                    'make-crawler-running-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          crawler-running-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          crawler-running-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          crawler-running-exception))
-   common-lisp:nil))
+                    'crawler-running-exception-message)))
 (common-lisp:deftype crawler-state () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (crawler-stopping-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-crawler-stopping-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or message-string common-lisp:null)))
+ (common-lisp:define-condition crawler-stopping-exception
+     (glue-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       crawler-stopping-exception-message)))
  (common-lisp:export
   (common-lisp:list 'crawler-stopping-exception
-                    'make-crawler-stopping-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          crawler-stopping-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          crawler-stopping-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          crawler-stopping-exception))
-   common-lisp:nil))
+                    'crawler-stopping-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (crawler-targets (:copier common-lisp:nil)
@@ -3684,36 +3530,13 @@
                            (trivial-types:proper-list dev-endpoint))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (entity-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-entity-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or message-string common-lisp:null)))
+ (common-lisp:define-condition entity-not-found-exception
+     (glue-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       entity-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'entity-not-found-exception
-                    'make-entity-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-not-found-exception))
-   common-lisp:nil))
+                    'entity-not-found-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype error-by-name () 'common-lisp:hash-table)
  (common-lisp:defun |make-error-by-name| (aws-sdk/generator/shape::key-values)
@@ -6020,36 +5843,13 @@
 (common-lisp:deftype grok-pattern () 'common-lisp:string)
 (common-lisp:deftype id-string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (idempotent-parameter-mismatch-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-idempotent-parameter-mismatch-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or message-string common-lisp:null)))
+ (common-lisp:define-condition idempotent-parameter-mismatch-exception
+     (glue-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       idempotent-parameter-mismatch-exception-message)))
  (common-lisp:export
   (common-lisp:list 'idempotent-parameter-mismatch-exception
-                    'make-idempotent-parameter-mismatch-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          idempotent-parameter-mismatch-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          idempotent-parameter-mismatch-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          idempotent-parameter-mismatch-exception))
-   common-lisp:nil))
+                    'idempotent-parameter-mismatch-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (import-catalog-to-glue-request (:copier common-lisp:nil)
@@ -6107,66 +5907,20 @@
 (common-lisp:deftype integer-flag () 'common-lisp:integer)
 (common-lisp:deftype integer-value () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-service-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-service-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or message-string common-lisp:null)))
+ (common-lisp:define-condition internal-service-exception
+     (glue-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-service-exception-message)))
  (common-lisp:export
   (common-lisp:list 'internal-service-exception
-                    'make-internal-service-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-exception))
-   common-lisp:nil))
+                    'internal-service-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-input-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-input-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or message-string common-lisp:null)))
+ (common-lisp:define-condition invalid-input-exception
+     (glue-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-input-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-input-exception 'make-invalid-input-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-input-exception 'invalid-input-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (jdbc-target (:copier common-lisp:nil)
@@ -6874,68 +6628,22 @@
                            (trivial-types:proper-list name-string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-schedule-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-schedule-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or message-string common-lisp:null)))
+ (common-lisp:define-condition no-schedule-exception
+     (glue-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       no-schedule-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'no-schedule-exception 'make-no-schedule-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-schedule-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-schedule-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-schedule-exception))
-   common-lisp:nil))
+  (common-lisp:list 'no-schedule-exception 'no-schedule-exception-message)))
 (common-lisp:deftype non-negative-double () 'common-lisp:double-float)
 (common-lisp:deftype non-negative-integer () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (operation-timeout-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-operation-timeout-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or message-string common-lisp:null)))
+ (common-lisp:define-condition operation-timeout-exception
+     (glue-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       operation-timeout-exception-message)))
  (common-lisp:export
   (common-lisp:list 'operation-timeout-exception
-                    'make-operation-timeout-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-timeout-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-timeout-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-timeout-exception))
-   common-lisp:nil))
+                    'operation-timeout-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (order (:copier common-lisp:nil) (:conc-name "struct-shape-order-"))
@@ -7401,36 +7109,13 @@
                           reset-job-bookmark-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-number-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-number-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or message-string common-lisp:null)))
+ (common-lisp:define-condition resource-number-limit-exceeded-exception
+     (glue-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-number-limit-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-number-limit-exceeded-exception
-                    'make-resource-number-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-number-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-number-limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-number-limit-exceeded-exception))
-   common-lisp:nil))
+                    'resource-number-limit-exceeded-exception-message)))
 (common-lisp:deftype resource-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -7543,98 +7228,29 @@
    common-lisp:nil))
 (common-lisp:deftype schedule-state () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (scheduler-not-running-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-scheduler-not-running-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or message-string common-lisp:null)))
+ (common-lisp:define-condition scheduler-not-running-exception
+     (glue-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       scheduler-not-running-exception-message)))
  (common-lisp:export
   (common-lisp:list 'scheduler-not-running-exception
-                    'make-scheduler-not-running-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          scheduler-not-running-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          scheduler-not-running-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          scheduler-not-running-exception))
-   common-lisp:nil))
+                    'scheduler-not-running-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (scheduler-running-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-scheduler-running-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or message-string common-lisp:null)))
+ (common-lisp:define-condition scheduler-running-exception
+     (glue-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       scheduler-running-exception-message)))
  (common-lisp:export
   (common-lisp:list 'scheduler-running-exception
-                    'make-scheduler-running-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          scheduler-running-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          scheduler-running-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          scheduler-running-exception))
-   common-lisp:nil))
+                    'scheduler-running-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (scheduler-transitioning-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-scheduler-transitioning-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or message-string common-lisp:null)))
+ (common-lisp:define-condition scheduler-transitioning-exception
+     (glue-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       scheduler-transitioning-exception-message)))
  (common-lisp:export
   (common-lisp:list 'scheduler-transitioning-exception
-                    'make-scheduler-transitioning-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          scheduler-transitioning-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          scheduler-transitioning-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          scheduler-transitioning-exception))
-   common-lisp:nil))
+                    'scheduler-transitioning-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (schema-change-policy (:copier common-lisp:nil)
@@ -9854,29 +9470,12 @@
                            (trivial-types:proper-list user-defined-function))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or message-string common-lisp:null)))
+ (common-lisp:define-condition validation-exception
+     (glue-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       validation-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'validation-exception 'make-validation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input validation-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input validation-exception))
-   common-lisp:nil))
+  (common-lisp:list 'validation-exception 'validation-exception-message)))
 (common-lisp:deftype value-string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype value-string-list ()
@@ -9888,36 +9487,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype version-id () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (version-mismatch-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-version-mismatch-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or message-string common-lisp:null)))
+ (common-lisp:define-condition version-mismatch-exception
+     (glue-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       version-mismatch-exception-message)))
  (common-lisp:export
   (common-lisp:list 'version-mismatch-exception
-                    'make-version-mismatch-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          version-mismatch-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          version-mismatch-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          version-mismatch-exception))
-   common-lisp:nil))
+                    'version-mismatch-exception-message)))
 (common-lisp:deftype version-string () 'common-lisp:string)
 (common-lisp:deftype view-text-string () 'common-lisp:string)
 (common-lisp:progn
@@ -9939,7 +9515,14 @@
                                                         "POST" "/"
                                                         "BatchCreatePartition"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'batch-create-partition))
 (common-lisp:progn
  (common-lisp:defun batch-delete-connection
@@ -9958,7 +9541,9 @@
                                                         "POST" "/"
                                                         "BatchDeleteConnection"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'batch-delete-connection))
 (common-lisp:progn
  (common-lisp:defun batch-delete-partition
@@ -9979,7 +9564,11 @@
                                                         "POST" "/"
                                                         "BatchDeletePartition"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'batch-delete-partition))
 (common-lisp:progn
  (common-lisp:defun batch-delete-table
@@ -9999,7 +9588,11 @@
                                                         "POST" "/"
                                                         "BatchDeleteTable"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'batch-delete-table))
 (common-lisp:progn
  (common-lisp:defun batch-get-partition
@@ -10020,7 +9613,11 @@
                                                         "POST" "/"
                                                         "BatchGetPartition"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'batch-get-partition))
 (common-lisp:progn
  (common-lisp:defun create-classifier
@@ -10038,7 +9635,10 @@
                                                         "POST" "/"
                                                         "CreateClassifier"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'create-classifier))
 (common-lisp:progn
  (common-lisp:defun create-connection
@@ -10056,7 +9656,10 @@
                                                         "POST" "/"
                                                         "CreateConnection"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'create-connection))
 (common-lisp:progn
  (common-lisp:defun create-crawler
@@ -10078,7 +9681,12 @@
                                                         "POST" "/"
                                                         "CreateCrawler"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)))))
  (common-lisp:export 'create-crawler))
 (common-lisp:progn
  (common-lisp:defun create-database
@@ -10096,7 +9704,13 @@
                                                         "POST" "/"
                                                         "CreateDatabase"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'create-database))
 (common-lisp:progn
  (common-lisp:defun create-dev-endpoint
@@ -10118,7 +9732,17 @@
                                                         "POST" "/"
                                                         "CreateDevEndpoint"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ValidationException" . validation-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)))))
  (common-lisp:export 'create-dev-endpoint))
 (common-lisp:progn
  (common-lisp:defun create-job
@@ -10139,7 +9763,15 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CreateJob"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)))))
  (common-lisp:export 'create-job))
 (common-lisp:progn
  (common-lisp:defun create-partition
@@ -10160,7 +9792,14 @@
                                                         "POST" "/"
                                                         "CreatePartition"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'create-partition))
 (common-lisp:progn
  (common-lisp:defun create-script
@@ -10178,7 +9817,10 @@
                                                         "POST" "/"
                                                         "CreateScript"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'create-script))
 (common-lisp:progn
  (common-lisp:defun create-table
@@ -10197,7 +9839,14 @@
                                                         "POST" "/"
                                                         "CreateTable"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'create-table))
 (common-lisp:progn
  (common-lisp:defun create-trigger
@@ -10217,7 +9866,13 @@
                                                         "POST" "/"
                                                         "CreateTrigger"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)))))
  (common-lisp:export 'create-trigger))
 (common-lisp:progn
  (common-lisp:defun create-user-defined-function
@@ -10237,7 +9892,12 @@
                                                         "POST" "/"
                                                         "CreateUserDefinedFunction"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'create-user-defined-function))
 (common-lisp:progn
  (common-lisp:defun delete-classifier
@@ -10255,7 +9915,9 @@
                                                         "POST" "/"
                                                         "DeleteClassifier"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'delete-classifier))
 (common-lisp:progn
  (common-lisp:defun delete-connection
@@ -10273,7 +9935,9 @@
                                                         "POST" "/"
                                                         "DeleteConnection"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'delete-connection))
 (common-lisp:progn
  (common-lisp:defun delete-crawler
@@ -10291,7 +9955,11 @@
                                                         "POST" "/"
                                                         "DeleteCrawler"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'delete-crawler))
 (common-lisp:progn
  (common-lisp:defun delete-database
@@ -10309,7 +9977,11 @@
                                                         "POST" "/"
                                                         "DeleteDatabase"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'delete-database))
 (common-lisp:progn
  (common-lisp:defun delete-dev-endpoint
@@ -10327,7 +9999,11 @@
                                                         "POST" "/"
                                                         "DeleteDevEndpoint"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("InvalidInputException" . invalid-input-exception)))))
  (common-lisp:export 'delete-dev-endpoint))
 (common-lisp:progn
  (common-lisp:defun delete-job
@@ -10344,7 +10020,10 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteJob"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'delete-job))
 (common-lisp:progn
  (common-lisp:defun delete-partition
@@ -10365,7 +10044,11 @@
                                                         "POST" "/"
                                                         "DeletePartition"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'delete-partition))
 (common-lisp:progn
  (common-lisp:defun delete-table
@@ -10383,7 +10066,11 @@
                                                         "POST" "/"
                                                         "DeleteTable"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'delete-table))
 (common-lisp:progn
  (common-lisp:defun delete-trigger
@@ -10401,7 +10088,10 @@
                                                         "POST" "/"
                                                         "DeleteTrigger"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'delete-trigger))
 (common-lisp:progn
  (common-lisp:defun delete-user-defined-function
@@ -10421,7 +10111,11 @@
                                                         "POST" "/"
                                                         "DeleteUserDefinedFunction"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'delete-user-defined-function))
 (common-lisp:progn
  (common-lisp:defun get-catalog-import-status
@@ -10440,7 +10134,9 @@
                                                         "POST" "/"
                                                         "GetCatalogImportStatus"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-catalog-import-status))
 (common-lisp:progn
  (common-lisp:defun get-classifier
@@ -10458,7 +10154,9 @@
                                                         "POST" "/"
                                                         "GetClassifier"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-classifier))
 (common-lisp:progn
  (common-lisp:defun get-classifiers
@@ -10476,7 +10174,8 @@
                                                         "POST" "/"
                                                         "GetClassifiers"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-classifiers))
 (common-lisp:progn
  (common-lisp:defun get-connection
@@ -10494,7 +10193,9 @@
                                                         "POST" "/"
                                                         "GetConnection"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-connection))
 (common-lisp:progn
  (common-lisp:defun get-connections
@@ -10513,7 +10214,9 @@
                                                         "POST" "/"
                                                         "GetConnections"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-connections))
 (common-lisp:progn
  (common-lisp:defun get-crawler
@@ -10530,7 +10233,9 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetCrawler"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-crawler))
 (common-lisp:progn
  (common-lisp:defun get-crawler-metrics
@@ -10549,7 +10254,8 @@
                                                         "POST" "/"
                                                         "GetCrawlerMetrics"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-crawler-metrics))
 (common-lisp:progn
  (common-lisp:defun get-crawlers
@@ -10567,7 +10273,8 @@
                                                         "POST" "/"
                                                         "GetCrawlers"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-crawlers))
 (common-lisp:progn
  (common-lisp:defun get-database
@@ -10585,7 +10292,11 @@
                                                         "POST" "/"
                                                         "GetDatabase"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-database))
 (common-lisp:progn
  (common-lisp:defun get-databases
@@ -10604,7 +10315,10 @@
                                                         "POST" "/"
                                                         "GetDatabases"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-databases))
 (common-lisp:progn
  (common-lisp:defun get-dataflow-graph
@@ -10622,7 +10336,10 @@
                                                         "POST" "/"
                                                         "GetDataflowGraph"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-dataflow-graph))
 (common-lisp:progn
  (common-lisp:defun get-dev-endpoint
@@ -10640,7 +10357,11 @@
                                                         "POST" "/"
                                                         "GetDevEndpoint"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("InvalidInputException" . invalid-input-exception)))))
  (common-lisp:export 'get-dev-endpoint))
 (common-lisp:progn
  (common-lisp:defun get-dev-endpoints
@@ -10658,7 +10379,11 @@
                                                         "POST" "/"
                                                         "GetDevEndpoints"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("InvalidInputException" . invalid-input-exception)))))
  (common-lisp:export 'get-dev-endpoints))
 (common-lisp:progn
  (common-lisp:defun get-job
@@ -10675,7 +10400,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetJob"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-job))
 (common-lisp:progn
  (common-lisp:defun get-job-run
@@ -10693,7 +10422,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetJobRun"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-job-run))
 (common-lisp:progn
  (common-lisp:defun get-job-runs
@@ -10711,7 +10444,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetJobRuns"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-job-runs))
 (common-lisp:progn
  (common-lisp:defun get-jobs
@@ -10728,7 +10465,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetJobs"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-jobs))
 (common-lisp:progn
  (common-lisp:defun get-mapping
@@ -10745,7 +10486,10 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetMapping"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-mapping))
 (common-lisp:progn
  (common-lisp:defun get-partition
@@ -10766,7 +10510,11 @@
                                                         "POST" "/"
                                                         "GetPartition"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-partition))
 (common-lisp:progn
  (common-lisp:defun get-partitions
@@ -10787,7 +10535,11 @@
                                                         "POST" "/"
                                                         "GetPartitions"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'get-partitions))
 (common-lisp:progn
  (common-lisp:defun get-plan
@@ -10804,7 +10556,10 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetPlan"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-plan))
 (common-lisp:progn
  (common-lisp:defun get-table
@@ -10821,7 +10576,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetTable"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-table))
 (common-lisp:progn
  (common-lisp:defun get-table-versions
@@ -10842,7 +10601,11 @@
                                                         "POST" "/"
                                                         "GetTableVersions"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-table-versions))
 (common-lisp:progn
  (common-lisp:defun get-tables
@@ -10862,7 +10625,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetTables"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'get-tables))
 (common-lisp:progn
  (common-lisp:defun get-trigger
@@ -10879,7 +10646,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetTrigger"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-trigger))
 (common-lisp:progn
  (common-lisp:defun get-triggers
@@ -10899,7 +10670,11 @@
                                                         "POST" "/"
                                                         "GetTriggers"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-triggers))
 (common-lisp:progn
  (common-lisp:defun get-user-defined-function
@@ -10919,7 +10694,11 @@
                                                         "POST" "/"
                                                         "GetUserDefinedFunction"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'get-user-defined-function))
 (common-lisp:progn
  (common-lisp:defun get-user-defined-functions
@@ -10941,7 +10720,11 @@
                                                         "POST" "/"
                                                         "GetUserDefinedFunctions"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'get-user-defined-functions))
 (common-lisp:progn
  (common-lisp:defun import-catalog-to-glue
@@ -10959,7 +10742,9 @@
                                                         "POST" "/"
                                                         "ImportCatalogToGlue"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'import-catalog-to-glue))
 (common-lisp:progn
  (common-lisp:defun reset-job-bookmark
@@ -10977,7 +10762,11 @@
                                                         "POST" "/"
                                                         "ResetJobBookmark"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'reset-job-bookmark))
 (common-lisp:progn
  (common-lisp:defun start-crawler
@@ -10995,7 +10784,10 @@
                                                         "POST" "/"
                                                         "StartCrawler"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'start-crawler))
 (common-lisp:progn
  (common-lisp:defun start-crawler-schedule
@@ -11013,7 +10805,12 @@
                                                         "POST" "/"
                                                         "StartCrawlerSchedule"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'start-crawler-schedule))
 (common-lisp:progn
  (common-lisp:defun start-job-run
@@ -11033,7 +10830,15 @@
                                                         "POST" "/"
                                                         "StartJobRun"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)))))
  (common-lisp:export 'start-job-run))
 (common-lisp:progn
  (common-lisp:defun start-trigger
@@ -11051,7 +10856,15 @@
                                                         "POST" "/"
                                                         "StartTrigger"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)))))
  (common-lisp:export 'start-trigger))
 (common-lisp:progn
  (common-lisp:defun stop-crawler
@@ -11069,7 +10882,11 @@
                                                         "POST" "/"
                                                         "StopCrawler"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'stop-crawler))
 (common-lisp:progn
  (common-lisp:defun stop-crawler-schedule
@@ -11087,7 +10904,11 @@
                                                         "POST" "/"
                                                         "StopCrawlerSchedule"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'stop-crawler-schedule))
 (common-lisp:progn
  (common-lisp:defun stop-trigger
@@ -11105,7 +10926,11 @@
                                                         "POST" "/"
                                                         "StopTrigger"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'stop-trigger))
 (common-lisp:progn
  (common-lisp:defun update-classifier
@@ -11123,7 +10948,11 @@
                                                         "POST" "/"
                                                         "UpdateClassifier"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("VersionMismatchException" . version-mismatch-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'update-classifier))
 (common-lisp:progn
  (common-lisp:defun update-connection
@@ -11142,7 +10971,10 @@
                                                         "POST" "/"
                                                         "UpdateConnection"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'update-connection))
 (common-lisp:progn
  (common-lisp:defun update-crawler
@@ -11164,7 +10996,12 @@
                                                         "POST" "/"
                                                         "UpdateCrawler"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("VersionMismatchException" . version-mismatch-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'update-crawler))
 (common-lisp:progn
  (common-lisp:defun update-crawler-schedule
@@ -11182,7 +11019,12 @@
                                                         "POST" "/"
                                                         "UpdateCrawlerSchedule"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("VersionMismatchException" . version-mismatch-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'update-crawler-schedule))
 (common-lisp:progn
  (common-lisp:defun update-database
@@ -11200,7 +11042,11 @@
                                                         "POST" "/"
                                                         "UpdateDatabase"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'update-database))
 (common-lisp:progn
  (common-lisp:defun update-dev-endpoint
@@ -11220,7 +11066,12 @@
                                                         "POST" "/"
                                                         "UpdateDevEndpoint"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'update-dev-endpoint))
 (common-lisp:progn
  (common-lisp:defun update-job
@@ -11237,7 +11088,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "UpdateJob"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'update-job))
 (common-lisp:progn
  (common-lisp:defun update-partition
@@ -11258,7 +11113,11 @@
                                                         "POST" "/"
                                                         "UpdatePartition"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'update-partition))
 (common-lisp:progn
  (common-lisp:defun update-table
@@ -11277,7 +11136,13 @@
                                                         "POST" "/"
                                                         "UpdateTable"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ConcurrentModificationException"
+         . concurrent-modification-exception)))))
  (common-lisp:export 'update-table))
 (common-lisp:progn
  (common-lisp:defun update-trigger
@@ -11295,7 +11160,11 @@
                                                         "POST" "/"
                                                         "UpdateTrigger"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'update-trigger))
 (common-lisp:progn
  (common-lisp:defun update-user-defined-function
@@ -11317,5 +11186,9 @@
                                                         "POST" "/"
                                                         "UpdateUserDefinedFunction"
                                                         "2017-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotFoundException" . entity-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)))))
  (common-lisp:export 'update-user-defined-function))

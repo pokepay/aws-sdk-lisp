@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/polly/api)
 (common-lisp:progn
  (common-lisp:defclass polly-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "polly"))
  (common-lisp:export 'polly-request))
+(common-lisp:progn
+ (common-lisp:define-condition polly-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'polly-error))
 (common-lisp:deftype alphabet () 'common-lisp:string)
 (common-lisp:deftype audio-stream ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
@@ -169,128 +175,36 @@
                         ((aws-sdk/generator/shape::input get-lexicon-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-lexicon-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-lexicon-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-lexicon-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-lexicon-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-lexicon-exception
-                    'make-invalid-lexicon-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-lexicon-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-lexicon-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-lexicon-exception))
-   common-lisp:nil))
+                    'invalid-lexicon-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-next-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-next-token-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-next-token-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-next-token-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-next-token-exception
-                    'make-invalid-next-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   common-lisp:nil))
+                    'invalid-next-token-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-sample-rate-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-sample-rate-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-sample-rate-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-sample-rate-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-sample-rate-exception
-                    'make-invalid-sample-rate-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sample-rate-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sample-rate-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sample-rate-exception))
-   common-lisp:nil))
+                    'invalid-sample-rate-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-ssml-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-ssml-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-ssml-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-ssml-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-ssml-exception 'make-invalid-ssml-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-ssml-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-ssml-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-ssml-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-ssml-exception 'invalid-ssml-exception-message)))
 (common-lisp:deftype language-code () 'common-lisp:string)
 (common-lisp:deftype language-name () 'common-lisp:string)
 (common-lisp:deftype last-modified () 'common-lisp:string)
@@ -444,67 +358,21 @@
                            (trivial-types:proper-list lexicon-name))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (lexicon-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-lexicon-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition lexicon-not-found-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       lexicon-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'lexicon-not-found-exception
-                    'make-lexicon-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          lexicon-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          lexicon-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          lexicon-not-found-exception))
-   common-lisp:nil))
+                    'lexicon-not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (lexicon-size-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-lexicon-size-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition lexicon-size-exceeded-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       lexicon-size-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'lexicon-size-exceeded-exception
-                    'make-lexicon-size-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          lexicon-size-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          lexicon-size-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          lexicon-size-exceeded-exception))
-   common-lisp:nil))
+                    'lexicon-size-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-lexicons-input (:copier common-lisp:nil)
@@ -556,98 +424,29 @@
                         ((aws-sdk/generator/shape::input list-lexicons-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (marks-not-supported-for-format-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-marks-not-supported-for-format-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition marks-not-supported-for-format-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       marks-not-supported-for-format-exception-message)))
  (common-lisp:export
   (common-lisp:list 'marks-not-supported-for-format-exception
-                    'make-marks-not-supported-for-format-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          marks-not-supported-for-format-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          marks-not-supported-for-format-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          marks-not-supported-for-format-exception))
-   common-lisp:nil))
+                    'marks-not-supported-for-format-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (max-lexeme-length-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-max-lexeme-length-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition max-lexeme-length-exceeded-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       max-lexeme-length-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'max-lexeme-length-exceeded-exception
-                    'make-max-lexeme-length-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          max-lexeme-length-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          max-lexeme-length-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          max-lexeme-length-exceeded-exception))
-   common-lisp:nil))
+                    'max-lexeme-length-exceeded-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (max-lexicons-number-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-max-lexicons-number-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition max-lexicons-number-exceeded-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       max-lexicons-number-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'max-lexicons-number-exceeded-exception
-                    'make-max-lexicons-number-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          max-lexicons-number-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          max-lexicons-number-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          max-lexicons-number-exceeded-exception))
-   common-lisp:nil))
+                    'max-lexicons-number-exceeded-exception-message)))
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:deftype output-format () 'common-lisp:string)
 (common-lisp:progn
@@ -694,36 +493,13 @@
 (common-lisp:deftype request-characters () 'common-lisp:integer)
 (common-lisp:deftype sample-rate () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-failure-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-failure-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition service-failure-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       service-failure-exception-message)))
  (common-lisp:export
   (common-lisp:list 'service-failure-exception
-                    'make-service-failure-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-failure-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-failure-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-failure-exception))
-   common-lisp:nil))
+                    'service-failure-exception-message)))
 (common-lisp:deftype size () 'common-lisp:integer)
 (common-lisp:deftype speech-mark-type () 'common-lisp:string)
 (common-lisp:progn
@@ -735,38 +511,13 @@
                            (trivial-types:proper-list speech-mark-type))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ssml-marks-not-supported-for-text-type-exception
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-ssml-marks-not-supported-for-text-type-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition ssml-marks-not-supported-for-text-type-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       ssml-marks-not-supported-for-text-type-exception-message)))
  (common-lisp:export
   (common-lisp:list 'ssml-marks-not-supported-for-text-type-exception
-                    'make-ssml-marks-not-supported-for-text-type-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          ssml-marks-not-supported-for-text-type-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          ssml-marks-not-supported-for-text-type-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          ssml-marks-not-supported-for-text-type-exception))
-   common-lisp:nil))
+                    'ssml-marks-not-supported-for-text-type-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (synthesize-speech-input (:copier common-lisp:nil)
@@ -896,99 +647,30 @@
    (common-lisp:slot-value aws-sdk/generator/shape::input 'audio-stream)))
 (common-lisp:deftype text () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (text-length-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-text-length-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition text-length-exceeded-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       text-length-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'text-length-exceeded-exception
-                    'make-text-length-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          text-length-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          text-length-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          text-length-exceeded-exception))
-   common-lisp:nil))
+                    'text-length-exceeded-exception-message)))
 (common-lisp:deftype text-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (unsupported-pls-alphabet-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unsupported-pls-alphabet-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition unsupported-pls-alphabet-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unsupported-pls-alphabet-exception-message)))
  (common-lisp:export
   (common-lisp:list 'unsupported-pls-alphabet-exception
-                    'make-unsupported-pls-alphabet-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-pls-alphabet-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-pls-alphabet-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-pls-alphabet-exception))
-   common-lisp:nil))
+                    'unsupported-pls-alphabet-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unsupported-pls-language-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unsupported-pls-language-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition unsupported-pls-language-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unsupported-pls-language-exception-message)))
  (common-lisp:export
   (common-lisp:list 'unsupported-pls-language-exception
-                    'make-unsupported-pls-language-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-pls-language-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-pls-language-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-pls-language-exception))
-   common-lisp:nil))
+                    'unsupported-pls-language-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (voice (:copier common-lisp:nil) (:conc-name "struct-shape-voice-"))
@@ -1079,7 +761,9 @@
                                                              'lexicon-name))))
                                                         "DeleteLexicon"
                                                         "2016-06-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LexiconNotFoundException" . lexicon-not-found-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'delete-lexicon))
 (common-lisp:progn
  (common-lisp:defun describe-voices
@@ -1097,7 +781,9 @@
                                                         "GET" "/v1/voices"
                                                         "DescribeVoices"
                                                         "2016-06-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidNextTokenException" . invalid-next-token-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'describe-voices))
 (common-lisp:progn
  (common-lisp:defun get-lexicon
@@ -1125,7 +811,9 @@
                                                              'lexicon-name))))
                                                         "GetLexicon"
                                                         "2016-06-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LexiconNotFoundException" . lexicon-not-found-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'get-lexicon))
 (common-lisp:progn
  (common-lisp:defun list-lexicons
@@ -1143,7 +831,9 @@
                                                         "GET" "/v1/lexicons"
                                                         "ListLexicons"
                                                         "2016-06-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidNextTokenException" . invalid-next-token-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-lexicons))
 (common-lisp:progn
  (common-lisp:defun put-lexicon
@@ -1171,7 +861,18 @@
                                                              'lexicon-name))))
                                                         "PutLexicon"
                                                         "2016-06-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidLexiconException" . invalid-lexicon-exception)
+        ("UnsupportedPlsAlphabetException"
+         . unsupported-pls-alphabet-exception)
+        ("UnsupportedPlsLanguageException"
+         . unsupported-pls-language-exception)
+        ("LexiconSizeExceededException" . lexicon-size-exceeded-exception)
+        ("MaxLexemeLengthExceededException"
+         . max-lexeme-length-exceeded-exception)
+        ("MaxLexiconsNumberExceededException"
+         . max-lexicons-number-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'put-lexicon))
 (common-lisp:progn
  (common-lisp:defun synthesize-speech
@@ -1192,5 +893,14 @@
                                                         "POST" "/v1/speech"
                                                         "SynthesizeSpeech"
                                                         "2016-06-10"))
-      "blob" common-lisp:nil)))
+      "blob" common-lisp:nil
+      '(("TextLengthExceededException" . text-length-exceeded-exception)
+        ("InvalidSampleRateException" . invalid-sample-rate-exception)
+        ("InvalidSsmlException" . invalid-ssml-exception)
+        ("LexiconNotFoundException" . lexicon-not-found-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("MarksNotSupportedForFormatException"
+         . marks-not-supported-for-format-exception)
+        ("SsmlMarksNotSupportedForTextTypeException"
+         . ssml-marks-not-supported-for-text-type-exception)))))
  (common-lisp:export 'synthesize-speech))

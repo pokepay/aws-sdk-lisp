@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/waf-regional/api)
 (common-lisp:progn
  (common-lisp:defclass waf-regional-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "waf-regional"))
  (common-lisp:export 'waf-regional-request))
+(common-lisp:progn
+ (common-lisp:define-condition waf-regional-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'waf-regional-error))
 (common-lisp:deftype action () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -4812,385 +4818,103 @@
                           update-xss-match-set-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (wafdisallowed-name-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-wafdisallowed-name-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition wafdisallowed-name-exception
+     (waf-regional-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       wafdisallowed-name-exception-message)))
  (common-lisp:export
   (common-lisp:list 'wafdisallowed-name-exception
-                    'make-wafdisallowed-name-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafdisallowed-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafdisallowed-name-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafdisallowed-name-exception))
-   common-lisp:nil))
+                    'wafdisallowed-name-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (wafinternal-error-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-wafinternal-error-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition wafinternal-error-exception
+     (waf-regional-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       wafinternal-error-exception-message)))
  (common-lisp:export
   (common-lisp:list 'wafinternal-error-exception
-                    'make-wafinternal-error-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafinternal-error-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafinternal-error-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafinternal-error-exception))
-   common-lisp:nil))
+                    'wafinternal-error-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (wafinvalid-account-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-wafinvalid-account-exception-")))
- (common-lisp:export
-  (common-lisp:list 'wafinvalid-account-exception
-                    'make-wafinvalid-account-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafinvalid-account-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafinvalid-account-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafinvalid-account-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition wafinvalid-account-exception
+     (waf-regional-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'wafinvalid-account-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (wafinvalid-operation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-wafinvalid-operation-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition wafinvalid-operation-exception
+     (waf-regional-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       wafinvalid-operation-exception-message)))
  (common-lisp:export
   (common-lisp:list 'wafinvalid-operation-exception
-                    'make-wafinvalid-operation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafinvalid-operation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafinvalid-operation-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafinvalid-operation-exception))
-   common-lisp:nil))
+                    'wafinvalid-operation-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (wafinvalid-parameter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-wafinvalid-parameter-exception-"))
-   (field common-lisp:nil :type
-    (common-lisp:or parameter-exception-field common-lisp:null))
-   (parameter common-lisp:nil :type
-    (common-lisp:or parameter-exception-parameter common-lisp:null))
-   (reason common-lisp:nil :type
-    (common-lisp:or parameter-exception-reason common-lisp:null)))
+ (common-lisp:define-condition wafinvalid-parameter-exception
+     (waf-regional-error)
+     ((field :initarg :field :initform common-lisp:nil :reader
+       wafinvalid-parameter-exception-field)
+      (parameter :initarg :parameter :initform common-lisp:nil :reader
+       wafinvalid-parameter-exception-parameter)
+      (reason :initarg :reason :initform common-lisp:nil :reader
+       wafinvalid-parameter-exception-reason)))
  (common-lisp:export
   (common-lisp:list 'wafinvalid-parameter-exception
-                    'make-wafinvalid-parameter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafinvalid-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafinvalid-parameter-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'field))
-      (common-lisp:list
-       (common-lisp:cons "field"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'parameter))
-      (common-lisp:list
-       (common-lisp:cons "parameter"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'reason))
-      (common-lisp:list
-       (common-lisp:cons "reason"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafinvalid-parameter-exception))
-   common-lisp:nil))
+                    'wafinvalid-parameter-exception-field
+                    'wafinvalid-parameter-exception-parameter
+                    'wafinvalid-parameter-exception-reason)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (waflimits-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-waflimits-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition waflimits-exceeded-exception
+     (waf-regional-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       waflimits-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'waflimits-exceeded-exception
-                    'make-waflimits-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          waflimits-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          waflimits-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          waflimits-exceeded-exception))
-   common-lisp:nil))
+                    'waflimits-exceeded-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (wafnon-empty-entity-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-wafnon-empty-entity-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition wafnon-empty-entity-exception
+     (waf-regional-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       wafnon-empty-entity-exception-message)))
  (common-lisp:export
   (common-lisp:list 'wafnon-empty-entity-exception
-                    'make-wafnon-empty-entity-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafnon-empty-entity-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafnon-empty-entity-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafnon-empty-entity-exception))
-   common-lisp:nil))
+                    'wafnon-empty-entity-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (wafnonexistent-container-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-wafnonexistent-container-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition wafnonexistent-container-exception
+     (waf-regional-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       wafnonexistent-container-exception-message)))
  (common-lisp:export
   (common-lisp:list 'wafnonexistent-container-exception
-                    'make-wafnonexistent-container-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafnonexistent-container-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafnonexistent-container-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafnonexistent-container-exception))
-   common-lisp:nil))
+                    'wafnonexistent-container-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (wafnonexistent-item-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-wafnonexistent-item-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition wafnonexistent-item-exception
+     (waf-regional-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       wafnonexistent-item-exception-message)))
  (common-lisp:export
   (common-lisp:list 'wafnonexistent-item-exception
-                    'make-wafnonexistent-item-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafnonexistent-item-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafnonexistent-item-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafnonexistent-item-exception))
-   common-lisp:nil))
+                    'wafnonexistent-item-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (wafreferenced-item-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-wafreferenced-item-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition wafreferenced-item-exception
+     (waf-regional-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       wafreferenced-item-exception-message)))
  (common-lisp:export
   (common-lisp:list 'wafreferenced-item-exception
-                    'make-wafreferenced-item-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafreferenced-item-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafreferenced-item-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafreferenced-item-exception))
-   common-lisp:nil))
+                    'wafreferenced-item-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (wafstale-data-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-wafstale-data-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition wafstale-data-exception
+     (waf-regional-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       wafstale-data-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'wafstale-data-exception 'make-wafstale-data-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafstale-data-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafstale-data-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafstale-data-exception))
-   common-lisp:nil))
+  (common-lisp:list 'wafstale-data-exception 'wafstale-data-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (wafunavailable-entity-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-wafunavailable-entity-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition wafunavailable-entity-exception
+     (waf-regional-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       wafunavailable-entity-exception-message)))
  (common-lisp:export
   (common-lisp:list 'wafunavailable-entity-exception
-                    'make-wafunavailable-entity-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafunavailable-entity-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafunavailable-entity-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          wafunavailable-entity-exception))
-   common-lisp:nil))
+                    'wafunavailable-entity-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (waf-action (:copier common-lisp:nil)
@@ -5538,7 +5262,12 @@
                                                         "POST" "/"
                                                         "AssociateWebACL"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFUnavailableEntityException" . wafunavailable-entity-exception)))))
  (common-lisp:export 'associate-web-acl))
 (common-lisp:progn
  (common-lisp:defun create-byte-match-set
@@ -5556,7 +5285,13 @@
                                                         "POST" "/"
                                                         "CreateByteMatchSet"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
+        ("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
+        ("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFLimitsExceededException" . waflimits-exceeded-exception)))))
  (common-lisp:export 'create-byte-match-set))
 (common-lisp:progn
  (common-lisp:defun create-ipset
@@ -5574,7 +5309,13 @@
                                                         "POST" "/"
                                                         "CreateIPSet"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFDisallowedNameException" . wafdisallowed-name-exception)
+        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
+        ("WAFLimitsExceededException" . waflimits-exceeded-exception)))))
  (common-lisp:export 'create-ipset))
 (common-lisp:progn
  (common-lisp:defun create-rate-based-rule
@@ -5594,7 +5335,12 @@
                                                         "POST" "/"
                                                         "CreateRateBasedRule"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFDisallowedNameException" . wafdisallowed-name-exception)
+        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
+        ("WAFLimitsExceededException" . waflimits-exceeded-exception)))))
  (common-lisp:export 'create-rate-based-rule))
 (common-lisp:progn
  (common-lisp:defun create-rule
@@ -5611,7 +5357,12 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CreateRule"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFDisallowedNameException" . wafdisallowed-name-exception)
+        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
+        ("WAFLimitsExceededException" . waflimits-exceeded-exception)))))
  (common-lisp:export 'create-rule))
 (common-lisp:progn
  (common-lisp:defun create-size-constraint-set
@@ -5630,7 +5381,13 @@
                                                         "POST" "/"
                                                         "CreateSizeConstraintSet"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFDisallowedNameException" . wafdisallowed-name-exception)
+        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
+        ("WAFLimitsExceededException" . waflimits-exceeded-exception)))))
  (common-lisp:export 'create-size-constraint-set))
 (common-lisp:progn
  (common-lisp:defun create-sql-injection-match-set
@@ -5649,7 +5406,13 @@
                                                         "POST" "/"
                                                         "CreateSqlInjectionMatchSet"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
+        ("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
+        ("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFLimitsExceededException" . waflimits-exceeded-exception)))))
  (common-lisp:export 'create-sql-injection-match-set))
 (common-lisp:progn
  (common-lisp:defun create-web-acl
@@ -5669,7 +5432,13 @@
                                                         "POST" "/"
                                                         "CreateWebACL"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFDisallowedNameException" . wafdisallowed-name-exception)
+        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
+        ("WAFLimitsExceededException" . waflimits-exceeded-exception)))))
  (common-lisp:export 'create-web-acl))
 (common-lisp:progn
  (common-lisp:defun create-xss-match-set
@@ -5687,7 +5456,13 @@
                                                         "POST" "/"
                                                         "CreateXssMatchSet"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
+        ("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
+        ("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFLimitsExceededException" . waflimits-exceeded-exception)))))
  (common-lisp:export 'create-xss-match-set))
 (common-lisp:progn
  (common-lisp:defun delete-byte-match-set
@@ -5705,7 +5480,13 @@
                                                         "POST" "/"
                                                         "DeleteByteMatchSet"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFReferencedItemException" . wafreferenced-item-exception)
+        ("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)))))
  (common-lisp:export 'delete-byte-match-set))
 (common-lisp:progn
  (common-lisp:defun delete-ipset
@@ -5723,7 +5504,13 @@
                                                         "POST" "/"
                                                         "DeleteIPSet"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFReferencedItemException" . wafreferenced-item-exception)
+        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)))))
  (common-lisp:export 'delete-ipset))
 (common-lisp:progn
  (common-lisp:defun delete-rate-based-rule
@@ -5741,7 +5528,13 @@
                                                         "POST" "/"
                                                         "DeleteRateBasedRule"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFReferencedItemException" . wafreferenced-item-exception)
+        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)))))
  (common-lisp:export 'delete-rate-based-rule))
 (common-lisp:progn
  (common-lisp:defun delete-rule
@@ -5758,7 +5551,13 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteRule"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFReferencedItemException" . wafreferenced-item-exception)
+        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)))))
  (common-lisp:export 'delete-rule))
 (common-lisp:progn
  (common-lisp:defun delete-size-constraint-set
@@ -5778,7 +5577,13 @@
                                                         "POST" "/"
                                                         "DeleteSizeConstraintSet"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFReferencedItemException" . wafreferenced-item-exception)
+        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)))))
  (common-lisp:export 'delete-size-constraint-set))
 (common-lisp:progn
  (common-lisp:defun delete-sql-injection-match-set
@@ -5798,7 +5603,13 @@
                                                         "POST" "/"
                                                         "DeleteSqlInjectionMatchSet"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFReferencedItemException" . wafreferenced-item-exception)
+        ("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)))))
  (common-lisp:export 'delete-sql-injection-match-set))
 (common-lisp:progn
  (common-lisp:defun delete-web-acl
@@ -5816,7 +5627,13 @@
                                                         "POST" "/"
                                                         "DeleteWebACL"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFReferencedItemException" . wafreferenced-item-exception)
+        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)))))
  (common-lisp:export 'delete-web-acl))
 (common-lisp:progn
  (common-lisp:defun delete-xss-match-set
@@ -5834,7 +5651,13 @@
                                                         "POST" "/"
                                                         "DeleteXssMatchSet"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFReferencedItemException" . wafreferenced-item-exception)
+        ("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)))))
  (common-lisp:export 'delete-xss-match-set))
 (common-lisp:progn
  (common-lisp:defun disassociate-web-acl
@@ -5852,7 +5675,11 @@
                                                         "POST" "/"
                                                         "DisassociateWebACL"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)))))
  (common-lisp:export 'disassociate-web-acl))
 (common-lisp:progn
  (common-lisp:defun get-byte-match-set
@@ -5870,7 +5697,10 @@
                                                         "POST" "/"
                                                         "GetByteMatchSet"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)))))
  (common-lisp:export 'get-byte-match-set))
 (common-lisp:progn
  (common-lisp:defun get-change-token ()
@@ -5880,7 +5710,8 @@
                                 :params
                                 `(("Action" ,@"GetChangeToken")
                                   ("Version" ,@"2016-11-28"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("WAFInternalErrorException" . wafinternal-error-exception))))
  (common-lisp:export 'get-change-token))
 (common-lisp:progn
  (common-lisp:defun get-change-token-status
@@ -5898,7 +5729,9 @@
                                                         "POST" "/"
                                                         "GetChangeTokenStatus"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFInternalErrorException" . wafinternal-error-exception)))))
  (common-lisp:export 'get-change-token-status))
 (common-lisp:progn
  (common-lisp:defun get-ipset
@@ -5915,7 +5748,10 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetIPSet"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)))))
  (common-lisp:export 'get-ipset))
 (common-lisp:progn
  (common-lisp:defun get-rate-based-rule
@@ -5933,7 +5769,10 @@
                                                         "POST" "/"
                                                         "GetRateBasedRule"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)))))
  (common-lisp:export 'get-rate-based-rule))
 (common-lisp:progn
  (common-lisp:defun get-rate-based-rule-managed-keys
@@ -5952,7 +5791,11 @@
                                                         "POST" "/"
                                                         "GetRateBasedRuleManagedKeys"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)))))
  (common-lisp:export 'get-rate-based-rule-managed-keys))
 (common-lisp:progn
  (common-lisp:defun get-rule
@@ -5969,7 +5812,10 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetRule"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)))))
  (common-lisp:export 'get-rule))
 (common-lisp:progn
  (common-lisp:defun get-sampled-requests
@@ -5988,7 +5834,9 @@
                                                         "POST" "/"
                                                         "GetSampledRequests"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFInternalErrorException" . wafinternal-error-exception)))))
  (common-lisp:export 'get-sampled-requests))
 (common-lisp:progn
  (common-lisp:defun get-size-constraint-set
@@ -6006,7 +5854,10 @@
                                                         "POST" "/"
                                                         "GetSizeConstraintSet"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)))))
  (common-lisp:export 'get-size-constraint-set))
 (common-lisp:progn
  (common-lisp:defun get-sql-injection-match-set
@@ -6025,7 +5876,10 @@
                                                         "POST" "/"
                                                         "GetSqlInjectionMatchSet"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)))))
  (common-lisp:export 'get-sql-injection-match-set))
 (common-lisp:progn
  (common-lisp:defun get-web-acl
@@ -6042,7 +5896,10 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetWebACL"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)))))
  (common-lisp:export 'get-web-acl))
 (common-lisp:progn
  (common-lisp:defun get-web-aclfor-resource
@@ -6060,7 +5917,12 @@
                                                         "POST" "/"
                                                         "GetWebACLForResource"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
+        ("WAFUnavailableEntityException" . wafunavailable-entity-exception)))))
  (common-lisp:export 'get-web-aclfor-resource))
 (common-lisp:progn
  (common-lisp:defun get-xss-match-set
@@ -6078,7 +5940,10 @@
                                                         "POST" "/"
                                                         "GetXssMatchSet"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)))))
  (common-lisp:export 'get-xss-match-set))
 (common-lisp:progn
  (common-lisp:defun list-byte-match-sets
@@ -6096,7 +5961,9 @@
                                                         "POST" "/"
                                                         "ListByteMatchSets"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)))))
  (common-lisp:export 'list-byte-match-sets))
 (common-lisp:progn
  (common-lisp:defun list-ipsets
@@ -6113,7 +5980,9 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListIPSets"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)))))
  (common-lisp:export 'list-ipsets))
 (common-lisp:progn
  (common-lisp:defun list-rate-based-rules
@@ -6131,7 +6000,9 @@
                                                         "POST" "/"
                                                         "ListRateBasedRules"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)))))
  (common-lisp:export 'list-rate-based-rules))
 (common-lisp:progn
  (common-lisp:defun list-resources-for-web-acl
@@ -6150,7 +6021,10 @@
                                                         "POST" "/"
                                                         "ListResourcesForWebACL"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)))))
  (common-lisp:export 'list-resources-for-web-acl))
 (common-lisp:progn
  (common-lisp:defun list-rules
@@ -6167,7 +6041,9 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListRules"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)))))
  (common-lisp:export 'list-rules))
 (common-lisp:progn
  (common-lisp:defun list-size-constraint-sets
@@ -6186,7 +6062,9 @@
                                                         "POST" "/"
                                                         "ListSizeConstraintSets"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)))))
  (common-lisp:export 'list-size-constraint-sets))
 (common-lisp:progn
  (common-lisp:defun list-sql-injection-match-sets
@@ -6205,7 +6083,9 @@
                                                         "POST" "/"
                                                         "ListSqlInjectionMatchSets"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)))))
  (common-lisp:export 'list-sql-injection-match-sets))
 (common-lisp:progn
  (common-lisp:defun list-web-acls
@@ -6223,7 +6103,9 @@
                                                         "POST" "/"
                                                         "ListWebACLs"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)))))
  (common-lisp:export 'list-web-acls))
 (common-lisp:progn
  (common-lisp:defun list-xss-match-sets
@@ -6241,7 +6123,9 @@
                                                         "POST" "/"
                                                         "ListXssMatchSets"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)))))
  (common-lisp:export 'list-xss-match-sets))
 (common-lisp:progn
  (common-lisp:defun update-byte-match-set
@@ -6260,7 +6144,16 @@
                                                         "POST" "/"
                                                         "UpdateByteMatchSet"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
+        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
+        ("WAFNonexistentContainerException"
+         . wafnonexistent-container-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFLimitsExceededException" . waflimits-exceeded-exception)))))
  (common-lisp:export 'update-byte-match-set))
 (common-lisp:progn
  (common-lisp:defun update-ipset
@@ -6278,7 +6171,17 @@
                                                         "POST" "/"
                                                         "UpdateIPSet"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
+        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
+        ("WAFNonexistentContainerException"
+         . wafnonexistent-container-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFReferencedItemException" . wafreferenced-item-exception)
+        ("WAFLimitsExceededException" . waflimits-exceeded-exception)))))
  (common-lisp:export 'update-ipset))
 (common-lisp:progn
  (common-lisp:defun update-rate-based-rule
@@ -6297,7 +6200,17 @@
                                                         "POST" "/"
                                                         "UpdateRateBasedRule"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
+        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
+        ("WAFNonexistentContainerException"
+         . wafnonexistent-container-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFReferencedItemException" . wafreferenced-item-exception)
+        ("WAFLimitsExceededException" . waflimits-exceeded-exception)))))
  (common-lisp:export 'update-rate-based-rule))
 (common-lisp:progn
  (common-lisp:defun update-rule
@@ -6314,7 +6227,17 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "UpdateRule"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
+        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
+        ("WAFNonexistentContainerException"
+         . wafnonexistent-container-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFReferencedItemException" . wafreferenced-item-exception)
+        ("WAFLimitsExceededException" . waflimits-exceeded-exception)))))
  (common-lisp:export 'update-rule))
 (common-lisp:progn
  (common-lisp:defun update-size-constraint-set
@@ -6335,7 +6258,17 @@
                                                         "POST" "/"
                                                         "UpdateSizeConstraintSet"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
+        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
+        ("WAFNonexistentContainerException"
+         . wafnonexistent-container-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFReferencedItemException" . wafreferenced-item-exception)
+        ("WAFLimitsExceededException" . waflimits-exceeded-exception)))))
  (common-lisp:export 'update-size-constraint-set))
 (common-lisp:progn
  (common-lisp:defun update-sql-injection-match-set
@@ -6356,7 +6289,16 @@
                                                         "POST" "/"
                                                         "UpdateSqlInjectionMatchSet"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
+        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
+        ("WAFNonexistentContainerException"
+         . wafnonexistent-container-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFLimitsExceededException" . waflimits-exceeded-exception)))))
  (common-lisp:export 'update-sql-injection-match-set))
 (common-lisp:progn
  (common-lisp:defun update-web-acl
@@ -6376,7 +6318,17 @@
                                                         "POST" "/"
                                                         "UpdateWebACL"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
+        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
+        ("WAFNonexistentContainerException"
+         . wafnonexistent-container-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFReferencedItemException" . wafreferenced-item-exception)
+        ("WAFLimitsExceededException" . waflimits-exceeded-exception)))))
  (common-lisp:export 'update-web-acl))
 (common-lisp:progn
  (common-lisp:defun update-xss-match-set
@@ -6395,5 +6347,14 @@
                                                         "POST" "/"
                                                         "UpdateXssMatchSet"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("WAFInternalErrorException" . wafinternal-error-exception)
+        ("WAFInvalidAccountException" . wafinvalid-account-exception)
+        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
+        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
+        ("WAFNonexistentContainerException"
+         . wafnonexistent-container-exception)
+        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
+        ("WAFStaleDataException" . wafstale-data-exception)
+        ("WAFLimitsExceededException" . waflimits-exceeded-exception)))))
  (common-lisp:export 'update-xss-match-set))

@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/cloudsearchdomain/api)
 (common-lisp:progn
  (common-lisp:defclass cloudsearchdomain-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "cloudsearchdomain"))
  (common-lisp:export 'cloudsearchdomain-request))
+(common-lisp:progn
+ (common-lisp:define-condition cloudsearchdomain-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'cloudsearchdomain-error))
 (common-lisp:deftype adds () 'common-lisp:integer)
 (common-lisp:deftype blob ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
@@ -79,43 +85,16 @@
 (common-lisp:deftype cursor () 'common-lisp:string)
 (common-lisp:deftype deletes () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (document-service-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-document-service-exception-"))
-   (status common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition document-service-exception
+     (cloudsearchdomain-error)
+     ((status :initarg :status :initform common-lisp:nil :reader
+       document-service-exception-status)
+      (message :initarg :message :initform common-lisp:nil :reader
+       document-service-exception-message)))
  (common-lisp:export
   (common-lisp:list 'document-service-exception
-                    'make-document-service-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          document-service-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          document-service-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'status))
-      (common-lisp:list
-       (common-lisp:cons "status"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          document-service-exception))
-   common-lisp:nil))
+                    'document-service-exception-status
+                    'document-service-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (document-service-warning (:copier common-lisp:nil)
@@ -378,28 +357,12 @@
 (common-lisp:deftype query-parser () 'common-lisp:string)
 (common-lisp:deftype return () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (search-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-search-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition search-exception
+     (cloudsearchdomain-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       search-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'search-exception 'make-search-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input search-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input search-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input search-exception))
-   common-lisp:nil))
+  (common-lisp:list 'search-exception 'search-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (search-request (:copier common-lisp:nil)
@@ -802,7 +765,8 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cloudsearchdomain-request aws-sdk/generator/operation::input "GET"
         "/2013-01-01/search?format=sdk&pretty=true" "Search" "2013-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("SearchException" . search-exception)))))
  (common-lisp:export 'search))
 (common-lisp:progn
  (common-lisp:defun suggest
@@ -818,7 +782,8 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cloudsearchdomain-request aws-sdk/generator/operation::input "GET"
         "/2013-01-01/suggest?format=sdk&pretty=true" "Suggest" "2013-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("SearchException" . search-exception)))))
  (common-lisp:export 'suggest))
 (common-lisp:progn
  (common-lisp:defun upload-documents
@@ -835,5 +800,6 @@
         'cloudsearchdomain-request aws-sdk/generator/operation::input "POST"
         "/2013-01-01/documents/batch?format=sdk" "UploadDocuments"
         "2013-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DocumentServiceException" . document-service-exception)))))
  (common-lisp:export 'upload-documents))

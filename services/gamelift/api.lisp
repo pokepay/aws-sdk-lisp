@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/gamelift/api)
 (common-lisp:progn
  (common-lisp:defclass gamelift-request (aws-sdk/request:request)
                        common-lisp:nil (:default-initargs :service "gamelift"))
  (common-lisp:export 'gamelift-request))
+(common-lisp:progn
+ (common-lisp:define-condition gamelift-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'gamelift-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (accept-match-input (:copier common-lisp:nil)
@@ -328,29 +334,12 @@
 (common-lisp:deftype build-status () 'common-lisp:string)
 (common-lisp:deftype comparison-operator-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (conflict-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-conflict-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+ (common-lisp:define-condition conflict-exception
+     (gamelift-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       conflict-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'conflict-exception 'make-conflict-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input conflict-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input conflict-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input conflict-exception))
-   common-lisp:nil))
+  (common-lisp:list 'conflict-exception 'conflict-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-alias-input (:copier common-lisp:nil)
@@ -3560,36 +3549,13 @@
                         ((aws-sdk/generator/shape::input fleet-capacity))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (fleet-capacity-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-fleet-capacity-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+ (common-lisp:define-condition fleet-capacity-exceeded-exception
+     (gamelift-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       fleet-capacity-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'fleet-capacity-exceeded-exception
-                    'make-fleet-capacity-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          fleet-capacity-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          fleet-capacity-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          fleet-capacity-exceeded-exception))
-   common-lisp:nil))
+                    'fleet-capacity-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype fleet-capacity-list ()
    '(trivial-types:proper-list fleet-capacity))
@@ -3967,36 +3933,13 @@
                            (trivial-types:proper-list game-session-detail))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (game-session-full-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-game-session-full-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+ (common-lisp:define-condition game-session-full-exception
+     (gamelift-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       game-session-full-exception-message)))
  (common-lisp:export
   (common-lisp:list 'game-session-full-exception
-                    'make-game-session-full-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          game-session-full-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          game-session-full-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          game-session-full-exception))
-   common-lisp:nil))
+                    'game-session-full-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype game-session-list ()
    '(trivial-types:proper-list game-session))
@@ -4427,36 +4370,13 @@
    common-lisp:nil))
 (common-lisp:deftype id-string-model () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (idempotent-parameter-mismatch-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-idempotent-parameter-mismatch-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+ (common-lisp:define-condition idempotent-parameter-mismatch-exception
+     (gamelift-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       idempotent-parameter-mismatch-exception-message)))
  (common-lisp:export
   (common-lisp:list 'idempotent-parameter-mismatch-exception
-                    'make-idempotent-parameter-mismatch-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          idempotent-parameter-mismatch-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          idempotent-parameter-mismatch-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          idempotent-parameter-mismatch-exception))
-   common-lisp:nil))
+                    'idempotent-parameter-mismatch-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (instance (:copier common-lisp:nil) (:conc-name "struct-shape-instance-"))
@@ -4634,129 +4554,37 @@
 (common-lisp:deftype instance-status () 'common-lisp:string)
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-service-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-service-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+ (common-lisp:define-condition internal-service-exception
+     (gamelift-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-service-exception-message)))
  (common-lisp:export
   (common-lisp:list 'internal-service-exception
-                    'make-internal-service-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-exception))
-   common-lisp:nil))
+                    'internal-service-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-fleet-status-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-fleet-status-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+ (common-lisp:define-condition invalid-fleet-status-exception
+     (gamelift-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-fleet-status-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-fleet-status-exception
-                    'make-invalid-fleet-status-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-fleet-status-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-fleet-status-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-fleet-status-exception))
-   common-lisp:nil))
+                    'invalid-fleet-status-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-game-session-status-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-game-session-status-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+ (common-lisp:define-condition invalid-game-session-status-exception
+     (gamelift-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-game-session-status-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-game-session-status-exception
-                    'make-invalid-game-session-status-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-game-session-status-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-game-session-status-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-game-session-status-exception))
-   common-lisp:nil))
+                    'invalid-game-session-status-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-request-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-request-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+ (common-lisp:define-condition invalid-request-exception
+     (gamelift-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-request-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-request-exception
-                    'make-invalid-request-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   common-lisp:nil))
+                    'invalid-request-exception-message)))
 (common-lisp:deftype ip-address () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -4825,35 +4653,13 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (gamelift-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception
+                    'limit-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-aliases-input (:copier common-lisp:nil)
@@ -5481,29 +5287,12 @@
 (common-lisp:deftype non-empty-string () 'common-lisp:string)
 (common-lisp:deftype non-zero-and-max-string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+ (common-lisp:define-condition not-found-exception
+     (gamelift-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       not-found-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'not-found-exception 'make-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   common-lisp:nil))
+  (common-lisp:list 'not-found-exception 'not-found-exception-message)))
 (common-lisp:deftype operating-system () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -6889,98 +6678,29 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype string-model () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (terminal-routing-strategy-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-terminal-routing-strategy-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+ (common-lisp:define-condition terminal-routing-strategy-exception
+     (gamelift-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       terminal-routing-strategy-exception-message)))
  (common-lisp:export
   (common-lisp:list 'terminal-routing-strategy-exception
-                    'make-terminal-routing-strategy-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          terminal-routing-strategy-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          terminal-routing-strategy-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          terminal-routing-strategy-exception))
-   common-lisp:nil))
+                    'terminal-routing-strategy-exception-message)))
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (unauthorized-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unauthorized-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+ (common-lisp:define-condition unauthorized-exception
+     (gamelift-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unauthorized-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'unauthorized-exception 'make-unauthorized-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-exception))
-   common-lisp:nil))
+  (common-lisp:list 'unauthorized-exception 'unauthorized-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unsupported-region-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unsupported-region-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+ (common-lisp:define-condition unsupported-region-exception
+     (gamelift-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unsupported-region-exception-message)))
  (common-lisp:export
   (common-lisp:list 'unsupported-region-exception
-                    'make-unsupported-region-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-region-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-region-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-region-exception))
-   common-lisp:nil))
+                    'unsupported-region-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-alias-input (:copier common-lisp:nil)
@@ -7905,7 +7625,11 @@
                                                         "POST" "/"
                                                         "AcceptMatch"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("UnsupportedRegionException" . unsupported-region-exception)))))
  (common-lisp:export 'accept-match))
 (common-lisp:progn
  (common-lisp:defun create-alias
@@ -7924,7 +7648,12 @@
                                                         "POST" "/"
                                                         "CreateAlias"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedException" . unauthorized-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'create-alias))
 (common-lisp:progn
  (common-lisp:defun create-build
@@ -7944,7 +7673,11 @@
                                                         "POST" "/"
                                                         "CreateBuild"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedException" . unauthorized-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'create-build))
 (common-lisp:progn
  (common-lisp:defun create-fleet
@@ -7970,7 +7703,13 @@
                                                         "POST" "/"
                                                         "CreateFleet"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'create-fleet))
 (common-lisp:progn
  (common-lisp:defun create-game-session
@@ -7994,7 +7733,19 @@
                                                         "POST" "/"
                                                         "CreateGameSession"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ConflictException" . conflict-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
+        ("TerminalRoutingStrategyException"
+         . terminal-routing-strategy-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)))))
  (common-lisp:export 'create-game-session))
 (common-lisp:progn
  (common-lisp:defun create-game-session-queue
@@ -8015,7 +7766,11 @@
                                                         "POST" "/"
                                                         "CreateGameSessionQueue"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'create-game-session-queue))
 (common-lisp:progn
  (common-lisp:defun create-matchmaking-configuration
@@ -8042,7 +7797,12 @@
                                                         "POST" "/"
                                                         "CreateMatchmakingConfiguration"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("UnsupportedRegionException" . unsupported-region-exception)))))
  (common-lisp:export 'create-matchmaking-configuration))
 (common-lisp:progn
  (common-lisp:defun create-matchmaking-rule-set
@@ -8061,7 +7821,10 @@
                                                         "POST" "/"
                                                         "CreateMatchmakingRuleSet"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("UnsupportedRegionException" . unsupported-region-exception)))))
  (common-lisp:export 'create-matchmaking-rule-set))
 (common-lisp:progn
  (common-lisp:defun create-player-session
@@ -8080,7 +7843,16 @@
                                                         "POST" "/"
                                                         "CreatePlayerSession"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("InvalidGameSessionStatusException"
+         . invalid-game-session-status-exception)
+        ("GameSessionFullException" . game-session-full-exception)
+        ("TerminalRoutingStrategyException"
+         . terminal-routing-strategy-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'create-player-session))
 (common-lisp:progn
  (common-lisp:defun create-player-sessions
@@ -8100,7 +7872,16 @@
                                                         "POST" "/"
                                                         "CreatePlayerSessions"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("InvalidGameSessionStatusException"
+         . invalid-game-session-status-exception)
+        ("GameSessionFullException" . game-session-full-exception)
+        ("TerminalRoutingStrategyException"
+         . terminal-routing-strategy-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'create-player-sessions))
 (common-lisp:progn
  (common-lisp:defun delete-alias
@@ -8118,7 +7899,11 @@
                                                         "POST" "/"
                                                         "DeleteAlias"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedException" . unauthorized-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'delete-alias))
 (common-lisp:progn
  (common-lisp:defun delete-build
@@ -8136,7 +7921,11 @@
                                                         "POST" "/"
                                                         "DeleteBuild"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedException" . unauthorized-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'delete-build))
 (common-lisp:progn
  (common-lisp:defun delete-fleet
@@ -8154,7 +7943,12 @@
                                                         "POST" "/"
                                                         "DeleteFleet"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'delete-fleet))
 (common-lisp:progn
  (common-lisp:defun delete-game-session-queue
@@ -8172,7 +7966,11 @@
                                                         "POST" "/"
                                                         "DeleteGameSessionQueue"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-game-session-queue))
 (common-lisp:progn
  (common-lisp:defun delete-matchmaking-configuration
@@ -8191,7 +7989,11 @@
                                                         "POST" "/"
                                                         "DeleteMatchmakingConfiguration"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("UnsupportedRegionException" . unsupported-region-exception)))))
  (common-lisp:export 'delete-matchmaking-configuration))
 (common-lisp:progn
  (common-lisp:defun delete-scaling-policy
@@ -8209,7 +8011,11 @@
                                                         "POST" "/"
                                                         "DeleteScalingPolicy"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'delete-scaling-policy))
 (common-lisp:progn
  (common-lisp:defun describe-alias
@@ -8227,7 +8033,11 @@
                                                         "POST" "/"
                                                         "DescribeAlias"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedException" . unauthorized-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'describe-alias))
 (common-lisp:progn
  (common-lisp:defun describe-build
@@ -8245,7 +8055,11 @@
                                                         "POST" "/"
                                                         "DescribeBuild"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedException" . unauthorized-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'describe-build))
 (common-lisp:progn
  (common-lisp:defun describe-ec2instance-limits
@@ -8264,7 +8078,10 @@
                                                         "POST" "/"
                                                         "DescribeEC2InstanceLimits"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'describe-ec2instance-limits))
 (common-lisp:progn
  (common-lisp:defun describe-fleet-attributes
@@ -8282,7 +8099,11 @@
                                                         "POST" "/"
                                                         "DescribeFleetAttributes"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'describe-fleet-attributes))
 (common-lisp:progn
  (common-lisp:defun describe-fleet-capacity
@@ -8300,7 +8121,11 @@
                                                         "POST" "/"
                                                         "DescribeFleetCapacity"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'describe-fleet-capacity))
 (common-lisp:progn
  (common-lisp:defun describe-fleet-events
@@ -8320,7 +8145,11 @@
                                                         "POST" "/"
                                                         "DescribeFleetEvents"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'describe-fleet-events))
 (common-lisp:progn
  (common-lisp:defun describe-fleet-port-settings
@@ -8339,7 +8168,11 @@
                                                         "POST" "/"
                                                         "DescribeFleetPortSettings"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'describe-fleet-port-settings))
 (common-lisp:progn
  (common-lisp:defun describe-fleet-utilization
@@ -8357,7 +8190,11 @@
                                                         "POST" "/"
                                                         "DescribeFleetUtilization"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'describe-fleet-utilization))
 (common-lisp:progn
  (common-lisp:defun describe-game-session-details
@@ -8379,7 +8216,13 @@
                                                         "POST" "/"
                                                         "DescribeGameSessionDetails"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("TerminalRoutingStrategyException"
+         . terminal-routing-strategy-exception)))))
  (common-lisp:export 'describe-game-session-details))
 (common-lisp:progn
  (common-lisp:defun describe-game-session-placement
@@ -8398,7 +8241,11 @@
                                                         "POST" "/"
                                                         "DescribeGameSessionPlacement"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'describe-game-session-placement))
 (common-lisp:progn
  (common-lisp:defun describe-game-session-queues
@@ -8417,7 +8264,11 @@
                                                         "POST" "/"
                                                         "DescribeGameSessionQueues"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'describe-game-session-queues))
 (common-lisp:progn
  (common-lisp:defun describe-game-sessions
@@ -8438,7 +8289,13 @@
                                                         "POST" "/"
                                                         "DescribeGameSessions"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("TerminalRoutingStrategyException"
+         . terminal-routing-strategy-exception)))))
  (common-lisp:export 'describe-game-sessions))
 (common-lisp:progn
  (common-lisp:defun describe-instances
@@ -8457,7 +8314,11 @@
                                                         "POST" "/"
                                                         "DescribeInstances"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedException" . unauthorized-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'describe-instances))
 (common-lisp:progn
  (common-lisp:defun describe-matchmaking
@@ -8475,7 +8336,10 @@
                                                         "POST" "/"
                                                         "DescribeMatchmaking"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("UnsupportedRegionException" . unsupported-region-exception)))))
  (common-lisp:export 'describe-matchmaking))
 (common-lisp:progn
  (common-lisp:defun describe-matchmaking-configurations
@@ -8495,7 +8359,10 @@
                                                         "POST" "/"
                                                         "DescribeMatchmakingConfigurations"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("UnsupportedRegionException" . unsupported-region-exception)))))
  (common-lisp:export 'describe-matchmaking-configurations))
 (common-lisp:progn
  (common-lisp:defun describe-matchmaking-rule-sets
@@ -8514,7 +8381,11 @@
                                                         "POST" "/"
                                                         "DescribeMatchmakingRuleSets"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("NotFoundException" . not-found-exception)
+        ("UnsupportedRegionException" . unsupported-region-exception)))))
  (common-lisp:export 'describe-matchmaking-rule-sets))
 (common-lisp:progn
  (common-lisp:defun describe-player-sessions
@@ -8536,7 +8407,11 @@
                                                         "POST" "/"
                                                         "DescribePlayerSessions"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'describe-player-sessions))
 (common-lisp:progn
  (common-lisp:defun describe-runtime-configuration
@@ -8555,7 +8430,11 @@
                                                         "POST" "/"
                                                         "DescribeRuntimeConfiguration"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedException" . unauthorized-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'describe-runtime-configuration))
 (common-lisp:progn
  (common-lisp:defun describe-scaling-policies
@@ -8574,7 +8453,11 @@
                                                         "POST" "/"
                                                         "DescribeScalingPolicies"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'describe-scaling-policies))
 (common-lisp:progn
  (common-lisp:defun get-game-session-log-url
@@ -8592,7 +8475,11 @@
                                                         "POST" "/"
                                                         "GetGameSessionLogUrl"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("NotFoundException" . not-found-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'get-game-session-log-url))
 (common-lisp:progn
  (common-lisp:defun get-instance-access
@@ -8610,7 +8497,11 @@
                                                         "POST" "/"
                                                         "GetInstanceAccess"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedException" . unauthorized-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'get-instance-access))
 (common-lisp:progn
  (common-lisp:defun list-aliases
@@ -8630,7 +8521,10 @@
                                                         "POST" "/"
                                                         "ListAliases"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedException" . unauthorized-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'list-aliases))
 (common-lisp:progn
  (common-lisp:defun list-builds
@@ -8647,7 +8541,10 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListBuilds"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedException" . unauthorized-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'list-builds))
 (common-lisp:progn
  (common-lisp:defun list-fleets
@@ -8664,7 +8561,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListFleets"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'list-fleets))
 (common-lisp:progn
  (common-lisp:defun put-scaling-policy
@@ -8687,7 +8588,11 @@
                                                         "POST" "/"
                                                         "PutScalingPolicy"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'put-scaling-policy))
 (common-lisp:progn
  (common-lisp:defun request-upload-credentials
@@ -8705,7 +8610,11 @@
                                                         "POST" "/"
                                                         "RequestUploadCredentials"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedException" . unauthorized-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'request-upload-credentials))
 (common-lisp:progn
  (common-lisp:defun resolve-alias
@@ -8723,7 +8632,13 @@
                                                         "POST" "/"
                                                         "ResolveAlias"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedException" . unauthorized-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("TerminalRoutingStrategyException"
+         . terminal-routing-strategy-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'resolve-alias))
 (common-lisp:progn
  (common-lisp:defun search-game-sessions
@@ -8744,7 +8659,13 @@
                                                         "POST" "/"
                                                         "SearchGameSessions"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("TerminalRoutingStrategyException"
+         . terminal-routing-strategy-exception)))))
  (common-lisp:export 'search-game-sessions))
 (common-lisp:progn
  (common-lisp:defun start-game-session-placement
@@ -8769,7 +8690,11 @@
                                                         "POST" "/"
                                                         "StartGameSessionPlacement"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'start-game-session-placement))
 (common-lisp:progn
  (common-lisp:defun start-matchmaking
@@ -8788,7 +8713,11 @@
                                                         "POST" "/"
                                                         "StartMatchmaking"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("UnsupportedRegionException" . unsupported-region-exception)))))
  (common-lisp:export 'start-matchmaking))
 (common-lisp:progn
  (common-lisp:defun stop-game-session-placement
@@ -8807,7 +8736,11 @@
                                                         "POST" "/"
                                                         "StopGameSessionPlacement"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'stop-game-session-placement))
 (common-lisp:progn
  (common-lisp:defun stop-matchmaking
@@ -8825,7 +8758,11 @@
                                                         "POST" "/"
                                                         "StopMatchmaking"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("UnsupportedRegionException" . unsupported-region-exception)))))
  (common-lisp:export 'stop-matchmaking))
 (common-lisp:progn
  (common-lisp:defun update-alias
@@ -8845,7 +8782,11 @@
                                                         "POST" "/"
                                                         "UpdateAlias"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedException" . unauthorized-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'update-alias))
 (common-lisp:progn
  (common-lisp:defun update-build
@@ -8863,7 +8804,11 @@
                                                         "POST" "/"
                                                         "UpdateBuild"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedException" . unauthorized-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'update-build))
 (common-lisp:progn
  (common-lisp:defun update-fleet-attributes
@@ -8886,7 +8831,14 @@
                                                         "POST" "/"
                                                         "UpdateFleetAttributes"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("ConflictException" . conflict-exception)
+        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-fleet-attributes))
 (common-lisp:progn
  (common-lisp:defun update-fleet-capacity
@@ -8906,7 +8858,14 @@
                                                         "POST" "/"
                                                         "UpdateFleetCapacity"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-fleet-capacity))
 (common-lisp:progn
  (common-lisp:defun update-fleet-port-settings
@@ -8928,7 +8887,14 @@
                                                         "POST" "/"
                                                         "UpdateFleetPortSettings"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("ConflictException" . conflict-exception)
+        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-fleet-port-settings))
 (common-lisp:progn
  (common-lisp:defun update-game-session
@@ -8950,7 +8916,14 @@
                                                         "POST" "/"
                                                         "UpdateGameSession"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NotFoundException" . not-found-exception)
+        ("ConflictException" . conflict-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("InvalidGameSessionStatusException"
+         . invalid-game-session-status-exception)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'update-game-session))
 (common-lisp:progn
  (common-lisp:defun update-game-session-queue
@@ -8971,7 +8944,11 @@
                                                         "POST" "/"
                                                         "UpdateGameSessionQueue"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-game-session-queue))
 (common-lisp:progn
  (common-lisp:defun update-matchmaking-configuration
@@ -8998,7 +8975,11 @@
                                                         "POST" "/"
                                                         "UpdateMatchmakingConfiguration"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("UnsupportedRegionException" . unsupported-region-exception)))))
  (common-lisp:export 'update-matchmaking-configuration))
 (common-lisp:progn
  (common-lisp:defun update-runtime-configuration
@@ -9017,7 +8998,12 @@
                                                         "POST" "/"
                                                         "UpdateRuntimeConfiguration"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedException" . unauthorized-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("InvalidFleetStatusException" . invalid-fleet-status-exception)))))
  (common-lisp:export 'update-runtime-configuration))
 (common-lisp:progn
  (common-lisp:defun validate-matchmaking-rule-set
@@ -9036,5 +9022,8 @@
                                                         "POST" "/"
                                                         "ValidateMatchmakingRuleSet"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("UnsupportedRegionException" . unsupported-region-exception)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'validate-matchmaking-rule-set))

@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/dynamodb/api)
 (common-lisp:progn
  (common-lisp:defclass dynamodb-request (aws-sdk/request:request)
                        common-lisp:nil (:default-initargs :service "dynamodb"))
  (common-lisp:export 'dynamodb-request))
+(common-lisp:progn
+ (common-lisp:define-condition dynamodb-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'dynamodb-error))
 (common-lisp:deftype attribute-action () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -505,36 +511,13 @@
    common-lisp:nil))
 (common-lisp:deftype condition-expression () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (conditional-check-failed-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-conditional-check-failed-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition conditional-check-failed-exception
+     (dynamodb-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       conditional-check-failed-exception-message)))
  (common-lisp:export
   (common-lisp:list 'conditional-check-failed-exception
-                    'make-conditional-check-failed-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          conditional-check-failed-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          conditional-check-failed-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          conditional-check-failed-exception))
-   common-lisp:nil))
+                    'conditional-check-failed-exception-message)))
 (common-lisp:deftype conditional-operator () 'common-lisp:string)
 (common-lisp:deftype consistent-read () 'common-lisp:boolean)
 (common-lisp:progn
@@ -1677,35 +1660,12 @@
 (common-lisp:deftype index-status () 'common-lisp:string)
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-server-error (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-server-error-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition internal-server-error
+     (dynamodb-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-server-error-message)))
  (common-lisp:export
-  (common-lisp:list 'internal-server-error 'make-internal-server-error))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   common-lisp:nil))
+  (common-lisp:list 'internal-server-error 'internal-server-error-message)))
 (common-lisp:progn
  (common-lisp:deftype item-collection-key-attribute-map ()
    'common-lisp:hash-table)
@@ -1784,37 +1744,13 @@
                             item-collection-size-estimate-bound))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (item-collection-size-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-item-collection-size-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition item-collection-size-limit-exceeded-exception
+     (dynamodb-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       item-collection-size-limit-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'item-collection-size-limit-exceeded-exception
-                    'make-item-collection-size-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          item-collection-size-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          item-collection-size-limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          item-collection-size-limit-exceeded-exception))
-   common-lisp:nil))
+                    'item-collection-size-limit-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype item-list () '(trivial-types:proper-list attribute-map))
  (common-lisp:defun |make-item-list|
@@ -1950,35 +1886,13 @@
                         ((aws-sdk/generator/shape::input keys-and-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (dynamodb-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception
+                    'limit-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype list-attribute-value ()
    '(trivial-types:proper-list attribute-value))
@@ -2452,36 +2366,13 @@
                           provisioned-throughput-description))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (provisioned-throughput-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-provisioned-throughput-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition provisioned-throughput-exceeded-exception
+     (dynamodb-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       provisioned-throughput-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'provisioned-throughput-exceeded-exception
-                    'make-provisioned-throughput-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          provisioned-throughput-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          provisioned-throughput-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          provisioned-throughput-exceeded-exception))
-   common-lisp:nil))
+                    'provisioned-throughput-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (put-item-input (:copier common-lisp:nil)
@@ -2896,67 +2787,21 @@
    common-lisp:nil))
 (common-lisp:deftype resource-arn-string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-in-use-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-in-use-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition resource-in-use-exception
+     (dynamodb-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-in-use-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-in-use-exception
-                    'make-resource-in-use-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   common-lisp:nil))
+                    'resource-in-use-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition resource-not-found-exception
+     (dynamodb-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+                    'resource-not-found-exception-message)))
 (common-lisp:deftype return-consumed-capacity () 'common-lisp:string)
 (common-lisp:deftype return-item-collection-metrics () 'common-lisp:string)
 (common-lisp:deftype return-value () 'common-lisp:string)
@@ -4022,7 +3867,11 @@
                                                         "POST" "/"
                                                         "BatchGetItem"
                                                         "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'batch-get-item))
 (common-lisp:progn
  (common-lisp:defun batch-write-item
@@ -4043,7 +3892,13 @@
                                                         "POST" "/"
                                                         "BatchWriteItem"
                                                         "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ItemCollectionSizeLimitExceededException"
+         . item-collection-size-limit-exceeded-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'batch-write-item))
 (common-lisp:progn
  (common-lisp:defun create-table
@@ -4067,7 +3922,10 @@
                                                         "POST" "/"
                                                         "CreateTable"
                                                         "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceInUseException" . resource-in-use-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'create-table))
 (common-lisp:progn
  (common-lisp:defun delete-item
@@ -4092,7 +3950,15 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteItem"
                                                         "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ConditionalCheckFailedException"
+         . conditional-check-failed-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ItemCollectionSizeLimitExceededException"
+         . item-collection-size-limit-exceeded-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'delete-item))
 (common-lisp:progn
  (common-lisp:defun delete-table
@@ -4110,7 +3976,11 @@
                                                         "POST" "/"
                                                         "DeleteTable"
                                                         "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'delete-table))
 (common-lisp:progn
  (common-lisp:defun describe-limits ()
@@ -4120,7 +3990,8 @@
                                 :params
                                 `(("Action" ,@"DescribeLimits")
                                   ("Version" ,@"2012-08-10"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("InternalServerError" . internal-server-error))))
  (common-lisp:export 'describe-limits))
 (common-lisp:progn
  (common-lisp:defun describe-table
@@ -4138,7 +4009,9 @@
                                                         "POST" "/"
                                                         "DescribeTable"
                                                         "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-table))
 (common-lisp:progn
  (common-lisp:defun describe-time-to-live
@@ -4156,7 +4029,9 @@
                                                         "POST" "/"
                                                         "DescribeTimeToLive"
                                                         "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-time-to-live))
 (common-lisp:progn
  (common-lisp:defun get-item
@@ -4178,7 +4053,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetItem"
                                                         "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'get-item))
 (common-lisp:progn
  (common-lisp:defun list-tables
@@ -4196,7 +4075,8 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListTables"
                                                         "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'list-tables))
 (common-lisp:progn
  (common-lisp:defun list-tags-of-resource
@@ -4214,7 +4094,9 @@
                                                         "POST" "/"
                                                         "ListTagsOfResource"
                                                         "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'list-tags-of-resource))
 (common-lisp:progn
  (common-lisp:defun put-item
@@ -4238,7 +4120,15 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "PutItem"
                                                         "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ConditionalCheckFailedException"
+         . conditional-check-failed-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ItemCollectionSizeLimitExceededException"
+         . item-collection-size-limit-exceeded-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'put-item))
 (common-lisp:progn
  (common-lisp:defun query
@@ -4266,7 +4156,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "Query"
                                                         "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'query))
 (common-lisp:progn
  (common-lisp:defun scan
@@ -4293,7 +4187,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "Scan"
                                                         "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'scan))
 (common-lisp:progn
  (common-lisp:defun tag-resource
@@ -4311,7 +4209,11 @@
                                                         "POST" "/"
                                                         "TagResource"
                                                         "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
  (common-lisp:defun untag-resource
@@ -4329,7 +4231,11 @@
                                                         "POST" "/"
                                                         "UntagResource"
                                                         "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
  (common-lisp:defun update-item
@@ -4354,7 +4260,15 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "UpdateItem"
                                                         "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ConditionalCheckFailedException"
+         . conditional-check-failed-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ItemCollectionSizeLimitExceededException"
+         . item-collection-size-limit-exceeded-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'update-item))
 (common-lisp:progn
  (common-lisp:defun update-table
@@ -4377,7 +4291,11 @@
                                                         "POST" "/"
                                                         "UpdateTable"
                                                         "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'update-table))
 (common-lisp:progn
  (common-lisp:defun update-time-to-live
@@ -4396,5 +4314,9 @@
                                                         "POST" "/"
                                                         "UpdateTimeToLive"
                                                         "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'update-time-to-live))

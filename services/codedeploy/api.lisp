@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/codedeploy/api)
 (common-lisp:progn
  (common-lisp:defclass codedeploy-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "codedeploy"))
  (common-lisp:export 'codedeploy-request))
+(common-lisp:progn
+ (common-lisp:define-condition codedeploy-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'codedeploy-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (add-tags-to-on-premises-instances-input (:copier common-lisp:nil)
@@ -125,71 +131,20 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype alarm-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (alarms-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-alarms-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'alarms-limit-exceeded-exception
-                    'make-alarms-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          alarms-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          alarms-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          alarms-limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition alarms-limit-exceeded-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'alarms-limit-exceeded-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (application-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-application-already-exists-exception-")))
- (common-lisp:export
-  (common-lisp:list 'application-already-exists-exception
-                    'make-application-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          application-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          application-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          application-already-exists-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition application-already-exists-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'application-already-exists-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (application-does-not-exist-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-application-does-not-exist-exception-")))
- (common-lisp:export
-  (common-lisp:list 'application-does-not-exist-exception
-                    'make-application-does-not-exist-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          application-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          application-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          application-does-not-exist-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition application-does-not-exist-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'application-does-not-exist-exception)))
 (common-lisp:deftype application-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -253,50 +208,16 @@
                         ((aws-sdk/generator/shape::input application-info))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (application-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-application-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'application-limit-exceeded-exception
-                    'make-application-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          application-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          application-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          application-limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition application-limit-exceeded-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'application-limit-exceeded-exception)))
 (common-lisp:deftype application-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (application-name-required-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-application-name-required-exception-")))
- (common-lisp:export
-  (common-lisp:list 'application-name-required-exception
-                    'make-application-name-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          application-name-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          application-name-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          application-name-required-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition application-name-required-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'application-name-required-exception)))
 (common-lisp:deftype application-revision-sort-by () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype applications-info-list ()
@@ -852,27 +773,10 @@
                           batch-get-on-premises-instances-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'batch-limit-exceeded-exception
-                    'make-batch-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          batch-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          batch-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          batch-limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition batch-limit-exceeded-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'batch-limit-exceeded-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (blue-green-deployment-configuration (:copier common-lisp:nil)
@@ -968,27 +872,10 @@
    common-lisp:nil))
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (bucket-name-filter-required-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-bucket-name-filter-required-exception-")))
- (common-lisp:export
-  (common-lisp:list 'bucket-name-filter-required-exception
-                    'make-bucket-name-filter-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          bucket-name-filter-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          bucket-name-filter-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          bucket-name-filter-required-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition bucket-name-filter-required-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'bucket-name-filter-required-exception)))
 (common-lisp:deftype bundle-type () 'common-lisp:string)
 (common-lisp:deftype commit-id () 'common-lisp:string)
 (common-lisp:progn
@@ -1639,94 +1526,29 @@
                           delete-deployment-group-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (deployment-already-completed-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deployment-already-completed-exception-")))
+ (common-lisp:define-condition deployment-already-completed-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'deployment-already-completed-exception
-                    'make-deployment-already-completed-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-already-completed-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-already-completed-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-already-completed-exception))
-   common-lisp:nil))
+  (common-lisp:list 'deployment-already-completed-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (deployment-config-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deployment-config-already-exists-exception-")))
+ (common-lisp:define-condition deployment-config-already-exists-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'deployment-config-already-exists-exception
-                    'make-deployment-config-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-config-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-config-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-config-already-exists-exception))
-   common-lisp:nil))
+  (common-lisp:list 'deployment-config-already-exists-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (deployment-config-does-not-exist-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deployment-config-does-not-exist-exception-")))
+ (common-lisp:define-condition deployment-config-does-not-exist-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'deployment-config-does-not-exist-exception
-                    'make-deployment-config-does-not-exist-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-config-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-config-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-config-does-not-exist-exception))
-   common-lisp:nil))
+  (common-lisp:list 'deployment-config-does-not-exist-exception)))
 (common-lisp:deftype deployment-config-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (deployment-config-in-use-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deployment-config-in-use-exception-")))
- (common-lisp:export
-  (common-lisp:list 'deployment-config-in-use-exception
-                    'make-deployment-config-in-use-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-config-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-config-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-config-in-use-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition deployment-config-in-use-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'deployment-config-in-use-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (deployment-config-info (:copier common-lisp:nil)
@@ -1788,50 +1610,18 @@
                           deployment-config-info))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (deployment-config-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deployment-config-limit-exceeded-exception-")))
+ (common-lisp:define-condition deployment-config-limit-exceeded-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'deployment-config-limit-exceeded-exception
-                    'make-deployment-config-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-config-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-config-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-config-limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'deployment-config-limit-exceeded-exception)))
 (common-lisp:deftype deployment-config-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (deployment-config-name-required-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deployment-config-name-required-exception-")))
+ (common-lisp:define-condition deployment-config-name-required-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'deployment-config-name-required-exception
-                    'make-deployment-config-name-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-config-name-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-config-name-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-config-name-required-exception))
-   common-lisp:nil))
+  (common-lisp:list 'deployment-config-name-required-exception)))
 (common-lisp:progn
  (common-lisp:deftype deployment-configs-list ()
    '(trivial-types:proper-list deployment-config-name))
@@ -1842,71 +1632,22 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype deployment-creator () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (deployment-does-not-exist-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deployment-does-not-exist-exception-")))
- (common-lisp:export
-  (common-lisp:list 'deployment-does-not-exist-exception
-                    'make-deployment-does-not-exist-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-does-not-exist-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition deployment-does-not-exist-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'deployment-does-not-exist-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (deployment-group-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deployment-group-already-exists-exception-")))
+ (common-lisp:define-condition deployment-group-already-exists-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'deployment-group-already-exists-exception
-                    'make-deployment-group-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-group-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-group-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-group-already-exists-exception))
-   common-lisp:nil))
+  (common-lisp:list 'deployment-group-already-exists-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (deployment-group-does-not-exist-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deployment-group-does-not-exist-exception-")))
+ (common-lisp:define-condition deployment-group-does-not-exist-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'deployment-group-does-not-exist-exception
-                    'make-deployment-group-does-not-exist-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-group-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-group-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-group-does-not-exist-exception))
-   common-lisp:nil))
+  (common-lisp:list 'deployment-group-does-not-exist-exception)))
 (common-lisp:deftype deployment-group-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -2117,50 +1858,18 @@
                            (trivial-types:proper-list deployment-group-info))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (deployment-group-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deployment-group-limit-exceeded-exception-")))
+ (common-lisp:define-condition deployment-group-limit-exceeded-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'deployment-group-limit-exceeded-exception
-                    'make-deployment-group-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-group-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-group-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-group-limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'deployment-group-limit-exceeded-exception)))
 (common-lisp:deftype deployment-group-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (deployment-group-name-required-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deployment-group-name-required-exception-")))
+ (common-lisp:define-condition deployment-group-name-required-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'deployment-group-name-required-exception
-                    'make-deployment-group-name-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-group-name-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-group-name-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-group-name-required-exception))
-   common-lisp:nil))
+  (common-lisp:list 'deployment-group-name-required-exception)))
 (common-lisp:progn
  (common-lisp:deftype deployment-groups-list ()
    '(trivial-types:proper-list deployment-group-name))
@@ -2171,27 +1880,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype deployment-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (deployment-id-required-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deployment-id-required-exception-")))
- (common-lisp:export
-  (common-lisp:list 'deployment-id-required-exception
-                    'make-deployment-id-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-id-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-id-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-id-required-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition deployment-id-required-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'deployment-id-required-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (deployment-info (:copier common-lisp:nil)
@@ -2441,71 +2133,21 @@
                         ((aws-sdk/generator/shape::input deployment-info))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (deployment-is-not-in-ready-state-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deployment-is-not-in-ready-state-exception-")))
+ (common-lisp:define-condition deployment-is-not-in-ready-state-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'deployment-is-not-in-ready-state-exception
-                    'make-deployment-is-not-in-ready-state-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-is-not-in-ready-state-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-is-not-in-ready-state-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-is-not-in-ready-state-exception))
-   common-lisp:nil))
+  (common-lisp:list 'deployment-is-not-in-ready-state-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (deployment-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deployment-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'deployment-limit-exceeded-exception
-                    'make-deployment-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition deployment-limit-exceeded-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'deployment-limit-exceeded-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (deployment-not-started-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deployment-not-started-exception-")))
- (common-lisp:export
-  (common-lisp:list 'deployment-not-started-exception
-                    'make-deployment-not-started-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-not-started-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-not-started-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          deployment-not-started-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition deployment-not-started-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'deployment-not-started-exception)))
 (common-lisp:deftype deployment-option () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -2709,27 +2351,10 @@
    common-lisp:nil))
 (common-lisp:deftype description () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (description-too-long-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-description-too-long-exception-")))
- (common-lisp:export
-  (common-lisp:list 'description-too-long-exception
-                    'make-description-too-long-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          description-too-long-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          description-too-long-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          description-too-long-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition description-too-long-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'description-too-long-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (diagnostics (:copier common-lisp:nil)
@@ -3466,28 +3091,11 @@
                           get-on-premises-instance-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (git-hub-account-token-does-not-exist-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-git-hub-account-token-does-not-exist-exception-")))
+ (common-lisp:define-condition git-hub-account-token-does-not-exist-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'git-hub-account-token-does-not-exist-exception
-                    'make-git-hub-account-token-does-not-exist-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          git-hub-account-token-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          git-hub-account-token-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          git-hub-account-token-does-not-exist-exception))
-   common-lisp:nil))
+  (common-lisp:list 'git-hub-account-token-does-not-exist-exception)))
 (common-lisp:deftype git-hub-account-token-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype git-hub-account-token-name-list ()
@@ -3564,144 +3172,43 @@
                           green-fleet-provisioning-option))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (iam-arn-required-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-iam-arn-required-exception-")))
- (common-lisp:export
-  (common-lisp:list 'iam-arn-required-exception
-                    'make-iam-arn-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          iam-arn-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          iam-arn-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          iam-arn-required-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition iam-arn-required-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'iam-arn-required-exception)))
 (common-lisp:deftype iam-session-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (iam-session-arn-already-registered-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-iam-session-arn-already-registered-exception-")))
+ (common-lisp:define-condition iam-session-arn-already-registered-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'iam-session-arn-already-registered-exception
-                    'make-iam-session-arn-already-registered-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          iam-session-arn-already-registered-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          iam-session-arn-already-registered-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          iam-session-arn-already-registered-exception))
-   common-lisp:nil))
+  (common-lisp:list 'iam-session-arn-already-registered-exception)))
 (common-lisp:deftype iam-user-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (iam-user-arn-already-registered-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-iam-user-arn-already-registered-exception-")))
+ (common-lisp:define-condition iam-user-arn-already-registered-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'iam-user-arn-already-registered-exception
-                    'make-iam-user-arn-already-registered-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          iam-user-arn-already-registered-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          iam-user-arn-already-registered-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          iam-user-arn-already-registered-exception))
-   common-lisp:nil))
+  (common-lisp:list 'iam-user-arn-already-registered-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (iam-user-arn-required-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-iam-user-arn-required-exception-")))
- (common-lisp:export
-  (common-lisp:list 'iam-user-arn-required-exception
-                    'make-iam-user-arn-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          iam-user-arn-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          iam-user-arn-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          iam-user-arn-required-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition iam-user-arn-required-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'iam-user-arn-required-exception)))
 (common-lisp:deftype instance-action () 'common-lisp:string)
 (common-lisp:deftype instance-arn () 'common-lisp:string)
 (common-lisp:deftype instance-count () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (instance-does-not-exist-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-instance-does-not-exist-exception-")))
- (common-lisp:export
-  (common-lisp:list 'instance-does-not-exist-exception
-                    'make-instance-does-not-exist-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-does-not-exist-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition instance-does-not-exist-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'instance-does-not-exist-exception)))
 (common-lisp:deftype instance-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (instance-id-required-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-instance-id-required-exception-")))
- (common-lisp:export
-  (common-lisp:list 'instance-id-required-exception
-                    'make-instance-id-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-id-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-id-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-id-required-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition instance-id-required-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'instance-id-required-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (instance-info (:copier common-lisp:nil)
@@ -3787,50 +3294,17 @@
                            (trivial-types:proper-list instance-info))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (instance-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-instance-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'instance-limit-exceeded-exception
-                    'make-instance-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition instance-limit-exceeded-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'instance-limit-exceeded-exception)))
 (common-lisp:deftype instance-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (instance-name-already-registered-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-instance-name-already-registered-exception-")))
+ (common-lisp:define-condition instance-name-already-registered-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'instance-name-already-registered-exception
-                    'make-instance-name-already-registered-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-name-already-registered-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-name-already-registered-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-name-already-registered-exception))
-   common-lisp:nil))
+  (common-lisp:list 'instance-name-already-registered-exception)))
 (common-lisp:progn
  (common-lisp:deftype instance-name-list ()
    '(trivial-types:proper-list instance-name))
@@ -3840,49 +3314,15 @@
                            (trivial-types:proper-list instance-name))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (instance-name-required-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-instance-name-required-exception-")))
- (common-lisp:export
-  (common-lisp:list 'instance-name-required-exception
-                    'make-instance-name-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-name-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-name-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-name-required-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition instance-name-required-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'instance-name-required-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (instance-not-registered-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-instance-not-registered-exception-")))
- (common-lisp:export
-  (common-lisp:list 'instance-not-registered-exception
-                    'make-instance-not-registered-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-not-registered-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-not-registered-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-not-registered-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition instance-not-registered-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'instance-not-registered-exception)))
 (common-lisp:deftype instance-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype instance-status-list ()
@@ -3987,820 +3427,199 @@
                            (trivial-types:proper-list instance-id))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-alarm-config-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-alarm-config-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-alarm-config-exception
-                    'make-invalid-alarm-config-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-alarm-config-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-alarm-config-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-alarm-config-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-alarm-config-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-alarm-config-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-application-name-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-application-name-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-application-name-exception
-                    'make-invalid-application-name-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-application-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-application-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-application-name-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-application-name-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-application-name-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-auto-rollback-config-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-auto-rollback-config-exception-")))
+ (common-lisp:define-condition invalid-auto-rollback-config-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-auto-rollback-config-exception
-                    'make-invalid-auto-rollback-config-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-auto-rollback-config-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-auto-rollback-config-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-auto-rollback-config-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-auto-rollback-config-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-auto-scaling-group-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-auto-scaling-group-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-auto-scaling-group-exception
-                    'make-invalid-auto-scaling-group-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-auto-scaling-group-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-auto-scaling-group-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-auto-scaling-group-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-auto-scaling-group-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-auto-scaling-group-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-blue-green-deployment-configuration-exception
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-invalid-blue-green-deployment-configuration-exception-")))
+ (common-lisp:define-condition invalid-blue-green-deployment-configuration-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-blue-green-deployment-configuration-exception
-                    'make-invalid-blue-green-deployment-configuration-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-blue-green-deployment-configuration-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-blue-green-deployment-configuration-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-blue-green-deployment-configuration-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-blue-green-deployment-configuration-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-bucket-name-filter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-bucket-name-filter-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-bucket-name-filter-exception
-                    'make-invalid-bucket-name-filter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-bucket-name-filter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-bucket-name-filter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-bucket-name-filter-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-bucket-name-filter-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-bucket-name-filter-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-deployed-state-filter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-deployed-state-filter-exception-")))
+ (common-lisp:define-condition invalid-deployed-state-filter-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-deployed-state-filter-exception
-                    'make-invalid-deployed-state-filter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployed-state-filter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployed-state-filter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployed-state-filter-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-deployed-state-filter-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-deployment-config-name-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-deployment-config-name-exception-")))
+ (common-lisp:define-condition invalid-deployment-config-name-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-deployment-config-name-exception
-                    'make-invalid-deployment-config-name-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployment-config-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployment-config-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployment-config-name-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-deployment-config-name-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-deployment-group-name-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-deployment-group-name-exception-")))
+ (common-lisp:define-condition invalid-deployment-group-name-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-deployment-group-name-exception
-                    'make-invalid-deployment-group-name-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployment-group-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployment-group-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployment-group-name-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-deployment-group-name-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-deployment-id-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-deployment-id-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-deployment-id-exception
-                    'make-invalid-deployment-id-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployment-id-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployment-id-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployment-id-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-deployment-id-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-deployment-id-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-deployment-instance-type-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-deployment-instance-type-exception-")))
+ (common-lisp:define-condition invalid-deployment-instance-type-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-deployment-instance-type-exception
-                    'make-invalid-deployment-instance-type-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployment-instance-type-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployment-instance-type-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployment-instance-type-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-deployment-instance-type-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-deployment-status-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-deployment-status-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-deployment-status-exception
-                    'make-invalid-deployment-status-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployment-status-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployment-status-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployment-status-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-deployment-status-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-deployment-status-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-deployment-style-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-deployment-style-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-deployment-style-exception
-                    'make-invalid-deployment-style-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployment-style-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployment-style-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-deployment-style-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-deployment-style-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-deployment-style-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-ec2tag-combination-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-ec2tag-combination-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-ec2tag-combination-exception
-                    'make-invalid-ec2tag-combination-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-ec2tag-combination-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-ec2tag-combination-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-ec2tag-combination-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-ec2tag-combination-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-ec2tag-combination-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-ec2tag-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-ec2tag-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-ec2tag-exception 'make-invalid-ec2tag-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-ec2tag-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-ec2tag-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-ec2tag-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-ec2tag-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-ec2tag-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-file-exists-behavior-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-file-exists-behavior-exception-")))
+ (common-lisp:define-condition invalid-file-exists-behavior-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-file-exists-behavior-exception
-                    'make-invalid-file-exists-behavior-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-file-exists-behavior-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-file-exists-behavior-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-file-exists-behavior-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-file-exists-behavior-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-iam-session-arn-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-iam-session-arn-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-iam-session-arn-exception
-                    'make-invalid-iam-session-arn-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-iam-session-arn-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-iam-session-arn-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-iam-session-arn-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-iam-session-arn-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-iam-session-arn-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-iam-user-arn-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-iam-user-arn-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-iam-user-arn-exception
-                    'make-invalid-iam-user-arn-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-iam-user-arn-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-iam-user-arn-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-iam-user-arn-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-iam-user-arn-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-iam-user-arn-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-instance-name-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-instance-name-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-instance-name-exception
-                    'make-invalid-instance-name-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-instance-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-instance-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-instance-name-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-instance-name-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-instance-name-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-instance-status-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-instance-status-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-instance-status-exception
-                    'make-invalid-instance-status-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-instance-status-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-instance-status-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-instance-status-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-instance-status-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-instance-status-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-instance-type-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-instance-type-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-instance-type-exception
-                    'make-invalid-instance-type-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-instance-type-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-instance-type-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-instance-type-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-instance-type-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-instance-type-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-key-prefix-filter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-key-prefix-filter-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-key-prefix-filter-exception
-                    'make-invalid-key-prefix-filter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-key-prefix-filter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-key-prefix-filter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-key-prefix-filter-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-key-prefix-filter-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-key-prefix-filter-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-load-balancer-info-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-load-balancer-info-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-load-balancer-info-exception
-                    'make-invalid-load-balancer-info-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-load-balancer-info-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-load-balancer-info-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-load-balancer-info-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-load-balancer-info-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-load-balancer-info-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-minimum-healthy-host-value-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-invalid-minimum-healthy-host-value-exception-")))
+ (common-lisp:define-condition invalid-minimum-healthy-host-value-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-minimum-healthy-host-value-exception
-                    'make-invalid-minimum-healthy-host-value-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-minimum-healthy-host-value-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-minimum-healthy-host-value-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-minimum-healthy-host-value-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-minimum-healthy-host-value-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-next-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-next-token-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-next-token-exception
-                    'make-invalid-next-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-next-token-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-next-token-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-on-premises-tag-combination-exception (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-invalid-on-premises-tag-combination-exception-")))
+ (common-lisp:define-condition invalid-on-premises-tag-combination-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-on-premises-tag-combination-exception
-                    'make-invalid-on-premises-tag-combination-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-on-premises-tag-combination-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-on-premises-tag-combination-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-on-premises-tag-combination-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-on-premises-tag-combination-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-operation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-operation-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-operation-exception
-                    'make-invalid-operation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-operation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-operation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-operation-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-operation-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-operation-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-registration-status-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-registration-status-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-registration-status-exception
-                    'make-invalid-registration-status-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-registration-status-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-registration-status-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-registration-status-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-registration-status-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-registration-status-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-revision-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-revision-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-revision-exception
-                    'make-invalid-revision-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-revision-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-revision-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-revision-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-revision-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-revision-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-role-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-role-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-role-exception 'make-invalid-role-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-role-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-role-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-role-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-role-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-role-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-sort-by-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-sort-by-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-sort-by-exception
-                    'make-invalid-sort-by-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sort-by-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sort-by-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sort-by-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-sort-by-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-sort-by-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-sort-order-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-sort-order-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-sort-order-exception
-                    'make-invalid-sort-order-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sort-order-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sort-order-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sort-order-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-sort-order-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-sort-order-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-tag-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-tag-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-tag-exception 'make-invalid-tag-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-tag-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-tag-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-tag-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-tag-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-tag-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-tag-filter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-tag-filter-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-tag-filter-exception
-                    'make-invalid-tag-filter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-tag-filter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-tag-filter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-tag-filter-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-tag-filter-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-tag-filter-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-target-instances-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-target-instances-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-target-instances-exception
-                    'make-invalid-target-instances-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-target-instances-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-target-instances-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-target-instances-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-target-instances-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-target-instances-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-time-range-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-time-range-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-time-range-exception
-                    'make-invalid-time-range-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-time-range-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-time-range-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-time-range-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-time-range-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-time-range-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-trigger-config-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-trigger-config-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-trigger-config-exception
-                    'make-invalid-trigger-config-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-trigger-config-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-trigger-config-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-trigger-config-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-trigger-config-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-trigger-config-exception)))
 (common-lisp:deftype key () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -4923,27 +3742,11 @@
 (common-lisp:deftype lifecycle-event-name () 'common-lisp:string)
 (common-lisp:deftype lifecycle-event-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (lifecycle-hook-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-lifecycle-hook-limit-exceeded-exception-")))
+ (common-lisp:define-condition lifecycle-hook-limit-exceeded-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'lifecycle-hook-limit-exceeded-exception
-                    'make-lifecycle-hook-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          lifecycle-hook-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          lifecycle-hook-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          lifecycle-hook-limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'lifecycle-hook-limit-exceeded-exception)))
 (common-lisp:deftype lifecycle-message () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -5744,27 +4547,10 @@
 (common-lisp:deftype minimum-healthy-hosts-type () 'common-lisp:string)
 (common-lisp:deftype minimum-healthy-hosts-value () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (multiple-iam-arns-provided-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-multiple-iam-arns-provided-exception-")))
- (common-lisp:export
-  (common-lisp:list 'multiple-iam-arns-provided-exception
-                    'make-multiple-iam-arns-provided-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          multiple-iam-arns-provided-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          multiple-iam-arns-provided-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          multiple-iam-arns-provided-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition multiple-iam-arns-provided-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'multiple-iam-arns-provided-exception)))
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:deftype nullable-boolean () 'common-lisp:boolean)
 (common-lisp:progn
@@ -5942,49 +4728,15 @@
    common-lisp:nil))
 (common-lisp:deftype repository () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-validation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-validation-exception-")))
- (common-lisp:export
-  (common-lisp:list 'resource-validation-exception
-                    'make-resource-validation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-validation-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition resource-validation-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-validation-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (revision-does-not-exist-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-revision-does-not-exist-exception-")))
- (common-lisp:export
-  (common-lisp:list 'revision-does-not-exist-exception
-                    'make-revision-does-not-exist-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          revision-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          revision-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          revision-does-not-exist-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition revision-does-not-exist-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'revision-does-not-exist-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (revision-info (:copier common-lisp:nil)
@@ -6078,49 +4830,16 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype revision-location-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (revision-required-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-revision-required-exception-")))
- (common-lisp:export
-  (common-lisp:list 'revision-required-exception
-                    'make-revision-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          revision-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          revision-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          revision-required-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition revision-required-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'revision-required-exception)))
 (common-lisp:deftype role () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (role-required-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-role-required-exception-")))
- (common-lisp:export
-  (common-lisp:list 'role-required-exception 'make-role-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          role-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          role-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          role-required-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition role-required-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'role-required-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (rollback-info (:copier common-lisp:nil)
@@ -6412,27 +5131,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype tag-filter-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'tag-limit-exceeded-exception
-                    'make-tag-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          tag-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          tag-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          tag-limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition tag-limit-exceeded-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'tag-limit-exceeded-exception)))
 (common-lisp:progn
  (common-lisp:deftype tag-list () '(trivial-types:proper-list tag))
  (common-lisp:defun |make-tag-list|
@@ -6441,48 +5143,15 @@
                            (trivial-types:proper-list tag))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-required-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-required-exception-")))
- (common-lisp:export
-  (common-lisp:list 'tag-required-exception 'make-tag-required-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          tag-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          tag-required-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          tag-required-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition tag-required-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'tag-required-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-set-list-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-set-list-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'tag-set-list-limit-exceeded-exception
-                    'make-tag-set-list-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          tag-set-list-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          tag-set-list-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          tag-set-list-limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition tag-set-list-limit-exceeded-exception
+     (codedeploy-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'tag-set-list-limit-exceeded-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (target-group-info (:copier common-lisp:nil)
@@ -6650,51 +5319,17 @@
 (common-lisp:deftype trigger-name () 'common-lisp:string)
 (common-lisp:deftype trigger-target-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (trigger-targets-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-trigger-targets-limit-exceeded-exception-")))
+ (common-lisp:define-condition trigger-targets-limit-exceeded-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'trigger-targets-limit-exceeded-exception
-                    'make-trigger-targets-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          trigger-targets-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          trigger-targets-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          trigger-targets-limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'trigger-targets-limit-exceeded-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unsupported-action-for-deployment-type-exception
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-unsupported-action-for-deployment-type-exception-")))
+ (common-lisp:define-condition unsupported-action-for-deployment-type-exception
+     (codedeploy-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'unsupported-action-for-deployment-type-exception
-                    'make-unsupported-action-for-deployment-type-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-action-for-deployment-type-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-action-for-deployment-type-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-action-for-deployment-type-exception))
-   common-lisp:nil))
+  (common-lisp:list 'unsupported-action-for-deployment-type-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-application-input (:copier common-lisp:nil)
@@ -6960,7 +5595,14 @@
                                                         "POST" "/"
                                                         "AddTagsToOnPremisesInstances"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InstanceNameRequiredException" . instance-name-required-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNotRegisteredException"
+         . instance-not-registered-exception)))))
  (common-lisp:export 'add-tags-to-on-premises-instances))
 (common-lisp:progn
  (common-lisp:defun batch-get-application-revisions
@@ -6979,7 +5621,16 @@
                                                         "POST" "/"
                                                         "BatchGetApplicationRevisions"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)))))
  (common-lisp:export 'batch-get-application-revisions))
 (common-lisp:progn
  (common-lisp:defun batch-get-applications
@@ -6997,7 +5648,14 @@
                                                         "POST" "/"
                                                         "BatchGetApplications"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)))))
  (common-lisp:export 'batch-get-applications))
 (common-lisp:progn
  (common-lisp:defun batch-get-deployment-groups
@@ -7017,7 +5675,18 @@
                                                         "POST" "/"
                                                         "BatchGetDeploymentGroups"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)))))
  (common-lisp:export 'batch-get-deployment-groups))
 (common-lisp:progn
  (common-lisp:defun batch-get-deployment-instances
@@ -7036,7 +5705,14 @@
                                                         "POST" "/"
                                                         "BatchGetDeploymentInstances"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)))))
  (common-lisp:export 'batch-get-deployment-instances))
 (common-lisp:progn
  (common-lisp:defun batch-get-deployments
@@ -7054,7 +5730,10 @@
                                                         "POST" "/"
                                                         "BatchGetDeployments"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)))))
  (common-lisp:export 'batch-get-deployments))
 (common-lisp:progn
  (common-lisp:defun batch-get-on-premises-instances
@@ -7073,7 +5752,10 @@
                                                         "POST" "/"
                                                         "BatchGetOnPremisesInstances"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)))))
  (common-lisp:export 'batch-get-on-premises-instances))
 (common-lisp:progn
  (common-lisp:defun continue-deployment
@@ -7091,7 +5773,17 @@
                                                         "POST" "/"
                                                         "ContinueDeployment"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'continue-deployment))
 (common-lisp:progn
  (common-lisp:defun create-application
@@ -7109,7 +5801,15 @@
                                                         "POST" "/"
                                                         "CreateApplication"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)))))
  (common-lisp:export 'create-application))
 (common-lisp:progn
  (common-lisp:defun create-deployment
@@ -7135,7 +5835,37 @@
                                                         "POST" "/"
                                                         "CreateDeployment"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)))))
  (common-lisp:export 'create-deployment))
 (common-lisp:progn
  (common-lisp:defun create-deployment-config
@@ -7155,7 +5885,17 @@
                                                         "POST" "/"
                                                         "CreateDeploymentConfig"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)))))
  (common-lisp:export 'create-deployment-config))
 (common-lisp:progn
  (common-lisp:defun create-deployment-group
@@ -7185,7 +5925,52 @@
                                                         "POST" "/"
                                                         "CreateDeploymentGroup"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)))))
  (common-lisp:export 'create-deployment-group))
 (common-lisp:progn
  (common-lisp:defun delete-application
@@ -7203,7 +5988,11 @@
                                                         "POST" "/"
                                                         "DeleteApplication"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)))))
  (common-lisp:export 'delete-application))
 (common-lisp:progn
  (common-lisp:defun delete-deployment-config
@@ -7221,7 +6010,13 @@
                                                         "POST" "/"
                                                         "DeleteDeploymentConfig"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("InvalidOperationException" . invalid-operation-exception)))))
  (common-lisp:export 'delete-deployment-config))
 (common-lisp:progn
  (common-lisp:defun delete-deployment-group
@@ -7240,7 +6035,16 @@
                                                         "POST" "/"
                                                         "DeleteDeploymentGroup"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidRoleException" . invalid-role-exception)))))
  (common-lisp:export 'delete-deployment-group))
 (common-lisp:progn
  (common-lisp:defun deregister-on-premises-instance
@@ -7259,7 +6063,9 @@
                                                         "POST" "/"
                                                         "DeregisterOnPremisesInstance"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)))))
  (common-lisp:export 'deregister-on-premises-instance))
 (common-lisp:progn
  (common-lisp:defun get-application
@@ -7277,7 +6083,13 @@
                                                         "POST" "/"
                                                         "GetApplication"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)))))
  (common-lisp:export 'get-application))
 (common-lisp:progn
  (common-lisp:defun get-application-revision
@@ -7295,7 +6107,16 @@
                                                         "POST" "/"
                                                         "GetApplicationRevision"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)))))
  (common-lisp:export 'get-application-revision))
 (common-lisp:progn
  (common-lisp:defun get-deployment
@@ -7313,7 +6134,11 @@
                                                         "POST" "/"
                                                         "GetDeployment"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)))))
  (common-lisp:export 'get-deployment))
 (common-lisp:progn
  (common-lisp:defun get-deployment-config
@@ -7331,7 +6156,13 @@
                                                         "POST" "/"
                                                         "GetDeploymentConfig"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)))))
  (common-lisp:export 'get-deployment-config))
 (common-lisp:progn
  (common-lisp:defun get-deployment-group
@@ -7350,7 +6181,19 @@
                                                         "POST" "/"
                                                         "GetDeploymentGroup"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)))))
  (common-lisp:export 'get-deployment-group))
 (common-lisp:progn
  (common-lisp:defun get-deployment-instance
@@ -7368,7 +6211,14 @@
                                                         "POST" "/"
                                                         "GetDeploymentInstance"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)))))
  (common-lisp:export 'get-deployment-instance))
 (common-lisp:progn
  (common-lisp:defun get-on-premises-instance
@@ -7386,7 +6236,10 @@
                                                         "POST" "/"
                                                         "GetOnPremisesInstance"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)))))
  (common-lisp:export 'get-on-premises-instance))
 (common-lisp:progn
  (common-lisp:defun list-application-revisions
@@ -7407,7 +6260,24 @@
                                                         "POST" "/"
                                                         "ListApplicationRevisions"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-application-revisions))
 (common-lisp:progn
  (common-lisp:defun list-applications
@@ -7425,7 +6295,8 @@
                                                         "POST" "/"
                                                         "ListApplications"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-applications))
 (common-lisp:progn
  (common-lisp:defun list-deployment-configs
@@ -7443,7 +6314,8 @@
                                                         "POST" "/"
                                                         "ListDeploymentConfigs"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-deployment-configs))
 (common-lisp:progn
  (common-lisp:defun list-deployment-groups
@@ -7461,7 +6333,14 @@
                                                         "POST" "/"
                                                         "ListDeploymentGroups"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-deployment-groups))
 (common-lisp:progn
  (common-lisp:defun list-deployment-instances
@@ -7482,7 +6361,17 @@
                                                         "POST" "/"
                                                         "ListDeploymentInstances"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)))))
  (common-lisp:export 'list-deployment-instances))
 (common-lisp:progn
  (common-lisp:defun list-deployments
@@ -7503,7 +6392,23 @@
                                                         "POST" "/"
                                                         "ListDeployments"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-deployments))
 (common-lisp:progn
  (common-lisp:defun list-git-hub-account-token-names
@@ -7522,7 +6427,9 @@
                                                         "POST" "/"
                                                         "ListGitHubAccountTokenNames"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidNextTokenException" . invalid-next-token-exception)
+        ("ResourceValidationException" . resource-validation-exception)))))
  (common-lisp:export 'list-git-hub-account-token-names))
 (common-lisp:progn
  (common-lisp:defun list-on-premises-instances
@@ -7542,7 +6449,11 @@
                                                         "POST" "/"
                                                         "ListOnPremisesInstances"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-on-premises-instances))
 (common-lisp:progn
  (common-lisp:defun register-application-revision
@@ -7562,7 +6473,16 @@
                                                         "POST" "/"
                                                         "RegisterApplicationRevision"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)))))
  (common-lisp:export 'register-application-revision))
 (common-lisp:progn
  (common-lisp:defun register-on-premises-instance
@@ -7583,7 +6503,21 @@
                                                         "POST" "/"
                                                         "RegisterOnPremisesInstance"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)))))
  (common-lisp:export 'register-on-premises-instance))
 (common-lisp:progn
  (common-lisp:defun remove-tags-from-on-premises-instances
@@ -7602,7 +6536,14 @@
                                                         "POST" "/"
                                                         "RemoveTagsFromOnPremisesInstances"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InstanceNameRequiredException" . instance-name-required-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNotRegisteredException"
+         . instance-not-registered-exception)))))
  (common-lisp:export 'remove-tags-from-on-premises-instances))
 (common-lisp:progn
  (common-lisp:defun skip-wait-time-for-instance-termination
@@ -7621,7 +6562,16 @@
                                                         "POST" "/"
                                                         "SkipWaitTimeForInstanceTermination"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'skip-wait-time-for-instance-termination))
 (common-lisp:progn
  (common-lisp:defun stop-deployment
@@ -7640,7 +6590,13 @@
                                                         "POST" "/"
                                                         "StopDeployment"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)))))
  (common-lisp:export 'stop-deployment))
 (common-lisp:progn
  (common-lisp:defun update-application
@@ -7659,7 +6615,15 @@
                                                         "POST" "/"
                                                         "UpdateApplication"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)))))
  (common-lisp:export 'update-application))
 (common-lisp:progn
  (common-lisp:defun update-deployment-group
@@ -7690,5 +6654,49 @@
                                                         "POST" "/"
                                                         "UpdateDeploymentGroup"
                                                         "2014-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)))))
  (common-lisp:export 'update-deployment-group))

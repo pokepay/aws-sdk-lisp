@@ -6,7 +6,8 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/organizations/api)
 (common-lisp:progn
  (common-lisp:defclass organizations-request (aws-sdk/request:request)
@@ -14,36 +15,18 @@
                        (:default-initargs :service "organizations"))
  (common-lisp:export 'organizations-request))
 (common-lisp:progn
- (common-lisp:defstruct
-     (awsorganizations-not-in-use-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-awsorganizations-not-in-use-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition organizations-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'organizations-error))
+(common-lisp:progn
+ (common-lisp:define-condition awsorganizations-not-in-use-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       awsorganizations-not-in-use-exception-message)))
  (common-lisp:export
   (common-lisp:list 'awsorganizations-not-in-use-exception
-                    'make-awsorganizations-not-in-use-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          awsorganizations-not-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          awsorganizations-not-in-use-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          awsorganizations-not-in-use-exception))
-   common-lisp:nil))
+                    'awsorganizations-not-in-use-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (accept-handshake-request (:copier common-lisp:nil)
@@ -106,35 +89,12 @@
                           accept-handshake-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (access-denied-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-access-denied-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition access-denied-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       access-denied-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'access-denied-exception 'make-access-denied-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   common-lisp:nil))
+  (common-lisp:list 'access-denied-exception 'access-denied-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (account (:copier common-lisp:nil) (:conc-name "struct-shape-account-"))
@@ -212,36 +172,13 @@
 (common-lisp:deftype account-joined-method () 'common-lisp:string)
 (common-lisp:deftype account-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (account-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-account-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition account-not-found-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       account-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'account-not-found-exception
-                    'make-account-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          account-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          account-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          account-not-found-exception))
-   common-lisp:nil))
+                    'account-not-found-exception-message)))
 (common-lisp:deftype account-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype accounts () '(trivial-types:proper-list account))
@@ -252,36 +189,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype action-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (already-in-organization-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-already-in-organization-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition already-in-organization-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       already-in-organization-exception-message)))
  (common-lisp:export
   (common-lisp:list 'already-in-organization-exception
-                    'make-already-in-organization-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          already-in-organization-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          already-in-organization-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          already-in-organization-exception))
-   common-lisp:nil))
+                    'already-in-organization-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (attach-policy-request (:copier common-lisp:nil)
@@ -414,36 +328,13 @@
    common-lisp:nil))
 (common-lisp:deftype child-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (child-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-child-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition child-not-found-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       child-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'child-not-found-exception
-                    'make-child-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          child-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          child-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          child-not-found-exception))
-   common-lisp:nil))
+                    'child-not-found-exception-message)))
 (common-lisp:deftype child-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype children () '(trivial-types:proper-list child))
@@ -453,76 +344,24 @@
                            (trivial-types:proper-list child))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (concurrent-modification-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-concurrent-modification-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition concurrent-modification-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       concurrent-modification-exception-message)))
  (common-lisp:export
   (common-lisp:list 'concurrent-modification-exception
-                    'make-concurrent-modification-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   common-lisp:nil))
+                    'concurrent-modification-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (constraint-violation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-constraint-violation-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null))
-   (reason common-lisp:nil :type
-    (common-lisp:or constraint-violation-exception-reason common-lisp:null)))
+ (common-lisp:define-condition constraint-violation-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       constraint-violation-exception-message)
+      (reason :initarg :reason :initform common-lisp:nil :reader
+       constraint-violation-exception-reason)))
  (common-lisp:export
   (common-lisp:list 'constraint-violation-exception
-                    'make-constraint-violation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          constraint-violation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          constraint-violation-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'reason))
-      (common-lisp:list
-       (common-lisp:cons "Reason"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          constraint-violation-exception))
-   common-lisp:nil))
+                    'constraint-violation-exception-message
+                    'constraint-violation-exception-reason)))
 (common-lisp:deftype constraint-violation-exception-reason ()
   'common-lisp:string)
 (common-lisp:deftype create-account-failure-reason () 'common-lisp:string)
@@ -710,36 +549,13 @@
                           create-account-status))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-account-status-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-account-status-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition create-account-status-not-found-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       create-account-status-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'create-account-status-not-found-exception
-                    'make-create-account-status-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          create-account-status-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          create-account-status-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          create-account-status-not-found-exception))
-   common-lisp:nil))
+                    'create-account-status-not-found-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype create-account-statuses ()
    '(trivial-types:proper-list create-account-status))
@@ -1434,36 +1250,13 @@
                           describe-policy-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (destination-parent-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-destination-parent-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition destination-parent-not-found-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       destination-parent-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'destination-parent-not-found-exception
-                    'make-destination-parent-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          destination-parent-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          destination-parent-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          destination-parent-not-found-exception))
-   common-lisp:nil))
+                    'destination-parent-not-found-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (detach-policy-request (:copier common-lisp:nil)
@@ -1574,160 +1367,45 @@
                           disable-policy-type-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (duplicate-account-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-duplicate-account-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition duplicate-account-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       duplicate-account-exception-message)))
  (common-lisp:export
   (common-lisp:list 'duplicate-account-exception
-                    'make-duplicate-account-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-account-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-account-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-account-exception))
-   common-lisp:nil))
+                    'duplicate-account-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (duplicate-handshake-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-duplicate-handshake-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition duplicate-handshake-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       duplicate-handshake-exception-message)))
  (common-lisp:export
   (common-lisp:list 'duplicate-handshake-exception
-                    'make-duplicate-handshake-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-handshake-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-handshake-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-handshake-exception))
-   common-lisp:nil))
+                    'duplicate-handshake-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (duplicate-organizational-unit-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-duplicate-organizational-unit-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition duplicate-organizational-unit-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       duplicate-organizational-unit-exception-message)))
  (common-lisp:export
   (common-lisp:list 'duplicate-organizational-unit-exception
-                    'make-duplicate-organizational-unit-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-organizational-unit-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-organizational-unit-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-organizational-unit-exception))
-   common-lisp:nil))
+                    'duplicate-organizational-unit-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (duplicate-policy-attachment-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-duplicate-policy-attachment-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition duplicate-policy-attachment-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       duplicate-policy-attachment-exception-message)))
  (common-lisp:export
   (common-lisp:list 'duplicate-policy-attachment-exception
-                    'make-duplicate-policy-attachment-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-policy-attachment-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-policy-attachment-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-policy-attachment-exception))
-   common-lisp:nil))
+                    'duplicate-policy-attachment-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (duplicate-policy-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-duplicate-policy-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition duplicate-policy-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       duplicate-policy-exception-message)))
  (common-lisp:export
   (common-lisp:list 'duplicate-policy-exception
-                    'make-duplicate-policy-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-policy-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-policy-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-policy-exception))
-   common-lisp:nil))
+                    'duplicate-policy-exception-message)))
 (common-lisp:deftype email () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -1855,36 +1533,13 @@
 (common-lisp:deftype exception-message () 'common-lisp:string)
 (common-lisp:deftype exception-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (finalizing-organization-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-finalizing-organization-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition finalizing-organization-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       finalizing-organization-exception-message)))
  (common-lisp:export
   (common-lisp:list 'finalizing-organization-exception
-                    'make-finalizing-organization-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          finalizing-organization-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          finalizing-organization-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          finalizing-organization-exception))
-   common-lisp:nil))
+                    'finalizing-organization-exception-message)))
 (common-lisp:deftype generic-arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -1971,78 +1626,25 @@
                         ((aws-sdk/generator/shape::input handshake))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (handshake-already-in-state-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-handshake-already-in-state-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition handshake-already-in-state-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       handshake-already-in-state-exception-message)))
  (common-lisp:export
   (common-lisp:list 'handshake-already-in-state-exception
-                    'make-handshake-already-in-state-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          handshake-already-in-state-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          handshake-already-in-state-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          handshake-already-in-state-exception))
-   common-lisp:nil))
+                    'handshake-already-in-state-exception-message)))
 (common-lisp:deftype handshake-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (handshake-constraint-violation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-handshake-constraint-violation-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null))
-   (reason common-lisp:nil :type
-    (common-lisp:or handshake-constraint-violation-exception-reason
-                    common-lisp:null)))
+ (common-lisp:define-condition handshake-constraint-violation-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       handshake-constraint-violation-exception-message)
+      (reason :initarg :reason :initform common-lisp:nil :reader
+       handshake-constraint-violation-exception-reason)))
  (common-lisp:export
   (common-lisp:list 'handshake-constraint-violation-exception
-                    'make-handshake-constraint-violation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          handshake-constraint-violation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          handshake-constraint-violation-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'reason))
-      (common-lisp:list
-       (common-lisp:cons "Reason"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          handshake-constraint-violation-exception))
-   common-lisp:nil))
+                    'handshake-constraint-violation-exception-message
+                    'handshake-constraint-violation-exception-reason)))
 (common-lisp:deftype handshake-constraint-violation-exception-reason ()
   'common-lisp:string)
 (common-lisp:progn
@@ -2080,36 +1682,13 @@
    common-lisp:nil))
 (common-lisp:deftype handshake-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (handshake-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-handshake-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition handshake-not-found-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       handshake-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'handshake-not-found-exception
-                    'make-handshake-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          handshake-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          handshake-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          handshake-not-found-exception))
-   common-lisp:nil))
+                    'handshake-not-found-exception-message)))
 (common-lisp:deftype handshake-notes () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype handshake-parties ()
@@ -2215,75 +1794,23 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype iamuser-access-to-billing () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-handshake-transition-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-handshake-transition-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition invalid-handshake-transition-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-handshake-transition-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-handshake-transition-exception
-                    'make-invalid-handshake-transition-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-handshake-transition-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-handshake-transition-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-handshake-transition-exception))
-   common-lisp:nil))
+                    'invalid-handshake-transition-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-input-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-input-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null))
-   (reason common-lisp:nil :type
-    (common-lisp:or invalid-input-exception-reason common-lisp:null)))
+ (common-lisp:define-condition invalid-input-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-input-exception-message)
+      (reason :initarg :reason :initform common-lisp:nil :reader
+       invalid-input-exception-reason)))
  (common-lisp:export
-  (common-lisp:list 'invalid-input-exception 'make-invalid-input-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'reason))
-      (common-lisp:list
-       (common-lisp:cons "Reason"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-input-exception 'invalid-input-exception-message
+                    'invalid-input-exception-reason)))
 (common-lisp:deftype invalid-input-exception-reason () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -3394,67 +2921,21 @@
                           list-targets-for-policy-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (malformed-policy-document-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-malformed-policy-document-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition malformed-policy-document-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       malformed-policy-document-exception-message)))
  (common-lisp:export
   (common-lisp:list 'malformed-policy-document-exception
-                    'make-malformed-policy-document-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          malformed-policy-document-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          malformed-policy-document-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          malformed-policy-document-exception))
-   common-lisp:nil))
+                    'malformed-policy-document-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (master-cannot-leave-organization-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-master-cannot-leave-organization-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition master-cannot-leave-organization-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       master-cannot-leave-organization-exception-message)))
  (common-lisp:export
   (common-lisp:list 'master-cannot-leave-organization-exception
-                    'make-master-cannot-leave-organization-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          master-cannot-leave-organization-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          master-cannot-leave-organization-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          master-cannot-leave-organization-exception))
-   common-lisp:nil))
+                    'master-cannot-leave-organization-exception-message)))
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -3583,36 +3064,13 @@
 (common-lisp:deftype organization-feature-set () 'common-lisp:string)
 (common-lisp:deftype organization-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (organization-not-empty-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-organization-not-empty-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition organization-not-empty-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       organization-not-empty-exception-message)))
  (common-lisp:export
   (common-lisp:list 'organization-not-empty-exception
-                    'make-organization-not-empty-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          organization-not-empty-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          organization-not-empty-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          organization-not-empty-exception))
-   common-lisp:nil))
+                    'organization-not-empty-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (organizational-unit (:copier common-lisp:nil)
@@ -3659,67 +3117,21 @@
 (common-lisp:deftype organizational-unit-id () 'common-lisp:string)
 (common-lisp:deftype organizational-unit-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (organizational-unit-not-empty-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-organizational-unit-not-empty-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition organizational-unit-not-empty-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       organizational-unit-not-empty-exception-message)))
  (common-lisp:export
   (common-lisp:list 'organizational-unit-not-empty-exception
-                    'make-organizational-unit-not-empty-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          organizational-unit-not-empty-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          organizational-unit-not-empty-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          organizational-unit-not-empty-exception))
-   common-lisp:nil))
+                    'organizational-unit-not-empty-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (organizational-unit-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-organizational-unit-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition organizational-unit-not-found-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       organizational-unit-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'organizational-unit-not-found-exception
-                    'make-organizational-unit-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          organizational-unit-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          organizational-unit-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          organizational-unit-not-found-exception))
-   common-lisp:nil))
+                    'organizational-unit-not-found-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype organizational-units ()
    '(trivial-types:proper-list organizational-unit))
@@ -3759,36 +3171,13 @@
    common-lisp:nil))
 (common-lisp:deftype parent-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (parent-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-parent-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition parent-not-found-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       parent-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'parent-not-found-exception
-                    'make-parent-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          parent-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          parent-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          parent-not-found-exception))
-   common-lisp:nil))
+                    'parent-not-found-exception-message)))
 (common-lisp:deftype parent-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype parents () '(trivial-types:proper-list parent))
@@ -3840,98 +3229,29 @@
 (common-lisp:deftype policy-description () 'common-lisp:string)
 (common-lisp:deftype policy-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (policy-in-use-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-policy-in-use-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition policy-in-use-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       policy-in-use-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'policy-in-use-exception 'make-policy-in-use-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-in-use-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-in-use-exception))
-   common-lisp:nil))
+  (common-lisp:list 'policy-in-use-exception 'policy-in-use-exception-message)))
 (common-lisp:deftype policy-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (policy-not-attached-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-policy-not-attached-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition policy-not-attached-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       policy-not-attached-exception-message)))
  (common-lisp:export
   (common-lisp:list 'policy-not-attached-exception
-                    'make-policy-not-attached-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-not-attached-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-not-attached-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-not-attached-exception))
-   common-lisp:nil))
+                    'policy-not-attached-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (policy-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-policy-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition policy-not-found-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       policy-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'policy-not-found-exception
-                    'make-policy-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-not-found-exception))
-   common-lisp:nil))
+                    'policy-not-found-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (policy-summary (:copier common-lisp:nil)
@@ -4061,100 +3381,29 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype policy-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (policy-type-already-enabled-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-policy-type-already-enabled-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition policy-type-already-enabled-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       policy-type-already-enabled-exception-message)))
  (common-lisp:export
   (common-lisp:list 'policy-type-already-enabled-exception
-                    'make-policy-type-already-enabled-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-type-already-enabled-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-type-already-enabled-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-type-already-enabled-exception))
-   common-lisp:nil))
+                    'policy-type-already-enabled-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (policy-type-not-available-for-organization-exception
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-policy-type-not-available-for-organization-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition policy-type-not-available-for-organization-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       policy-type-not-available-for-organization-exception-message)))
  (common-lisp:export
   (common-lisp:list 'policy-type-not-available-for-organization-exception
-                    'make-policy-type-not-available-for-organization-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-type-not-available-for-organization-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-type-not-available-for-organization-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-type-not-available-for-organization-exception))
-   common-lisp:nil))
+                    'policy-type-not-available-for-organization-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (policy-type-not-enabled-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-policy-type-not-enabled-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition policy-type-not-enabled-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       policy-type-not-enabled-exception-message)))
  (common-lisp:export
   (common-lisp:list 'policy-type-not-enabled-exception
-                    'make-policy-type-not-enabled-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-type-not-enabled-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-type-not-enabled-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-type-not-enabled-exception))
-   common-lisp:nil))
+                    'policy-type-not-enabled-exception-message)))
 (common-lisp:deftype policy-type-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -4278,35 +3527,13 @@
 (common-lisp:deftype root-id () 'common-lisp:string)
 (common-lisp:deftype root-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (root-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-root-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition root-not-found-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       root-not-found-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'root-not-found-exception 'make-root-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          root-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          root-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          root-not-found-exception))
-   common-lisp:nil))
+  (common-lisp:list 'root-not-found-exception
+                    'root-not-found-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype roots () '(trivial-types:proper-list root))
  (common-lisp:defun |make-roots|
@@ -4315,134 +3542,42 @@
                            (trivial-types:proper-list root))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition service-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       service-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'service-exception 'make-service-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input service-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input service-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input service-exception))
-   common-lisp:nil))
+  (common-lisp:list 'service-exception 'service-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (source-parent-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-source-parent-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition source-parent-not-found-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       source-parent-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'source-parent-not-found-exception
-                    'make-source-parent-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          source-parent-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          source-parent-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          source-parent-not-found-exception))
-   common-lisp:nil))
+                    'source-parent-not-found-exception-message)))
 (common-lisp:deftype target-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (target-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-target-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition target-not-found-exception
+     (organizations-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       target-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'target-not-found-exception
-                    'make-target-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          target-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          target-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          target-not-found-exception))
-   common-lisp:nil))
+                    'target-not-found-exception-message)))
 (common-lisp:deftype target-type () 'common-lisp:string)
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-requests-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-requests-exception-"))
-   (type common-lisp:nil :type
-    (common-lisp:or exception-type common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition too-many-requests-exception
+     (organizations-error)
+     ((type :initarg :type :initform common-lisp:nil :reader
+       too-many-requests-exception-type)
+      (message :initarg :message :initform common-lisp:nil :reader
+       too-many-requests-exception-message)))
  (common-lisp:export
   (common-lisp:list 'too-many-requests-exception
-                    'make-too-many-requests-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-requests-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-requests-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'type))
-      (common-lisp:list
-       (common-lisp:cons "Type"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-requests-exception))
-   common-lisp:nil))
+                    'too-many-requests-exception-type
+                    'too-many-requests-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-organizational-unit-request (:copier common-lisp:nil)
@@ -4617,7 +3752,21 @@
                                                         "POST" "/"
                                                         "AcceptHandshake"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'accept-handshake))
 (common-lisp:progn
  (common-lisp:defun attach-policy
@@ -4635,7 +3784,20 @@
                                                         "POST" "/"
                                                         "AttachPolicy"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("ServiceException" . service-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'attach-policy))
 (common-lisp:progn
  (common-lisp:defun cancel-handshake
@@ -4653,7 +3815,17 @@
                                                         "POST" "/"
                                                         "CancelHandshake"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'cancel-handshake))
 (common-lisp:progn
  (common-lisp:defun create-account
@@ -4674,7 +3846,16 @@
                                                         "POST" "/"
                                                         "CreateAccount"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'create-account))
 (common-lisp:progn
  (common-lisp:defun create-organization
@@ -4692,7 +3873,14 @@
                                                         "POST" "/"
                                                         "CreateOrganization"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'create-organization))
 (common-lisp:progn
  (common-lisp:defun create-organizational-unit
@@ -4711,7 +3899,18 @@
                                                         "POST" "/"
                                                         "CreateOrganizationalUnit"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'create-organizational-unit))
 (common-lisp:progn
  (common-lisp:defun create-policy
@@ -4729,7 +3928,20 @@
                                                         "POST" "/"
                                                         "CreatePolicy"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'create-policy))
 (common-lisp:progn
  (common-lisp:defun decline-handshake
@@ -4747,7 +3959,17 @@
                                                         "POST" "/"
                                                         "DeclineHandshake"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'decline-handshake))
 (common-lisp:progn
  (common-lisp:defun delete-organization ()
@@ -4757,7 +3979,15 @@
                                 :params
                                 `(("Action" ,@"DeleteOrganization")
                                   ("Version" ,@"2016-11-28"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("AccessDeniedException" . access-denied-exception)
+      ("AWSOrganizationsNotInUseException"
+       . awsorganizations-not-in-use-exception)
+      ("ConcurrentModificationException" . concurrent-modification-exception)
+      ("InvalidInputException" . invalid-input-exception)
+      ("OrganizationNotEmptyException" . organization-not-empty-exception)
+      ("ServiceException" . service-exception)
+      ("TooManyRequestsException" . too-many-requests-exception))))
  (common-lisp:export 'delete-organization))
 (common-lisp:progn
  (common-lisp:defun delete-organizational-unit
@@ -4776,7 +4006,18 @@
                                                         "POST" "/"
                                                         "DeleteOrganizationalUnit"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'delete-organizational-unit))
 (common-lisp:progn
  (common-lisp:defun delete-policy
@@ -4794,7 +4035,16 @@
                                                         "POST" "/"
                                                         "DeletePolicy"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'delete-policy))
 (common-lisp:progn
  (common-lisp:defun describe-account
@@ -4812,7 +4062,14 @@
                                                         "POST" "/"
                                                         "DescribeAccount"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'describe-account))
 (common-lisp:progn
  (common-lisp:defun describe-create-account-status
@@ -4831,7 +4088,15 @@
                                                         "POST" "/"
                                                         "DescribeCreateAccountStatus"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'describe-create-account-status))
 (common-lisp:progn
  (common-lisp:defun describe-handshake
@@ -4849,7 +4114,13 @@
                                                         "POST" "/"
                                                         "DescribeHandshake"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'describe-handshake))
 (common-lisp:progn
  (common-lisp:defun describe-organization ()
@@ -4859,7 +4130,13 @@
                                 :params
                                 `(("Action" ,@"DescribeOrganization")
                                   ("Version" ,@"2016-11-28"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("AccessDeniedException" . access-denied-exception)
+      ("AWSOrganizationsNotInUseException"
+       . awsorganizations-not-in-use-exception)
+      ("ConcurrentModificationException" . concurrent-modification-exception)
+      ("ServiceException" . service-exception)
+      ("TooManyRequestsException" . too-many-requests-exception))))
  (common-lisp:export 'describe-organization))
 (common-lisp:progn
  (common-lisp:defun describe-organizational-unit
@@ -4878,7 +4155,15 @@
                                                         "POST" "/"
                                                         "DescribeOrganizationalUnit"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'describe-organizational-unit))
 (common-lisp:progn
  (common-lisp:defun describe-policy
@@ -4896,7 +4181,14 @@
                                                         "POST" "/"
                                                         "DescribePolicy"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'describe-policy))
 (common-lisp:progn
  (common-lisp:defun detach-policy
@@ -4914,7 +4206,18 @@
                                                         "POST" "/"
                                                         "DetachPolicy"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'detach-policy))
 (common-lisp:progn
  (common-lisp:defun disable-policy-type
@@ -4932,7 +4235,17 @@
                                                         "POST" "/"
                                                         "DisablePolicyType"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'disable-policy-type))
 (common-lisp:progn
  (common-lisp:defun enable-all-features ()
@@ -4942,7 +4255,16 @@
                                 :params
                                 `(("Action" ,@"EnableAllFeatures")
                                   ("Version" ,@"2016-11-28"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("AccessDeniedException" . access-denied-exception)
+      ("AWSOrganizationsNotInUseException"
+       . awsorganizations-not-in-use-exception)
+      ("ConcurrentModificationException" . concurrent-modification-exception)
+      ("HandshakeConstraintViolationException"
+       . handshake-constraint-violation-exception)
+      ("InvalidInputException" . invalid-input-exception)
+      ("ServiceException" . service-exception)
+      ("TooManyRequestsException" . too-many-requests-exception))))
  (common-lisp:export 'enable-all-features))
 (common-lisp:progn
  (common-lisp:defun enable-policy-type
@@ -4960,7 +4282,20 @@
                                                         "POST" "/"
                                                         "EnablePolicyType"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)))))
  (common-lisp:export 'enable-policy-type))
 (common-lisp:progn
  (common-lisp:defun invite-account-to-organization
@@ -4979,7 +4314,18 @@
                                                         "POST" "/"
                                                         "InviteAccountToOrganization"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'invite-account-to-organization))
 (common-lisp:progn
  (common-lisp:defun leave-organization ()
@@ -4989,7 +4335,18 @@
                                 :params
                                 `(("Action" ,@"LeaveOrganization")
                                   ("Version" ,@"2016-11-28"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("AccessDeniedException" . access-denied-exception)
+      ("AccountNotFoundException" . account-not-found-exception)
+      ("AWSOrganizationsNotInUseException"
+       . awsorganizations-not-in-use-exception)
+      ("ConcurrentModificationException" . concurrent-modification-exception)
+      ("ConstraintViolationException" . constraint-violation-exception)
+      ("InvalidInputException" . invalid-input-exception)
+      ("MasterCannotLeaveOrganizationException"
+       . master-cannot-leave-organization-exception)
+      ("ServiceException" . service-exception)
+      ("TooManyRequestsException" . too-many-requests-exception))))
  (common-lisp:export 'leave-organization))
 (common-lisp:progn
  (common-lisp:defun list-accounts
@@ -5007,7 +4364,13 @@
                                                         "POST" "/"
                                                         "ListAccounts"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-accounts))
 (common-lisp:progn
  (common-lisp:defun list-accounts-for-parent
@@ -5026,7 +4389,14 @@
                                                         "POST" "/"
                                                         "ListAccountsForParent"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-accounts-for-parent))
 (common-lisp:progn
  (common-lisp:defun list-children
@@ -5046,7 +4416,14 @@
                                                         "POST" "/"
                                                         "ListChildren"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-children))
 (common-lisp:progn
  (common-lisp:defun list-create-account-status
@@ -5065,7 +4442,13 @@
                                                         "POST" "/"
                                                         "ListCreateAccountStatus"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-create-account-status))
 (common-lisp:progn
  (common-lisp:defun list-handshakes-for-account
@@ -5084,7 +4467,12 @@
                                                         "POST" "/"
                                                         "ListHandshakesForAccount"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-handshakes-for-account))
 (common-lisp:progn
  (common-lisp:defun list-handshakes-for-organization
@@ -5103,7 +4491,14 @@
                                                         "POST" "/"
                                                         "ListHandshakesForOrganization"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-handshakes-for-organization))
 (common-lisp:progn
  (common-lisp:defun list-organizational-units-for-parent
@@ -5123,7 +4518,14 @@
                                                         "POST" "/"
                                                         "ListOrganizationalUnitsForParent"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-organizational-units-for-parent))
 (common-lisp:progn
  (common-lisp:defun list-parents
@@ -5142,7 +4544,14 @@
                                                         "POST" "/"
                                                         "ListParents"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-parents))
 (common-lisp:progn
  (common-lisp:defun list-policies
@@ -5160,7 +4569,13 @@
                                                         "POST" "/"
                                                         "ListPolicies"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-policies))
 (common-lisp:progn
  (common-lisp:defun list-policies-for-target
@@ -5179,7 +4594,14 @@
                                                         "POST" "/"
                                                         "ListPoliciesForTarget"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceException" . service-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-policies-for-target))
 (common-lisp:progn
  (common-lisp:defun list-roots
@@ -5196,7 +4618,13 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListRoots"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-roots))
 (common-lisp:progn
  (common-lisp:defun list-targets-for-policy
@@ -5215,7 +4643,14 @@
                                                         "POST" "/"
                                                         "ListTargetsForPolicy"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-targets-for-policy))
 (common-lisp:progn
  (common-lisp:defun move-account
@@ -5235,7 +4670,19 @@
                                                         "POST" "/"
                                                         "MoveAccount"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'move-account))
 (common-lisp:progn
  (common-lisp:defun remove-account-from-organization
@@ -5254,7 +4701,18 @@
                                                         "POST" "/"
                                                         "RemoveAccountFromOrganization"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'remove-account-from-organization))
 (common-lisp:progn
  (common-lisp:defun update-organizational-unit
@@ -5273,7 +4731,18 @@
                                                         "POST" "/"
                                                         "UpdateOrganizationalUnit"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'update-organizational-unit))
 (common-lisp:progn
  (common-lisp:defun update-policy
@@ -5292,5 +4761,17 @@
                                                         "POST" "/"
                                                         "UpdatePolicy"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'update-policy))

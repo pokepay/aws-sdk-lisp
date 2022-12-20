@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/sns/api)
 (common-lisp:progn
  (common-lisp:defclass sns-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "sns"))
  (common-lisp:export 'sns-request))
+(common-lisp:progn
+ (common-lisp:define-condition sns-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'sns-error))
 (common-lisp:progn
  (common-lisp:deftype actions-list () '(trivial-types:proper-list |action|))
  (common-lisp:defun |make-actions-list|
@@ -71,36 +77,13 @@
                         ((aws-sdk/generator/shape::input add-permission-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (authorization-error-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-authorization-error-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition authorization-error-exception
+     (sns-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       authorization-error-exception-message)))
  (common-lisp:export
   (common-lisp:list 'authorization-error-exception
-                    'make-authorization-error-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          authorization-error-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          authorization-error-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          authorization-error-exception))
-   common-lisp:nil))
+                    'authorization-error-exception-message)))
 (common-lisp:deftype binary ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
@@ -598,36 +581,13 @@
                         ((aws-sdk/generator/shape::input endpoint))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (endpoint-disabled-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-endpoint-disabled-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition endpoint-disabled-exception
+     (sns-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       endpoint-disabled-exception-message)))
  (common-lisp:export
   (common-lisp:list 'endpoint-disabled-exception
-                    'make-endpoint-disabled-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          endpoint-disabled-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          endpoint-disabled-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          endpoint-disabled-exception))
-   common-lisp:nil))
+                    'endpoint-disabled-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-endpoint-attributes-input (:copier common-lisp:nil)
@@ -941,97 +901,29 @@
                           get-topic-attributes-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-error-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-error-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition internal-error-exception
+     (sns-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-error-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'internal-error-exception 'make-internal-error-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-error-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-error-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-error-exception))
-   common-lisp:nil))
+  (common-lisp:list 'internal-error-exception
+                    'internal-error-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-parameter-exception
+     (sns-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-parameter-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-exception
-                    'make-invalid-parameter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   common-lisp:nil))
+                    'invalid-parameter-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-value-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-value-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition invalid-parameter-value-exception
+     (sns-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-parameter-value-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-value-exception
-                    'make-invalid-parameter-value-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-value-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-value-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-value-exception))
-   common-lisp:nil))
+                    'invalid-parameter-value-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-endpoints-by-platform-application-input (:copier common-lisp:nil)
@@ -1549,29 +1441,12 @@
                           message-attribute-value))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition not-found-exception
+     (sns-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       not-found-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'not-found-exception 'make-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input not-found-exception))
-   common-lisp:nil))
+  (common-lisp:list 'not-found-exception 'not-found-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (opt-in-phone-number-input (:copier common-lisp:nil)
@@ -1669,36 +1544,13 @@
                         ((aws-sdk/generator/shape::input platform-application))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (platform-application-disabled-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-platform-application-disabled-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition platform-application-disabled-exception
+     (sns-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       platform-application-disabled-exception-message)))
  (common-lisp:export
   (common-lisp:list 'platform-application-disabled-exception
-                    'make-platform-application-disabled-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          platform-application-disabled-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          platform-application-disabled-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          platform-application-disabled-exception))
-   common-lisp:nil))
+                    'platform-application-disabled-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (publish-input (:copier common-lisp:nil)
@@ -2202,36 +2054,13 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (subscription-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-subscription-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition subscription-limit-exceeded-exception
+     (sns-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       subscription-limit-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'subscription-limit-exceeded-exception
-                    'make-subscription-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          subscription-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          subscription-limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          subscription-limit-exceeded-exception))
-   common-lisp:nil))
+                    'subscription-limit-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype subscriptions-list ()
    '(trivial-types:proper-list subscription))
@@ -2241,29 +2070,12 @@
                            (trivial-types:proper-list subscription))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (throttled-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-throttled-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition throttled-exception
+     (sns-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       throttled-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'throttled-exception 'make-throttled-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input throttled-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input throttled-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input throttled-exception))
-   common-lisp:nil))
+  (common-lisp:list 'throttled-exception 'throttled-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (topic (:copier common-lisp:nil) (:conc-name "struct-shape-topic-"))
@@ -2295,36 +2107,13 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (topic-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-topic-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+ (common-lisp:define-condition topic-limit-exceeded-exception
+     (sns-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       topic-limit-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'topic-limit-exceeded-exception
-                    'make-topic-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          topic-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          topic-limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          topic-limit-exceeded-exception))
-   common-lisp:nil))
+                    'topic-limit-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype topics-list () '(trivial-types:proper-list topic))
  (common-lisp:defun |make-topics-list|
@@ -2394,7 +2183,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "AddPermission"
                                                         "2010-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'add-permission))
 (common-lisp:progn
  (common-lisp:defun check-if-phone-number-is-opted-out
@@ -2413,7 +2206,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CheckIfPhoneNumberIsOptedOut"
                                                         "2010-03-31"))
-      common-lisp:nil "CheckIfPhoneNumberIsOptedOutResult")))
+      common-lisp:nil "CheckIfPhoneNumberIsOptedOutResult"
+      '(("ThrottledException" . throttled-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)))))
  (common-lisp:export 'check-if-phone-number-is-opted-out))
 (common-lisp:progn
  (common-lisp:defun confirm-subscription
@@ -2433,7 +2230,13 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ConfirmSubscription"
                                                         "2010-03-31"))
-      common-lisp:nil "ConfirmSubscriptionResult")))
+      common-lisp:nil "ConfirmSubscriptionResult"
+      '(("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("NotFoundException" . not-found-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)))))
  (common-lisp:export 'confirm-subscription))
 (common-lisp:progn
  (common-lisp:defun create-platform-application
@@ -2452,7 +2255,10 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CreatePlatformApplication"
                                                         "2010-03-31"))
-      common-lisp:nil "CreatePlatformApplicationResult")))
+      common-lisp:nil "CreatePlatformApplicationResult"
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)))))
  (common-lisp:export 'create-platform-application))
 (common-lisp:progn
  (common-lisp:defun create-platform-endpoint
@@ -2473,7 +2279,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CreatePlatformEndpoint"
                                                         "2010-03-31"))
-      common-lisp:nil "CreatePlatformEndpointResult")))
+      common-lisp:nil "CreatePlatformEndpointResult"
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'create-platform-endpoint))
 (common-lisp:progn
  (common-lisp:defun create-topic
@@ -2491,7 +2301,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CreateTopic"
                                                         "2010-03-31"))
-      common-lisp:nil "CreateTopicResult")))
+      common-lisp:nil "CreateTopicResult"
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)))))
  (common-lisp:export 'create-topic))
 (common-lisp:progn
  (common-lisp:defun delete-endpoint
@@ -2509,7 +2323,10 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DeleteEndpoint"
                                                         "2010-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)))))
  (common-lisp:export 'delete-endpoint))
 (common-lisp:progn
  (common-lisp:defun delete-platform-application
@@ -2528,7 +2345,10 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DeletePlatformApplication"
                                                         "2010-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)))))
  (common-lisp:export 'delete-platform-application))
 (common-lisp:progn
  (common-lisp:defun delete-topic
@@ -2546,7 +2366,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DeleteTopic"
                                                         "2010-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'delete-topic))
 (common-lisp:progn
  (common-lisp:defun get-endpoint-attributes
@@ -2564,7 +2388,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetEndpointAttributes"
                                                         "2010-03-31"))
-      common-lisp:nil "GetEndpointAttributesResult")))
+      common-lisp:nil "GetEndpointAttributesResult"
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'get-endpoint-attributes))
 (common-lisp:progn
  (common-lisp:defun get-platform-application-attributes
@@ -2583,7 +2411,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetPlatformApplicationAttributes"
                                                         "2010-03-31"))
-      common-lisp:nil "GetPlatformApplicationAttributesResult")))
+      common-lisp:nil "GetPlatformApplicationAttributesResult"
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'get-platform-application-attributes))
 (common-lisp:progn
  (common-lisp:defun get-smsattributes
@@ -2601,7 +2433,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetSMSAttributes"
                                                         "2010-03-31"))
-      common-lisp:nil "GetSMSAttributesResult")))
+      common-lisp:nil "GetSMSAttributesResult"
+      '(("ThrottledException" . throttled-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)))))
  (common-lisp:export 'get-smsattributes))
 (common-lisp:progn
  (common-lisp:defun get-subscription-attributes
@@ -2620,7 +2456,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetSubscriptionAttributes"
                                                         "2010-03-31"))
-      common-lisp:nil "GetSubscriptionAttributesResult")))
+      common-lisp:nil "GetSubscriptionAttributesResult"
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("NotFoundException" . not-found-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)))))
  (common-lisp:export 'get-subscription-attributes))
 (common-lisp:progn
  (common-lisp:defun get-topic-attributes
@@ -2638,7 +2478,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetTopicAttributes"
                                                         "2010-03-31"))
-      common-lisp:nil "GetTopicAttributesResult")))
+      common-lisp:nil "GetTopicAttributesResult"
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("NotFoundException" . not-found-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)))))
  (common-lisp:export 'get-topic-attributes))
 (common-lisp:progn
  (common-lisp:defun list-endpoints-by-platform-application
@@ -2658,7 +2502,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ListEndpointsByPlatformApplication"
                                                         "2010-03-31"))
-      common-lisp:nil "ListEndpointsByPlatformApplicationResult")))
+      common-lisp:nil "ListEndpointsByPlatformApplicationResult"
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'list-endpoints-by-platform-application))
 (common-lisp:progn
  (common-lisp:defun list-phone-numbers-opted-out
@@ -2677,7 +2525,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ListPhoneNumbersOptedOut"
                                                         "2010-03-31"))
-      common-lisp:nil "ListPhoneNumbersOptedOutResult")))
+      common-lisp:nil "ListPhoneNumbersOptedOutResult"
+      '(("ThrottledException" . throttled-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)))))
  (common-lisp:export 'list-phone-numbers-opted-out))
 (common-lisp:progn
  (common-lisp:defun list-platform-applications
@@ -2695,7 +2547,10 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ListPlatformApplications"
                                                         "2010-03-31"))
-      common-lisp:nil "ListPlatformApplicationsResult")))
+      common-lisp:nil "ListPlatformApplicationsResult"
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)))))
  (common-lisp:export 'list-platform-applications))
 (common-lisp:progn
  (common-lisp:defun list-subscriptions
@@ -2713,7 +2568,10 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ListSubscriptions"
                                                         "2010-03-31"))
-      common-lisp:nil "ListSubscriptionsResult")))
+      common-lisp:nil "ListSubscriptionsResult"
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)))))
  (common-lisp:export 'list-subscriptions))
 (common-lisp:progn
  (common-lisp:defun list-subscriptions-by-topic
@@ -2732,7 +2590,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ListSubscriptionsByTopic"
                                                         "2010-03-31"))
-      common-lisp:nil "ListSubscriptionsByTopicResult")))
+      common-lisp:nil "ListSubscriptionsByTopicResult"
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("NotFoundException" . not-found-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)))))
  (common-lisp:export 'list-subscriptions-by-topic))
 (common-lisp:progn
  (common-lisp:defun list-topics
@@ -2749,7 +2611,10 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListTopics"
                                                         "2010-03-31"))
-      common-lisp:nil "ListTopicsResult")))
+      common-lisp:nil "ListTopicsResult"
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)))))
  (common-lisp:export 'list-topics))
 (common-lisp:progn
  (common-lisp:defun opt-in-phone-number
@@ -2767,7 +2632,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "OptInPhoneNumber"
                                                         "2010-03-31"))
-      common-lisp:nil "OptInPhoneNumberResult")))
+      common-lisp:nil "OptInPhoneNumberResult"
+      '(("ThrottledException" . throttled-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)))))
  (common-lisp:export 'opt-in-phone-number))
 (common-lisp:progn
  (common-lisp:defun publish
@@ -2787,7 +2656,15 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "Publish"
                                                         "2010-03-31"))
-      common-lisp:nil "PublishResult")))
+      common-lisp:nil "PublishResult"
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("NotFoundException" . not-found-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)))))
  (common-lisp:export 'publish))
 (common-lisp:progn
  (common-lisp:defun remove-permission
@@ -2805,7 +2682,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "RemovePermission"
                                                         "2010-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'remove-permission))
 (common-lisp:progn
  (common-lisp:defun set-endpoint-attributes
@@ -2823,7 +2704,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "SetEndpointAttributes"
                                                         "2010-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'set-endpoint-attributes))
 (common-lisp:progn
  (common-lisp:defun set-platform-application-attributes
@@ -2843,7 +2728,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "SetPlatformApplicationAttributes"
                                                         "2010-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'set-platform-application-attributes))
 (common-lisp:progn
  (common-lisp:defun set-smsattributes
@@ -2861,7 +2750,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "SetSMSAttributes"
                                                         "2010-03-31"))
-      common-lisp:nil "SetSMSAttributesResult")))
+      common-lisp:nil "SetSMSAttributesResult"
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ThrottledException" . throttled-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)))))
  (common-lisp:export 'set-smsattributes))
 (common-lisp:progn
  (common-lisp:defun set-subscription-attributes
@@ -2882,7 +2775,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "SetSubscriptionAttributes"
                                                         "2010-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("NotFoundException" . not-found-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)))))
  (common-lisp:export 'set-subscription-attributes))
 (common-lisp:progn
  (common-lisp:defun set-topic-attributes
@@ -2901,7 +2798,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "SetTopicAttributes"
                                                         "2010-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("NotFoundException" . not-found-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)))))
  (common-lisp:export 'set-topic-attributes))
 (common-lisp:progn
  (common-lisp:defun subscribe
@@ -2918,7 +2819,13 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "Subscribe"
                                                         "2010-03-31"))
-      common-lisp:nil "SubscribeResult")))
+      common-lisp:nil "SubscribeResult"
+      '(("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("NotFoundException" . not-found-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)))))
  (common-lisp:export 'subscribe))
 (common-lisp:progn
  (common-lisp:defun unsubscribe
@@ -2936,5 +2843,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "Unsubscribe"
                                                         "2010-03-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("AuthorizationErrorException" . authorization-error-exception)
+        ("NotFoundException" . not-found-exception)))))
  (common-lisp:export 'unsubscribe))

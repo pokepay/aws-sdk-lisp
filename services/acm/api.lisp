@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/acm/api)
 (common-lisp:progn
  (common-lisp:defclass acm-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "acm"))
  (common-lisp:export 'acm-request))
+(common-lisp:progn
+ (common-lisp:define-condition acm-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'acm-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (add-tags-to-certificate-request (:copier common-lisp:nil)
@@ -685,152 +691,43 @@
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-arn-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-arn-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition invalid-arn-exception
+     (acm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-arn-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-arn-exception 'make-invalid-arn-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-arn-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-arn-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-arn-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-arn-exception 'invalid-arn-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-domain-validation-options-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-domain-validation-options-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition invalid-domain-validation-options-exception
+     (acm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-domain-validation-options-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-domain-validation-options-exception
-                    'make-invalid-domain-validation-options-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-domain-validation-options-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-domain-validation-options-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-domain-validation-options-exception))
-   common-lisp:nil))
+                    'invalid-domain-validation-options-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-state-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-state-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition invalid-state-exception
+     (acm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-state-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-state-exception 'make-invalid-state-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-state-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-state-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-state-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-state-exception 'invalid-state-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-tag-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-tag-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition invalid-tag-exception
+     (acm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-tag-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-tag-exception 'make-invalid-tag-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-tag-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-tag-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-tag-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-tag-exception 'invalid-tag-exception-message)))
 (common-lisp:deftype key-algorithm () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (acm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception
+                    'limit-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-certificates-request (:copier common-lisp:nil)
@@ -1154,35 +1051,13 @@
                           request-certificate-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (request-in-progress-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-request-in-progress-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition request-in-progress-exception
+     (acm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       request-in-progress-exception-message)))
  (common-lisp:export
   (common-lisp:list 'request-in-progress-exception
-                    'make-request-in-progress-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          request-in-progress-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          request-in-progress-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          request-in-progress-exception))
-   common-lisp:nil))
+                    'request-in-progress-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (resend-validation-email-request (:copier common-lisp:nil)
@@ -1233,65 +1108,21 @@
                           resend-validation-email-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-in-use-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-in-use-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition resource-in-use-exception
+     (acm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-in-use-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-in-use-exception
-                    'make-resource-in-use-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   common-lisp:nil))
+                    'resource-in-use-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition resource-not-found-exception
+     (acm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+                    'resource-not-found-exception-message)))
 (common-lisp:deftype revocation-reason () 'common-lisp:string)
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:deftype tstamp () 'common-lisp:string)
@@ -1335,34 +1166,12 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype tag-value () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-tags-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-tags-exception-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition too-many-tags-exception
+     (acm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-tags-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'too-many-tags-exception 'make-too-many-tags-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-tags-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-tags-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-tags-exception))
-   common-lisp:nil))
+  (common-lisp:list 'too-many-tags-exception 'too-many-tags-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype validation-email-list ()
    '(trivial-types:proper-list string))
@@ -1387,7 +1196,11 @@
                                                         "POST" "/"
                                                         "AddTagsToCertificate"
                                                         "2015-12-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("TooManyTagsException" . too-many-tags-exception)))))
  (common-lisp:export 'add-tags-to-certificate))
 (common-lisp:progn
  (common-lisp:defun delete-certificate
@@ -1405,7 +1218,10 @@
                                                         "POST" "/"
                                                         "DeleteCertificate"
                                                         "2015-12-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("InvalidArnException" . invalid-arn-exception)))))
  (common-lisp:export 'delete-certificate))
 (common-lisp:progn
  (common-lisp:defun describe-certificate
@@ -1423,7 +1239,9 @@
                                                         "POST" "/"
                                                         "DescribeCertificate"
                                                         "2015-12-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidArnException" . invalid-arn-exception)))))
  (common-lisp:export 'describe-certificate))
 (common-lisp:progn
  (common-lisp:defun get-certificate
@@ -1441,7 +1259,10 @@
                                                         "POST" "/"
                                                         "GetCertificate"
                                                         "2015-12-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("RequestInProgressException" . request-in-progress-exception)
+        ("InvalidArnException" . invalid-arn-exception)))))
  (common-lisp:export 'get-certificate))
 (common-lisp:progn
  (common-lisp:defun import-certificate
@@ -1462,7 +1283,9 @@
                                                         "POST" "/"
                                                         "ImportCertificate"
                                                         "2015-12-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'import-certificate))
 (common-lisp:progn
  (common-lisp:defun list-certificates
@@ -1482,7 +1305,7 @@
                                                         "POST" "/"
                                                         "ListCertificates"
                                                         "2015-12-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'list-certificates))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-certificate
@@ -1501,7 +1324,9 @@
                                                         "POST" "/"
                                                         "ListTagsForCertificate"
                                                         "2015-12-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidArnException" . invalid-arn-exception)))))
  (common-lisp:export 'list-tags-for-certificate))
 (common-lisp:progn
  (common-lisp:defun remove-tags-from-certificate
@@ -1520,7 +1345,10 @@
                                                         "POST" "/"
                                                         "RemoveTagsFromCertificate"
                                                         "2015-12-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("InvalidTagException" . invalid-tag-exception)))))
  (common-lisp:export 'remove-tags-from-certificate))
 (common-lisp:progn
  (common-lisp:defun request-certificate
@@ -1541,7 +1369,10 @@
                                                         "POST" "/"
                                                         "RequestCertificate"
                                                         "2015-12-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("InvalidDomainValidationOptionsException"
+         . invalid-domain-validation-options-exception)))))
  (common-lisp:export 'request-certificate))
 (common-lisp:progn
  (common-lisp:defun resend-validation-email
@@ -1560,5 +1391,10 @@
                                                         "POST" "/"
                                                         "ResendValidationEmail"
                                                         "2015-12-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidStateException" . invalid-state-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("InvalidDomainValidationOptionsException"
+         . invalid-domain-validation-options-exception)))))
  (common-lisp:export 'resend-validation-email))

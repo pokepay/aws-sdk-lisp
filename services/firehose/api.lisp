@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/firehose/api)
 (common-lisp:progn
  (common-lisp:defclass firehose-request (aws-sdk/request:request)
                        common-lisp:nil (:default-initargs :service "firehose"))
  (common-lisp:export 'firehose-request))
+(common-lisp:progn
+ (common-lisp:define-condition firehose-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'firehose-error))
 (common-lisp:deftype awskmskey-arn () 'common-lisp:string)
 (common-lisp:deftype access-key-id () 'common-lisp:string)
 (common-lisp:deftype boolean-object () 'common-lisp:boolean)
@@ -100,36 +106,13 @@
 (common-lisp:deftype cluster-jdbcurl () 'common-lisp:string)
 (common-lisp:deftype compression-format () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (concurrent-modification-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-concurrent-modification-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition concurrent-modification-exception
+     (firehose-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       concurrent-modification-exception-message)))
  (common-lisp:export
   (common-lisp:list 'concurrent-modification-exception
-                    'make-concurrent-modification-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   common-lisp:nil))
+                    'concurrent-modification-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (copy-command (:copier common-lisp:nil)
@@ -1562,76 +1545,24 @@
    common-lisp:nil))
 (common-lisp:deftype interval-in-seconds () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-argument-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-argument-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-argument-exception
+     (firehose-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-argument-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-argument-exception
-                    'make-invalid-argument-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-argument-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-argument-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-argument-exception))
-   common-lisp:nil))
+                    'invalid-argument-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-stream-type-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-stream-type-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null))
-   (source common-lisp:nil :type
-    (common-lisp:or firehose-source common-lisp:null)))
+ (common-lisp:define-condition invalid-stream-type-exception
+     (firehose-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-stream-type-exception-message)
+      (source :initarg :source :initform common-lisp:nil :reader
+       invalid-stream-type-exception-source)))
  (common-lisp:export
   (common-lisp:list 'invalid-stream-type-exception
-                    'make-invalid-stream-type-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-stream-type-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-stream-type-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'source))
-      (common-lisp:list
-       (common-lisp:cons "source"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-stream-type-exception))
-   common-lisp:nil))
+                    'invalid-stream-type-exception-message
+                    'invalid-stream-type-exception-source)))
 (common-lisp:progn
  (common-lisp:defstruct
      (kmsencryption-config (:copier common-lisp:nil)
@@ -1747,35 +1678,13 @@
                           kinesis-stream-source-description))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (firehose-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception
+                    'limit-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-delivery-streams-input (:copier common-lisp:nil)
@@ -2623,67 +2532,21 @@
    common-lisp:nil))
 (common-lisp:deftype redshift-s3backup-mode () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-in-use-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-in-use-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition resource-in-use-exception
+     (firehose-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-in-use-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-in-use-exception
-                    'make-resource-in-use-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   common-lisp:nil))
+                    'resource-in-use-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition resource-not-found-exception
+     (firehose-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+                    'resource-not-found-exception-message)))
 (common-lisp:deftype role-arn () 'common-lisp:string)
 (common-lisp:deftype s3backup-mode () 'common-lisp:string)
 (common-lisp:progn
@@ -2939,36 +2802,13 @@
    common-lisp:nil))
 (common-lisp:deftype secret-access-key () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-unavailable-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-unavailable-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition service-unavailable-exception
+     (firehose-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       service-unavailable-exception-message)))
  (common-lisp:export
   (common-lisp:list 'service-unavailable-exception
-                    'make-service-unavailable-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   common-lisp:nil))
+                    'service-unavailable-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (session-credentials (:copier common-lisp:nil)
@@ -3188,7 +3028,10 @@
                                                         "POST" "/"
                                                         "CreateDeliveryStream"
                                                         "2015-08-04"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidArgumentException" . invalid-argument-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'create-delivery-stream))
 (common-lisp:progn
  (common-lisp:defun delete-delivery-stream
@@ -3206,7 +3049,9 @@
                                                         "POST" "/"
                                                         "DeleteDeliveryStream"
                                                         "2015-08-04"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'delete-delivery-stream))
 (common-lisp:progn
  (common-lisp:defun describe-delivery-stream
@@ -3227,7 +3072,8 @@
                                                         "POST" "/"
                                                         "DescribeDeliveryStream"
                                                         "2015-08-04"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-delivery-stream))
 (common-lisp:progn
  (common-lisp:defun get-kinesis-stream
@@ -3245,7 +3091,10 @@
                                                         "POST" "/"
                                                         "GetKinesisStream"
                                                         "2015-08-04"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("InvalidStreamTypeException" . invalid-stream-type-exception)))))
  (common-lisp:export 'get-kinesis-stream))
 (common-lisp:progn
  (common-lisp:defun list-delivery-streams
@@ -3266,7 +3115,7 @@
                                                         "POST" "/"
                                                         "ListDeliveryStreams"
                                                         "2015-08-04"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'list-delivery-streams))
 (common-lisp:progn
  (common-lisp:defun put-record
@@ -3283,7 +3132,10 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "PutRecord"
                                                         "2015-08-04"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-record))
 (common-lisp:progn
  (common-lisp:defun put-record-batch
@@ -3301,7 +3153,10 @@
                                                         "POST" "/"
                                                         "PutRecordBatch"
                                                         "2015-08-04"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-record-batch))
 (common-lisp:progn
  (common-lisp:defun update-destination
@@ -3327,5 +3182,10 @@
                                                         "POST" "/"
                                                         "UpdateDestination"
                                                         "2015-08-04"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidArgumentException" . invalid-argument-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ConcurrentModificationException"
+         . concurrent-modification-exception)))))
  (common-lisp:export 'update-destination))

@@ -6,7 +6,8 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/clouddirectory/api)
 (common-lisp:progn
  (common-lisp:defclass clouddirectory-request (aws-sdk/request:request)
@@ -14,35 +15,17 @@
                        (:default-initargs :service "clouddirectory"))
  (common-lisp:export 'clouddirectory-request))
 (common-lisp:progn
- (common-lisp:defstruct
-     (access-denied-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-access-denied-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition clouddirectory-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'clouddirectory-error))
+(common-lisp:progn
+ (common-lisp:define-condition access-denied-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       access-denied-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'access-denied-exception 'make-access-denied-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   common-lisp:nil))
+  (common-lisp:list 'access-denied-exception 'access-denied-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (add-facet-to-object-request (:copier common-lisp:nil)
@@ -3089,53 +3072,18 @@
                           batch-update-object-attributes-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-write-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-write-exception-"))
-   (index common-lisp:nil :type
-    (common-lisp:or batch-operation-index common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or batch-write-exception-type common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition batch-write-exception
+     (clouddirectory-error)
+     ((index :initarg :index :initform common-lisp:nil :reader
+       batch-write-exception-index)
+      (type :initarg :type :initform common-lisp:nil :reader
+       batch-write-exception-type)
+      (message :initarg :message :initform common-lisp:nil :reader
+       batch-write-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'batch-write-exception 'make-batch-write-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          batch-write-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          batch-write-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'index))
-      (common-lisp:list
-       (common-lisp:cons "Index"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'type))
-      (common-lisp:list
-       (common-lisp:cons "Type"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          batch-write-exception))
-   common-lisp:nil))
+  (common-lisp:list 'batch-write-exception 'batch-write-exception-index
+                    'batch-write-exception-type
+                    'batch-write-exception-message)))
 (common-lisp:deftype batch-write-exception-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -3513,36 +3461,13 @@
 (common-lisp:deftype bool () 'common-lisp:boolean)
 (common-lisp:deftype boolean-attribute-value () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (cannot-list-parent-of-root-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cannot-list-parent-of-root-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition cannot-list-parent-of-root-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       cannot-list-parent-of-root-exception-message)))
  (common-lisp:export
   (common-lisp:list 'cannot-list-parent-of-root-exception
-                    'make-cannot-list-parent-of-root-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          cannot-list-parent-of-root-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          cannot-list-parent-of-root-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          cannot-list-parent-of-root-exception))
-   common-lisp:nil))
+                    'cannot-list-parent-of-root-exception-message)))
 (common-lisp:deftype consistency-level () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -4615,68 +4540,22 @@
                         ((aws-sdk/generator/shape::input directory))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (directory-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-directory-already-exists-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition directory-already-exists-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       directory-already-exists-exception-message)))
  (common-lisp:export
   (common-lisp:list 'directory-already-exists-exception
-                    'make-directory-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          directory-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          directory-already-exists-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          directory-already-exists-exception))
-   common-lisp:nil))
+                    'directory-already-exists-exception-message)))
 (common-lisp:deftype directory-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (directory-deleted-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-directory-deleted-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition directory-deleted-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       directory-deleted-exception-message)))
  (common-lisp:export
   (common-lisp:list 'directory-deleted-exception
-                    'make-directory-deleted-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          directory-deleted-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          directory-deleted-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          directory-deleted-exception))
-   common-lisp:nil))
+                    'directory-deleted-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype directory-list () '(trivial-types:proper-list directory))
  (common-lisp:defun |make-directory-list|
@@ -4686,67 +4565,21 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype directory-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (directory-not-disabled-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-directory-not-disabled-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition directory-not-disabled-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       directory-not-disabled-exception-message)))
  (common-lisp:export
   (common-lisp:list 'directory-not-disabled-exception
-                    'make-directory-not-disabled-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          directory-not-disabled-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          directory-not-disabled-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          directory-not-disabled-exception))
-   common-lisp:nil))
+                    'directory-not-disabled-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (directory-not-enabled-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-directory-not-enabled-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition directory-not-enabled-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       directory-not-enabled-exception-message)))
  (common-lisp:export
   (common-lisp:list 'directory-not-enabled-exception
-                    'make-directory-not-enabled-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          directory-not-enabled-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          directory-not-enabled-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          directory-not-enabled-exception))
-   common-lisp:nil))
+                    'directory-not-enabled-exception-message)))
 (common-lisp:deftype directory-state () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -4899,36 +4732,13 @@
                         ((aws-sdk/generator/shape::input facet))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (facet-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-facet-already-exists-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition facet-already-exists-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       facet-already-exists-exception-message)))
  (common-lisp:export
   (common-lisp:list 'facet-already-exists-exception
-                    'make-facet-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          facet-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          facet-already-exists-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          facet-already-exists-exception))
-   common-lisp:nil))
+                    'facet-already-exists-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (facet-attribute (:copier common-lisp:nil)
@@ -5135,35 +4945,12 @@
                            (trivial-types:proper-list facet-attribute-update))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (facet-in-use-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-facet-in-use-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition facet-in-use-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       facet-in-use-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'facet-in-use-exception 'make-facet-in-use-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          facet-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          facet-in-use-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          facet-in-use-exception))
-   common-lisp:nil))
+  (common-lisp:list 'facet-in-use-exception 'facet-in-use-exception-message)))
 (common-lisp:deftype facet-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype facet-name-list ()
@@ -5174,67 +4961,21 @@
                            (trivial-types:proper-list facet-name))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (facet-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-facet-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition facet-not-found-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       facet-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'facet-not-found-exception
-                    'make-facet-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          facet-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          facet-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          facet-not-found-exception))
-   common-lisp:nil))
+                    'facet-not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (facet-validation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-facet-validation-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition facet-validation-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       facet-validation-exception-message)))
  (common-lisp:export
   (common-lisp:list 'facet-validation-exception
-                    'make-facet-validation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          facet-validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          facet-validation-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          facet-validation-exception))
-   common-lisp:nil))
+                    'facet-validation-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-directory-request (:copier common-lisp:nil)
@@ -5611,344 +5352,92 @@
                            (trivial-types:proper-list index-attachment))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (indexed-attribute-missing-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-indexed-attribute-missing-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition indexed-attribute-missing-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       indexed-attribute-missing-exception-message)))
  (common-lisp:export
   (common-lisp:list 'indexed-attribute-missing-exception
-                    'make-indexed-attribute-missing-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          indexed-attribute-missing-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          indexed-attribute-missing-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          indexed-attribute-missing-exception))
-   common-lisp:nil))
+                    'indexed-attribute-missing-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-service-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-service-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition internal-service-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-service-exception-message)))
  (common-lisp:export
   (common-lisp:list 'internal-service-exception
-                    'make-internal-service-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-exception))
-   common-lisp:nil))
+                    'internal-service-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-arn-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-arn-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition invalid-arn-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-arn-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-arn-exception 'make-invalid-arn-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-arn-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-arn-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-arn-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-arn-exception 'invalid-arn-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-attachment-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-attachment-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition invalid-attachment-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-attachment-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-attachment-exception
-                    'make-invalid-attachment-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-attachment-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-attachment-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-attachment-exception))
-   common-lisp:nil))
+                    'invalid-attachment-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-facet-update-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-facet-update-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition invalid-facet-update-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-facet-update-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-facet-update-exception
-                    'make-invalid-facet-update-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-facet-update-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-facet-update-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-facet-update-exception))
-   common-lisp:nil))
+                    'invalid-facet-update-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-next-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-next-token-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition invalid-next-token-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-next-token-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-next-token-exception
-                    'make-invalid-next-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   common-lisp:nil))
+                    'invalid-next-token-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-rule-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-rule-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition invalid-rule-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-rule-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-rule-exception 'make-invalid-rule-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-rule-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-rule-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-rule-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-rule-exception 'invalid-rule-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-schema-doc-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-schema-doc-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition invalid-schema-doc-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-schema-doc-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-schema-doc-exception
-                    'make-invalid-schema-doc-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-schema-doc-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-schema-doc-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-schema-doc-exception))
-   common-lisp:nil))
+                    'invalid-schema-doc-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-tagging-request-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-tagging-request-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition invalid-tagging-request-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-tagging-request-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-tagging-request-exception
-                    'make-invalid-tagging-request-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-tagging-request-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-tagging-request-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-tagging-request-exception))
-   common-lisp:nil))
+                    'invalid-tagging-request-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception
+                    'limit-exceeded-exception-message)))
 (common-lisp:deftype link-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (link-name-already-in-use-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-link-name-already-in-use-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition link-name-already-in-use-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       link-name-already-in-use-exception-message)))
  (common-lisp:export
   (common-lisp:list 'link-name-already-in-use-exception
-                    'make-link-name-already-in-use-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          link-name-already-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          link-name-already-in-use-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          link-name-already-in-use-exception))
-   common-lisp:nil))
+                    'link-name-already-in-use-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype link-name-to-object-identifier-map ()
    'common-lisp:hash-table)
@@ -7906,110 +7395,36 @@
    common-lisp:nil))
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (not-index-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-not-index-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition not-index-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       not-index-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'not-index-exception 'make-not-index-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input not-index-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input not-index-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input not-index-exception))
-   common-lisp:nil))
+  (common-lisp:list 'not-index-exception 'not-index-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (not-node-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-not-node-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition not-node-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       not-node-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'not-node-exception 'make-not-node-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input not-node-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input not-node-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input not-node-exception))
-   common-lisp:nil))
+  (common-lisp:list 'not-node-exception 'not-node-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (not-policy-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-not-policy-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition not-policy-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       not-policy-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'not-policy-exception 'make-not-policy-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input not-policy-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input not-policy-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input not-policy-exception))
-   common-lisp:nil))
+  (common-lisp:list 'not-policy-exception 'not-policy-exception-message)))
 (common-lisp:deftype number-attribute-value () 'common-lisp:string)
 (common-lisp:deftype number-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (object-already-detached-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-object-already-detached-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition object-already-detached-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       object-already-detached-exception-message)))
  (common-lisp:export
   (common-lisp:list 'object-already-detached-exception
-                    'make-object-already-detached-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          object-already-detached-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          object-already-detached-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          object-already-detached-exception))
-   common-lisp:nil))
+                    'object-already-detached-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (object-attribute-action (:copier common-lisp:nil)
@@ -8166,36 +7581,13 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (object-not-detached-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-object-not-detached-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition object-not-detached-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       object-not-detached-exception-message)))
  (common-lisp:export
   (common-lisp:list 'object-not-detached-exception
-                    'make-object-not-detached-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          object-not-detached-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          object-not-detached-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          object-not-detached-exception))
-   common-lisp:nil))
+                    'object-not-detached-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (object-reference (:copier common-lisp:nil)
@@ -8578,67 +7970,21 @@
    common-lisp:nil))
 (common-lisp:deftype required-attribute-behavior () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition resource-not-found-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+                    'resource-not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (retryable-conflict-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-retryable-conflict-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition retryable-conflict-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       retryable-conflict-exception-message)))
  (common-lisp:export
   (common-lisp:list 'retryable-conflict-exception
-                    'make-retryable-conflict-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          retryable-conflict-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          retryable-conflict-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          retryable-conflict-exception))
-   common-lisp:nil))
+                    'retryable-conflict-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (rule (:copier common-lisp:nil) (:conc-name "struct-shape-rule-"))
@@ -8689,67 +8035,21 @@
 (common-lisp:deftype rule-parameter-value () 'common-lisp:string)
 (common-lisp:deftype rule-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (schema-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-schema-already-exists-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition schema-already-exists-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       schema-already-exists-exception-message)))
  (common-lisp:export
   (common-lisp:list 'schema-already-exists-exception
-                    'make-schema-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          schema-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          schema-already-exists-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          schema-already-exists-exception))
-   common-lisp:nil))
+                    'schema-already-exists-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (schema-already-published-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-schema-already-published-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition schema-already-published-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       schema-already-published-exception-message)))
  (common-lisp:export
   (common-lisp:list 'schema-already-published-exception
-                    'make-schema-already-published-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          schema-already-published-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          schema-already-published-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          schema-already-published-exception))
-   common-lisp:nil))
+                    'schema-already-published-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (schema-facet (:copier common-lisp:nil)
@@ -8793,36 +8093,13 @@
 (common-lisp:deftype schema-name () 'common-lisp:string)
 (common-lisp:deftype selector-object-reference () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (still-contains-links-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-still-contains-links-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition still-contains-links-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       still-contains-links-exception-message)))
  (common-lisp:export
   (common-lisp:list 'still-contains-links-exception
-                    'make-still-contains-links-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          still-contains-links-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          still-contains-links-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          still-contains-links-exception))
-   common-lisp:nil))
+                    'still-contains-links-exception-message)))
 (common-lisp:deftype string-attribute-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -9388,36 +8665,13 @@
                            (trivial-types:proper-list typed-link-specifier))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unsupported-index-type-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unsupported-index-type-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition unsupported-index-type-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unsupported-index-type-exception-message)))
  (common-lisp:export
   (common-lisp:list 'unsupported-index-type-exception
-                    'make-unsupported-index-type-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-index-type-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-index-type-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-index-type-exception))
-   common-lisp:nil))
+                    'unsupported-index-type-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (untag-resource-request (:copier common-lisp:nil)
@@ -9775,29 +9029,12 @@
                           update-typed-link-facet-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition validation-exception
+     (clouddirectory-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       validation-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'validation-exception 'make-validation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input validation-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input validation-exception))
-   common-lisp:nil))
+  (common-lisp:list 'validation-exception 'validation-exception-message)))
 (common-lisp:deftype version () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defun add-facet-to-object
@@ -9819,7 +9056,16 @@
                                                         "/amazonclouddirectory/2017-01-11/object/facets"
                                                         "AddFacetToObject"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("FacetValidationException" . facet-validation-exception)))))
  (common-lisp:export 'add-facet-to-object))
 (common-lisp:progn
  (common-lisp:defun apply-schema
@@ -9839,7 +9085,15 @@
                                                         "/amazonclouddirectory/2017-01-11/schema/apply"
                                                         "ApplySchema"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidAttachmentException" . invalid-attachment-exception)))))
  (common-lisp:export 'apply-schema))
 (common-lisp:progn
  (common-lisp:defun attach-object
@@ -9861,7 +9115,19 @@
                                                         "/amazonclouddirectory/2017-01-11/object/attach"
                                                         "AttachObject"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
+        ("InvalidAttachmentException" . invalid-attachment-exception)
+        ("ValidationException" . validation-exception)
+        ("FacetValidationException" . facet-validation-exception)))))
  (common-lisp:export 'attach-object))
 (common-lisp:progn
  (common-lisp:defun attach-policy
@@ -9882,7 +9148,17 @@
                                                         "/amazonclouddirectory/2017-01-11/policy/attach"
                                                         "AttachPolicy"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("NotPolicyException" . not-policy-exception)))))
  (common-lisp:export 'attach-policy))
 (common-lisp:progn
  (common-lisp:defun attach-to-index
@@ -9903,7 +9179,19 @@
                                                         "/amazonclouddirectory/2017-01-11/index/attach"
                                                         "AttachToIndex"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
+        ("IndexedAttributeMissingException"
+         . indexed-attribute-missing-exception)
+        ("NotIndexException" . not-index-exception)))))
  (common-lisp:export 'attach-to-index))
 (common-lisp:progn
  (common-lisp:defun attach-typed-link
@@ -9925,7 +9213,18 @@
                                                         "/amazonclouddirectory/2017-01-11/typedlink/attach"
                                                         "AttachTypedLink"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidAttachmentException" . invalid-attachment-exception)
+        ("ValidationException" . validation-exception)
+        ("FacetValidationException" . facet-validation-exception)))))
  (common-lisp:export 'attach-typed-link))
 (common-lisp:progn
  (common-lisp:defun batch-read
@@ -9946,7 +9245,14 @@
                                                         "/amazonclouddirectory/2017-01-11/batchread"
                                                         "BatchRead"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)))))
  (common-lisp:export 'batch-read))
 (common-lisp:progn
  (common-lisp:defun batch-write
@@ -9965,7 +9271,15 @@
                                                         "/amazonclouddirectory/2017-01-11/batchwrite"
                                                         "BatchWrite"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("BatchWriteException" . batch-write-exception)))))
  (common-lisp:export 'batch-write))
 (common-lisp:progn
  (common-lisp:defun create-directory
@@ -9984,7 +9298,17 @@
                                                         "/amazonclouddirectory/2017-01-11/directory/create"
                                                         "CreateDirectory"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryAlreadyExistsException"
+         . directory-already-exists-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'create-directory))
 (common-lisp:progn
  (common-lisp:defun create-facet
@@ -10004,7 +9328,17 @@
                                                         "/amazonclouddirectory/2017-01-11/facet/create"
                                                         "CreateFacet"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("FacetAlreadyExistsException" . facet-already-exists-exception)
+        ("InvalidRuleException" . invalid-rule-exception)
+        ("FacetValidationException" . facet-validation-exception)))))
  (common-lisp:export 'create-facet))
 (common-lisp:progn
  (common-lisp:defun create-index
@@ -10027,7 +9361,19 @@
                                                         "/amazonclouddirectory/2017-01-11/index"
                                                         "CreateIndex"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("FacetValidationException" . facet-validation-exception)
+        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
+        ("UnsupportedIndexTypeException"
+         . unsupported-index-type-exception)))))
  (common-lisp:export 'create-index))
 (common-lisp:progn
  (common-lisp:defun create-object
@@ -10049,7 +9395,20 @@
                                                         "/amazonclouddirectory/2017-01-11/object"
                                                         "CreateObject"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("FacetValidationException" . facet-validation-exception)
+        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
+        ("UnsupportedIndexTypeException"
+         . unsupported-index-type-exception)))))
  (common-lisp:export 'create-object))
 (common-lisp:progn
  (common-lisp:defun create-schema
@@ -10068,7 +9427,15 @@
                                                         "/amazonclouddirectory/2017-01-11/schema/create"
                                                         "CreateSchema"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
+        ("AccessDeniedException" . access-denied-exception)))))
  (common-lisp:export 'create-schema))
 (common-lisp:progn
  (common-lisp:defun create-typed-link-facet
@@ -10087,7 +9454,17 @@
                                                         "/amazonclouddirectory/2017-01-11/typedlink/facet/create"
                                                         "CreateTypedLinkFacet"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("FacetAlreadyExistsException" . facet-already-exists-exception)
+        ("InvalidRuleException" . invalid-rule-exception)
+        ("FacetValidationException" . facet-validation-exception)))))
  (common-lisp:export 'create-typed-link-facet))
 (common-lisp:progn
  (common-lisp:defun delete-directory
@@ -10106,7 +9483,16 @@
                                                         "/amazonclouddirectory/2017-01-11/directory"
                                                         "DeleteDirectory"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryDeletedException" . directory-deleted-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("InvalidArnException" . invalid-arn-exception)))))
  (common-lisp:export 'delete-directory))
 (common-lisp:progn
  (common-lisp:defun delete-facet
@@ -10125,7 +9511,16 @@
                                                         "/amazonclouddirectory/2017-01-11/facet/delete"
                                                         "DeleteFacet"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("FacetNotFoundException" . facet-not-found-exception)
+        ("FacetInUseException" . facet-in-use-exception)))))
  (common-lisp:export 'delete-facet))
 (common-lisp:progn
  (common-lisp:defun delete-object
@@ -10144,7 +9539,16 @@
                                                         "/amazonclouddirectory/2017-01-11/object/delete"
                                                         "DeleteObject"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ObjectNotDetachedException" . object-not-detached-exception)))))
  (common-lisp:export 'delete-object))
 (common-lisp:progn
  (common-lisp:defun delete-schema
@@ -10163,7 +9567,15 @@
                                                         "/amazonclouddirectory/2017-01-11/schema"
                                                         "DeleteSchema"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("StillContainsLinksException" . still-contains-links-exception)))))
  (common-lisp:export 'delete-schema))
 (common-lisp:progn
  (common-lisp:defun delete-typed-link-facet
@@ -10182,7 +9594,15 @@
                                                         "/amazonclouddirectory/2017-01-11/typedlink/facet/delete"
                                                         "DeleteTypedLinkFacet"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("FacetNotFoundException" . facet-not-found-exception)))))
  (common-lisp:export 'delete-typed-link-facet))
 (common-lisp:progn
  (common-lisp:defun detach-from-index
@@ -10203,7 +9623,17 @@
                                                         "/amazonclouddirectory/2017-01-11/index/detach"
                                                         "DetachFromIndex"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
+        ("NotIndexException" . not-index-exception)))))
  (common-lisp:export 'detach-from-index))
 (common-lisp:progn
  (common-lisp:defun detach-object
@@ -10223,7 +9653,15 @@
                                                         "/amazonclouddirectory/2017-01-11/object/detach"
                                                         "DetachObject"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'detach-object))
 (common-lisp:progn
  (common-lisp:defun detach-policy
@@ -10244,7 +9682,17 @@
                                                         "/amazonclouddirectory/2017-01-11/policy/detach"
                                                         "DetachPolicy"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("NotPolicyException" . not-policy-exception)))))
  (common-lisp:export 'detach-policy))
 (common-lisp:progn
  (common-lisp:defun detach-typed-link
@@ -10264,7 +9712,16 @@
                                                         "/amazonclouddirectory/2017-01-11/typedlink/detach"
                                                         "DetachTypedLink"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("FacetValidationException" . facet-validation-exception)))))
  (common-lisp:export 'detach-typed-link))
 (common-lisp:progn
  (common-lisp:defun disable-directory
@@ -10283,7 +9740,15 @@
                                                         "/amazonclouddirectory/2017-01-11/directory/disable"
                                                         "DisableDirectory"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("DirectoryDeletedException" . directory-deleted-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("InvalidArnException" . invalid-arn-exception)))))
  (common-lisp:export 'disable-directory))
 (common-lisp:progn
  (common-lisp:defun enable-directory
@@ -10302,7 +9767,15 @@
                                                         "/amazonclouddirectory/2017-01-11/directory/enable"
                                                         "EnableDirectory"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("DirectoryDeletedException" . directory-deleted-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("InvalidArnException" . invalid-arn-exception)))))
  (common-lisp:export 'enable-directory))
 (common-lisp:progn
  (common-lisp:defun get-directory
@@ -10321,7 +9794,13 @@
                                                         "/amazonclouddirectory/2017-01-11/directory/get"
                                                         "GetDirectory"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)))))
  (common-lisp:export 'get-directory))
 (common-lisp:progn
  (common-lisp:defun get-facet
@@ -10340,7 +9819,15 @@
                                                         "/amazonclouddirectory/2017-01-11/facet"
                                                         "GetFacet"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("FacetNotFoundException" . facet-not-found-exception)))))
  (common-lisp:export 'get-facet))
 (common-lisp:progn
  (common-lisp:defun get-object-information
@@ -10361,7 +9848,15 @@
                                                         "/amazonclouddirectory/2017-01-11/object/information"
                                                         "GetObjectInformation"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'get-object-information))
 (common-lisp:progn
  (common-lisp:defun get-schema-as-json
@@ -10380,7 +9875,15 @@
                                                         "/amazonclouddirectory/2017-01-11/schema/json"
                                                         "GetSchemaAsJson"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'get-schema-as-json))
 (common-lisp:progn
  (common-lisp:defun get-typed-link-facet-information
@@ -10400,7 +9903,16 @@
                                                         "/amazonclouddirectory/2017-01-11/typedlink/facet/get"
                                                         "GetTypedLinkFacetInformation"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("FacetNotFoundException" . facet-not-found-exception)))))
  (common-lisp:export 'get-typed-link-facet-information))
 (common-lisp:progn
  (common-lisp:defun list-applied-schema-arns
@@ -10420,7 +9932,15 @@
                                                         "/amazonclouddirectory/2017-01-11/schema/applied"
                                                         "ListAppliedSchemaArns"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-applied-schema-arns))
 (common-lisp:progn
  (common-lisp:defun list-attached-indices
@@ -10442,7 +9962,15 @@
                                                         "/amazonclouddirectory/2017-01-11/object/indices"
                                                         "ListAttachedIndices"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'list-attached-indices))
 (common-lisp:progn
  (common-lisp:defun list-development-schema-arns
@@ -10462,7 +9990,15 @@
                                                         "/amazonclouddirectory/2017-01-11/schema/development"
                                                         "ListDevelopmentSchemaArns"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-development-schema-arns))
 (common-lisp:progn
  (common-lisp:defun list-directories
@@ -10481,7 +10017,14 @@
                                                         "/amazonclouddirectory/2017-01-11/directory/list"
                                                         "ListDirectories"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-directories))
 (common-lisp:progn
  (common-lisp:defun list-facet-attributes
@@ -10501,7 +10044,16 @@
                                                         "/amazonclouddirectory/2017-01-11/facet/attributes"
                                                         "ListFacetAttributes"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("FacetNotFoundException" . facet-not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-facet-attributes))
 (common-lisp:progn
  (common-lisp:defun list-facet-names
@@ -10521,7 +10073,15 @@
                                                         "/amazonclouddirectory/2017-01-11/facet/list"
                                                         "ListFacetNames"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-facet-names))
 (common-lisp:progn
  (common-lisp:defun list-incoming-typed-links
@@ -10546,7 +10106,17 @@
                                                         "/amazonclouddirectory/2017-01-11/typedlink/incoming"
                                                         "ListIncomingTypedLinks"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("FacetValidationException" . facet-validation-exception)))))
  (common-lisp:export 'list-incoming-typed-links))
 (common-lisp:progn
  (common-lisp:defun list-index
@@ -10568,7 +10138,16 @@
                                                         "/amazonclouddirectory/2017-01-11/index/targets"
                                                         "ListIndex"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("NotIndexException" . not-index-exception)))))
  (common-lisp:export 'list-index))
 (common-lisp:progn
  (common-lisp:defun list-object-attributes
@@ -10590,7 +10169,18 @@
                                                         "/amazonclouddirectory/2017-01-11/object/attributes"
                                                         "ListObjectAttributes"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("FacetValidationException" . facet-validation-exception)))))
  (common-lisp:export 'list-object-attributes))
 (common-lisp:progn
  (common-lisp:defun list-object-children
@@ -10612,7 +10202,18 @@
                                                         "/amazonclouddirectory/2017-01-11/object/children"
                                                         "ListObjectChildren"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("NotNodeException" . not-node-exception)))))
  (common-lisp:export 'list-object-children))
 (common-lisp:progn
  (common-lisp:defun list-object-parent-paths
@@ -10634,7 +10235,16 @@
                                                         "/amazonclouddirectory/2017-01-11/object/parentpaths"
                                                         "ListObjectParentPaths"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'list-object-parent-paths))
 (common-lisp:progn
  (common-lisp:defun list-object-parents
@@ -10656,7 +10266,19 @@
                                                         "/amazonclouddirectory/2017-01-11/object/parent"
                                                         "ListObjectParents"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("CannotListParentOfRootException"
+         . cannot-list-parent-of-root-exception)))))
  (common-lisp:export 'list-object-parents))
 (common-lisp:progn
  (common-lisp:defun list-object-policies
@@ -10678,7 +10300,16 @@
                                                         "/amazonclouddirectory/2017-01-11/object/policy"
                                                         "ListObjectPolicies"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-object-policies))
 (common-lisp:progn
  (common-lisp:defun list-outgoing-typed-links
@@ -10703,7 +10334,17 @@
                                                         "/amazonclouddirectory/2017-01-11/typedlink/outgoing"
                                                         "ListOutgoingTypedLinks"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("FacetValidationException" . facet-validation-exception)))))
  (common-lisp:export 'list-outgoing-typed-links))
 (common-lisp:progn
  (common-lisp:defun list-policy-attachments
@@ -10725,7 +10366,18 @@
                                                         "/amazonclouddirectory/2017-01-11/policy/attachment"
                                                         "ListPolicyAttachments"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("NotPolicyException" . not-policy-exception)))))
  (common-lisp:export 'list-policy-attachments))
 (common-lisp:progn
  (common-lisp:defun list-published-schema-arns
@@ -10745,7 +10397,15 @@
                                                         "/amazonclouddirectory/2017-01-11/schema/published"
                                                         "ListPublishedSchemaArns"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-published-schema-arns))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-resource
@@ -10765,7 +10425,16 @@
                                                         "/amazonclouddirectory/2017-01-11/tags"
                                                         "ListTagsForResource"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidTaggingRequestException"
+         . invalid-tagging-request-exception)))))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
  (common-lisp:defun list-typed-link-facet-attributes
@@ -10786,7 +10455,16 @@
                                                         "/amazonclouddirectory/2017-01-11/typedlink/facet/attributes"
                                                         "ListTypedLinkFacetAttributes"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("FacetNotFoundException" . facet-not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-typed-link-facet-attributes))
 (common-lisp:progn
  (common-lisp:defun list-typed-link-facet-names
@@ -10807,7 +10485,15 @@
                                                         "/amazonclouddirectory/2017-01-11/typedlink/facet/list"
                                                         "ListTypedLinkFacetNames"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-typed-link-facet-names))
 (common-lisp:progn
  (common-lisp:defun lookup-policy
@@ -10829,7 +10515,17 @@
                                                         "/amazonclouddirectory/2017-01-11/policy/lookup"
                                                         "LookupPolicy"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'lookup-policy))
 (common-lisp:progn
  (common-lisp:defun publish-schema
@@ -10849,7 +10545,16 @@
                                                         "/amazonclouddirectory/2017-01-11/schema/publish"
                                                         "PublishSchema"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("SchemaAlreadyPublishedException"
+         . schema-already-published-exception)))))
  (common-lisp:export 'publish-schema))
 (common-lisp:progn
  (common-lisp:defun put-schema-from-json
@@ -10868,7 +10573,15 @@
                                                         "/amazonclouddirectory/2017-01-11/schema/json"
                                                         "PutSchemaFromJson"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
+        ("InvalidRuleException" . invalid-rule-exception)))))
  (common-lisp:export 'put-schema-from-json))
 (common-lisp:progn
  (common-lisp:defun remove-facet-from-object
@@ -10889,7 +10602,16 @@
                                                         "/amazonclouddirectory/2017-01-11/object/facets/delete"
                                                         "RemoveFacetFromObject"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("FacetValidationException" . facet-validation-exception)))))
  (common-lisp:export 'remove-facet-from-object))
 (common-lisp:progn
  (common-lisp:defun tag-resource
@@ -10908,7 +10630,16 @@
                                                         "/amazonclouddirectory/2017-01-11/tags/add"
                                                         "TagResource"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidTaggingRequestException"
+         . invalid-tagging-request-exception)))))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
  (common-lisp:defun untag-resource
@@ -10927,7 +10658,16 @@
                                                         "/amazonclouddirectory/2017-01-11/tags/remove"
                                                         "UntagResource"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidTaggingRequestException"
+         . invalid-tagging-request-exception)))))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
  (common-lisp:defun update-facet
@@ -10948,7 +10688,17 @@
                                                         "/amazonclouddirectory/2017-01-11/facet"
                                                         "UpdateFacet"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("FacetNotFoundException" . facet-not-found-exception)
+        ("InvalidRuleException" . invalid-rule-exception)))))
  (common-lisp:export 'update-facet))
 (common-lisp:progn
  (common-lisp:defun update-object-attributes
@@ -10969,7 +10719,16 @@
                                                         "/amazonclouddirectory/2017-01-11/object/update"
                                                         "UpdateObjectAttributes"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("FacetValidationException" . facet-validation-exception)))))
  (common-lisp:export 'update-object-attributes))
 (common-lisp:progn
  (common-lisp:defun update-schema
@@ -10988,7 +10747,14 @@
                                                         "/amazonclouddirectory/2017-01-11/schema/update"
                                                         "UpdateSchema"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'update-schema))
 (common-lisp:progn
  (common-lisp:defun update-typed-link-facet
@@ -11010,5 +10776,16 @@
                                                         "/amazonclouddirectory/2017-01-11/typedlink/facet"
                                                         "UpdateTypedLinkFacet"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceException" . internal-service-exception)
+        ("InvalidArnException" . invalid-arn-exception)
+        ("RetryableConflictException" . retryable-conflict-exception)
+        ("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("FacetValidationException" . facet-validation-exception)
+        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("FacetNotFoundException" . facet-not-found-exception)
+        ("InvalidRuleException" . invalid-rule-exception)))))
  (common-lisp:export 'update-typed-link-facet))

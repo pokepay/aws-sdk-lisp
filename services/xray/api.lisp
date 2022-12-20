@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/xray/api)
 (common-lisp:progn
  (common-lisp:defclass xray-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "xray"))
  (common-lisp:export 'xray-request))
+(common-lisp:progn
+ (common-lisp:define-condition xray-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'xray-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (alias (:copier common-lisp:nil) (:conc-name "struct-shape-alias-"))
@@ -882,27 +888,10 @@
    common-lisp:nil))
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-request-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-request-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-request-exception
-                    'make-invalid-request-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-request-exception
+     (xray-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-request-exception)))
 (common-lisp:deftype nullable-boolean () 'common-lisp:boolean)
 (common-lisp:deftype nullable-double () 'common-lisp:double-float)
 (common-lisp:deftype nullable-integer () 'common-lisp:integer)
@@ -1426,20 +1415,10 @@
                            (trivial-types:proper-list telemetry-record))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (throttled-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-throttled-exception-")))
- (common-lisp:export
-  (common-lisp:list 'throttled-exception 'make-throttled-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input throttled-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input throttled-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input throttled-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition throttled-exception
+     (xray-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'throttled-exception)))
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -1786,7 +1765,9 @@
                                                         "POST" "/Traces"
                                                         "BatchGetTraces"
                                                         "2016-04-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottledException" . throttled-exception)))))
  (common-lisp:export 'batch-get-traces))
 (common-lisp:progn
  (common-lisp:defun get-service-graph
@@ -1804,7 +1785,9 @@
                                                         "POST" "/ServiceGraph"
                                                         "GetServiceGraph"
                                                         "2016-04-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottledException" . throttled-exception)))))
  (common-lisp:export 'get-service-graph))
 (common-lisp:progn
  (common-lisp:defun get-trace-graph
@@ -1822,7 +1805,9 @@
                                                         "POST" "/TraceGraph"
                                                         "GetTraceGraph"
                                                         "2016-04-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottledException" . throttled-exception)))))
  (common-lisp:export 'get-trace-graph))
 (common-lisp:progn
  (common-lisp:defun get-trace-summaries
@@ -1844,7 +1829,9 @@
                                                         "/TraceSummaries"
                                                         "GetTraceSummaries"
                                                         "2016-04-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottledException" . throttled-exception)))))
  (common-lisp:export 'get-trace-summaries))
 (common-lisp:progn
  (common-lisp:defun put-telemetry-records
@@ -1866,7 +1853,9 @@
                                                         "/TelemetryRecords"
                                                         "PutTelemetryRecords"
                                                         "2016-04-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottledException" . throttled-exception)))))
  (common-lisp:export 'put-telemetry-records))
 (common-lisp:progn
  (common-lisp:defun put-trace-segments
@@ -1884,5 +1873,7 @@
                                                         "POST" "/TraceSegments"
                                                         "PutTraceSegments"
                                                         "2016-04-12"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottledException" . throttled-exception)))))
  (common-lisp:export 'put-trace-segments))

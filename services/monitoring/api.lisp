@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/monitoring/api)
 (common-lisp:progn
  (common-lisp:defclass monitoring-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "monitoring"))
  (common-lisp:export 'monitoring-request))
+(common-lisp:progn
+ (common-lisp:define-condition monitoring-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'monitoring-error))
 (common-lisp:deftype action-prefix () 'common-lisp:string)
 (common-lisp:deftype actions-enabled () 'common-lisp:boolean)
 (common-lisp:deftype alarm-arn () 'common-lisp:string)
@@ -157,46 +163,17 @@
    common-lisp:nil))
 (common-lisp:deftype dashboard-error-message () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (dashboard-invalid-input-error (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dashboard-invalid-input-error-"))
-   (message common-lisp:nil :type
-    (common-lisp:or dashboard-error-message common-lisp:null))
-   (dashboard-validation-messages common-lisp:nil :type
-    (common-lisp:or dashboard-validation-messages common-lisp:null)))
+ (common-lisp:define-condition dashboard-invalid-input-error
+     (monitoring-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       dashboard-invalid-input-error-message)
+      (dashboard-validation-messages :initarg :dashboard-validation-messages
+       :initform common-lisp:nil :reader
+       dashboard-invalid-input-error-dashboard-validation-messages)))
  (common-lisp:export
   (common-lisp:list 'dashboard-invalid-input-error
-                    'make-dashboard-invalid-input-error))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dashboard-invalid-input-error))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dashboard-invalid-input-error))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input
-                           'dashboard-validation-messages))
-      (common-lisp:list
-       (common-lisp:cons "dashboardValidationMessages"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dashboard-invalid-input-error))
-   common-lisp:nil))
+                    'dashboard-invalid-input-error-message
+                    'dashboard-invalid-input-error-dashboard-validation-messages)))
 (common-lisp:deftype dashboard-name () 'common-lisp:string)
 (common-lisp:deftype dashboard-name-prefix () 'common-lisp:string)
 (common-lisp:progn
@@ -208,36 +185,13 @@
                            (trivial-types:proper-list dashboard-name))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dashboard-not-found-error (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dashboard-not-found-error-"))
-   (message common-lisp:nil :type
-    (common-lisp:or dashboard-error-message common-lisp:null)))
+ (common-lisp:define-condition dashboard-not-found-error
+     (monitoring-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       dashboard-not-found-error-message)))
  (common-lisp:export
   (common-lisp:list 'dashboard-not-found-error
-                    'make-dashboard-not-found-error))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dashboard-not-found-error))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dashboard-not-found-error))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dashboard-not-found-error))
-   common-lisp:nil))
+                    'dashboard-not-found-error-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (dashboard-validation-message (:copier common-lisp:nil)
@@ -1177,170 +1131,50 @@
 (common-lisp:deftype history-item-type () 'common-lisp:string)
 (common-lisp:deftype history-summary () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-service-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-service-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or fault-description common-lisp:null)))
+ (common-lisp:define-condition internal-service-fault
+     (monitoring-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-service-fault-message)))
  (common-lisp:export
-  (common-lisp:list 'internal-service-fault 'make-internal-service-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-fault))
-   common-lisp:nil))
+  (common-lisp:list 'internal-service-fault 'internal-service-fault-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-format-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-format-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-format-fault
+     (monitoring-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-format-fault-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-format-fault 'make-invalid-format-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-format-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-format-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-format-fault))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-format-fault 'invalid-format-fault-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-next-token (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-next-token-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-next-token
+     (monitoring-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-next-token-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-next-token 'make-invalid-next-token))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-next-token))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-next-token))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-next-token))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-next-token 'invalid-next-token-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-combination-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-combination-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or aws-query-error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-parameter-combination-exception
+     (monitoring-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-parameter-combination-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-combination-exception
-                    'make-invalid-parameter-combination-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-combination-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-combination-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-combination-exception))
-   common-lisp:nil))
+                    'invalid-parameter-combination-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-value-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-value-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or aws-query-error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-parameter-value-exception
+     (monitoring-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-parameter-value-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-value-exception
-                    'make-invalid-parameter-value-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-value-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-value-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-value-exception))
-   common-lisp:nil))
+                    'invalid-parameter-value-exception-message)))
 (common-lisp:deftype last-modified () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-fault
+     (monitoring-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-fault-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-fault 'make-limit-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input limit-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input limit-exceeded-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input limit-exceeded-fault))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-fault 'limit-exceeded-fault-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-dashboards-input (:copier common-lisp:nil)
@@ -1878,36 +1712,13 @@
                            (trivial-types:proper-list metric))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (missing-required-parameter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-missing-required-parameter-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or aws-query-error-message common-lisp:null)))
+ (common-lisp:define-condition missing-required-parameter-exception
+     (monitoring-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       missing-required-parameter-exception-message)))
  (common-lisp:export
   (common-lisp:list 'missing-required-parameter-exception
-                    'make-missing-required-parameter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-required-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-required-parameter-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-required-parameter-exception))
-   common-lisp:nil))
+                    'missing-required-parameter-exception-message)))
 (common-lisp:deftype namespace () 'common-lisp:string)
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:deftype period () 'common-lisp:integer)
@@ -2202,29 +2013,12 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype resource-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition resource-not-found
+     (monitoring-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-not-found-message)))
  (common-lisp:export
-  (common-lisp:list 'resource-not-found 'make-resource-not-found))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input resource-not-found))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input resource-not-found))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input resource-not-found))
-   common-lisp:nil))
+  (common-lisp:list 'resource-not-found 'resource-not-found-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (set-alarm-state-input (:copier common-lisp:nil)
@@ -2365,7 +2159,8 @@
                                                         "POST" "/"
                                                         "DeleteAlarms"
                                                         "2010-08-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFound" . resource-not-found)))))
  (common-lisp:export 'delete-alarms))
 (common-lisp:progn
  (common-lisp:defun delete-dashboards
@@ -2383,7 +2178,10 @@
                                                         "POST" "/"
                                                         "DeleteDashboards"
                                                         "2010-08-01"))
-      common-lisp:nil "DeleteDashboardsResult")))
+      common-lisp:nil "DeleteDashboardsResult"
+      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("DashboardNotFoundError" . dashboard-not-found-error)
+        ("InternalServiceFault" . internal-service-fault)))))
  (common-lisp:export 'delete-dashboards))
 (common-lisp:progn
  (common-lisp:defun describe-alarm-history
@@ -2404,7 +2202,8 @@
                                                         "POST" "/"
                                                         "DescribeAlarmHistory"
                                                         "2010-08-01"))
-      common-lisp:nil "DescribeAlarmHistoryResult")))
+      common-lisp:nil "DescribeAlarmHistoryResult"
+      '(("InvalidNextToken" . invalid-next-token)))))
  (common-lisp:export 'describe-alarm-history))
 (common-lisp:progn
  (common-lisp:defun describe-alarms
@@ -2425,7 +2224,8 @@
                                                         "POST" "/"
                                                         "DescribeAlarms"
                                                         "2010-08-01"))
-      common-lisp:nil "DescribeAlarmsResult")))
+      common-lisp:nil "DescribeAlarmsResult"
+      '(("InvalidNextToken" . invalid-next-token)))))
  (common-lisp:export 'describe-alarms))
 (common-lisp:progn
  (common-lisp:defun describe-alarms-for-metric
@@ -2446,7 +2246,7 @@
                                                         "POST" "/"
                                                         "DescribeAlarmsForMetric"
                                                         "2010-08-01"))
-      common-lisp:nil "DescribeAlarmsForMetricResult")))
+      common-lisp:nil "DescribeAlarmsForMetricResult" 'common-lisp:nil)))
  (common-lisp:export 'describe-alarms-for-metric))
 (common-lisp:progn
  (common-lisp:defun disable-alarm-actions
@@ -2464,7 +2264,7 @@
                                                         "POST" "/"
                                                         "DisableAlarmActions"
                                                         "2010-08-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'disable-alarm-actions))
 (common-lisp:progn
  (common-lisp:defun enable-alarm-actions
@@ -2482,7 +2282,7 @@
                                                         "POST" "/"
                                                         "EnableAlarmActions"
                                                         "2010-08-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'enable-alarm-actions))
 (common-lisp:progn
  (common-lisp:defun get-dashboard
@@ -2500,7 +2300,10 @@
                                                         "POST" "/"
                                                         "GetDashboard"
                                                         "2010-08-01"))
-      common-lisp:nil "GetDashboardResult")))
+      common-lisp:nil "GetDashboardResult"
+      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("DashboardNotFoundError" . dashboard-not-found-error)
+        ("InternalServiceFault" . internal-service-fault)))))
  (common-lisp:export 'get-dashboard))
 (common-lisp:progn
  (common-lisp:defun get-metric-statistics
@@ -2522,7 +2325,13 @@
                                                         "POST" "/"
                                                         "GetMetricStatistics"
                                                         "2010-08-01"))
-      common-lisp:nil "GetMetricStatisticsResult")))
+      common-lisp:nil "GetMetricStatisticsResult"
+      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingRequiredParameterException"
+         . missing-required-parameter-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InternalServiceFault" . internal-service-fault)))))
  (common-lisp:export 'get-metric-statistics))
 (common-lisp:progn
  (common-lisp:defun list-dashboards
@@ -2541,7 +2350,9 @@
                                                         "POST" "/"
                                                         "ListDashboards"
                                                         "2010-08-01"))
-      common-lisp:nil "ListDashboardsResult")))
+      common-lisp:nil "ListDashboardsResult"
+      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InternalServiceFault" . internal-service-fault)))))
  (common-lisp:export 'list-dashboards))
 (common-lisp:progn
  (common-lisp:defun list-metrics
@@ -2561,7 +2372,10 @@
                                                         "POST" "/"
                                                         "ListMetrics"
                                                         "2010-08-01"))
-      common-lisp:nil "ListMetricsResult")))
+      common-lisp:nil "ListMetricsResult"
+      '(("InternalServiceFault" . internal-service-fault)
+        ("InvalidParameterValueException"
+         . invalid-parameter-value-exception)))))
  (common-lisp:export 'list-metrics))
 (common-lisp:progn
  (common-lisp:defun put-dashboard
@@ -2579,7 +2393,9 @@
                                                         "POST" "/"
                                                         "PutDashboard"
                                                         "2010-08-01"))
-      common-lisp:nil "PutDashboardResult")))
+      common-lisp:nil "PutDashboardResult"
+      '(("DashboardInvalidInputError" . dashboard-invalid-input-error)
+        ("InternalServiceFault" . internal-service-fault)))))
  (common-lisp:export 'put-dashboard))
 (common-lisp:progn
  (common-lisp:defun put-metric-alarm
@@ -2607,7 +2423,8 @@
                                                         "POST" "/"
                                                         "PutMetricAlarm"
                                                         "2010-08-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LimitExceededFault" . limit-exceeded-fault)))))
  (common-lisp:export 'put-metric-alarm))
 (common-lisp:progn
  (common-lisp:defun put-metric-data
@@ -2625,7 +2442,13 @@
                                                         "POST" "/"
                                                         "PutMetricData"
                                                         "2010-08-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("MissingRequiredParameterException"
+         . missing-required-parameter-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InternalServiceFault" . internal-service-fault)))))
  (common-lisp:export 'put-metric-data))
 (common-lisp:progn
  (common-lisp:defun set-alarm-state
@@ -2646,5 +2469,7 @@
                                                         "POST" "/"
                                                         "SetAlarmState"
                                                         "2010-08-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFound" . resource-not-found)
+        ("InvalidFormatFault" . invalid-format-fault)))))
  (common-lisp:export 'set-alarm-state))

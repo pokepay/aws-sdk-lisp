@@ -6,36 +6,25 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/dms/api)
 (common-lisp:progn
  (common-lisp:defclass dms-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "dms"))
  (common-lisp:export 'dms-request))
 (common-lisp:progn
- (common-lisp:defstruct
-     (access-denied-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-access-denied-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition dms-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'dms-error))
+(common-lisp:progn
+ (common-lisp:define-condition access-denied-fault
+     (dms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       access-denied-fault-message)))
  (common-lisp:export
-  (common-lisp:list 'access-denied-fault 'make-access-denied-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input access-denied-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input access-denied-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input access-denied-fault))
-   common-lisp:nil))
+  (common-lisp:list 'access-denied-fault 'access-denied-fault-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (account-quota (:copier common-lisp:nil)
@@ -3294,154 +3283,46 @@
                           import-certificate-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (insufficient-resource-capacity-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-insufficient-resource-capacity-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition insufficient-resource-capacity-fault
+     (dms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       insufficient-resource-capacity-fault-message)))
  (common-lisp:export
   (common-lisp:list 'insufficient-resource-capacity-fault
-                    'make-insufficient-resource-capacity-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-resource-capacity-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-resource-capacity-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-resource-capacity-fault))
-   common-lisp:nil))
+                    'insufficient-resource-capacity-fault-message)))
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:deftype integer-optional () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-certificate-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-certificate-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition invalid-certificate-fault
+     (dms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-certificate-fault-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-certificate-fault
-                    'make-invalid-certificate-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-certificate-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-certificate-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-certificate-fault))
-   common-lisp:nil))
+                    'invalid-certificate-fault-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-resource-state-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-resource-state-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition invalid-resource-state-fault
+     (dms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-resource-state-fault-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-resource-state-fault
-                    'make-invalid-resource-state-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-resource-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-resource-state-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-resource-state-fault))
-   common-lisp:nil))
+                    'invalid-resource-state-fault-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-subnet (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-subnet-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
- (common-lisp:export (common-lisp:list 'invalid-subnet 'make-invalid-subnet))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-subnet))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-subnet))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-subnet))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-subnet
+     (dms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-subnet-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-subnet 'invalid-subnet-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (kmskey-not-accessible-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kmskey-not-accessible-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition kmskey-not-accessible-fault
+     (dms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       kmskey-not-accessible-fault-message)))
  (common-lisp:export
   (common-lisp:list 'kmskey-not-accessible-fault
-                    'make-kmskey-not-accessible-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmskey-not-accessible-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmskey-not-accessible-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmskey-not-accessible-fault))
-   common-lisp:nil))
+                    'kmskey-not-accessible-fault-message)))
 (common-lisp:progn
  (common-lisp:deftype key-list () '(trivial-types:proper-list string))
  (common-lisp:defun |make-key-list|
@@ -5005,38 +4886,13 @@
                           replication-subnet-group))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (replication-subnet-group-does-not-cover-enough-azs
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-replication-subnet-group-does-not-cover-enough-azs-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition replication-subnet-group-does-not-cover-enough-azs
+     (dms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       replication-subnet-group-does-not-cover-enough-azs-message)))
  (common-lisp:export
   (common-lisp:list 'replication-subnet-group-does-not-cover-enough-azs
-                    'make-replication-subnet-group-does-not-cover-enough-azs))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          replication-subnet-group-does-not-cover-enough-azs))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          replication-subnet-group-does-not-cover-enough-azs))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          replication-subnet-group-does-not-cover-enough-azs))
-   common-lisp:nil))
+                    'replication-subnet-group-does-not-cover-enough-azs-message)))
 (common-lisp:progn
  (common-lisp:deftype replication-subnet-groups ()
    '(trivial-types:proper-list replication-subnet-group))
@@ -5278,97 +5134,29 @@
                           replication-task-stats))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-already-exists-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-already-exists-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition resource-already-exists-fault
+     (dms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-already-exists-fault-message)))
  (common-lisp:export
   (common-lisp:list 'resource-already-exists-fault
-                    'make-resource-already-exists-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-fault))
-   common-lisp:nil))
+                    'resource-already-exists-fault-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition resource-not-found-fault
+     (dms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-not-found-fault-message)))
  (common-lisp:export
-  (common-lisp:list 'resource-not-found-fault 'make-resource-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-fault))
-   common-lisp:nil))
+  (common-lisp:list 'resource-not-found-fault
+                    'resource-not-found-fault-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-quota-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-quota-exceeded-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition resource-quota-exceeded-fault
+     (dms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-quota-exceeded-fault-message)))
  (common-lisp:export
   (common-lisp:list 'resource-quota-exceeded-fault
-                    'make-resource-quota-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-quota-exceeded-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-quota-exceeded-fault))
-   common-lisp:nil))
+                    'resource-quota-exceeded-fault-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (s3settings (:copier common-lisp:nil)
@@ -5448,66 +5236,20 @@
                         ((aws-sdk/generator/shape::input s3settings))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (snsinvalid-topic-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-snsinvalid-topic-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition snsinvalid-topic-fault
+     (dms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       snsinvalid-topic-fault-message)))
  (common-lisp:export
-  (common-lisp:list 'snsinvalid-topic-fault 'make-snsinvalid-topic-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          snsinvalid-topic-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          snsinvalid-topic-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          snsinvalid-topic-fault))
-   common-lisp:nil))
+  (common-lisp:list 'snsinvalid-topic-fault 'snsinvalid-topic-fault-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (snsno-authorization-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-snsno-authorization-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition snsno-authorization-fault
+     (dms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       snsno-authorization-fault-message)))
  (common-lisp:export
   (common-lisp:list 'snsno-authorization-fault
-                    'make-snsno-authorization-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          snsno-authorization-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          snsno-authorization-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          snsno-authorization-fault))
-   common-lisp:nil))
+                    'snsno-authorization-fault-message)))
 (common-lisp:progn
  (common-lisp:deftype schema-list () '(trivial-types:proper-list string))
  (common-lisp:defun |make-schema-list|
@@ -5674,36 +5416,13 @@
                           stop-replication-task-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (storage-quota-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-storage-quota-exceeded-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition storage-quota-exceeded-fault
+     (dms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       storage-quota-exceeded-fault-message)))
  (common-lisp:export
   (common-lisp:list 'storage-quota-exceeded-fault
-                    'make-storage-quota-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          storage-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          storage-quota-exceeded-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          storage-quota-exceeded-fault))
-   common-lisp:nil))
+                    'storage-quota-exceeded-fault-message)))
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -5747,35 +5466,12 @@
                         ((aws-sdk/generator/shape::input subnet))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (subnet-already-in-use (:copier common-lisp:nil)
-      (:conc-name "struct-shape-subnet-already-in-use-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition subnet-already-in-use
+     (dms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       subnet-already-in-use-message)))
  (common-lisp:export
-  (common-lisp:list 'subnet-already-in-use 'make-subnet-already-in-use))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-already-in-use))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-already-in-use))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-already-in-use))
-   common-lisp:nil))
+  (common-lisp:list 'subnet-already-in-use 'subnet-already-in-use-message)))
 (common-lisp:progn
  (common-lisp:deftype subnet-identifier-list ()
    '(trivial-types:proper-list string))
@@ -6111,36 +5807,13 @@
                           test-connection-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (upgrade-dependency-failure-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-upgrade-dependency-failure-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition upgrade-dependency-failure-fault
+     (dms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       upgrade-dependency-failure-fault-message)))
  (common-lisp:export
   (common-lisp:list 'upgrade-dependency-failure-fault
-                    'make-upgrade-dependency-failure-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          upgrade-dependency-failure-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          upgrade-dependency-failure-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          upgrade-dependency-failure-fault))
-   common-lisp:nil))
+                    'upgrade-dependency-failure-fault-message)))
 (common-lisp:progn
  (common-lisp:deftype vpc-security-group-id-list ()
    '(trivial-types:proper-list string))
@@ -6214,7 +5887,8 @@
                                                         "POST" "/"
                                                         "AddTagsToResource"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundFault" . resource-not-found-fault)))))
  (common-lisp:export 'add-tags-to-resource))
 (common-lisp:progn
  (common-lisp:defun create-endpoint
@@ -6240,7 +5914,13 @@
                                                         "POST" "/"
                                                         "CreateEndpoint"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
+        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
+        ("InvalidResourceStateFault" . invalid-resource-state-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("AccessDeniedFault" . access-denied-fault)))))
  (common-lisp:export 'create-endpoint))
 (common-lisp:progn
  (common-lisp:defun create-event-subscription
@@ -6262,7 +5942,12 @@
                                                         "POST" "/"
                                                         "CreateEventSubscription"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
+        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)))))
  (common-lisp:export 'create-event-subscription))
 (common-lisp:progn
  (common-lisp:defun create-replication-instance
@@ -6292,7 +5977,19 @@
                                                         "POST" "/"
                                                         "CreateReplicationInstance"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedFault" . access-denied-fault)
+        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
+        ("InsufficientResourceCapacityFault"
+         . insufficient-resource-capacity-fault)
+        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
+         . replication-subnet-group-does-not-cover-enough-azs)
+        ("InvalidResourceStateFault" . invalid-resource-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)))))
  (common-lisp:export 'create-replication-instance))
 (common-lisp:progn
  (common-lisp:defun create-replication-subnet-group
@@ -6314,7 +6011,14 @@
                                                         "POST" "/"
                                                         "CreateReplicationSubnetGroup"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedFault" . access-denied-fault)
+        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
+        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
+         . replication-subnet-group-does-not-cover-enough-azs)
+        ("InvalidSubnet" . invalid-subnet)))))
  (common-lisp:export 'create-replication-subnet-group))
 (common-lisp:progn
  (common-lisp:defun create-replication-task
@@ -6338,7 +6042,13 @@
                                                         "POST" "/"
                                                         "CreateReplicationTask"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedFault" . access-denied-fault)
+        ("InvalidResourceStateFault" . invalid-resource-state-fault)
+        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)))))
  (common-lisp:export 'create-replication-task))
 (common-lisp:progn
  (common-lisp:defun delete-certificate
@@ -6356,7 +6066,9 @@
                                                         "POST" "/"
                                                         "DeleteCertificate"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundFault" . resource-not-found-fault)
+        ("InvalidResourceStateFault" . invalid-resource-state-fault)))))
  (common-lisp:export 'delete-certificate))
 (common-lisp:progn
  (common-lisp:defun delete-endpoint
@@ -6374,7 +6086,9 @@
                                                         "POST" "/"
                                                         "DeleteEndpoint"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundFault" . resource-not-found-fault)
+        ("InvalidResourceStateFault" . invalid-resource-state-fault)))))
  (common-lisp:export 'delete-endpoint))
 (common-lisp:progn
  (common-lisp:defun delete-event-subscription
@@ -6393,7 +6107,9 @@
                                                         "POST" "/"
                                                         "DeleteEventSubscription"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundFault" . resource-not-found-fault)
+        ("InvalidResourceStateFault" . invalid-resource-state-fault)))))
  (common-lisp:export 'delete-event-subscription))
 (common-lisp:progn
  (common-lisp:defun delete-replication-instance
@@ -6412,7 +6128,9 @@
                                                         "POST" "/"
                                                         "DeleteReplicationInstance"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceStateFault" . invalid-resource-state-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)))))
  (common-lisp:export 'delete-replication-instance))
 (common-lisp:progn
  (common-lisp:defun delete-replication-subnet-group
@@ -6432,7 +6150,9 @@
                                                         "POST" "/"
                                                         "DeleteReplicationSubnetGroup"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceStateFault" . invalid-resource-state-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)))))
  (common-lisp:export 'delete-replication-subnet-group))
 (common-lisp:progn
  (common-lisp:defun delete-replication-task
@@ -6450,7 +6170,9 @@
                                                         "POST" "/"
                                                         "DeleteReplicationTask"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundFault" . resource-not-found-fault)
+        ("InvalidResourceStateFault" . invalid-resource-state-fault)))))
  (common-lisp:export 'delete-replication-task))
 (common-lisp:progn
  (common-lisp:defun describe-account-attributes ()
@@ -6459,7 +6181,7 @@
      (common-lisp:make-instance 'dms-request :method "POST" :path "/" :params
                                 `(("Action" ,@"DescribeAccountAttributes")
                                   ("Version" ,@"2016-01-01"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil 'common-lisp:nil))
  (common-lisp:export 'describe-account-attributes))
 (common-lisp:progn
  (common-lisp:defun describe-certificates
@@ -6477,7 +6199,8 @@
                                                         "POST" "/"
                                                         "DescribeCertificates"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundFault" . resource-not-found-fault)))))
  (common-lisp:export 'describe-certificates))
 (common-lisp:progn
  (common-lisp:defun describe-connections
@@ -6495,7 +6218,8 @@
                                                         "POST" "/"
                                                         "DescribeConnections"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundFault" . resource-not-found-fault)))))
  (common-lisp:export 'describe-connections))
 (common-lisp:progn
  (common-lisp:defun describe-endpoint-types
@@ -6513,7 +6237,7 @@
                                                         "POST" "/"
                                                         "DescribeEndpointTypes"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-endpoint-types))
 (common-lisp:progn
  (common-lisp:defun describe-endpoints
@@ -6531,7 +6255,8 @@
                                                         "POST" "/"
                                                         "DescribeEndpoints"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundFault" . resource-not-found-fault)))))
  (common-lisp:export 'describe-endpoints))
 (common-lisp:progn
  (common-lisp:defun describe-event-categories
@@ -6550,7 +6275,7 @@
                                                         "POST" "/"
                                                         "DescribeEventCategories"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-event-categories))
 (common-lisp:progn
  (common-lisp:defun describe-event-subscriptions
@@ -6571,7 +6296,8 @@
                                                         "POST" "/"
                                                         "DescribeEventSubscriptions"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundFault" . resource-not-found-fault)))))
  (common-lisp:export 'describe-event-subscriptions))
 (common-lisp:progn
  (common-lisp:defun describe-events
@@ -6593,7 +6319,7 @@
                                                         "POST" "/"
                                                         "DescribeEvents"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
  (common-lisp:defun describe-orderable-replication-instances
@@ -6612,7 +6338,7 @@
                                                         "POST" "/"
                                                         "DescribeOrderableReplicationInstances"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'describe-orderable-replication-instances))
 (common-lisp:progn
  (common-lisp:defun describe-refresh-schemas-status
@@ -6631,7 +6357,9 @@
                                                         "POST" "/"
                                                         "DescribeRefreshSchemasStatus"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceStateFault" . invalid-resource-state-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)))))
  (common-lisp:export 'describe-refresh-schemas-status))
 (common-lisp:progn
  (common-lisp:defun describe-replication-instances
@@ -6650,7 +6378,8 @@
                                                         "POST" "/"
                                                         "DescribeReplicationInstances"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundFault" . resource-not-found-fault)))))
  (common-lisp:export 'describe-replication-instances))
 (common-lisp:progn
  (common-lisp:defun describe-replication-subnet-groups
@@ -6669,7 +6398,8 @@
                                                         "POST" "/"
                                                         "DescribeReplicationSubnetGroups"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundFault" . resource-not-found-fault)))))
  (common-lisp:export 'describe-replication-subnet-groups))
 (common-lisp:progn
  (common-lisp:defun describe-replication-tasks
@@ -6688,7 +6418,8 @@
                                                         "POST" "/"
                                                         "DescribeReplicationTasks"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundFault" . resource-not-found-fault)))))
  (common-lisp:export 'describe-replication-tasks))
 (common-lisp:progn
  (common-lisp:defun describe-schemas
@@ -6707,7 +6438,9 @@
                                                         "POST" "/"
                                                         "DescribeSchemas"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceStateFault" . invalid-resource-state-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)))))
  (common-lisp:export 'describe-schemas))
 (common-lisp:progn
  (common-lisp:defun describe-table-statistics
@@ -6727,7 +6460,9 @@
                                                         "POST" "/"
                                                         "DescribeTableStatistics"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundFault" . resource-not-found-fault)
+        ("InvalidResourceStateFault" . invalid-resource-state-fault)))))
  (common-lisp:export 'describe-table-statistics))
 (common-lisp:progn
  (common-lisp:defun import-certificate
@@ -6748,7 +6483,9 @@
                                                         "POST" "/"
                                                         "ImportCertificate"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceAlreadyExistsFault" . resource-already-exists-fault)
+        ("InvalidCertificateFault" . invalid-certificate-fault)))))
  (common-lisp:export 'import-certificate))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-resource
@@ -6766,7 +6503,8 @@
                                                         "POST" "/"
                                                         "ListTagsForResource"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundFault" . resource-not-found-fault)))))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
  (common-lisp:defun modify-endpoint
@@ -6792,7 +6530,12 @@
                                                         "POST" "/"
                                                         "ModifyEndpoint"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceStateFault" . invalid-resource-state-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("AccessDeniedFault" . access-denied-fault)))))
  (common-lisp:export 'modify-endpoint))
 (common-lisp:progn
  (common-lisp:defun modify-event-subscription
@@ -6814,7 +6557,11 @@
                                                         "POST" "/"
                                                         "ModifyEventSubscription"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)))))
  (common-lisp:export 'modify-event-subscription))
 (common-lisp:progn
  (common-lisp:defun modify-replication-instance
@@ -6843,7 +6590,15 @@
                                                         "POST" "/"
                                                         "ModifyReplicationInstance"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceStateFault" . invalid-resource-state-fault)
+        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("InsufficientResourceCapacityFault"
+         . insufficient-resource-capacity-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("UpgradeDependencyFailureFault"
+         . upgrade-dependency-failure-fault)))))
  (common-lisp:export 'modify-replication-instance))
 (common-lisp:progn
  (common-lisp:defun modify-replication-subnet-group
@@ -6865,7 +6620,14 @@
                                                         "POST" "/"
                                                         "ModifyReplicationSubnetGroup"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AccessDeniedFault" . access-denied-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
+         . replication-subnet-group-does-not-cover-enough-azs)
+        ("InvalidSubnet" . invalid-subnet)))))
  (common-lisp:export 'modify-replication-subnet-group))
 (common-lisp:progn
  (common-lisp:defun modify-replication-task
@@ -6887,7 +6649,11 @@
                                                         "POST" "/"
                                                         "ModifyReplicationTask"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceStateFault" . invalid-resource-state-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)))))
  (common-lisp:export 'modify-replication-task))
 (common-lisp:progn
  (common-lisp:defun refresh-schemas
@@ -6906,7 +6672,11 @@
                                                         "POST" "/"
                                                         "RefreshSchemas"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceStateFault" . invalid-resource-state-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)))))
  (common-lisp:export 'refresh-schemas))
 (common-lisp:progn
  (common-lisp:defun reload-tables
@@ -6925,7 +6695,9 @@
                                                         "POST" "/"
                                                         "ReloadTables"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundFault" . resource-not-found-fault)
+        ("InvalidResourceStateFault" . invalid-resource-state-fault)))))
  (common-lisp:export 'reload-tables))
 (common-lisp:progn
  (common-lisp:defun remove-tags-from-resource
@@ -6944,7 +6716,8 @@
                                                         "POST" "/"
                                                         "RemoveTagsFromResource"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundFault" . resource-not-found-fault)))))
  (common-lisp:export 'remove-tags-from-resource))
 (common-lisp:progn
  (common-lisp:defun start-replication-task
@@ -6965,7 +6738,9 @@
                                                         "POST" "/"
                                                         "StartReplicationTask"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundFault" . resource-not-found-fault)
+        ("InvalidResourceStateFault" . invalid-resource-state-fault)))))
  (common-lisp:export 'start-replication-task))
 (common-lisp:progn
  (common-lisp:defun stop-replication-task
@@ -6983,7 +6758,9 @@
                                                         "POST" "/"
                                                         "StopReplicationTask"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundFault" . resource-not-found-fault)
+        ("InvalidResourceStateFault" . invalid-resource-state-fault)))))
  (common-lisp:export 'stop-replication-task))
 (common-lisp:progn
  (common-lisp:defun test-connection
@@ -7002,5 +6779,9 @@
                                                         "POST" "/"
                                                         "TestConnection"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundFault" . resource-not-found-fault)
+        ("InvalidResourceStateFault" . invalid-resource-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)))))
  (common-lisp:export 'test-connection))

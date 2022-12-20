@@ -6,36 +6,25 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/iot-data/api)
 (common-lisp:progn
  (common-lisp:defclass iot-data-request (aws-sdk/request:request)
                        common-lisp:nil (:default-initargs :service "iot-data"))
  (common-lisp:export 'iot-data-request))
 (common-lisp:progn
- (common-lisp:defstruct
-     (conflict-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-conflict-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition iot-data-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'iot-data-error))
+(common-lisp:progn
+ (common-lisp:define-condition conflict-exception
+     (iot-data-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       conflict-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'conflict-exception 'make-conflict-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input conflict-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input conflict-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input conflict-exception))
-   common-lisp:nil))
+  (common-lisp:list 'conflict-exception 'conflict-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-thing-shadow-request (:copier common-lisp:nil)
@@ -147,100 +136,31 @@
                           get-thing-shadow-response))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'payload)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-failure-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-failure-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition internal-failure-exception
+     (iot-data-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-failure-exception-message)))
  (common-lisp:export
   (common-lisp:list 'internal-failure-exception
-                    'make-internal-failure-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-failure-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-failure-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-failure-exception))
-   common-lisp:nil))
+                    'internal-failure-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-request-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-request-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition invalid-request-exception
+     (iot-data-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-request-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-request-exception
-                    'make-invalid-request-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   common-lisp:nil))
+                    'invalid-request-exception-message)))
 (common-lisp:deftype json-document ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (method-not-allowed-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-method-not-allowed-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition method-not-allowed-exception
+     (iot-data-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       method-not-allowed-exception-message)))
  (common-lisp:export
   (common-lisp:list 'method-not-allowed-exception
-                    'make-method-not-allowed-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          method-not-allowed-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          method-not-allowed-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          method-not-allowed-exception))
-   common-lisp:nil))
+                    'method-not-allowed-exception-message)))
 (common-lisp:deftype payload ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
@@ -270,185 +190,53 @@
    (common-lisp:slot-value aws-sdk/generator/shape::input 'payload)))
 (common-lisp:deftype qos () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (request-entity-too-large-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-request-entity-too-large-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition request-entity-too-large-exception
+     (iot-data-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       request-entity-too-large-exception-message)))
  (common-lisp:export
   (common-lisp:list 'request-entity-too-large-exception
-                    'make-request-entity-too-large-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          request-entity-too-large-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          request-entity-too-large-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          request-entity-too-large-exception))
-   common-lisp:nil))
+                    'request-entity-too-large-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition resource-not-found-exception
+     (iot-data-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+                    'resource-not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-unavailable-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-unavailable-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition service-unavailable-exception
+     (iot-data-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       service-unavailable-exception-message)))
  (common-lisp:export
   (common-lisp:list 'service-unavailable-exception
-                    'make-service-unavailable-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   common-lisp:nil))
+                    'service-unavailable-exception-message)))
 (common-lisp:deftype thing-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (throttling-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-throttling-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition throttling-exception
+     (iot-data-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       throttling-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'throttling-exception 'make-throttling-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input throttling-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input throttling-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input throttling-exception))
-   common-lisp:nil))
+  (common-lisp:list 'throttling-exception 'throttling-exception-message)))
 (common-lisp:deftype topic () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (unauthorized-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unauthorized-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition unauthorized-exception
+     (iot-data-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unauthorized-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'unauthorized-exception 'make-unauthorized-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-exception))
-   common-lisp:nil))
+  (common-lisp:list 'unauthorized-exception 'unauthorized-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unsupported-document-encoding-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unsupported-document-encoding-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition unsupported-document-encoding-exception
+     (iot-data-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unsupported-document-encoding-exception-message)))
  (common-lisp:export
   (common-lisp:list 'unsupported-document-encoding-exception
-                    'make-unsupported-document-encoding-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-document-encoding-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-document-encoding-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-document-encoding-exception))
-   common-lisp:nil))
+                    'unsupported-document-encoding-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-thing-shadow-request (:copier common-lisp:nil)
@@ -540,7 +328,16 @@
                                                              'thing-name))))
                                                         "DeleteThingShadow"
                                                         "2015-05-28"))
-      "blob" common-lisp:nil)))
+      "blob" common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("UnsupportedDocumentEncodingException"
+         . unsupported-document-encoding-exception)))))
  (common-lisp:export 'delete-thing-shadow))
 (common-lisp:progn
  (common-lisp:defun get-thing-shadow
@@ -568,7 +365,16 @@
                                                              'thing-name))))
                                                         "GetThingShadow"
                                                         "2015-05-28"))
-      "blob" common-lisp:nil)))
+      "blob" common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("UnsupportedDocumentEncodingException"
+         . unsupported-document-encoding-exception)))))
  (common-lisp:export 'get-thing-shadow))
 (common-lisp:progn
  (common-lisp:defun publish
@@ -596,7 +402,11 @@
                                                              'topic))))
                                                         "Publish"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalFailureException" . internal-failure-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("MethodNotAllowedException" . method-not-allowed-exception)))))
  (common-lisp:export 'publish))
 (common-lisp:progn
  (common-lisp:defun update-thing-shadow
@@ -624,5 +434,15 @@
                                                              'thing-name))))
                                                         "UpdateThingShadow"
                                                         "2015-05-28"))
-      "blob" common-lisp:nil)))
+      "blob" common-lisp:nil
+      '(("ConflictException" . conflict-exception)
+        ("RequestEntityTooLargeException" . request-entity-too-large-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("UnsupportedDocumentEncodingException"
+         . unsupported-document-encoding-exception)))))
  (common-lisp:export 'update-thing-shadow))

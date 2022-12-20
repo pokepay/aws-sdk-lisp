@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/discovery/api)
 (common-lisp:progn
  (common-lisp:defclass discovery-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "discovery"))
  (common-lisp:export 'discovery-request))
+(common-lisp:progn
+ (common-lisp:define-condition discovery-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'discovery-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (agent-configuration-status (:copier common-lisp:nil)
@@ -306,35 +312,13 @@
                           associate-configuration-items-to-application-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (authorization-error-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-authorization-error-exception-"))
-   (message common-lisp:nil :type (common-lisp:or message common-lisp:null)))
+ (common-lisp:define-condition authorization-error-exception
+     (discovery-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       authorization-error-exception-message)))
  (common-lisp:export
   (common-lisp:list 'authorization-error-exception
-                    'make-authorization-error-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          authorization-error-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          authorization-error-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          authorization-error-exception))
-   common-lisp:nil))
+                    'authorization-error-exception-message)))
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:deftype boxed-integer () 'common-lisp:integer)
 (common-lisp:deftype condition () 'common-lisp:string)
@@ -1685,65 +1669,21 @@
    common-lisp:nil))
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-exception-"))
-   (message common-lisp:nil :type (common-lisp:or message common-lisp:null)))
+ (common-lisp:define-condition invalid-parameter-exception
+     (discovery-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-parameter-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-exception
-                    'make-invalid-parameter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   common-lisp:nil))
+                    'invalid-parameter-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-value-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-value-exception-"))
-   (message common-lisp:nil :type (common-lisp:or message common-lisp:null)))
+ (common-lisp:define-condition invalid-parameter-value-exception
+     (discovery-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-parameter-value-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-value-exception
-                    'make-invalid-parameter-value-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-value-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-value-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-value-exception))
-   common-lisp:nil))
+                    'invalid-parameter-value-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-configurations-request (:copier common-lisp:nil)
@@ -2049,35 +1989,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (operation-not-permitted-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-operation-not-permitted-exception-"))
-   (message common-lisp:nil :type (common-lisp:or message common-lisp:null)))
+ (common-lisp:define-condition operation-not-permitted-exception
+     (discovery-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       operation-not-permitted-exception-message)))
  (common-lisp:export
   (common-lisp:list 'operation-not-permitted-exception
-                    'make-operation-not-permitted-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-not-permitted-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-not-permitted-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-not-permitted-exception))
-   common-lisp:nil))
+                    'operation-not-permitted-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (order-by-element (:copier common-lisp:nil)
@@ -2120,65 +2038,21 @@
                            (trivial-types:proper-list order-by-element))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-"))
-   (message common-lisp:nil :type (common-lisp:or message common-lisp:null)))
+ (common-lisp:define-condition resource-not-found-exception
+     (discovery-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+                    'resource-not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (server-internal-error-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-server-internal-error-exception-"))
-   (message common-lisp:nil :type (common-lisp:or message common-lisp:null)))
+ (common-lisp:define-condition server-internal-error-exception
+     (discovery-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       server-internal-error-exception-message)))
  (common-lisp:export
   (common-lisp:list 'server-internal-error-exception
-                    'make-server-internal-error-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          server-internal-error-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          server-internal-error-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          server-internal-error-exception))
-   common-lisp:nil))
+                    'server-internal-error-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (start-data-collection-by-agent-ids-request (:copier common-lisp:nil)
@@ -2565,7 +2439,11 @@
                                                         "POST" "/"
                                                         "AssociateConfigurationItemsToApplication"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("ServerInternalErrorException" . server-internal-error-exception)))))
  (common-lisp:export 'associate-configuration-items-to-application))
 (common-lisp:progn
  (common-lisp:defun create-application
@@ -2583,7 +2461,11 @@
                                                         "POST" "/"
                                                         "CreateApplication"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("ServerInternalErrorException" . server-internal-error-exception)))))
  (common-lisp:export 'create-application))
 (common-lisp:progn
  (common-lisp:defun create-tags
@@ -2600,7 +2482,12 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CreateTags"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("ServerInternalErrorException" . server-internal-error-exception)))))
  (common-lisp:export 'create-tags))
 (common-lisp:progn
  (common-lisp:defun delete-applications
@@ -2618,7 +2505,11 @@
                                                         "POST" "/"
                                                         "DeleteApplications"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("ServerInternalErrorException" . server-internal-error-exception)))))
  (common-lisp:export 'delete-applications))
 (common-lisp:progn
  (common-lisp:defun delete-tags
@@ -2635,7 +2526,12 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteTags"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("ServerInternalErrorException" . server-internal-error-exception)))))
  (common-lisp:export 'delete-tags))
 (common-lisp:progn
  (common-lisp:defun describe-agents
@@ -2654,7 +2550,11 @@
                                                         "POST" "/"
                                                         "DescribeAgents"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("ServerInternalErrorException" . server-internal-error-exception)))))
  (common-lisp:export 'describe-agents))
 (common-lisp:progn
  (common-lisp:defun describe-configurations
@@ -2672,7 +2572,11 @@
                                                         "POST" "/"
                                                         "DescribeConfigurations"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("ServerInternalErrorException" . server-internal-error-exception)))))
  (common-lisp:export 'describe-configurations))
 (common-lisp:progn
  (common-lisp:defun describe-export-configurations
@@ -2692,7 +2596,12 @@
                                                         "POST" "/"
                                                         "DescribeExportConfigurations"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("ServerInternalErrorException" . server-internal-error-exception)))))
  (common-lisp:export 'describe-export-configurations))
 (common-lisp:progn
  (common-lisp:defun describe-export-tasks
@@ -2712,7 +2621,11 @@
                                                         "POST" "/"
                                                         "DescribeExportTasks"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("ServerInternalErrorException" . server-internal-error-exception)))))
  (common-lisp:export 'describe-export-tasks))
 (common-lisp:progn
  (common-lisp:defun describe-tags
@@ -2730,7 +2643,12 @@
                                                         "POST" "/"
                                                         "DescribeTags"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("ServerInternalErrorException" . server-internal-error-exception)))))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
  (common-lisp:defun disassociate-configuration-items-from-application
@@ -2751,7 +2669,11 @@
                                                         "POST" "/"
                                                         "DisassociateConfigurationItemsFromApplication"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("ServerInternalErrorException" . server-internal-error-exception)))))
  (common-lisp:export 'disassociate-configuration-items-from-application))
 (common-lisp:progn
  (common-lisp:defun export-configurations ()
@@ -2761,7 +2683,12 @@
                                 :params
                                 `(("Action" ,@"ExportConfigurations")
                                   ("Version" ,@"2015-11-01"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("AuthorizationErrorException" . authorization-error-exception)
+      ("InvalidParameterException" . invalid-parameter-exception)
+      ("InvalidParameterValueException" . invalid-parameter-value-exception)
+      ("ServerInternalErrorException" . server-internal-error-exception)
+      ("OperationNotPermittedException" . operation-not-permitted-exception))))
  (common-lisp:export 'export-configurations))
 (common-lisp:progn
  (common-lisp:defun get-discovery-summary ()
@@ -2771,7 +2698,11 @@
                                 :params
                                 `(("Action" ,@"GetDiscoverySummary")
                                   ("Version" ,@"2015-11-01"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("AuthorizationErrorException" . authorization-error-exception)
+      ("InvalidParameterException" . invalid-parameter-exception)
+      ("InvalidParameterValueException" . invalid-parameter-value-exception)
+      ("ServerInternalErrorException" . server-internal-error-exception))))
  (common-lisp:export 'get-discovery-summary))
 (common-lisp:progn
  (common-lisp:defun list-configurations
@@ -2792,7 +2723,12 @@
                                                         "POST" "/"
                                                         "ListConfigurations"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("ServerInternalErrorException" . server-internal-error-exception)))))
  (common-lisp:export 'list-configurations))
 (common-lisp:progn
  (common-lisp:defun list-server-neighbors
@@ -2813,7 +2749,11 @@
                                                         "POST" "/"
                                                         "ListServerNeighbors"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("ServerInternalErrorException" . server-internal-error-exception)))))
  (common-lisp:export 'list-server-neighbors))
 (common-lisp:progn
  (common-lisp:defun start-data-collection-by-agent-ids
@@ -2832,7 +2772,11 @@
                                                         "POST" "/"
                                                         "StartDataCollectionByAgentIds"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("ServerInternalErrorException" . server-internal-error-exception)))))
  (common-lisp:export 'start-data-collection-by-agent-ids))
 (common-lisp:progn
  (common-lisp:defun start-export-task
@@ -2852,7 +2796,13 @@
                                                         "POST" "/"
                                                         "StartExportTask"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("ServerInternalErrorException" . server-internal-error-exception)
+        ("OperationNotPermittedException"
+         . operation-not-permitted-exception)))))
  (common-lisp:export 'start-export-task))
 (common-lisp:progn
  (common-lisp:defun stop-data-collection-by-agent-ids
@@ -2871,7 +2821,11 @@
                                                         "POST" "/"
                                                         "StopDataCollectionByAgentIds"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("ServerInternalErrorException" . server-internal-error-exception)))))
  (common-lisp:export 'stop-data-collection-by-agent-ids))
 (common-lisp:progn
  (common-lisp:defun update-application
@@ -2890,5 +2844,9 @@
                                                         "POST" "/"
                                                         "UpdateApplication"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("ServerInternalErrorException" . server-internal-error-exception)))))
  (common-lisp:export 'update-application))

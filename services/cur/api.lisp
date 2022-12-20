@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/cur/api)
 (common-lisp:progn
  (common-lisp:defclass cur-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "cur"))
  (common-lisp:export 'cur-request))
+(common-lisp:progn
+ (common-lisp:define-condition cur-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'cur-error))
 (common-lisp:deftype awsregion () 'common-lisp:string)
 (common-lisp:deftype additional-artifact () 'common-lisp:string)
 (common-lisp:progn
@@ -167,68 +173,23 @@
                           describe-report-definitions-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (duplicate-report-name-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-duplicate-report-name-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition duplicate-report-name-exception
+     (cur-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       duplicate-report-name-exception-message)))
  (common-lisp:export
   (common-lisp:list 'duplicate-report-name-exception
-                    'make-duplicate-report-name-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-report-name-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-report-name-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-report-name-exception))
-   common-lisp:nil))
+                    'duplicate-report-name-exception-message)))
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:deftype generic-string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-error-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-error-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition internal-error-exception
+     (cur-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-error-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'internal-error-exception 'make-internal-error-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-error-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-error-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-error-exception))
-   common-lisp:nil))
+  (common-lisp:list 'internal-error-exception
+                    'internal-error-exception-message)))
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -392,36 +353,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype report-format () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (report-limit-reached-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-report-limit-reached-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition report-limit-reached-exception
+     (cur-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       report-limit-reached-exception-message)))
  (common-lisp:export
   (common-lisp:list 'report-limit-reached-exception
-                    'make-report-limit-reached-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          report-limit-reached-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          report-limit-reached-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          report-limit-reached-exception))
-   common-lisp:nil))
+                    'report-limit-reached-exception-message)))
 (common-lisp:deftype report-name () 'common-lisp:string)
 (common-lisp:deftype s3bucket () 'common-lisp:string)
 (common-lisp:deftype s3prefix () 'common-lisp:string)
@@ -436,29 +374,12 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype time-unit () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition validation-exception
+     (cur-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       validation-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'validation-exception 'make-validation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input validation-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input validation-exception))
-   common-lisp:nil))
+  (common-lisp:list 'validation-exception 'validation-exception-message)))
 (common-lisp:progn
  (common-lisp:defun delete-report-definition
                     (
@@ -475,7 +396,9 @@
                                                         "POST" "/"
                                                         "DeleteReportDefinition"
                                                         "2017-01-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalErrorException" . internal-error-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'delete-report-definition))
 (common-lisp:progn
  (common-lisp:defun describe-report-definitions
@@ -494,7 +417,8 @@
                                                         "POST" "/"
                                                         "DescribeReportDefinitions"
                                                         "2017-01-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalErrorException" . internal-error-exception)))))
  (common-lisp:export 'describe-report-definitions))
 (common-lisp:progn
  (common-lisp:defun put-report-definition
@@ -512,5 +436,9 @@
                                                         "POST" "/"
                                                         "PutReportDefinition"
                                                         "2017-01-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DuplicateReportNameException" . duplicate-report-name-exception)
+        ("ReportLimitReachedException" . report-limit-reached-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'put-report-definition))

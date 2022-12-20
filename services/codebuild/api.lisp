@@ -6,7 +6,8 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/codebuild/api)
 (common-lisp:progn
  (common-lisp:defclass codebuild-request (aws-sdk/request:request)
@@ -14,27 +15,15 @@
                        (:default-initargs :service "codebuild"))
  (common-lisp:export 'codebuild-request))
 (common-lisp:progn
- (common-lisp:defstruct
-     (account-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-account-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'account-limit-exceeded-exception
-                    'make-account-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          account-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          account-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          account-limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition codebuild-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'codebuild-error))
+(common-lisp:progn
+ (common-lisp:define-condition account-limit-exceeded-exception
+     (codebuild-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'account-limit-exceeded-exception)))
 (common-lisp:deftype artifact-namespace () 'common-lisp:string)
 (common-lisp:deftype artifact-packaging () 'common-lisp:string)
 (common-lisp:deftype artifacts-type () 'common-lisp:string)
@@ -793,26 +782,10 @@
                            (trivial-types:proper-list environment-variable))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-input-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-input-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-input-exception 'make-invalid-input-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-input-exception
+     (codebuild-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-input-exception)))
 (common-lisp:deftype key-input () 'common-lisp:string)
 (common-lisp:deftype language-type () 'common-lisp:string)
 (common-lisp:progn
@@ -1479,49 +1452,15 @@
                            (trivial-types:proper-list project))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-already-exists-exception-")))
- (common-lisp:export
-  (common-lisp:list 'resource-already-exists-exception
-                    'make-resource-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition resource-already-exists-exception
+     (codebuild-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-already-exists-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition resource-not-found-exception
+     (codebuild-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-not-found-exception)))
 (common-lisp:deftype sort-order-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -1881,7 +1820,8 @@
                                                         "POST" "/"
                                                         "BatchGetBuilds"
                                                         "2016-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)))))
  (common-lisp:export 'batch-get-builds))
 (common-lisp:progn
  (common-lisp:defun batch-get-projects
@@ -1899,7 +1839,8 @@
                                                         "POST" "/"
                                                         "BatchGetProjects"
                                                         "2016-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)))))
  (common-lisp:export 'batch-get-projects))
 (common-lisp:progn
  (common-lisp:defun create-project
@@ -1921,7 +1862,11 @@
                                                         "POST" "/"
                                                         "CreateProject"
                                                         "2016-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("AccountLimitExceededException"
+         . account-limit-exceeded-exception)))))
  (common-lisp:export 'create-project))
 (common-lisp:progn
  (common-lisp:defun delete-project
@@ -1939,7 +1884,8 @@
                                                         "POST" "/"
                                                         "DeleteProject"
                                                         "2016-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)))))
  (common-lisp:export 'delete-project))
 (common-lisp:progn
  (common-lisp:defun list-builds
@@ -1956,7 +1902,8 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListBuilds"
                                                         "2016-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)))))
  (common-lisp:export 'list-builds))
 (common-lisp:progn
  (common-lisp:defun list-builds-for-project
@@ -1975,7 +1922,9 @@
                                                         "POST" "/"
                                                         "ListBuildsForProject"
                                                         "2016-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'list-builds-for-project))
 (common-lisp:progn
  (common-lisp:defun list-curated-environment-images ()
@@ -1985,7 +1934,7 @@
                                 :params
                                 `(("Action" ,@"ListCuratedEnvironmentImages")
                                   ("Version" ,@"2016-10-06"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil 'common-lisp:nil))
  (common-lisp:export 'list-curated-environment-images))
 (common-lisp:progn
  (common-lisp:defun list-projects
@@ -2003,7 +1952,8 @@
                                                         "POST" "/"
                                                         "ListProjects"
                                                         "2016-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)))))
  (common-lisp:export 'list-projects))
 (common-lisp:progn
  (common-lisp:defun start-build
@@ -2025,7 +1975,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "StartBuild"
                                                         "2016-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("AccountLimitExceededException"
+         . account-limit-exceeded-exception)))))
  (common-lisp:export 'start-build))
 (common-lisp:progn
  (common-lisp:defun stop-build
@@ -2042,7 +1996,9 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "StopBuild"
                                                         "2016-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'stop-build))
 (common-lisp:progn
  (common-lisp:defun update-project
@@ -2064,5 +2020,7 @@
                                                         "POST" "/"
                                                         "UpdateProject"
                                                         "2016-10-06"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'update-project))

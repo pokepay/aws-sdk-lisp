@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/iot/api)
 (common-lisp:progn
  (common-lisp:defclass iot-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "iot"))
  (common-lisp:export 'iot-request))
+(common-lisp:progn
+ (common-lisp:define-condition iot-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'iot-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (accept-certificate-transfer-request (:copier common-lisp:nil)
@@ -527,36 +533,13 @@
    common-lisp:nil))
 (common-lisp:deftype certificate-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (certificate-conflict-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-certificate-conflict-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition certificate-conflict-exception
+     (iot-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       certificate-conflict-exception-message)))
  (common-lisp:export
   (common-lisp:list 'certificate-conflict-exception
-                    'make-certificate-conflict-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          certificate-conflict-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          certificate-conflict-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          certificate-conflict-exception))
-   common-lisp:nil))
+                    'certificate-conflict-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (certificate-description (:copier common-lisp:nil)
@@ -672,68 +655,22 @@
 (common-lisp:deftype certificate-pem () 'common-lisp:string)
 (common-lisp:deftype certificate-signing-request () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (certificate-state-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-certificate-state-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition certificate-state-exception
+     (iot-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       certificate-state-exception-message)))
  (common-lisp:export
   (common-lisp:list 'certificate-state-exception
-                    'make-certificate-state-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          certificate-state-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          certificate-state-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          certificate-state-exception))
-   common-lisp:nil))
+                    'certificate-state-exception-message)))
 (common-lisp:deftype certificate-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (certificate-validation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-certificate-validation-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition certificate-validation-exception
+     (iot-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       certificate-validation-exception-message)))
  (common-lisp:export
   (common-lisp:list 'certificate-validation-exception
-                    'make-certificate-validation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          certificate-validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          certificate-validation-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          certificate-validation-exception))
-   common-lisp:nil))
+                    'certificate-validation-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype certificates () '(trivial-types:proper-list certificate))
  (common-lisp:defun |make-certificates|
@@ -1476,36 +1413,13 @@
                           delete-certificate-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-conflict-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-conflict-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition delete-conflict-exception
+     (iot-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       delete-conflict-exception-message)))
  (common-lisp:export
   (common-lisp:list 'delete-conflict-exception
-                    'make-delete-conflict-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          delete-conflict-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          delete-conflict-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          delete-conflict-exception))
-   common-lisp:nil))
+                    'delete-conflict-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-policy-request (:copier common-lisp:nil)
@@ -2811,91 +2725,28 @@
 (common-lisp:deftype hash-key-field () 'common-lisp:string)
 (common-lisp:deftype hash-key-value () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition internal-exception
+     (iot-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'internal-exception 'make-internal-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input internal-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input internal-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input internal-exception))
-   common-lisp:nil))
+  (common-lisp:list 'internal-exception 'internal-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-failure-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-failure-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition internal-failure-exception
+     (iot-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-failure-exception-message)))
  (common-lisp:export
   (common-lisp:list 'internal-failure-exception
-                    'make-internal-failure-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-failure-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-failure-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-failure-exception))
-   common-lisp:nil))
+                    'internal-failure-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-request-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-request-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition invalid-request-exception
+     (iot-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-request-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-request-exception
-                    'make-invalid-request-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   common-lisp:nil))
+                    'invalid-request-exception-message)))
 (common-lisp:deftype is-default-version () 'common-lisp:boolean)
 (common-lisp:deftype is-disabled () 'common-lisp:boolean)
 (common-lisp:deftype key () 'common-lisp:string)
@@ -2995,35 +2846,13 @@
                         ((aws-sdk/generator/shape::input lambda-action))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (iot-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception
+                    'limit-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-cacertificates-request (:copier common-lisp:nil)
@@ -3921,36 +3750,13 @@
                           logging-options-payload))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (malformed-policy-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-malformed-policy-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition malformed-policy-exception
+     (iot-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       malformed-policy-exception-message)))
  (common-lisp:export
   (common-lisp:list 'malformed-policy-exception
-                    'make-malformed-policy-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          malformed-policy-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          malformed-policy-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          malformed-policy-exception))
-   common-lisp:nil))
+                    'malformed-policy-exception-message)))
 (common-lisp:deftype marker () 'common-lisp:string)
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:deftype message () 'common-lisp:string)
@@ -4349,36 +4155,13 @@
    common-lisp:nil))
 (common-lisp:deftype registration-code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (registration-code-validation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-registration-code-validation-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition registration-code-validation-exception
+     (iot-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       registration-code-validation-exception-message)))
  (common-lisp:export
   (common-lisp:list 'registration-code-validation-exception
-                    'make-registration-code-validation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          registration-code-validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          registration-code-validation-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          registration-code-validation-exception))
-   common-lisp:nil))
+                    'registration-code-validation-exception-message)))
 (common-lisp:deftype registry-max-results () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -4481,85 +4264,27 @@
                         ((aws-sdk/generator/shape::input republish-action))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-already-exists-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null))
-   (resource-id common-lisp:nil :type
-    (common-lisp:or |resourceId| common-lisp:null))
-   (resource-arn common-lisp:nil :type
-    (common-lisp:or |resourceArn| common-lisp:null)))
+ (common-lisp:define-condition resource-already-exists-exception
+     (iot-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-already-exists-exception-message)
+      (resource-id :initarg :resource-id :initform common-lisp:nil :reader
+       resource-already-exists-exception-resource-id)
+      (resource-arn :initarg :resource-arn :initform common-lisp:nil :reader
+       resource-already-exists-exception-resource-arn)))
  (common-lisp:export
   (common-lisp:list 'resource-already-exists-exception
-                    'make-resource-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'resource-id))
-      (common-lisp:list
-       (common-lisp:cons "resourceId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'resource-arn))
-      (common-lisp:list
-       (common-lisp:cons "resourceArn"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-exists-exception))
-   common-lisp:nil))
+                    'resource-already-exists-exception-message
+                    'resource-already-exists-exception-resource-id
+                    'resource-already-exists-exception-resource-arn)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition resource-not-found-exception
+     (iot-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+                    'resource-not-found-exception-message)))
 (common-lisp:deftype rule-arn () 'common-lisp:string)
 (common-lisp:deftype rule-name () 'common-lisp:string)
 (common-lisp:progn
@@ -4656,36 +4381,13 @@
                            (trivial-types:proper-list attribute-name))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-unavailable-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-unavailable-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition service-unavailable-exception
+     (iot-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       service-unavailable-exception-message)))
  (common-lisp:export
   (common-lisp:list 'service-unavailable-exception
-                    'make-service-unavailable-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   common-lisp:nil))
+                    'service-unavailable-exception-message)))
 (common-lisp:deftype set-as-active () 'common-lisp:boolean)
 (common-lisp:deftype set-as-active-flag () 'common-lisp:boolean)
 (common-lisp:deftype set-as-default () 'common-lisp:boolean)
@@ -4791,29 +4493,12 @@
                         ((aws-sdk/generator/shape::input sns-action))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (sql-parse-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-sql-parse-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition sql-parse-exception
+     (iot-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       sql-parse-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'sql-parse-exception 'make-sql-parse-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input sql-parse-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input sql-parse-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input sql-parse-exception))
-   common-lisp:nil))
+  (common-lisp:list 'sql-parse-exception 'sql-parse-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (sqs-action (:copier common-lisp:nil)
@@ -5069,29 +4754,12 @@
                           thing-type-properties))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (throttling-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-throttling-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition throttling-exception
+     (iot-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       throttling-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'throttling-exception 'make-throttling-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input throttling-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input throttling-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input throttling-exception))
-   common-lisp:nil))
+  (common-lisp:list 'throttling-exception 'throttling-exception-message)))
 (common-lisp:deftype topic () 'common-lisp:string)
 (common-lisp:deftype topic-pattern () 'common-lisp:string)
 (common-lisp:progn
@@ -5298,36 +4966,13 @@
                         ((aws-sdk/generator/shape::input topic-rule-payload))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (transfer-already-completed-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-transfer-already-completed-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition transfer-already-completed-exception
+     (iot-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       transfer-already-completed-exception-message)))
  (common-lisp:export
   (common-lisp:list 'transfer-already-completed-exception
-                    'make-transfer-already-completed-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          transfer-already-completed-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          transfer-already-completed-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          transfer-already-completed-exception))
-   common-lisp:nil))
+                    'transfer-already-completed-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (transfer-certificate-request (:copier common-lisp:nil)
@@ -5396,36 +5041,13 @@
                           transfer-certificate-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (transfer-conflict-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-transfer-conflict-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition transfer-conflict-exception
+     (iot-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       transfer-conflict-exception-message)))
  (common-lisp:export
   (common-lisp:list 'transfer-conflict-exception
-                    'make-transfer-conflict-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          transfer-conflict-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          transfer-conflict-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          transfer-conflict-exception))
-   common-lisp:nil))
+                    'transfer-conflict-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (transfer-data (:copier common-lisp:nil)
@@ -5486,35 +5108,12 @@
                         ((aws-sdk/generator/shape::input transfer-data))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unauthorized-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unauthorized-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition unauthorized-exception
+     (iot-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unauthorized-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'unauthorized-exception 'make-unauthorized-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-exception))
-   common-lisp:nil))
+  (common-lisp:list 'unauthorized-exception 'unauthorized-exception-message)))
 (common-lisp:deftype undo-deprecate () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -5647,67 +5246,21 @@
 (common-lisp:deftype use-base64 () 'common-lisp:boolean)
 (common-lisp:deftype version () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (version-conflict-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-version-conflict-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition version-conflict-exception
+     (iot-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       version-conflict-exception-message)))
  (common-lisp:export
   (common-lisp:list 'version-conflict-exception
-                    'make-version-conflict-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          version-conflict-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          version-conflict-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          version-conflict-exception))
-   common-lisp:nil))
+                    'version-conflict-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (versions-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-versions-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition versions-limit-exceeded-exception
+     (iot-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       versions-limit-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'versions-limit-exceeded-exception
-                    'make-versions-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          versions-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          versions-limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          versions-limit-exceeded-exception))
-   common-lisp:nil))
+                    'versions-limit-exceeded-exception-message)))
 (common-lisp:deftype |errorMessage| () 'common-lisp:string)
 (common-lisp:deftype |resourceArn| () 'common-lisp:string)
 (common-lisp:deftype |resourceId| () 'common-lisp:string)
@@ -5738,7 +5291,15 @@
                                                              'certificate-id))))
                                                         "AcceptCertificateTransfer"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'accept-certificate-transfer))
 (common-lisp:progn
  (common-lisp:defun attach-principal-policy
@@ -5766,7 +5327,14 @@
                                                              'policy-name))))
                                                         "AttachPrincipalPolicy"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'attach-principal-policy))
 (common-lisp:progn
  (common-lisp:defun attach-thing-principal
@@ -5794,7 +5362,13 @@
                                                              'thing-name))))
                                                         "AttachThingPrincipal"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'attach-thing-principal))
 (common-lisp:progn
  (common-lisp:defun cancel-certificate-transfer
@@ -5823,7 +5397,15 @@
                                                              'certificate-id))))
                                                         "CancelCertificateTransfer"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'cancel-certificate-transfer))
 (common-lisp:progn
  (common-lisp:defun create-certificate-from-csr
@@ -5844,7 +5426,12 @@
                                                         "POST" "/certificates"
                                                         "CreateCertificateFromCsr"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'create-certificate-from-csr))
 (common-lisp:progn
  (common-lisp:defun create-keys-and-certificate
@@ -5864,7 +5451,12 @@
                                                         "/keys-and-certificate"
                                                         "CreateKeysAndCertificate"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'create-keys-and-certificate))
 (common-lisp:progn
  (common-lisp:defun create-policy
@@ -5892,7 +5484,14 @@
                                                              'policy-name))))
                                                         "CreatePolicy"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'create-policy))
 (common-lisp:progn
  (common-lisp:defun create-policy-version
@@ -5922,7 +5521,15 @@
                                                              'policy-name))))
                                                         "CreatePolicyVersion"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("VersionsLimitExceededException" . versions-limit-exceeded-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'create-policy-version))
 (common-lisp:progn
  (common-lisp:defun create-thing
@@ -5952,7 +5559,14 @@
                                                              'thing-name))))
                                                         "CreateThing"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'create-thing))
 (common-lisp:progn
  (common-lisp:defun create-thing-type
@@ -5981,7 +5595,14 @@
                                                              'thing-type-name))))
                                                         "CreateThingType"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("ResourceAlreadyExistsException"
+         . resource-already-exists-exception)))))
  (common-lisp:export 'create-thing-type))
 (common-lisp:progn
  (common-lisp:defun create-topic-rule
@@ -6009,7 +5630,12 @@
                                                              'rule-name))))
                                                         "CreateTopicRule"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("SqlParseException" . sql-parse-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'create-topic-rule))
 (common-lisp:progn
  (common-lisp:defun delete-cacertificate
@@ -6037,7 +5663,14 @@
                                                              'ca-certificate-id))))
                                                         "DeleteCACertificate"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'delete-cacertificate))
 (common-lisp:progn
  (common-lisp:defun delete-certificate
@@ -6065,7 +5698,15 @@
                                                              'certificate-id))))
                                                         "DeleteCertificate"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("CertificateStateException" . certificate-state-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'delete-certificate))
 (common-lisp:progn
  (common-lisp:defun delete-policy
@@ -6093,7 +5734,14 @@
                                                              'policy-name))))
                                                         "DeletePolicy"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DeleteConflictException" . delete-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'delete-policy))
 (common-lisp:progn
  (common-lisp:defun delete-policy-version
@@ -6125,7 +5773,14 @@
                                                              'policy-version-id))))
                                                         "DeletePolicyVersion"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DeleteConflictException" . delete-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'delete-policy-version))
 (common-lisp:progn
  (common-lisp:defun delete-registration-code ()
@@ -6135,7 +5790,12 @@
                                 "/registrationcode" :params
                                 `(("Action" ,@"DeleteRegistrationCode")
                                   ("Version" ,@"2015-05-28"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("ThrottlingException" . throttling-exception)
+      ("ResourceNotFoundException" . resource-not-found-exception)
+      ("UnauthorizedException" . unauthorized-exception)
+      ("ServiceUnavailableException" . service-unavailable-exception)
+      ("InternalFailureException" . internal-failure-exception))))
  (common-lisp:export 'delete-registration-code))
 (common-lisp:progn
  (common-lisp:defun delete-thing
@@ -6163,7 +5823,14 @@
                                                              'thing-name))))
                                                         "DeleteThing"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'delete-thing))
 (common-lisp:progn
  (common-lisp:defun delete-thing-type
@@ -6191,7 +5858,13 @@
                                                              'thing-type-name))))
                                                         "DeleteThingType"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'delete-thing-type))
 (common-lisp:progn
  (common-lisp:defun delete-topic-rule
@@ -6219,7 +5892,11 @@
                                                              'rule-name))))
                                                         "DeleteTopicRule"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-topic-rule))
 (common-lisp:progn
  (common-lisp:defun deprecate-thing-type
@@ -6247,7 +5924,13 @@
                                                              'thing-type-name))))
                                                         "DeprecateThingType"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'deprecate-thing-type))
 (common-lisp:progn
  (common-lisp:defun describe-cacertificate
@@ -6275,7 +5958,13 @@
                                                              'ca-certificate-id))))
                                                         "DescribeCACertificate"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-cacertificate))
 (common-lisp:progn
  (common-lisp:defun describe-certificate
@@ -6303,7 +5992,13 @@
                                                              'certificate-id))))
                                                         "DescribeCertificate"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-certificate))
 (common-lisp:progn
  (common-lisp:defun describe-endpoint ()
@@ -6313,7 +6008,10 @@
                                 :params
                                 `(("Action" ,@"DescribeEndpoint")
                                   ("Version" ,@"2015-05-28"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("InternalFailureException" . internal-failure-exception)
+      ("UnauthorizedException" . unauthorized-exception)
+      ("ThrottlingException" . throttling-exception))))
  (common-lisp:export 'describe-endpoint))
 (common-lisp:progn
  (common-lisp:defun describe-thing
@@ -6341,7 +6039,13 @@
                                                              'thing-name))))
                                                         "DescribeThing"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'describe-thing))
 (common-lisp:progn
  (common-lisp:defun describe-thing-type
@@ -6369,7 +6073,13 @@
                                                              'thing-type-name))))
                                                         "DescribeThingType"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'describe-thing-type))
 (common-lisp:progn
  (common-lisp:defun detach-principal-policy
@@ -6397,7 +6107,13 @@
                                                              'policy-name))))
                                                         "DetachPrincipalPolicy"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'detach-principal-policy))
 (common-lisp:progn
  (common-lisp:defun detach-thing-principal
@@ -6425,7 +6141,13 @@
                                                              'thing-name))))
                                                         "DetachThingPrincipal"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'detach-thing-principal))
 (common-lisp:progn
  (common-lisp:defun disable-topic-rule
@@ -6453,7 +6175,11 @@
                                                              'rule-name))))
                                                         "DisableTopicRule"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'disable-topic-rule))
 (common-lisp:progn
  (common-lisp:defun enable-topic-rule
@@ -6481,7 +6207,11 @@
                                                              'rule-name))))
                                                         "EnableTopicRule"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'enable-topic-rule))
 (common-lisp:progn
  (common-lisp:defun get-logging-options ()
@@ -6491,7 +6221,10 @@
                                 "/loggingOptions" :params
                                 `(("Action" ,@"GetLoggingOptions")
                                   ("Version" ,@"2015-05-28"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("InternalException" . internal-exception)
+      ("InvalidRequestException" . invalid-request-exception)
+      ("ServiceUnavailableException" . service-unavailable-exception))))
  (common-lisp:export 'get-logging-options))
 (common-lisp:progn
  (common-lisp:defun get-policy
@@ -6519,7 +6252,13 @@
                                                              'policy-name))))
                                                         "GetPolicy"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'get-policy))
 (common-lisp:progn
  (common-lisp:defun get-policy-version
@@ -6551,7 +6290,13 @@
                                                              'policy-version-id))))
                                                         "GetPolicyVersion"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'get-policy-version))
 (common-lisp:progn
  (common-lisp:defun get-registration-code ()
@@ -6561,7 +6306,12 @@
                                 "/registrationcode" :params
                                 `(("Action" ,@"GetRegistrationCode")
                                   ("Version" ,@"2015-05-28"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("ThrottlingException" . throttling-exception)
+      ("UnauthorizedException" . unauthorized-exception)
+      ("ServiceUnavailableException" . service-unavailable-exception)
+      ("InternalFailureException" . internal-failure-exception)
+      ("InvalidRequestException" . invalid-request-exception))))
  (common-lisp:export 'get-registration-code))
 (common-lisp:progn
  (common-lisp:defun get-topic-rule
@@ -6589,7 +6339,11 @@
                                                              'rule-name))))
                                                         "GetTopicRule"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-topic-rule))
 (common-lisp:progn
  (common-lisp:defun list-cacertificates
@@ -6608,7 +6362,12 @@
                                                         "GET" "/cacertificates"
                                                         "ListCACertificates"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'list-cacertificates))
 (common-lisp:progn
  (common-lisp:defun list-certificates
@@ -6627,7 +6386,12 @@
                                                         "GET" "/certificates"
                                                         "ListCertificates"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'list-certificates))
 (common-lisp:progn
  (common-lisp:defun list-certificates-by-ca
@@ -6657,7 +6421,12 @@
                                                              'ca-certificate-id))))
                                                         "ListCertificatesByCA"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'list-certificates-by-ca))
 (common-lisp:progn
  (common-lisp:defun list-outgoing-certificates
@@ -6678,7 +6447,12 @@
                                                         "/certificates-out-going"
                                                         "ListOutgoingCertificates"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'list-outgoing-certificates))
 (common-lisp:progn
  (common-lisp:defun list-policies
@@ -6697,7 +6471,12 @@
                                                         "GET" "/policies"
                                                         "ListPolicies"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'list-policies))
 (common-lisp:progn
  (common-lisp:defun list-policy-principals
@@ -6718,7 +6497,13 @@
                                                         "/policy-principals"
                                                         "ListPolicyPrincipals"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'list-policy-principals))
 (common-lisp:progn
  (common-lisp:defun list-policy-versions
@@ -6746,7 +6531,13 @@
                                                              'policy-name))))
                                                         "ListPolicyVersions"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'list-policy-versions))
 (common-lisp:progn
  (common-lisp:defun list-principal-policies
@@ -6767,7 +6558,13 @@
                                                         "/principal-policies"
                                                         "ListPrincipalPolicies"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'list-principal-policies))
 (common-lisp:progn
  (common-lisp:defun list-principal-things
@@ -6787,7 +6584,13 @@
                                                         "/principals/things"
                                                         "ListPrincipalThings"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'list-principal-things))
 (common-lisp:progn
  (common-lisp:defun list-thing-principals
@@ -6815,7 +6618,13 @@
                                                              'thing-name))))
                                                         "ListThingPrincipals"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'list-thing-principals))
 (common-lisp:progn
  (common-lisp:defun list-thing-types
@@ -6834,7 +6643,12 @@
                                                         "GET" "/thing-types"
                                                         "ListThingTypes"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'list-thing-types))
 (common-lisp:progn
  (common-lisp:defun list-things
@@ -6855,7 +6669,12 @@
                                                         "GET" "/things"
                                                         "ListThings"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'list-things))
 (common-lisp:progn
  (common-lisp:defun list-topic-rules
@@ -6875,7 +6694,10 @@
                                                         "GET" "/rules"
                                                         "ListTopicRules"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'list-topic-rules))
 (common-lisp:progn
  (common-lisp:defun register-cacertificate
@@ -6896,7 +6718,17 @@
                                                         "POST" "/cacertificate"
                                                         "RegisterCACertificate"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'register-cacertificate))
 (common-lisp:progn
  (common-lisp:defun register-certificate
@@ -6918,7 +6750,16 @@
                                                         "/certificate/register"
                                                         "RegisterCertificate"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateConflictException" . certificate-conflict-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'register-certificate))
 (common-lisp:progn
  (common-lisp:defun reject-certificate-transfer
@@ -6947,7 +6788,15 @@
                                                              'certificate-id))))
                                                         "RejectCertificateTransfer"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'reject-certificate-transfer))
 (common-lisp:progn
  (common-lisp:defun replace-topic-rule
@@ -6975,7 +6824,12 @@
                                                              'rule-name))))
                                                         "ReplaceTopicRule"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("SqlParseException" . sql-parse-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'replace-topic-rule))
 (common-lisp:progn
  (common-lisp:defun set-default-policy-version
@@ -7008,7 +6862,13 @@
                                                              'policy-version-id))))
                                                         "SetDefaultPolicyVersion"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'set-default-policy-version))
 (common-lisp:progn
  (common-lisp:defun set-logging-options
@@ -7027,7 +6887,10 @@
                                                         "/loggingOptions"
                                                         "SetLoggingOptions"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'set-logging-options))
 (common-lisp:progn
  (common-lisp:defun transfer-certificate
@@ -7057,7 +6920,15 @@
                                                              'certificate-id))))
                                                         "TransferCertificate"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'transfer-certificate))
 (common-lisp:progn
  (common-lisp:defun update-cacertificate
@@ -7088,7 +6959,13 @@
                                                              'ca-certificate-id))))
                                                         "UpdateCACertificate"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'update-cacertificate))
 (common-lisp:progn
  (common-lisp:defun update-certificate
@@ -7116,7 +6993,14 @@
                                                              'certificate-id))))
                                                         "UpdateCertificate"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)))))
  (common-lisp:export 'update-certificate))
 (common-lisp:progn
  (common-lisp:defun update-thing
@@ -7147,5 +7031,12 @@
                                                              'thing-name))))
                                                         "UpdateThing"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidRequestException" . invalid-request-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'update-thing))

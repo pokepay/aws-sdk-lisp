@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/rds/api)
 (common-lisp:progn
  (common-lisp:defclass rds-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "rds"))
  (common-lisp:export 'rds-request))
+(common-lisp:progn
+ (common-lisp:define-condition rds-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'rds-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (account-attributes-message (:copier common-lisp:nil)
@@ -336,71 +342,20 @@
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (authorization-already-exists-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-authorization-already-exists-fault-")))
- (common-lisp:export
-  (common-lisp:list 'authorization-already-exists-fault
-                    'make-authorization-already-exists-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          authorization-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          authorization-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          authorization-already-exists-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition authorization-already-exists-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'authorization-already-exists-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (authorization-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-authorization-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'authorization-not-found-fault
-                    'make-authorization-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          authorization-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          authorization-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          authorization-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition authorization-not-found-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'authorization-not-found-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (authorization-quota-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-authorization-quota-exceeded-fault-")))
- (common-lisp:export
-  (common-lisp:list 'authorization-quota-exceeded-fault
-                    'make-authorization-quota-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          authorization-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          authorization-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          authorization-quota-exceeded-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition authorization-quota-exceeded-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'authorization-quota-exceeded-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (authorize-dbsecurity-group-ingress-message (:copier common-lisp:nil)
@@ -651,27 +606,10 @@
                         ((aws-sdk/generator/shape::input certificate-message))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (certificate-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-certificate-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'certificate-not-found-fault
-                    'make-certificate-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          certificate-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          certificate-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          certificate-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition certificate-not-found-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'certificate-not-found-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (character-set (:copier common-lisp:nil)
@@ -3178,27 +3116,10 @@
                         ((aws-sdk/generator/shape::input dbcluster))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbcluster-already-exists-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbcluster-already-exists-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbcluster-already-exists-fault
-                    'make-dbcluster-already-exists-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-already-exists-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbcluster-already-exists-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbcluster-already-exists-fault)))
 (common-lisp:progn
  (common-lisp:deftype dbcluster-list () '(trivial-types:proper-list dbcluster))
  (common-lisp:defun |make-dbcluster-list|
@@ -3300,27 +3221,10 @@
                         ((aws-sdk/generator/shape::input dbcluster-message))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbcluster-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbcluster-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbcluster-not-found-fault
-                    'make-dbcluster-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbcluster-not-found-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbcluster-not-found-fault)))
 (common-lisp:progn
  (common-lisp:deftype dbcluster-option-group-memberships ()
    '(trivial-types:proper-list dbcluster-option-group-status))
@@ -3511,27 +3415,11 @@
                           dbcluster-parameter-group-name-message))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbcluster-parameter-group-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbcluster-parameter-group-not-found-fault-")))
+ (common-lisp:define-condition dbcluster-parameter-group-not-found-fault
+     (rds-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'dbcluster-parameter-group-not-found-fault
-                    'make-dbcluster-parameter-group-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-parameter-group-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-parameter-group-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-parameter-group-not-found-fault))
-   common-lisp:nil))
+  (common-lisp:list 'dbcluster-parameter-group-not-found-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (dbcluster-parameter-groups-message (:copier common-lisp:nil)
@@ -3573,27 +3461,10 @@
                           dbcluster-parameter-groups-message))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbcluster-quota-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbcluster-quota-exceeded-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbcluster-quota-exceeded-fault
-                    'make-dbcluster-quota-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-quota-exceeded-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbcluster-quota-exceeded-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbcluster-quota-exceeded-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (dbcluster-role (:copier common-lisp:nil)
@@ -3625,71 +3496,20 @@
                         ((aws-sdk/generator/shape::input dbcluster-role))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbcluster-role-already-exists-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbcluster-role-already-exists-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbcluster-role-already-exists-fault
-                    'make-dbcluster-role-already-exists-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-role-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-role-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-role-already-exists-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbcluster-role-already-exists-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbcluster-role-already-exists-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbcluster-role-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbcluster-role-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbcluster-role-not-found-fault
-                    'make-dbcluster-role-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-role-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-role-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-role-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbcluster-role-not-found-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbcluster-role-not-found-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbcluster-role-quota-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbcluster-role-quota-exceeded-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbcluster-role-quota-exceeded-fault
-                    'make-dbcluster-role-quota-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-role-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-role-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-role-quota-exceeded-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbcluster-role-quota-exceeded-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbcluster-role-quota-exceeded-fault)))
 (common-lisp:progn
  (common-lisp:deftype dbcluster-roles ()
    '(trivial-types:proper-list dbcluster-role))
@@ -3895,27 +3715,11 @@
                         ((aws-sdk/generator/shape::input dbcluster-snapshot))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbcluster-snapshot-already-exists-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbcluster-snapshot-already-exists-fault-")))
+ (common-lisp:define-condition dbcluster-snapshot-already-exists-fault
+     (rds-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'dbcluster-snapshot-already-exists-fault
-                    'make-dbcluster-snapshot-already-exists-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-snapshot-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-snapshot-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-snapshot-already-exists-fault))
-   common-lisp:nil))
+  (common-lisp:list 'dbcluster-snapshot-already-exists-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (dbcluster-snapshot-attribute (:copier common-lisp:nil)
@@ -4055,27 +3859,10 @@
                           dbcluster-snapshot-message))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbcluster-snapshot-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbcluster-snapshot-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbcluster-snapshot-not-found-fault
-                    'make-dbcluster-snapshot-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-snapshot-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-snapshot-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbcluster-snapshot-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbcluster-snapshot-not-found-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbcluster-snapshot-not-found-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (dbengine-version (:copier common-lisp:nil)
@@ -4691,27 +4478,10 @@
                         ((aws-sdk/generator/shape::input dbinstance))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbinstance-already-exists-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbinstance-already-exists-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbinstance-already-exists-fault
-                    'make-dbinstance-already-exists-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbinstance-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbinstance-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbinstance-already-exists-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbinstance-already-exists-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbinstance-already-exists-fault)))
 (common-lisp:progn
  (common-lisp:deftype dbinstance-list ()
    '(trivial-types:proper-list dbinstance))
@@ -4753,27 +4523,10 @@
                         ((aws-sdk/generator/shape::input dbinstance-message))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbinstance-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbinstance-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbinstance-not-found-fault
-                    'make-dbinstance-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbinstance-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbinstance-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbinstance-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbinstance-not-found-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbinstance-not-found-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (dbinstance-status-info (:copier common-lisp:nil)
@@ -4836,27 +4589,10 @@
                            (trivial-types:proper-list dbinstance-status-info))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dblog-file-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dblog-file-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dblog-file-not-found-fault
-                    'make-dblog-file-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dblog-file-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dblog-file-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dblog-file-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dblog-file-not-found-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dblog-file-not-found-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (dbparameter-group (:copier common-lisp:nil)
@@ -4911,27 +4647,11 @@
                         ((aws-sdk/generator/shape::input dbparameter-group))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbparameter-group-already-exists-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbparameter-group-already-exists-fault-")))
+ (common-lisp:define-condition dbparameter-group-already-exists-fault
+     (rds-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'dbparameter-group-already-exists-fault
-                    'make-dbparameter-group-already-exists-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbparameter-group-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbparameter-group-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbparameter-group-already-exists-fault))
-   common-lisp:nil))
+  (common-lisp:list 'dbparameter-group-already-exists-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (dbparameter-group-details (:copier common-lisp:nil)
@@ -5012,49 +4732,16 @@
                           dbparameter-group-name-message))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbparameter-group-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbparameter-group-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbparameter-group-not-found-fault
-                    'make-dbparameter-group-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbparameter-group-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbparameter-group-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbparameter-group-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbparameter-group-not-found-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbparameter-group-not-found-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbparameter-group-quota-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbparameter-group-quota-exceeded-fault-")))
+ (common-lisp:define-condition dbparameter-group-quota-exceeded-fault
+     (rds-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'dbparameter-group-quota-exceeded-fault
-                    'make-dbparameter-group-quota-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbparameter-group-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbparameter-group-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbparameter-group-quota-exceeded-fault))
-   common-lisp:nil))
+  (common-lisp:list 'dbparameter-group-quota-exceeded-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (dbparameter-group-status (:copier common-lisp:nil)
@@ -5224,27 +4911,10 @@
                         ((aws-sdk/generator/shape::input dbsecurity-group))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbsecurity-group-already-exists-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbsecurity-group-already-exists-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbsecurity-group-already-exists-fault
-                    'make-dbsecurity-group-already-exists-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsecurity-group-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsecurity-group-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsecurity-group-already-exists-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbsecurity-group-already-exists-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbsecurity-group-already-exists-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (dbsecurity-group-membership (:copier common-lisp:nil)
@@ -5341,71 +5011,20 @@
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbsecurity-group-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbsecurity-group-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbsecurity-group-not-found-fault
-                    'make-dbsecurity-group-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsecurity-group-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsecurity-group-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsecurity-group-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbsecurity-group-not-found-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbsecurity-group-not-found-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbsecurity-group-not-supported-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbsecurity-group-not-supported-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbsecurity-group-not-supported-fault
-                    'make-dbsecurity-group-not-supported-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsecurity-group-not-supported-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsecurity-group-not-supported-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsecurity-group-not-supported-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbsecurity-group-not-supported-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbsecurity-group-not-supported-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbsecurity-group-quota-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbsecurity-group-quota-exceeded-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbsecurity-group-quota-exceeded-fault
-                    'make-dbsecurity-group-quota-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsecurity-group-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsecurity-group-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsecurity-group-quota-exceeded-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbsecurity-group-quota-exceeded-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbsecurity-group-quota-exceeded-fault)))
 (common-lisp:progn
  (common-lisp:deftype dbsecurity-groups ()
    '(trivial-types:proper-list dbsecurity-group))
@@ -5662,27 +5281,10 @@
                         ((aws-sdk/generator/shape::input dbsnapshot))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbsnapshot-already-exists-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbsnapshot-already-exists-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbsnapshot-already-exists-fault
-                    'make-dbsnapshot-already-exists-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsnapshot-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsnapshot-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsnapshot-already-exists-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbsnapshot-already-exists-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbsnapshot-already-exists-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (dbsnapshot-attribute (:copier common-lisp:nil)
@@ -5807,27 +5409,10 @@
                         ((aws-sdk/generator/shape::input dbsnapshot-message))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbsnapshot-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbsnapshot-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbsnapshot-not-found-fault
-                    'make-dbsnapshot-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsnapshot-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsnapshot-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsnapshot-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbsnapshot-not-found-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbsnapshot-not-found-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (dbsubnet-group (:copier common-lisp:nil)
@@ -5897,49 +5482,16 @@
                         ((aws-sdk/generator/shape::input dbsubnet-group))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbsubnet-group-already-exists-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbsubnet-group-already-exists-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbsubnet-group-already-exists-fault
-                    'make-dbsubnet-group-already-exists-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsubnet-group-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsubnet-group-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsubnet-group-already-exists-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbsubnet-group-already-exists-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbsubnet-group-already-exists-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbsubnet-group-does-not-cover-enough-azs (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbsubnet-group-does-not-cover-enough-azs-")))
+ (common-lisp:define-condition dbsubnet-group-does-not-cover-enough-azs
+     (rds-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'dbsubnet-group-does-not-cover-enough-azs
-                    'make-dbsubnet-group-does-not-cover-enough-azs))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsubnet-group-does-not-cover-enough-azs))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsubnet-group-does-not-cover-enough-azs))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsubnet-group-does-not-cover-enough-azs))
-   common-lisp:nil))
+  (common-lisp:list 'dbsubnet-group-does-not-cover-enough-azs)))
 (common-lisp:progn
  (common-lisp:defstruct
      (dbsubnet-group-message (:copier common-lisp:nil)
@@ -5979,71 +5531,20 @@
                           dbsubnet-group-message))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbsubnet-group-not-allowed-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbsubnet-group-not-allowed-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbsubnet-group-not-allowed-fault
-                    'make-dbsubnet-group-not-allowed-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsubnet-group-not-allowed-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsubnet-group-not-allowed-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsubnet-group-not-allowed-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbsubnet-group-not-allowed-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbsubnet-group-not-allowed-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbsubnet-group-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbsubnet-group-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbsubnet-group-not-found-fault
-                    'make-dbsubnet-group-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsubnet-group-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsubnet-group-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsubnet-group-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbsubnet-group-not-found-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbsubnet-group-not-found-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbsubnet-group-quota-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbsubnet-group-quota-exceeded-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbsubnet-group-quota-exceeded-fault
-                    'make-dbsubnet-group-quota-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsubnet-group-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsubnet-group-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsubnet-group-quota-exceeded-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbsubnet-group-quota-exceeded-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbsubnet-group-quota-exceeded-fault)))
 (common-lisp:progn
  (common-lisp:deftype dbsubnet-groups ()
    '(trivial-types:proper-list dbsubnet-group))
@@ -6053,49 +5554,15 @@
                            (trivial-types:proper-list dbsubnet-group))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbsubnet-quota-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbsubnet-quota-exceeded-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbsubnet-quota-exceeded-fault
-                    'make-dbsubnet-quota-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsubnet-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsubnet-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbsubnet-quota-exceeded-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbsubnet-quota-exceeded-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbsubnet-quota-exceeded-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dbupgrade-dependency-failure-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dbupgrade-dependency-failure-fault-")))
- (common-lisp:export
-  (common-lisp:list 'dbupgrade-dependency-failure-fault
-                    'make-dbupgrade-dependency-failure-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbupgrade-dependency-failure-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbupgrade-dependency-failure-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          dbupgrade-dependency-failure-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition dbupgrade-dependency-failure-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'dbupgrade-dependency-failure-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-dbcluster-message (:copier common-lisp:nil)
@@ -8778,26 +8245,10 @@
                            (trivial-types:proper-list domain-membership))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (domain-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-domain-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'domain-not-found-fault 'make-domain-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          domain-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          domain-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          domain-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition domain-not-found-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'domain-not-found-fault)))
 (common-lisp:deftype double () 'common-lisp:double-float)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -9304,27 +8755,11 @@
                         ((aws-sdk/generator/shape::input event-subscription))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (event-subscription-quota-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-event-subscription-quota-exceeded-fault-")))
+ (common-lisp:define-condition event-subscription-quota-exceeded-fault
+     (rds-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'event-subscription-quota-exceeded-fault
-                    'make-event-subscription-quota-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          event-subscription-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          event-subscription-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          event-subscription-quota-exceeded-fault))
-   common-lisp:nil))
+  (common-lisp:list 'event-subscription-quota-exceeded-fault)))
 (common-lisp:progn
  (common-lisp:deftype event-subscriptions-list ()
    '(trivial-types:proper-list event-subscription))
@@ -9558,438 +8993,111 @@
                            (trivial-types:proper-list iprange))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (instance-quota-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-instance-quota-exceeded-fault-")))
- (common-lisp:export
-  (common-lisp:list 'instance-quota-exceeded-fault
-                    'make-instance-quota-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          instance-quota-exceeded-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition instance-quota-exceeded-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'instance-quota-exceeded-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (insufficient-dbcluster-capacity-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-insufficient-dbcluster-capacity-fault-")))
- (common-lisp:export
-  (common-lisp:list 'insufficient-dbcluster-capacity-fault
-                    'make-insufficient-dbcluster-capacity-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-dbcluster-capacity-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-dbcluster-capacity-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-dbcluster-capacity-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition insufficient-dbcluster-capacity-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'insufficient-dbcluster-capacity-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (insufficient-dbinstance-capacity-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-insufficient-dbinstance-capacity-fault-")))
+ (common-lisp:define-condition insufficient-dbinstance-capacity-fault
+     (rds-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'insufficient-dbinstance-capacity-fault
-                    'make-insufficient-dbinstance-capacity-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-dbinstance-capacity-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-dbinstance-capacity-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-dbinstance-capacity-fault))
-   common-lisp:nil))
+  (common-lisp:list 'insufficient-dbinstance-capacity-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (insufficient-storage-cluster-capacity-fault (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-insufficient-storage-cluster-capacity-fault-")))
+ (common-lisp:define-condition insufficient-storage-cluster-capacity-fault
+     (rds-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'insufficient-storage-cluster-capacity-fault
-                    'make-insufficient-storage-cluster-capacity-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-storage-cluster-capacity-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-storage-cluster-capacity-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-storage-cluster-capacity-fault))
-   common-lisp:nil))
+  (common-lisp:list 'insufficient-storage-cluster-capacity-fault)))
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:deftype integer-optional () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-dbcluster-snapshot-state-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-dbcluster-snapshot-state-fault-")))
+ (common-lisp:define-condition invalid-dbcluster-snapshot-state-fault
+     (rds-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-dbcluster-snapshot-state-fault
-                    'make-invalid-dbcluster-snapshot-state-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbcluster-snapshot-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbcluster-snapshot-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbcluster-snapshot-state-fault))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-dbcluster-snapshot-state-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-dbcluster-state-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-dbcluster-state-fault-")))
+ (common-lisp:define-condition invalid-dbcluster-state-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-dbcluster-state-fault)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-dbinstance-state-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-dbinstance-state-fault)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-dbparameter-group-state-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-dbparameter-group-state-fault)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-dbsecurity-group-state-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-dbsecurity-group-state-fault)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-dbsnapshot-state-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-dbsnapshot-state-fault)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-dbsubnet-group-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-dbsubnet-group-fault)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-dbsubnet-group-state-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-dbsubnet-group-state-fault)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-dbsubnet-state-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-dbsubnet-state-fault)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-event-subscription-state-fault
+     (rds-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'invalid-dbcluster-state-fault
-                    'make-invalid-dbcluster-state-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbcluster-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbcluster-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbcluster-state-fault))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-event-subscription-state-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-dbinstance-state-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-dbinstance-state-fault-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-dbinstance-state-fault
-                    'make-invalid-dbinstance-state-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbinstance-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbinstance-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbinstance-state-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-option-group-state-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-option-group-state-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-dbparameter-group-state-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-dbparameter-group-state-fault-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-dbparameter-group-state-fault
-                    'make-invalid-dbparameter-group-state-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbparameter-group-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbparameter-group-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbparameter-group-state-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-restore-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-restore-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-dbsecurity-group-state-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-dbsecurity-group-state-fault-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-dbsecurity-group-state-fault
-                    'make-invalid-dbsecurity-group-state-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbsecurity-group-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbsecurity-group-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbsecurity-group-state-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-s3bucket-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-s3bucket-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-dbsnapshot-state-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-dbsnapshot-state-fault-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-dbsnapshot-state-fault
-                    'make-invalid-dbsnapshot-state-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbsnapshot-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbsnapshot-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbsnapshot-state-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-subnet
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-subnet)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-dbsubnet-group-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-dbsubnet-group-fault-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-dbsubnet-group-fault
-                    'make-invalid-dbsubnet-group-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbsubnet-group-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbsubnet-group-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbsubnet-group-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-vpcnetwork-state-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-vpcnetwork-state-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-dbsubnet-group-state-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-dbsubnet-group-state-fault-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-dbsubnet-group-state-fault
-                    'make-invalid-dbsubnet-group-state-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbsubnet-group-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbsubnet-group-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbsubnet-group-state-fault))
-   common-lisp:nil))
-(common-lisp:progn
- (common-lisp:defstruct
-     (invalid-dbsubnet-state-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-dbsubnet-state-fault-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-dbsubnet-state-fault
-                    'make-invalid-dbsubnet-state-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbsubnet-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbsubnet-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-dbsubnet-state-fault))
-   common-lisp:nil))
-(common-lisp:progn
- (common-lisp:defstruct
-     (invalid-event-subscription-state-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-event-subscription-state-fault-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-event-subscription-state-fault
-                    'make-invalid-event-subscription-state-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-event-subscription-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-event-subscription-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-event-subscription-state-fault))
-   common-lisp:nil))
-(common-lisp:progn
- (common-lisp:defstruct
-     (invalid-option-group-state-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-option-group-state-fault-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-option-group-state-fault
-                    'make-invalid-option-group-state-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-option-group-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-option-group-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-option-group-state-fault))
-   common-lisp:nil))
-(common-lisp:progn
- (common-lisp:defstruct
-     (invalid-restore-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-restore-fault-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-restore-fault 'make-invalid-restore-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-restore-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-restore-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-restore-fault))
-   common-lisp:nil))
-(common-lisp:progn
- (common-lisp:defstruct
-     (invalid-s3bucket-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-s3bucket-fault-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-s3bucket-fault 'make-invalid-s3bucket-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-s3bucket-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-s3bucket-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-s3bucket-fault))
-   common-lisp:nil))
-(common-lisp:progn
- (common-lisp:defstruct
-     (invalid-subnet (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-subnet-")))
- (common-lisp:export (common-lisp:list 'invalid-subnet 'make-invalid-subnet))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-subnet))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-subnet))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-subnet))
-   common-lisp:nil))
-(common-lisp:progn
- (common-lisp:defstruct
-     (invalid-vpcnetwork-state-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-vpcnetwork-state-fault-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-vpcnetwork-state-fault
-                    'make-invalid-vpcnetwork-state-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-vpcnetwork-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-vpcnetwork-state-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-vpcnetwork-state-fault))
-   common-lisp:nil))
-(common-lisp:progn
- (common-lisp:defstruct
-     (kmskey-not-accessible-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kmskey-not-accessible-fault-")))
- (common-lisp:export
-  (common-lisp:list 'kmskey-not-accessible-fault
-                    'make-kmskey-not-accessible-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmskey-not-accessible-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmskey-not-accessible-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          kmskey-not-accessible-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition kmskey-not-accessible-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'kmskey-not-accessible-fault)))
 (common-lisp:progn
  (common-lisp:deftype key-list () '(trivial-types:proper-list string))
  (common-lisp:defun |make-key-list|
@@ -11437,27 +10545,10 @@
                         ((aws-sdk/generator/shape::input option-group))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (option-group-already-exists-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-option-group-already-exists-fault-")))
- (common-lisp:export
-  (common-lisp:list 'option-group-already-exists-fault
-                    'make-option-group-already-exists-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          option-group-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          option-group-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          option-group-already-exists-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition option-group-already-exists-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'option-group-already-exists-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (option-group-membership (:copier common-lisp:nil)
@@ -11505,27 +10596,10 @@
                            (trivial-types:proper-list option-group-membership))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (option-group-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-option-group-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'option-group-not-found-fault
-                    'make-option-group-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          option-group-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          option-group-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          option-group-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition option-group-not-found-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'option-group-not-found-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (option-group-option (:copier common-lisp:nil)
@@ -11799,27 +10873,10 @@
                           option-group-options-message))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (option-group-quota-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-option-group-quota-exceeded-fault-")))
- (common-lisp:export
-  (common-lisp:list 'option-group-quota-exceeded-fault
-                    'make-option-group-quota-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          option-group-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          option-group-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          option-group-quota-exceeded-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition option-group-quota-exceeded-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'option-group-quota-exceeded-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (option-groups (:copier common-lisp:nil)
@@ -12602,27 +11659,11 @@
                           pending-modified-values))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (point-in-time-restore-not-enabled-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-point-in-time-restore-not-enabled-fault-")))
+ (common-lisp:define-condition point-in-time-restore-not-enabled-fault
+     (rds-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'point-in-time-restore-not-enabled-fault
-                    'make-point-in-time-restore-not-enabled-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          point-in-time-restore-not-enabled-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          point-in-time-restore-not-enabled-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          point-in-time-restore-not-enabled-fault))
-   common-lisp:nil))
+  (common-lisp:list 'point-in-time-restore-not-enabled-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (promote-read-replica-dbcluster-message (:copier common-lisp:nil)
@@ -12772,27 +11813,11 @@
                           promote-read-replica-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (provisioned-iops-not-available-in-azfault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-provisioned-iops-not-available-in-azfault-")))
+ (common-lisp:define-condition provisioned-iops-not-available-in-azfault
+     (rds-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'provisioned-iops-not-available-in-azfault
-                    'make-provisioned-iops-not-available-in-azfault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          provisioned-iops-not-available-in-azfault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          provisioned-iops-not-available-in-azfault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          provisioned-iops-not-available-in-azfault))
-   common-lisp:nil))
+  (common-lisp:list 'provisioned-iops-not-available-in-azfault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (purchase-reserved-dbinstances-offering-message (:copier common-lisp:nil)
@@ -13330,27 +12355,11 @@
                         ((aws-sdk/generator/shape::input reserved-dbinstance))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (reserved-dbinstance-already-exists-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-reserved-dbinstance-already-exists-fault-")))
+ (common-lisp:define-condition reserved-dbinstance-already-exists-fault
+     (rds-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'reserved-dbinstance-already-exists-fault
-                    'make-reserved-dbinstance-already-exists-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          reserved-dbinstance-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          reserved-dbinstance-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          reserved-dbinstance-already-exists-fault))
-   common-lisp:nil))
+  (common-lisp:list 'reserved-dbinstance-already-exists-fault)))
 (common-lisp:progn
  (common-lisp:deftype reserved-dbinstance-list ()
    '(trivial-types:proper-list reserved-dbinstance))
@@ -13400,49 +12409,16 @@
                           reserved-dbinstance-message))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (reserved-dbinstance-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-reserved-dbinstance-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'reserved-dbinstance-not-found-fault
-                    'make-reserved-dbinstance-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          reserved-dbinstance-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          reserved-dbinstance-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          reserved-dbinstance-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition reserved-dbinstance-not-found-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'reserved-dbinstance-not-found-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (reserved-dbinstance-quota-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-reserved-dbinstance-quota-exceeded-fault-")))
+ (common-lisp:define-condition reserved-dbinstance-quota-exceeded-fault
+     (rds-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'reserved-dbinstance-quota-exceeded-fault
-                    'make-reserved-dbinstance-quota-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          reserved-dbinstance-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          reserved-dbinstance-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          reserved-dbinstance-quota-exceeded-fault))
-   common-lisp:nil))
+  (common-lisp:list 'reserved-dbinstance-quota-exceeded-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (reserved-dbinstances-offering (:copier common-lisp:nil)
@@ -13602,28 +12578,11 @@
                           reserved-dbinstances-offering-message))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (reserved-dbinstances-offering-not-found-fault (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-reserved-dbinstances-offering-not-found-fault-")))
+ (common-lisp:define-condition reserved-dbinstances-offering-not-found-fault
+     (rds-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'reserved-dbinstances-offering-not-found-fault
-                    'make-reserved-dbinstances-offering-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          reserved-dbinstances-offering-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          reserved-dbinstances-offering-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          reserved-dbinstances-offering-not-found-fault))
-   common-lisp:nil))
+  (common-lisp:list 'reserved-dbinstances-offering-not-found-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (reset-dbcluster-parameter-group-message (:copier common-lisp:nil)
@@ -13729,26 +12688,10 @@
                           reset-dbparameter-group-message))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'resource-not-found-fault 'make-resource-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition resource-not-found-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-not-found-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (resource-pending-maintenance-actions (:copier common-lisp:nil)
@@ -15049,114 +13992,30 @@
                           revoke-dbsecurity-group-ingress-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (snsinvalid-topic-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-snsinvalid-topic-fault-")))
- (common-lisp:export
-  (common-lisp:list 'snsinvalid-topic-fault 'make-snsinvalid-topic-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          snsinvalid-topic-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          snsinvalid-topic-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          snsinvalid-topic-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition snsinvalid-topic-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'snsinvalid-topic-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (snsno-authorization-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-snsno-authorization-fault-")))
- (common-lisp:export
-  (common-lisp:list 'snsno-authorization-fault
-                    'make-snsno-authorization-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          snsno-authorization-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          snsno-authorization-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          snsno-authorization-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition snsno-authorization-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'snsno-authorization-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (snstopic-arn-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-snstopic-arn-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'snstopic-arn-not-found-fault
-                    'make-snstopic-arn-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          snstopic-arn-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          snstopic-arn-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          snstopic-arn-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition snstopic-arn-not-found-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'snstopic-arn-not-found-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (shared-snapshot-quota-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-shared-snapshot-quota-exceeded-fault-")))
- (common-lisp:export
-  (common-lisp:list 'shared-snapshot-quota-exceeded-fault
-                    'make-shared-snapshot-quota-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          shared-snapshot-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          shared-snapshot-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          shared-snapshot-quota-exceeded-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition shared-snapshot-quota-exceeded-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'shared-snapshot-quota-exceeded-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (snapshot-quota-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-snapshot-quota-exceeded-fault-")))
- (common-lisp:export
-  (common-lisp:list 'snapshot-quota-exceeded-fault
-                    'make-snapshot-quota-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          snapshot-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          snapshot-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          snapshot-quota-exceeded-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition snapshot-quota-exceeded-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'snapshot-quota-exceeded-fault)))
 (common-lisp:progn
  (common-lisp:deftype source-ids-list () '(trivial-types:proper-list string))
  (common-lisp:defun |make-source-ids-list|
@@ -15165,26 +14024,10 @@
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (source-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-source-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'source-not-found-fault 'make-source-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          source-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          source-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          source-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition source-not-found-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'source-not-found-fault)))
 (common-lisp:progn
  (common-lisp:defstruct
      (source-region (:copier common-lisp:nil)
@@ -15405,49 +14248,15 @@
                           stop-dbinstance-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (storage-quota-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-storage-quota-exceeded-fault-")))
- (common-lisp:export
-  (common-lisp:list 'storage-quota-exceeded-fault
-                    'make-storage-quota-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          storage-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          storage-quota-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          storage-quota-exceeded-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition storage-quota-exceeded-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'storage-quota-exceeded-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (storage-type-not-supported-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-storage-type-not-supported-fault-")))
- (common-lisp:export
-  (common-lisp:list 'storage-type-not-supported-fault
-                    'make-storage-type-not-supported-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          storage-type-not-supported-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          storage-type-not-supported-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          storage-type-not-supported-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition storage-type-not-supported-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'storage-type-not-supported-fault)))
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -15491,26 +14300,10 @@
                         ((aws-sdk/generator/shape::input subnet))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (subnet-already-in-use (:copier common-lisp:nil)
-      (:conc-name "struct-shape-subnet-already-in-use-")))
- (common-lisp:export
-  (common-lisp:list 'subnet-already-in-use 'make-subnet-already-in-use))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-already-in-use))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-already-in-use))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          subnet-already-in-use))
-   common-lisp:nil))
+ (common-lisp:define-condition subnet-already-in-use
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'subnet-already-in-use)))
 (common-lisp:progn
  (common-lisp:deftype subnet-identifier-list ()
    '(trivial-types:proper-list string))
@@ -15527,71 +14320,20 @@
                            (trivial-types:proper-list subnet))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (subscription-already-exist-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-subscription-already-exist-fault-")))
- (common-lisp:export
-  (common-lisp:list 'subscription-already-exist-fault
-                    'make-subscription-already-exist-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          subscription-already-exist-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          subscription-already-exist-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          subscription-already-exist-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition subscription-already-exist-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'subscription-already-exist-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (subscription-category-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-subscription-category-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'subscription-category-not-found-fault
-                    'make-subscription-category-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          subscription-category-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          subscription-category-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          subscription-category-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition subscription-category-not-found-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'subscription-category-not-found-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (subscription-not-found-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-subscription-not-found-fault-")))
- (common-lisp:export
-  (common-lisp:list 'subscription-not-found-fault
-                    'make-subscription-not-found-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          subscription-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          subscription-not-found-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          subscription-not-found-fault))
-   common-lisp:nil))
+ (common-lisp:define-condition subscription-not-found-fault
+     (rds-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'subscription-not-found-fault)))
 (common-lisp:progn
  (common-lisp:deftype supported-character-sets-list ()
    '(trivial-types:proper-list character-set))
@@ -15829,7 +14571,13 @@
                                                         "POST" "/"
                                                         "AddRoleToDBCluster"
                                                         "2014-10-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)))))
  (common-lisp:export 'add-role-to-dbcluster))
 (common-lisp:progn
  (common-lisp:defun add-source-identifier-to-subscription
@@ -15849,7 +14597,9 @@
                                                         "POST" "/"
                                                         "AddSourceIdentifierToSubscription"
                                                         "2014-10-31"))
-      common-lisp:nil "AddSourceIdentifierToSubscriptionResult")))
+      common-lisp:nil "AddSourceIdentifierToSubscriptionResult"
+      '(("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)))))
  (common-lisp:export 'add-source-identifier-to-subscription))
 (common-lisp:progn
  (common-lisp:defun add-tags-to-resource
@@ -15867,7 +14617,10 @@
                                                         "POST" "/"
                                                         "AddTagsToResource"
                                                         "2014-10-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)))))
  (common-lisp:export 'add-tags-to-resource))
 (common-lisp:progn
  (common-lisp:defun apply-pending-maintenance-action
@@ -15888,7 +14641,8 @@
                                                         "POST" "/"
                                                         "ApplyPendingMaintenanceAction"
                                                         "2014-10-31"))
-      common-lisp:nil "ApplyPendingMaintenanceActionResult")))
+      common-lisp:nil "ApplyPendingMaintenanceActionResult"
+      '(("ResourceNotFoundFault" . resource-not-found-fault)))))
  (common-lisp:export 'apply-pending-maintenance-action))
 (common-lisp:progn
  (common-lisp:defun authorize-dbsecurity-group-ingress
@@ -15911,7 +14665,14 @@
                                                         "POST" "/"
                                                         "AuthorizeDBSecurityGroupIngress"
                                                         "2014-10-31"))
-      common-lisp:nil "AuthorizeDBSecurityGroupIngressResult")))
+      common-lisp:nil "AuthorizeDBSecurityGroupIngressResult"
+      '(("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)))))
  (common-lisp:export 'authorize-dbsecurity-group-ingress))
 (common-lisp:progn
  (common-lisp:defun copy-dbcluster-parameter-group
@@ -15936,7 +14697,12 @@
                                                         "POST" "/"
                                                         "CopyDBClusterParameterGroup"
                                                         "2014-10-31"))
-      common-lisp:nil "CopyDBClusterParameterGroupResult")))
+      common-lisp:nil "CopyDBClusterParameterGroupResult"
+      '(("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)))))
  (common-lisp:export 'copy-dbcluster-parameter-group))
 (common-lisp:progn
  (common-lisp:defun copy-dbcluster-snapshot
@@ -15959,7 +14725,15 @@
                                                         "POST" "/"
                                                         "CopyDBClusterSnapshot"
                                                         "2014-10-31"))
-      common-lisp:nil "CopyDBClusterSnapshotResult")))
+      common-lisp:nil "CopyDBClusterSnapshotResult"
+      '(("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)))))
  (common-lisp:export 'copy-dbcluster-snapshot))
 (common-lisp:progn
  (common-lisp:defun copy-dbparameter-group
@@ -15982,7 +14756,12 @@
                                                         "POST" "/"
                                                         "CopyDBParameterGroup"
                                                         "2014-10-31"))
-      common-lisp:nil "CopyDBParameterGroupResult")))
+      common-lisp:nil "CopyDBParameterGroupResult"
+      '(("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)))))
  (common-lisp:export 'copy-dbparameter-group))
 (common-lisp:progn
  (common-lisp:defun copy-dbsnapshot
@@ -16005,7 +14784,12 @@
                                                         "POST" "/"
                                                         "CopyDBSnapshot"
                                                         "2014-10-31"))
-      common-lisp:nil "CopyDBSnapshotResult")))
+      common-lisp:nil "CopyDBSnapshotResult"
+      '(("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)))))
  (common-lisp:export 'copy-dbsnapshot))
 (common-lisp:progn
  (common-lisp:defun copy-option-group
@@ -16027,7 +14811,11 @@
                                                         "POST" "/"
                                                         "CopyOptionGroup"
                                                         "2014-10-31"))
-      common-lisp:nil "CopyOptionGroupResult")))
+      common-lisp:nil "CopyOptionGroupResult"
+      '(("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault"
+         . option-group-quota-exceeded-fault)))))
  (common-lisp:export 'copy-option-group))
 (common-lisp:progn
  (common-lisp:defun create-dbcluster
@@ -16060,7 +14848,25 @@
                                                         "POST" "/"
                                                         "CreateDBCluster"
                                                         "2014-10-31"))
-      common-lisp:nil "CreateDBClusterResult")))
+      common-lisp:nil "CreateDBClusterResult"
+      '(("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)))))
  (common-lisp:export 'create-dbcluster))
 (common-lisp:progn
  (common-lisp:defun create-dbcluster-parameter-group
@@ -16082,7 +14888,11 @@
                                                         "POST" "/"
                                                         "CreateDBClusterParameterGroup"
                                                         "2014-10-31"))
-      common-lisp:nil "CreateDBClusterParameterGroupResult")))
+      common-lisp:nil "CreateDBClusterParameterGroupResult"
+      '(("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)))))
  (common-lisp:export 'create-dbcluster-parameter-group))
 (common-lisp:progn
  (common-lisp:defun create-dbcluster-snapshot
@@ -16104,7 +14914,14 @@
                                                         "POST" "/"
                                                         "CreateDBClusterSnapshot"
                                                         "2014-10-31"))
-      common-lisp:nil "CreateDBClusterSnapshotResult")))
+      common-lisp:nil "CreateDBClusterSnapshotResult"
+      '(("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)))))
  (common-lisp:export 'create-dbcluster-snapshot))
 (common-lisp:progn
  (common-lisp:defun create-dbinstance
@@ -16147,7 +14964,28 @@
                                                         "POST" "/"
                                                         "CreateDBInstance"
                                                         "2014-10-31"))
-      common-lisp:nil "CreateDBInstanceResult")))
+      common-lisp:nil "CreateDBInstanceResult"
+      '(("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)))))
  (common-lisp:export 'create-dbinstance))
 (common-lisp:progn
  (common-lisp:defun create-dbinstance-read-replica
@@ -16177,7 +15015,28 @@
                                                         "POST" "/"
                                                         "CreateDBInstanceReadReplica"
                                                         "2014-10-31"))
-      common-lisp:nil "CreateDBInstanceReadReplicaResult")))
+      common-lisp:nil "CreateDBInstanceReadReplicaResult"
+      '(("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)))))
  (common-lisp:export 'create-dbinstance-read-replica))
 (common-lisp:progn
  (common-lisp:defun create-dbparameter-group
@@ -16198,7 +15057,11 @@
                                                         "POST" "/"
                                                         "CreateDBParameterGroup"
                                                         "2014-10-31"))
-      common-lisp:nil "CreateDBParameterGroupResult")))
+      common-lisp:nil "CreateDBParameterGroupResult"
+      '(("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)))))
  (common-lisp:export 'create-dbparameter-group))
 (common-lisp:progn
  (common-lisp:defun create-dbsecurity-group
@@ -16219,7 +15082,13 @@
                                                         "POST" "/"
                                                         "CreateDBSecurityGroup"
                                                         "2014-10-31"))
-      common-lisp:nil "CreateDBSecurityGroupResult")))
+      common-lisp:nil "CreateDBSecurityGroupResult"
+      '(("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)))))
  (common-lisp:export 'create-dbsecurity-group))
 (common-lisp:progn
  (common-lisp:defun create-dbsnapshot
@@ -16239,7 +15108,11 @@
                                                         "POST" "/"
                                                         "CreateDBSnapshot"
                                                         "2014-10-31"))
-      common-lisp:nil "CreateDBSnapshotResult")))
+      common-lisp:nil "CreateDBSnapshotResult"
+      '(("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)))))
  (common-lisp:export 'create-dbsnapshot))
 (common-lisp:progn
  (common-lisp:defun create-dbsubnet-group
@@ -16260,7 +15133,15 @@
                                                         "POST" "/"
                                                         "CreateDBSubnetGroup"
                                                         "2014-10-31"))
-      common-lisp:nil "CreateDBSubnetGroupResult")))
+      common-lisp:nil "CreateDBSubnetGroupResult"
+      '(("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("InvalidSubnet" . invalid-subnet)))))
  (common-lisp:export 'create-dbsubnet-group))
 (common-lisp:progn
  (common-lisp:defun create-event-subscription
@@ -16282,7 +15163,16 @@
                                                         "POST" "/"
                                                         "CreateEventSubscription"
                                                         "2014-10-31"))
-      common-lisp:nil "CreateEventSubscriptionResult")))
+      common-lisp:nil "CreateEventSubscriptionResult"
+      '(("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)))))
  (common-lisp:export 'create-event-subscription))
 (common-lisp:progn
  (common-lisp:defun create-option-group
@@ -16303,7 +15193,10 @@
                                                         "POST" "/"
                                                         "CreateOptionGroup"
                                                         "2014-10-31"))
-      common-lisp:nil "CreateOptionGroupResult")))
+      common-lisp:nil "CreateOptionGroupResult"
+      '(("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupQuotaExceededFault"
+         . option-group-quota-exceeded-fault)))))
  (common-lisp:export 'create-option-group))
 (common-lisp:progn
  (common-lisp:defun delete-dbcluster
@@ -16324,7 +15217,14 @@
                                                         "POST" "/"
                                                         "DeleteDBCluster"
                                                         "2014-10-31"))
-      common-lisp:nil "DeleteDBClusterResult")))
+      common-lisp:nil "DeleteDBClusterResult"
+      '(("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)))))
  (common-lisp:export 'delete-dbcluster))
 (common-lisp:progn
  (common-lisp:defun delete-dbcluster-parameter-group
@@ -16343,7 +15243,11 @@
                                                         "POST" "/"
                                                         "DeleteDBClusterParameterGroup"
                                                         "2014-10-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("DBParameterGroupNotFoundFault"
+         . dbparameter-group-not-found-fault)))))
  (common-lisp:export 'delete-dbcluster-parameter-group))
 (common-lisp:progn
  (common-lisp:defun delete-dbcluster-snapshot
@@ -16362,7 +15266,11 @@
                                                         "POST" "/"
                                                         "DeleteDBClusterSnapshot"
                                                         "2014-10-31"))
-      common-lisp:nil "DeleteDBClusterSnapshotResult")))
+      common-lisp:nil "DeleteDBClusterSnapshotResult"
+      '(("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("DBClusterSnapshotNotFoundFault"
+         . dbcluster-snapshot-not-found-fault)))))
  (common-lisp:export 'delete-dbcluster-snapshot))
 (common-lisp:progn
  (common-lisp:defun delete-dbinstance
@@ -16383,7 +15291,12 @@
                                                         "POST" "/"
                                                         "DeleteDBInstance"
                                                         "2014-10-31"))
-      common-lisp:nil "DeleteDBInstanceResult")))
+      common-lisp:nil "DeleteDBInstanceResult"
+      '(("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)))))
  (common-lisp:export 'delete-dbinstance))
 (common-lisp:progn
  (common-lisp:defun delete-dbparameter-group
@@ -16401,7 +15314,11 @@
                                                         "POST" "/"
                                                         "DeleteDBParameterGroup"
                                                         "2014-10-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("DBParameterGroupNotFoundFault"
+         . dbparameter-group-not-found-fault)))))
  (common-lisp:export 'delete-dbparameter-group))
 (common-lisp:progn
  (common-lisp:defun delete-dbsecurity-group
@@ -16419,7 +15336,10 @@
                                                         "POST" "/"
                                                         "DeleteDBSecurityGroup"
                                                         "2014-10-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)))))
  (common-lisp:export 'delete-dbsecurity-group))
 (common-lisp:progn
  (common-lisp:defun delete-dbsnapshot
@@ -16437,7 +15357,9 @@
                                                         "POST" "/"
                                                         "DeleteDBSnapshot"
                                                         "2014-10-31"))
-      common-lisp:nil "DeleteDBSnapshotResult")))
+      common-lisp:nil "DeleteDBSnapshotResult"
+      '(("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)))))
  (common-lisp:export 'delete-dbsnapshot))
 (common-lisp:progn
  (common-lisp:defun delete-dbsubnet-group
@@ -16455,7 +15377,10 @@
                                                         "POST" "/"
                                                         "DeleteDBSubnetGroup"
                                                         "2014-10-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)))))
  (common-lisp:export 'delete-dbsubnet-group))
 (common-lisp:progn
  (common-lisp:defun delete-event-subscription
@@ -16474,7 +15399,10 @@
                                                         "POST" "/"
                                                         "DeleteEventSubscription"
                                                         "2014-10-31"))
-      common-lisp:nil "DeleteEventSubscriptionResult")))
+      common-lisp:nil "DeleteEventSubscriptionResult"
+      '(("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)))))
  (common-lisp:export 'delete-event-subscription))
 (common-lisp:progn
  (common-lisp:defun delete-option-group
@@ -16492,7 +15420,9 @@
                                                         "POST" "/"
                                                         "DeleteOptionGroup"
                                                         "2014-10-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)))))
  (common-lisp:export 'delete-option-group))
 (common-lisp:progn
  (common-lisp:defun describe-account-attributes ()
@@ -16501,7 +15431,7 @@
      (common-lisp:make-instance 'rds-request :method "POST" :path "/" :params
                                 `(("Action" ,@"DescribeAccountAttributes")
                                   ("Version" ,@"2014-10-31"))))
-    common-lisp:nil "DescribeAccountAttributesResult"))
+    common-lisp:nil "DescribeAccountAttributesResult" 'common-lisp:nil))
  (common-lisp:export 'describe-account-attributes))
 (common-lisp:progn
  (common-lisp:defun describe-certificates
@@ -16521,7 +15451,8 @@
                                                         "POST" "/"
                                                         "DescribeCertificates"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeCertificatesResult")))
+      common-lisp:nil "DescribeCertificatesResult"
+      '(("CertificateNotFoundFault" . certificate-not-found-fault)))))
  (common-lisp:export 'describe-certificates))
 (common-lisp:progn
  (common-lisp:defun describe-dbcluster-parameter-groups
@@ -16543,7 +15474,9 @@
                                                         "POST" "/"
                                                         "DescribeDBClusterParameterGroups"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeDBClusterParameterGroupsResult")))
+      common-lisp:nil "DescribeDBClusterParameterGroupsResult"
+      '(("DBParameterGroupNotFoundFault"
+         . dbparameter-group-not-found-fault)))))
  (common-lisp:export 'describe-dbcluster-parameter-groups))
 (common-lisp:progn
  (common-lisp:defun describe-dbcluster-parameters
@@ -16565,7 +15498,9 @@
                                                         "POST" "/"
                                                         "DescribeDBClusterParameters"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeDBClusterParametersResult")))
+      common-lisp:nil "DescribeDBClusterParametersResult"
+      '(("DBParameterGroupNotFoundFault"
+         . dbparameter-group-not-found-fault)))))
  (common-lisp:export 'describe-dbcluster-parameters))
 (common-lisp:progn
  (common-lisp:defun describe-dbcluster-snapshot-attributes
@@ -16584,7 +15519,9 @@
                                                         "POST" "/"
                                                         "DescribeDBClusterSnapshotAttributes"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeDBClusterSnapshotAttributesResult")))
+      common-lisp:nil "DescribeDBClusterSnapshotAttributesResult"
+      '(("DBClusterSnapshotNotFoundFault"
+         . dbcluster-snapshot-not-found-fault)))))
  (common-lisp:export 'describe-dbcluster-snapshot-attributes))
 (common-lisp:progn
  (common-lisp:defun describe-dbcluster-snapshots
@@ -16607,7 +15544,9 @@
                                                         "POST" "/"
                                                         "DescribeDBClusterSnapshots"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeDBClusterSnapshotsResult")))
+      common-lisp:nil "DescribeDBClusterSnapshotsResult"
+      '(("DBClusterSnapshotNotFoundFault"
+         . dbcluster-snapshot-not-found-fault)))))
  (common-lisp:export 'describe-dbcluster-snapshots))
 (common-lisp:progn
  (common-lisp:defun describe-dbclusters
@@ -16627,7 +15566,8 @@
                                                         "POST" "/"
                                                         "DescribeDBClusters"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeDBClustersResult")))
+      common-lisp:nil "DescribeDBClustersResult"
+      '(("DBClusterNotFoundFault" . dbcluster-not-found-fault)))))
  (common-lisp:export 'describe-dbclusters))
 (common-lisp:progn
  (common-lisp:defun describe-dbengine-versions
@@ -16652,7 +15592,7 @@
                                                         "POST" "/"
                                                         "DescribeDBEngineVersions"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeDBEngineVersionsResult")))
+      common-lisp:nil "DescribeDBEngineVersionsResult" 'common-lisp:nil)))
  (common-lisp:export 'describe-dbengine-versions))
 (common-lisp:progn
  (common-lisp:defun describe-dbinstances
@@ -16672,7 +15612,8 @@
                                                         "POST" "/"
                                                         "DescribeDBInstances"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeDBInstancesResult")))
+      common-lisp:nil "DescribeDBInstancesResult"
+      '(("DBInstanceNotFoundFault" . dbinstance-not-found-fault)))))
  (common-lisp:export 'describe-dbinstances))
 (common-lisp:progn
  (common-lisp:defun describe-dblog-files
@@ -16693,7 +15634,8 @@
                                                         "POST" "/"
                                                         "DescribeDBLogFiles"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeDBLogFilesResult")))
+      common-lisp:nil "DescribeDBLogFilesResult"
+      '(("DBInstanceNotFoundFault" . dbinstance-not-found-fault)))))
  (common-lisp:export 'describe-dblog-files))
 (common-lisp:progn
  (common-lisp:defun describe-dbparameter-groups
@@ -16714,7 +15656,9 @@
                                                         "POST" "/"
                                                         "DescribeDBParameterGroups"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeDBParameterGroupsResult")))
+      common-lisp:nil "DescribeDBParameterGroupsResult"
+      '(("DBParameterGroupNotFoundFault"
+         . dbparameter-group-not-found-fault)))))
  (common-lisp:export 'describe-dbparameter-groups))
 (common-lisp:progn
  (common-lisp:defun describe-dbparameters
@@ -16735,7 +15679,9 @@
                                                         "POST" "/"
                                                         "DescribeDBParameters"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeDBParametersResult")))
+      common-lisp:nil "DescribeDBParametersResult"
+      '(("DBParameterGroupNotFoundFault"
+         . dbparameter-group-not-found-fault)))))
  (common-lisp:export 'describe-dbparameters))
 (common-lisp:progn
  (common-lisp:defun describe-dbsecurity-groups
@@ -16756,7 +15702,8 @@
                                                         "POST" "/"
                                                         "DescribeDBSecurityGroups"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeDBSecurityGroupsResult")))
+      common-lisp:nil "DescribeDBSecurityGroupsResult"
+      '(("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)))))
  (common-lisp:export 'describe-dbsecurity-groups))
 (common-lisp:progn
  (common-lisp:defun describe-dbsnapshot-attributes
@@ -16775,7 +15722,8 @@
                                                         "POST" "/"
                                                         "DescribeDBSnapshotAttributes"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeDBSnapshotAttributesResult")))
+      common-lisp:nil "DescribeDBSnapshotAttributesResult"
+      '(("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)))))
  (common-lisp:export 'describe-dbsnapshot-attributes))
 (common-lisp:progn
  (common-lisp:defun describe-dbsnapshots
@@ -16797,7 +15745,8 @@
                                                         "POST" "/"
                                                         "DescribeDBSnapshots"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeDBSnapshotsResult")))
+      common-lisp:nil "DescribeDBSnapshotsResult"
+      '(("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)))))
  (common-lisp:export 'describe-dbsnapshots))
 (common-lisp:progn
  (common-lisp:defun describe-dbsubnet-groups
@@ -16817,7 +15766,8 @@
                                                         "POST" "/"
                                                         "DescribeDBSubnetGroups"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeDBSubnetGroupsResult")))
+      common-lisp:nil "DescribeDBSubnetGroupsResult"
+      '(("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)))))
  (common-lisp:export 'describe-dbsubnet-groups))
 (common-lisp:progn
  (common-lisp:defun describe-engine-default-cluster-parameters
@@ -16839,7 +15789,8 @@
                                                         "POST" "/"
                                                         "DescribeEngineDefaultClusterParameters"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeEngineDefaultClusterParametersResult")))
+      common-lisp:nil "DescribeEngineDefaultClusterParametersResult"
+      'common-lisp:nil)))
  (common-lisp:export 'describe-engine-default-cluster-parameters))
 (common-lisp:progn
  (common-lisp:defun describe-engine-default-parameters
@@ -16861,7 +15812,8 @@
                                                         "POST" "/"
                                                         "DescribeEngineDefaultParameters"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeEngineDefaultParametersResult")))
+      common-lisp:nil "DescribeEngineDefaultParametersResult"
+      'common-lisp:nil)))
  (common-lisp:export 'describe-engine-default-parameters))
 (common-lisp:progn
  (common-lisp:defun describe-event-categories
@@ -16880,7 +15832,7 @@
                                                         "POST" "/"
                                                         "DescribeEventCategories"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeEventCategoriesResult")))
+      common-lisp:nil "DescribeEventCategoriesResult" 'common-lisp:nil)))
  (common-lisp:export 'describe-event-categories))
 (common-lisp:progn
  (common-lisp:defun describe-event-subscriptions
@@ -16901,7 +15853,8 @@
                                                         "POST" "/"
                                                         "DescribeEventSubscriptions"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeEventSubscriptionsResult")))
+      common-lisp:nil "DescribeEventSubscriptionsResult"
+      '(("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-event-subscriptions))
 (common-lisp:progn
  (common-lisp:defun describe-events
@@ -16923,7 +15876,7 @@
                                                         "POST" "/"
                                                         "DescribeEvents"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeEventsResult")))
+      common-lisp:nil "DescribeEventsResult" 'common-lisp:nil)))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
  (common-lisp:defun describe-option-group-options
@@ -16945,7 +15898,7 @@
                                                         "POST" "/"
                                                         "DescribeOptionGroupOptions"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeOptionGroupOptionsResult")))
+      common-lisp:nil "DescribeOptionGroupOptionsResult" 'common-lisp:nil)))
  (common-lisp:export 'describe-option-group-options))
 (common-lisp:progn
  (common-lisp:defun describe-option-groups
@@ -16966,7 +15919,8 @@
                                                         "POST" "/"
                                                         "DescribeOptionGroups"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeOptionGroupsResult")))
+      common-lisp:nil "DescribeOptionGroupsResult"
+      '(("OptionGroupNotFoundFault" . option-group-not-found-fault)))))
  (common-lisp:export 'describe-option-groups))
 (common-lisp:progn
  (common-lisp:defun describe-orderable-dbinstance-options
@@ -16988,7 +15942,8 @@
                                                         "POST" "/"
                                                         "DescribeOrderableDBInstanceOptions"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeOrderableDBInstanceOptionsResult")))
+      common-lisp:nil "DescribeOrderableDBInstanceOptionsResult"
+      'common-lisp:nil)))
  (common-lisp:export 'describe-orderable-dbinstance-options))
 (common-lisp:progn
  (common-lisp:defun describe-pending-maintenance-actions
@@ -17009,7 +15964,8 @@
                                                         "POST" "/"
                                                         "DescribePendingMaintenanceActions"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribePendingMaintenanceActionsResult")))
+      common-lisp:nil "DescribePendingMaintenanceActionsResult"
+      '(("ResourceNotFoundFault" . resource-not-found-fault)))))
  (common-lisp:export 'describe-pending-maintenance-actions))
 (common-lisp:progn
  (common-lisp:defun describe-reserved-dbinstances
@@ -17034,7 +15990,9 @@
                                                         "POST" "/"
                                                         "DescribeReservedDBInstances"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeReservedDBInstancesResult")))
+      common-lisp:nil "DescribeReservedDBInstancesResult"
+      '(("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)))))
  (common-lisp:export 'describe-reserved-dbinstances))
 (common-lisp:progn
  (common-lisp:defun describe-reserved-dbinstances-offerings
@@ -17058,7 +16016,9 @@
                                                         "POST" "/"
                                                         "DescribeReservedDBInstancesOfferings"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeReservedDBInstancesOfferingsResult")))
+      common-lisp:nil "DescribeReservedDBInstancesOfferingsResult"
+      '(("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)))))
  (common-lisp:export 'describe-reserved-dbinstances-offerings))
 (common-lisp:progn
  (common-lisp:defun describe-source-regions
@@ -17077,7 +16037,7 @@
                                                         "POST" "/"
                                                         "DescribeSourceRegions"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeSourceRegionsResult")))
+      common-lisp:nil "DescribeSourceRegionsResult" 'common-lisp:nil)))
  (common-lisp:export 'describe-source-regions))
 (common-lisp:progn
  (common-lisp:defun download-dblog-file-portion
@@ -17099,7 +16059,9 @@
                                                         "POST" "/"
                                                         "DownloadDBLogFilePortion"
                                                         "2014-10-31"))
-      common-lisp:nil "DownloadDBLogFilePortionResult")))
+      common-lisp:nil "DownloadDBLogFilePortionResult"
+      '(("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)))))
  (common-lisp:export 'download-dblog-file-portion))
 (common-lisp:progn
  (common-lisp:defun failover-dbcluster
@@ -17119,7 +16081,10 @@
                                                         "POST" "/"
                                                         "FailoverDBCluster"
                                                         "2014-10-31"))
-      common-lisp:nil "FailoverDBClusterResult")))
+      common-lisp:nil "FailoverDBClusterResult"
+      '(("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)))))
  (common-lisp:export 'failover-dbcluster))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-resource
@@ -17137,7 +16102,10 @@
                                                         "POST" "/"
                                                         "ListTagsForResource"
                                                         "2014-10-31"))
-      common-lisp:nil "ListTagsForResourceResult")))
+      common-lisp:nil "ListTagsForResourceResult"
+      '(("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)))))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
  (common-lisp:defun modify-dbcluster
@@ -17166,7 +16134,20 @@
                                                         "POST" "/"
                                                         "ModifyDBCluster"
                                                         "2014-10-31"))
-      common-lisp:nil "ModifyDBClusterResult")))
+      common-lisp:nil "ModifyDBClusterResult"
+      '(("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)))))
  (common-lisp:export 'modify-dbcluster))
 (common-lisp:progn
  (common-lisp:defun modify-dbcluster-parameter-group
@@ -17187,7 +16168,10 @@
                                                         "POST" "/"
                                                         "ModifyDBClusterParameterGroup"
                                                         "2014-10-31"))
-      common-lisp:nil "ModifyDBClusterParameterGroupResult")))
+      common-lisp:nil "ModifyDBClusterParameterGroupResult"
+      '(("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)))))
  (common-lisp:export 'modify-dbcluster-parameter-group))
 (common-lisp:progn
  (common-lisp:defun modify-dbcluster-snapshot-attribute
@@ -17209,7 +16193,12 @@
                                                         "POST" "/"
                                                         "ModifyDBClusterSnapshotAttribute"
                                                         "2014-10-31"))
-      common-lisp:nil "ModifyDBClusterSnapshotAttributeResult")))
+      common-lisp:nil "ModifyDBClusterSnapshotAttributeResult"
+      '(("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)))))
  (common-lisp:export 'modify-dbcluster-snapshot-attribute))
 (common-lisp:progn
  (common-lisp:defun modify-dbinstance
@@ -17251,7 +16240,27 @@
                                                         "POST" "/"
                                                         "ModifyDBInstance"
                                                         "2014-10-31"))
-      common-lisp:nil "ModifyDBInstanceResult")))
+      common-lisp:nil "ModifyDBInstanceResult"
+      '(("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)))))
  (common-lisp:export 'modify-dbinstance))
 (common-lisp:progn
  (common-lisp:defun modify-dbparameter-group
@@ -17270,7 +16279,10 @@
                                                         "POST" "/"
                                                         "ModifyDBParameterGroup"
                                                         "2014-10-31"))
-      common-lisp:nil "ModifyDBParameterGroupResult")))
+      common-lisp:nil "ModifyDBParameterGroupResult"
+      '(("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)))))
  (common-lisp:export 'modify-dbparameter-group))
 (common-lisp:progn
  (common-lisp:defun modify-dbsnapshot
@@ -17289,7 +16301,8 @@
                                                         "POST" "/"
                                                         "ModifyDBSnapshot"
                                                         "2014-10-31"))
-      common-lisp:nil "ModifyDBSnapshotResult")))
+      common-lisp:nil "ModifyDBSnapshotResult"
+      '(("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)))))
  (common-lisp:export 'modify-dbsnapshot))
 (common-lisp:progn
  (common-lisp:defun modify-dbsnapshot-attribute
@@ -17311,7 +16324,11 @@
                                                         "POST" "/"
                                                         "ModifyDBSnapshotAttribute"
                                                         "2014-10-31"))
-      common-lisp:nil "ModifyDBSnapshotAttributeResult")))
+      common-lisp:nil "ModifyDBSnapshotAttributeResult"
+      '(("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)))))
  (common-lisp:export 'modify-dbsnapshot-attribute))
 (common-lisp:progn
  (common-lisp:defun modify-dbsubnet-group
@@ -17332,7 +16349,13 @@
                                                         "POST" "/"
                                                         "ModifyDBSubnetGroup"
                                                         "2014-10-31"))
-      common-lisp:nil "ModifyDBSubnetGroupResult")))
+      common-lisp:nil "ModifyDBSubnetGroupResult"
+      '(("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("InvalidSubnet" . invalid-subnet)))))
  (common-lisp:export 'modify-dbsubnet-group))
 (common-lisp:progn
  (common-lisp:defun modify-event-subscription
@@ -17354,7 +16377,15 @@
                                                         "POST" "/"
                                                         "ModifyEventSubscription"
                                                         "2014-10-31"))
-      common-lisp:nil "ModifyEventSubscriptionResult")))
+      common-lisp:nil "ModifyEventSubscriptionResult"
+      '(("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)))))
  (common-lisp:export 'modify-event-subscription))
 (common-lisp:progn
  (common-lisp:defun modify-option-group
@@ -17375,7 +16406,9 @@
                                                         "POST" "/"
                                                         "ModifyOptionGroup"
                                                         "2014-10-31"))
-      common-lisp:nil "ModifyOptionGroupResult")))
+      common-lisp:nil "ModifyOptionGroupResult"
+      '(("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)))))
  (common-lisp:export 'modify-option-group))
 (common-lisp:progn
  (common-lisp:defun promote-read-replica
@@ -17396,7 +16429,9 @@
                                                         "POST" "/"
                                                         "PromoteReadReplica"
                                                         "2014-10-31"))
-      common-lisp:nil "PromoteReadReplicaResult")))
+      common-lisp:nil "PromoteReadReplicaResult"
+      '(("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)))))
  (common-lisp:export 'promote-read-replica))
 (common-lisp:progn
  (common-lisp:defun promote-read-replica-dbcluster
@@ -17415,7 +16450,9 @@
                                                         "POST" "/"
                                                         "PromoteReadReplicaDBCluster"
                                                         "2014-10-31"))
-      common-lisp:nil "PromoteReadReplicaDBClusterResult")))
+      common-lisp:nil "PromoteReadReplicaDBClusterResult"
+      '(("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)))))
  (common-lisp:export 'promote-read-replica-dbcluster))
 (common-lisp:progn
  (common-lisp:defun purchase-reserved-dbinstances-offering
@@ -17437,7 +16474,13 @@
                                                         "POST" "/"
                                                         "PurchaseReservedDBInstancesOffering"
                                                         "2014-10-31"))
-      common-lisp:nil "PurchaseReservedDBInstancesOfferingResult")))
+      common-lisp:nil "PurchaseReservedDBInstancesOfferingResult"
+      '(("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)))))
  (common-lisp:export 'purchase-reserved-dbinstances-offering))
 (common-lisp:progn
  (common-lisp:defun reboot-dbinstance
@@ -17456,7 +16499,9 @@
                                                         "POST" "/"
                                                         "RebootDBInstance"
                                                         "2014-10-31"))
-      common-lisp:nil "RebootDBInstanceResult")))
+      common-lisp:nil "RebootDBInstanceResult"
+      '(("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)))))
  (common-lisp:export 'reboot-dbinstance))
 (common-lisp:progn
  (common-lisp:defun remove-role-from-dbcluster
@@ -17475,7 +16520,10 @@
                                                         "POST" "/"
                                                         "RemoveRoleFromDBCluster"
                                                         "2014-10-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)))))
  (common-lisp:export 'remove-role-from-dbcluster))
 (common-lisp:progn
  (common-lisp:defun remove-source-identifier-from-subscription
@@ -17495,7 +16543,9 @@
                                                         "POST" "/"
                                                         "RemoveSourceIdentifierFromSubscription"
                                                         "2014-10-31"))
-      common-lisp:nil "RemoveSourceIdentifierFromSubscriptionResult")))
+      common-lisp:nil "RemoveSourceIdentifierFromSubscriptionResult"
+      '(("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)))))
  (common-lisp:export 'remove-source-identifier-from-subscription))
 (common-lisp:progn
  (common-lisp:defun remove-tags-from-resource
@@ -17514,7 +16564,10 @@
                                                         "POST" "/"
                                                         "RemoveTagsFromResource"
                                                         "2014-10-31"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)))))
  (common-lisp:export 'remove-tags-from-resource))
 (common-lisp:progn
  (common-lisp:defun reset-dbcluster-parameter-group
@@ -17536,7 +16589,11 @@
                                                         "POST" "/"
                                                         "ResetDBClusterParameterGroup"
                                                         "2014-10-31"))
-      common-lisp:nil "ResetDBClusterParameterGroupResult")))
+      common-lisp:nil "ResetDBClusterParameterGroupResult"
+      '(("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("DBParameterGroupNotFoundFault"
+         . dbparameter-group-not-found-fault)))))
  (common-lisp:export 'reset-dbcluster-parameter-group))
 (common-lisp:progn
  (common-lisp:defun reset-dbparameter-group
@@ -17557,7 +16614,11 @@
                                                         "POST" "/"
                                                         "ResetDBParameterGroup"
                                                         "2014-10-31"))
-      common-lisp:nil "ResetDBParameterGroupResult")))
+      common-lisp:nil "ResetDBParameterGroupResult"
+      '(("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("DBParameterGroupNotFoundFault"
+         . dbparameter-group-not-found-fault)))))
  (common-lisp:export 'reset-dbparameter-group))
 (common-lisp:progn
  (common-lisp:defun restore-dbcluster-from-s3
@@ -17592,7 +16653,22 @@
                                                         "POST" "/"
                                                         "RestoreDBClusterFromS3"
                                                         "2014-10-31"))
-      common-lisp:nil "RestoreDBClusterFromS3Result")))
+      common-lisp:nil "RestoreDBClusterFromS3Result"
+      '(("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)))))
  (common-lisp:export 'restore-dbcluster-from-s3))
 (common-lisp:progn
  (common-lisp:defun restore-dbcluster-from-snapshot
@@ -17619,7 +16695,27 @@
                                                         "POST" "/"
                                                         "RestoreDBClusterFromSnapshot"
                                                         "2014-10-31"))
-      common-lisp:nil "RestoreDBClusterFromSnapshotResult")))
+      common-lisp:nil "RestoreDBClusterFromSnapshotResult"
+      '(("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)))))
  (common-lisp:export 'restore-dbcluster-from-snapshot))
 (common-lisp:progn
  (common-lisp:defun restore-dbcluster-to-point-in-time
@@ -17646,7 +16742,26 @@
                                                         "POST" "/"
                                                         "RestoreDBClusterToPointInTime"
                                                         "2014-10-31"))
-      common-lisp:nil "RestoreDBClusterToPointInTimeResult")))
+      common-lisp:nil "RestoreDBClusterToPointInTimeResult"
+      '(("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)))))
  (common-lisp:export 'restore-dbcluster-to-point-in-time))
 (common-lisp:progn
  (common-lisp:defun restore-dbinstance-from-dbsnapshot
@@ -17678,7 +16793,28 @@
                                                         "POST" "/"
                                                         "RestoreDBInstanceFromDBSnapshot"
                                                         "2014-10-31"))
-      common-lisp:nil "RestoreDBInstanceFromDBSnapshotResult")))
+      common-lisp:nil "RestoreDBInstanceFromDBSnapshotResult"
+      '(("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("InvalidSubnet" . invalid-subnet)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)))))
  (common-lisp:export 'restore-dbinstance-from-dbsnapshot))
 (common-lisp:progn
  (common-lisp:defun restore-dbinstance-to-point-in-time
@@ -17712,7 +16848,30 @@
                                                         "POST" "/"
                                                         "RestoreDBInstanceToPointInTime"
                                                         "2014-10-31"))
-      common-lisp:nil "RestoreDBInstanceToPointInTimeResult")))
+      common-lisp:nil "RestoreDBInstanceToPointInTimeResult"
+      '(("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("InvalidSubnet" . invalid-subnet)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)))))
  (common-lisp:export 'restore-dbinstance-to-point-in-time))
 (common-lisp:progn
  (common-lisp:defun revoke-dbsecurity-group-ingress
@@ -17735,7 +16894,11 @@
                                                         "POST" "/"
                                                         "RevokeDBSecurityGroupIngress"
                                                         "2014-10-31"))
-      common-lisp:nil "RevokeDBSecurityGroupIngressResult")))
+      common-lisp:nil "RevokeDBSecurityGroupIngressResult"
+      '(("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)))))
  (common-lisp:export 'revoke-dbsecurity-group-ingress))
 (common-lisp:progn
  (common-lisp:defun start-dbinstance
@@ -17753,7 +16916,20 @@
                                                         "POST" "/"
                                                         "StartDBInstance"
                                                         "2014-10-31"))
-      common-lisp:nil "StartDBInstanceResult")))
+      common-lisp:nil "StartDBInstanceResult"
+      '(("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)))))
  (common-lisp:export 'start-dbinstance))
 (common-lisp:progn
  (common-lisp:defun stop-dbinstance
@@ -17773,5 +16949,10 @@
                                                         "POST" "/"
                                                         "StopDBInstance"
                                                         "2014-10-31"))
-      common-lisp:nil "StopDBInstanceResult")))
+      common-lisp:nil "StopDBInstanceResult"
+      '(("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)))))
  (common-lisp:export 'stop-dbinstance))

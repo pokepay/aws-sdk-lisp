@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/autoscaling/api)
 (common-lisp:progn
  (common-lisp:defclass autoscaling-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "autoscaling"))
  (common-lisp:export 'autoscaling-request))
+(common-lisp:progn
+ (common-lisp:define-condition autoscaling-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'autoscaling-error))
 (common-lisp:progn
  (common-lisp:deftype activities () '(trivial-types:proper-list activity))
  (common-lisp:defun |make-activities|
@@ -255,29 +261,12 @@
                            (trivial-types:proper-list alarm))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (already-exists-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-already-exists-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null)))
+ (common-lisp:define-condition already-exists-fault
+     (autoscaling-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       already-exists-fault-message)))
  (common-lisp:export
-  (common-lisp:list 'already-exists-fault 'make-already-exists-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input already-exists-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input already-exists-fault))
-   common-lisp:nil))
+  (common-lisp:list 'already-exists-fault 'already-exists-fault-message)))
 (common-lisp:deftype ascii-string-max-len255 () 'common-lisp:string)
 (common-lisp:deftype associate-public-ip-address () 'common-lisp:boolean)
 (common-lisp:progn
@@ -3451,29 +3440,12 @@
                            (trivial-types:proper-list instance))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-next-token (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-next-token-"))
-   (message common-lisp:nil :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null)))
+ (common-lisp:define-condition invalid-next-token
+     (autoscaling-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-next-token-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-next-token 'make-invalid-next-token))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-next-token))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-next-token))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-next-token))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-next-token 'invalid-next-token-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (launch-configuration (:copier common-lisp:nil)
@@ -3928,29 +3900,12 @@
 (common-lisp:deftype lifecycle-state () 'common-lisp:string)
 (common-lisp:deftype lifecycle-transition () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-fault
+     (autoscaling-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-fault-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-fault 'make-limit-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input limit-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input limit-exceeded-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input limit-exceeded-fault))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-fault 'limit-exceeded-fault-message)))
 (common-lisp:progn
  (common-lisp:deftype load-balancer-names ()
    '(trivial-types:proper-list xml-string-max-len255))
@@ -4935,98 +4890,29 @@
                           record-lifecycle-action-heartbeat-type))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-contention-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-contention-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null)))
+ (common-lisp:define-condition resource-contention-fault
+     (autoscaling-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-contention-fault-message)))
  (common-lisp:export
   (common-lisp:list 'resource-contention-fault
-                    'make-resource-contention-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-contention-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-contention-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-contention-fault))
-   common-lisp:nil))
+                    'resource-contention-fault-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-in-use-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-in-use-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null)))
+ (common-lisp:define-condition resource-in-use-fault
+     (autoscaling-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-in-use-fault-message)))
  (common-lisp:export
-  (common-lisp:list 'resource-in-use-fault 'make-resource-in-use-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-fault))
-   common-lisp:nil))
+  (common-lisp:list 'resource-in-use-fault 'resource-in-use-fault-message)))
 (common-lisp:deftype resource-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (scaling-activity-in-progress-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-scaling-activity-in-progress-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null)))
+ (common-lisp:define-condition scaling-activity-in-progress-fault
+     (autoscaling-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       scaling-activity-in-progress-fault-message)))
  (common-lisp:export
   (common-lisp:list 'scaling-activity-in-progress-fault
-                    'make-scaling-activity-in-progress-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          scaling-activity-in-progress-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          scaling-activity-in-progress-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          scaling-activity-in-progress-fault))
-   common-lisp:nil))
+                    'scaling-activity-in-progress-fault-message)))
 (common-lisp:deftype scaling-activity-status-code () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype scaling-policies ()
@@ -6133,7 +6019,8 @@
                                                         "POST" "/"
                                                         "AttachInstances"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'attach-instances))
 (common-lisp:progn
  (common-lisp:defun attach-load-balancer-target-groups
@@ -6154,7 +6041,8 @@
                                                         "POST" "/"
                                                         "AttachLoadBalancerTargetGroups"
                                                         "2011-01-01"))
-      common-lisp:nil "AttachLoadBalancerTargetGroupsResult")))
+      common-lisp:nil "AttachLoadBalancerTargetGroupsResult"
+      '(("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'attach-load-balancer-target-groups))
 (common-lisp:progn
  (common-lisp:defun attach-load-balancers
@@ -6174,7 +6062,8 @@
                                                         "POST" "/"
                                                         "AttachLoadBalancers"
                                                         "2011-01-01"))
-      common-lisp:nil "AttachLoadBalancersResult")))
+      common-lisp:nil "AttachLoadBalancersResult"
+      '(("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'attach-load-balancers))
 (common-lisp:progn
  (common-lisp:defun complete-lifecycle-action
@@ -6196,7 +6085,8 @@
                                                         "POST" "/"
                                                         "CompleteLifecycleAction"
                                                         "2011-01-01"))
-      common-lisp:nil "CompleteLifecycleActionResult")))
+      common-lisp:nil "CompleteLifecycleActionResult"
+      '(("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'complete-lifecycle-action))
 (common-lisp:progn
  (common-lisp:defun create-auto-scaling-group
@@ -6225,7 +6115,10 @@
                                                         "POST" "/"
                                                         "CreateAutoScalingGroup"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AlreadyExistsFault" . already-exists-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'create-auto-scaling-group))
 (common-lisp:progn
  (common-lisp:defun create-launch-configuration
@@ -6254,7 +6147,10 @@
                                                         "POST" "/"
                                                         "CreateLaunchConfiguration"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AlreadyExistsFault" . already-exists-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'create-launch-configuration))
 (common-lisp:progn
  (common-lisp:defun create-or-update-tags
@@ -6272,7 +6168,11 @@
                                                         "POST" "/"
                                                         "CreateOrUpdateTags"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LimitExceededFault" . limit-exceeded-fault)
+        ("AlreadyExistsFault" . already-exists-fault)
+        ("ResourceContentionFault" . resource-contention-fault)
+        ("ResourceInUseFault" . resource-in-use-fault)))))
  (common-lisp:export 'create-or-update-tags))
 (common-lisp:progn
  (common-lisp:defun delete-auto-scaling-group
@@ -6291,7 +6191,10 @@
                                                         "POST" "/"
                                                         "DeleteAutoScalingGroup"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ScalingActivityInProgressFault" . scaling-activity-in-progress-fault)
+        ("ResourceInUseFault" . resource-in-use-fault)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'delete-auto-scaling-group))
 (common-lisp:progn
  (common-lisp:defun delete-launch-configuration
@@ -6309,7 +6212,9 @@
                                                         "POST" "/"
                                                         "DeleteLaunchConfiguration"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceInUseFault" . resource-in-use-fault)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'delete-launch-configuration))
 (common-lisp:progn
  (common-lisp:defun delete-lifecycle-hook
@@ -6329,7 +6234,8 @@
                                                         "POST" "/"
                                                         "DeleteLifecycleHook"
                                                         "2011-01-01"))
-      common-lisp:nil "DeleteLifecycleHookResult")))
+      common-lisp:nil "DeleteLifecycleHookResult"
+      '(("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'delete-lifecycle-hook))
 (common-lisp:progn
  (common-lisp:defun delete-notification-configuration
@@ -6349,7 +6255,8 @@
                                                         "POST" "/"
                                                         "DeleteNotificationConfiguration"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'delete-notification-configuration))
 (common-lisp:progn
  (common-lisp:defun delete-policy
@@ -6368,7 +6275,8 @@
                                                         "POST" "/"
                                                         "DeletePolicy"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'delete-policy))
 (common-lisp:progn
  (common-lisp:defun delete-scheduled-action
@@ -6388,7 +6296,8 @@
                                                         "POST" "/"
                                                         "DeleteScheduledAction"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'delete-scheduled-action))
 (common-lisp:progn
  (common-lisp:defun delete-tags
@@ -6405,7 +6314,9 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteTags"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceContentionFault" . resource-contention-fault)
+        ("ResourceInUseFault" . resource-in-use-fault)))))
  (common-lisp:export 'delete-tags))
 (common-lisp:progn
  (common-lisp:defun describe-account-limits ()
@@ -6415,7 +6326,8 @@
                                 :params
                                 `(("Action" ,@"DescribeAccountLimits")
                                   ("Version" ,@"2011-01-01"))))
-    common-lisp:nil "DescribeAccountLimitsResult"))
+    common-lisp:nil "DescribeAccountLimitsResult"
+    '(("ResourceContentionFault" . resource-contention-fault))))
  (common-lisp:export 'describe-account-limits))
 (common-lisp:progn
  (common-lisp:defun describe-adjustment-types ()
@@ -6425,7 +6337,8 @@
                                 :params
                                 `(("Action" ,@"DescribeAdjustmentTypes")
                                   ("Version" ,@"2011-01-01"))))
-    common-lisp:nil "DescribeAdjustmentTypesResult"))
+    common-lisp:nil "DescribeAdjustmentTypesResult"
+    '(("ResourceContentionFault" . resource-contention-fault))))
  (common-lisp:export 'describe-adjustment-types))
 (common-lisp:progn
  (common-lisp:defun describe-auto-scaling-groups
@@ -6445,7 +6358,9 @@
                                                         "POST" "/"
                                                         "DescribeAutoScalingGroups"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribeAutoScalingGroupsResult")))
+      common-lisp:nil "DescribeAutoScalingGroupsResult"
+      '(("InvalidNextToken" . invalid-next-token)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'describe-auto-scaling-groups))
 (common-lisp:progn
  (common-lisp:defun describe-auto-scaling-instances
@@ -6465,7 +6380,9 @@
                                                         "POST" "/"
                                                         "DescribeAutoScalingInstances"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribeAutoScalingInstancesResult")))
+      common-lisp:nil "DescribeAutoScalingInstancesResult"
+      '(("InvalidNextToken" . invalid-next-token)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'describe-auto-scaling-instances))
 (common-lisp:progn
  (common-lisp:defun describe-auto-scaling-notification-types ()
@@ -6476,7 +6393,8 @@
                                 `(("Action"
                                    ,@"DescribeAutoScalingNotificationTypes")
                                   ("Version" ,@"2011-01-01"))))
-    common-lisp:nil "DescribeAutoScalingNotificationTypesResult"))
+    common-lisp:nil "DescribeAutoScalingNotificationTypesResult"
+    '(("ResourceContentionFault" . resource-contention-fault))))
  (common-lisp:export 'describe-auto-scaling-notification-types))
 (common-lisp:progn
  (common-lisp:defun describe-launch-configurations
@@ -6496,7 +6414,9 @@
                                                         "POST" "/"
                                                         "DescribeLaunchConfigurations"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribeLaunchConfigurationsResult")))
+      common-lisp:nil "DescribeLaunchConfigurationsResult"
+      '(("InvalidNextToken" . invalid-next-token)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'describe-launch-configurations))
 (common-lisp:progn
  (common-lisp:defun describe-lifecycle-hook-types ()
@@ -6506,7 +6426,8 @@
                                 :params
                                 `(("Action" ,@"DescribeLifecycleHookTypes")
                                   ("Version" ,@"2011-01-01"))))
-    common-lisp:nil "DescribeLifecycleHookTypesResult"))
+    common-lisp:nil "DescribeLifecycleHookTypesResult"
+    '(("ResourceContentionFault" . resource-contention-fault))))
  (common-lisp:export 'describe-lifecycle-hook-types))
 (common-lisp:progn
  (common-lisp:defun describe-lifecycle-hooks
@@ -6526,7 +6447,8 @@
                                                         "POST" "/"
                                                         "DescribeLifecycleHooks"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribeLifecycleHooksResult")))
+      common-lisp:nil "DescribeLifecycleHooksResult"
+      '(("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'describe-lifecycle-hooks))
 (common-lisp:progn
  (common-lisp:defun describe-load-balancer-target-groups
@@ -6547,7 +6469,8 @@
                                                         "POST" "/"
                                                         "DescribeLoadBalancerTargetGroups"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribeLoadBalancerTargetGroupsResult")))
+      common-lisp:nil "DescribeLoadBalancerTargetGroupsResult"
+      '(("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'describe-load-balancer-target-groups))
 (common-lisp:progn
  (common-lisp:defun describe-load-balancers
@@ -6567,7 +6490,8 @@
                                                         "POST" "/"
                                                         "DescribeLoadBalancers"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribeLoadBalancersResult")))
+      common-lisp:nil "DescribeLoadBalancersResult"
+      '(("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'describe-load-balancers))
 (common-lisp:progn
  (common-lisp:defun describe-metric-collection-types ()
@@ -6577,7 +6501,8 @@
                                 :params
                                 `(("Action" ,@"DescribeMetricCollectionTypes")
                                   ("Version" ,@"2011-01-01"))))
-    common-lisp:nil "DescribeMetricCollectionTypesResult"))
+    common-lisp:nil "DescribeMetricCollectionTypesResult"
+    '(("ResourceContentionFault" . resource-contention-fault))))
  (common-lisp:export 'describe-metric-collection-types))
 (common-lisp:progn
  (common-lisp:defun describe-notification-configurations
@@ -6598,7 +6523,9 @@
                                                         "POST" "/"
                                                         "DescribeNotificationConfigurations"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribeNotificationConfigurationsResult")))
+      common-lisp:nil "DescribeNotificationConfigurationsResult"
+      '(("InvalidNextToken" . invalid-next-token)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'describe-notification-configurations))
 (common-lisp:progn
  (common-lisp:defun describe-policies
@@ -6619,7 +6546,9 @@
                                                         "POST" "/"
                                                         "DescribePolicies"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribePoliciesResult")))
+      common-lisp:nil "DescribePoliciesResult"
+      '(("InvalidNextToken" . invalid-next-token)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'describe-policies))
 (common-lisp:progn
  (common-lisp:defun describe-scaling-activities
@@ -6640,7 +6569,9 @@
                                                         "POST" "/"
                                                         "DescribeScalingActivities"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribeScalingActivitiesResult")))
+      common-lisp:nil "DescribeScalingActivitiesResult"
+      '(("InvalidNextToken" . invalid-next-token)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'describe-scaling-activities))
 (common-lisp:progn
  (common-lisp:defun describe-scaling-process-types ()
@@ -6650,7 +6581,8 @@
                                 :params
                                 `(("Action" ,@"DescribeScalingProcessTypes")
                                   ("Version" ,@"2011-01-01"))))
-    common-lisp:nil "DescribeScalingProcessTypesResult"))
+    common-lisp:nil "DescribeScalingProcessTypesResult"
+    '(("ResourceContentionFault" . resource-contention-fault))))
  (common-lisp:export 'describe-scaling-process-types))
 (common-lisp:progn
  (common-lisp:defun describe-scheduled-actions
@@ -6672,7 +6604,9 @@
                                                         "POST" "/"
                                                         "DescribeScheduledActions"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribeScheduledActionsResult")))
+      common-lisp:nil "DescribeScheduledActionsResult"
+      '(("InvalidNextToken" . invalid-next-token)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'describe-scheduled-actions))
 (common-lisp:progn
  (common-lisp:defun describe-tags
@@ -6690,7 +6624,9 @@
                                                         "POST" "/"
                                                         "DescribeTags"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribeTagsResult")))
+      common-lisp:nil "DescribeTagsResult"
+      '(("InvalidNextToken" . invalid-next-token)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
  (common-lisp:defun describe-termination-policy-types ()
@@ -6700,7 +6636,8 @@
                                 :params
                                 `(("Action" ,@"DescribeTerminationPolicyTypes")
                                   ("Version" ,@"2011-01-01"))))
-    common-lisp:nil "DescribeTerminationPolicyTypesResult"))
+    common-lisp:nil "DescribeTerminationPolicyTypesResult"
+    '(("ResourceContentionFault" . resource-contention-fault))))
  (common-lisp:export 'describe-termination-policy-types))
 (common-lisp:progn
  (common-lisp:defun detach-instances
@@ -6721,7 +6658,8 @@
                                                         "POST" "/"
                                                         "DetachInstances"
                                                         "2011-01-01"))
-      common-lisp:nil "DetachInstancesResult")))
+      common-lisp:nil "DetachInstancesResult"
+      '(("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'detach-instances))
 (common-lisp:progn
  (common-lisp:defun detach-load-balancer-target-groups
@@ -6742,7 +6680,8 @@
                                                         "POST" "/"
                                                         "DetachLoadBalancerTargetGroups"
                                                         "2011-01-01"))
-      common-lisp:nil "DetachLoadBalancerTargetGroupsResult")))
+      common-lisp:nil "DetachLoadBalancerTargetGroupsResult"
+      '(("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'detach-load-balancer-target-groups))
 (common-lisp:progn
  (common-lisp:defun detach-load-balancers
@@ -6762,7 +6701,8 @@
                                                         "POST" "/"
                                                         "DetachLoadBalancers"
                                                         "2011-01-01"))
-      common-lisp:nil "DetachLoadBalancersResult")))
+      common-lisp:nil "DetachLoadBalancersResult"
+      '(("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'detach-load-balancers))
 (common-lisp:progn
  (common-lisp:defun disable-metrics-collection
@@ -6781,7 +6721,8 @@
                                                         "POST" "/"
                                                         "DisableMetricsCollection"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'disable-metrics-collection))
 (common-lisp:progn
  (common-lisp:defun enable-metrics-collection
@@ -6801,7 +6742,8 @@
                                                         "POST" "/"
                                                         "EnableMetricsCollection"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'enable-metrics-collection))
 (common-lisp:progn
  (common-lisp:defun enter-standby
@@ -6822,7 +6764,8 @@
                                                         "POST" "/"
                                                         "EnterStandby"
                                                         "2011-01-01"))
-      common-lisp:nil "EnterStandbyResult")))
+      common-lisp:nil "EnterStandbyResult"
+      '(("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'enter-standby))
 (common-lisp:progn
  (common-lisp:defun execute-policy
@@ -6843,7 +6786,9 @@
                                                         "POST" "/"
                                                         "ExecutePolicy"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ScalingActivityInProgressFault" . scaling-activity-in-progress-fault)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'execute-policy))
 (common-lisp:progn
  (common-lisp:defun exit-standby
@@ -6862,7 +6807,8 @@
                                                         "POST" "/"
                                                         "ExitStandby"
                                                         "2011-01-01"))
-      common-lisp:nil "ExitStandbyResult")))
+      common-lisp:nil "ExitStandbyResult"
+      '(("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'exit-standby))
 (common-lisp:progn
  (common-lisp:defun put-lifecycle-hook
@@ -6886,7 +6832,9 @@
                                                         "POST" "/"
                                                         "PutLifecycleHook"
                                                         "2011-01-01"))
-      common-lisp:nil "PutLifecycleHookResult")))
+      common-lisp:nil "PutLifecycleHookResult"
+      '(("LimitExceededFault" . limit-exceeded-fault)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'put-lifecycle-hook))
 (common-lisp:progn
  (common-lisp:defun put-notification-configuration
@@ -6908,7 +6856,9 @@
                                                         "POST" "/"
                                                         "PutNotificationConfiguration"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LimitExceededFault" . limit-exceeded-fault)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'put-notification-configuration))
 (common-lisp:progn
  (common-lisp:defun put-scaling-policy
@@ -6934,7 +6884,9 @@
                                                         "POST" "/"
                                                         "PutScalingPolicy"
                                                         "2011-01-01"))
-      common-lisp:nil "PutScalingPolicyResult")))
+      common-lisp:nil "PutScalingPolicyResult"
+      '(("LimitExceededFault" . limit-exceeded-fault)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'put-scaling-policy))
 (common-lisp:progn
  (common-lisp:defun put-scheduled-update-group-action
@@ -6957,7 +6909,10 @@
                                                         "POST" "/"
                                                         "PutScheduledUpdateGroupAction"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AlreadyExistsFault" . already-exists-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'put-scheduled-update-group-action))
 (common-lisp:progn
  (common-lisp:defun record-lifecycle-action-heartbeat
@@ -6980,7 +6935,8 @@
                                                         "POST" "/"
                                                         "RecordLifecycleActionHeartbeat"
                                                         "2011-01-01"))
-      common-lisp:nil "RecordLifecycleActionHeartbeatResult")))
+      common-lisp:nil "RecordLifecycleActionHeartbeatResult"
+      '(("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'record-lifecycle-action-heartbeat))
 (common-lisp:progn
  (common-lisp:defun resume-processes
@@ -7000,7 +6956,9 @@
                                                         "POST" "/"
                                                         "ResumeProcesses"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceInUseFault" . resource-in-use-fault)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'resume-processes))
 (common-lisp:progn
  (common-lisp:defun set-desired-capacity
@@ -7021,7 +6979,9 @@
                                                         "POST" "/"
                                                         "SetDesiredCapacity"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ScalingActivityInProgressFault" . scaling-activity-in-progress-fault)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'set-desired-capacity))
 (common-lisp:progn
  (common-lisp:defun set-instance-health
@@ -7042,7 +7002,8 @@
                                                         "POST" "/"
                                                         "SetInstanceHealth"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'set-instance-health))
 (common-lisp:progn
  (common-lisp:defun set-instance-protection
@@ -7063,7 +7024,9 @@
                                                         "POST" "/"
                                                         "SetInstanceProtection"
                                                         "2011-01-01"))
-      common-lisp:nil "SetInstanceProtectionResult")))
+      common-lisp:nil "SetInstanceProtectionResult"
+      '(("LimitExceededFault" . limit-exceeded-fault)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'set-instance-protection))
 (common-lisp:progn
  (common-lisp:defun suspend-processes
@@ -7083,7 +7046,9 @@
                                                         "POST" "/"
                                                         "SuspendProcesses"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceInUseFault" . resource-in-use-fault)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'suspend-processes))
 (common-lisp:progn
  (common-lisp:defun terminate-instance-in-auto-scaling-group
@@ -7104,7 +7069,9 @@
                                                         "POST" "/"
                                                         "TerminateInstanceInAutoScalingGroup"
                                                         "2011-01-01"))
-      common-lisp:nil "TerminateInstanceInAutoScalingGroupResult")))
+      common-lisp:nil "TerminateInstanceInAutoScalingGroupResult"
+      '(("ScalingActivityInProgressFault" . scaling-activity-in-progress-fault)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'terminate-instance-in-auto-scaling-group))
 (common-lisp:progn
  (common-lisp:defun update-auto-scaling-group
@@ -7132,5 +7099,7 @@
                                                         "POST" "/"
                                                         "UpdateAutoScalingGroup"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ScalingActivityInProgressFault" . scaling-activity-in-progress-fault)
+        ("ResourceContentionFault" . resource-contention-fault)))))
  (common-lisp:export 'update-auto-scaling-group))

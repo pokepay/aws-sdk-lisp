@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/athena/api)
 (common-lisp:progn
  (common-lisp:defclass athena-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "athena"))
  (common-lisp:export 'athena-request))
+(common-lisp:progn
+ (common-lisp:define-condition athena-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'athena-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-get-named-query-input (:copier common-lisp:nil)
@@ -691,76 +697,24 @@
 (common-lisp:deftype idempotency-token () 'common-lisp:string)
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-server-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-server-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition internal-server-exception
+     (athena-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-server-exception-message)))
  (common-lisp:export
   (common-lisp:list 'internal-server-exception
-                    'make-internal-server-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-exception))
-   common-lisp:nil))
+                    'internal-server-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-request-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-request-exception-"))
-   (athena-error-code common-lisp:nil :type
-    (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-request-exception
+     (athena-error)
+     ((athena-error-code :initarg :athena-error-code :initform common-lisp:nil
+       :reader invalid-request-exception-athena-error-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       invalid-request-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-request-exception
-                    'make-invalid-request-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'athena-error-code))
-      (common-lisp:list
-       (common-lisp:cons "AthenaErrorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   common-lisp:nil))
+                    'invalid-request-exception-athena-error-code
+                    'invalid-request-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-named-queries-input (:copier common-lisp:nil)
@@ -1483,45 +1437,16 @@
 (common-lisp:deftype throttle-reason () 'common-lisp:string)
 (common-lisp:deftype token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-requests-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-requests-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null))
-   (reason common-lisp:nil :type
-    (common-lisp:or throttle-reason common-lisp:null)))
+ (common-lisp:define-condition too-many-requests-exception
+     (athena-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-requests-exception-message)
+      (reason :initarg :reason :initform common-lisp:nil :reader
+       too-many-requests-exception-reason)))
  (common-lisp:export
   (common-lisp:list 'too-many-requests-exception
-                    'make-too-many-requests-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-requests-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-requests-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'reason))
-      (common-lisp:list
-       (common-lisp:cons "Reason"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-requests-exception))
-   common-lisp:nil))
+                    'too-many-requests-exception-message
+                    'too-many-requests-exception-reason)))
 (common-lisp:progn
  (common-lisp:defstruct
      (unprocessed-named-query-id (:copier common-lisp:nil)
@@ -1662,7 +1587,9 @@
                                                         "POST" "/"
                                                         "BatchGetNamedQuery"
                                                         "2017-05-18"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerException" . internal-server-exception)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'batch-get-named-query))
 (common-lisp:progn
  (common-lisp:defun batch-get-query-execution
@@ -1680,7 +1607,9 @@
                                                         "POST" "/"
                                                         "BatchGetQueryExecution"
                                                         "2017-05-18"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerException" . internal-server-exception)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'batch-get-query-execution))
 (common-lisp:progn
  (common-lisp:defun create-named-query
@@ -1701,7 +1630,9 @@
                                                         "POST" "/"
                                                         "CreateNamedQuery"
                                                         "2017-05-18"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerException" . internal-server-exception)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'create-named-query))
 (common-lisp:progn
  (common-lisp:defun delete-named-query
@@ -1719,7 +1650,9 @@
                                                         "POST" "/"
                                                         "DeleteNamedQuery"
                                                         "2017-05-18"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerException" . internal-server-exception)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'delete-named-query))
 (common-lisp:progn
  (common-lisp:defun get-named-query
@@ -1737,7 +1670,9 @@
                                                         "POST" "/"
                                                         "GetNamedQuery"
                                                         "2017-05-18"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerException" . internal-server-exception)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'get-named-query))
 (common-lisp:progn
  (common-lisp:defun get-query-execution
@@ -1755,7 +1690,9 @@
                                                         "POST" "/"
                                                         "GetQueryExecution"
                                                         "2017-05-18"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerException" . internal-server-exception)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'get-query-execution))
 (common-lisp:progn
  (common-lisp:defun get-query-results
@@ -1775,7 +1712,9 @@
                                                         "POST" "/"
                                                         "GetQueryResults"
                                                         "2017-05-18"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerException" . internal-server-exception)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'get-query-results))
 (common-lisp:progn
  (common-lisp:defun list-named-queries
@@ -1793,7 +1732,9 @@
                                                         "POST" "/"
                                                         "ListNamedQueries"
                                                         "2017-05-18"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerException" . internal-server-exception)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'list-named-queries))
 (common-lisp:progn
  (common-lisp:defun list-query-executions
@@ -1811,7 +1752,9 @@
                                                         "POST" "/"
                                                         "ListQueryExecutions"
                                                         "2017-05-18"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerException" . internal-server-exception)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'list-query-executions))
 (common-lisp:progn
  (common-lisp:defun start-query-execution
@@ -1832,7 +1775,10 @@
                                                         "POST" "/"
                                                         "StartQueryExecution"
                                                         "2017-05-18"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerException" . internal-server-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'start-query-execution))
 (common-lisp:progn
  (common-lisp:defun stop-query-execution
@@ -1850,5 +1796,7 @@
                                                         "POST" "/"
                                                         "StopQueryExecution"
                                                         "2017-05-18"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServerException" . internal-server-exception)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'stop-query-execution))

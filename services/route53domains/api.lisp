@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/route53domains/api)
 (common-lisp:progn
  (common-lisp:defclass route53domains-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "route53domains"))
  (common-lisp:export 'route53domains-request))
+(common-lisp:progn
+ (common-lisp:define-condition route53domains-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'route53domains-error))
 (common-lisp:deftype address-line () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -474,35 +480,12 @@
 (common-lisp:deftype domain-auth-code () 'common-lisp:string)
 (common-lisp:deftype domain-availability () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (domain-limit-exceeded (:copier common-lisp:nil)
-      (:conc-name "struct-shape-domain-limit-exceeded-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition domain-limit-exceeded
+     (route53domains-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       domain-limit-exceeded-message)))
  (common-lisp:export
-  (common-lisp:list 'domain-limit-exceeded 'make-domain-limit-exceeded))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          domain-limit-exceeded))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          domain-limit-exceeded))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          domain-limit-exceeded))
-   common-lisp:nil))
+  (common-lisp:list 'domain-limit-exceeded 'domain-limit-exceeded-message)))
 (common-lisp:deftype domain-name () 'common-lisp:string)
 (common-lisp:deftype domain-status () 'common-lisp:string)
 (common-lisp:progn
@@ -611,29 +594,12 @@
                            (trivial-types:proper-list domain-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (duplicate-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-duplicate-request-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition duplicate-request
+     (route53domains-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       duplicate-request-message)))
  (common-lisp:export
-  (common-lisp:list 'duplicate-request 'make-duplicate-request))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input duplicate-request))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input duplicate-request))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input duplicate-request))
-   common-lisp:nil))
+  (common-lisp:list 'duplicate-request 'duplicate-request-message)))
 (common-lisp:deftype duration-in-years () 'common-lisp:integer)
 (common-lisp:deftype email () 'common-lisp:string)
 (common-lisp:progn
@@ -1303,28 +1269,11 @@
 (common-lisp:deftype host-name () 'common-lisp:string)
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-input-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
- (common-lisp:export (common-lisp:list 'invalid-input 'make-invalid-input))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-input))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-input))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-input))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-input
+     (route53domains-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-input-message)))
+ (common-lisp:export (common-lisp:list 'invalid-input 'invalid-input-message)))
 (common-lisp:deftype invoice-id () 'common-lisp:string)
 (common-lisp:deftype lang-code () 'common-lisp:string)
 (common-lisp:progn
@@ -1579,35 +1528,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype operation-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (operation-limit-exceeded (:copier common-lisp:nil)
-      (:conc-name "struct-shape-operation-limit-exceeded-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition operation-limit-exceeded
+     (route53domains-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       operation-limit-exceeded-message)))
  (common-lisp:export
-  (common-lisp:list 'operation-limit-exceeded 'make-operation-limit-exceeded))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-limit-exceeded))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-limit-exceeded))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-limit-exceeded))
-   common-lisp:nil))
+  (common-lisp:list 'operation-limit-exceeded
+                    'operation-limit-exceeded-message)))
 (common-lisp:deftype operation-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -2038,29 +1965,12 @@
 (common-lisp:deftype state () 'common-lisp:string)
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (tldrules-violation (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tldrules-violation-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition tldrules-violation
+     (route53domains-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       tldrules-violation-message)))
  (common-lisp:export
-  (common-lisp:list 'tldrules-violation 'make-tldrules-violation))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input tldrules-violation))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input tldrules-violation))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input tldrules-violation))
-   common-lisp:nil))
+  (common-lisp:list 'tldrules-violation 'tldrules-violation-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (tag (:copier common-lisp:nil) (:conc-name "struct-shape-tag-"))
@@ -2269,28 +2179,12 @@
                           transfer-domain-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unsupported-tld (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unsupported-tld-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
- (common-lisp:export (common-lisp:list 'unsupported-tld 'make-unsupported-tld))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input unsupported-tld))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input unsupported-tld))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input unsupported-tld))
-   common-lisp:nil))
+ (common-lisp:define-condition unsupported-tld
+     (route53domains-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unsupported-tld-message)))
+ (common-lisp:export
+  (common-lisp:list 'unsupported-tld 'unsupported-tld-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-domain-contact-privacy-request (:copier common-lisp:nil)
@@ -2716,7 +2610,9 @@
                                                         "POST" "/"
                                                         "CheckDomainAvailability"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("UnsupportedTLD" . unsupported-tld)))))
  (common-lisp:export 'check-domain-availability))
 (common-lisp:progn
  (common-lisp:defun delete-tags-for-domain
@@ -2734,7 +2630,10 @@
                                                         "POST" "/"
                                                         "DeleteTagsForDomain"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("OperationLimitExceeded" . operation-limit-exceeded)
+        ("UnsupportedTLD" . unsupported-tld)))))
  (common-lisp:export 'delete-tags-for-domain))
 (common-lisp:progn
  (common-lisp:defun disable-domain-auto-renew
@@ -2753,7 +2652,9 @@
                                                         "POST" "/"
                                                         "DisableDomainAutoRenew"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("UnsupportedTLD" . unsupported-tld)))))
  (common-lisp:export 'disable-domain-auto-renew))
 (common-lisp:progn
  (common-lisp:defun disable-domain-transfer-lock
@@ -2772,7 +2673,12 @@
                                                         "POST" "/"
                                                         "DisableDomainTransferLock"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("DuplicateRequest" . duplicate-request)
+        ("TLDRulesViolation" . tldrules-violation)
+        ("OperationLimitExceeded" . operation-limit-exceeded)
+        ("UnsupportedTLD" . unsupported-tld)))))
  (common-lisp:export 'disable-domain-transfer-lock))
 (common-lisp:progn
  (common-lisp:defun enable-domain-auto-renew
@@ -2790,7 +2696,9 @@
                                                         "POST" "/"
                                                         "EnableDomainAutoRenew"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input) ("UnsupportedTLD" . unsupported-tld)
+        ("TLDRulesViolation" . tldrules-violation)))))
  (common-lisp:export 'enable-domain-auto-renew))
 (common-lisp:progn
  (common-lisp:defun enable-domain-transfer-lock
@@ -2809,7 +2717,12 @@
                                                         "POST" "/"
                                                         "EnableDomainTransferLock"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("DuplicateRequest" . duplicate-request)
+        ("TLDRulesViolation" . tldrules-violation)
+        ("OperationLimitExceeded" . operation-limit-exceeded)
+        ("UnsupportedTLD" . unsupported-tld)))))
  (common-lisp:export 'enable-domain-transfer-lock))
 (common-lisp:progn
  (common-lisp:defun get-contact-reachability-status
@@ -2828,7 +2741,10 @@
                                                         "POST" "/"
                                                         "GetContactReachabilityStatus"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("OperationLimitExceeded" . operation-limit-exceeded)
+        ("UnsupportedTLD" . unsupported-tld)))))
  (common-lisp:export 'get-contact-reachability-status))
 (common-lisp:progn
  (common-lisp:defun get-domain-detail
@@ -2846,7 +2762,9 @@
                                                         "POST" "/"
                                                         "GetDomainDetail"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("UnsupportedTLD" . unsupported-tld)))))
  (common-lisp:export 'get-domain-detail))
 (common-lisp:progn
  (common-lisp:defun get-domain-suggestions
@@ -2866,7 +2784,9 @@
                                                         "POST" "/"
                                                         "GetDomainSuggestions"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("UnsupportedTLD" . unsupported-tld)))))
  (common-lisp:export 'get-domain-suggestions))
 (common-lisp:progn
  (common-lisp:defun get-operation-detail
@@ -2884,7 +2804,7 @@
                                                         "POST" "/"
                                                         "GetOperationDetail"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil '(("InvalidInput" . invalid-input)))))
  (common-lisp:export 'get-operation-detail))
 (common-lisp:progn
  (common-lisp:defun list-domains
@@ -2902,7 +2822,7 @@
                                                         "POST" "/"
                                                         "ListDomains"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil '(("InvalidInput" . invalid-input)))))
  (common-lisp:export 'list-domains))
 (common-lisp:progn
  (common-lisp:defun list-operations
@@ -2920,7 +2840,7 @@
                                                         "POST" "/"
                                                         "ListOperations"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil '(("InvalidInput" . invalid-input)))))
  (common-lisp:export 'list-operations))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-domain
@@ -2938,7 +2858,10 @@
                                                         "POST" "/"
                                                         "ListTagsForDomain"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("OperationLimitExceeded" . operation-limit-exceeded)
+        ("UnsupportedTLD" . unsupported-tld)))))
  (common-lisp:export 'list-tags-for-domain))
 (common-lisp:progn
  (common-lisp:defun register-domain
@@ -2965,7 +2888,12 @@
                                                         "POST" "/"
                                                         "RegisterDomain"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input) ("UnsupportedTLD" . unsupported-tld)
+        ("DuplicateRequest" . duplicate-request)
+        ("TLDRulesViolation" . tldrules-violation)
+        ("DomainLimitExceeded" . domain-limit-exceeded)
+        ("OperationLimitExceeded" . operation-limit-exceeded)))))
  (common-lisp:export 'register-domain))
 (common-lisp:progn
  (common-lisp:defun renew-domain
@@ -2985,7 +2913,11 @@
                                                         "POST" "/"
                                                         "RenewDomain"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input) ("UnsupportedTLD" . unsupported-tld)
+        ("DuplicateRequest" . duplicate-request)
+        ("TLDRulesViolation" . tldrules-violation)
+        ("OperationLimitExceeded" . operation-limit-exceeded)))))
  (common-lisp:export 'renew-domain))
 (common-lisp:progn
  (common-lisp:defun resend-contact-reachability-email
@@ -3004,7 +2936,10 @@
                                                         "POST" "/"
                                                         "ResendContactReachabilityEmail"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("OperationLimitExceeded" . operation-limit-exceeded)
+        ("UnsupportedTLD" . unsupported-tld)))))
  (common-lisp:export 'resend-contact-reachability-email))
 (common-lisp:progn
  (common-lisp:defun retrieve-domain-auth-code
@@ -3023,7 +2958,9 @@
                                                         "POST" "/"
                                                         "RetrieveDomainAuthCode"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("UnsupportedTLD" . unsupported-tld)))))
  (common-lisp:export 'retrieve-domain-auth-code))
 (common-lisp:progn
  (common-lisp:defun transfer-domain
@@ -3050,7 +2987,12 @@
                                                         "POST" "/"
                                                         "TransferDomain"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input) ("UnsupportedTLD" . unsupported-tld)
+        ("DuplicateRequest" . duplicate-request)
+        ("TLDRulesViolation" . tldrules-violation)
+        ("DomainLimitExceeded" . domain-limit-exceeded)
+        ("OperationLimitExceeded" . operation-limit-exceeded)))))
  (common-lisp:export 'transfer-domain))
 (common-lisp:progn
  (common-lisp:defun update-domain-contact
@@ -3071,7 +3013,12 @@
                                                         "POST" "/"
                                                         "UpdateDomainContact"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("DuplicateRequest" . duplicate-request)
+        ("TLDRulesViolation" . tldrules-violation)
+        ("OperationLimitExceeded" . operation-limit-exceeded)
+        ("UnsupportedTLD" . unsupported-tld)))))
  (common-lisp:export 'update-domain-contact))
 (common-lisp:progn
  (common-lisp:defun update-domain-contact-privacy
@@ -3093,7 +3040,12 @@
                                                         "POST" "/"
                                                         "UpdateDomainContactPrivacy"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("DuplicateRequest" . duplicate-request)
+        ("TLDRulesViolation" . tldrules-violation)
+        ("OperationLimitExceeded" . operation-limit-exceeded)
+        ("UnsupportedTLD" . unsupported-tld)))))
  (common-lisp:export 'update-domain-contact-privacy))
 (common-lisp:progn
  (common-lisp:defun update-domain-nameservers
@@ -3113,7 +3065,12 @@
                                                         "POST" "/"
                                                         "UpdateDomainNameservers"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("DuplicateRequest" . duplicate-request)
+        ("TLDRulesViolation" . tldrules-violation)
+        ("OperationLimitExceeded" . operation-limit-exceeded)
+        ("UnsupportedTLD" . unsupported-tld)))))
  (common-lisp:export 'update-domain-nameservers))
 (common-lisp:progn
  (common-lisp:defun update-tags-for-domain
@@ -3131,7 +3088,10 @@
                                                         "POST" "/"
                                                         "UpdateTagsForDomain"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInput" . invalid-input)
+        ("OperationLimitExceeded" . operation-limit-exceeded)
+        ("UnsupportedTLD" . unsupported-tld)))))
  (common-lisp:export 'update-tags-for-domain))
 (common-lisp:progn
  (common-lisp:defun view-billing
@@ -3149,5 +3109,5 @@
                                                         "POST" "/"
                                                         "ViewBilling"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil '(("InvalidInput" . invalid-input)))))
  (common-lisp:export 'view-billing))

@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/importexport/api)
 (common-lisp:progn
  (common-lisp:defclass importexport-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "importexport"))
  (common-lisp:export 'importexport-request))
+(common-lisp:progn
+ (common-lisp:define-condition importexport-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'importexport-error))
 (common-lisp:deftype apiversion () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -52,36 +58,13 @@
                            (trivial-types:proper-list artifact))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (bucket-permission-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-bucket-permission-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition bucket-permission-exception
+     (importexport-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       bucket-permission-exception-message)))
  (common-lisp:export
   (common-lisp:list 'bucket-permission-exception
-                    'make-bucket-permission-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          bucket-permission-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          bucket-permission-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          bucket-permission-exception))
-   common-lisp:nil))
+                    'bucket-permission-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (cancel-job-input (:copier common-lisp:nil)
@@ -139,36 +122,13 @@
                         ((aws-sdk/generator/shape::input cancel-job-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (canceled-job-id-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-canceled-job-id-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition canceled-job-id-exception
+     (importexport-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       canceled-job-id-exception-message)))
  (common-lisp:export
   (common-lisp:list 'canceled-job-id-exception
-                    'make-canceled-job-id-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          canceled-job-id-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          canceled-job-id-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          canceled-job-id-exception))
-   common-lisp:nil))
+                    'canceled-job-id-exception-message)))
 (common-lisp:deftype carrier () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -299,71 +259,26 @@
                         ((aws-sdk/generator/shape::input create-job-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-job-quota-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-job-quota-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition create-job-quota-exceeded-exception
+     (importexport-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       create-job-quota-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'create-job-quota-exceeded-exception
-                    'make-create-job-quota-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          create-job-quota-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          create-job-quota-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          create-job-quota-exceeded-exception))
-   common-lisp:nil))
+                    'create-job-quota-exceeded-exception-message)))
 (common-lisp:deftype creation-date () 'common-lisp:string)
 (common-lisp:deftype current-manifest () 'common-lisp:string)
 (common-lisp:deftype description () 'common-lisp:string)
 (common-lisp:deftype error-count () 'common-lisp:integer)
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (expired-job-id-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-expired-job-id-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition expired-job-id-exception
+     (importexport-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       expired-job-id-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'expired-job-id-exception 'make-expired-job-id-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          expired-job-id-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          expired-job-id-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          expired-job-id-exception))
-   common-lisp:nil))
+  (common-lisp:list 'expired-job-id-exception
+                    'expired-job-id-exception-message)))
 (common-lisp:deftype generic-string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -717,252 +632,69 @@
                         ((aws-sdk/generator/shape::input get-status-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-access-key-id-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-access-key-id-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-access-key-id-exception
+     (importexport-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-access-key-id-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-access-key-id-exception
-                    'make-invalid-access-key-id-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-access-key-id-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-access-key-id-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-access-key-id-exception))
-   common-lisp:nil))
+                    'invalid-access-key-id-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-address-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-address-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-address-exception
+     (importexport-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-address-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-address-exception
-                    'make-invalid-address-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-address-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-address-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-address-exception))
-   common-lisp:nil))
+                    'invalid-address-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-customs-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-customs-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-customs-exception
+     (importexport-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-customs-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-customs-exception
-                    'make-invalid-customs-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-customs-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-customs-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-customs-exception))
-   common-lisp:nil))
+                    'invalid-customs-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-file-system-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-file-system-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-file-system-exception
+     (importexport-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-file-system-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-file-system-exception
-                    'make-invalid-file-system-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-file-system-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-file-system-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-file-system-exception))
-   common-lisp:nil))
+                    'invalid-file-system-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-job-id-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-job-id-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-job-id-exception
+     (importexport-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-job-id-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-job-id-exception 'make-invalid-job-id-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-job-id-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-job-id-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-job-id-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-job-id-exception
+                    'invalid-job-id-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-manifest-field-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-manifest-field-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-manifest-field-exception
+     (importexport-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-manifest-field-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-manifest-field-exception
-                    'make-invalid-manifest-field-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-manifest-field-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-manifest-field-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-manifest-field-exception))
-   common-lisp:nil))
+                    'invalid-manifest-field-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-parameter-exception
+     (importexport-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-parameter-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-exception
-                    'make-invalid-parameter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   common-lisp:nil))
+                    'invalid-parameter-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-version-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-version-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-version-exception
+     (importexport-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-version-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-version-exception
-                    'make-invalid-version-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-version-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-version-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-version-exception))
-   common-lisp:nil))
+                    'invalid-version-exception-message)))
 (common-lisp:deftype is-canceled () 'common-lisp:boolean)
 (common-lisp:deftype is-truncated () 'common-lisp:boolean)
 (common-lisp:progn
@@ -1105,194 +837,57 @@
 (common-lisp:deftype log-bucket () 'common-lisp:string)
 (common-lisp:deftype log-key () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (malformed-manifest-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-malformed-manifest-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition malformed-manifest-exception
+     (importexport-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       malformed-manifest-exception-message)))
  (common-lisp:export
   (common-lisp:list 'malformed-manifest-exception
-                    'make-malformed-manifest-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          malformed-manifest-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          malformed-manifest-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          malformed-manifest-exception))
-   common-lisp:nil))
+                    'malformed-manifest-exception-message)))
 (common-lisp:deftype manifest () 'common-lisp:string)
 (common-lisp:deftype manifest-addendum () 'common-lisp:string)
 (common-lisp:deftype marker () 'common-lisp:string)
 (common-lisp:deftype max-jobs () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (missing-customs-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-missing-customs-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition missing-customs-exception
+     (importexport-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       missing-customs-exception-message)))
  (common-lisp:export
   (common-lisp:list 'missing-customs-exception
-                    'make-missing-customs-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-customs-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-customs-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-customs-exception))
-   common-lisp:nil))
+                    'missing-customs-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (missing-manifest-field-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-missing-manifest-field-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition missing-manifest-field-exception
+     (importexport-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       missing-manifest-field-exception-message)))
  (common-lisp:export
   (common-lisp:list 'missing-manifest-field-exception
-                    'make-missing-manifest-field-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-manifest-field-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-manifest-field-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-manifest-field-exception))
-   common-lisp:nil))
+                    'missing-manifest-field-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (missing-parameter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-missing-parameter-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition missing-parameter-exception
+     (importexport-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       missing-parameter-exception-message)))
  (common-lisp:export
   (common-lisp:list 'missing-parameter-exception
-                    'make-missing-parameter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-parameter-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-parameter-exception))
-   common-lisp:nil))
+                    'missing-parameter-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (multiple-regions-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-multiple-regions-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition multiple-regions-exception
+     (importexport-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       multiple-regions-exception-message)))
  (common-lisp:export
   (common-lisp:list 'multiple-regions-exception
-                    'make-multiple-regions-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          multiple-regions-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          multiple-regions-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          multiple-regions-exception))
-   common-lisp:nil))
+                    'multiple-regions-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-bucket-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-bucket-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition no-such-bucket-exception
+     (importexport-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       no-such-bucket-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'no-such-bucket-exception 'make-no-such-bucket-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-bucket-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-bucket-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-bucket-exception))
-   common-lisp:nil))
+  (common-lisp:list 'no-such-bucket-exception
+                    'no-such-bucket-exception-message)))
 (common-lisp:deftype progress-code () 'common-lisp:string)
 (common-lisp:deftype progress-message () 'common-lisp:string)
 (common-lisp:deftype signature () 'common-lisp:string)
@@ -1301,67 +896,21 @@
 (common-lisp:deftype tracking-number () 'common-lisp:string)
 (common-lisp:deftype url () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (unable-to-cancel-job-id-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unable-to-cancel-job-id-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition unable-to-cancel-job-id-exception
+     (importexport-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unable-to-cancel-job-id-exception-message)))
  (common-lisp:export
   (common-lisp:list 'unable-to-cancel-job-id-exception
-                    'make-unable-to-cancel-job-id-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unable-to-cancel-job-id-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unable-to-cancel-job-id-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unable-to-cancel-job-id-exception))
-   common-lisp:nil))
+                    'unable-to-cancel-job-id-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unable-to-update-job-id-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unable-to-update-job-id-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition unable-to-update-job-id-exception
+     (importexport-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unable-to-update-job-id-exception-message)))
  (common-lisp:export
   (common-lisp:list 'unable-to-update-job-id-exception
-                    'make-unable-to-update-job-id-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unable-to-update-job-id-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unable-to-update-job-id-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unable-to-update-job-id-exception))
-   common-lisp:nil))
+                    'unable-to-update-job-id-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-job-input (:copier common-lisp:nil)
@@ -1492,7 +1041,13 @@
                                                         "/?Operation=CancelJob"
                                                         "CancelJob"
                                                         "2010-06-01"))
-      common-lisp:nil "CancelJobResult")))
+      common-lisp:nil "CancelJobResult"
+      '(("InvalidJobIdException" . invalid-job-id-exception)
+        ("ExpiredJobIdException" . expired-job-id-exception)
+        ("CanceledJobIdException" . canceled-job-id-exception)
+        ("UnableToCancelJobIdException" . unable-to-cancel-job-id-exception)
+        ("InvalidAccessKeyIdException" . invalid-access-key-id-exception)
+        ("InvalidVersionException" . invalid-version-exception)))))
  (common-lisp:export 'cancel-job))
 (common-lisp:progn
  (common-lisp:defun create-job
@@ -1514,7 +1069,24 @@
                                                         "/?Operation=CreateJob"
                                                         "CreateJob"
                                                         "2010-06-01"))
-      common-lisp:nil "CreateJobResult")))
+      common-lisp:nil "CreateJobResult"
+      '(("MissingParameterException" . missing-parameter-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidAccessKeyIdException" . invalid-access-key-id-exception)
+        ("InvalidAddressException" . invalid-address-exception)
+        ("InvalidManifestFieldException" . invalid-manifest-field-exception)
+        ("MissingManifestFieldException" . missing-manifest-field-exception)
+        ("NoSuchBucketException" . no-such-bucket-exception)
+        ("MissingCustomsException" . missing-customs-exception)
+        ("InvalidCustomsException" . invalid-customs-exception)
+        ("InvalidFileSystemException" . invalid-file-system-exception)
+        ("MultipleRegionsException" . multiple-regions-exception)
+        ("BucketPermissionException" . bucket-permission-exception)
+        ("MalformedManifestException" . malformed-manifest-exception)
+        ("CreateJobQuotaExceededException"
+         . create-job-quota-exceeded-exception)
+        ("InvalidJobIdException" . invalid-job-id-exception)
+        ("InvalidVersionException" . invalid-version-exception)))))
  (common-lisp:export 'create-job))
 (common-lisp:progn
  (common-lisp:defun get-shipping-label
@@ -1537,7 +1109,14 @@
                                                         "/?Operation=GetShippingLabel"
                                                         "GetShippingLabel"
                                                         "2010-06-01"))
-      common-lisp:nil "GetShippingLabelResult")))
+      common-lisp:nil "GetShippingLabelResult"
+      '(("InvalidJobIdException" . invalid-job-id-exception)
+        ("ExpiredJobIdException" . expired-job-id-exception)
+        ("CanceledJobIdException" . canceled-job-id-exception)
+        ("InvalidAccessKeyIdException" . invalid-access-key-id-exception)
+        ("InvalidAddressException" . invalid-address-exception)
+        ("InvalidVersionException" . invalid-version-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)))))
  (common-lisp:export 'get-shipping-label))
 (common-lisp:progn
  (common-lisp:defun get-status
@@ -1556,7 +1135,12 @@
                                                         "/?Operation=GetStatus"
                                                         "GetStatus"
                                                         "2010-06-01"))
-      common-lisp:nil "GetStatusResult")))
+      common-lisp:nil "GetStatusResult"
+      '(("InvalidJobIdException" . invalid-job-id-exception)
+        ("ExpiredJobIdException" . expired-job-id-exception)
+        ("CanceledJobIdException" . canceled-job-id-exception)
+        ("InvalidAccessKeyIdException" . invalid-access-key-id-exception)
+        ("InvalidVersionException" . invalid-version-exception)))))
  (common-lisp:export 'get-status))
 (common-lisp:progn
  (common-lisp:defun list-jobs
@@ -1575,7 +1159,10 @@
                                                         "/?Operation=ListJobs"
                                                         "ListJobs"
                                                         "2010-06-01"))
-      common-lisp:nil "ListJobsResult")))
+      common-lisp:nil "ListJobsResult"
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidAccessKeyIdException" . invalid-access-key-id-exception)
+        ("InvalidVersionException" . invalid-version-exception)))))
  (common-lisp:export 'list-jobs))
 (common-lisp:progn
  (common-lisp:defun update-job
@@ -1596,5 +1183,23 @@
                                                         "/?Operation=UpdateJob"
                                                         "UpdateJob"
                                                         "2010-06-01"))
-      common-lisp:nil "UpdateJobResult")))
+      common-lisp:nil "UpdateJobResult"
+      '(("MissingParameterException" . missing-parameter-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidAccessKeyIdException" . invalid-access-key-id-exception)
+        ("InvalidAddressException" . invalid-address-exception)
+        ("InvalidManifestFieldException" . invalid-manifest-field-exception)
+        ("InvalidJobIdException" . invalid-job-id-exception)
+        ("MissingManifestFieldException" . missing-manifest-field-exception)
+        ("NoSuchBucketException" . no-such-bucket-exception)
+        ("ExpiredJobIdException" . expired-job-id-exception)
+        ("CanceledJobIdException" . canceled-job-id-exception)
+        ("MissingCustomsException" . missing-customs-exception)
+        ("InvalidCustomsException" . invalid-customs-exception)
+        ("InvalidFileSystemException" . invalid-file-system-exception)
+        ("MultipleRegionsException" . multiple-regions-exception)
+        ("BucketPermissionException" . bucket-permission-exception)
+        ("MalformedManifestException" . malformed-manifest-exception)
+        ("UnableToUpdateJobIdException" . unable-to-update-job-id-exception)
+        ("InvalidVersionException" . invalid-version-exception)))))
  (common-lisp:export 'update-job))

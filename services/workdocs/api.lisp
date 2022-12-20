@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/workdocs/api)
 (common-lisp:progn
  (common-lisp:defclass workdocs-request (aws-sdk/request:request)
                        common-lisp:nil (:default-initargs :service "workdocs"))
  (common-lisp:export 'workdocs-request))
+(common-lisp:progn
+ (common-lisp:define-condition workdocs-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'workdocs-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (abort-document-version-upload-request (:copier common-lisp:nil)
@@ -426,36 +432,13 @@
 (common-lisp:deftype comment-text-type () 'common-lisp:string)
 (common-lisp:deftype comment-visibility-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (concurrent-modification-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-concurrent-modification-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message-type common-lisp:null)))
+ (common-lisp:define-condition concurrent-modification-exception
+     (workdocs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       concurrent-modification-exception-message)))
  (common-lisp:export
   (common-lisp:list 'concurrent-modification-exception
-                    'make-concurrent-modification-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   common-lisp:nil))
+                    'concurrent-modification-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-comment-request (:copier common-lisp:nil)
@@ -973,36 +956,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype custom-metadata-key-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (custom-metadata-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-custom-metadata-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message-type common-lisp:null)))
+ (common-lisp:define-condition custom-metadata-limit-exceeded-exception
+     (workdocs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       custom-metadata-limit-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'custom-metadata-limit-exceeded-exception
-                    'make-custom-metadata-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          custom-metadata-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          custom-metadata-limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          custom-metadata-limit-exceeded-exception))
-   common-lisp:nil))
+                    'custom-metadata-limit-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype custom-metadata-map () 'common-lisp:hash-table)
  (common-lisp:defun |make-custom-metadata-map|
@@ -1043,27 +1003,11 @@
                           deactivate-user-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (deactivating-last-system-user-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deactivating-last-system-user-exception-")))
+ (common-lisp:define-condition deactivating-last-system-user-exception
+     (workdocs-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'deactivating-last-system-user-exception
-                    'make-deactivating-last-system-user-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          deactivating-last-system-user-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          deactivating-last-system-user-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          deactivating-last-system-user-exception))
-   common-lisp:nil))
+  (common-lisp:list 'deactivating-last-system-user-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-comment-request (:copier common-lisp:nil)
@@ -1985,36 +1929,13 @@
    common-lisp:nil))
 (common-lisp:deftype document-content-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (document-locked-for-comments-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-document-locked-for-comments-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message-type common-lisp:null)))
+ (common-lisp:define-condition document-locked-for-comments-exception
+     (workdocs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       document-locked-for-comments-exception-message)))
  (common-lisp:export
   (common-lisp:list 'document-locked-for-comments-exception
-                    'make-document-locked-for-comments-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          document-locked-for-comments-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          document-locked-for-comments-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          document-locked-for-comments-exception))
-   common-lisp:nil))
+                    'document-locked-for-comments-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (document-metadata (:copier common-lisp:nil)
@@ -2279,68 +2200,22 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype document-version-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (draft-upload-out-of-sync-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-draft-upload-out-of-sync-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message-type common-lisp:null)))
+ (common-lisp:define-condition draft-upload-out-of-sync-exception
+     (workdocs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       draft-upload-out-of-sync-exception-message)))
  (common-lisp:export
   (common-lisp:list 'draft-upload-out-of-sync-exception
-                    'make-draft-upload-out-of-sync-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          draft-upload-out-of-sync-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          draft-upload-out-of-sync-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          draft-upload-out-of-sync-exception))
-   common-lisp:nil))
+                    'draft-upload-out-of-sync-exception-message)))
 (common-lisp:deftype email-address-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (entity-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-entity-already-exists-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message-type common-lisp:null)))
+ (common-lisp:define-condition entity-already-exists-exception
+     (workdocs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       entity-already-exists-exception-message)))
  (common-lisp:export
   (common-lisp:list 'entity-already-exists-exception
-                    'make-entity-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-already-exists-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-already-exists-exception))
-   common-lisp:nil))
+                    'entity-already-exists-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype entity-id-list () '(trivial-types:proper-list id-type))
  (common-lisp:defun |make-entity-id-list|
@@ -2349,77 +2224,25 @@
                            (trivial-types:proper-list id-type))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (entity-not-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-entity-not-exists-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message-type common-lisp:null))
-   (entity-ids common-lisp:nil :type
-    (common-lisp:or entity-id-list common-lisp:null)))
+ (common-lisp:define-condition entity-not-exists-exception
+     (workdocs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       entity-not-exists-exception-message)
+      (entity-ids :initarg :entity-ids :initform common-lisp:nil :reader
+       entity-not-exists-exception-entity-ids)))
  (common-lisp:export
   (common-lisp:list 'entity-not-exists-exception
-                    'make-entity-not-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-not-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-not-exists-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'entity-ids))
-      (common-lisp:list
-       (common-lisp:cons "EntityIds"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-not-exists-exception))
-   common-lisp:nil))
+                    'entity-not-exists-exception-message
+                    'entity-not-exists-exception-entity-ids)))
 (common-lisp:deftype error-message-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (failed-dependency-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-failed-dependency-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message-type common-lisp:null)))
+ (common-lisp:define-condition failed-dependency-exception
+     (workdocs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       failed-dependency-exception-message)))
  (common-lisp:export
   (common-lisp:list 'failed-dependency-exception
-                    'make-failed-dependency-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          failed-dependency-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          failed-dependency-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          failed-dependency-exception))
-   common-lisp:nil))
+                    'failed-dependency-exception-message)))
 (common-lisp:deftype field-names-type () 'common-lisp:string)
 (common-lisp:deftype folder-content-type () 'common-lisp:string)
 (common-lisp:progn
@@ -2977,36 +2800,13 @@
 (common-lisp:deftype header-value-type () 'common-lisp:string)
 (common-lisp:deftype id-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (illegal-user-state-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-illegal-user-state-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message-type common-lisp:null)))
+ (common-lisp:define-condition illegal-user-state-exception
+     (workdocs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       illegal-user-state-exception-message)))
  (common-lisp:export
   (common-lisp:list 'illegal-user-state-exception
-                    'make-illegal-user-state-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          illegal-user-state-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          illegal-user-state-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          illegal-user-state-exception))
-   common-lisp:nil))
+                    'illegal-user-state-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (initiate-document-version-upload-request (:copier common-lisp:nil)
@@ -3143,67 +2943,21 @@
                           initiate-document-version-upload-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-argument-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-argument-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message-type common-lisp:null)))
+ (common-lisp:define-condition invalid-argument-exception
+     (workdocs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-argument-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-argument-exception
-                    'make-invalid-argument-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-argument-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-argument-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-argument-exception))
-   common-lisp:nil))
+                    'invalid-argument-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-operation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-operation-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message-type common-lisp:null)))
+ (common-lisp:define-condition invalid-operation-exception
+     (workdocs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-operation-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-operation-exception
-                    'make-invalid-operation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-operation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-operation-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-operation-exception))
-   common-lisp:nil))
+                    'invalid-operation-exception-message)))
 (common-lisp:deftype label () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype labels () '(trivial-types:proper-list label))
@@ -3213,35 +2967,13 @@
                            (trivial-types:proper-list label))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message-type common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (workdocs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception
+                    'limit-exceeded-exception-message)))
 (common-lisp:deftype limit-type () 'common-lisp:integer)
 (common-lisp:deftype locale-type () 'common-lisp:string)
 (common-lisp:deftype marker-type () 'common-lisp:string)
@@ -3378,36 +3110,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype principal-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (prohibited-state-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-prohibited-state-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message-type common-lisp:null)))
+ (common-lisp:define-condition prohibited-state-exception
+     (workdocs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       prohibited-state-exception-message)))
  (common-lisp:export
   (common-lisp:list 'prohibited-state-exception
-                    'make-prohibited-state-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          prohibited-state-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          prohibited-state-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          prohibited-state-exception))
-   common-lisp:nil))
+                    'prohibited-state-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-all-resource-permissions-request (:copier common-lisp:nil)
@@ -3475,36 +3184,13 @@
                           remove-resource-permission-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-already-checked-out-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-already-checked-out-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message-type common-lisp:null)))
+ (common-lisp:define-condition resource-already-checked-out-exception
+     (workdocs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-already-checked-out-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-already-checked-out-exception
-                    'make-resource-already-checked-out-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-checked-out-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-checked-out-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-already-checked-out-exception))
-   common-lisp:nil))
+                    'resource-already-checked-out-exception-message)))
 (common-lisp:deftype resource-id-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -3660,36 +3346,13 @@
 (common-lisp:deftype role-type () 'common-lisp:string)
 (common-lisp:deftype search-query-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-unavailable-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-unavailable-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message-type common-lisp:null)))
+ (common-lisp:define-condition service-unavailable-exception
+     (workdocs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       service-unavailable-exception-message)))
  (common-lisp:export
   (common-lisp:list 'service-unavailable-exception
-                    'make-service-unavailable-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   common-lisp:nil))
+                    'service-unavailable-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (share-principal (:copier common-lisp:nil)
@@ -3816,67 +3479,21 @@
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:deftype size-type () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (storage-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-storage-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message-type common-lisp:null)))
+ (common-lisp:define-condition storage-limit-exceeded-exception
+     (workdocs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       storage-limit-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'storage-limit-exceeded-exception
-                    'make-storage-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          storage-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          storage-limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          storage-limit-exceeded-exception))
-   common-lisp:nil))
+                    'storage-limit-exceeded-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (storage-limit-will-exceed-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-storage-limit-will-exceed-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message-type common-lisp:null)))
+ (common-lisp:define-condition storage-limit-will-exceed-exception
+     (workdocs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       storage-limit-will-exceed-exception-message)))
  (common-lisp:export
   (common-lisp:list 'storage-limit-will-exceed-exception
-                    'make-storage-limit-will-exceed-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          storage-limit-will-exceed-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          storage-limit-will-exceed-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          storage-limit-will-exceed-exception))
-   common-lisp:nil))
+                    'storage-limit-will-exceed-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (storage-rule-type (:copier common-lisp:nil)
@@ -3967,120 +3584,34 @@
 (common-lisp:deftype time-zone-id-type () 'common-lisp:string)
 (common-lisp:deftype timestamp-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-labels-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-labels-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message-type common-lisp:null)))
+ (common-lisp:define-condition too-many-labels-exception
+     (workdocs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-labels-exception-message)))
  (common-lisp:export
   (common-lisp:list 'too-many-labels-exception
-                    'make-too-many-labels-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-labels-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-labels-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-labels-exception))
-   common-lisp:nil))
+                    'too-many-labels-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (too-many-subscriptions-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-too-many-subscriptions-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message-type common-lisp:null)))
+ (common-lisp:define-condition too-many-subscriptions-exception
+     (workdocs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-subscriptions-exception-message)))
  (common-lisp:export
   (common-lisp:list 'too-many-subscriptions-exception
-                    'make-too-many-subscriptions-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-subscriptions-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-subscriptions-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          too-many-subscriptions-exception))
-   common-lisp:nil))
+                    'too-many-subscriptions-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unauthorized-operation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unauthorized-operation-exception-")))
- (common-lisp:export
-  (common-lisp:list 'unauthorized-operation-exception
-                    'make-unauthorized-operation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-operation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-operation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-operation-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition unauthorized-operation-exception
+     (workdocs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'unauthorized-operation-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unauthorized-resource-access-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unauthorized-resource-access-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message-type common-lisp:null)))
+ (common-lisp:define-condition unauthorized-resource-access-exception
+     (workdocs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unauthorized-resource-access-exception-message)))
  (common-lisp:export
   (common-lisp:list 'unauthorized-resource-access-exception
-                    'make-unauthorized-resource-access-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-resource-access-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-resource-access-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-resource-access-exception))
-   common-lisp:nil))
+                    'unauthorized-resource-access-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-document-request (:copier common-lisp:nil)
@@ -4669,7 +4200,14 @@
                                                              'version-id))))
                                                         "AbortDocumentVersionUpload"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("ProhibitedStateException" . prohibited-state-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'abort-document-version-upload))
 (common-lisp:progn
  (common-lisp:defun activate-user
@@ -4697,7 +4235,13 @@
                                                              'user-id))))
                                                         "ActivateUser"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'activate-user))
 (common-lisp:progn
  (common-lisp:defun add-resource-permissions
@@ -4727,7 +4271,12 @@
                                                              'resource-id))))
                                                         "AddResourcePermissions"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'add-resource-permissions))
 (common-lisp:progn
  (common-lisp:defun create-comment
@@ -4763,7 +4312,16 @@
                                                              'version-id))))
                                                         "CreateComment"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("ProhibitedStateException" . prohibited-state-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("DocumentLockedForCommentsException"
+         . document-locked-for-comments-exception)))))
  (common-lisp:export 'create-comment))
 (common-lisp:progn
  (common-lisp:defun create-custom-metadata
@@ -4794,7 +4352,16 @@
                                                              'resource-id))))
                                                         "CreateCustomMetadata"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("ProhibitedStateException" . prohibited-state-exception)
+        ("CustomMetadataLimitExceededException"
+         . custom-metadata-limit-exceeded-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'create-custom-metadata))
 (common-lisp:progn
  (common-lisp:defun create-folder
@@ -4815,7 +4382,16 @@
                                                         "/api/v1/folders"
                                                         "CreateFolder"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("ProhibitedStateException" . prohibited-state-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'create-folder))
 (common-lisp:progn
  (common-lisp:defun create-labels
@@ -4844,7 +4420,14 @@
                                                              'resource-id))))
                                                         "CreateLabels"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyLabelsException" . too-many-labels-exception)))))
  (common-lisp:export 'create-labels))
 (common-lisp:progn
  (common-lisp:defun create-notification-subscription
@@ -4876,7 +4459,11 @@
                                                              'organization-id))))
                                                         "CreateNotificationSubscription"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'create-notification-subscription))
 (common-lisp:progn
  (common-lisp:defun create-user
@@ -4898,7 +4485,13 @@
                                                         "POST" "/api/v1/users"
                                                         "CreateUser"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'create-user))
 (common-lisp:progn
  (common-lisp:defun deactivate-user
@@ -4926,7 +4519,13 @@
                                                              'user-id))))
                                                         "DeactivateUser"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'deactivate-user))
 (common-lisp:progn
  (common-lisp:defun delete-comment
@@ -4965,7 +4564,16 @@
                                                              'comment-id))))
                                                         "DeleteComment"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("ProhibitedStateException" . prohibited-state-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("DocumentLockedForCommentsException"
+         . document-locked-for-comments-exception)))))
  (common-lisp:export 'delete-comment))
 (common-lisp:progn
  (common-lisp:defun delete-custom-metadata
@@ -4996,7 +4604,14 @@
                                                              'resource-id))))
                                                         "DeleteCustomMetadata"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("ProhibitedStateException" . prohibited-state-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-custom-metadata))
 (common-lisp:progn
  (common-lisp:defun delete-document
@@ -5025,7 +4640,15 @@
                                                              'document-id))))
                                                         "DeleteDocument"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("ProhibitedStateException" . prohibited-state-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-document))
 (common-lisp:progn
  (common-lisp:defun delete-folder
@@ -5053,7 +4676,15 @@
                                                              'folder-id))))
                                                         "DeleteFolder"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("ProhibitedStateException" . prohibited-state-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-folder))
 (common-lisp:progn
  (common-lisp:defun delete-folder-contents
@@ -5081,7 +4712,13 @@
                                                              'folder-id))))
                                                         "DeleteFolderContents"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-folder-contents))
 (common-lisp:progn
  (common-lisp:defun delete-labels
@@ -5111,7 +4748,13 @@
                                                              'resource-id))))
                                                         "DeleteLabels"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-labels))
 (common-lisp:progn
  (common-lisp:defun delete-notification-subscription
@@ -5145,7 +4788,12 @@
                                                              'subscription-id))))
                                                         "DeleteNotificationSubscription"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("EntityNotExistsException" . entity-not-exists-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("ProhibitedStateException" . prohibited-state-exception)))))
  (common-lisp:export 'delete-notification-subscription))
 (common-lisp:progn
  (common-lisp:defun delete-user
@@ -5173,7 +4821,13 @@
                                                              'user-id))))
                                                         "DeleteUser"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-user))
 (common-lisp:progn
  (common-lisp:defun describe-activities
@@ -5195,7 +4849,13 @@
                                                         "/api/v1/activities"
                                                         "DescribeActivities"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-activities))
 (common-lisp:progn
  (common-lisp:defun describe-comments
@@ -5230,7 +4890,14 @@
                                                              'version-id))))
                                                         "DescribeComments"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("ProhibitedStateException" . prohibited-state-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-comments))
 (common-lisp:progn
  (common-lisp:defun describe-document-versions
@@ -5262,7 +4929,15 @@
                                                              'document-id))))
                                                         "DescribeDocumentVersions"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("ProhibitedStateException" . prohibited-state-exception)))))
  (common-lisp:export 'describe-document-versions))
 (common-lisp:progn
  (common-lisp:defun describe-folder-contents
@@ -5293,7 +4968,14 @@
                                                              'folder-id))))
                                                         "DescribeFolderContents"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("ProhibitedStateException" . prohibited-state-exception)))))
  (common-lisp:export 'describe-folder-contents))
 (common-lisp:progn
  (common-lisp:defun describe-notification-subscriptions
@@ -5322,7 +5004,11 @@
                                                              'organization-id))))
                                                         "DescribeNotificationSubscriptions"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("EntityNotExistsException" . entity-not-exists-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-notification-subscriptions))
 (common-lisp:progn
  (common-lisp:defun describe-resource-permissions
@@ -5353,7 +5039,12 @@
                                                              'resource-id))))
                                                         "DescribeResourcePermissions"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-resource-permissions))
 (common-lisp:progn
  (common-lisp:defun describe-root-folders
@@ -5372,7 +5063,13 @@
                                                         "GET" "/api/v1/me/root"
                                                         "DescribeRootFolders"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-root-folders))
 (common-lisp:progn
  (common-lisp:defun describe-users
@@ -5393,7 +5090,13 @@
                                                         "GET" "/api/v1/users"
                                                         "DescribeUsers"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)))))
  (common-lisp:export 'describe-users))
 (common-lisp:progn
  (common-lisp:defun get-current-user
@@ -5411,7 +5114,13 @@
                                                         "GET" "/api/v1/me"
                                                         "GetCurrentUser"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'get-current-user))
 (common-lisp:progn
  (common-lisp:defun get-document
@@ -5442,7 +5151,14 @@
                                                              'document-id))))
                                                         "GetDocument"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'get-document))
 (common-lisp:progn
  (common-lisp:defun get-document-path
@@ -5473,7 +5189,13 @@
                                                              'document-id))))
                                                         "GetDocumentPath"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'get-document-path))
 (common-lisp:progn
  (common-lisp:defun get-document-version
@@ -5508,7 +5230,14 @@
                                                              'version-id))))
                                                         "GetDocumentVersion"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("ProhibitedStateException" . prohibited-state-exception)))))
  (common-lisp:export 'get-document-version))
 (common-lisp:progn
  (common-lisp:defun get-folder
@@ -5539,7 +5268,15 @@
                                                              'folder-id))))
                                                         "GetFolder"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("ProhibitedStateException" . prohibited-state-exception)))))
  (common-lisp:export 'get-folder))
 (common-lisp:progn
  (common-lisp:defun get-folder-path
@@ -5569,7 +5306,13 @@
                                                              'folder-id))))
                                                         "GetFolderPath"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'get-folder-path))
 (common-lisp:progn
  (common-lisp:defun initiate-document-version-upload
@@ -5594,7 +5337,21 @@
                                                         "/api/v1/documents"
                                                         "InitiateDocumentVersionUpload"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
+        ("StorageLimitWillExceedException"
+         . storage-limit-will-exceed-exception)
+        ("ProhibitedStateException" . prohibited-state-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
+        ("ResourceAlreadyCheckedOutException"
+         . resource-already-checked-out-exception)))))
  (common-lisp:export 'initiate-document-version-upload))
 (common-lisp:progn
  (common-lisp:defun remove-all-resource-permissions
@@ -5624,7 +5381,12 @@
                                                              'resource-id))))
                                                         "RemoveAllResourcePermissions"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'remove-all-resource-permissions))
 (common-lisp:progn
  (common-lisp:defun remove-resource-permission
@@ -5660,7 +5422,12 @@
                                                              'principal-id))))
                                                         "RemoveResourcePermission"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'remove-resource-permission))
 (common-lisp:progn
  (common-lisp:defun update-document
@@ -5691,7 +5458,17 @@
                                                              'document-id))))
                                                         "UpdateDocument"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ProhibitedStateException" . prohibited-state-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'update-document))
 (common-lisp:progn
  (common-lisp:defun update-document-version
@@ -5726,7 +5503,16 @@
                                                              'version-id))))
                                                         "UpdateDocumentVersion"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("ProhibitedStateException" . prohibited-state-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'update-document-version))
 (common-lisp:progn
  (common-lisp:defun update-folder
@@ -5757,7 +5543,17 @@
                                                              'folder-id))))
                                                         "UpdateFolder"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("ProhibitedStateException" . prohibited-state-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'update-folder))
 (common-lisp:progn
  (common-lisp:defun update-user
@@ -5788,5 +5584,14 @@
                                                              'user-id))))
                                                         "UpdateUser"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityNotExistsException" . entity-not-exists-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("UnauthorizedResourceAccessException"
+         . unauthorized-resource-access-exception)
+        ("IllegalUserStateException" . illegal-user-state-exception)
+        ("FailedDependencyException" . failed-dependency-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("DeactivatingLastSystemUserException"
+         . deactivating-last-system-user-exception)))))
  (common-lisp:export 'update-user))

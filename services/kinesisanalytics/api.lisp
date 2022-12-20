@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/kinesisanalytics/api)
 (common-lisp:progn
  (common-lisp:defclass kinesisanalytics-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "kinesisanalytics"))
  (common-lisp:export 'kinesisanalytics-request))
+(common-lisp:progn
+ (common-lisp:define-condition kinesisanalytics-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'kinesisanalytics-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (add-application-cloud-watch-logging-option-request
@@ -777,67 +783,21 @@
                             cloud-watch-logging-option))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (code-validation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-code-validation-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition code-validation-exception
+     (kinesisanalytics-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       code-validation-exception-message)))
  (common-lisp:export
   (common-lisp:list 'code-validation-exception
-                    'make-code-validation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          code-validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          code-validation-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          code-validation-exception))
-   common-lisp:nil))
+                    'code-validation-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (concurrent-modification-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-concurrent-modification-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition concurrent-modification-exception
+     (kinesisanalytics-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       concurrent-modification-exception-message)))
  (common-lisp:export
   (common-lisp:list 'concurrent-modification-exception
-                    'make-concurrent-modification-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   common-lisp:nil))
+                    'concurrent-modification-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-application-request (:copier common-lisp:nil)
@@ -1858,67 +1818,21 @@
                            (trivial-types:proper-list input))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-application-configuration-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-application-configuration-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-application-configuration-exception
+     (kinesisanalytics-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-application-configuration-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-application-configuration-exception
-                    'make-invalid-application-configuration-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-application-configuration-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-application-configuration-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-application-configuration-exception))
-   common-lisp:nil))
+                    'invalid-application-configuration-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-argument-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-argument-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-argument-exception
+     (kinesisanalytics-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-argument-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-argument-exception
-                    'make-invalid-argument-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-argument-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-argument-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-argument-exception))
-   common-lisp:nil))
+                    'invalid-argument-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (jsonmapping-parameters (:copier common-lisp:nil)
@@ -2422,35 +2336,13 @@
                           kinesis-streams-output-update))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (kinesisanalytics-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception
+                    'limit-exceeded-exception-message)))
 (common-lisp:deftype list-applications-input-limit () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -3076,100 +2968,29 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype resource-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-in-use-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-in-use-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition resource-in-use-exception
+     (kinesisanalytics-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-in-use-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-in-use-exception
-                    'make-resource-in-use-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   common-lisp:nil))
+                    'resource-in-use-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition resource-not-found-exception
+     (kinesisanalytics-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+                    'resource-not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-provisioned-throughput-exceeded-exception
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-resource-provisioned-throughput-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition resource-provisioned-throughput-exceeded-exception
+     (kinesisanalytics-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-provisioned-throughput-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-provisioned-throughput-exceeded-exception
-                    'make-resource-provisioned-throughput-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-provisioned-throughput-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-provisioned-throughput-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-provisioned-throughput-exceeded-exception))
-   common-lisp:nil))
+                    'resource-provisioned-throughput-exceeded-exception-message)))
 (common-lisp:deftype role-arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -3319,36 +3140,13 @@
                           s3reference-data-source-update))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-unavailable-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-unavailable-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition service-unavailable-exception
+     (kinesisanalytics-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       service-unavailable-exception-message)))
  (common-lisp:export
   (common-lisp:list 'service-unavailable-exception
-                    'make-service-unavailable-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-unavailable-exception))
-   common-lisp:nil))
+                    'service-unavailable-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (source-schema (:copier common-lisp:nil)
@@ -3508,45 +3306,16 @@
    common-lisp:nil))
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (unable-to-detect-schema-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unable-to-detect-schema-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null))
-   (raw-input-records common-lisp:nil :type
-    (common-lisp:or raw-input-records common-lisp:null)))
+ (common-lisp:define-condition unable-to-detect-schema-exception
+     (kinesisanalytics-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unable-to-detect-schema-exception-message)
+      (raw-input-records :initarg :raw-input-records :initform common-lisp:nil
+       :reader unable-to-detect-schema-exception-raw-input-records)))
  (common-lisp:export
   (common-lisp:list 'unable-to-detect-schema-exception
-                    'make-unable-to-detect-schema-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unable-to-detect-schema-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unable-to-detect-schema-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'raw-input-records))
-      (common-lisp:list
-       (common-lisp:cons "RawInputRecords"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unable-to-detect-schema-exception))
-   common-lisp:nil))
+                    'unable-to-detect-schema-exception-message
+                    'unable-to-detect-schema-exception-raw-input-records)))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-application-request (:copier common-lisp:nil)
@@ -3638,7 +3407,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "AddApplicationCloudWatchLoggingOption" "2015-08-14"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("ConcurrentModificationException"
+         . concurrent-modification-exception)))))
  (common-lisp:export 'add-application-cloud-watch-logging-option))
 (common-lisp:progn
  (common-lisp:defun add-application-input
@@ -3657,7 +3431,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "AddApplicationInput" "2015-08-14"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("CodeValidationException" . code-validation-exception)))))
  (common-lisp:export 'add-application-input))
 (common-lisp:progn
  (common-lisp:defun add-application-output
@@ -3676,7 +3455,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "AddApplicationOutput" "2015-08-14"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("ConcurrentModificationException"
+         . concurrent-modification-exception)))))
  (common-lisp:export 'add-application-output))
 (common-lisp:progn
  (common-lisp:defun add-application-reference-data-source
@@ -3696,7 +3480,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "AddApplicationReferenceDataSource" "2015-08-14"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("ConcurrentModificationException"
+         . concurrent-modification-exception)))))
  (common-lisp:export 'add-application-reference-data-source))
 (common-lisp:progn
  (common-lisp:defun create-application
@@ -3716,7 +3505,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "CreateApplication" "2015-08-14"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("CodeValidationException" . code-validation-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)))))
  (common-lisp:export 'create-application))
 (common-lisp:progn
  (common-lisp:defun delete-application
@@ -3733,7 +3526,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteApplication" "2015-08-14"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'delete-application))
 (common-lisp:progn
  (common-lisp:defun delete-application-cloud-watch-logging-option
@@ -3754,7 +3550,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteApplicationCloudWatchLoggingOption" "2015-08-14"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("ConcurrentModificationException"
+         . concurrent-modification-exception)))))
  (common-lisp:export 'delete-application-cloud-watch-logging-option))
 (common-lisp:progn
  (common-lisp:defun delete-application-output
@@ -3774,7 +3575,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteApplicationOutput" "2015-08-14"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("ConcurrentModificationException"
+         . concurrent-modification-exception)))))
  (common-lisp:export 'delete-application-output))
 (common-lisp:progn
  (common-lisp:defun delete-application-reference-data-source
@@ -3794,7 +3600,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteApplicationReferenceDataSource" "2015-08-14"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("ConcurrentModificationException"
+         . concurrent-modification-exception)))))
  (common-lisp:export 'delete-application-reference-data-source))
 (common-lisp:progn
  (common-lisp:defun describe-application
@@ -3810,7 +3621,8 @@
        (aws-sdk/generator/shape:make-request-with-input
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeApplication" "2015-08-14"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-application))
 (common-lisp:progn
  (common-lisp:defun discover-input-schema
@@ -3829,7 +3641,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "DiscoverInputSchema" "2015-08-14"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidArgumentException" . invalid-argument-exception)
+        ("UnableToDetectSchemaException" . unable-to-detect-schema-exception)
+        ("ResourceProvisionedThroughputExceededException"
+         . resource-provisioned-throughput-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'discover-input-schema))
 (common-lisp:progn
  (common-lisp:defun list-applications
@@ -3846,7 +3663,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "ListApplications" "2015-08-14"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'list-applications))
 (common-lisp:progn
  (common-lisp:defun start-application
@@ -3863,7 +3680,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "StartApplication" "2015-08-14"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("InvalidApplicationConfigurationException"
+         . invalid-application-configuration-exception)))))
  (common-lisp:export 'start-application))
 (common-lisp:progn
  (common-lisp:defun stop-application
@@ -3879,7 +3701,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "StopApplication" "2015-08-14"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'stop-application))
 (common-lisp:progn
  (common-lisp:defun update-application
@@ -3898,5 +3722,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateApplication" "2015-08-14"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("CodeValidationException" . code-validation-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("ConcurrentModificationException"
+         . concurrent-modification-exception)))))
  (common-lisp:export 'update-application))

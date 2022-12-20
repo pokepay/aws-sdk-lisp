@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/iam/api)
 (common-lisp:progn
  (common-lisp:defclass iam-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "iam"))
  (common-lisp:export 'iam-request))
+(common-lisp:progn
+ (common-lisp:define-condition iam-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'iam-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (access-key (:copier common-lisp:nil)
@@ -1543,101 +1549,29 @@
                           create-virtual-mfadevice-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (credential-report-expired-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-credential-report-expired-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |credentialReportExpiredExceptionMessage|
-                    common-lisp:null)))
+ (common-lisp:define-condition credential-report-expired-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       credential-report-expired-exception-message)))
  (common-lisp:export
   (common-lisp:list 'credential-report-expired-exception
-                    'make-credential-report-expired-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          credential-report-expired-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          credential-report-expired-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          credential-report-expired-exception))
-   common-lisp:nil))
+                    'credential-report-expired-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (credential-report-not-present-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-credential-report-not-present-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |credentialReportNotPresentExceptionMessage|
-                    common-lisp:null)))
+ (common-lisp:define-condition credential-report-not-present-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       credential-report-not-present-exception-message)))
  (common-lisp:export
   (common-lisp:list 'credential-report-not-present-exception
-                    'make-credential-report-not-present-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          credential-report-not-present-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          credential-report-not-present-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          credential-report-not-present-exception))
-   common-lisp:nil))
+                    'credential-report-not-present-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (credential-report-not-ready-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-credential-report-not-ready-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |credentialReportNotReadyExceptionMessage|
-                    common-lisp:null)))
+ (common-lisp:define-condition credential-report-not-ready-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       credential-report-not-ready-exception-message)))
  (common-lisp:export
   (common-lisp:list 'credential-report-not-ready-exception
-                    'make-credential-report-not-ready-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          credential-report-not-ready-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          credential-report-not-ready-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          credential-report-not-ready-exception))
-   common-lisp:nil))
+                    'credential-report-not-ready-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (deactivate-mfadevice-request (:copier common-lisp:nil)
@@ -1750,36 +1684,13 @@
                           delete-account-alias-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-conflict-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-conflict-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |deleteConflictMessage| common-lisp:null)))
+ (common-lisp:define-condition delete-conflict-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       delete-conflict-exception-message)))
  (common-lisp:export
   (common-lisp:list 'delete-conflict-exception
-                    'make-delete-conflict-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          delete-conflict-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          delete-conflict-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          delete-conflict-exception))
-   common-lisp:nil))
+                    'delete-conflict-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-group-policy-request (:copier common-lisp:nil)
@@ -2477,67 +2388,21 @@
                           detach-user-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (duplicate-certificate-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-duplicate-certificate-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |duplicateCertificateMessage| common-lisp:null)))
+ (common-lisp:define-condition duplicate-certificate-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       duplicate-certificate-exception-message)))
  (common-lisp:export
   (common-lisp:list 'duplicate-certificate-exception
-                    'make-duplicate-certificate-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-certificate-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-certificate-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-certificate-exception))
-   common-lisp:nil))
+                    'duplicate-certificate-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (duplicate-sshpublic-key-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-duplicate-sshpublic-key-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |duplicateSSHPublicKeyMessage| common-lisp:null)))
+ (common-lisp:define-condition duplicate-sshpublic-key-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       duplicate-sshpublic-key-exception-message)))
  (common-lisp:export
   (common-lisp:list 'duplicate-sshpublic-key-exception
-                    'make-duplicate-sshpublic-key-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-sshpublic-key-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-sshpublic-key-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          duplicate-sshpublic-key-exception))
-   common-lisp:nil))
+                    'duplicate-sshpublic-key-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (enable-mfadevice-request (:copier common-lisp:nil)
@@ -2600,67 +2465,21 @@
                           enable-mfadevice-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (entity-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-entity-already-exists-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |entityAlreadyExistsMessage| common-lisp:null)))
+ (common-lisp:define-condition entity-already-exists-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       entity-already-exists-exception-message)))
  (common-lisp:export
   (common-lisp:list 'entity-already-exists-exception
-                    'make-entity-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-already-exists-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-already-exists-exception))
-   common-lisp:nil))
+                    'entity-already-exists-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (entity-temporarily-unmodifiable-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-entity-temporarily-unmodifiable-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |entityTemporarilyUnmodifiableMessage| common-lisp:null)))
+ (common-lisp:define-condition entity-temporarily-unmodifiable-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       entity-temporarily-unmodifiable-exception-message)))
  (common-lisp:export
   (common-lisp:list 'entity-temporarily-unmodifiable-exception
-                    'make-entity-temporarily-unmodifiable-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-temporarily-unmodifiable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-temporarily-unmodifiable-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-temporarily-unmodifiable-exception))
-   common-lisp:nil))
+                    'entity-temporarily-unmodifiable-exception-message)))
 (common-lisp:deftype entity-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype eval-decision-details-type () 'common-lisp:hash-table)
@@ -4436,220 +4255,60 @@
                         ((aws-sdk/generator/shape::input instance-profile))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-authentication-code-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-authentication-code-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |invalidAuthenticationCodeMessage| common-lisp:null)))
+ (common-lisp:define-condition invalid-authentication-code-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-authentication-code-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-authentication-code-exception
-                    'make-invalid-authentication-code-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-authentication-code-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-authentication-code-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-authentication-code-exception))
-   common-lisp:nil))
+                    'invalid-authentication-code-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-certificate-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-certificate-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |invalidCertificateMessage| common-lisp:null)))
+ (common-lisp:define-condition invalid-certificate-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-certificate-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-certificate-exception
-                    'make-invalid-certificate-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-certificate-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-certificate-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-certificate-exception))
-   common-lisp:nil))
+                    'invalid-certificate-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-input-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-input-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |invalidInputMessage| common-lisp:null)))
+ (common-lisp:define-condition invalid-input-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-input-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-input-exception 'make-invalid-input-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-input-exception 'invalid-input-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-public-key-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-public-key-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |invalidPublicKeyMessage| common-lisp:null)))
+ (common-lisp:define-condition invalid-public-key-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-public-key-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-public-key-exception
-                    'make-invalid-public-key-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-public-key-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-public-key-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-public-key-exception))
-   common-lisp:nil))
+                    'invalid-public-key-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-user-type-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-user-type-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |invalidUserTypeMessage| common-lisp:null)))
+ (common-lisp:define-condition invalid-user-type-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-user-type-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-user-type-exception
-                    'make-invalid-user-type-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-user-type-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-user-type-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-user-type-exception))
-   common-lisp:nil))
+                    'invalid-user-type-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (key-pair-mismatch-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-key-pair-mismatch-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |keyPairMismatchMessage| common-lisp:null)))
+ (common-lisp:define-condition key-pair-mismatch-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       key-pair-mismatch-exception-message)))
  (common-lisp:export
   (common-lisp:list 'key-pair-mismatch-exception
-                    'make-key-pair-mismatch-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          key-pair-mismatch-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          key-pair-mismatch-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          key-pair-mismatch-exception))
-   common-lisp:nil))
+                    'key-pair-mismatch-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |limitExceededMessage| common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception
+                    'limit-exceeded-exception-message)))
 (common-lisp:deftype line-number () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -7097,67 +6756,21 @@
                         ((aws-sdk/generator/shape::input mfadevice))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (malformed-certificate-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-malformed-certificate-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |malformedCertificateMessage| common-lisp:null)))
+ (common-lisp:define-condition malformed-certificate-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       malformed-certificate-exception-message)))
  (common-lisp:export
   (common-lisp:list 'malformed-certificate-exception
-                    'make-malformed-certificate-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          malformed-certificate-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          malformed-certificate-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          malformed-certificate-exception))
-   common-lisp:nil))
+                    'malformed-certificate-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (malformed-policy-document-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-malformed-policy-document-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |malformedPolicyDocumentMessage| common-lisp:null)))
+ (common-lisp:define-condition malformed-policy-document-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       malformed-policy-document-exception-message)))
  (common-lisp:export
   (common-lisp:list 'malformed-policy-document-exception
-                    'make-malformed-policy-document-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          malformed-policy-document-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          malformed-policy-document-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          malformed-policy-document-exception))
-   common-lisp:nil))
+                    'malformed-policy-document-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (managed-policy-detail (:copier common-lisp:nil)
@@ -7285,35 +6898,13 @@
                            (trivial-types:proper-list managed-policy-detail))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-entity-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-entity-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |noSuchEntityMessage| common-lisp:null)))
+ (common-lisp:define-condition no-such-entity-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       no-such-entity-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'no-such-entity-exception 'make-no-such-entity-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-entity-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-entity-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-entity-exception))
-   common-lisp:nil))
+  (common-lisp:list 'no-such-entity-exception
+                    'no-such-entity-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (open-idconnect-provider-list-entry (:copier common-lisp:nil)
@@ -7496,36 +7087,13 @@
                         ((aws-sdk/generator/shape::input password-policy))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (password-policy-violation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-password-policy-violation-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |passwordPolicyViolationMessage| common-lisp:null)))
+ (common-lisp:define-condition password-policy-violation-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       password-policy-violation-exception-message)))
  (common-lisp:export
   (common-lisp:list 'password-policy-violation-exception
-                    'make-password-policy-violation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          password-policy-violation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          password-policy-violation-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          password-policy-violation-exception))
-   common-lisp:nil))
+                    'password-policy-violation-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (policy (:copier common-lisp:nil) (:conc-name "struct-shape-policy-"))
@@ -7661,36 +7229,13 @@
    common-lisp:nil))
 (common-lisp:deftype policy-evaluation-decision-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (policy-evaluation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-policy-evaluation-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |policyEvaluationErrorMessage| common-lisp:null)))
+ (common-lisp:define-condition policy-evaluation-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       policy-evaluation-exception-message)))
  (common-lisp:export
   (common-lisp:list 'policy-evaluation-exception
-                    'make-policy-evaluation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-evaluation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-evaluation-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          policy-evaluation-exception))
-   common-lisp:nil))
+                    'policy-evaluation-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (policy-group (:copier common-lisp:nil)
@@ -8876,67 +8421,21 @@
                           server-certificate-metadata))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-failure-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-failure-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |serviceFailureExceptionMessage| common-lisp:null)))
+ (common-lisp:define-condition service-failure-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       service-failure-exception-message)))
  (common-lisp:export
   (common-lisp:list 'service-failure-exception
-                    'make-service-failure-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-failure-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-failure-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-failure-exception))
-   common-lisp:nil))
+                    'service-failure-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-not-supported-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-not-supported-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |serviceNotSupportedMessage| common-lisp:null)))
+ (common-lisp:define-condition service-not-supported-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       service-not-supported-exception-message)))
  (common-lisp:export
   (common-lisp:list 'service-not-supported-exception
-                    'make-service-not-supported-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-not-supported-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-not-supported-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          service-not-supported-exception))
-   common-lisp:nil))
+                    'service-not-supported-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (service-specific-credential (:copier common-lisp:nil)
@@ -9561,67 +9060,21 @@
                            (trivial-types:proper-list statement))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unmodifiable-entity-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unmodifiable-entity-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |unmodifiableEntityMessage| common-lisp:null)))
+ (common-lisp:define-condition unmodifiable-entity-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unmodifiable-entity-exception-message)))
  (common-lisp:export
   (common-lisp:list 'unmodifiable-entity-exception
-                    'make-unmodifiable-entity-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unmodifiable-entity-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unmodifiable-entity-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unmodifiable-entity-exception))
-   common-lisp:nil))
+                    'unmodifiable-entity-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unrecognized-public-key-encoding-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unrecognized-public-key-encoding-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |unrecognizedPublicKeyEncodingMessage| common-lisp:null)))
+ (common-lisp:define-condition unrecognized-public-key-encoding-exception
+     (iam-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unrecognized-public-key-encoding-exception-message)))
  (common-lisp:export
   (common-lisp:list 'unrecognized-public-key-encoding-exception
-                    'make-unrecognized-public-key-encoding-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unrecognized-public-key-encoding-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unrecognized-public-key-encoding-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unrecognized-public-key-encoding-exception))
-   common-lisp:nil))
+                    'unrecognized-public-key-encoding-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-access-key-request (:copier common-lisp:nil)
@@ -11073,7 +10526,11 @@
                                                         "POST" "/"
                                                         "AddClientIDToOpenIDConnectProvider"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'add-client-idto-open-idconnect-provider))
 (common-lisp:progn
  (common-lisp:defun add-role-to-instance-profile
@@ -11093,7 +10550,12 @@
                                                         "POST" "/"
                                                         "AddRoleToInstanceProfile"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'add-role-to-instance-profile))
 (common-lisp:progn
  (common-lisp:defun add-user-to-group
@@ -11111,7 +10573,10 @@
                                                         "POST" "/"
                                                         "AddUserToGroup"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'add-user-to-group))
 (common-lisp:progn
  (common-lisp:defun attach-group-policy
@@ -11129,7 +10594,11 @@
                                                         "POST" "/"
                                                         "AttachGroupPolicy"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'attach-group-policy))
 (common-lisp:progn
  (common-lisp:defun attach-role-policy
@@ -11147,7 +10616,12 @@
                                                         "POST" "/"
                                                         "AttachRolePolicy"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'attach-role-policy))
 (common-lisp:progn
  (common-lisp:defun attach-user-policy
@@ -11165,7 +10639,11 @@
                                                         "POST" "/"
                                                         "AttachUserPolicy"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'attach-user-policy))
 (common-lisp:progn
  (common-lisp:defun change-password
@@ -11183,7 +10661,15 @@
                                                         "POST" "/"
                                                         "ChangePassword"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'change-password))
 (common-lisp:progn
  (common-lisp:defun create-access-key
@@ -11201,7 +10687,10 @@
                                                         "POST" "/"
                                                         "CreateAccessKey"
                                                         "2010-05-08"))
-      common-lisp:nil "CreateAccessKeyResult")))
+      common-lisp:nil "CreateAccessKeyResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'create-access-key))
 (common-lisp:progn
  (common-lisp:defun create-account-alias
@@ -11219,7 +10708,10 @@
                                                         "POST" "/"
                                                         "CreateAccountAlias"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'create-account-alias))
 (common-lisp:progn
  (common-lisp:defun create-group
@@ -11237,7 +10729,11 @@
                                                         "POST" "/"
                                                         "CreateGroup"
                                                         "2010-05-08"))
-      common-lisp:nil "CreateGroupResult")))
+      common-lisp:nil "CreateGroupResult"
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'create-group))
 (common-lisp:progn
  (common-lisp:defun create-instance-profile
@@ -11255,7 +10751,10 @@
                                                         "POST" "/"
                                                         "CreateInstanceProfile"
                                                         "2010-05-08"))
-      common-lisp:nil "CreateInstanceProfileResult")))
+      common-lisp:nil "CreateInstanceProfileResult"
+      '(("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'create-instance-profile))
 (common-lisp:progn
  (common-lisp:defun create-login-profile
@@ -11275,7 +10774,13 @@
                                                         "POST" "/"
                                                         "CreateLoginProfile"
                                                         "2010-05-08"))
-      common-lisp:nil "CreateLoginProfileResult")))
+      common-lisp:nil "CreateLoginProfileResult"
+      '(("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'create-login-profile))
 (common-lisp:progn
  (common-lisp:defun create-open-idconnect-provider
@@ -11295,7 +10800,11 @@
                                                         "POST" "/"
                                                         "CreateOpenIDConnectProvider"
                                                         "2010-05-08"))
-      common-lisp:nil "CreateOpenIDConnectProviderResult")))
+      common-lisp:nil "CreateOpenIDConnectProviderResult"
+      '(("InvalidInputException" . invalid-input-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'create-open-idconnect-provider))
 (common-lisp:progn
  (common-lisp:defun create-policy
@@ -11315,7 +10824,13 @@
                                                         "POST" "/"
                                                         "CreatePolicy"
                                                         "2010-05-08"))
-      common-lisp:nil "CreatePolicyResult")))
+      common-lisp:nil "CreatePolicyResult"
+      '(("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'create-policy))
 (common-lisp:progn
  (common-lisp:defun create-policy-version
@@ -11335,7 +10850,13 @@
                                                         "POST" "/"
                                                         "CreatePolicyVersion"
                                                         "2010-05-08"))
-      common-lisp:nil "CreatePolicyVersionResult")))
+      common-lisp:nil "CreatePolicyVersionResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'create-policy-version))
 (common-lisp:progn
  (common-lisp:defun create-role
@@ -11355,7 +10876,13 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CreateRole"
                                                         "2010-05-08"))
-      common-lisp:nil "CreateRoleResult")))
+      common-lisp:nil "CreateRoleResult"
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'create-role))
 (common-lisp:progn
  (common-lisp:defun create-samlprovider
@@ -11373,7 +10900,11 @@
                                                         "POST" "/"
                                                         "CreateSAMLProvider"
                                                         "2010-05-08"))
-      common-lisp:nil "CreateSAMLProviderResult")))
+      common-lisp:nil "CreateSAMLProviderResult"
+      '(("InvalidInputException" . invalid-input-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'create-samlprovider))
 (common-lisp:progn
  (common-lisp:defun create-service-linked-role
@@ -11394,7 +10925,11 @@
                                                         "POST" "/"
                                                         "CreateServiceLinkedRole"
                                                         "2010-05-08"))
-      common-lisp:nil "CreateServiceLinkedRoleResult")))
+      common-lisp:nil "CreateServiceLinkedRoleResult"
+      '(("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'create-service-linked-role))
 (common-lisp:progn
  (common-lisp:defun create-service-specific-credential
@@ -11413,7 +10948,10 @@
                                                         "POST" "/"
                                                         "CreateServiceSpecificCredential"
                                                         "2010-05-08"))
-      common-lisp:nil "CreateServiceSpecificCredentialResult")))
+      common-lisp:nil "CreateServiceSpecificCredentialResult"
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)))))
  (common-lisp:export 'create-service-specific-credential))
 (common-lisp:progn
  (common-lisp:defun create-user
@@ -11430,7 +10968,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CreateUser"
                                                         "2010-05-08"))
-      common-lisp:nil "CreateUserResult")))
+      common-lisp:nil "CreateUserResult"
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'create-user))
 (common-lisp:progn
  (common-lisp:defun create-virtual-mfadevice
@@ -11448,7 +10990,10 @@
                                                         "POST" "/"
                                                         "CreateVirtualMFADevice"
                                                         "2010-05-08"))
-      common-lisp:nil "CreateVirtualMFADeviceResult")))
+      common-lisp:nil "CreateVirtualMFADeviceResult"
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'create-virtual-mfadevice))
 (common-lisp:progn
  (common-lisp:defun deactivate-mfadevice
@@ -11466,7 +11011,12 @@
                                                         "POST" "/"
                                                         "DeactivateMFADevice"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'deactivate-mfadevice))
 (common-lisp:progn
  (common-lisp:defun delete-access-key
@@ -11484,7 +11034,10 @@
                                                         "POST" "/"
                                                         "DeleteAccessKey"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'delete-access-key))
 (common-lisp:progn
  (common-lisp:defun delete-account-alias
@@ -11502,7 +11055,10 @@
                                                         "POST" "/"
                                                         "DeleteAccountAlias"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'delete-account-alias))
 (common-lisp:progn
  (common-lisp:defun delete-account-password-policy ()
@@ -11511,7 +11067,10 @@
      (common-lisp:make-instance 'iam-request :method "POST" :path "/" :params
                                 `(("Action" ,@"DeleteAccountPasswordPolicy")
                                   ("Version" ,@"2010-05-08"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("NoSuchEntityException" . no-such-entity-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("ServiceFailureException" . service-failure-exception))))
  (common-lisp:export 'delete-account-password-policy))
 (common-lisp:progn
  (common-lisp:defun delete-group
@@ -11529,7 +11088,11 @@
                                                         "POST" "/"
                                                         "DeleteGroup"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'delete-group))
 (common-lisp:progn
  (common-lisp:defun delete-group-policy
@@ -11547,7 +11110,10 @@
                                                         "POST" "/"
                                                         "DeleteGroupPolicy"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'delete-group-policy))
 (common-lisp:progn
  (common-lisp:defun delete-instance-profile
@@ -11565,7 +11131,11 @@
                                                         "POST" "/"
                                                         "DeleteInstanceProfile"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'delete-instance-profile))
 (common-lisp:progn
  (common-lisp:defun delete-login-profile
@@ -11583,7 +11153,12 @@
                                                         "POST" "/"
                                                         "DeleteLoginProfile"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'delete-login-profile))
 (common-lisp:progn
  (common-lisp:defun delete-open-idconnect-provider
@@ -11602,7 +11177,10 @@
                                                         "POST" "/"
                                                         "DeleteOpenIDConnectProvider"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'delete-open-idconnect-provider))
 (common-lisp:progn
  (common-lisp:defun delete-policy
@@ -11620,7 +11198,12 @@
                                                         "POST" "/"
                                                         "DeletePolicy"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'delete-policy))
 (common-lisp:progn
  (common-lisp:defun delete-policy-version
@@ -11638,7 +11221,12 @@
                                                         "POST" "/"
                                                         "DeletePolicyVersion"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'delete-policy-version))
 (common-lisp:progn
  (common-lisp:defun delete-role
@@ -11655,7 +11243,12 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteRole"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'delete-role))
 (common-lisp:progn
  (common-lisp:defun delete-role-policy
@@ -11673,7 +11266,11 @@
                                                         "POST" "/"
                                                         "DeleteRolePolicy"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'delete-role-policy))
 (common-lisp:progn
  (common-lisp:defun delete-samlprovider
@@ -11691,7 +11288,11 @@
                                                         "POST" "/"
                                                         "DeleteSAMLProvider"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'delete-samlprovider))
 (common-lisp:progn
  (common-lisp:defun delete-sshpublic-key
@@ -11709,7 +11310,8 @@
                                                         "POST" "/"
                                                         "DeleteSSHPublicKey"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'delete-sshpublic-key))
 (common-lisp:progn
  (common-lisp:defun delete-server-certificate
@@ -11728,7 +11330,11 @@
                                                         "POST" "/"
                                                         "DeleteServerCertificate"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'delete-server-certificate))
 (common-lisp:progn
  (common-lisp:defun delete-service-specific-credential
@@ -11748,7 +11354,8 @@
                                                         "POST" "/"
                                                         "DeleteServiceSpecificCredential"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'delete-service-specific-credential))
 (common-lisp:progn
  (common-lisp:defun delete-signing-certificate
@@ -11767,7 +11374,10 @@
                                                         "POST" "/"
                                                         "DeleteSigningCertificate"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'delete-signing-certificate))
 (common-lisp:progn
  (common-lisp:defun delete-user
@@ -11784,7 +11394,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteUser"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'delete-user))
 (common-lisp:progn
  (common-lisp:defun delete-user-policy
@@ -11802,7 +11416,10 @@
                                                         "POST" "/"
                                                         "DeleteUserPolicy"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'delete-user-policy))
 (common-lisp:progn
  (common-lisp:defun delete-virtual-mfadevice
@@ -11820,7 +11437,11 @@
                                                         "POST" "/"
                                                         "DeleteVirtualMFADevice"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'delete-virtual-mfadevice))
 (common-lisp:progn
  (common-lisp:defun detach-group-policy
@@ -11838,7 +11459,11 @@
                                                         "POST" "/"
                                                         "DetachGroupPolicy"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'detach-group-policy))
 (common-lisp:progn
  (common-lisp:defun detach-role-policy
@@ -11856,7 +11481,12 @@
                                                         "POST" "/"
                                                         "DetachRolePolicy"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'detach-role-policy))
 (common-lisp:progn
  (common-lisp:defun detach-user-policy
@@ -11874,7 +11504,11 @@
                                                         "POST" "/"
                                                         "DetachUserPolicy"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'detach-user-policy))
 (common-lisp:progn
  (common-lisp:defun enable-mfadevice
@@ -11895,7 +11529,15 @@
                                                         "POST" "/"
                                                         "EnableMFADevice"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'enable-mfadevice))
 (common-lisp:progn
  (common-lisp:defun generate-credential-report ()
@@ -11904,7 +11546,9 @@
      (common-lisp:make-instance 'iam-request :method "POST" :path "/" :params
                                 `(("Action" ,@"GenerateCredentialReport")
                                   ("Version" ,@"2010-05-08"))))
-    common-lisp:nil "GenerateCredentialReportResult"))
+    common-lisp:nil "GenerateCredentialReportResult"
+    '(("LimitExceededException" . limit-exceeded-exception)
+      ("ServiceFailureException" . service-failure-exception))))
  (common-lisp:export 'generate-credential-report))
 (common-lisp:progn
  (common-lisp:defun get-access-key-last-used
@@ -11922,7 +11566,8 @@
                                                         "POST" "/"
                                                         "GetAccessKeyLastUsed"
                                                         "2010-05-08"))
-      common-lisp:nil "GetAccessKeyLastUsedResult")))
+      common-lisp:nil "GetAccessKeyLastUsedResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'get-access-key-last-used))
 (common-lisp:progn
  (common-lisp:defun get-account-authorization-details
@@ -11941,7 +11586,8 @@
                                                         "POST" "/"
                                                         "GetAccountAuthorizationDetails"
                                                         "2010-05-08"))
-      common-lisp:nil "GetAccountAuthorizationDetailsResult")))
+      common-lisp:nil "GetAccountAuthorizationDetailsResult"
+      '(("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'get-account-authorization-details))
 (common-lisp:progn
  (common-lisp:defun get-account-password-policy ()
@@ -11950,7 +11596,9 @@
      (common-lisp:make-instance 'iam-request :method "POST" :path "/" :params
                                 `(("Action" ,@"GetAccountPasswordPolicy")
                                   ("Version" ,@"2010-05-08"))))
-    common-lisp:nil "GetAccountPasswordPolicyResult"))
+    common-lisp:nil "GetAccountPasswordPolicyResult"
+    '(("NoSuchEntityException" . no-such-entity-exception)
+      ("ServiceFailureException" . service-failure-exception))))
  (common-lisp:export 'get-account-password-policy))
 (common-lisp:progn
  (common-lisp:defun get-account-summary ()
@@ -11959,7 +11607,8 @@
      (common-lisp:make-instance 'iam-request :method "POST" :path "/" :params
                                 `(("Action" ,@"GetAccountSummary")
                                   ("Version" ,@"2010-05-08"))))
-    common-lisp:nil "GetAccountSummaryResult"))
+    common-lisp:nil "GetAccountSummaryResult"
+    '(("ServiceFailureException" . service-failure-exception))))
  (common-lisp:export 'get-account-summary))
 (common-lisp:progn
  (common-lisp:defun get-context-keys-for-custom-policy
@@ -11978,7 +11627,8 @@
                                                         "POST" "/"
                                                         "GetContextKeysForCustomPolicy"
                                                         "2010-05-08"))
-      common-lisp:nil "GetContextKeysForCustomPolicyResult")))
+      common-lisp:nil "GetContextKeysForCustomPolicyResult"
+      '(("InvalidInputException" . invalid-input-exception)))))
  (common-lisp:export 'get-context-keys-for-custom-policy))
 (common-lisp:progn
  (common-lisp:defun get-context-keys-for-principal-policy
@@ -11998,7 +11648,9 @@
                                                         "POST" "/"
                                                         "GetContextKeysForPrincipalPolicy"
                                                         "2010-05-08"))
-      common-lisp:nil "GetContextKeysForPrincipalPolicyResult")))
+      common-lisp:nil "GetContextKeysForPrincipalPolicyResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("InvalidInputException" . invalid-input-exception)))))
  (common-lisp:export 'get-context-keys-for-principal-policy))
 (common-lisp:progn
  (common-lisp:defun get-credential-report ()
@@ -12007,7 +11659,14 @@
      (common-lisp:make-instance 'iam-request :method "POST" :path "/" :params
                                 `(("Action" ,@"GetCredentialReport")
                                   ("Version" ,@"2010-05-08"))))
-    common-lisp:nil "GetCredentialReportResult"))
+    common-lisp:nil "GetCredentialReportResult"
+    '(("CredentialReportNotPresentException"
+       . credential-report-not-present-exception)
+      ("CredentialReportExpiredException"
+       . credential-report-expired-exception)
+      ("CredentialReportNotReadyException"
+       . credential-report-not-ready-exception)
+      ("ServiceFailureException" . service-failure-exception))))
  (common-lisp:export 'get-credential-report))
 (common-lisp:progn
  (common-lisp:defun get-group
@@ -12024,7 +11683,9 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetGroup"
                                                         "2010-05-08"))
-      common-lisp:nil "GetGroupResult")))
+      common-lisp:nil "GetGroupResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'get-group))
 (common-lisp:progn
  (common-lisp:defun get-group-policy
@@ -12042,7 +11703,9 @@
                                                         "POST" "/"
                                                         "GetGroupPolicy"
                                                         "2010-05-08"))
-      common-lisp:nil "GetGroupPolicyResult")))
+      common-lisp:nil "GetGroupPolicyResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'get-group-policy))
 (common-lisp:progn
  (common-lisp:defun get-instance-profile
@@ -12060,7 +11723,9 @@
                                                         "POST" "/"
                                                         "GetInstanceProfile"
                                                         "2010-05-08"))
-      common-lisp:nil "GetInstanceProfileResult")))
+      common-lisp:nil "GetInstanceProfileResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'get-instance-profile))
 (common-lisp:progn
  (common-lisp:defun get-login-profile
@@ -12078,7 +11743,9 @@
                                                         "POST" "/"
                                                         "GetLoginProfile"
                                                         "2010-05-08"))
-      common-lisp:nil "GetLoginProfileResult")))
+      common-lisp:nil "GetLoginProfileResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'get-login-profile))
 (common-lisp:progn
  (common-lisp:defun get-open-idconnect-provider
@@ -12097,7 +11764,10 @@
                                                         "POST" "/"
                                                         "GetOpenIDConnectProvider"
                                                         "2010-05-08"))
-      common-lisp:nil "GetOpenIDConnectProviderResult")))
+      common-lisp:nil "GetOpenIDConnectProviderResult"
+      '(("InvalidInputException" . invalid-input-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'get-open-idconnect-provider))
 (common-lisp:progn
  (common-lisp:defun get-policy
@@ -12114,7 +11784,10 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetPolicy"
                                                         "2010-05-08"))
-      common-lisp:nil "GetPolicyResult")))
+      common-lisp:nil "GetPolicyResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'get-policy))
 (common-lisp:progn
  (common-lisp:defun get-policy-version
@@ -12132,7 +11805,10 @@
                                                         "POST" "/"
                                                         "GetPolicyVersion"
                                                         "2010-05-08"))
-      common-lisp:nil "GetPolicyVersionResult")))
+      common-lisp:nil "GetPolicyVersionResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'get-policy-version))
 (common-lisp:progn
  (common-lisp:defun get-role
@@ -12149,7 +11825,9 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetRole"
                                                         "2010-05-08"))
-      common-lisp:nil "GetRoleResult")))
+      common-lisp:nil "GetRoleResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'get-role))
 (common-lisp:progn
  (common-lisp:defun get-role-policy
@@ -12167,7 +11845,9 @@
                                                         "POST" "/"
                                                         "GetRolePolicy"
                                                         "2010-05-08"))
-      common-lisp:nil "GetRolePolicyResult")))
+      common-lisp:nil "GetRolePolicyResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'get-role-policy))
 (common-lisp:progn
  (common-lisp:defun get-samlprovider
@@ -12185,7 +11865,10 @@
                                                         "POST" "/"
                                                         "GetSAMLProvider"
                                                         "2010-05-08"))
-      common-lisp:nil "GetSAMLProviderResult")))
+      common-lisp:nil "GetSAMLProviderResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'get-samlprovider))
 (common-lisp:progn
  (common-lisp:defun get-sshpublic-key
@@ -12204,7 +11887,10 @@
                                                         "POST" "/"
                                                         "GetSSHPublicKey"
                                                         "2010-05-08"))
-      common-lisp:nil "GetSSHPublicKeyResult")))
+      common-lisp:nil "GetSSHPublicKeyResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'get-sshpublic-key))
 (common-lisp:progn
  (common-lisp:defun get-server-certificate
@@ -12222,7 +11908,9 @@
                                                         "POST" "/"
                                                         "GetServerCertificate"
                                                         "2010-05-08"))
-      common-lisp:nil "GetServerCertificateResult")))
+      common-lisp:nil "GetServerCertificateResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'get-server-certificate))
 (common-lisp:progn
  (common-lisp:defun get-user
@@ -12239,7 +11927,9 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetUser"
                                                         "2010-05-08"))
-      common-lisp:nil "GetUserResult")))
+      common-lisp:nil "GetUserResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'get-user))
 (common-lisp:progn
  (common-lisp:defun get-user-policy
@@ -12257,7 +11947,9 @@
                                                         "POST" "/"
                                                         "GetUserPolicy"
                                                         "2010-05-08"))
-      common-lisp:nil "GetUserPolicyResult")))
+      common-lisp:nil "GetUserPolicyResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'get-user-policy))
 (common-lisp:progn
  (common-lisp:defun list-access-keys
@@ -12275,7 +11967,9 @@
                                                         "POST" "/"
                                                         "ListAccessKeys"
                                                         "2010-05-08"))
-      common-lisp:nil "ListAccessKeysResult")))
+      common-lisp:nil "ListAccessKeysResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-access-keys))
 (common-lisp:progn
  (common-lisp:defun list-account-aliases
@@ -12293,7 +11987,8 @@
                                                         "POST" "/"
                                                         "ListAccountAliases"
                                                         "2010-05-08"))
-      common-lisp:nil "ListAccountAliasesResult")))
+      common-lisp:nil "ListAccountAliasesResult"
+      '(("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-account-aliases))
 (common-lisp:progn
  (common-lisp:defun list-attached-group-policies
@@ -12313,7 +12008,10 @@
                                                         "POST" "/"
                                                         "ListAttachedGroupPolicies"
                                                         "2010-05-08"))
-      common-lisp:nil "ListAttachedGroupPoliciesResult")))
+      common-lisp:nil "ListAttachedGroupPoliciesResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-attached-group-policies))
 (common-lisp:progn
  (common-lisp:defun list-attached-role-policies
@@ -12333,7 +12031,10 @@
                                                         "POST" "/"
                                                         "ListAttachedRolePolicies"
                                                         "2010-05-08"))
-      common-lisp:nil "ListAttachedRolePoliciesResult")))
+      common-lisp:nil "ListAttachedRolePoliciesResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-attached-role-policies))
 (common-lisp:progn
  (common-lisp:defun list-attached-user-policies
@@ -12353,7 +12054,10 @@
                                                         "POST" "/"
                                                         "ListAttachedUserPolicies"
                                                         "2010-05-08"))
-      common-lisp:nil "ListAttachedUserPoliciesResult")))
+      common-lisp:nil "ListAttachedUserPoliciesResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-attached-user-policies))
 (common-lisp:progn
  (common-lisp:defun list-entities-for-policy
@@ -12374,7 +12078,10 @@
                                                         "POST" "/"
                                                         "ListEntitiesForPolicy"
                                                         "2010-05-08"))
-      common-lisp:nil "ListEntitiesForPolicyResult")))
+      common-lisp:nil "ListEntitiesForPolicyResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-entities-for-policy))
 (common-lisp:progn
  (common-lisp:defun list-group-policies
@@ -12392,7 +12099,9 @@
                                                         "POST" "/"
                                                         "ListGroupPolicies"
                                                         "2010-05-08"))
-      common-lisp:nil "ListGroupPoliciesResult")))
+      common-lisp:nil "ListGroupPoliciesResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-group-policies))
 (common-lisp:progn
  (common-lisp:defun list-groups
@@ -12409,7 +12118,8 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListGroups"
                                                         "2010-05-08"))
-      common-lisp:nil "ListGroupsResult")))
+      common-lisp:nil "ListGroupsResult"
+      '(("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-groups))
 (common-lisp:progn
  (common-lisp:defun list-groups-for-user
@@ -12427,7 +12137,9 @@
                                                         "POST" "/"
                                                         "ListGroupsForUser"
                                                         "2010-05-08"))
-      common-lisp:nil "ListGroupsForUserResult")))
+      common-lisp:nil "ListGroupsForUserResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-groups-for-user))
 (common-lisp:progn
  (common-lisp:defun list-instance-profiles
@@ -12445,7 +12157,8 @@
                                                         "POST" "/"
                                                         "ListInstanceProfiles"
                                                         "2010-05-08"))
-      common-lisp:nil "ListInstanceProfilesResult")))
+      common-lisp:nil "ListInstanceProfilesResult"
+      '(("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-instance-profiles))
 (common-lisp:progn
  (common-lisp:defun list-instance-profiles-for-role
@@ -12464,7 +12177,9 @@
                                                         "POST" "/"
                                                         "ListInstanceProfilesForRole"
                                                         "2010-05-08"))
-      common-lisp:nil "ListInstanceProfilesForRoleResult")))
+      common-lisp:nil "ListInstanceProfilesForRoleResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-instance-profiles-for-role))
 (common-lisp:progn
  (common-lisp:defun list-mfadevices
@@ -12482,7 +12197,9 @@
                                                         "POST" "/"
                                                         "ListMFADevices"
                                                         "2010-05-08"))
-      common-lisp:nil "ListMFADevicesResult")))
+      common-lisp:nil "ListMFADevicesResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-mfadevices))
 (common-lisp:progn
  (common-lisp:defun list-open-idconnect-providers ()
@@ -12491,7 +12208,8 @@
      (common-lisp:make-instance 'iam-request :method "POST" :path "/" :params
                                 `(("Action" ,@"ListOpenIDConnectProviders")
                                   ("Version" ,@"2010-05-08"))))
-    common-lisp:nil "ListOpenIDConnectProvidersResult"))
+    common-lisp:nil "ListOpenIDConnectProvidersResult"
+    '(("ServiceFailureException" . service-failure-exception))))
  (common-lisp:export 'list-open-idconnect-providers))
 (common-lisp:progn
  (common-lisp:defun list-policies
@@ -12511,7 +12229,8 @@
                                                         "POST" "/"
                                                         "ListPolicies"
                                                         "2010-05-08"))
-      common-lisp:nil "ListPoliciesResult")))
+      common-lisp:nil "ListPoliciesResult"
+      '(("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-policies))
 (common-lisp:progn
  (common-lisp:defun list-policy-versions
@@ -12529,7 +12248,10 @@
                                                         "POST" "/"
                                                         "ListPolicyVersions"
                                                         "2010-05-08"))
-      common-lisp:nil "ListPolicyVersionsResult")))
+      common-lisp:nil "ListPolicyVersionsResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-policy-versions))
 (common-lisp:progn
  (common-lisp:defun list-role-policies
@@ -12547,7 +12269,9 @@
                                                         "POST" "/"
                                                         "ListRolePolicies"
                                                         "2010-05-08"))
-      common-lisp:nil "ListRolePoliciesResult")))
+      common-lisp:nil "ListRolePoliciesResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-role-policies))
 (common-lisp:progn
  (common-lisp:defun list-roles
@@ -12564,7 +12288,8 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListRoles"
                                                         "2010-05-08"))
-      common-lisp:nil "ListRolesResult")))
+      common-lisp:nil "ListRolesResult"
+      '(("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-roles))
 (common-lisp:progn
  (common-lisp:defun list-samlproviders ()
@@ -12573,7 +12298,8 @@
      (common-lisp:make-instance 'iam-request :method "POST" :path "/" :params
                                 `(("Action" ,@"ListSAMLProviders")
                                   ("Version" ,@"2010-05-08"))))
-    common-lisp:nil "ListSAMLProvidersResult"))
+    common-lisp:nil "ListSAMLProvidersResult"
+    '(("ServiceFailureException" . service-failure-exception))))
  (common-lisp:export 'list-samlproviders))
 (common-lisp:progn
  (common-lisp:defun list-sshpublic-keys
@@ -12591,7 +12317,8 @@
                                                         "POST" "/"
                                                         "ListSSHPublicKeys"
                                                         "2010-05-08"))
-      common-lisp:nil "ListSSHPublicKeysResult")))
+      common-lisp:nil "ListSSHPublicKeysResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'list-sshpublic-keys))
 (common-lisp:progn
  (common-lisp:defun list-server-certificates
@@ -12609,7 +12336,8 @@
                                                         "POST" "/"
                                                         "ListServerCertificates"
                                                         "2010-05-08"))
-      common-lisp:nil "ListServerCertificatesResult")))
+      common-lisp:nil "ListServerCertificatesResult"
+      '(("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-server-certificates))
 (common-lisp:progn
  (common-lisp:defun list-service-specific-credentials
@@ -12628,7 +12356,9 @@
                                                         "POST" "/"
                                                         "ListServiceSpecificCredentials"
                                                         "2010-05-08"))
-      common-lisp:nil "ListServiceSpecificCredentialsResult")))
+      common-lisp:nil "ListServiceSpecificCredentialsResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)))))
  (common-lisp:export 'list-service-specific-credentials))
 (common-lisp:progn
  (common-lisp:defun list-signing-certificates
@@ -12647,7 +12377,9 @@
                                                         "POST" "/"
                                                         "ListSigningCertificates"
                                                         "2010-05-08"))
-      common-lisp:nil "ListSigningCertificatesResult")))
+      common-lisp:nil "ListSigningCertificatesResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-signing-certificates))
 (common-lisp:progn
  (common-lisp:defun list-user-policies
@@ -12665,7 +12397,9 @@
                                                         "POST" "/"
                                                         "ListUserPolicies"
                                                         "2010-05-08"))
-      common-lisp:nil "ListUserPoliciesResult")))
+      common-lisp:nil "ListUserPoliciesResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-user-policies))
 (common-lisp:progn
  (common-lisp:defun list-users
@@ -12682,7 +12416,8 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListUsers"
                                                         "2010-05-08"))
-      common-lisp:nil "ListUsersResult")))
+      common-lisp:nil "ListUsersResult"
+      '(("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'list-users))
 (common-lisp:progn
  (common-lisp:defun list-virtual-mfadevices
@@ -12701,7 +12436,7 @@
                                                         "POST" "/"
                                                         "ListVirtualMFADevices"
                                                         "2010-05-08"))
-      common-lisp:nil "ListVirtualMFADevicesResult")))
+      common-lisp:nil "ListVirtualMFADevicesResult" 'common-lisp:nil)))
  (common-lisp:export 'list-virtual-mfadevices))
 (common-lisp:progn
  (common-lisp:defun put-group-policy
@@ -12720,7 +12455,12 @@
                                                         "POST" "/"
                                                         "PutGroupPolicy"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'put-group-policy))
 (common-lisp:progn
  (common-lisp:defun put-role-policy
@@ -12739,7 +12479,13 @@
                                                         "POST" "/"
                                                         "PutRolePolicy"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'put-role-policy))
 (common-lisp:progn
  (common-lisp:defun put-user-policy
@@ -12758,7 +12504,12 @@
                                                         "POST" "/"
                                                         "PutUserPolicy"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'put-user-policy))
 (common-lisp:progn
  (common-lisp:defun remove-client-idfrom-open-idconnect-provider
@@ -12778,7 +12529,10 @@
                                                         "POST" "/"
                                                         "RemoveClientIDFromOpenIDConnectProvider"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'remove-client-idfrom-open-idconnect-provider))
 (common-lisp:progn
  (common-lisp:defun remove-role-from-instance-profile
@@ -12798,7 +12552,11 @@
                                                         "POST" "/"
                                                         "RemoveRoleFromInstanceProfile"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'remove-role-from-instance-profile))
 (common-lisp:progn
  (common-lisp:defun remove-user-from-group
@@ -12816,7 +12574,10 @@
                                                         "POST" "/"
                                                         "RemoveUserFromGroup"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'remove-user-from-group))
 (common-lisp:progn
  (common-lisp:defun reset-service-specific-credential
@@ -12836,7 +12597,8 @@
                                                         "POST" "/"
                                                         "ResetServiceSpecificCredential"
                                                         "2010-05-08"))
-      common-lisp:nil "ResetServiceSpecificCredentialResult")))
+      common-lisp:nil "ResetServiceSpecificCredentialResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'reset-service-specific-credential))
 (common-lisp:progn
  (common-lisp:defun resync-mfadevice
@@ -12857,7 +12619,12 @@
                                                         "POST" "/"
                                                         "ResyncMFADevice"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'resync-mfadevice))
 (common-lisp:progn
  (common-lisp:defun set-default-policy-version
@@ -12876,7 +12643,11 @@
                                                         "POST" "/"
                                                         "SetDefaultPolicyVersion"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'set-default-policy-version))
 (common-lisp:progn
  (common-lisp:defun simulate-custom-policy
@@ -12899,7 +12670,9 @@
                                                         "POST" "/"
                                                         "SimulateCustomPolicy"
                                                         "2010-05-08"))
-      common-lisp:nil "SimulateCustomPolicyResult")))
+      common-lisp:nil "SimulateCustomPolicyResult"
+      '(("InvalidInputException" . invalid-input-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)))))
  (common-lisp:export 'simulate-custom-policy))
 (common-lisp:progn
  (common-lisp:defun simulate-principal-policy
@@ -12924,7 +12697,10 @@
                                                         "POST" "/"
                                                         "SimulatePrincipalPolicy"
                                                         "2010-05-08"))
-      common-lisp:nil "SimulatePrincipalPolicyResult")))
+      common-lisp:nil "SimulatePrincipalPolicyResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)))))
  (common-lisp:export 'simulate-principal-policy))
 (common-lisp:progn
  (common-lisp:defun update-access-key
@@ -12942,7 +12718,10 @@
                                                         "POST" "/"
                                                         "UpdateAccessKey"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'update-access-key))
 (common-lisp:progn
  (common-lisp:defun update-account-password-policy
@@ -12969,7 +12748,12 @@
                                                         "POST" "/"
                                                         "UpdateAccountPasswordPolicy"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'update-account-password-policy))
 (common-lisp:progn
  (common-lisp:defun update-assume-role-policy
@@ -12988,7 +12772,13 @@
                                                         "POST" "/"
                                                         "UpdateAssumeRolePolicy"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'update-assume-role-policy))
 (common-lisp:progn
  (common-lisp:defun update-group
@@ -13007,7 +12797,11 @@
                                                         "POST" "/"
                                                         "UpdateGroup"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'update-group))
 (common-lisp:progn
  (common-lisp:defun update-login-profile
@@ -13027,7 +12821,14 @@
                                                         "POST" "/"
                                                         "UpdateLoginProfile"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'update-login-profile))
 (common-lisp:progn
  (common-lisp:defun update-open-idconnect-provider-thumbprint
@@ -13048,7 +12849,10 @@
                                                         "POST" "/"
                                                         "UpdateOpenIDConnectProviderThumbprint"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidInputException" . invalid-input-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'update-open-idconnect-provider-thumbprint))
 (common-lisp:progn
  (common-lisp:defun update-role-description
@@ -13066,7 +12870,10 @@
                                                         "POST" "/"
                                                         "UpdateRoleDescription"
                                                         "2010-05-08"))
-      common-lisp:nil "UpdateRoleDescriptionResult")))
+      common-lisp:nil "UpdateRoleDescriptionResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'update-role-description))
 (common-lisp:progn
  (common-lisp:defun update-samlprovider
@@ -13085,7 +12892,11 @@
                                                         "POST" "/"
                                                         "UpdateSAMLProvider"
                                                         "2010-05-08"))
-      common-lisp:nil "UpdateSAMLProviderResult")))
+      common-lisp:nil "UpdateSAMLProviderResult"
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'update-samlprovider))
 (common-lisp:progn
  (common-lisp:defun update-sshpublic-key
@@ -13104,7 +12915,8 @@
                                                         "POST" "/"
                                                         "UpdateSSHPublicKey"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'update-sshpublic-key))
 (common-lisp:progn
  (common-lisp:defun update-server-certificate
@@ -13126,7 +12938,11 @@
                                                         "POST" "/"
                                                         "UpdateServerCertificate"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'update-server-certificate))
 (common-lisp:progn
  (common-lisp:defun update-service-specific-credential
@@ -13147,7 +12963,8 @@
                                                         "POST" "/"
                                                         "UpdateServiceSpecificCredential"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'update-service-specific-credential))
 (common-lisp:progn
  (common-lisp:defun update-signing-certificate
@@ -13167,7 +12984,10 @@
                                                         "POST" "/"
                                                         "UpdateSigningCertificate"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'update-signing-certificate))
 (common-lisp:progn
  (common-lisp:defun update-user
@@ -13185,7 +13005,13 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "UpdateUser"
                                                         "2010-05-08"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("NoSuchEntityException" . no-such-entity-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'update-user))
 (common-lisp:progn
  (common-lisp:defun upload-sshpublic-key
@@ -13203,7 +13029,13 @@
                                                         "POST" "/"
                                                         "UploadSSHPublicKey"
                                                         "2010-05-08"))
-      common-lisp:nil "UploadSSHPublicKeyResult")))
+      common-lisp:nil "UploadSSHPublicKeyResult"
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'upload-sshpublic-key))
 (common-lisp:progn
  (common-lisp:defun upload-server-certificate
@@ -13225,7 +13057,12 @@
                                                         "POST" "/"
                                                         "UploadServerCertificate"
                                                         "2010-05-08"))
-      common-lisp:nil "UploadServerCertificateResult")))
+      common-lisp:nil "UploadServerCertificateResult"
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'upload-server-certificate))
 (common-lisp:progn
  (common-lisp:defun upload-signing-certificate
@@ -13244,5 +13081,12 @@
                                                         "POST" "/"
                                                         "UploadSigningCertificate"
                                                         "2010-05-08"))
-      common-lisp:nil "UploadSigningCertificateResult")))
+      common-lisp:nil "UploadSigningCertificateResult"
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("ServiceFailureException" . service-failure-exception)))))
  (common-lisp:export 'upload-signing-certificate))

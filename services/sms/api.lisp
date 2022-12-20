@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/sms/api)
 (common-lisp:progn
  (common-lisp:defclass sms-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "sms"))
  (common-lisp:export 'sms-request))
+(common-lisp:progn
+ (common-lisp:define-condition sms-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'sms-error))
 (common-lisp:deftype ami-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -795,157 +801,49 @@
                           import-server-catalog-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-error (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-error-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
- (common-lisp:export (common-lisp:list 'internal-error 'make-internal-error))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input internal-error))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input internal-error))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input internal-error))
-   common-lisp:nil))
+ (common-lisp:define-condition internal-error
+     (sms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-error-message)))
+ (common-lisp:export
+  (common-lisp:list 'internal-error 'internal-error-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-parameter-exception
+     (sms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-parameter-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-exception
-                    'make-invalid-parameter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   common-lisp:nil))
+                    'invalid-parameter-exception-message)))
 (common-lisp:deftype ip-address () 'common-lisp:string)
 (common-lisp:deftype license-type () 'common-lisp:string)
 (common-lisp:deftype mac-address () 'common-lisp:string)
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (missing-required-parameter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-missing-required-parameter-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition missing-required-parameter-exception
+     (sms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       missing-required-parameter-exception-message)))
  (common-lisp:export
   (common-lisp:list 'missing-required-parameter-exception
-                    'make-missing-required-parameter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-required-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-required-parameter-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          missing-required-parameter-exception))
-   common-lisp:nil))
+                    'missing-required-parameter-exception-message)))
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-connectors-available-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-connectors-available-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition no-connectors-available-exception
+     (sms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       no-connectors-available-exception-message)))
  (common-lisp:export
   (common-lisp:list 'no-connectors-available-exception
-                    'make-no-connectors-available-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-connectors-available-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-connectors-available-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-connectors-available-exception))
-   common-lisp:nil))
+                    'no-connectors-available-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (operation-not-permitted-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-operation-not-permitted-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition operation-not-permitted-exception
+     (sms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       operation-not-permitted-exception-message)))
  (common-lisp:export
   (common-lisp:list 'operation-not-permitted-exception
-                    'make-operation-not-permitted-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-not-permitted-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-not-permitted-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-not-permitted-exception))
-   common-lisp:nil))
+                    'operation-not-permitted-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (replication-job (:copier common-lisp:nil)
@@ -1090,36 +988,13 @@
                         ((aws-sdk/generator/shape::input replication-job))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (replication-job-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-replication-job-already-exists-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition replication-job-already-exists-exception
+     (sms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       replication-job-already-exists-exception-message)))
  (common-lisp:export
   (common-lisp:list 'replication-job-already-exists-exception
-                    'make-replication-job-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          replication-job-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          replication-job-already-exists-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          replication-job-already-exists-exception))
-   common-lisp:nil))
+                    'replication-job-already-exists-exception-message)))
 (common-lisp:deftype replication-job-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype replication-job-list ()
@@ -1130,36 +1005,13 @@
                            (trivial-types:proper-list replication-job))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (replication-job-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-replication-job-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition replication-job-not-found-exception
+     (sms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       replication-job-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'replication-job-not-found-exception
-                    'make-replication-job-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          replication-job-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          replication-job-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          replication-job-not-found-exception))
-   common-lisp:nil))
+                    'replication-job-not-found-exception-message)))
 (common-lisp:deftype replication-job-state () 'common-lisp:string)
 (common-lisp:deftype replication-job-status-message () 'common-lisp:string)
 (common-lisp:deftype replication-job-terminated () 'common-lisp:boolean)
@@ -1251,36 +1103,13 @@
    common-lisp:nil))
 (common-lisp:deftype replication-run-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (replication-run-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-replication-run-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition replication-run-limit-exceeded-exception
+     (sms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       replication-run-limit-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'replication-run-limit-exceeded-exception
-                    'make-replication-run-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          replication-run-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          replication-run-limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          replication-run-limit-exceeded-exception))
-   common-lisp:nil))
+                    'replication-run-limit-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype replication-run-list ()
    '(trivial-types:proper-list replication-run))
@@ -1353,36 +1182,13 @@
                         ((aws-sdk/generator/shape::input server))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (server-cannot-be-replicated-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-server-cannot-be-replicated-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition server-cannot-be-replicated-exception
+     (sms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       server-cannot-be-replicated-exception-message)))
  (common-lisp:export
   (common-lisp:list 'server-cannot-be-replicated-exception
-                    'make-server-cannot-be-replicated-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          server-cannot-be-replicated-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          server-cannot-be-replicated-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          server-cannot-be-replicated-exception))
-   common-lisp:nil))
+                    'server-cannot-be-replicated-exception-message)))
 (common-lisp:deftype server-catalog-status () 'common-lisp:string)
 (common-lisp:deftype server-id () 'common-lisp:string)
 (common-lisp:progn
@@ -1466,36 +1272,13 @@
    common-lisp:nil))
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (unauthorized-operation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unauthorized-operation-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition unauthorized-operation-exception
+     (sms-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unauthorized-operation-exception-message)))
  (common-lisp:export
   (common-lisp:list 'unauthorized-operation-exception
-                    'make-unauthorized-operation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-operation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-operation-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unauthorized-operation-exception))
-   common-lisp:nil))
+                    'unauthorized-operation-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-replication-job-request (:copier common-lisp:nil)
@@ -1709,7 +1492,18 @@
                                                         "POST" "/"
                                                         "CreateReplicationJob"
                                                         "2016-10-24"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("MissingRequiredParameterException"
+         . missing-required-parameter-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ServerCannotBeReplicatedException"
+         . server-cannot-be-replicated-exception)
+        ("ReplicationJobAlreadyExistsException"
+         . replication-job-already-exists-exception)
+        ("NoConnectorsAvailableException" . no-connectors-available-exception)
+        ("InternalError" . internal-error)))))
  (common-lisp:export 'create-replication-job))
 (common-lisp:progn
  (common-lisp:defun delete-replication-job
@@ -1727,7 +1521,14 @@
                                                         "POST" "/"
                                                         "DeleteReplicationJob"
                                                         "2016-10-24"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("MissingRequiredParameterException"
+         . missing-required-parameter-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ReplicationJobNotFoundException"
+         . replication-job-not-found-exception)))))
  (common-lisp:export 'delete-replication-job))
 (common-lisp:progn
  (common-lisp:defun delete-server-catalog ()
@@ -1736,7 +1537,12 @@
      (common-lisp:make-instance 'sms-request :method "POST" :path "/" :params
                                 `(("Action" ,@"DeleteServerCatalog")
                                   ("Version" ,@"2016-10-24"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("UnauthorizedOperationException" . unauthorized-operation-exception)
+      ("OperationNotPermittedException" . operation-not-permitted-exception)
+      ("InvalidParameterException" . invalid-parameter-exception)
+      ("MissingRequiredParameterException"
+       . missing-required-parameter-exception))))
  (common-lisp:export 'delete-server-catalog))
 (common-lisp:progn
  (common-lisp:defun disassociate-connector
@@ -1754,7 +1560,12 @@
                                                         "POST" "/"
                                                         "DisassociateConnector"
                                                         "2016-10-24"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("MissingRequiredParameterException"
+         . missing-required-parameter-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)))))
  (common-lisp:export 'disassociate-connector))
 (common-lisp:progn
  (common-lisp:defun get-connectors
@@ -1772,7 +1583,9 @@
                                                         "POST" "/"
                                                         "GetConnectors"
                                                         "2016-10-24"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedOperationException"
+         . unauthorized-operation-exception)))))
  (common-lisp:export 'get-connectors))
 (common-lisp:progn
  (common-lisp:defun get-replication-jobs
@@ -1792,7 +1605,12 @@
                                                         "POST" "/"
                                                         "GetReplicationJobs"
                                                         "2016-10-24"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("MissingRequiredParameterException"
+         . missing-required-parameter-exception)
+        ("UnauthorizedOperationException"
+         . unauthorized-operation-exception)))))
  (common-lisp:export 'get-replication-jobs))
 (common-lisp:progn
  (common-lisp:defun get-replication-runs
@@ -1812,7 +1630,12 @@
                                                         "POST" "/"
                                                         "GetReplicationRuns"
                                                         "2016-10-24"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("MissingRequiredParameterException"
+         . missing-required-parameter-exception)
+        ("UnauthorizedOperationException"
+         . unauthorized-operation-exception)))))
  (common-lisp:export 'get-replication-runs))
 (common-lisp:progn
  (common-lisp:defun get-servers
@@ -1829,7 +1652,9 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetServers"
                                                         "2016-10-24"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnauthorizedOperationException"
+         . unauthorized-operation-exception)))))
  (common-lisp:export 'get-servers))
 (common-lisp:progn
  (common-lisp:defun import-server-catalog ()
@@ -1838,7 +1663,13 @@
      (common-lisp:make-instance 'sms-request :method "POST" :path "/" :params
                                 `(("Action" ,@"ImportServerCatalog")
                                   ("Version" ,@"2016-10-24"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("UnauthorizedOperationException" . unauthorized-operation-exception)
+      ("OperationNotPermittedException" . operation-not-permitted-exception)
+      ("InvalidParameterException" . invalid-parameter-exception)
+      ("MissingRequiredParameterException"
+       . missing-required-parameter-exception)
+      ("NoConnectorsAvailableException" . no-connectors-available-exception))))
  (common-lisp:export 'import-server-catalog))
 (common-lisp:progn
  (common-lisp:defun start-on-demand-replication-run
@@ -1857,7 +1688,14 @@
                                                         "POST" "/"
                                                         "StartOnDemandReplicationRun"
                                                         "2016-10-24"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("MissingRequiredParameterException"
+         . missing-required-parameter-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ReplicationRunLimitExceededException"
+         . replication-run-limit-exceeded-exception)))))
  (common-lisp:export 'start-on-demand-replication-run))
 (common-lisp:progn
  (common-lisp:defun update-replication-job
@@ -1879,5 +1717,15 @@
                                                         "POST" "/"
                                                         "UpdateReplicationJob"
                                                         "2016-10-24"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("MissingRequiredParameterException"
+         . missing-required-parameter-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("ServerCannotBeReplicatedException"
+         . server-cannot-be-replicated-exception)
+        ("ReplicationJobNotFoundException"
+         . replication-job-not-found-exception)
+        ("InternalError" . internal-error)))))
  (common-lisp:export 'update-replication-job))

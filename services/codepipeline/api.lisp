@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/codepipeline/api)
 (common-lisp:progn
  (common-lisp:defclass codepipeline-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "codepipeline"))
  (common-lisp:export 'codepipeline-request))
+(common-lisp:progn
+ (common-lisp:define-condition codepipeline-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'codepipeline-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (awssession-credentials (:copier common-lisp:nil)
@@ -542,27 +548,10 @@
 (common-lisp:deftype action-execution-token () 'common-lisp:string)
 (common-lisp:deftype action-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (action-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-action-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'action-not-found-exception
-                    'make-action-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          action-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          action-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          action-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition action-not-found-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'action-not-found-exception)))
 (common-lisp:deftype action-owner () 'common-lisp:string)
 (common-lisp:deftype action-provider () 'common-lisp:string)
 (common-lisp:progn
@@ -795,27 +784,10 @@
                            (trivial-types:proper-list action-type))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (action-type-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-action-type-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'action-type-not-found-exception
-                    'make-action-type-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          action-type-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          action-type-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          action-type-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition action-type-not-found-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'action-type-not-found-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (action-type-settings (:copier common-lisp:nil)
@@ -871,27 +843,10 @@
                         ((aws-sdk/generator/shape::input action-type-settings))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (approval-already-completed-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-approval-already-completed-exception-")))
- (common-lisp:export
-  (common-lisp:list 'approval-already-completed-exception
-                    'make-approval-already-completed-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          approval-already-completed-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          approval-already-completed-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          approval-already-completed-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition approval-already-completed-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'approval-already-completed-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (approval-result (:copier common-lisp:nil)
@@ -2158,223 +2113,55 @@
                            (trivial-types:proper-list input-artifact))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-action-declaration-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-action-declaration-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-action-declaration-exception
-                    'make-invalid-action-declaration-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-action-declaration-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-action-declaration-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-action-declaration-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-action-declaration-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-action-declaration-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-approval-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-approval-token-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-approval-token-exception
-                    'make-invalid-approval-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-approval-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-approval-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-approval-token-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-approval-token-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-approval-token-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-blocker-declaration-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-blocker-declaration-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-blocker-declaration-exception
-                    'make-invalid-blocker-declaration-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-blocker-declaration-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-blocker-declaration-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-blocker-declaration-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-blocker-declaration-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-blocker-declaration-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-client-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-client-token-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-client-token-exception
-                    'make-invalid-client-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-client-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-client-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-client-token-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-client-token-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-client-token-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-job-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-job-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-job-exception 'make-invalid-job-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-job-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-job-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-job-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-job-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-job-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-job-state-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-job-state-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-job-state-exception
-                    'make-invalid-job-state-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-job-state-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-job-state-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-job-state-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-job-state-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-job-state-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-next-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-next-token-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-next-token-exception
-                    'make-invalid-next-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-next-token-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-next-token-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-nonce-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-nonce-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-nonce-exception 'make-invalid-nonce-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-nonce-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-nonce-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-nonce-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-nonce-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-nonce-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-stage-declaration-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-stage-declaration-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-stage-declaration-exception
-                    'make-invalid-stage-declaration-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-stage-declaration-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-stage-declaration-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-stage-declaration-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-stage-declaration-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-stage-declaration-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-structure-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-structure-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-structure-exception
-                    'make-invalid-structure-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-structure-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-structure-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-structure-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-structure-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-structure-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (job (:copier common-lisp:nil) (:conc-name "struct-shape-job-"))
@@ -2556,51 +2343,19 @@
                            (trivial-types:proper-list job))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (job-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-job-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'job-not-found-exception 'make-job-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          job-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          job-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          job-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition job-not-found-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'job-not-found-exception)))
 (common-lisp:deftype job-status () 'common-lisp:string)
 (common-lisp:deftype last-changed-at () 'common-lisp:string)
 (common-lisp:deftype last-changed-by () 'common-lisp:string)
 (common-lisp:deftype last-updated-by () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition limit-exceeded-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'limit-exceeded-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-action-types-input (:copier common-lisp:nil)
@@ -2840,27 +2595,11 @@
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:deftype nonce () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (not-latest-pipeline-execution-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-not-latest-pipeline-execution-exception-")))
+ (common-lisp:define-condition not-latest-pipeline-execution-exception
+     (codepipeline-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'not-latest-pipeline-execution-exception
-                    'make-not-latest-pipeline-execution-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          not-latest-pipeline-execution-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          not-latest-pipeline-execution-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          not-latest-pipeline-execution-exception))
-   common-lisp:nil))
+  (common-lisp:list 'not-latest-pipeline-execution-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (output-artifact (:copier common-lisp:nil)
@@ -3058,27 +2797,11 @@
    common-lisp:nil))
 (common-lisp:deftype pipeline-execution-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (pipeline-execution-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-pipeline-execution-not-found-exception-")))
+ (common-lisp:define-condition pipeline-execution-not-found-exception
+     (codepipeline-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'pipeline-execution-not-found-exception
-                    'make-pipeline-execution-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          pipeline-execution-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          pipeline-execution-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          pipeline-execution-not-found-exception))
-   common-lisp:nil))
+  (common-lisp:list 'pipeline-execution-not-found-exception)))
 (common-lisp:deftype pipeline-execution-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -3158,49 +2881,15 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype pipeline-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (pipeline-name-in-use-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-pipeline-name-in-use-exception-")))
- (common-lisp:export
-  (common-lisp:list 'pipeline-name-in-use-exception
-                    'make-pipeline-name-in-use-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          pipeline-name-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          pipeline-name-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          pipeline-name-in-use-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition pipeline-name-in-use-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'pipeline-name-in-use-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (pipeline-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-pipeline-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'pipeline-not-found-exception
-                    'make-pipeline-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          pipeline-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          pipeline-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          pipeline-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition pipeline-not-found-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'pipeline-not-found-exception)))
 (common-lisp:progn
  (common-lisp:deftype pipeline-stage-declaration-list ()
    '(trivial-types:proper-list stage-declaration))
@@ -3259,27 +2948,10 @@
    common-lisp:nil))
 (common-lisp:deftype pipeline-version () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (pipeline-version-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-pipeline-version-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'pipeline-version-not-found-exception
-                    'make-pipeline-version-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          pipeline-version-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          pipeline-version-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          pipeline-version-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition pipeline-version-not-found-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'pipeline-version-not-found-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (poll-for-jobs-input (:copier common-lisp:nil)
@@ -4085,49 +3757,15 @@
 (common-lisp:deftype stage-execution-status () 'common-lisp:string)
 (common-lisp:deftype stage-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (stage-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stage-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'stage-not-found-exception
-                    'make-stage-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          stage-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          stage-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          stage-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition stage-not-found-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'stage-not-found-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (stage-not-retryable-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stage-not-retryable-exception-")))
- (common-lisp:export
-  (common-lisp:list 'stage-not-retryable-exception
-                    'make-stage-not-retryable-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          stage-not-retryable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          stage-not-retryable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          stage-not-retryable-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition stage-not-retryable-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'stage-not-retryable-exception)))
 (common-lisp:deftype stage-retry-mode () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -4543,20 +4181,10 @@
 (common-lisp:deftype url () 'common-lisp:string)
 (common-lisp:deftype url-template () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-exception-")))
- (common-lisp:export
-  (common-lisp:list 'validation-exception 'make-validation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input validation-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition validation-exception
+     (codepipeline-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'validation-exception)))
 (common-lisp:deftype version () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defun acknowledge-job
@@ -4574,7 +4202,10 @@
                                                         "POST" "/"
                                                         "AcknowledgeJob"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("JobNotFoundException" . job-not-found-exception)))))
  (common-lisp:export 'acknowledge-job))
 (common-lisp:progn
  (common-lisp:defun acknowledge-third-party-job
@@ -4593,7 +4224,11 @@
                                                         "POST" "/"
                                                         "AcknowledgeThirdPartyJob"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)))))
  (common-lisp:export 'acknowledge-third-party-job))
 (common-lisp:progn
  (common-lisp:defun create-custom-action-type
@@ -4615,7 +4250,9 @@
                                                         "POST" "/"
                                                         "CreateCustomActionType"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'create-custom-action-type))
 (common-lisp:progn
  (common-lisp:defun create-pipeline
@@ -4633,7 +4270,17 @@
                                                         "POST" "/"
                                                         "CreatePipeline"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'create-pipeline))
 (common-lisp:progn
  (common-lisp:defun delete-custom-action-type
@@ -4651,7 +4298,8 @@
                                                         "POST" "/"
                                                         "DeleteCustomActionType"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)))))
  (common-lisp:export 'delete-custom-action-type))
 (common-lisp:progn
  (common-lisp:defun delete-pipeline
@@ -4669,7 +4317,8 @@
                                                         "POST" "/"
                                                         "DeletePipeline"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)))))
  (common-lisp:export 'delete-pipeline))
 (common-lisp:progn
  (common-lisp:defun disable-stage-transition
@@ -4689,7 +4338,10 @@
                                                         "POST" "/"
                                                         "DisableStageTransition"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)))))
  (common-lisp:export 'disable-stage-transition))
 (common-lisp:progn
  (common-lisp:defun enable-stage-transition
@@ -4708,7 +4360,10 @@
                                                         "POST" "/"
                                                         "EnableStageTransition"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)))))
  (common-lisp:export 'enable-stage-transition))
 (common-lisp:progn
  (common-lisp:defun get-job-details
@@ -4726,7 +4381,9 @@
                                                         "POST" "/"
                                                         "GetJobDetails"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("JobNotFoundException" . job-not-found-exception)))))
  (common-lisp:export 'get-job-details))
 (common-lisp:progn
  (common-lisp:defun get-pipeline
@@ -4744,7 +4401,11 @@
                                                         "POST" "/"
                                                         "GetPipeline"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)))))
  (common-lisp:export 'get-pipeline))
 (common-lisp:progn
  (common-lisp:defun get-pipeline-execution
@@ -4763,7 +4424,11 @@
                                                         "POST" "/"
                                                         "GetPipelineExecution"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)))))
  (common-lisp:export 'get-pipeline-execution))
 (common-lisp:progn
  (common-lisp:defun get-pipeline-state
@@ -4781,7 +4446,9 @@
                                                         "POST" "/"
                                                         "GetPipelineState"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)))))
  (common-lisp:export 'get-pipeline-state))
 (common-lisp:progn
  (common-lisp:defun get-third-party-job-details
@@ -4800,7 +4467,11 @@
                                                         "POST" "/"
                                                         "GetThirdPartyJobDetails"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("JobNotFoundException" . job-not-found-exception)
+        ("ValidationException" . validation-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)))))
  (common-lisp:export 'get-third-party-job-details))
 (common-lisp:progn
  (common-lisp:defun list-action-types
@@ -4818,7 +4489,9 @@
                                                         "POST" "/"
                                                         "ListActionTypes"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-action-types))
 (common-lisp:progn
  (common-lisp:defun list-pipeline-executions
@@ -4837,7 +4510,10 @@
                                                         "POST" "/"
                                                         "ListPipelineExecutions"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-pipeline-executions))
 (common-lisp:progn
  (common-lisp:defun list-pipelines
@@ -4855,7 +4531,8 @@
                                                         "POST" "/"
                                                         "ListPipelines"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-pipelines))
 (common-lisp:progn
  (common-lisp:defun poll-for-jobs
@@ -4875,7 +4552,9 @@
                                                         "POST" "/"
                                                         "PollForJobs"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)))))
  (common-lisp:export 'poll-for-jobs))
 (common-lisp:progn
  (common-lisp:defun poll-for-third-party-jobs
@@ -4893,7 +4572,9 @@
                                                         "POST" "/"
                                                         "PollForThirdPartyJobs"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'poll-for-third-party-jobs))
 (common-lisp:progn
  (common-lisp:defun put-action-revision
@@ -4914,7 +4595,11 @@
                                                         "POST" "/"
                                                         "PutActionRevision"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("ActionNotFoundException" . action-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'put-action-revision))
 (common-lisp:progn
  (common-lisp:defun put-approval-result
@@ -4934,7 +4619,14 @@
                                                         "POST" "/"
                                                         "PutApprovalResult"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("ActionNotFoundException" . action-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'put-approval-result))
 (common-lisp:progn
  (common-lisp:defun put-job-failure-result
@@ -4952,7 +4644,10 @@
                                                         "POST" "/"
                                                         "PutJobFailureResult"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)))))
  (common-lisp:export 'put-job-failure-result))
 (common-lisp:progn
  (common-lisp:defun put-job-success-result
@@ -4973,7 +4668,10 @@
                                                         "POST" "/"
                                                         "PutJobSuccessResult"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)))))
  (common-lisp:export 'put-job-success-result))
 (common-lisp:progn
  (common-lisp:defun put-third-party-job-failure-result
@@ -4993,7 +4691,11 @@
                                                         "POST" "/"
                                                         "PutThirdPartyJobFailureResult"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)))))
  (common-lisp:export 'put-third-party-job-failure-result))
 (common-lisp:progn
  (common-lisp:defun put-third-party-job-success-result
@@ -5015,7 +4717,11 @@
                                                         "POST" "/"
                                                         "PutThirdPartyJobSuccessResult"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)))))
  (common-lisp:export 'put-third-party-job-success-result))
 (common-lisp:progn
  (common-lisp:defun retry-stage-execution
@@ -5036,7 +4742,13 @@
                                                         "POST" "/"
                                                         "RetryStageExecution"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)))))
  (common-lisp:export 'retry-stage-execution))
 (common-lisp:progn
  (common-lisp:defun start-pipeline-execution
@@ -5054,7 +4766,9 @@
                                                         "POST" "/"
                                                         "StartPipelineExecution"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)))))
  (common-lisp:export 'start-pipeline-execution))
 (common-lisp:progn
  (common-lisp:defun update-pipeline
@@ -5072,5 +4786,13 @@
                                                         "POST" "/"
                                                         "UpdatePipeline"
                                                         "2015-07-09"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)))))
  (common-lisp:export 'update-pipeline))

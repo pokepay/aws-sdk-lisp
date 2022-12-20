@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/elastictranscoder/api)
 (common-lisp:progn
  (common-lisp:defclass elastictranscoder-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "elastictranscoder"))
  (common-lisp:export 'elastictranscoder-request))
+(common-lisp:progn
+ (common-lisp:define-condition elastictranscoder-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'elastictranscoder-error))
 (common-lisp:deftype access-control () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype access-controls ()
@@ -23,26 +29,10 @@
                            (trivial-types:proper-list access-control))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (access-denied-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-access-denied-exception-")))
- (common-lisp:export
-  (common-lisp:list 'access-denied-exception 'make-access-denied-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition access-denied-exception
+     (elastictranscoder-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'access-denied-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (artwork (:copier common-lisp:nil) (:conc-name "struct-shape-artwork-"))
@@ -1318,27 +1308,10 @@
 (common-lisp:deftype horizontal-align () 'common-lisp:string)
 (common-lisp:deftype id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (incompatible-version-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-incompatible-version-exception-")))
- (common-lisp:export
-  (common-lisp:list 'incompatible-version-exception
-                    'make-incompatible-version-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          incompatible-version-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          incompatible-version-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          incompatible-version-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition incompatible-version-exception
+     (elastictranscoder-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'incompatible-version-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (input-captions (:copier common-lisp:nil)
@@ -1373,27 +1346,10 @@
    common-lisp:nil))
 (common-lisp:deftype interlaced () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-service-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-service-exception-")))
- (common-lisp:export
-  (common-lisp:list 'internal-service-exception
-                    'make-internal-service-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition internal-service-exception
+     (elastictranscoder-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'internal-service-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (job (:copier common-lisp:nil) (:conc-name "struct-shape-job-"))
@@ -1919,26 +1875,10 @@
 (common-lisp:deftype key-storage-policy () 'common-lisp:string)
 (common-lisp:deftype keyframes-max-dist () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition limit-exceeded-exception
+     (elastictranscoder-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'limit-exceeded-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-jobs-by-pipeline-request (:copier common-lisp:nil)
@@ -2972,49 +2912,15 @@
    common-lisp:nil))
 (common-lisp:deftype resolution () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-in-use-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-in-use-exception-")))
- (common-lisp:export
-  (common-lisp:list 'resource-in-use-exception
-                    'make-resource-in-use-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-in-use-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition resource-in-use-exception
+     (elastictranscoder-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-in-use-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition resource-not-found-exception
+     (elastictranscoder-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-not-found-exception)))
 (common-lisp:deftype role () 'common-lisp:string)
 (common-lisp:deftype rotate () 'common-lisp:string)
 (common-lisp:deftype sizing-policy () 'common-lisp:string)
@@ -3526,20 +3432,10 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-exception-")))
- (common-lisp:export
-  (common-lisp:list 'validation-exception 'make-validation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input validation-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition validation-exception
+     (elastictranscoder-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'validation-exception)))
 (common-lisp:deftype vertical-align () 'common-lisp:string)
 (common-lisp:deftype video-bit-rate () 'common-lisp:string)
 (common-lisp:deftype video-codec () 'common-lisp:string)
@@ -3752,7 +3648,13 @@
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input 'id))))
         "CancelJob" "2012-09-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("IncompatibleVersionException" . incompatible-version-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'cancel-job))
 (common-lisp:progn
  (common-lisp:defun create-job
@@ -3771,7 +3673,13 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elastictranscoder-request aws-sdk/generator/operation::input "POST"
         "/2012-09-25/jobs" "CreateJob" "2012-09-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("IncompatibleVersionException" . incompatible-version-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'create-job))
 (common-lisp:progn
  (common-lisp:defun create-pipeline
@@ -3791,7 +3699,13 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elastictranscoder-request aws-sdk/generator/operation::input "POST"
         "/2012-09-25/pipelines" "CreatePipeline" "2012-09-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("IncompatibleVersionException" . incompatible-version-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'create-pipeline))
 (common-lisp:progn
  (common-lisp:defun create-preset
@@ -3809,7 +3723,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elastictranscoder-request aws-sdk/generator/operation::input "POST"
         "/2012-09-25/presets" "CreatePreset" "2012-09-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("IncompatibleVersionException" . incompatible-version-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'create-preset))
 (common-lisp:progn
  (common-lisp:defun delete-pipeline
@@ -3830,7 +3749,13 @@
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input 'id))))
         "DeletePipeline" "2012-09-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("IncompatibleVersionException" . incompatible-version-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'delete-pipeline))
 (common-lisp:progn
  (common-lisp:defun delete-preset
@@ -3851,7 +3776,12 @@
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input 'id))))
         "DeletePreset" "2012-09-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("IncompatibleVersionException" . incompatible-version-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'delete-preset))
 (common-lisp:progn
  (common-lisp:defun list-jobs-by-pipeline
@@ -3874,7 +3804,12 @@
                                 aws-sdk/generator/operation::input
                                 'pipeline-id))))
         "ListJobsByPipeline" "2012-09-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("IncompatibleVersionException" . incompatible-version-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'list-jobs-by-pipeline))
 (common-lisp:progn
  (common-lisp:defun list-jobs-by-status
@@ -3895,7 +3830,12 @@
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input 'status))))
         "ListJobsByStatus" "2012-09-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("IncompatibleVersionException" . incompatible-version-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'list-jobs-by-status))
 (common-lisp:progn
  (common-lisp:defun list-pipelines
@@ -3911,7 +3851,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elastictranscoder-request aws-sdk/generator/operation::input "GET"
         "/2012-09-25/pipelines" "ListPipelines" "2012-09-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("IncompatibleVersionException" . incompatible-version-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'list-pipelines))
 (common-lisp:progn
  (common-lisp:defun list-presets
@@ -3927,7 +3871,11 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elastictranscoder-request aws-sdk/generator/operation::input "GET"
         "/2012-09-25/presets" "ListPresets" "2012-09-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("IncompatibleVersionException" . incompatible-version-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'list-presets))
 (common-lisp:progn
  (common-lisp:defun read-job
@@ -3948,7 +3896,12 @@
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input 'id))))
         "ReadJob" "2012-09-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("IncompatibleVersionException" . incompatible-version-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'read-job))
 (common-lisp:progn
  (common-lisp:defun read-pipeline
@@ -3969,7 +3922,12 @@
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input 'id))))
         "ReadPipeline" "2012-09-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("IncompatibleVersionException" . incompatible-version-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'read-pipeline))
 (common-lisp:progn
  (common-lisp:defun read-preset
@@ -3990,7 +3948,12 @@
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input 'id))))
         "ReadPreset" "2012-09-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("IncompatibleVersionException" . incompatible-version-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'read-preset))
 (common-lisp:progn
  (common-lisp:defun test-role
@@ -4007,7 +3970,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elastictranscoder-request aws-sdk/generator/operation::input "POST"
         "/2012-09-25/roleTests" "TestRole" "2012-09-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("IncompatibleVersionException" . incompatible-version-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'test-role))
 (common-lisp:progn
  (common-lisp:defun update-pipeline
@@ -4031,7 +3999,13 @@
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input 'id))))
         "UpdatePipeline" "2012-09-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("IncompatibleVersionException" . incompatible-version-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'update-pipeline))
 (common-lisp:progn
  (common-lisp:defun update-pipeline-notifications
@@ -4054,7 +4028,13 @@
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input 'id))))
         "UpdatePipelineNotifications" "2012-09-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("IncompatibleVersionException" . incompatible-version-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'update-pipeline-notifications))
 (common-lisp:progn
  (common-lisp:defun update-pipeline-status
@@ -4075,5 +4055,11 @@
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input 'id))))
         "UpdatePipelineStatus" "2012-09-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)
+        ("IncompatibleVersionException" . incompatible-version-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServiceException" . internal-service-exception)))))
  (common-lisp:export 'update-pipeline-status))

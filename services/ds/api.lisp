@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/ds/api)
 (common-lisp:progn
  (common-lisp:defclass ds-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "ds"))
  (common-lisp:export 'ds-request))
+(common-lisp:progn
+ (common-lisp:define-condition ds-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'ds-error))
 (common-lisp:deftype access-url () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -184,45 +190,16 @@
                            (trivial-types:proper-list attribute))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (authentication-failed-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-authentication-failed-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null))
-   (request-id common-lisp:nil :type
-    (common-lisp:or request-id common-lisp:null)))
+ (common-lisp:define-condition authentication-failed-exception
+     (ds-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       authentication-failed-exception-message)
+      (request-id :initarg :request-id :initform common-lisp:nil :reader
+       authentication-failed-exception-request-id)))
  (common-lisp:export
   (common-lisp:list 'authentication-failed-exception
-                    'make-authentication-failed-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          authentication-failed-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          authentication-failed-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'request-id))
-      (common-lisp:list
-       (common-lisp:cons "RequestId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          authentication-failed-exception))
-   common-lisp:nil))
+                    'authentication-failed-exception-message
+                    'authentication-failed-exception-request-id)))
 (common-lisp:deftype availability-zone () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype availability-zones ()
@@ -303,38 +280,15 @@
                            (trivial-types:proper-list cidr-ip))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (client-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-client-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null))
-   (request-id common-lisp:nil :type
-    (common-lisp:or request-id common-lisp:null)))
+ (common-lisp:define-condition client-exception
+     (ds-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       client-exception-message)
+      (request-id :initarg :request-id :initform common-lisp:nil :reader
+       client-exception-request-id)))
  (common-lisp:export
-  (common-lisp:list 'client-exception 'make-client-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input client-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input client-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'request-id))
-      (common-lisp:list
-       (common-lisp:cons "RequestId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input client-exception))
-   common-lisp:nil))
+  (common-lisp:list 'client-exception 'client-exception-message
+                    'client-exception-request-id)))
 (common-lisp:deftype cloud-only-directories-limit-reached ()
   'common-lisp:boolean)
 (common-lisp:progn
@@ -2314,45 +2268,16 @@
                            (trivial-types:proper-list directory-id))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (directory-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-directory-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null))
-   (request-id common-lisp:nil :type
-    (common-lisp:or request-id common-lisp:null)))
+ (common-lisp:define-condition directory-limit-exceeded-exception
+     (ds-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       directory-limit-exceeded-exception-message)
+      (request-id :initarg :request-id :initform common-lisp:nil :reader
+       directory-limit-exceeded-exception-request-id)))
  (common-lisp:export
   (common-lisp:list 'directory-limit-exceeded-exception
-                    'make-directory-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          directory-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          directory-limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'request-id))
-      (common-lisp:list
-       (common-lisp:cons "RequestId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          directory-limit-exceeded-exception))
-   common-lisp:nil))
+                    'directory-limit-exceeded-exception-message
+                    'directory-limit-exceeded-exception-request-id)))
 (common-lisp:progn
  (common-lisp:defstruct
      (directory-limits (:copier common-lisp:nil)
@@ -2464,45 +2389,16 @@
 (common-lisp:deftype directory-stage () 'common-lisp:string)
 (common-lisp:deftype directory-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (directory-unavailable-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-directory-unavailable-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null))
-   (request-id common-lisp:nil :type
-    (common-lisp:or request-id common-lisp:null)))
+ (common-lisp:define-condition directory-unavailable-exception
+     (ds-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       directory-unavailable-exception-message)
+      (request-id :initarg :request-id :initform common-lisp:nil :reader
+       directory-unavailable-exception-request-id)))
  (common-lisp:export
   (common-lisp:list 'directory-unavailable-exception
-                    'make-directory-unavailable-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          directory-unavailable-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          directory-unavailable-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'request-id))
-      (common-lisp:list
-       (common-lisp:cons "RequestId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          directory-unavailable-exception))
-   common-lisp:nil))
+                    'directory-unavailable-exception-message
+                    'directory-unavailable-exception-request-id)))
 (common-lisp:progn
  (common-lisp:defstruct
      (directory-vpc-settings (:copier common-lisp:nil)
@@ -2830,45 +2726,16 @@
                            (trivial-types:proper-list domain-controller-id))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (domain-controller-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-domain-controller-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null))
-   (request-id common-lisp:nil :type
-    (common-lisp:or request-id common-lisp:null)))
+ (common-lisp:define-condition domain-controller-limit-exceeded-exception
+     (ds-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       domain-controller-limit-exceeded-exception-message)
+      (request-id :initarg :request-id :initform common-lisp:nil :reader
+       domain-controller-limit-exceeded-exception-request-id)))
  (common-lisp:export
   (common-lisp:list 'domain-controller-limit-exceeded-exception
-                    'make-domain-controller-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          domain-controller-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          domain-controller-limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'request-id))
-      (common-lisp:list
-       (common-lisp:cons "RequestId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          domain-controller-limit-exceeded-exception))
-   common-lisp:nil))
+                    'domain-controller-limit-exceeded-exception-message
+                    'domain-controller-limit-exceeded-exception-request-id)))
 (common-lisp:deftype domain-controller-status () 'common-lisp:string)
 (common-lisp:deftype domain-controller-status-reason () 'common-lisp:string)
 (common-lisp:progn
@@ -2992,85 +2859,27 @@
    common-lisp:nil))
 (common-lisp:deftype end-date-time () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (entity-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-entity-already-exists-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null))
-   (request-id common-lisp:nil :type
-    (common-lisp:or request-id common-lisp:null)))
+ (common-lisp:define-condition entity-already-exists-exception
+     (ds-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       entity-already-exists-exception-message)
+      (request-id :initarg :request-id :initform common-lisp:nil :reader
+       entity-already-exists-exception-request-id)))
  (common-lisp:export
   (common-lisp:list 'entity-already-exists-exception
-                    'make-entity-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-already-exists-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'request-id))
-      (common-lisp:list
-       (common-lisp:cons "RequestId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-already-exists-exception))
-   common-lisp:nil))
+                    'entity-already-exists-exception-message
+                    'entity-already-exists-exception-request-id)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (entity-does-not-exist-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-entity-does-not-exist-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null))
-   (request-id common-lisp:nil :type
-    (common-lisp:or request-id common-lisp:null)))
+ (common-lisp:define-condition entity-does-not-exist-exception
+     (ds-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       entity-does-not-exist-exception-message)
+      (request-id :initarg :request-id :initform common-lisp:nil :reader
+       entity-does-not-exist-exception-request-id)))
  (common-lisp:export
   (common-lisp:list 'entity-does-not-exist-exception
-                    'make-entity-does-not-exist-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-does-not-exist-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'request-id))
-      (common-lisp:list
-       (common-lisp:cons "RequestId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          entity-does-not-exist-exception))
-   common-lisp:nil))
+                    'entity-does-not-exist-exception-message
+                    'entity-does-not-exist-exception-request-id)))
 (common-lisp:progn
  (common-lisp:defstruct
      (event-topic (:copier common-lisp:nil)
@@ -3254,125 +3063,38 @@
                           get-snapshot-limits-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (insufficient-permissions-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-insufficient-permissions-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null))
-   (request-id common-lisp:nil :type
-    (common-lisp:or request-id common-lisp:null)))
+ (common-lisp:define-condition insufficient-permissions-exception
+     (ds-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       insufficient-permissions-exception-message)
+      (request-id :initarg :request-id :initform common-lisp:nil :reader
+       insufficient-permissions-exception-request-id)))
  (common-lisp:export
   (common-lisp:list 'insufficient-permissions-exception
-                    'make-insufficient-permissions-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-permissions-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-permissions-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'request-id))
-      (common-lisp:list
-       (common-lisp:cons "RequestId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          insufficient-permissions-exception))
-   common-lisp:nil))
+                    'insufficient-permissions-exception-message
+                    'insufficient-permissions-exception-request-id)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-next-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-next-token-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null))
-   (request-id common-lisp:nil :type
-    (common-lisp:or request-id common-lisp:null)))
+ (common-lisp:define-condition invalid-next-token-exception
+     (ds-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-next-token-exception-message)
+      (request-id :initarg :request-id :initform common-lisp:nil :reader
+       invalid-next-token-exception-request-id)))
  (common-lisp:export
   (common-lisp:list 'invalid-next-token-exception
-                    'make-invalid-next-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'request-id))
-      (common-lisp:list
-       (common-lisp:cons "RequestId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   common-lisp:nil))
+                    'invalid-next-token-exception-message
+                    'invalid-next-token-exception-request-id)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null))
-   (request-id common-lisp:nil :type
-    (common-lisp:or request-id common-lisp:null)))
+ (common-lisp:define-condition invalid-parameter-exception
+     (ds-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-parameter-exception-message)
+      (request-id :initarg :request-id :initform common-lisp:nil :reader
+       invalid-parameter-exception-request-id)))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-exception
-                    'make-invalid-parameter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'request-id))
-      (common-lisp:list
-       (common-lisp:cons "RequestId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   common-lisp:nil))
+                    'invalid-parameter-exception-message
+                    'invalid-parameter-exception-request-id)))
 (common-lisp:deftype ip-addr () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype ip-addrs () '(trivial-types:proper-list ip-addr))
@@ -3480,45 +3202,16 @@
                         ((aws-sdk/generator/shape::input ip-route-info))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ip-route-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ip-route-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null))
-   (request-id common-lisp:nil :type
-    (common-lisp:or request-id common-lisp:null)))
+ (common-lisp:define-condition ip-route-limit-exceeded-exception
+     (ds-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       ip-route-limit-exceeded-exception-message)
+      (request-id :initarg :request-id :initform common-lisp:nil :reader
+       ip-route-limit-exceeded-exception-request-id)))
  (common-lisp:export
   (common-lisp:list 'ip-route-limit-exceeded-exception
-                    'make-ip-route-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          ip-route-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          ip-route-limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'request-id))
-      (common-lisp:list
-       (common-lisp:cons "RequestId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          ip-route-limit-exceeded-exception))
-   common-lisp:nil))
+                    'ip-route-limit-exceeded-exception-message
+                    'ip-route-limit-exceeded-exception-request-id)))
 (common-lisp:deftype ip-route-status-msg () 'common-lisp:string)
 (common-lisp:deftype ip-route-status-reason () 'common-lisp:string)
 (common-lisp:progn
@@ -4257,38 +3950,15 @@
                            (trivial-types:proper-list server))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null))
-   (request-id common-lisp:nil :type
-    (common-lisp:or request-id common-lisp:null)))
+ (common-lisp:define-condition service-exception
+     (ds-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       service-exception-message)
+      (request-id :initarg :request-id :initform common-lisp:nil :reader
+       service-exception-request-id)))
  (common-lisp:export
-  (common-lisp:list 'service-exception 'make-service-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input service-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input service-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'request-id))
-      (common-lisp:list
-       (common-lisp:cons "RequestId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input service-exception))
-   common-lisp:nil))
+  (common-lisp:list 'service-exception 'service-exception-message
+                    'service-exception-request-id)))
 (common-lisp:progn
  (common-lisp:defstruct
      (snapshot (:copier common-lisp:nil) (:conc-name "struct-shape-snapshot-"))
@@ -4363,45 +4033,16 @@
                            (trivial-types:proper-list snapshot-id))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (snapshot-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-snapshot-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null))
-   (request-id common-lisp:nil :type
-    (common-lisp:or request-id common-lisp:null)))
+ (common-lisp:define-condition snapshot-limit-exceeded-exception
+     (ds-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       snapshot-limit-exceeded-exception-message)
+      (request-id :initarg :request-id :initform common-lisp:nil :reader
+       snapshot-limit-exceeded-exception-request-id)))
  (common-lisp:export
   (common-lisp:list 'snapshot-limit-exceeded-exception
-                    'make-snapshot-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          snapshot-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          snapshot-limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'request-id))
-      (common-lisp:list
-       (common-lisp:cons "RequestId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          snapshot-limit-exceeded-exception))
-   common-lisp:nil))
+                    'snapshot-limit-exceeded-exception-message
+                    'snapshot-limit-exceeded-exception-request-id)))
 (common-lisp:progn
  (common-lisp:defstruct
      (snapshot-limits (:copier common-lisp:nil)
@@ -4601,45 +4242,16 @@
                            (trivial-types:proper-list tag-key))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null))
-   (request-id common-lisp:nil :type
-    (common-lisp:or request-id common-lisp:null)))
+ (common-lisp:define-condition tag-limit-exceeded-exception
+     (ds-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       tag-limit-exceeded-exception-message)
+      (request-id :initarg :request-id :initform common-lisp:nil :reader
+       tag-limit-exceeded-exception-request-id)))
  (common-lisp:export
   (common-lisp:list 'tag-limit-exceeded-exception
-                    'make-tag-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          tag-limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          tag-limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'request-id))
-      (common-lisp:list
-       (common-lisp:cons "RequestId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          tag-limit-exceeded-exception))
-   common-lisp:nil))
+                    'tag-limit-exceeded-exception-message
+                    'tag-limit-exceeded-exception-request-id)))
 (common-lisp:deftype tag-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype tags () '(trivial-types:proper-list tag))
@@ -4783,45 +4395,16 @@
                            (trivial-types:proper-list trust))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unsupported-operation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unsupported-operation-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null))
-   (request-id common-lisp:nil :type
-    (common-lisp:or request-id common-lisp:null)))
+ (common-lisp:define-condition unsupported-operation-exception
+     (ds-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unsupported-operation-exception-message)
+      (request-id :initarg :request-id :initform common-lisp:nil :reader
+       unsupported-operation-exception-request-id)))
  (common-lisp:export
   (common-lisp:list 'unsupported-operation-exception
-                    'make-unsupported-operation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-operation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-operation-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'request-id))
-      (common-lisp:list
-       (common-lisp:cons "RequestId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-operation-exception))
-   common-lisp:nil))
+                    'unsupported-operation-exception-message
+                    'unsupported-operation-exception-request-id)))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-conditional-forwarder-request (:copier common-lisp:nil)
@@ -5080,7 +4663,14 @@
                                                         "POST" "/"
                                                         "AddIpRoutes"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'add-ip-routes))
 (common-lisp:progn
  (common-lisp:defun add-tags-to-resource
@@ -5098,7 +4688,12 @@
                                                         "POST" "/"
                                                         "AddTagsToResource"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'add-tags-to-resource))
 (common-lisp:progn
  (common-lisp:defun cancel-schema-extension
@@ -5117,7 +4712,10 @@
                                                         "POST" "/"
                                                         "CancelSchemaExtension"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'cancel-schema-extension))
 (common-lisp:progn
  (common-lisp:defun connect-directory
@@ -5138,7 +4736,12 @@
                                                         "POST" "/"
                                                         "ConnectDirectory"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'connect-directory))
 (common-lisp:progn
  (common-lisp:defun create-alias
@@ -5156,7 +4759,12 @@
                                                         "POST" "/"
                                                         "CreateAlias"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'create-alias))
 (common-lisp:progn
  (common-lisp:defun create-computer
@@ -5178,7 +4786,15 @@
                                                         "POST" "/"
                                                         "CreateComputer"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AuthenticationFailedException" . authentication-failed-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'create-computer))
 (common-lisp:progn
  (common-lisp:defun create-conditional-forwarder
@@ -5199,7 +4815,14 @@
                                                         "POST" "/"
                                                         "CreateConditionalForwarder"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'create-conditional-forwarder))
 (common-lisp:progn
  (common-lisp:defun create-directory
@@ -5220,7 +4843,12 @@
                                                         "POST" "/"
                                                         "CreateDirectory"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'create-directory))
 (common-lisp:progn
  (common-lisp:defun create-microsoft-ad
@@ -5240,7 +4868,13 @@
                                                         "POST" "/"
                                                         "CreateMicrosoftAD"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'create-microsoft-ad))
 (common-lisp:progn
  (common-lisp:defun create-snapshot
@@ -5258,7 +4892,12 @@
                                                         "POST" "/"
                                                         "CreateSnapshot"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'create-snapshot))
 (common-lisp:progn
  (common-lisp:defun create-trust
@@ -5280,7 +4919,13 @@
                                                         "POST" "/"
                                                         "CreateTrust"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'create-trust))
 (common-lisp:progn
  (common-lisp:defun delete-conditional-forwarder
@@ -5300,7 +4945,13 @@
                                                         "POST" "/"
                                                         "DeleteConditionalForwarder"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'delete-conditional-forwarder))
 (common-lisp:progn
  (common-lisp:defun delete-directory
@@ -5318,7 +4969,10 @@
                                                         "POST" "/"
                                                         "DeleteDirectory"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'delete-directory))
 (common-lisp:progn
  (common-lisp:defun delete-snapshot
@@ -5336,7 +4990,11 @@
                                                         "POST" "/"
                                                         "DeleteSnapshot"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'delete-snapshot))
 (common-lisp:progn
  (common-lisp:defun delete-trust
@@ -5356,7 +5014,12 @@
                                                         "POST" "/"
                                                         "DeleteTrust"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'delete-trust))
 (common-lisp:progn
  (common-lisp:defun deregister-event-topic
@@ -5374,7 +5037,11 @@
                                                         "POST" "/"
                                                         "DeregisterEventTopic"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'deregister-event-topic))
 (common-lisp:progn
  (common-lisp:defun describe-conditional-forwarders
@@ -5394,7 +5061,13 @@
                                                         "POST" "/"
                                                         "DescribeConditionalForwarders"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'describe-conditional-forwarders))
 (common-lisp:progn
  (common-lisp:defun describe-directories
@@ -5412,7 +5085,12 @@
                                                         "POST" "/"
                                                         "DescribeDirectories"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'describe-directories))
 (common-lisp:progn
  (common-lisp:defun describe-domain-controllers
@@ -5434,7 +5112,13 @@
                                                         "POST" "/"
                                                         "DescribeDomainControllers"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'describe-domain-controllers))
 (common-lisp:progn
  (common-lisp:defun describe-event-topics
@@ -5452,7 +5136,11 @@
                                                         "POST" "/"
                                                         "DescribeEventTopics"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'describe-event-topics))
 (common-lisp:progn
  (common-lisp:defun describe-snapshots
@@ -5472,7 +5160,12 @@
                                                         "POST" "/"
                                                         "DescribeSnapshots"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'describe-snapshots))
 (common-lisp:progn
  (common-lisp:defun describe-trusts
@@ -5491,7 +5184,13 @@
                                                         "POST" "/"
                                                         "DescribeTrusts"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'describe-trusts))
 (common-lisp:progn
  (common-lisp:defun disable-radius
@@ -5509,7 +5208,10 @@
                                                         "POST" "/"
                                                         "DisableRadius"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'disable-radius))
 (common-lisp:progn
  (common-lisp:defun disable-sso
@@ -5527,7 +5229,13 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DisableSso"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("AuthenticationFailedException" . authentication-failed-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'disable-sso))
 (common-lisp:progn
  (common-lisp:defun enable-radius
@@ -5545,7 +5253,12 @@
                                                         "POST" "/"
                                                         "EnableRadius"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'enable-radius))
 (common-lisp:progn
  (common-lisp:defun enable-sso
@@ -5563,7 +5276,13 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "EnableSso"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("AuthenticationFailedException" . authentication-failed-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'enable-sso))
 (common-lisp:progn
  (common-lisp:defun get-directory-limits ()
@@ -5572,7 +5291,10 @@
      (common-lisp:make-instance 'ds-request :method "POST" :path "/" :params
                                 `(("Action" ,@"GetDirectoryLimits")
                                   ("Version" ,@"2015-04-16"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+      ("ClientException" . client-exception)
+      ("ServiceException" . service-exception))))
  (common-lisp:export 'get-directory-limits))
 (common-lisp:progn
  (common-lisp:defun get-snapshot-limits
@@ -5590,7 +5312,10 @@
                                                         "POST" "/"
                                                         "GetSnapshotLimits"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'get-snapshot-limits))
 (common-lisp:progn
  (common-lisp:defun list-ip-routes
@@ -5608,7 +5333,12 @@
                                                         "POST" "/"
                                                         "ListIpRoutes"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'list-ip-routes))
 (common-lisp:progn
  (common-lisp:defun list-schema-extensions
@@ -5626,7 +5356,11 @@
                                                         "POST" "/"
                                                         "ListSchemaExtensions"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidNextTokenException" . invalid-next-token-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'list-schema-extensions))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-resource
@@ -5644,7 +5378,12 @@
                                                         "POST" "/"
                                                         "ListTagsForResource"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
  (common-lisp:defun register-event-topic
@@ -5662,7 +5401,11 @@
                                                         "POST" "/"
                                                         "RegisterEventTopic"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'register-event-topic))
 (common-lisp:progn
  (common-lisp:defun remove-ip-routes
@@ -5680,7 +5423,12 @@
                                                         "POST" "/"
                                                         "RemoveIpRoutes"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'remove-ip-routes))
 (common-lisp:progn
  (common-lisp:defun remove-tags-from-resource
@@ -5699,7 +5447,11 @@
                                                         "POST" "/"
                                                         "RemoveTagsFromResource"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'remove-tags-from-resource))
 (common-lisp:progn
  (common-lisp:defun restore-from-snapshot
@@ -5717,7 +5469,11 @@
                                                         "POST" "/"
                                                         "RestoreFromSnapshot"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'restore-from-snapshot))
 (common-lisp:progn
  (common-lisp:defun start-schema-extension
@@ -5739,7 +5495,13 @@
                                                         "POST" "/"
                                                         "StartSchemaExtension"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'start-schema-extension))
 (common-lisp:progn
  (common-lisp:defun update-conditional-forwarder
@@ -5760,7 +5522,13 @@
                                                         "POST" "/"
                                                         "UpdateConditionalForwarder"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'update-conditional-forwarder))
 (common-lisp:progn
  (common-lisp:defun update-number-of-domain-controllers
@@ -5779,7 +5547,15 @@
                                                         "POST" "/"
                                                         "UpdateNumberOfDomainControllers"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'update-number-of-domain-controllers))
 (common-lisp:progn
  (common-lisp:defun update-radius
@@ -5797,7 +5573,11 @@
                                                         "POST" "/"
                                                         "UpdateRadius"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)))))
  (common-lisp:export 'update-radius))
 (common-lisp:progn
  (common-lisp:defun verify-trust
@@ -5815,5 +5595,10 @@
                                                         "POST" "/"
                                                         "VerifyTrust"
                                                         "2015-04-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ClientException" . client-exception)
+        ("ServiceException" . service-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'verify-trust))

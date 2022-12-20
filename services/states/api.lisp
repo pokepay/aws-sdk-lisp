@@ -6,42 +6,25 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/states/api)
 (common-lisp:progn
  (common-lisp:defclass states-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "states"))
  (common-lisp:export 'states-request))
 (common-lisp:progn
- (common-lisp:defstruct
-     (activity-does-not-exist (:copier common-lisp:nil)
-      (:conc-name "struct-shape-activity-does-not-exist-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition states-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'states-error))
+(common-lisp:progn
+ (common-lisp:define-condition activity-does-not-exist
+     (states-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       activity-does-not-exist-message)))
  (common-lisp:export
-  (common-lisp:list 'activity-does-not-exist 'make-activity-does-not-exist))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          activity-does-not-exist))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          activity-does-not-exist))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          activity-does-not-exist))
-   common-lisp:nil))
+  (common-lisp:list 'activity-does-not-exist 'activity-does-not-exist-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (activity-failed-event-details (:copier common-lisp:nil)
@@ -81,35 +64,12 @@
                           activity-failed-event-details))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (activity-limit-exceeded (:copier common-lisp:nil)
-      (:conc-name "struct-shape-activity-limit-exceeded-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition activity-limit-exceeded
+     (states-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       activity-limit-exceeded-message)))
  (common-lisp:export
-  (common-lisp:list 'activity-limit-exceeded 'make-activity-limit-exceeded))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          activity-limit-exceeded))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          activity-limit-exceeded))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          activity-limit-exceeded))
-   common-lisp:nil))
+  (common-lisp:list 'activity-limit-exceeded 'activity-limit-exceeded-message)))
 (common-lisp:progn
  (common-lisp:deftype activity-list ()
    '(trivial-types:proper-list activity-list-item))
@@ -356,36 +316,13 @@
                           activity-timed-out-event-details))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (activity-worker-limit-exceeded (:copier common-lisp:nil)
-      (:conc-name "struct-shape-activity-worker-limit-exceeded-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition activity-worker-limit-exceeded
+     (states-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       activity-worker-limit-exceeded-message)))
  (common-lisp:export
   (common-lisp:list 'activity-worker-limit-exceeded
-                    'make-activity-worker-limit-exceeded))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          activity-worker-limit-exceeded))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          activity-worker-limit-exceeded))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          activity-worker-limit-exceeded))
-   common-lisp:nil))
+                    'activity-worker-limit-exceeded-message)))
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:deftype cause () 'common-lisp:string)
 (common-lisp:progn
@@ -1001,65 +938,21 @@
                           execution-aborted-event-details))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (execution-already-exists (:copier common-lisp:nil)
-      (:conc-name "struct-shape-execution-already-exists-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition execution-already-exists
+     (states-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       execution-already-exists-message)))
  (common-lisp:export
-  (common-lisp:list 'execution-already-exists 'make-execution-already-exists))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          execution-already-exists))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          execution-already-exists))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          execution-already-exists))
-   common-lisp:nil))
+  (common-lisp:list 'execution-already-exists
+                    'execution-already-exists-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (execution-does-not-exist (:copier common-lisp:nil)
-      (:conc-name "struct-shape-execution-does-not-exist-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition execution-does-not-exist
+     (states-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       execution-does-not-exist-message)))
  (common-lisp:export
-  (common-lisp:list 'execution-does-not-exist 'make-execution-does-not-exist))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          execution-does-not-exist))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          execution-does-not-exist))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          execution-does-not-exist))
-   common-lisp:nil))
+  (common-lisp:list 'execution-does-not-exist
+                    'execution-does-not-exist-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (execution-failed-event-details (:copier common-lisp:nil)
@@ -1099,35 +992,13 @@
                           execution-failed-event-details))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (execution-limit-exceeded (:copier common-lisp:nil)
-      (:conc-name "struct-shape-execution-limit-exceeded-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition execution-limit-exceeded
+     (states-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       execution-limit-exceeded-message)))
  (common-lisp:export
-  (common-lisp:list 'execution-limit-exceeded 'make-execution-limit-exceeded))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          execution-limit-exceeded))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          execution-limit-exceeded))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          execution-limit-exceeded))
-   common-lisp:nil))
+  (common-lisp:list 'execution-limit-exceeded
+                    'execution-limit-exceeded-message)))
 (common-lisp:progn
  (common-lisp:deftype execution-list ()
    '(trivial-types:proper-list execution-list-item))
@@ -1739,151 +1610,44 @@
 (common-lisp:deftype history-event-type () 'common-lisp:string)
 (common-lisp:deftype identity () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-arn (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-arn-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
- (common-lisp:export (common-lisp:list 'invalid-arn 'make-invalid-arn))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-arn))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-arn))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-arn))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-arn
+     (states-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-arn-message)))
+ (common-lisp:export (common-lisp:list 'invalid-arn 'invalid-arn-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-definition (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-definition-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-definition
+     (states-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-definition-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-definition 'make-invalid-definition))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-definition))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-definition))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-definition))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-definition 'invalid-definition-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-execution-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-execution-input-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition invalid-execution-input
+     (states-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-execution-input-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-execution-input 'make-invalid-execution-input))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-execution-input))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-execution-input))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-execution-input))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-execution-input 'invalid-execution-input-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-name (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-name-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
- (common-lisp:export (common-lisp:list 'invalid-name 'make-invalid-name))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-name))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-name))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-name))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-name
+     (states-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-name-message)))
+ (common-lisp:export (common-lisp:list 'invalid-name 'invalid-name-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-output-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
- (common-lisp:export (common-lisp:list 'invalid-output 'make-invalid-output))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-output))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-output))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-output))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-output
+     (states-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-output-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-output 'invalid-output-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-token (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-token-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
- (common-lisp:export (common-lisp:list 'invalid-token 'make-invalid-token))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input invalid-token))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input invalid-token))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input invalid-token))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-token
+     (states-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-token-message)))
+ (common-lisp:export (common-lisp:list 'invalid-token 'invalid-token-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (lambda-function-failed-event-details (:copier common-lisp:nil)
@@ -2717,128 +2481,36 @@
                           state-exited-event-details))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (state-machine-already-exists (:copier common-lisp:nil)
-      (:conc-name "struct-shape-state-machine-already-exists-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition state-machine-already-exists
+     (states-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       state-machine-already-exists-message)))
  (common-lisp:export
   (common-lisp:list 'state-machine-already-exists
-                    'make-state-machine-already-exists))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          state-machine-already-exists))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          state-machine-already-exists))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          state-machine-already-exists))
-   common-lisp:nil))
+                    'state-machine-already-exists-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (state-machine-deleting (:copier common-lisp:nil)
-      (:conc-name "struct-shape-state-machine-deleting-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition state-machine-deleting
+     (states-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       state-machine-deleting-message)))
  (common-lisp:export
-  (common-lisp:list 'state-machine-deleting 'make-state-machine-deleting))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          state-machine-deleting))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          state-machine-deleting))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          state-machine-deleting))
-   common-lisp:nil))
+  (common-lisp:list 'state-machine-deleting 'state-machine-deleting-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (state-machine-does-not-exist (:copier common-lisp:nil)
-      (:conc-name "struct-shape-state-machine-does-not-exist-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition state-machine-does-not-exist
+     (states-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       state-machine-does-not-exist-message)))
  (common-lisp:export
   (common-lisp:list 'state-machine-does-not-exist
-                    'make-state-machine-does-not-exist))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          state-machine-does-not-exist))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          state-machine-does-not-exist))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          state-machine-does-not-exist))
-   common-lisp:nil))
+                    'state-machine-does-not-exist-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (state-machine-limit-exceeded (:copier common-lisp:nil)
-      (:conc-name "struct-shape-state-machine-limit-exceeded-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition state-machine-limit-exceeded
+     (states-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       state-machine-limit-exceeded-message)))
  (common-lisp:export
   (common-lisp:list 'state-machine-limit-exceeded
-                    'make-state-machine-limit-exceeded))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          state-machine-limit-exceeded))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          state-machine-limit-exceeded))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          state-machine-limit-exceeded))
-   common-lisp:nil))
+                    'state-machine-limit-exceeded-message)))
 (common-lisp:progn
  (common-lisp:deftype state-machine-list ()
    '(trivial-types:proper-list state-machine-list-item))
@@ -2967,52 +2639,19 @@
                           stop-execution-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (task-does-not-exist (:copier common-lisp:nil)
-      (:conc-name "struct-shape-task-does-not-exist-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition task-does-not-exist
+     (states-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       task-does-not-exist-message)))
  (common-lisp:export
-  (common-lisp:list 'task-does-not-exist 'make-task-does-not-exist))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input task-does-not-exist))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input task-does-not-exist))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input task-does-not-exist))
-   common-lisp:nil))
+  (common-lisp:list 'task-does-not-exist 'task-does-not-exist-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (task-timed-out (:copier common-lisp:nil)
-      (:conc-name "struct-shape-task-timed-out-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
- (common-lisp:export (common-lisp:list 'task-timed-out 'make-task-timed-out))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input task-timed-out))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input task-timed-out))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input task-timed-out))
-   common-lisp:nil))
+ (common-lisp:define-condition task-timed-out
+     (states-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       task-timed-out-message)))
+ (common-lisp:export
+  (common-lisp:list 'task-timed-out 'task-timed-out-message)))
 (common-lisp:deftype task-token () 'common-lisp:string)
 (common-lisp:deftype timeout-in-seconds () 'common-lisp:integer)
 (common-lisp:deftype timestamp () 'common-lisp:string)
@@ -3032,7 +2671,9 @@
                                                         "POST" "/"
                                                         "CreateActivity"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ActivityLimitExceeded" . activity-limit-exceeded)
+        ("InvalidName" . invalid-name)))))
  (common-lisp:export 'create-activity))
 (common-lisp:progn
  (common-lisp:defun create-state-machine
@@ -3050,7 +2691,12 @@
                                                         "POST" "/"
                                                         "CreateStateMachine"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidArn" . invalid-arn) ("InvalidDefinition" . invalid-definition)
+        ("InvalidName" . invalid-name)
+        ("StateMachineAlreadyExists" . state-machine-already-exists)
+        ("StateMachineDeleting" . state-machine-deleting)
+        ("StateMachineLimitExceeded" . state-machine-limit-exceeded)))))
  (common-lisp:export 'create-state-machine))
 (common-lisp:progn
  (common-lisp:defun delete-activity
@@ -3068,7 +2714,7 @@
                                                         "POST" "/"
                                                         "DeleteActivity"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil '(("InvalidArn" . invalid-arn)))))
  (common-lisp:export 'delete-activity))
 (common-lisp:progn
  (common-lisp:defun delete-state-machine
@@ -3086,7 +2732,7 @@
                                                         "POST" "/"
                                                         "DeleteStateMachine"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil '(("InvalidArn" . invalid-arn)))))
  (common-lisp:export 'delete-state-machine))
 (common-lisp:progn
  (common-lisp:defun describe-activity
@@ -3104,7 +2750,9 @@
                                                         "POST" "/"
                                                         "DescribeActivity"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ActivityDoesNotExist" . activity-does-not-exist)
+        ("InvalidArn" . invalid-arn)))))
  (common-lisp:export 'describe-activity))
 (common-lisp:progn
  (common-lisp:defun describe-execution
@@ -3122,7 +2770,9 @@
                                                         "POST" "/"
                                                         "DescribeExecution"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ExecutionDoesNotExist" . execution-does-not-exist)
+        ("InvalidArn" . invalid-arn)))))
  (common-lisp:export 'describe-execution))
 (common-lisp:progn
  (common-lisp:defun describe-state-machine
@@ -3140,7 +2790,9 @@
                                                         "POST" "/"
                                                         "DescribeStateMachine"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidArn" . invalid-arn)
+        ("StateMachineDoesNotExist" . state-machine-does-not-exist)))))
  (common-lisp:export 'describe-state-machine))
 (common-lisp:progn
  (common-lisp:defun get-activity-task
@@ -3158,7 +2810,10 @@
                                                         "POST" "/"
                                                         "GetActivityTask"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ActivityDoesNotExist" . activity-does-not-exist)
+        ("ActivityWorkerLimitExceeded" . activity-worker-limit-exceeded)
+        ("InvalidArn" . invalid-arn)))))
  (common-lisp:export 'get-activity-task))
 (common-lisp:progn
  (common-lisp:defun get-execution-history
@@ -3178,7 +2833,9 @@
                                                         "POST" "/"
                                                         "GetExecutionHistory"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ExecutionDoesNotExist" . execution-does-not-exist)
+        ("InvalidArn" . invalid-arn) ("InvalidToken" . invalid-token)))))
  (common-lisp:export 'get-execution-history))
 (common-lisp:progn
  (common-lisp:defun list-activities
@@ -3196,7 +2853,7 @@
                                                         "POST" "/"
                                                         "ListActivities"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil '(("InvalidToken" . invalid-token)))))
  (common-lisp:export 'list-activities))
 (common-lisp:progn
  (common-lisp:defun list-executions
@@ -3217,7 +2874,9 @@
                                                         "POST" "/"
                                                         "ListExecutions"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidArn" . invalid-arn) ("InvalidToken" . invalid-token)
+        ("StateMachineDoesNotExist" . state-machine-does-not-exist)))))
  (common-lisp:export 'list-executions))
 (common-lisp:progn
  (common-lisp:defun list-state-machines
@@ -3235,7 +2894,7 @@
                                                         "POST" "/"
                                                         "ListStateMachines"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil '(("InvalidToken" . invalid-token)))))
  (common-lisp:export 'list-state-machines))
 (common-lisp:progn
  (common-lisp:defun send-task-failure
@@ -3253,7 +2912,9 @@
                                                         "POST" "/"
                                                         "SendTaskFailure"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("TaskDoesNotExist" . task-does-not-exist)
+        ("InvalidToken" . invalid-token) ("TaskTimedOut" . task-timed-out)))))
  (common-lisp:export 'send-task-failure))
 (common-lisp:progn
  (common-lisp:defun send-task-heartbeat
@@ -3271,7 +2932,9 @@
                                                         "POST" "/"
                                                         "SendTaskHeartbeat"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("TaskDoesNotExist" . task-does-not-exist)
+        ("InvalidToken" . invalid-token) ("TaskTimedOut" . task-timed-out)))))
  (common-lisp:export 'send-task-heartbeat))
 (common-lisp:progn
  (common-lisp:defun send-task-success
@@ -3289,7 +2952,10 @@
                                                         "POST" "/"
                                                         "SendTaskSuccess"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("TaskDoesNotExist" . task-does-not-exist)
+        ("InvalidOutput" . invalid-output) ("InvalidToken" . invalid-token)
+        ("TaskTimedOut" . task-timed-out)))))
  (common-lisp:export 'send-task-success))
 (common-lisp:progn
  (common-lisp:defun start-execution
@@ -3307,7 +2973,14 @@
                                                         "POST" "/"
                                                         "StartExecution"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ExecutionLimitExceeded" . execution-limit-exceeded)
+        ("ExecutionAlreadyExists" . execution-already-exists)
+        ("InvalidArn" . invalid-arn)
+        ("InvalidExecutionInput" . invalid-execution-input)
+        ("InvalidName" . invalid-name)
+        ("StateMachineDoesNotExist" . state-machine-does-not-exist)
+        ("StateMachineDeleting" . state-machine-deleting)))))
  (common-lisp:export 'start-execution))
 (common-lisp:progn
  (common-lisp:defun stop-execution
@@ -3325,5 +2998,7 @@
                                                         "POST" "/"
                                                         "StopExecution"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ExecutionDoesNotExist" . execution-does-not-exist)
+        ("InvalidArn" . invalid-arn)))))
  (common-lisp:export 'stop-execution))

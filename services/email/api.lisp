@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/email/api)
 (common-lisp:progn
  (common-lisp:defclass email-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "email"))
  (common-lisp:export 'email-request))
+(common-lisp:progn
+ (common-lisp:define-condition email-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'email-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (add-header-action (:copier common-lisp:nil)
@@ -54,35 +60,12 @@
                            (trivial-types:proper-list address))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-already-exists-exception-"))
-   (name common-lisp:nil :type
-    (common-lisp:or rule-or-rule-set-name common-lisp:null)))
+ (common-lisp:define-condition already-exists-exception
+     (email-error)
+     ((name :initarg :name :initform common-lisp:nil :reader
+       already-exists-exception-name)))
  (common-lisp:export
-  (common-lisp:list 'already-exists-exception 'make-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          already-exists-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'name))
-      (common-lisp:list
-       (common-lisp:cons "Name"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          already-exists-exception))
-   common-lisp:nil))
+  (common-lisp:list 'already-exists-exception 'already-exists-exception-name)))
 (common-lisp:deftype amazon-resource-name () 'common-lisp:string)
 (common-lisp:deftype arrival-date () 'common-lisp:string)
 (common-lisp:deftype behavior-on-mxfailure () 'common-lisp:string)
@@ -245,35 +228,12 @@
                            (trivial-types:proper-list bounced-recipient-info))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cannot-delete-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cannot-delete-exception-"))
-   (name common-lisp:nil :type
-    (common-lisp:or rule-or-rule-set-name common-lisp:null)))
+ (common-lisp:define-condition cannot-delete-exception
+     (email-error)
+     ((name :initarg :name :initform common-lisp:nil :reader
+       cannot-delete-exception-name)))
  (common-lisp:export
-  (common-lisp:list 'cannot-delete-exception 'make-cannot-delete-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          cannot-delete-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          cannot-delete-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'name))
-      (common-lisp:list
-       (common-lisp:cons "Name"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          cannot-delete-exception))
-   common-lisp:nil))
+  (common-lisp:list 'cannot-delete-exception 'cannot-delete-exception-name)))
 (common-lisp:deftype charset () 'common-lisp:string)
 (common-lisp:deftype cidr () 'common-lisp:string)
 (common-lisp:progn
@@ -459,37 +419,14 @@
                         ((aws-sdk/generator/shape::input configuration-set))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (configuration-set-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-configuration-set-already-exists-exception-"))
-   (configuration-set-name common-lisp:nil :type
-    (common-lisp:or configuration-set-name common-lisp:null)))
+ (common-lisp:define-condition configuration-set-already-exists-exception
+     (email-error)
+     ((configuration-set-name :initarg :configuration-set-name :initform
+       common-lisp:nil :reader
+       configuration-set-already-exists-exception-configuration-set-name)))
  (common-lisp:export
   (common-lisp:list 'configuration-set-already-exists-exception
-                    'make-configuration-set-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          configuration-set-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          configuration-set-already-exists-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input
-                           'configuration-set-name))
-      (common-lisp:list
-       (common-lisp:cons "ConfigurationSetName"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          configuration-set-already-exists-exception))
-   common-lisp:nil))
+                    'configuration-set-already-exists-exception-configuration-set-name)))
 (common-lisp:deftype configuration-set-attribute () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype configuration-set-attribute-list ()
@@ -501,37 +438,14 @@
                             configuration-set-attribute))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (configuration-set-does-not-exist-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-configuration-set-does-not-exist-exception-"))
-   (configuration-set-name common-lisp:nil :type
-    (common-lisp:or configuration-set-name common-lisp:null)))
+ (common-lisp:define-condition configuration-set-does-not-exist-exception
+     (email-error)
+     ((configuration-set-name :initarg :configuration-set-name :initform
+       common-lisp:nil :reader
+       configuration-set-does-not-exist-exception-configuration-set-name)))
  (common-lisp:export
   (common-lisp:list 'configuration-set-does-not-exist-exception
-                    'make-configuration-set-does-not-exist-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          configuration-set-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          configuration-set-does-not-exist-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input
-                           'configuration-set-name))
-      (common-lisp:list
-       (common-lisp:cons "ConfigurationSetName"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          configuration-set-does-not-exist-exception))
-   common-lisp:nil))
+                    'configuration-set-does-not-exist-exception-configuration-set-name)))
 (common-lisp:deftype configuration-set-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype configuration-sets ()
@@ -1724,89 +1638,31 @@
                         ((aws-sdk/generator/shape::input event-destination))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (event-destination-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-event-destination-already-exists-exception-"))
-   (configuration-set-name common-lisp:nil :type
-    (common-lisp:or configuration-set-name common-lisp:null))
-   (event-destination-name common-lisp:nil :type
-    (common-lisp:or event-destination-name common-lisp:null)))
+ (common-lisp:define-condition event-destination-already-exists-exception
+     (email-error)
+     ((configuration-set-name :initarg :configuration-set-name :initform
+       common-lisp:nil :reader
+       event-destination-already-exists-exception-configuration-set-name)
+      (event-destination-name :initarg :event-destination-name :initform
+       common-lisp:nil :reader
+       event-destination-already-exists-exception-event-destination-name)))
  (common-lisp:export
   (common-lisp:list 'event-destination-already-exists-exception
-                    'make-event-destination-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          event-destination-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          event-destination-already-exists-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input
-                           'configuration-set-name))
-      (common-lisp:list
-       (common-lisp:cons "ConfigurationSetName"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input
-                           'event-destination-name))
-      (common-lisp:list
-       (common-lisp:cons "EventDestinationName"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          event-destination-already-exists-exception))
-   common-lisp:nil))
+                    'event-destination-already-exists-exception-configuration-set-name
+                    'event-destination-already-exists-exception-event-destination-name)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (event-destination-does-not-exist-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-event-destination-does-not-exist-exception-"))
-   (configuration-set-name common-lisp:nil :type
-    (common-lisp:or configuration-set-name common-lisp:null))
-   (event-destination-name common-lisp:nil :type
-    (common-lisp:or event-destination-name common-lisp:null)))
+ (common-lisp:define-condition event-destination-does-not-exist-exception
+     (email-error)
+     ((configuration-set-name :initarg :configuration-set-name :initform
+       common-lisp:nil :reader
+       event-destination-does-not-exist-exception-configuration-set-name)
+      (event-destination-name :initarg :event-destination-name :initform
+       common-lisp:nil :reader
+       event-destination-does-not-exist-exception-event-destination-name)))
  (common-lisp:export
   (common-lisp:list 'event-destination-does-not-exist-exception
-                    'make-event-destination-does-not-exist-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          event-destination-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          event-destination-does-not-exist-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input
-                           'configuration-set-name))
-      (common-lisp:list
-       (common-lisp:cons "ConfigurationSetName"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input
-                           'event-destination-name))
-      (common-lisp:list
-       (common-lisp:cons "EventDestinationName"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          event-destination-does-not-exist-exception))
-   common-lisp:nil))
+                    'event-destination-does-not-exist-exception-configuration-set-name
+                    'event-destination-does-not-exist-exception-event-destination-name)))
 (common-lisp:deftype event-destination-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype event-destinations ()
@@ -2522,267 +2378,78 @@
                           identity-verification-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-cloud-watch-destination-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-cloud-watch-destination-exception-"))
-   (configuration-set-name common-lisp:nil :type
-    (common-lisp:or configuration-set-name common-lisp:null))
-   (event-destination-name common-lisp:nil :type
-    (common-lisp:or event-destination-name common-lisp:null)))
+ (common-lisp:define-condition invalid-cloud-watch-destination-exception
+     (email-error)
+     ((configuration-set-name :initarg :configuration-set-name :initform
+       common-lisp:nil :reader
+       invalid-cloud-watch-destination-exception-configuration-set-name)
+      (event-destination-name :initarg :event-destination-name :initform
+       common-lisp:nil :reader
+       invalid-cloud-watch-destination-exception-event-destination-name)))
  (common-lisp:export
   (common-lisp:list 'invalid-cloud-watch-destination-exception
-                    'make-invalid-cloud-watch-destination-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-cloud-watch-destination-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-cloud-watch-destination-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input
-                           'configuration-set-name))
-      (common-lisp:list
-       (common-lisp:cons "ConfigurationSetName"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input
-                           'event-destination-name))
-      (common-lisp:list
-       (common-lisp:cons "EventDestinationName"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-cloud-watch-destination-exception))
-   common-lisp:nil))
+                    'invalid-cloud-watch-destination-exception-configuration-set-name
+                    'invalid-cloud-watch-destination-exception-event-destination-name)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-configuration-set-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-configuration-set-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-configuration-set-exception
-                    'make-invalid-configuration-set-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-configuration-set-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-configuration-set-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-configuration-set-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-configuration-set-exception
+     (email-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-configuration-set-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-firehose-destination-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-firehose-destination-exception-"))
-   (configuration-set-name common-lisp:nil :type
-    (common-lisp:or configuration-set-name common-lisp:null))
-   (event-destination-name common-lisp:nil :type
-    (common-lisp:or event-destination-name common-lisp:null)))
+ (common-lisp:define-condition invalid-firehose-destination-exception
+     (email-error)
+     ((configuration-set-name :initarg :configuration-set-name :initform
+       common-lisp:nil :reader
+       invalid-firehose-destination-exception-configuration-set-name)
+      (event-destination-name :initarg :event-destination-name :initform
+       common-lisp:nil :reader
+       invalid-firehose-destination-exception-event-destination-name)))
  (common-lisp:export
   (common-lisp:list 'invalid-firehose-destination-exception
-                    'make-invalid-firehose-destination-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-firehose-destination-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-firehose-destination-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input
-                           'configuration-set-name))
-      (common-lisp:list
-       (common-lisp:cons "ConfigurationSetName"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input
-                           'event-destination-name))
-      (common-lisp:list
-       (common-lisp:cons "EventDestinationName"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-firehose-destination-exception))
-   common-lisp:nil))
+                    'invalid-firehose-destination-exception-configuration-set-name
+                    'invalid-firehose-destination-exception-event-destination-name)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-lambda-function-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-lambda-function-exception-"))
-   (function-arn common-lisp:nil :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+ (common-lisp:define-condition invalid-lambda-function-exception
+     (email-error)
+     ((function-arn :initarg :function-arn :initform common-lisp:nil :reader
+       invalid-lambda-function-exception-function-arn)))
  (common-lisp:export
   (common-lisp:list 'invalid-lambda-function-exception
-                    'make-invalid-lambda-function-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-lambda-function-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-lambda-function-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'function-arn))
-      (common-lisp:list
-       (common-lisp:cons "FunctionArn"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-lambda-function-exception))
-   common-lisp:nil))
+                    'invalid-lambda-function-exception-function-arn)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-policy-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-policy-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-policy-exception 'make-invalid-policy-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-policy-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-policy-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-policy-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-policy-exception
+     (email-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-policy-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-s3configuration-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-s3configuration-exception-"))
-   (bucket common-lisp:nil :type
-    (common-lisp:or s3bucket-name common-lisp:null)))
+ (common-lisp:define-condition invalid-s3configuration-exception
+     (email-error)
+     ((bucket :initarg :bucket :initform common-lisp:nil :reader
+       invalid-s3configuration-exception-bucket)))
  (common-lisp:export
   (common-lisp:list 'invalid-s3configuration-exception
-                    'make-invalid-s3configuration-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-s3configuration-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-s3configuration-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'bucket))
-      (common-lisp:list
-       (common-lisp:cons "Bucket"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-s3configuration-exception))
-   common-lisp:nil))
+                    'invalid-s3configuration-exception-bucket)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-snsdestination-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-snsdestination-exception-"))
-   (configuration-set-name common-lisp:nil :type
-    (common-lisp:or configuration-set-name common-lisp:null))
-   (event-destination-name common-lisp:nil :type
-    (common-lisp:or event-destination-name common-lisp:null)))
+ (common-lisp:define-condition invalid-snsdestination-exception
+     (email-error)
+     ((configuration-set-name :initarg :configuration-set-name :initform
+       common-lisp:nil :reader
+       invalid-snsdestination-exception-configuration-set-name)
+      (event-destination-name :initarg :event-destination-name :initform
+       common-lisp:nil :reader
+       invalid-snsdestination-exception-event-destination-name)))
  (common-lisp:export
   (common-lisp:list 'invalid-snsdestination-exception
-                    'make-invalid-snsdestination-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-snsdestination-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-snsdestination-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input
-                           'configuration-set-name))
-      (common-lisp:list
-       (common-lisp:cons "ConfigurationSetName"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input
-                           'event-destination-name))
-      (common-lisp:list
-       (common-lisp:cons "EventDestinationName"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-snsdestination-exception))
-   common-lisp:nil))
+                    'invalid-snsdestination-exception-configuration-set-name
+                    'invalid-snsdestination-exception-event-destination-name)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-sns-topic-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-sns-topic-exception-"))
-   (topic common-lisp:nil :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+ (common-lisp:define-condition invalid-sns-topic-exception
+     (email-error)
+     ((topic :initarg :topic :initform common-lisp:nil :reader
+       invalid-sns-topic-exception-topic)))
  (common-lisp:export
   (common-lisp:list 'invalid-sns-topic-exception
-                    'make-invalid-sns-topic-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sns-topic-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sns-topic-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'topic))
-      (common-lisp:list
-       (common-lisp:cons "Topic"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-sns-topic-exception))
-   common-lisp:nil))
+                    'invalid-sns-topic-exception-topic)))
 (common-lisp:deftype invocation-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -2867,26 +2534,10 @@
    common-lisp:nil))
 (common-lisp:deftype last-attempt-date () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition limit-exceeded-exception
+     (email-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'limit-exceeded-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-configuration-sets-request (:copier common-lisp:nil)
@@ -3282,27 +2933,11 @@
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:deftype mail-from-domain-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (mail-from-domain-not-verified-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-mail-from-domain-not-verified-exception-")))
+ (common-lisp:define-condition mail-from-domain-not-verified-exception
+     (email-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'mail-from-domain-not-verified-exception
-                    'make-mail-from-domain-not-verified-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          mail-from-domain-not-verified-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          mail-from-domain-not-verified-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          mail-from-domain-not-verified-exception))
-   common-lisp:nil))
+  (common-lisp:list 'mail-from-domain-not-verified-exception)))
 (common-lisp:deftype max24hour-send () 'common-lisp:double-float)
 (common-lisp:deftype max-items () 'common-lisp:integer)
 (common-lisp:deftype max-send-rate () 'common-lisp:double-float)
@@ -3381,20 +3016,10 @@
    common-lisp:nil))
 (common-lisp:deftype message-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (message-rejected (:copier common-lisp:nil)
-      (:conc-name "struct-shape-message-rejected-")))
- (common-lisp:export
-  (common-lisp:list 'message-rejected 'make-message-rejected))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input message-rejected))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input message-rejected))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input message-rejected))
-   common-lisp:nil))
+ (common-lisp:define-condition message-rejected
+     (email-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'message-rejected)))
 (common-lisp:progn
  (common-lisp:defstruct
      (message-tag (:copier common-lisp:nil)
@@ -4006,68 +3631,22 @@
    common-lisp:nil))
 (common-lisp:deftype reporting-mta () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (rule-does-not-exist-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-rule-does-not-exist-exception-"))
-   (name common-lisp:nil :type
-    (common-lisp:or rule-or-rule-set-name common-lisp:null)))
+ (common-lisp:define-condition rule-does-not-exist-exception
+     (email-error)
+     ((name :initarg :name :initform common-lisp:nil :reader
+       rule-does-not-exist-exception-name)))
  (common-lisp:export
   (common-lisp:list 'rule-does-not-exist-exception
-                    'make-rule-does-not-exist-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          rule-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          rule-does-not-exist-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'name))
-      (common-lisp:list
-       (common-lisp:cons "Name"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          rule-does-not-exist-exception))
-   common-lisp:nil))
+                    'rule-does-not-exist-exception-name)))
 (common-lisp:deftype rule-or-rule-set-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (rule-set-does-not-exist-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-rule-set-does-not-exist-exception-"))
-   (name common-lisp:nil :type
-    (common-lisp:or rule-or-rule-set-name common-lisp:null)))
+ (common-lisp:define-condition rule-set-does-not-exist-exception
+     (email-error)
+     ((name :initarg :name :initform common-lisp:nil :reader
+       rule-set-does-not-exist-exception-name)))
  (common-lisp:export
   (common-lisp:list 'rule-set-does-not-exist-exception
-                    'make-rule-set-does-not-exist-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          rule-set-does-not-exist-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          rule-set-does-not-exist-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'name))
-      (common-lisp:list
-       (common-lisp:cons "Name"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          rule-set-does-not-exist-exception))
-   common-lisp:nil))
+                    'rule-set-does-not-exist-exception-name)))
 (common-lisp:progn
  (common-lisp:defstruct
      (s3action (:copier common-lisp:nil) (:conc-name "struct-shape-s3action-"))
@@ -5489,7 +5068,10 @@
                                                         "POST" "/"
                                                         "CloneReceiptRuleSet"
                                                         "2010-12-01"))
-      common-lisp:nil "CloneReceiptRuleSetResult")))
+      common-lisp:nil "CloneReceiptRuleSetResult"
+      '(("RuleSetDoesNotExistException" . rule-set-does-not-exist-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'clone-receipt-rule-set))
 (common-lisp:progn
  (common-lisp:defun create-configuration-set
@@ -5507,7 +5089,12 @@
                                                         "POST" "/"
                                                         "CreateConfigurationSet"
                                                         "2010-12-01"))
-      common-lisp:nil "CreateConfigurationSetResult")))
+      common-lisp:nil "CreateConfigurationSetResult"
+      '(("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'create-configuration-set))
 (common-lisp:progn
  (common-lisp:defun create-configuration-set-event-destination
@@ -5527,7 +5114,17 @@
                                                         "POST" "/"
                                                         "CreateConfigurationSetEventDestination"
                                                         "2010-12-01"))
-      common-lisp:nil "CreateConfigurationSetEventDestinationResult")))
+      common-lisp:nil "CreateConfigurationSetEventDestinationResult"
+      '(("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'create-configuration-set-event-destination))
 (common-lisp:progn
  (common-lisp:defun create-receipt-filter
@@ -5545,7 +5142,9 @@
                                                         "POST" "/"
                                                         "CreateReceiptFilter"
                                                         "2010-12-01"))
-      common-lisp:nil "CreateReceiptFilterResult")))
+      common-lisp:nil "CreateReceiptFilterResult"
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("AlreadyExistsException" . already-exists-exception)))))
  (common-lisp:export 'create-receipt-filter))
 (common-lisp:progn
  (common-lisp:defun create-receipt-rule
@@ -5563,7 +5162,14 @@
                                                         "POST" "/"
                                                         "CreateReceiptRule"
                                                         "2010-12-01"))
-      common-lisp:nil "CreateReceiptRuleResult")))
+      common-lisp:nil "CreateReceiptRuleResult"
+      '(("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException" . rule-set-does-not-exist-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'create-receipt-rule))
 (common-lisp:progn
  (common-lisp:defun create-receipt-rule-set
@@ -5581,7 +5187,9 @@
                                                         "POST" "/"
                                                         "CreateReceiptRuleSet"
                                                         "2010-12-01"))
-      common-lisp:nil "CreateReceiptRuleSetResult")))
+      common-lisp:nil "CreateReceiptRuleSetResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'create-receipt-rule-set))
 (common-lisp:progn
  (common-lisp:defun delete-configuration-set
@@ -5599,7 +5207,9 @@
                                                         "POST" "/"
                                                         "DeleteConfigurationSet"
                                                         "2010-12-01"))
-      common-lisp:nil "DeleteConfigurationSetResult")))
+      common-lisp:nil "DeleteConfigurationSetResult"
+      '(("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)))))
  (common-lisp:export 'delete-configuration-set))
 (common-lisp:progn
  (common-lisp:defun delete-configuration-set-event-destination
@@ -5620,7 +5230,11 @@
                                                         "POST" "/"
                                                         "DeleteConfigurationSetEventDestination"
                                                         "2010-12-01"))
-      common-lisp:nil "DeleteConfigurationSetEventDestinationResult")))
+      common-lisp:nil "DeleteConfigurationSetEventDestinationResult"
+      '(("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)))))
  (common-lisp:export 'delete-configuration-set-event-destination))
 (common-lisp:progn
  (common-lisp:defun delete-identity
@@ -5638,7 +5252,7 @@
                                                         "POST" "/"
                                                         "DeleteIdentity"
                                                         "2010-12-01"))
-      common-lisp:nil "DeleteIdentityResult")))
+      common-lisp:nil "DeleteIdentityResult" 'common-lisp:nil)))
  (common-lisp:export 'delete-identity))
 (common-lisp:progn
  (common-lisp:defun delete-identity-policy
@@ -5656,7 +5270,7 @@
                                                         "POST" "/"
                                                         "DeleteIdentityPolicy"
                                                         "2010-12-01"))
-      common-lisp:nil "DeleteIdentityPolicyResult")))
+      common-lisp:nil "DeleteIdentityPolicyResult" 'common-lisp:nil)))
  (common-lisp:export 'delete-identity-policy))
 (common-lisp:progn
  (common-lisp:defun delete-receipt-filter
@@ -5674,7 +5288,7 @@
                                                         "POST" "/"
                                                         "DeleteReceiptFilter"
                                                         "2010-12-01"))
-      common-lisp:nil "DeleteReceiptFilterResult")))
+      common-lisp:nil "DeleteReceiptFilterResult" 'common-lisp:nil)))
  (common-lisp:export 'delete-receipt-filter))
 (common-lisp:progn
  (common-lisp:defun delete-receipt-rule
@@ -5692,7 +5306,9 @@
                                                         "POST" "/"
                                                         "DeleteReceiptRule"
                                                         "2010-12-01"))
-      common-lisp:nil "DeleteReceiptRuleResult")))
+      common-lisp:nil "DeleteReceiptRuleResult"
+      '(("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'delete-receipt-rule))
 (common-lisp:progn
  (common-lisp:defun delete-receipt-rule-set
@@ -5710,7 +5326,8 @@
                                                         "POST" "/"
                                                         "DeleteReceiptRuleSet"
                                                         "2010-12-01"))
-      common-lisp:nil "DeleteReceiptRuleSetResult")))
+      common-lisp:nil "DeleteReceiptRuleSetResult"
+      '(("CannotDeleteException" . cannot-delete-exception)))))
  (common-lisp:export 'delete-receipt-rule-set))
 (common-lisp:progn
  (common-lisp:defun delete-verified-email-address
@@ -5729,7 +5346,7 @@
                                                         "POST" "/"
                                                         "DeleteVerifiedEmailAddress"
                                                         "2010-12-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'delete-verified-email-address))
 (common-lisp:progn
  (common-lisp:defun describe-active-receipt-rule-set ()
@@ -5738,7 +5355,7 @@
      (common-lisp:make-instance 'email-request :method "POST" :path "/" :params
                                 `(("Action" ,@"DescribeActiveReceiptRuleSet")
                                   ("Version" ,@"2010-12-01"))))
-    common-lisp:nil "DescribeActiveReceiptRuleSetResult"))
+    common-lisp:nil "DescribeActiveReceiptRuleSetResult" 'common-lisp:nil))
  (common-lisp:export 'describe-active-receipt-rule-set))
 (common-lisp:progn
  (common-lisp:defun describe-configuration-set
@@ -5760,7 +5377,9 @@
                                                         "POST" "/"
                                                         "DescribeConfigurationSet"
                                                         "2010-12-01"))
-      common-lisp:nil "DescribeConfigurationSetResult")))
+      common-lisp:nil "DescribeConfigurationSetResult"
+      '(("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)))))
  (common-lisp:export 'describe-configuration-set))
 (common-lisp:progn
  (common-lisp:defun describe-receipt-rule
@@ -5778,7 +5397,10 @@
                                                         "POST" "/"
                                                         "DescribeReceiptRule"
                                                         "2010-12-01"))
-      common-lisp:nil "DescribeReceiptRuleResult")))
+      common-lisp:nil "DescribeReceiptRuleResult"
+      '(("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'describe-receipt-rule))
 (common-lisp:progn
  (common-lisp:defun describe-receipt-rule-set
@@ -5797,7 +5419,9 @@
                                                         "POST" "/"
                                                         "DescribeReceiptRuleSet"
                                                         "2010-12-01"))
-      common-lisp:nil "DescribeReceiptRuleSetResult")))
+      common-lisp:nil "DescribeReceiptRuleSetResult"
+      '(("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'describe-receipt-rule-set))
 (common-lisp:progn
  (common-lisp:defun get-identity-dkim-attributes
@@ -5816,7 +5440,7 @@
                                                         "POST" "/"
                                                         "GetIdentityDkimAttributes"
                                                         "2010-12-01"))
-      common-lisp:nil "GetIdentityDkimAttributesResult")))
+      common-lisp:nil "GetIdentityDkimAttributesResult" 'common-lisp:nil)))
  (common-lisp:export 'get-identity-dkim-attributes))
 (common-lisp:progn
  (common-lisp:defun get-identity-mail-from-domain-attributes
@@ -5835,7 +5459,8 @@
                                                         "POST" "/"
                                                         "GetIdentityMailFromDomainAttributes"
                                                         "2010-12-01"))
-      common-lisp:nil "GetIdentityMailFromDomainAttributesResult")))
+      common-lisp:nil "GetIdentityMailFromDomainAttributesResult"
+      'common-lisp:nil)))
  (common-lisp:export 'get-identity-mail-from-domain-attributes))
 (common-lisp:progn
  (common-lisp:defun get-identity-notification-attributes
@@ -5854,7 +5479,8 @@
                                                         "POST" "/"
                                                         "GetIdentityNotificationAttributes"
                                                         "2010-12-01"))
-      common-lisp:nil "GetIdentityNotificationAttributesResult")))
+      common-lisp:nil "GetIdentityNotificationAttributesResult"
+      'common-lisp:nil)))
  (common-lisp:export 'get-identity-notification-attributes))
 (common-lisp:progn
  (common-lisp:defun get-identity-policies
@@ -5872,7 +5498,7 @@
                                                         "POST" "/"
                                                         "GetIdentityPolicies"
                                                         "2010-12-01"))
-      common-lisp:nil "GetIdentityPoliciesResult")))
+      common-lisp:nil "GetIdentityPoliciesResult" 'common-lisp:nil)))
  (common-lisp:export 'get-identity-policies))
 (common-lisp:progn
  (common-lisp:defun get-identity-verification-attributes
@@ -5891,7 +5517,8 @@
                                                         "POST" "/"
                                                         "GetIdentityVerificationAttributes"
                                                         "2010-12-01"))
-      common-lisp:nil "GetIdentityVerificationAttributesResult")))
+      common-lisp:nil "GetIdentityVerificationAttributesResult"
+      'common-lisp:nil)))
  (common-lisp:export 'get-identity-verification-attributes))
 (common-lisp:progn
  (common-lisp:defun get-send-quota ()
@@ -5900,7 +5527,7 @@
      (common-lisp:make-instance 'email-request :method "POST" :path "/" :params
                                 `(("Action" ,@"GetSendQuota")
                                   ("Version" ,@"2010-12-01"))))
-    common-lisp:nil "GetSendQuotaResult"))
+    common-lisp:nil "GetSendQuotaResult" 'common-lisp:nil))
  (common-lisp:export 'get-send-quota))
 (common-lisp:progn
  (common-lisp:defun get-send-statistics ()
@@ -5909,7 +5536,7 @@
      (common-lisp:make-instance 'email-request :method "POST" :path "/" :params
                                 `(("Action" ,@"GetSendStatistics")
                                   ("Version" ,@"2010-12-01"))))
-    common-lisp:nil "GetSendStatisticsResult"))
+    common-lisp:nil "GetSendStatisticsResult" 'common-lisp:nil))
  (common-lisp:export 'get-send-statistics))
 (common-lisp:progn
  (common-lisp:defun list-configuration-sets
@@ -5927,7 +5554,7 @@
                                                         "POST" "/"
                                                         "ListConfigurationSets"
                                                         "2010-12-01"))
-      common-lisp:nil "ListConfigurationSetsResult")))
+      common-lisp:nil "ListConfigurationSetsResult" 'common-lisp:nil)))
  (common-lisp:export 'list-configuration-sets))
 (common-lisp:progn
  (common-lisp:defun list-identities
@@ -5946,7 +5573,7 @@
                                                         "POST" "/"
                                                         "ListIdentities"
                                                         "2010-12-01"))
-      common-lisp:nil "ListIdentitiesResult")))
+      common-lisp:nil "ListIdentitiesResult" 'common-lisp:nil)))
  (common-lisp:export 'list-identities))
 (common-lisp:progn
  (common-lisp:defun list-identity-policies
@@ -5964,7 +5591,7 @@
                                                         "POST" "/"
                                                         "ListIdentityPolicies"
                                                         "2010-12-01"))
-      common-lisp:nil "ListIdentityPoliciesResult")))
+      common-lisp:nil "ListIdentityPoliciesResult" 'common-lisp:nil)))
  (common-lisp:export 'list-identity-policies))
 (common-lisp:progn
  (common-lisp:defun list-receipt-filters ()
@@ -5973,7 +5600,7 @@
      (common-lisp:make-instance 'email-request :method "POST" :path "/" :params
                                 `(("Action" ,@"ListReceiptFilters")
                                   ("Version" ,@"2010-12-01"))))
-    common-lisp:nil "ListReceiptFiltersResult"))
+    common-lisp:nil "ListReceiptFiltersResult" 'common-lisp:nil))
  (common-lisp:export 'list-receipt-filters))
 (common-lisp:progn
  (common-lisp:defun list-receipt-rule-sets
@@ -5991,7 +5618,7 @@
                                                         "POST" "/"
                                                         "ListReceiptRuleSets"
                                                         "2010-12-01"))
-      common-lisp:nil "ListReceiptRuleSetsResult")))
+      common-lisp:nil "ListReceiptRuleSetsResult" 'common-lisp:nil)))
  (common-lisp:export 'list-receipt-rule-sets))
 (common-lisp:progn
  (common-lisp:defun list-verified-email-addresses ()
@@ -6000,7 +5627,7 @@
      (common-lisp:make-instance 'email-request :method "POST" :path "/" :params
                                 `(("Action" ,@"ListVerifiedEmailAddresses")
                                   ("Version" ,@"2010-12-01"))))
-    common-lisp:nil "ListVerifiedEmailAddressesResult"))
+    common-lisp:nil "ListVerifiedEmailAddressesResult" 'common-lisp:nil))
  (common-lisp:export 'list-verified-email-addresses))
 (common-lisp:progn
  (common-lisp:defun put-identity-policy
@@ -6018,7 +5645,8 @@
                                                         "POST" "/"
                                                         "PutIdentityPolicy"
                                                         "2010-12-01"))
-      common-lisp:nil "PutIdentityPolicyResult")))
+      common-lisp:nil "PutIdentityPolicyResult"
+      '(("InvalidPolicyException" . invalid-policy-exception)))))
  (common-lisp:export 'put-identity-policy))
 (common-lisp:progn
  (common-lisp:defun reorder-receipt-rule-set
@@ -6036,7 +5664,9 @@
                                                         "POST" "/"
                                                         "ReorderReceiptRuleSet"
                                                         "2010-12-01"))
-      common-lisp:nil "ReorderReceiptRuleSetResult")))
+      common-lisp:nil "ReorderReceiptRuleSetResult"
+      '(("RuleSetDoesNotExistException" . rule-set-does-not-exist-exception)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)))))
  (common-lisp:export 'reorder-receipt-rule-set))
 (common-lisp:progn
  (common-lisp:defun send-bounce
@@ -6057,7 +5687,8 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "SendBounce"
                                                         "2010-12-01"))
-      common-lisp:nil "SendBounceResult")))
+      common-lisp:nil "SendBounceResult"
+      '(("MessageRejected" . message-rejected)))))
  (common-lisp:export 'send-bounce))
 (common-lisp:progn
  (common-lisp:defun send-email
@@ -6078,7 +5709,12 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "SendEmail"
                                                         "2010-12-01"))
-      common-lisp:nil "SendEmailResult")))
+      common-lisp:nil "SendEmailResult"
+      '(("MessageRejected" . message-rejected)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)))))
  (common-lisp:export 'send-email))
 (common-lisp:progn
  (common-lisp:defun send-raw-email
@@ -6099,7 +5735,12 @@
                                                         "POST" "/"
                                                         "SendRawEmail"
                                                         "2010-12-01"))
-      common-lisp:nil "SendRawEmailResult")))
+      common-lisp:nil "SendRawEmailResult"
+      '(("MessageRejected" . message-rejected)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)))))
  (common-lisp:export 'send-raw-email))
 (common-lisp:progn
  (common-lisp:defun set-active-receipt-rule-set
@@ -6118,7 +5759,9 @@
                                                         "POST" "/"
                                                         "SetActiveReceiptRuleSet"
                                                         "2010-12-01"))
-      common-lisp:nil "SetActiveReceiptRuleSetResult")))
+      common-lisp:nil "SetActiveReceiptRuleSetResult"
+      '(("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'set-active-receipt-rule-set))
 (common-lisp:progn
  (common-lisp:defun set-identity-dkim-enabled
@@ -6137,7 +5780,7 @@
                                                         "POST" "/"
                                                         "SetIdentityDkimEnabled"
                                                         "2010-12-01"))
-      common-lisp:nil "SetIdentityDkimEnabledResult")))
+      common-lisp:nil "SetIdentityDkimEnabledResult" 'common-lisp:nil)))
  (common-lisp:export 'set-identity-dkim-enabled))
 (common-lisp:progn
  (common-lisp:defun set-identity-feedback-forwarding-enabled
@@ -6156,7 +5799,8 @@
                                                         "POST" "/"
                                                         "SetIdentityFeedbackForwardingEnabled"
                                                         "2010-12-01"))
-      common-lisp:nil "SetIdentityFeedbackForwardingEnabledResult")))
+      common-lisp:nil "SetIdentityFeedbackForwardingEnabledResult"
+      'common-lisp:nil)))
  (common-lisp:export 'set-identity-feedback-forwarding-enabled))
 (common-lisp:progn
  (common-lisp:defun set-identity-headers-in-notifications-enabled
@@ -6176,7 +5820,8 @@
                                                         "POST" "/"
                                                         "SetIdentityHeadersInNotificationsEnabled"
                                                         "2010-12-01"))
-      common-lisp:nil "SetIdentityHeadersInNotificationsEnabledResult")))
+      common-lisp:nil "SetIdentityHeadersInNotificationsEnabledResult"
+      'common-lisp:nil)))
  (common-lisp:export 'set-identity-headers-in-notifications-enabled))
 (common-lisp:progn
  (common-lisp:defun set-identity-mail-from-domain
@@ -6197,7 +5842,7 @@
                                                         "POST" "/"
                                                         "SetIdentityMailFromDomain"
                                                         "2010-12-01"))
-      common-lisp:nil "SetIdentityMailFromDomainResult")))
+      common-lisp:nil "SetIdentityMailFromDomainResult" 'common-lisp:nil)))
  (common-lisp:export 'set-identity-mail-from-domain))
 (common-lisp:progn
  (common-lisp:defun set-identity-notification-topic
@@ -6217,7 +5862,7 @@
                                                         "POST" "/"
                                                         "SetIdentityNotificationTopic"
                                                         "2010-12-01"))
-      common-lisp:nil "SetIdentityNotificationTopicResult")))
+      common-lisp:nil "SetIdentityNotificationTopicResult" 'common-lisp:nil)))
  (common-lisp:export 'set-identity-notification-topic))
 (common-lisp:progn
  (common-lisp:defun set-receipt-rule-position
@@ -6236,7 +5881,9 @@
                                                         "POST" "/"
                                                         "SetReceiptRulePosition"
                                                         "2010-12-01"))
-      common-lisp:nil "SetReceiptRulePositionResult")))
+      common-lisp:nil "SetReceiptRulePositionResult"
+      '(("RuleSetDoesNotExistException" . rule-set-does-not-exist-exception)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)))))
  (common-lisp:export 'set-receipt-rule-position))
 (common-lisp:progn
  (common-lisp:defun update-configuration-set-event-destination
@@ -6256,7 +5903,17 @@
                                                         "POST" "/"
                                                         "UpdateConfigurationSetEventDestination"
                                                         "2010-12-01"))
-      common-lisp:nil "UpdateConfigurationSetEventDestinationResult")))
+      common-lisp:nil "UpdateConfigurationSetEventDestinationResult"
+      '(("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidSNSDestinationException"
+         . invalid-snsdestination-exception)))))
  (common-lisp:export 'update-configuration-set-event-destination))
 (common-lisp:progn
  (common-lisp:defun update-receipt-rule
@@ -6274,7 +5931,13 @@
                                                         "POST" "/"
                                                         "UpdateReceiptRule"
                                                         "2010-12-01"))
-      common-lisp:nil "UpdateReceiptRuleResult")))
+      common-lisp:nil "UpdateReceiptRuleResult"
+      '(("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("RuleSetDoesNotExistException" . rule-set-does-not-exist-exception)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'update-receipt-rule))
 (common-lisp:progn
  (common-lisp:defun verify-domain-dkim
@@ -6292,7 +5955,7 @@
                                                         "POST" "/"
                                                         "VerifyDomainDkim"
                                                         "2010-12-01"))
-      common-lisp:nil "VerifyDomainDkimResult")))
+      common-lisp:nil "VerifyDomainDkimResult" 'common-lisp:nil)))
  (common-lisp:export 'verify-domain-dkim))
 (common-lisp:progn
  (common-lisp:defun verify-domain-identity
@@ -6310,7 +5973,7 @@
                                                         "POST" "/"
                                                         "VerifyDomainIdentity"
                                                         "2010-12-01"))
-      common-lisp:nil "VerifyDomainIdentityResult")))
+      common-lisp:nil "VerifyDomainIdentityResult" 'common-lisp:nil)))
  (common-lisp:export 'verify-domain-identity))
 (common-lisp:progn
  (common-lisp:defun verify-email-address
@@ -6328,7 +5991,7 @@
                                                         "POST" "/"
                                                         "VerifyEmailAddress"
                                                         "2010-12-01"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
  (common-lisp:export 'verify-email-address))
 (common-lisp:progn
  (common-lisp:defun verify-email-identity
@@ -6346,5 +6009,5 @@
                                                         "POST" "/"
                                                         "VerifyEmailIdentity"
                                                         "2010-12-01"))
-      common-lisp:nil "VerifyEmailIdentityResult")))
+      common-lisp:nil "VerifyEmailIdentityResult" 'common-lisp:nil)))
  (common-lisp:export 'verify-email-identity))

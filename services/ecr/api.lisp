@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/ecr/api)
 (common-lisp:progn
  (common-lisp:defclass ecr-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "ecr"))
  (common-lisp:export 'ecr-request))
+(common-lisp:progn
+ (common-lisp:define-condition ecr-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'ecr-error))
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -937,35 +943,12 @@
                           describe-repositories-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (empty-upload-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-empty-upload-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition empty-upload-exception
+     (ecr-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       empty-upload-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'empty-upload-exception 'make-empty-upload-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          empty-upload-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          empty-upload-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          empty-upload-exception))
-   common-lisp:nil))
+  (common-lisp:list 'empty-upload-exception 'empty-upload-exception-message)))
 (common-lisp:deftype exception-message () 'common-lisp:string)
 (common-lisp:deftype expiration-timestamp () 'common-lisp:string)
 (common-lisp:deftype force-flag () 'common-lisp:boolean)
@@ -1267,36 +1250,13 @@
                         ((aws-sdk/generator/shape::input image))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (image-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-image-already-exists-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition image-already-exists-exception
+     (ecr-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       image-already-exists-exception-message)))
  (common-lisp:export
   (common-lisp:list 'image-already-exists-exception
-                    'make-image-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          image-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          image-already-exists-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          image-already-exists-exception))
-   common-lisp:nil))
+                    'image-already-exists-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (image-detail (:copier common-lisp:nil)
@@ -1475,36 +1435,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype image-manifest () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (image-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-image-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition image-not-found-exception
+     (ecr-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       image-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'image-not-found-exception
-                    'make-image-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          image-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          image-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          image-not-found-exception))
-   common-lisp:nil))
+                    'image-not-found-exception-message)))
 (common-lisp:deftype image-size-in-bytes () 'common-lisp:integer)
 (common-lisp:deftype image-tag () 'common-lisp:string)
 (common-lisp:progn
@@ -1595,134 +1532,41 @@
                           initiate-layer-upload-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-layer-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-layer-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition invalid-layer-exception
+     (ecr-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-layer-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'invalid-layer-exception 'make-invalid-layer-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-layer-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-layer-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-layer-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-layer-exception 'invalid-layer-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-layer-part-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-layer-part-exception-"))
-   (registry-id common-lisp:nil :type
-    (common-lisp:or registry-id common-lisp:null))
-   (repository-name common-lisp:nil :type
-    (common-lisp:or repository-name common-lisp:null))
-   (upload-id common-lisp:nil :type
-    (common-lisp:or upload-id common-lisp:null))
-   (last-valid-byte-received common-lisp:nil :type
-    (common-lisp:or part-size common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition invalid-layer-part-exception
+     (ecr-error)
+     ((registry-id :initarg :registry-id :initform common-lisp:nil :reader
+       invalid-layer-part-exception-registry-id)
+      (repository-name :initarg :repository-name :initform common-lisp:nil
+       :reader invalid-layer-part-exception-repository-name)
+      (upload-id :initarg :upload-id :initform common-lisp:nil :reader
+       invalid-layer-part-exception-upload-id)
+      (last-valid-byte-received :initarg :last-valid-byte-received :initform
+       common-lisp:nil :reader
+       invalid-layer-part-exception-last-valid-byte-received)
+      (message :initarg :message :initform common-lisp:nil :reader
+       invalid-layer-part-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-layer-part-exception
-                    'make-invalid-layer-part-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-layer-part-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-layer-part-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'registry-id))
-      (common-lisp:list
-       (common-lisp:cons "registryId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'repository-name))
-      (common-lisp:list
-       (common-lisp:cons "repositoryName"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'upload-id))
-      (common-lisp:list
-       (common-lisp:cons "uploadId"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input
-                           'last-valid-byte-received))
-      (common-lisp:list
-       (common-lisp:cons "lastValidByteReceived"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-layer-part-exception))
-   common-lisp:nil))
+                    'invalid-layer-part-exception-registry-id
+                    'invalid-layer-part-exception-repository-name
+                    'invalid-layer-part-exception-upload-id
+                    'invalid-layer-part-exception-last-valid-byte-received
+                    'invalid-layer-part-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition invalid-parameter-exception
+     (ecr-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-parameter-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-exception
-                    'make-invalid-parameter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-parameter-exception))
-   common-lisp:nil))
+                    'invalid-parameter-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (layer (:copier common-lisp:nil) (:conc-name "struct-shape-layer-"))
@@ -1773,36 +1617,13 @@
                         ((aws-sdk/generator/shape::input layer))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (layer-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-layer-already-exists-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition layer-already-exists-exception
+     (ecr-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       layer-already-exists-exception-message)))
  (common-lisp:export
   (common-lisp:list 'layer-already-exists-exception
-                    'make-layer-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          layer-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          layer-already-exists-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          layer-already-exists-exception))
-   common-lisp:nil))
+                    'layer-already-exists-exception-message)))
 (common-lisp:deftype layer-availability () 'common-lisp:string)
 (common-lisp:deftype layer-digest () 'common-lisp:string)
 (common-lisp:progn
@@ -1865,36 +1686,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype layer-failure-reason () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (layer-inaccessible-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-layer-inaccessible-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition layer-inaccessible-exception
+     (ecr-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       layer-inaccessible-exception-message)))
  (common-lisp:export
   (common-lisp:list 'layer-inaccessible-exception
-                    'make-layer-inaccessible-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          layer-inaccessible-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          layer-inaccessible-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          layer-inaccessible-exception))
-   common-lisp:nil))
+                    'layer-inaccessible-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype layer-list () '(trivial-types:proper-list layer))
  (common-lisp:defun |make-layer-list|
@@ -1905,98 +1703,30 @@
 (common-lisp:deftype layer-part-blob ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (layer-part-too-small-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-layer-part-too-small-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition layer-part-too-small-exception
+     (ecr-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       layer-part-too-small-exception-message)))
  (common-lisp:export
   (common-lisp:list 'layer-part-too-small-exception
-                    'make-layer-part-too-small-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          layer-part-too-small-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          layer-part-too-small-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          layer-part-too-small-exception))
-   common-lisp:nil))
+                    'layer-part-too-small-exception-message)))
 (common-lisp:deftype layer-size-in-bytes () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (layers-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-layers-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition layers-not-found-exception
+     (ecr-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       layers-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'layers-not-found-exception
-                    'make-layers-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          layers-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          layers-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          layers-not-found-exception))
-   common-lisp:nil))
+                    'layers-not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (ecr-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception
+                    'limit-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-images-filter (:copier common-lisp:nil)
@@ -2261,36 +1991,13 @@
                         ((aws-sdk/generator/shape::input repository))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (repository-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-repository-already-exists-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition repository-already-exists-exception
+     (ecr-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       repository-already-exists-exception-message)))
  (common-lisp:export
   (common-lisp:list 'repository-already-exists-exception
-                    'make-repository-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-already-exists-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-already-exists-exception))
-   common-lisp:nil))
+                    'repository-already-exists-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype repository-list ()
    '(trivial-types:proper-list repository))
@@ -2309,123 +2016,37 @@
                            (trivial-types:proper-list repository-name))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (repository-not-empty-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-repository-not-empty-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition repository-not-empty-exception
+     (ecr-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       repository-not-empty-exception-message)))
  (common-lisp:export
   (common-lisp:list 'repository-not-empty-exception
-                    'make-repository-not-empty-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-not-empty-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-not-empty-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-not-empty-exception))
-   common-lisp:nil))
+                    'repository-not-empty-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (repository-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-repository-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition repository-not-found-exception
+     (ecr-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       repository-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'repository-not-found-exception
-                    'make-repository-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-not-found-exception))
-   common-lisp:nil))
+                    'repository-not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (repository-policy-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-repository-policy-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition repository-policy-not-found-exception
+     (ecr-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       repository-policy-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'repository-policy-not-found-exception
-                    'make-repository-policy-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-policy-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-policy-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          repository-policy-not-found-exception))
-   common-lisp:nil))
+                    'repository-policy-not-found-exception-message)))
 (common-lisp:deftype repository-policy-text () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (server-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-server-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition server-exception
+     (ecr-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       server-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'server-exception 'make-server-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input server-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input server-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input server-exception))
-   common-lisp:nil))
+  (common-lisp:list 'server-exception 'server-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (set-repository-policy-request (:copier common-lisp:nil)
@@ -2669,36 +2290,13 @@
                           upload-layer-part-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (upload-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-upload-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or exception-message common-lisp:null)))
+ (common-lisp:define-condition upload-not-found-exception
+     (ecr-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       upload-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'upload-not-found-exception
-                    'make-upload-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          upload-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          upload-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          upload-not-found-exception))
-   common-lisp:nil))
+                    'upload-not-found-exception-message)))
 (common-lisp:deftype url () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defun batch-check-layer-availability
@@ -2719,7 +2317,10 @@
                                                         "POST" "/"
                                                         "BatchCheckLayerAvailability"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("RepositoryNotFoundException" . repository-not-found-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ServerException" . server-exception)))))
  (common-lisp:export 'batch-check-layer-availability))
 (common-lisp:progn
  (common-lisp:defun batch-delete-image
@@ -2738,7 +2339,10 @@
                                                         "POST" "/"
                                                         "BatchDeleteImage"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("RepositoryNotFoundException" . repository-not-found-exception)))))
  (common-lisp:export 'batch-delete-image))
 (common-lisp:progn
  (common-lisp:defun batch-get-image
@@ -2759,7 +2363,10 @@
                                                         "POST" "/"
                                                         "BatchGetImage"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("RepositoryNotFoundException" . repository-not-found-exception)))))
  (common-lisp:export 'batch-get-image))
 (common-lisp:progn
  (common-lisp:defun complete-layer-upload
@@ -2780,7 +2387,15 @@
                                                         "POST" "/"
                                                         "CompleteLayerUpload"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("RepositoryNotFoundException" . repository-not-found-exception)
+        ("UploadNotFoundException" . upload-not-found-exception)
+        ("InvalidLayerException" . invalid-layer-exception)
+        ("LayerPartTooSmallException" . layer-part-too-small-exception)
+        ("LayerAlreadyExistsException" . layer-already-exists-exception)
+        ("EmptyUploadException" . empty-upload-exception)))))
  (common-lisp:export 'complete-layer-upload))
 (common-lisp:progn
  (common-lisp:defun create-repository
@@ -2798,7 +2413,12 @@
                                                         "POST" "/"
                                                         "CreateRepository"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("RepositoryAlreadyExistsException"
+         . repository-already-exists-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'create-repository))
 (common-lisp:progn
  (common-lisp:defun delete-repository
@@ -2817,7 +2437,11 @@
                                                         "POST" "/"
                                                         "DeleteRepository"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("RepositoryNotFoundException" . repository-not-found-exception)
+        ("RepositoryNotEmptyException" . repository-not-empty-exception)))))
  (common-lisp:export 'delete-repository))
 (common-lisp:progn
  (common-lisp:defun delete-repository-policy
@@ -2835,7 +2459,12 @@
                                                         "POST" "/"
                                                         "DeleteRepositoryPolicy"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("RepositoryNotFoundException" . repository-not-found-exception)
+        ("RepositoryPolicyNotFoundException"
+         . repository-policy-not-found-exception)))))
  (common-lisp:export 'delete-repository-policy))
 (common-lisp:progn
  (common-lisp:defun describe-images
@@ -2856,7 +2485,11 @@
                                                         "POST" "/"
                                                         "DescribeImages"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("RepositoryNotFoundException" . repository-not-found-exception)
+        ("ImageNotFoundException" . image-not-found-exception)))))
  (common-lisp:export 'describe-images))
 (common-lisp:progn
  (common-lisp:defun describe-repositories
@@ -2877,7 +2510,10 @@
                                                         "POST" "/"
                                                         "DescribeRepositories"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("RepositoryNotFoundException" . repository-not-found-exception)))))
  (common-lisp:export 'describe-repositories))
 (common-lisp:progn
  (common-lisp:defun get-authorization-token
@@ -2895,7 +2531,9 @@
                                                         "POST" "/"
                                                         "GetAuthorizationToken"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)))))
  (common-lisp:export 'get-authorization-token))
 (common-lisp:progn
  (common-lisp:defun get-download-url-for-layer
@@ -2915,7 +2553,12 @@
                                                         "POST" "/"
                                                         "GetDownloadUrlForLayer"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("LayersNotFoundException" . layers-not-found-exception)
+        ("LayerInaccessibleException" . layer-inaccessible-exception)
+        ("RepositoryNotFoundException" . repository-not-found-exception)))))
  (common-lisp:export 'get-download-url-for-layer))
 (common-lisp:progn
  (common-lisp:defun get-repository-policy
@@ -2933,7 +2576,12 @@
                                                         "POST" "/"
                                                         "GetRepositoryPolicy"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("RepositoryNotFoundException" . repository-not-found-exception)
+        ("RepositoryPolicyNotFoundException"
+         . repository-policy-not-found-exception)))))
  (common-lisp:export 'get-repository-policy))
 (common-lisp:progn
  (common-lisp:defun initiate-layer-upload
@@ -2951,7 +2599,10 @@
                                                         "POST" "/"
                                                         "InitiateLayerUpload"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("RepositoryNotFoundException" . repository-not-found-exception)))))
  (common-lisp:export 'initiate-layer-upload))
 (common-lisp:progn
  (common-lisp:defun list-images
@@ -2971,7 +2622,10 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListImages"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("RepositoryNotFoundException" . repository-not-found-exception)))))
  (common-lisp:export 'list-images))
 (common-lisp:progn
  (common-lisp:defun put-image
@@ -2991,7 +2645,13 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "PutImage"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("RepositoryNotFoundException" . repository-not-found-exception)
+        ("ImageAlreadyExistsException" . image-already-exists-exception)
+        ("LayersNotFoundException" . layers-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'put-image))
 (common-lisp:progn
  (common-lisp:defun set-repository-policy
@@ -3011,7 +2671,10 @@
                                                         "POST" "/"
                                                         "SetRepositoryPolicy"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("RepositoryNotFoundException" . repository-not-found-exception)))))
  (common-lisp:export 'set-repository-policy))
 (common-lisp:progn
  (common-lisp:defun upload-layer-part
@@ -3032,5 +2695,11 @@
                                                         "POST" "/"
                                                         "UploadLayerPart"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ServerException" . server-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidLayerPartException" . invalid-layer-part-exception)
+        ("RepositoryNotFoundException" . repository-not-found-exception)
+        ("UploadNotFoundException" . upload-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'upload-layer-part))

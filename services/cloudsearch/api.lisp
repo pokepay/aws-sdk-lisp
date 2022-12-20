@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/cloudsearch/api)
 (common-lisp:progn
  (common-lisp:defclass cloudsearch-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "cloudsearch"))
  (common-lisp:export 'cloudsearch-request))
+(common-lisp:progn
+ (common-lisp:define-condition cloudsearch-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'cloudsearch-error))
 (common-lisp:deftype apiversion () 'common-lisp:string)
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
@@ -249,36 +255,15 @@
                           availability-options-status))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (base-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-base-exception-"))
-   (code common-lisp:nil :type (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
- (common-lisp:export (common-lisp:list 'base-exception 'make-base-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input base-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input base-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'code))
-      (common-lisp:list
-       (common-lisp:cons "Code"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "Message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input base-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition base-exception
+     (cloudsearch-error)
+     ((code :initarg :code :initform common-lisp:nil :reader
+       base-exception-code)
+      (message :initarg :message :initform common-lisp:nil :reader
+       base-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'base-exception 'base-exception-code
+                    'base-exception-message)))
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -1739,27 +1724,10 @@
                           describe-suggesters-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disabled-operation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-disabled-operation-exception-")))
- (common-lisp:export
-  (common-lisp:list 'disabled-operation-exception
-                    'make-disabled-operation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          disabled-operation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          disabled-operation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          disabled-operation-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition disabled-operation-exception
+     (cloudsearch-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'disabled-operation-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (document-suggester-options (:copier common-lisp:nil)
@@ -2554,41 +2522,15 @@
                         ((aws-sdk/generator/shape::input int-options))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-exception-")))
- (common-lisp:export
-  (common-lisp:list 'internal-exception 'make-internal-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input internal-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input internal-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input internal-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition internal-exception
+     (cloudsearch-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'internal-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-type-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-type-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-type-exception 'make-invalid-type-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-type-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-type-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-type-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-type-exception
+     (cloudsearch-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-type-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (lat-lon-options (:copier common-lisp:nil)
@@ -2658,26 +2600,10 @@
                         ((aws-sdk/generator/shape::input lat-lon-options))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition limit-exceeded-exception
+     (cloudsearch-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'limit-exceeded-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (limits (:copier common-lisp:nil) (:conc-name "struct-shape-limits-"))
@@ -2946,27 +2872,10 @@
 (common-lisp:deftype partition-instance-type () 'common-lisp:string)
 (common-lisp:deftype policy-document () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition resource-not-found-exception
+     (cloudsearch-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-not-found-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (scaling-parameters (:copier common-lisp:nil)
@@ -3525,7 +3434,10 @@
                                                         "POST" "/"
                                                         "BuildSuggesters"
                                                         "2013-01-01"))
-      common-lisp:nil "BuildSuggestersResult")))
+      common-lisp:nil "BuildSuggestersResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'build-suggesters))
 (common-lisp:progn
  (common-lisp:defun create-domain
@@ -3543,7 +3455,10 @@
                                                         "POST" "/"
                                                         "CreateDomain"
                                                         "2013-01-01"))
-      common-lisp:nil "CreateDomainResult")))
+      common-lisp:nil "CreateDomainResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("LimitExceededException" . limit-exceeded-exception)))))
  (common-lisp:export 'create-domain))
 (common-lisp:progn
  (common-lisp:defun define-analysis-scheme
@@ -3561,7 +3476,12 @@
                                                         "POST" "/"
                                                         "DefineAnalysisScheme"
                                                         "2013-01-01"))
-      common-lisp:nil "DefineAnalysisSchemeResult")))
+      common-lisp:nil "DefineAnalysisSchemeResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'define-analysis-scheme))
 (common-lisp:progn
  (common-lisp:defun define-expression
@@ -3579,7 +3499,12 @@
                                                         "POST" "/"
                                                         "DefineExpression"
                                                         "2013-01-01"))
-      common-lisp:nil "DefineExpressionResult")))
+      common-lisp:nil "DefineExpressionResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'define-expression))
 (common-lisp:progn
  (common-lisp:defun define-index-field
@@ -3597,7 +3522,12 @@
                                                         "POST" "/"
                                                         "DefineIndexField"
                                                         "2013-01-01"))
-      common-lisp:nil "DefineIndexFieldResult")))
+      common-lisp:nil "DefineIndexFieldResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'define-index-field))
 (common-lisp:progn
  (common-lisp:defun define-suggester
@@ -3615,7 +3545,12 @@
                                                         "POST" "/"
                                                         "DefineSuggester"
                                                         "2013-01-01"))
-      common-lisp:nil "DefineSuggesterResult")))
+      common-lisp:nil "DefineSuggesterResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'define-suggester))
 (common-lisp:progn
  (common-lisp:defun delete-analysis-scheme
@@ -3634,7 +3569,11 @@
                                                         "POST" "/"
                                                         "DeleteAnalysisScheme"
                                                         "2013-01-01"))
-      common-lisp:nil "DeleteAnalysisSchemeResult")))
+      common-lisp:nil "DeleteAnalysisSchemeResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'delete-analysis-scheme))
 (common-lisp:progn
  (common-lisp:defun delete-domain
@@ -3652,7 +3591,9 @@
                                                         "POST" "/"
                                                         "DeleteDomain"
                                                         "2013-01-01"))
-      common-lisp:nil "DeleteDomainResult")))
+      common-lisp:nil "DeleteDomainResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)))))
  (common-lisp:export 'delete-domain))
 (common-lisp:progn
  (common-lisp:defun delete-expression
@@ -3670,7 +3611,11 @@
                                                         "POST" "/"
                                                         "DeleteExpression"
                                                         "2013-01-01"))
-      common-lisp:nil "DeleteExpressionResult")))
+      common-lisp:nil "DeleteExpressionResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'delete-expression))
 (common-lisp:progn
  (common-lisp:defun delete-index-field
@@ -3688,7 +3633,11 @@
                                                         "POST" "/"
                                                         "DeleteIndexField"
                                                         "2013-01-01"))
-      common-lisp:nil "DeleteIndexFieldResult")))
+      common-lisp:nil "DeleteIndexFieldResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'delete-index-field))
 (common-lisp:progn
  (common-lisp:defun delete-suggester
@@ -3706,7 +3655,11 @@
                                                         "POST" "/"
                                                         "DeleteSuggester"
                                                         "2013-01-01"))
-      common-lisp:nil "DeleteSuggesterResult")))
+      common-lisp:nil "DeleteSuggesterResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'delete-suggester))
 (common-lisp:progn
  (common-lisp:defun describe-analysis-schemes
@@ -3727,7 +3680,10 @@
                                                         "POST" "/"
                                                         "DescribeAnalysisSchemes"
                                                         "2013-01-01"))
-      common-lisp:nil "DescribeAnalysisSchemesResult")))
+      common-lisp:nil "DescribeAnalysisSchemesResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-analysis-schemes))
 (common-lisp:progn
  (common-lisp:defun describe-availability-options
@@ -3746,7 +3702,13 @@
                                                         "POST" "/"
                                                         "DescribeAvailabilityOptions"
                                                         "2013-01-01"))
-      common-lisp:nil "DescribeAvailabilityOptionsResult")))
+      common-lisp:nil "DescribeAvailabilityOptionsResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("DisabledOperationException" . disabled-operation-exception)))))
  (common-lisp:export 'describe-availability-options))
 (common-lisp:progn
  (common-lisp:defun describe-domains
@@ -3764,7 +3726,9 @@
                                                         "POST" "/"
                                                         "DescribeDomains"
                                                         "2013-01-01"))
-      common-lisp:nil "DescribeDomainsResult")))
+      common-lisp:nil "DescribeDomainsResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)))))
  (common-lisp:export 'describe-domains))
 (common-lisp:progn
  (common-lisp:defun describe-expressions
@@ -3783,7 +3747,10 @@
                                                         "POST" "/"
                                                         "DescribeExpressions"
                                                         "2013-01-01"))
-      common-lisp:nil "DescribeExpressionsResult")))
+      common-lisp:nil "DescribeExpressionsResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-expressions))
 (common-lisp:progn
  (common-lisp:defun describe-index-fields
@@ -3802,7 +3769,10 @@
                                                         "POST" "/"
                                                         "DescribeIndexFields"
                                                         "2013-01-01"))
-      common-lisp:nil "DescribeIndexFieldsResult")))
+      common-lisp:nil "DescribeIndexFieldsResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-index-fields))
 (common-lisp:progn
  (common-lisp:defun describe-scaling-parameters
@@ -3821,7 +3791,10 @@
                                                         "POST" "/"
                                                         "DescribeScalingParameters"
                                                         "2013-01-01"))
-      common-lisp:nil "DescribeScalingParametersResult")))
+      common-lisp:nil "DescribeScalingParametersResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-scaling-parameters))
 (common-lisp:progn
  (common-lisp:defun describe-service-access-policies
@@ -3840,7 +3813,10 @@
                                                         "POST" "/"
                                                         "DescribeServiceAccessPolicies"
                                                         "2013-01-01"))
-      common-lisp:nil "DescribeServiceAccessPoliciesResult")))
+      common-lisp:nil "DescribeServiceAccessPoliciesResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-service-access-policies))
 (common-lisp:progn
  (common-lisp:defun describe-suggesters
@@ -3859,7 +3835,10 @@
                                                         "POST" "/"
                                                         "DescribeSuggesters"
                                                         "2013-01-01"))
-      common-lisp:nil "DescribeSuggestersResult")))
+      common-lisp:nil "DescribeSuggestersResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-suggesters))
 (common-lisp:progn
  (common-lisp:defun index-documents
@@ -3877,7 +3856,10 @@
                                                         "POST" "/"
                                                         "IndexDocuments"
                                                         "2013-01-01"))
-      common-lisp:nil "IndexDocumentsResult")))
+      common-lisp:nil "IndexDocumentsResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'index-documents))
 (common-lisp:progn
  (common-lisp:defun list-domain-names ()
@@ -3887,7 +3869,8 @@
                                 :params
                                 `(("Action" ,@"ListDomainNames")
                                   ("Version" ,@"2013-01-01"))))
-    common-lisp:nil "ListDomainNamesResult"))
+    common-lisp:nil "ListDomainNamesResult"
+    '(("BaseException" . base-exception))))
  (common-lisp:export 'list-domain-names))
 (common-lisp:progn
  (common-lisp:defun update-availability-options
@@ -3906,7 +3889,13 @@
                                                         "POST" "/"
                                                         "UpdateAvailabilityOptions"
                                                         "2013-01-01"))
-      common-lisp:nil "UpdateAvailabilityOptionsResult")))
+      common-lisp:nil "UpdateAvailabilityOptionsResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("DisabledOperationException" . disabled-operation-exception)))))
  (common-lisp:export 'update-availability-options))
 (common-lisp:progn
  (common-lisp:defun update-scaling-parameters
@@ -3925,7 +3914,12 @@
                                                         "POST" "/"
                                                         "UpdateScalingParameters"
                                                         "2013-01-01"))
-      common-lisp:nil "UpdateScalingParametersResult")))
+      common-lisp:nil "UpdateScalingParametersResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidTypeException" . invalid-type-exception)))))
  (common-lisp:export 'update-scaling-parameters))
 (common-lisp:progn
  (common-lisp:defun update-service-access-policies
@@ -3944,5 +3938,10 @@
                                                         "POST" "/"
                                                         "UpdateServiceAccessPolicies"
                                                         "2013-01-01"))
-      common-lisp:nil "UpdateServiceAccessPoliciesResult")))
+      common-lisp:nil "UpdateServiceAccessPoliciesResult"
+      '(("BaseException" . base-exception)
+        ("InternalException" . internal-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidTypeException" . invalid-type-exception)))))
  (common-lisp:export 'update-service-access-policies))

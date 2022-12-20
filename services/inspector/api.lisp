@@ -6,62 +6,33 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/inspector/api)
 (common-lisp:progn
  (common-lisp:defclass inspector-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "inspector"))
  (common-lisp:export 'inspector-request))
+(common-lisp:progn
+ (common-lisp:define-condition inspector-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'inspector-error))
 (common-lisp:deftype access-denied-error-code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (access-denied-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-access-denied-exception-"))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or error-message common-lisp:null))
-   (error-code (common-lisp:error ":errorcode is required") :type
-    (common-lisp:or access-denied-error-code common-lisp:null))
-   (can-retry (common-lisp:error ":canretry is required") :type
-    (common-lisp:or bool common-lisp:null)))
+ (common-lisp:define-condition access-denied-exception
+     (inspector-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       access-denied-exception-message)
+      (error-code :initarg :error-code :initform common-lisp:nil :reader
+       access-denied-exception-error-code)
+      (can-retry :initarg :can-retry :initform common-lisp:nil :reader
+       access-denied-exception-can-retry)))
  (common-lisp:export
-  (common-lisp:list 'access-denied-exception 'make-access-denied-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "errorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'can-retry))
-      (common-lisp:list
-       (common-lisp:cons "canRetry"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          access-denied-exception))
-   common-lisp:nil))
+  (common-lisp:list 'access-denied-exception 'access-denied-exception-message
+                    'access-denied-exception-error-code
+                    'access-denied-exception-can-retry)))
 (common-lisp:progn
  (common-lisp:defstruct
      (add-attributes-to-findings-request (:copier common-lisp:nil)
@@ -289,63 +260,22 @@
                            (trivial-types:proper-list agent-preview))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (agents-already-running-assessment-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-agents-already-running-assessment-exception-"))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or error-message common-lisp:null))
-   (agents (common-lisp:error ":agents is required") :type
-    (common-lisp:or agent-already-running-assessment-list common-lisp:null))
-   (agents-truncated (common-lisp:error ":agentstruncated is required") :type
-    (common-lisp:or bool common-lisp:null))
-   (can-retry (common-lisp:error ":canretry is required") :type
-    (common-lisp:or bool common-lisp:null)))
+ (common-lisp:define-condition agents-already-running-assessment-exception
+     (inspector-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       agents-already-running-assessment-exception-message)
+      (agents :initarg :agents :initform common-lisp:nil :reader
+       agents-already-running-assessment-exception-agents)
+      (agents-truncated :initarg :agents-truncated :initform common-lisp:nil
+       :reader agents-already-running-assessment-exception-agents-truncated)
+      (can-retry :initarg :can-retry :initform common-lisp:nil :reader
+       agents-already-running-assessment-exception-can-retry)))
  (common-lisp:export
   (common-lisp:list 'agents-already-running-assessment-exception
-                    'make-agents-already-running-assessment-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          agents-already-running-assessment-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          agents-already-running-assessment-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'agents))
-      (common-lisp:list
-       (common-lisp:cons "agents"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'agents-truncated))
-      (common-lisp:list
-       (common-lisp:cons "agentsTruncated"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'can-retry))
-      (common-lisp:list
-       (common-lisp:cons "canRetry"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          agents-already-running-assessment-exception))
-   common-lisp:nil))
+                    'agents-already-running-assessment-exception-message
+                    'agents-already-running-assessment-exception-agents
+                    'agents-already-running-assessment-exception-agents-truncated
+                    'agents-already-running-assessment-exception-can-retry)))
 (common-lisp:deftype ami-id () 'common-lisp:string)
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
@@ -700,66 +630,24 @@
                            (trivial-types:proper-list arn))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (assessment-run-in-progress-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-assessment-run-in-progress-exception-"))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or error-message common-lisp:null))
-   (assessment-run-arns (common-lisp:error ":assessmentrunarns is required")
-    :type
-    (common-lisp:or assessment-run-in-progress-arn-list common-lisp:null))
-   (assessment-run-arns-truncated
-    (common-lisp:error ":assessmentrunarnstruncated is required") :type
-    (common-lisp:or bool common-lisp:null))
-   (can-retry (common-lisp:error ":canretry is required") :type
-    (common-lisp:or bool common-lisp:null)))
+ (common-lisp:define-condition assessment-run-in-progress-exception
+     (inspector-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       assessment-run-in-progress-exception-message)
+      (assessment-run-arns :initarg :assessment-run-arns :initform
+       common-lisp:nil :reader
+       assessment-run-in-progress-exception-assessment-run-arns)
+      (assessment-run-arns-truncated :initarg :assessment-run-arns-truncated
+       :initform common-lisp:nil :reader
+       assessment-run-in-progress-exception-assessment-run-arns-truncated)
+      (can-retry :initarg :can-retry :initform common-lisp:nil :reader
+       assessment-run-in-progress-exception-can-retry)))
  (common-lisp:export
   (common-lisp:list 'assessment-run-in-progress-exception
-                    'make-assessment-run-in-progress-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          assessment-run-in-progress-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          assessment-run-in-progress-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'assessment-run-arns))
-      (common-lisp:list
-       (common-lisp:cons "assessmentRunArns"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input
-                           'assessment-run-arns-truncated))
-      (common-lisp:list
-       (common-lisp:cons "assessmentRunArnsTruncated"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'can-retry))
-      (common-lisp:list
-       (common-lisp:cons "canRetry"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          assessment-run-in-progress-exception))
-   common-lisp:nil))
+                    'assessment-run-in-progress-exception-message
+                    'assessment-run-in-progress-exception-assessment-run-arns
+                    'assessment-run-in-progress-exception-assessment-run-arns-truncated
+                    'assessment-run-in-progress-exception-can-retry)))
 (common-lisp:progn
  (common-lisp:deftype assessment-run-list ()
    '(trivial-types:proper-list assessment-run))
@@ -2719,138 +2607,45 @@
                           inspector-service-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-exception-"))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or error-message common-lisp:null))
-   (can-retry (common-lisp:error ":canretry is required") :type
-    (common-lisp:or bool common-lisp:null)))
+ (common-lisp:define-condition internal-exception
+     (inspector-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-exception-message)
+      (can-retry :initarg :can-retry :initform common-lisp:nil :reader
+       internal-exception-can-retry)))
  (common-lisp:export
-  (common-lisp:list 'internal-exception 'make-internal-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input internal-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input internal-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'can-retry))
-      (common-lisp:list
-       (common-lisp:cons "canRetry"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input internal-exception))
-   common-lisp:nil))
+  (common-lisp:list 'internal-exception 'internal-exception-message
+                    'internal-exception-can-retry)))
 (common-lisp:deftype invalid-cross-account-role-error-code ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-cross-account-role-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-cross-account-role-exception-"))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or error-message common-lisp:null))
-   (error-code (common-lisp:error ":errorcode is required") :type
-    (common-lisp:or invalid-cross-account-role-error-code common-lisp:null))
-   (can-retry (common-lisp:error ":canretry is required") :type
-    (common-lisp:or bool common-lisp:null)))
+ (common-lisp:define-condition invalid-cross-account-role-exception
+     (inspector-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-cross-account-role-exception-message)
+      (error-code :initarg :error-code :initform common-lisp:nil :reader
+       invalid-cross-account-role-exception-error-code)
+      (can-retry :initarg :can-retry :initform common-lisp:nil :reader
+       invalid-cross-account-role-exception-can-retry)))
  (common-lisp:export
   (common-lisp:list 'invalid-cross-account-role-exception
-                    'make-invalid-cross-account-role-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-cross-account-role-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-cross-account-role-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "errorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'can-retry))
-      (common-lisp:list
-       (common-lisp:cons "canRetry"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-cross-account-role-exception))
-   common-lisp:nil))
+                    'invalid-cross-account-role-exception-message
+                    'invalid-cross-account-role-exception-error-code
+                    'invalid-cross-account-role-exception-can-retry)))
 (common-lisp:deftype invalid-input-error-code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-input-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-input-exception-"))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or error-message common-lisp:null))
-   (error-code (common-lisp:error ":errorcode is required") :type
-    (common-lisp:or invalid-input-error-code common-lisp:null))
-   (can-retry (common-lisp:error ":canretry is required") :type
-    (common-lisp:or bool common-lisp:null)))
+ (common-lisp:define-condition invalid-input-exception
+     (inspector-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-input-exception-message)
+      (error-code :initarg :error-code :initform common-lisp:nil :reader
+       invalid-input-exception-error-code)
+      (can-retry :initarg :can-retry :initform common-lisp:nil :reader
+       invalid-input-exception-can-retry)))
  (common-lisp:export
-  (common-lisp:list 'invalid-input-exception 'make-invalid-input-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "errorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'can-retry))
-      (common-lisp:list
-       (common-lisp:cons "canRetry"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-input-exception))
-   common-lisp:nil))
+  (common-lisp:list 'invalid-input-exception 'invalid-input-exception-message
+                    'invalid-input-exception-error-code
+                    'invalid-input-exception-can-retry)))
 (common-lisp:deftype ioc-confidence () 'common-lisp:integer)
 (common-lisp:deftype ipv4address () 'common-lisp:string)
 (common-lisp:progn
@@ -2863,53 +2658,18 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype limit-exceeded-error-code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or error-message common-lisp:null))
-   (error-code (common-lisp:error ":errorcode is required") :type
-    (common-lisp:or limit-exceeded-error-code common-lisp:null))
-   (can-retry (common-lisp:error ":canretry is required") :type
-    (common-lisp:or bool common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (inspector-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)
+      (error-code :initarg :error-code :initform common-lisp:nil :reader
+       limit-exceeded-exception-error-code)
+      (can-retry :initarg :can-retry :initform common-lisp:nil :reader
+       limit-exceeded-exception-can-retry)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "errorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'can-retry))
-      (common-lisp:list
-       (common-lisp:cons "canRetry"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception 'limit-exceeded-exception-message
+                    'limit-exceeded-exception-error-code
+                    'limit-exceeded-exception-can-retry)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-assessment-run-agents-request (:copier common-lisp:nil)
@@ -3652,53 +3412,18 @@
 (common-lisp:deftype name-pattern () 'common-lisp:string)
 (common-lisp:deftype no-such-entity-error-code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (no-such-entity-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-no-such-entity-exception-"))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or error-message common-lisp:null))
-   (error-code (common-lisp:error ":errorcode is required") :type
-    (common-lisp:or no-such-entity-error-code common-lisp:null))
-   (can-retry (common-lisp:error ":canretry is required") :type
-    (common-lisp:or bool common-lisp:null)))
+ (common-lisp:define-condition no-such-entity-exception
+     (inspector-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       no-such-entity-exception-message)
+      (error-code :initarg :error-code :initform common-lisp:nil :reader
+       no-such-entity-exception-error-code)
+      (can-retry :initarg :can-retry :initform common-lisp:nil :reader
+       no-such-entity-exception-can-retry)))
  (common-lisp:export
-  (common-lisp:list 'no-such-entity-exception 'make-no-such-entity-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-entity-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-entity-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'error-code))
-      (common-lisp:list
-       (common-lisp:cons "errorCode"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'can-retry))
-      (common-lisp:list
-       (common-lisp:cons "canRetry"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          no-such-entity-exception))
-   common-lisp:nil))
+  (common-lisp:list 'no-such-entity-exception 'no-such-entity-exception-message
+                    'no-such-entity-exception-error-code
+                    'no-such-entity-exception-can-retry)))
 (common-lisp:deftype numeric-severity () 'common-lisp:double-float)
 (common-lisp:deftype numeric-version () 'common-lisp:integer)
 (common-lisp:deftype pagination-token () 'common-lisp:string)
@@ -4492,45 +4217,16 @@
                           unsubscribe-from-event-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unsupported-feature-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unsupported-feature-exception-"))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or error-message common-lisp:null))
-   (can-retry (common-lisp:error ":canretry is required") :type
-    (common-lisp:or bool common-lisp:null)))
+ (common-lisp:define-condition unsupported-feature-exception
+     (inspector-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unsupported-feature-exception-message)
+      (can-retry :initarg :can-retry :initform common-lisp:nil :reader
+       unsupported-feature-exception-can-retry)))
  (common-lisp:export
   (common-lisp:list 'unsupported-feature-exception
-                    'make-unsupported-feature-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-feature-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-feature-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'can-retry))
-      (common-lisp:list
-       (common-lisp:cons "canRetry"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unsupported-feature-exception))
-   common-lisp:nil))
+                    'unsupported-feature-exception-message
+                    'unsupported-feature-exception-can-retry)))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-assessment-target-request (:copier common-lisp:nil)
@@ -4619,7 +4315,11 @@
                                                         "POST" "/"
                                                         "AddAttributesToFindings"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'add-attributes-to-findings))
 (common-lisp:progn
  (common-lisp:defun create-assessment-target
@@ -4639,7 +4339,12 @@
                                                         "POST" "/"
                                                         "CreateAssessmentTarget"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'create-assessment-target))
 (common-lisp:progn
  (common-lisp:defun create-assessment-template
@@ -4662,7 +4367,12 @@
                                                         "POST" "/"
                                                         "CreateAssessmentTemplate"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'create-assessment-template))
 (common-lisp:progn
  (common-lisp:defun create-resource-group
@@ -4680,7 +4390,11 @@
                                                         "POST" "/"
                                                         "CreateResourceGroup"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)))))
  (common-lisp:export 'create-resource-group))
 (common-lisp:progn
  (common-lisp:defun delete-assessment-run
@@ -4698,7 +4412,13 @@
                                                         "POST" "/"
                                                         "DeleteAssessmentRun"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'delete-assessment-run))
 (common-lisp:progn
  (common-lisp:defun delete-assessment-target
@@ -4716,7 +4436,13 @@
                                                         "POST" "/"
                                                         "DeleteAssessmentTarget"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'delete-assessment-target))
 (common-lisp:progn
  (common-lisp:defun delete-assessment-template
@@ -4735,7 +4461,13 @@
                                                         "POST" "/"
                                                         "DeleteAssessmentTemplate"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'delete-assessment-template))
 (common-lisp:progn
  (common-lisp:defun describe-assessment-runs
@@ -4753,7 +4485,9 @@
                                                         "POST" "/"
                                                         "DescribeAssessmentRuns"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)))))
  (common-lisp:export 'describe-assessment-runs))
 (common-lisp:progn
  (common-lisp:defun describe-assessment-targets
@@ -4772,7 +4506,9 @@
                                                         "POST" "/"
                                                         "DescribeAssessmentTargets"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)))))
  (common-lisp:export 'describe-assessment-targets))
 (common-lisp:progn
  (common-lisp:defun describe-assessment-templates
@@ -4791,7 +4527,9 @@
                                                         "POST" "/"
                                                         "DescribeAssessmentTemplates"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)))))
  (common-lisp:export 'describe-assessment-templates))
 (common-lisp:progn
  (common-lisp:defun describe-cross-account-access-role ()
@@ -4801,7 +4539,8 @@
                                 :params
                                 `(("Action" ,@"DescribeCrossAccountAccessRole")
                                   ("Version" ,@"2016-02-16"))))
-    common-lisp:nil common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("InternalException" . internal-exception))))
  (common-lisp:export 'describe-cross-account-access-role))
 (common-lisp:progn
  (common-lisp:defun describe-findings
@@ -4819,7 +4558,9 @@
                                                         "POST" "/"
                                                         "DescribeFindings"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)))))
  (common-lisp:export 'describe-findings))
 (common-lisp:progn
  (common-lisp:defun describe-resource-groups
@@ -4837,7 +4578,9 @@
                                                         "POST" "/"
                                                         "DescribeResourceGroups"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)))))
  (common-lisp:export 'describe-resource-groups))
 (common-lisp:progn
  (common-lisp:defun describe-rules-packages
@@ -4855,7 +4598,9 @@
                                                         "POST" "/"
                                                         "DescribeRulesPackages"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)))))
  (common-lisp:export 'describe-rules-packages))
 (common-lisp:progn
  (common-lisp:defun get-assessment-report
@@ -4875,7 +4620,14 @@
                                                         "POST" "/"
                                                         "GetAssessmentReport"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'get-assessment-report))
 (common-lisp:progn
  (common-lisp:defun get-telemetry-metadata
@@ -4893,7 +4645,11 @@
                                                         "POST" "/"
                                                         "GetTelemetryMetadata"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'get-telemetry-metadata))
 (common-lisp:progn
  (common-lisp:defun list-assessment-run-agents
@@ -4914,7 +4670,11 @@
                                                         "POST" "/"
                                                         "ListAssessmentRunAgents"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'list-assessment-run-agents))
 (common-lisp:progn
  (common-lisp:defun list-assessment-runs
@@ -4935,7 +4695,11 @@
                                                         "POST" "/"
                                                         "ListAssessmentRuns"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'list-assessment-runs))
 (common-lisp:progn
  (common-lisp:defun list-assessment-targets
@@ -4953,7 +4717,10 @@
                                                         "POST" "/"
                                                         "ListAssessmentTargets"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AccessDeniedException" . access-denied-exception)))))
  (common-lisp:export 'list-assessment-targets))
 (common-lisp:progn
  (common-lisp:defun list-assessment-templates
@@ -4975,7 +4742,11 @@
                                                         "POST" "/"
                                                         "ListAssessmentTemplates"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'list-assessment-templates))
 (common-lisp:progn
  (common-lisp:defun list-event-subscriptions
@@ -4994,7 +4765,11 @@
                                                         "POST" "/"
                                                         "ListEventSubscriptions"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'list-event-subscriptions))
 (common-lisp:progn
  (common-lisp:defun list-findings
@@ -5014,7 +4789,11 @@
                                                         "POST" "/"
                                                         "ListFindings"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'list-findings))
 (common-lisp:progn
  (common-lisp:defun list-rules-packages
@@ -5032,7 +4811,10 @@
                                                         "POST" "/"
                                                         "ListRulesPackages"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AccessDeniedException" . access-denied-exception)))))
  (common-lisp:export 'list-rules-packages))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-resource
@@ -5050,7 +4832,11 @@
                                                         "POST" "/"
                                                         "ListTagsForResource"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
  (common-lisp:defun preview-agents
@@ -5070,7 +4856,13 @@
                                                         "POST" "/"
                                                         "PreviewAgents"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)))))
  (common-lisp:export 'preview-agents))
 (common-lisp:progn
  (common-lisp:defun register-cross-account-access-role
@@ -5089,7 +4881,12 @@
                                                         "POST" "/"
                                                         "RegisterCrossAccountAccessRole"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)))))
  (common-lisp:export 'register-cross-account-access-role))
 (common-lisp:progn
  (common-lisp:defun remove-attributes-from-findings
@@ -5108,7 +4905,11 @@
                                                         "POST" "/"
                                                         "RemoveAttributesFromFindings"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'remove-attributes-from-findings))
 (common-lisp:progn
  (common-lisp:defun set-tags-for-resource
@@ -5126,7 +4927,11 @@
                                                         "POST" "/"
                                                         "SetTagsForResource"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'set-tags-for-resource))
 (common-lisp:progn
  (common-lisp:defun start-assessment-run
@@ -5146,7 +4951,16 @@
                                                         "POST" "/"
                                                         "StartAssessmentRun"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)))))
  (common-lisp:export 'start-assessment-run))
 (common-lisp:progn
  (common-lisp:defun stop-assessment-run
@@ -5164,7 +4978,11 @@
                                                         "POST" "/"
                                                         "StopAssessmentRun"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'stop-assessment-run))
 (common-lisp:progn
  (common-lisp:defun subscribe-to-event
@@ -5182,7 +5000,12 @@
                                                         "POST" "/"
                                                         "SubscribeToEvent"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'subscribe-to-event))
 (common-lisp:progn
  (common-lisp:defun unsubscribe-from-event
@@ -5200,7 +5023,11 @@
                                                         "POST" "/"
                                                         "UnsubscribeFromEvent"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'unsubscribe-from-event))
 (common-lisp:progn
  (common-lisp:defun update-assessment-target
@@ -5221,5 +5048,9 @@
                                                         "POST" "/"
                                                         "UpdateAssessmentTarget"
                                                         "2016-02-16"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalException" . internal-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)))))
  (common-lisp:export 'update-assessment-target))

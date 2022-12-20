@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/swf/api)
 (common-lisp:progn
  (common-lisp:defclass swf-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "swf"))
  (common-lisp:export 'swf-request))
+(common-lisp:progn
+ (common-lisp:define-condition swf-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'swf-error))
 (common-lisp:deftype activity-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -2266,35 +2272,12 @@
 (common-lisp:deftype decision-task-timeout-type () 'common-lisp:string)
 (common-lisp:deftype decision-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (default-undefined-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-default-undefined-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition default-undefined-fault
+     (swf-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       default-undefined-fault-message)))
  (common-lisp:export
-  (common-lisp:list 'default-undefined-fault 'make-default-undefined-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          default-undefined-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          default-undefined-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          default-undefined-fault))
-   common-lisp:nil))
+  (common-lisp:list 'default-undefined-fault 'default-undefined-fault-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (deprecate-activity-type-input (:copier common-lisp:nil)
@@ -2557,36 +2540,13 @@
    common-lisp:nil))
 (common-lisp:deftype description () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (domain-already-exists-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-domain-already-exists-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition domain-already-exists-fault
+     (swf-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       domain-already-exists-fault-message)))
  (common-lisp:export
   (common-lisp:list 'domain-already-exists-fault
-                    'make-domain-already-exists-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          domain-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          domain-already-exists-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          domain-already-exists-fault))
-   common-lisp:nil))
+                    'domain-already-exists-fault-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (domain-configuration (:copier common-lisp:nil)
@@ -2614,35 +2574,12 @@
                         ((aws-sdk/generator/shape::input domain-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (domain-deprecated-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-domain-deprecated-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition domain-deprecated-fault
+     (swf-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       domain-deprecated-fault-message)))
  (common-lisp:export
-  (common-lisp:list 'domain-deprecated-fault 'make-domain-deprecated-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          domain-deprecated-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          domain-deprecated-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          domain-deprecated-fault))
-   common-lisp:nil))
+  (common-lisp:list 'domain-deprecated-fault 'domain-deprecated-fault-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (domain-detail (:copier common-lisp:nil)
@@ -3980,29 +3917,12 @@
    common-lisp:nil))
 (common-lisp:deftype lambda-function-timeout-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-fault
+     (swf-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-fault-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-fault 'make-limit-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input limit-exceeded-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input limit-exceeded-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input limit-exceeded-fault))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-fault 'limit-exceeded-fault-message)))
 (common-lisp:deftype limited-data () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -4465,36 +4385,13 @@
 (common-lisp:deftype name () 'common-lisp:string)
 (common-lisp:deftype open-decision-tasks-count () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (operation-not-permitted-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-operation-not-permitted-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition operation-not-permitted-fault
+     (swf-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       operation-not-permitted-fault-message)))
  (common-lisp:export
   (common-lisp:list 'operation-not-permitted-fault
-                    'make-operation-not-permitted-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-not-permitted-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-not-permitted-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          operation-not-permitted-fault))
-   common-lisp:nil))
+                    'operation-not-permitted-fault-message)))
 (common-lisp:deftype page-size () 'common-lisp:integer)
 (common-lisp:deftype page-token () 'common-lisp:string)
 (common-lisp:progn
@@ -7096,96 +6993,27 @@
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:deftype truncated () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (type-already-exists-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-type-already-exists-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition type-already-exists-fault
+     (swf-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       type-already-exists-fault-message)))
  (common-lisp:export
   (common-lisp:list 'type-already-exists-fault
-                    'make-type-already-exists-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          type-already-exists-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          type-already-exists-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          type-already-exists-fault))
-   common-lisp:nil))
+                    'type-already-exists-fault-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (type-deprecated-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-type-deprecated-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition type-deprecated-fault
+     (swf-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       type-deprecated-fault-message)))
  (common-lisp:export
-  (common-lisp:list 'type-deprecated-fault 'make-type-deprecated-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          type-deprecated-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          type-deprecated-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          type-deprecated-fault))
-   common-lisp:nil))
+  (common-lisp:list 'type-deprecated-fault 'type-deprecated-fault-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unknown-resource-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unknown-resource-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition unknown-resource-fault
+     (swf-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unknown-resource-fault-message)))
  (common-lisp:export
-  (common-lisp:list 'unknown-resource-fault 'make-unknown-resource-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          unknown-resource-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          unknown-resource-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          unknown-resource-fault))
-   common-lisp:nil))
+  (common-lisp:list 'unknown-resource-fault 'unknown-resource-fault-message)))
 (common-lisp:deftype version () 'common-lisp:string)
 (common-lisp:deftype version-optional () 'common-lisp:string)
 (common-lisp:progn
@@ -7222,36 +7050,13 @@
                         ((aws-sdk/generator/shape::input workflow-execution))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-execution-already-started-fault (:copier common-lisp:nil)
-      (:conc-name "struct-shape-workflow-execution-already-started-fault-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition workflow-execution-already-started-fault
+     (swf-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       workflow-execution-already-started-fault-message)))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-already-started-fault
-                    'make-workflow-execution-already-started-fault))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          workflow-execution-already-started-fault))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          workflow-execution-already-started-fault))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          workflow-execution-already-started-fault))
-   common-lisp:nil))
+                    'workflow-execution-already-started-fault-message)))
 (common-lisp:deftype workflow-execution-cancel-requested-cause ()
   'common-lisp:string)
 (common-lisp:progn
@@ -8601,7 +8406,9 @@
                                                         "POST" "/"
                                                         "CountClosedWorkflowExecutions"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'count-closed-workflow-executions))
 (common-lisp:progn
  (common-lisp:defun count-open-workflow-executions
@@ -8623,7 +8430,9 @@
                                                         "POST" "/"
                                                         "CountOpenWorkflowExecutions"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'count-open-workflow-executions))
 (common-lisp:progn
  (common-lisp:defun count-pending-activity-tasks
@@ -8642,7 +8451,9 @@
                                                         "POST" "/"
                                                         "CountPendingActivityTasks"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'count-pending-activity-tasks))
 (common-lisp:progn
  (common-lisp:defun count-pending-decision-tasks
@@ -8661,7 +8472,9 @@
                                                         "POST" "/"
                                                         "CountPendingDecisionTasks"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'count-pending-decision-tasks))
 (common-lisp:progn
  (common-lisp:defun deprecate-activity-type
@@ -8679,7 +8492,10 @@
                                                         "POST" "/"
                                                         "DeprecateActivityType"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("TypeDeprecatedFault" . type-deprecated-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'deprecate-activity-type))
 (common-lisp:progn
  (common-lisp:defun deprecate-domain
@@ -8697,7 +8513,10 @@
                                                         "POST" "/"
                                                         "DeprecateDomain"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("DomainDeprecatedFault" . domain-deprecated-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'deprecate-domain))
 (common-lisp:progn
  (common-lisp:defun deprecate-workflow-type
@@ -8715,7 +8534,10 @@
                                                         "POST" "/"
                                                         "DeprecateWorkflowType"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("TypeDeprecatedFault" . type-deprecated-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'deprecate-workflow-type))
 (common-lisp:progn
  (common-lisp:defun describe-activity-type
@@ -8733,7 +8555,9 @@
                                                         "POST" "/"
                                                         "DescribeActivityType"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'describe-activity-type))
 (common-lisp:progn
  (common-lisp:defun describe-domain
@@ -8751,7 +8575,9 @@
                                                         "POST" "/"
                                                         "DescribeDomain"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'describe-domain))
 (common-lisp:progn
  (common-lisp:defun describe-workflow-execution
@@ -8770,7 +8596,9 @@
                                                         "POST" "/"
                                                         "DescribeWorkflowExecution"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'describe-workflow-execution))
 (common-lisp:progn
  (common-lisp:defun describe-workflow-type
@@ -8788,7 +8616,9 @@
                                                         "POST" "/"
                                                         "DescribeWorkflowType"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'describe-workflow-type))
 (common-lisp:progn
  (common-lisp:defun get-workflow-execution-history
@@ -8810,7 +8640,9 @@
                                                         "POST" "/"
                                                         "GetWorkflowExecutionHistory"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'get-workflow-execution-history))
 (common-lisp:progn
  (common-lisp:defun list-activity-types
@@ -8831,7 +8663,9 @@
                                                         "POST" "/"
                                                         "ListActivityTypes"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("OperationNotPermittedFault" . operation-not-permitted-fault)
+        ("UnknownResourceFault" . unknown-resource-fault)))))
  (common-lisp:export 'list-activity-types))
 (common-lisp:progn
  (common-lisp:defun list-closed-workflow-executions
@@ -8856,7 +8690,9 @@
                                                         "POST" "/"
                                                         "ListClosedWorkflowExecutions"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'list-closed-workflow-executions))
 (common-lisp:progn
  (common-lisp:defun list-domains
@@ -8877,7 +8713,8 @@
                                                         "POST" "/"
                                                         "ListDomains"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'list-domains))
 (common-lisp:progn
  (common-lisp:defun list-open-workflow-executions
@@ -8900,7 +8737,9 @@
                                                         "POST" "/"
                                                         "ListOpenWorkflowExecutions"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'list-open-workflow-executions))
 (common-lisp:progn
  (common-lisp:defun list-workflow-types
@@ -8921,7 +8760,9 @@
                                                         "POST" "/"
                                                         "ListWorkflowTypes"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("OperationNotPermittedFault" . operation-not-permitted-fault)
+        ("UnknownResourceFault" . unknown-resource-fault)))))
  (common-lisp:export 'list-workflow-types))
 (common-lisp:progn
  (common-lisp:defun poll-for-activity-task
@@ -8939,7 +8780,10 @@
                                                         "POST" "/"
                                                         "PollForActivityTask"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)))))
  (common-lisp:export 'poll-for-activity-task))
 (common-lisp:progn
  (common-lisp:defun poll-for-decision-task
@@ -8960,7 +8804,10 @@
                                                         "POST" "/"
                                                         "PollForDecisionTask"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)))))
  (common-lisp:export 'poll-for-decision-task))
 (common-lisp:progn
  (common-lisp:defun record-activity-task-heartbeat
@@ -8979,7 +8826,9 @@
                                                         "POST" "/"
                                                         "RecordActivityTaskHeartbeat"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'record-activity-task-heartbeat))
 (common-lisp:progn
  (common-lisp:defun register-activity-type
@@ -9007,7 +8856,11 @@
                                                         "POST" "/"
                                                         "RegisterActivityType"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("TypeAlreadyExistsFault" . type-already-exists-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'register-activity-type))
 (common-lisp:progn
  (common-lisp:defun register-domain
@@ -9028,7 +8881,10 @@
                                                         "POST" "/"
                                                         "RegisterDomain"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("DomainAlreadyExistsFault" . domain-already-exists-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'register-domain))
 (common-lisp:progn
  (common-lisp:defun register-workflow-type
@@ -9054,7 +8910,11 @@
                                                         "POST" "/"
                                                         "RegisterWorkflowType"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("TypeAlreadyExistsFault" . type-already-exists-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'register-workflow-type))
 (common-lisp:progn
  (common-lisp:defun request-cancel-workflow-execution
@@ -9073,7 +8933,9 @@
                                                         "POST" "/"
                                                         "RequestCancelWorkflowExecution"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'request-cancel-workflow-execution))
 (common-lisp:progn
  (common-lisp:defun respond-activity-task-canceled
@@ -9092,7 +8954,9 @@
                                                         "POST" "/"
                                                         "RespondActivityTaskCanceled"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'respond-activity-task-canceled))
 (common-lisp:progn
  (common-lisp:defun respond-activity-task-completed
@@ -9111,7 +8975,9 @@
                                                         "POST" "/"
                                                         "RespondActivityTaskCompleted"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'respond-activity-task-completed))
 (common-lisp:progn
  (common-lisp:defun respond-activity-task-failed
@@ -9130,7 +8996,9 @@
                                                         "POST" "/"
                                                         "RespondActivityTaskFailed"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'respond-activity-task-failed))
 (common-lisp:progn
  (common-lisp:defun respond-decision-task-completed
@@ -9150,7 +9018,9 @@
                                                         "POST" "/"
                                                         "RespondDecisionTaskCompleted"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'respond-decision-task-completed))
 (common-lisp:progn
  (common-lisp:defun signal-workflow-execution
@@ -9170,7 +9040,9 @@
                                                         "POST" "/"
                                                         "SignalWorkflowExecution"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'signal-workflow-execution))
 (common-lisp:progn
  (common-lisp:defun start-workflow-execution
@@ -9194,7 +9066,14 @@
                                                         "POST" "/"
                                                         "StartWorkflowExecution"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("TypeDeprecatedFault" . type-deprecated-fault)
+        ("WorkflowExecutionAlreadyStartedFault"
+         . workflow-execution-already-started-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)
+        ("DefaultUndefinedFault" . default-undefined-fault)))))
  (common-lisp:export 'start-workflow-execution))
 (common-lisp:progn
  (common-lisp:defun terminate-workflow-execution
@@ -9216,5 +9095,7 @@
                                                         "POST" "/"
                                                         "TerminateWorkflowExecution"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UnknownResourceFault" . unknown-resource-fault)
+        ("OperationNotPermittedFault" . operation-not-permitted-fault)))))
  (common-lisp:export 'terminate-workflow-execution))

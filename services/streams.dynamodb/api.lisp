@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/streams.dynamodb/api)
 (common-lisp:progn
  (common-lisp:defclass streams.dynamodb-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "streams.dynamodb"))
  (common-lisp:export 'streams.dynamodb-request))
+(common-lisp:progn
+ (common-lisp:define-condition streams.dynamodb-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'streams.dynamodb-error))
 (common-lisp:progn
  (common-lisp:deftype attribute-map () 'common-lisp:hash-table)
  (common-lisp:defun |make-attribute-map| (aws-sdk/generator/shape::key-values)
@@ -218,36 +224,13 @@
    common-lisp:nil))
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (expired-iterator-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-expired-iterator-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition expired-iterator-exception
+     (streams.dynamodb-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       expired-iterator-exception-message)))
  (common-lisp:export
   (common-lisp:list 'expired-iterator-exception
-                    'make-expired-iterator-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          expired-iterator-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          expired-iterator-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          expired-iterator-exception))
-   common-lisp:nil))
+                    'expired-iterator-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-records-input (:copier common-lisp:nil)
@@ -433,35 +416,12 @@
                         ((aws-sdk/generator/shape::input identity))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-server-error (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-server-error-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition internal-server-error
+     (streams.dynamodb-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-server-error-message)))
  (common-lisp:export
-  (common-lisp:list 'internal-server-error 'make-internal-server-error))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-server-error))
-   common-lisp:nil))
+  (common-lisp:list 'internal-server-error 'internal-server-error-message)))
 (common-lisp:progn
  (common-lisp:deftype key-schema ()
    '(trivial-types:proper-list key-schema-element))
@@ -506,35 +466,13 @@
    common-lisp:nil))
 (common-lisp:deftype key-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (streams.dynamodb-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       limit-exceeded-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+  (common-lisp:list 'limit-exceeded-exception
+                    'limit-exceeded-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype list-attribute-value ()
    '(trivial-types:proper-list attribute-value))
@@ -723,36 +661,13 @@
                            (trivial-types:proper-list record))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition resource-not-found-exception
+     (streams.dynamodb-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          resource-not-found-exception))
-   common-lisp:nil))
+                    'resource-not-found-exception-message)))
 (common-lisp:deftype sequence-number () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -1083,36 +998,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype table-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (trimmed-data-access-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-trimmed-data-access-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:define-condition trimmed-data-access-exception
+     (streams.dynamodb-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       trimmed-data-access-exception-message)))
  (common-lisp:export
   (common-lisp:list 'trimmed-data-access-exception
-                    'make-trimmed-data-access-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          trimmed-data-access-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          trimmed-data-access-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          trimmed-data-access-exception))
-   common-lisp:nil))
+                    'trimmed-data-access-exception-message)))
 (common-lisp:progn
  (common-lisp:defun describe-stream
                     (
@@ -1129,7 +1021,9 @@
        (aws-sdk/generator/shape:make-request-with-input
         'streams.dynamodb-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeStream" "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-stream))
 (common-lisp:progn
  (common-lisp:defun get-records
@@ -1145,7 +1039,12 @@
        (aws-sdk/generator/shape:make-request-with-input
         'streams.dynamodb-request aws-sdk/generator/operation::input "POST" "/"
         "GetRecords" "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ExpiredIteratorException" . expired-iterator-exception)
+        ("TrimmedDataAccessException" . trimmed-data-access-exception)))))
  (common-lisp:export 'get-records))
 (common-lisp:progn
  (common-lisp:defun get-shard-iterator
@@ -1164,7 +1063,10 @@
        (aws-sdk/generator/shape:make-request-with-input
         'streams.dynamodb-request aws-sdk/generator/operation::input "POST" "/"
         "GetShardIterator" "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerError" . internal-server-error)
+        ("TrimmedDataAccessException" . trimmed-data-access-exception)))))
  (common-lisp:export 'get-shard-iterator))
 (common-lisp:progn
  (common-lisp:defun list-streams
@@ -1182,5 +1084,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'streams.dynamodb-request aws-sdk/generator/operation::input "POST" "/"
         "ListStreams" "2012-08-10"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'list-streams))

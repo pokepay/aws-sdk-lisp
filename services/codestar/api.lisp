@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/codestar/api)
 (common-lisp:progn
  (common-lisp:defclass codestar-request (aws-sdk/request:request)
                        common-lisp:nil (:default-initargs :service "codestar"))
  (common-lisp:export 'codestar-request))
+(common-lisp:progn
+ (common-lisp:define-condition codestar-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'codestar-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (associate-team-member-request (:copier common-lisp:nil)
@@ -115,27 +121,10 @@
    common-lisp:nil))
 (common-lisp:deftype client-request-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (concurrent-modification-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-concurrent-modification-exception-")))
- (common-lisp:export
-  (common-lisp:list 'concurrent-modification-exception
-                    'make-concurrent-modification-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          concurrent-modification-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition concurrent-modification-exception
+     (codestar-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'concurrent-modification-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-project-request (:copier common-lisp:nil)
@@ -831,71 +820,21 @@
    common-lisp:nil))
 (common-lisp:deftype email () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-next-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-next-token-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-next-token-exception
-                    'make-invalid-next-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-next-token-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-next-token-exception
+     (codestar-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-next-token-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-service-role-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-service-role-exception-")))
- (common-lisp:export
-  (common-lisp:list 'invalid-service-role-exception
-                    'make-invalid-service-role-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-service-role-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-service-role-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-service-role-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition invalid-service-role-exception
+     (codestar-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-service-role-exception)))
 (common-lisp:deftype last-modified-timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (limit-exceeded-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-limit-exceeded-exception-")))
- (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          limit-exceeded-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition limit-exceeded-exception
+     (codestar-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'limit-exceeded-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-projects-request (:copier common-lisp:nil)
@@ -1226,97 +1165,29 @@
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:deftype pagination-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (project-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-project-already-exists-exception-")))
- (common-lisp:export
-  (common-lisp:list 'project-already-exists-exception
-                    'make-project-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          project-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          project-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          project-already-exists-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition project-already-exists-exception
+     (codestar-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'project-already-exists-exception)))
 (common-lisp:deftype project-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (project-configuration-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-project-configuration-exception-")))
- (common-lisp:export
-  (common-lisp:list 'project-configuration-exception
-                    'make-project-configuration-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          project-configuration-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          project-configuration-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          project-configuration-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition project-configuration-exception
+     (codestar-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'project-configuration-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (project-creation-failed-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-project-creation-failed-exception-")))
- (common-lisp:export
-  (common-lisp:list 'project-creation-failed-exception
-                    'make-project-creation-failed-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          project-creation-failed-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          project-creation-failed-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          project-creation-failed-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition project-creation-failed-exception
+     (codestar-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'project-creation-failed-exception)))
 (common-lisp:deftype project-description () 'common-lisp:string)
 (common-lisp:deftype project-id () 'common-lisp:string)
 (common-lisp:deftype project-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (project-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-project-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'project-not-found-exception
-                    'make-project-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          project-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          project-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          project-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition project-not-found-exception
+     (codestar-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'project-not-found-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (project-summary (:copier common-lisp:nil)
@@ -1436,49 +1307,16 @@
                         ((aws-sdk/generator/shape::input team-member))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (team-member-already-associated-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-team-member-already-associated-exception-")))
+ (common-lisp:define-condition team-member-already-associated-exception
+     (codestar-error)
+     common-lisp:nil)
  (common-lisp:export
-  (common-lisp:list 'team-member-already-associated-exception
-                    'make-team-member-already-associated-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          team-member-already-associated-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          team-member-already-associated-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          team-member-already-associated-exception))
-   common-lisp:nil))
+  (common-lisp:list 'team-member-already-associated-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (team-member-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-team-member-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'team-member-not-found-exception
-                    'make-team-member-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          team-member-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          team-member-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          team-member-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition team-member-not-found-exception
+     (codestar-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'team-member-not-found-exception)))
 (common-lisp:progn
  (common-lisp:deftype team-member-result ()
    '(trivial-types:proper-list team-member))
@@ -1798,50 +1636,16 @@
    common-lisp:nil))
 (common-lisp:deftype user-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (user-profile-already-exists-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-user-profile-already-exists-exception-")))
- (common-lisp:export
-  (common-lisp:list 'user-profile-already-exists-exception
-                    'make-user-profile-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          user-profile-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          user-profile-already-exists-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          user-profile-already-exists-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition user-profile-already-exists-exception
+     (codestar-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'user-profile-already-exists-exception)))
 (common-lisp:deftype user-profile-display-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (user-profile-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-user-profile-not-found-exception-")))
- (common-lisp:export
-  (common-lisp:list 'user-profile-not-found-exception
-                    'make-user-profile-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          user-profile-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          user-profile-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          user-profile-not-found-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition user-profile-not-found-exception
+     (codestar-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'user-profile-not-found-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (user-profile-summary (:copier common-lisp:nil)
@@ -1901,20 +1705,10 @@
                            (trivial-types:proper-list user-profile-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-exception-")))
- (common-lisp:export
-  (common-lisp:list 'validation-exception 'make-validation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        ((aws-sdk/generator/shape::input validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        ((aws-sdk/generator/shape::input validation-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        ((aws-sdk/generator/shape::input validation-exception))
-   common-lisp:nil))
+ (common-lisp:define-condition validation-exception
+     (codestar-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'validation-exception)))
 (common-lisp:progn
  (common-lisp:defun associate-team-member
                     (
@@ -1934,7 +1728,16 @@
                                                         "POST" "/"
                                                         "AssociateTeamMember"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("ProjectNotFoundException" . project-not-found-exception)
+        ("TeamMemberAlreadyAssociatedException"
+         . team-member-already-associated-exception)
+        ("ValidationException" . validation-exception)
+        ("InvalidServiceRoleException" . invalid-service-role-exception)
+        ("ProjectConfigurationException" . project-configuration-exception)
+        ("ConcurrentModificationException"
+         . concurrent-modification-exception)))))
  (common-lisp:export 'associate-team-member))
 (common-lisp:progn
  (common-lisp:defun create-project
@@ -1953,7 +1756,15 @@
                                                         "POST" "/"
                                                         "CreateProject"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ProjectAlreadyExistsException" . project-already-exists-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ValidationException" . validation-exception)
+        ("ProjectCreationFailedException" . project-creation-failed-exception)
+        ("InvalidServiceRoleException" . invalid-service-role-exception)
+        ("ProjectConfigurationException" . project-configuration-exception)
+        ("ConcurrentModificationException"
+         . concurrent-modification-exception)))))
  (common-lisp:export 'create-project))
 (common-lisp:progn
  (common-lisp:defun create-user-profile
@@ -1973,7 +1784,10 @@
                                                         "POST" "/"
                                                         "CreateUserProfile"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UserProfileAlreadyExistsException"
+         . user-profile-already-exists-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'create-user-profile))
 (common-lisp:progn
  (common-lisp:defun delete-project
@@ -1992,7 +1806,10 @@
                                                         "POST" "/"
                                                         "DeleteProject"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ValidationException" . validation-exception)
+        ("InvalidServiceRoleException" . invalid-service-role-exception)))))
  (common-lisp:export 'delete-project))
 (common-lisp:progn
  (common-lisp:defun delete-user-profile
@@ -2010,7 +1827,8 @@
                                                         "POST" "/"
                                                         "DeleteUserProfile"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ValidationException" . validation-exception)))))
  (common-lisp:export 'delete-user-profile))
 (common-lisp:progn
  (common-lisp:defun describe-project
@@ -2028,7 +1846,13 @@
                                                         "POST" "/"
                                                         "DescribeProject"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ProjectNotFoundException" . project-not-found-exception)
+        ("ValidationException" . validation-exception)
+        ("InvalidServiceRoleException" . invalid-service-role-exception)
+        ("ProjectConfigurationException" . project-configuration-exception)
+        ("ConcurrentModificationException"
+         . concurrent-modification-exception)))))
  (common-lisp:export 'describe-project))
 (common-lisp:progn
  (common-lisp:defun describe-user-profile
@@ -2046,7 +1870,9 @@
                                                         "POST" "/"
                                                         "DescribeUserProfile"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UserProfileNotFoundException" . user-profile-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-user-profile))
 (common-lisp:progn
  (common-lisp:defun disassociate-team-member
@@ -2064,7 +1890,12 @@
                                                         "POST" "/"
                                                         "DisassociateTeamMember"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ProjectNotFoundException" . project-not-found-exception)
+        ("ValidationException" . validation-exception)
+        ("InvalidServiceRoleException" . invalid-service-role-exception)
+        ("ConcurrentModificationException"
+         . concurrent-modification-exception)))))
  (common-lisp:export 'disassociate-team-member))
 (common-lisp:progn
  (common-lisp:defun list-projects
@@ -2082,7 +1913,9 @@
                                                         "POST" "/"
                                                         "ListProjects"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidNextTokenException" . invalid-next-token-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'list-projects))
 (common-lisp:progn
  (common-lisp:defun list-resources
@@ -2101,7 +1934,10 @@
                                                         "POST" "/"
                                                         "ListResources"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ProjectNotFoundException" . project-not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'list-resources))
 (common-lisp:progn
  (common-lisp:defun list-team-members
@@ -2120,7 +1956,10 @@
                                                         "POST" "/"
                                                         "ListTeamMembers"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ProjectNotFoundException" . project-not-found-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'list-team-members))
 (common-lisp:progn
  (common-lisp:defun list-user-profiles
@@ -2138,7 +1977,9 @@
                                                         "POST" "/"
                                                         "ListUserProfiles"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidNextTokenException" . invalid-next-token-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'list-user-profiles))
 (common-lisp:progn
  (common-lisp:defun update-project
@@ -2156,7 +1997,9 @@
                                                         "POST" "/"
                                                         "UpdateProject"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ProjectNotFoundException" . project-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'update-project))
 (common-lisp:progn
  (common-lisp:defun update-team-member
@@ -2177,7 +2020,14 @@
                                                         "POST" "/"
                                                         "UpdateTeamMember"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("LimitExceededException" . limit-exceeded-exception)
+        ("ProjectNotFoundException" . project-not-found-exception)
+        ("ValidationException" . validation-exception)
+        ("InvalidServiceRoleException" . invalid-service-role-exception)
+        ("ProjectConfigurationException" . project-configuration-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("TeamMemberNotFoundException" . team-member-not-found-exception)))))
  (common-lisp:export 'update-team-member))
 (common-lisp:progn
  (common-lisp:defun update-user-profile
@@ -2197,5 +2047,7 @@
                                                         "POST" "/"
                                                         "UpdateUserProfile"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("UserProfileNotFoundException" . user-profile-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'update-user-profile))

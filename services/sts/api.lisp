@@ -6,12 +6,18 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/sts/api)
 (common-lisp:progn
  (common-lisp:defclass sts-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "sts"))
  (common-lisp:export 'sts-request))
+(common-lisp:progn
+ (common-lisp:define-condition sts-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'sts-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (assume-role-request (:copier common-lisp:nil)
@@ -588,35 +594,12 @@
                           decode-authorization-message-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (expired-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-expired-token-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |expiredIdentityTokenMessage| common-lisp:null)))
+ (common-lisp:define-condition expired-token-exception
+     (sts-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       expired-token-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'expired-token-exception 'make-expired-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          expired-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          expired-token-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          expired-token-exception))
-   common-lisp:nil))
+  (common-lisp:list 'expired-token-exception 'expired-token-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (federated-user (:copier common-lisp:nil)
@@ -898,224 +881,63 @@
                           get-session-token-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (idpcommunication-error-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-idpcommunication-error-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |idpCommunicationErrorMessage| common-lisp:null)))
+ (common-lisp:define-condition idpcommunication-error-exception
+     (sts-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       idpcommunication-error-exception-message)))
  (common-lisp:export
   (common-lisp:list 'idpcommunication-error-exception
-                    'make-idpcommunication-error-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          idpcommunication-error-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          idpcommunication-error-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          idpcommunication-error-exception))
-   common-lisp:nil))
+                    'idpcommunication-error-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (idprejected-claim-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-idprejected-claim-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |idpRejectedClaimMessage| common-lisp:null)))
+ (common-lisp:define-condition idprejected-claim-exception
+     (sts-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       idprejected-claim-exception-message)))
  (common-lisp:export
   (common-lisp:list 'idprejected-claim-exception
-                    'make-idprejected-claim-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          idprejected-claim-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          idprejected-claim-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          idprejected-claim-exception))
-   common-lisp:nil))
+                    'idprejected-claim-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-authorization-message-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-authorization-message-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |invalidAuthorizationMessage| common-lisp:null)))
+ (common-lisp:define-condition invalid-authorization-message-exception
+     (sts-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-authorization-message-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-authorization-message-exception
-                    'make-invalid-authorization-message-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-authorization-message-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-authorization-message-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-authorization-message-exception))
-   common-lisp:nil))
+                    'invalid-authorization-message-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-identity-token-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-identity-token-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |invalidIdentityTokenMessage| common-lisp:null)))
+ (common-lisp:define-condition invalid-identity-token-exception
+     (sts-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-identity-token-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-identity-token-exception
-                    'make-invalid-identity-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-identity-token-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-identity-token-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-identity-token-exception))
-   common-lisp:nil))
+                    'invalid-identity-token-exception-message)))
 (common-lisp:deftype issuer () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (malformed-policy-document-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-malformed-policy-document-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |malformedPolicyDocumentMessage| common-lisp:null)))
+ (common-lisp:define-condition malformed-policy-document-exception
+     (sts-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       malformed-policy-document-exception-message)))
  (common-lisp:export
   (common-lisp:list 'malformed-policy-document-exception
-                    'make-malformed-policy-document-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          malformed-policy-document-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          malformed-policy-document-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          malformed-policy-document-exception))
-   common-lisp:nil))
+                    'malformed-policy-document-exception-message)))
 (common-lisp:deftype name-qualifier () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (packed-policy-too-large-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-packed-policy-too-large-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |packedPolicyTooLargeMessage| common-lisp:null)))
+ (common-lisp:define-condition packed-policy-too-large-exception
+     (sts-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       packed-policy-too-large-exception-message)))
  (common-lisp:export
   (common-lisp:list 'packed-policy-too-large-exception
-                    'make-packed-policy-too-large-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          packed-policy-too-large-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          packed-policy-too-large-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          packed-policy-too-large-exception))
-   common-lisp:nil))
+                    'packed-policy-too-large-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (region-disabled-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-region-disabled-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |regionDisabledMessage| common-lisp:null)))
+ (common-lisp:define-condition region-disabled-exception
+     (sts-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       region-disabled-exception-message)))
  (common-lisp:export
   (common-lisp:list 'region-disabled-exception
-                    'make-region-disabled-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          region-disabled-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          region-disabled-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          region-disabled-exception))
-   common-lisp:nil))
+                    'region-disabled-exception-message)))
 (common-lisp:deftype samlassertion-type () 'common-lisp:string)
 (common-lisp:deftype subject () 'common-lisp:string)
 (common-lisp:deftype subject-type () 'common-lisp:string)
@@ -1168,7 +990,11 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "AssumeRole"
                                                         "2011-06-15"))
-      common-lisp:nil "AssumeRoleResult")))
+      common-lisp:nil "AssumeRoleResult"
+      '(("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("PackedPolicyTooLargeException" . packed-policy-too-large-exception)
+        ("RegionDisabledException" . region-disabled-exception)))))
  (common-lisp:export 'assume-role))
 (common-lisp:progn
  (common-lisp:defun assume-role-with-saml
@@ -1189,7 +1015,14 @@
                                                         "POST" "/"
                                                         "AssumeRoleWithSAML"
                                                         "2011-06-15"))
-      common-lisp:nil "AssumeRoleWithSAMLResult")))
+      common-lisp:nil "AssumeRoleWithSAMLResult"
+      '(("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("PackedPolicyTooLargeException" . packed-policy-too-large-exception)
+        ("IDPRejectedClaimException" . idprejected-claim-exception)
+        ("InvalidIdentityTokenException" . invalid-identity-token-exception)
+        ("ExpiredTokenException" . expired-token-exception)
+        ("RegionDisabledException" . region-disabled-exception)))))
  (common-lisp:export 'assume-role-with-saml))
 (common-lisp:progn
  (common-lisp:defun assume-role-with-web-identity
@@ -1211,7 +1044,15 @@
                                                         "POST" "/"
                                                         "AssumeRoleWithWebIdentity"
                                                         "2011-06-15"))
-      common-lisp:nil "AssumeRoleWithWebIdentityResult")))
+      common-lisp:nil "AssumeRoleWithWebIdentityResult"
+      '(("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("PackedPolicyTooLargeException" . packed-policy-too-large-exception)
+        ("IDPRejectedClaimException" . idprejected-claim-exception)
+        ("IDPCommunicationErrorException" . idpcommunication-error-exception)
+        ("InvalidIdentityTokenException" . invalid-identity-token-exception)
+        ("ExpiredTokenException" . expired-token-exception)
+        ("RegionDisabledException" . region-disabled-exception)))))
  (common-lisp:export 'assume-role-with-web-identity))
 (common-lisp:progn
  (common-lisp:defun decode-authorization-message
@@ -1230,7 +1071,9 @@
                                                         "POST" "/"
                                                         "DecodeAuthorizationMessage"
                                                         "2011-06-15"))
-      common-lisp:nil "DecodeAuthorizationMessageResult")))
+      common-lisp:nil "DecodeAuthorizationMessageResult"
+      '(("InvalidAuthorizationMessageException"
+         . invalid-authorization-message-exception)))))
  (common-lisp:export 'decode-authorization-message))
 (common-lisp:progn
  (common-lisp:defun get-caller-identity ()
@@ -1239,7 +1082,7 @@
      (common-lisp:make-instance 'sts-request :method "POST" :path "/" :params
                                 `(("Action" ,@"GetCallerIdentity")
                                   ("Version" ,@"2011-06-15"))))
-    common-lisp:nil "GetCallerIdentityResult"))
+    common-lisp:nil "GetCallerIdentityResult" 'common-lisp:nil))
  (common-lisp:export 'get-caller-identity))
 (common-lisp:progn
  (common-lisp:defun get-federation-token
@@ -1257,7 +1100,11 @@
                                                         "POST" "/"
                                                         "GetFederationToken"
                                                         "2011-06-15"))
-      common-lisp:nil "GetFederationTokenResult")))
+      common-lisp:nil "GetFederationTokenResult"
+      '(("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("PackedPolicyTooLargeException" . packed-policy-too-large-exception)
+        ("RegionDisabledException" . region-disabled-exception)))))
  (common-lisp:export 'get-federation-token))
 (common-lisp:progn
  (common-lisp:defun get-session-token
@@ -1277,5 +1124,6 @@
                                                         "POST" "/"
                                                         "GetSessionToken"
                                                         "2011-06-15"))
-      common-lisp:nil "GetSessionTokenResult")))
+      common-lisp:nil "GetSessionTokenResult"
+      '(("RegionDisabledException" . region-disabled-exception)))))
  (common-lisp:export 'get-session-token))

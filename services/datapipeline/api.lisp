@@ -6,13 +6,19 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/datapipeline/api)
 (common-lisp:progn
  (common-lisp:defclass datapipeline-request (aws-sdk/request:request)
                        common-lisp:nil
                        (:default-initargs :service "datapipeline"))
  (common-lisp:export 'datapipeline-request))
+(common-lisp:progn
+ (common-lisp:define-condition datapipeline-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'datapipeline-error))
 (common-lisp:progn
  (common-lisp:defstruct
      (activate-pipeline-input (:copier common-lisp:nil)
@@ -719,66 +725,20 @@
                         ((aws-sdk/generator/shape::input instance-identity))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (internal-service-error (:copier common-lisp:nil)
-      (:conc-name "struct-shape-internal-service-error-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition internal-service-error
+     (datapipeline-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       internal-service-error-message)))
  (common-lisp:export
-  (common-lisp:list 'internal-service-error 'make-internal-service-error))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-error))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-error))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          internal-service-error))
-   common-lisp:nil))
+  (common-lisp:list 'internal-service-error 'internal-service-error-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-request-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-request-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition invalid-request-exception
+     (datapipeline-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-request-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-request-exception
-                    'make-invalid-request-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          invalid-request-exception))
-   common-lisp:nil))
+                    'invalid-request-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-pipelines-input (:copier common-lisp:nil)
@@ -1005,36 +965,13 @@
                            (trivial-types:proper-list parameter-value))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (pipeline-deleted-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-pipeline-deleted-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition pipeline-deleted-exception
+     (datapipeline-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       pipeline-deleted-exception-message)))
  (common-lisp:export
   (common-lisp:list 'pipeline-deleted-exception
-                    'make-pipeline-deleted-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          pipeline-deleted-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          pipeline-deleted-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          pipeline-deleted-exception))
-   common-lisp:nil))
+                    'pipeline-deleted-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (pipeline-description (:copier common-lisp:nil)
@@ -1134,36 +1071,13 @@
                         ((aws-sdk/generator/shape::input pipeline-id-name))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (pipeline-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-pipeline-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition pipeline-not-found-exception
+     (datapipeline-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       pipeline-not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'pipeline-not-found-exception
-                    'make-pipeline-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          pipeline-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          pipeline-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          pipeline-not-found-exception))
-   common-lisp:nil))
+                    'pipeline-not-found-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (pipeline-object (:copier common-lisp:nil)
@@ -1910,35 +1824,13 @@
                         ((aws-sdk/generator/shape::input tag))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (task-not-found-exception (:copier common-lisp:nil)
-      (:conc-name "struct-shape-task-not-found-exception-"))
-   (message common-lisp:nil :type
-    (common-lisp:or |errorMessage| common-lisp:null)))
+ (common-lisp:define-condition task-not-found-exception
+     (datapipeline-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       task-not-found-exception-message)))
  (common-lisp:export
-  (common-lisp:list 'task-not-found-exception 'make-task-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape::input-headers
-                        (
-                         (aws-sdk/generator/shape::input
-                          task-not-found-exception))
-   (common-lisp:append))
- (common-lisp:defmethod aws-sdk/generator/shape::input-params
-                        (
-                         (aws-sdk/generator/shape::input
-                          task-not-found-exception))
-   (common-lisp:append
-    (alexandria:when-let (aws-sdk/generator/shape::value
-                          (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'message))
-      (common-lisp:list
-       (common-lisp:cons "message"
-                         (aws-sdk/generator/shape::input-params
-                          aws-sdk/generator/shape::value))))))
- (common-lisp:defmethod aws-sdk/generator/shape::input-payload
-                        (
-                         (aws-sdk/generator/shape::input
-                          task-not-found-exception))
-   common-lisp:nil))
+  (common-lisp:list 'task-not-found-exception
+                    'task-not-found-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (task-object (:copier common-lisp:nil)
@@ -2253,7 +2145,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ActivatePipeline"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineDeletedException" . pipeline-deleted-exception)
+        ("InternalServiceError" . internal-service-error)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'activate-pipeline))
 (common-lisp:progn
  (common-lisp:defun add-tags
@@ -2270,7 +2166,11 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "AddTags"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceError" . internal-service-error)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineDeletedException" . pipeline-deleted-exception)))))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
  (common-lisp:defun create-pipeline
@@ -2289,7 +2189,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CreatePipeline"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceError" . internal-service-error)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'create-pipeline))
 (common-lisp:progn
  (common-lisp:defun deactivate-pipeline
@@ -2307,7 +2209,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DeactivatePipeline"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineDeletedException" . pipeline-deleted-exception)
+        ("InternalServiceError" . internal-service-error)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'deactivate-pipeline))
 (common-lisp:progn
  (common-lisp:defun delete-pipeline
@@ -2325,7 +2231,10 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DeletePipeline"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("InternalServiceError" . internal-service-error)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'delete-pipeline))
 (common-lisp:progn
  (common-lisp:defun describe-objects
@@ -2345,7 +2254,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeObjects"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceError" . internal-service-error)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineDeletedException" . pipeline-deleted-exception)))))
  (common-lisp:export 'describe-objects))
 (common-lisp:progn
  (common-lisp:defun describe-pipelines
@@ -2363,7 +2276,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribePipelines"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineDeletedException" . pipeline-deleted-exception)
+        ("InternalServiceError" . internal-service-error)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'describe-pipelines))
 (common-lisp:progn
  (common-lisp:defun evaluate-expression
@@ -2382,7 +2299,12 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "EvaluateExpression"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceError" . internal-service-error)
+        ("TaskNotFoundException" . task-not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineDeletedException" . pipeline-deleted-exception)))))
  (common-lisp:export 'evaluate-expression))
 (common-lisp:progn
  (common-lisp:defun get-pipeline-definition
@@ -2400,7 +2322,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetPipelineDefinition"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceError" . internal-service-error)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineDeletedException" . pipeline-deleted-exception)))))
  (common-lisp:export 'get-pipeline-definition))
 (common-lisp:progn
  (common-lisp:defun list-pipelines
@@ -2418,7 +2344,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ListPipelines"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceError" . internal-service-error)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'list-pipelines))
 (common-lisp:progn
  (common-lisp:defun poll-for-task
@@ -2437,7 +2365,10 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "PollForTask"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceError" . internal-service-error)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("TaskNotFoundException" . task-not-found-exception)))))
  (common-lisp:export 'poll-for-task))
 (common-lisp:progn
  (common-lisp:defun put-pipeline-definition
@@ -2458,7 +2389,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "PutPipelineDefinition"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceError" . internal-service-error)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineDeletedException" . pipeline-deleted-exception)))))
  (common-lisp:export 'put-pipeline-definition))
 (common-lisp:progn
  (common-lisp:defun query-objects
@@ -2477,7 +2412,11 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "QueryObjects"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineDeletedException" . pipeline-deleted-exception)
+        ("InternalServiceError" . internal-service-error)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'query-objects))
 (common-lisp:progn
  (common-lisp:defun remove-tags
@@ -2494,7 +2433,11 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "RemoveTags"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceError" . internal-service-error)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineDeletedException" . pipeline-deleted-exception)))))
  (common-lisp:export 'remove-tags))
 (common-lisp:progn
  (common-lisp:defun report-task-progress
@@ -2512,7 +2455,12 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ReportTaskProgress"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceError" . internal-service-error)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("TaskNotFoundException" . task-not-found-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineDeletedException" . pipeline-deleted-exception)))))
  (common-lisp:export 'report-task-progress))
 (common-lisp:progn
  (common-lisp:defun report-task-runner-heartbeat
@@ -2532,7 +2480,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ReportTaskRunnerHeartbeat"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceError" . internal-service-error)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'report-task-runner-heartbeat))
 (common-lisp:progn
  (common-lisp:defun set-status
@@ -2549,7 +2499,11 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "SetStatus"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineDeletedException" . pipeline-deleted-exception)
+        ("InternalServiceError" . internal-service-error)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'set-status))
 (common-lisp:progn
  (common-lisp:defun set-task-status
@@ -2570,7 +2524,12 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "SetTaskStatus"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceError" . internal-service-error)
+        ("TaskNotFoundException" . task-not-found-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineDeletedException" . pipeline-deleted-exception)))))
  (common-lisp:export 'set-task-status))
 (common-lisp:progn
  (common-lisp:defun validate-pipeline-definition
@@ -2592,5 +2551,9 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ValidatePipelineDefinition"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("InternalServiceError" . internal-service-error)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineDeletedException" . pipeline-deleted-exception)))))
  (common-lisp:export 'validate-pipeline-definition))
