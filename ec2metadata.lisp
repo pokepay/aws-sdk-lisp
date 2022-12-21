@@ -11,7 +11,8 @@
 (defun ec2metadata (path)
   (with-timeout (5)
     (dex:get (format nil "http://169.254.169.254/latest/meta-data~A"
-                     (or path "/")))))
+                     (or path "/"))
+             :keep-alive nil)))
 
 (defun ec2-region ()
   (handler-case
