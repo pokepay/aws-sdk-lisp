@@ -18,6 +18,25 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'ecr-error))
+(common-lisp:defvar *error-map*
+  '(("EmptyUploadException" . empty-upload-exception)
+    ("ImageAlreadyExistsException" . image-already-exists-exception)
+    ("ImageNotFoundException" . image-not-found-exception)
+    ("InvalidLayerException" . invalid-layer-exception)
+    ("InvalidLayerPartException" . invalid-layer-part-exception)
+    ("InvalidParameterException" . invalid-parameter-exception)
+    ("LayerAlreadyExistsException" . layer-already-exists-exception)
+    ("LayerInaccessibleException" . layer-inaccessible-exception)
+    ("LayerPartTooSmallException" . layer-part-too-small-exception)
+    ("LayersNotFoundException" . layers-not-found-exception)
+    ("LimitExceededException" . limit-exceeded-exception)
+    ("RepositoryAlreadyExistsException" . repository-already-exists-exception)
+    ("RepositoryNotEmptyException" . repository-not-empty-exception)
+    ("RepositoryNotFoundException" . repository-not-found-exception)
+    ("RepositoryPolicyNotFoundException"
+     . repository-policy-not-found-exception)
+    ("ServerException" . server-exception)
+    ("UploadNotFoundException" . upload-not-found-exception)))
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -2317,26 +2336,7 @@
                                                         "POST" "/"
                                                         "BatchCheckLayerAvailability"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil
-      '(("EmptyUploadException" . empty-upload-exception)
-        ("ImageAlreadyExistsException" . image-already-exists-exception)
-        ("ImageNotFoundException" . image-not-found-exception)
-        ("InvalidLayerException" . invalid-layer-exception)
-        ("InvalidLayerPartException" . invalid-layer-part-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LayerAlreadyExistsException" . layer-already-exists-exception)
-        ("LayerInaccessibleException" . layer-inaccessible-exception)
-        ("LayerPartTooSmallException" . layer-part-too-small-exception)
-        ("LayersNotFoundException" . layers-not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RepositoryAlreadyExistsException"
-         . repository-already-exists-exception)
-        ("RepositoryNotEmptyException" . repository-not-empty-exception)
-        ("RepositoryNotFoundException" . repository-not-found-exception)
-        ("RepositoryPolicyNotFoundException"
-         . repository-policy-not-found-exception)
-        ("ServerException" . server-exception)
-        ("UploadNotFoundException" . upload-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'batch-check-layer-availability))
 (common-lisp:progn
  (common-lisp:defun batch-delete-image
@@ -2355,26 +2355,7 @@
                                                         "POST" "/"
                                                         "BatchDeleteImage"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil
-      '(("EmptyUploadException" . empty-upload-exception)
-        ("ImageAlreadyExistsException" . image-already-exists-exception)
-        ("ImageNotFoundException" . image-not-found-exception)
-        ("InvalidLayerException" . invalid-layer-exception)
-        ("InvalidLayerPartException" . invalid-layer-part-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LayerAlreadyExistsException" . layer-already-exists-exception)
-        ("LayerInaccessibleException" . layer-inaccessible-exception)
-        ("LayerPartTooSmallException" . layer-part-too-small-exception)
-        ("LayersNotFoundException" . layers-not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RepositoryAlreadyExistsException"
-         . repository-already-exists-exception)
-        ("RepositoryNotEmptyException" . repository-not-empty-exception)
-        ("RepositoryNotFoundException" . repository-not-found-exception)
-        ("RepositoryPolicyNotFoundException"
-         . repository-policy-not-found-exception)
-        ("ServerException" . server-exception)
-        ("UploadNotFoundException" . upload-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'batch-delete-image))
 (common-lisp:progn
  (common-lisp:defun batch-get-image
@@ -2395,26 +2376,7 @@
                                                         "POST" "/"
                                                         "BatchGetImage"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil
-      '(("EmptyUploadException" . empty-upload-exception)
-        ("ImageAlreadyExistsException" . image-already-exists-exception)
-        ("ImageNotFoundException" . image-not-found-exception)
-        ("InvalidLayerException" . invalid-layer-exception)
-        ("InvalidLayerPartException" . invalid-layer-part-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LayerAlreadyExistsException" . layer-already-exists-exception)
-        ("LayerInaccessibleException" . layer-inaccessible-exception)
-        ("LayerPartTooSmallException" . layer-part-too-small-exception)
-        ("LayersNotFoundException" . layers-not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RepositoryAlreadyExistsException"
-         . repository-already-exists-exception)
-        ("RepositoryNotEmptyException" . repository-not-empty-exception)
-        ("RepositoryNotFoundException" . repository-not-found-exception)
-        ("RepositoryPolicyNotFoundException"
-         . repository-policy-not-found-exception)
-        ("ServerException" . server-exception)
-        ("UploadNotFoundException" . upload-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'batch-get-image))
 (common-lisp:progn
  (common-lisp:defun complete-layer-upload
@@ -2435,26 +2397,7 @@
                                                         "POST" "/"
                                                         "CompleteLayerUpload"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil
-      '(("EmptyUploadException" . empty-upload-exception)
-        ("ImageAlreadyExistsException" . image-already-exists-exception)
-        ("ImageNotFoundException" . image-not-found-exception)
-        ("InvalidLayerException" . invalid-layer-exception)
-        ("InvalidLayerPartException" . invalid-layer-part-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LayerAlreadyExistsException" . layer-already-exists-exception)
-        ("LayerInaccessibleException" . layer-inaccessible-exception)
-        ("LayerPartTooSmallException" . layer-part-too-small-exception)
-        ("LayersNotFoundException" . layers-not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RepositoryAlreadyExistsException"
-         . repository-already-exists-exception)
-        ("RepositoryNotEmptyException" . repository-not-empty-exception)
-        ("RepositoryNotFoundException" . repository-not-found-exception)
-        ("RepositoryPolicyNotFoundException"
-         . repository-policy-not-found-exception)
-        ("ServerException" . server-exception)
-        ("UploadNotFoundException" . upload-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'complete-layer-upload))
 (common-lisp:progn
  (common-lisp:defun create-repository
@@ -2472,26 +2415,7 @@
                                                         "POST" "/"
                                                         "CreateRepository"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil
-      '(("EmptyUploadException" . empty-upload-exception)
-        ("ImageAlreadyExistsException" . image-already-exists-exception)
-        ("ImageNotFoundException" . image-not-found-exception)
-        ("InvalidLayerException" . invalid-layer-exception)
-        ("InvalidLayerPartException" . invalid-layer-part-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LayerAlreadyExistsException" . layer-already-exists-exception)
-        ("LayerInaccessibleException" . layer-inaccessible-exception)
-        ("LayerPartTooSmallException" . layer-part-too-small-exception)
-        ("LayersNotFoundException" . layers-not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RepositoryAlreadyExistsException"
-         . repository-already-exists-exception)
-        ("RepositoryNotEmptyException" . repository-not-empty-exception)
-        ("RepositoryNotFoundException" . repository-not-found-exception)
-        ("RepositoryPolicyNotFoundException"
-         . repository-policy-not-found-exception)
-        ("ServerException" . server-exception)
-        ("UploadNotFoundException" . upload-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-repository))
 (common-lisp:progn
  (common-lisp:defun delete-repository
@@ -2510,26 +2434,7 @@
                                                         "POST" "/"
                                                         "DeleteRepository"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil
-      '(("EmptyUploadException" . empty-upload-exception)
-        ("ImageAlreadyExistsException" . image-already-exists-exception)
-        ("ImageNotFoundException" . image-not-found-exception)
-        ("InvalidLayerException" . invalid-layer-exception)
-        ("InvalidLayerPartException" . invalid-layer-part-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LayerAlreadyExistsException" . layer-already-exists-exception)
-        ("LayerInaccessibleException" . layer-inaccessible-exception)
-        ("LayerPartTooSmallException" . layer-part-too-small-exception)
-        ("LayersNotFoundException" . layers-not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RepositoryAlreadyExistsException"
-         . repository-already-exists-exception)
-        ("RepositoryNotEmptyException" . repository-not-empty-exception)
-        ("RepositoryNotFoundException" . repository-not-found-exception)
-        ("RepositoryPolicyNotFoundException"
-         . repository-policy-not-found-exception)
-        ("ServerException" . server-exception)
-        ("UploadNotFoundException" . upload-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-repository))
 (common-lisp:progn
  (common-lisp:defun delete-repository-policy
@@ -2547,26 +2452,7 @@
                                                         "POST" "/"
                                                         "DeleteRepositoryPolicy"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil
-      '(("EmptyUploadException" . empty-upload-exception)
-        ("ImageAlreadyExistsException" . image-already-exists-exception)
-        ("ImageNotFoundException" . image-not-found-exception)
-        ("InvalidLayerException" . invalid-layer-exception)
-        ("InvalidLayerPartException" . invalid-layer-part-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LayerAlreadyExistsException" . layer-already-exists-exception)
-        ("LayerInaccessibleException" . layer-inaccessible-exception)
-        ("LayerPartTooSmallException" . layer-part-too-small-exception)
-        ("LayersNotFoundException" . layers-not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RepositoryAlreadyExistsException"
-         . repository-already-exists-exception)
-        ("RepositoryNotEmptyException" . repository-not-empty-exception)
-        ("RepositoryNotFoundException" . repository-not-found-exception)
-        ("RepositoryPolicyNotFoundException"
-         . repository-policy-not-found-exception)
-        ("ServerException" . server-exception)
-        ("UploadNotFoundException" . upload-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-repository-policy))
 (common-lisp:progn
  (common-lisp:defun describe-images
@@ -2587,26 +2473,7 @@
                                                         "POST" "/"
                                                         "DescribeImages"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil
-      '(("EmptyUploadException" . empty-upload-exception)
-        ("ImageAlreadyExistsException" . image-already-exists-exception)
-        ("ImageNotFoundException" . image-not-found-exception)
-        ("InvalidLayerException" . invalid-layer-exception)
-        ("InvalidLayerPartException" . invalid-layer-part-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LayerAlreadyExistsException" . layer-already-exists-exception)
-        ("LayerInaccessibleException" . layer-inaccessible-exception)
-        ("LayerPartTooSmallException" . layer-part-too-small-exception)
-        ("LayersNotFoundException" . layers-not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RepositoryAlreadyExistsException"
-         . repository-already-exists-exception)
-        ("RepositoryNotEmptyException" . repository-not-empty-exception)
-        ("RepositoryNotFoundException" . repository-not-found-exception)
-        ("RepositoryPolicyNotFoundException"
-         . repository-policy-not-found-exception)
-        ("ServerException" . server-exception)
-        ("UploadNotFoundException" . upload-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-images))
 (common-lisp:progn
  (common-lisp:defun describe-repositories
@@ -2627,26 +2494,7 @@
                                                         "POST" "/"
                                                         "DescribeRepositories"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil
-      '(("EmptyUploadException" . empty-upload-exception)
-        ("ImageAlreadyExistsException" . image-already-exists-exception)
-        ("ImageNotFoundException" . image-not-found-exception)
-        ("InvalidLayerException" . invalid-layer-exception)
-        ("InvalidLayerPartException" . invalid-layer-part-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LayerAlreadyExistsException" . layer-already-exists-exception)
-        ("LayerInaccessibleException" . layer-inaccessible-exception)
-        ("LayerPartTooSmallException" . layer-part-too-small-exception)
-        ("LayersNotFoundException" . layers-not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RepositoryAlreadyExistsException"
-         . repository-already-exists-exception)
-        ("RepositoryNotEmptyException" . repository-not-empty-exception)
-        ("RepositoryNotFoundException" . repository-not-found-exception)
-        ("RepositoryPolicyNotFoundException"
-         . repository-policy-not-found-exception)
-        ("ServerException" . server-exception)
-        ("UploadNotFoundException" . upload-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-repositories))
 (common-lisp:progn
  (common-lisp:defun get-authorization-token
@@ -2664,26 +2512,7 @@
                                                         "POST" "/"
                                                         "GetAuthorizationToken"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil
-      '(("EmptyUploadException" . empty-upload-exception)
-        ("ImageAlreadyExistsException" . image-already-exists-exception)
-        ("ImageNotFoundException" . image-not-found-exception)
-        ("InvalidLayerException" . invalid-layer-exception)
-        ("InvalidLayerPartException" . invalid-layer-part-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LayerAlreadyExistsException" . layer-already-exists-exception)
-        ("LayerInaccessibleException" . layer-inaccessible-exception)
-        ("LayerPartTooSmallException" . layer-part-too-small-exception)
-        ("LayersNotFoundException" . layers-not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RepositoryAlreadyExistsException"
-         . repository-already-exists-exception)
-        ("RepositoryNotEmptyException" . repository-not-empty-exception)
-        ("RepositoryNotFoundException" . repository-not-found-exception)
-        ("RepositoryPolicyNotFoundException"
-         . repository-policy-not-found-exception)
-        ("ServerException" . server-exception)
-        ("UploadNotFoundException" . upload-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-authorization-token))
 (common-lisp:progn
  (common-lisp:defun get-download-url-for-layer
@@ -2703,26 +2532,7 @@
                                                         "POST" "/"
                                                         "GetDownloadUrlForLayer"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil
-      '(("EmptyUploadException" . empty-upload-exception)
-        ("ImageAlreadyExistsException" . image-already-exists-exception)
-        ("ImageNotFoundException" . image-not-found-exception)
-        ("InvalidLayerException" . invalid-layer-exception)
-        ("InvalidLayerPartException" . invalid-layer-part-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LayerAlreadyExistsException" . layer-already-exists-exception)
-        ("LayerInaccessibleException" . layer-inaccessible-exception)
-        ("LayerPartTooSmallException" . layer-part-too-small-exception)
-        ("LayersNotFoundException" . layers-not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RepositoryAlreadyExistsException"
-         . repository-already-exists-exception)
-        ("RepositoryNotEmptyException" . repository-not-empty-exception)
-        ("RepositoryNotFoundException" . repository-not-found-exception)
-        ("RepositoryPolicyNotFoundException"
-         . repository-policy-not-found-exception)
-        ("ServerException" . server-exception)
-        ("UploadNotFoundException" . upload-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-download-url-for-layer))
 (common-lisp:progn
  (common-lisp:defun get-repository-policy
@@ -2740,26 +2550,7 @@
                                                         "POST" "/"
                                                         "GetRepositoryPolicy"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil
-      '(("EmptyUploadException" . empty-upload-exception)
-        ("ImageAlreadyExistsException" . image-already-exists-exception)
-        ("ImageNotFoundException" . image-not-found-exception)
-        ("InvalidLayerException" . invalid-layer-exception)
-        ("InvalidLayerPartException" . invalid-layer-part-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LayerAlreadyExistsException" . layer-already-exists-exception)
-        ("LayerInaccessibleException" . layer-inaccessible-exception)
-        ("LayerPartTooSmallException" . layer-part-too-small-exception)
-        ("LayersNotFoundException" . layers-not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RepositoryAlreadyExistsException"
-         . repository-already-exists-exception)
-        ("RepositoryNotEmptyException" . repository-not-empty-exception)
-        ("RepositoryNotFoundException" . repository-not-found-exception)
-        ("RepositoryPolicyNotFoundException"
-         . repository-policy-not-found-exception)
-        ("ServerException" . server-exception)
-        ("UploadNotFoundException" . upload-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-repository-policy))
 (common-lisp:progn
  (common-lisp:defun initiate-layer-upload
@@ -2777,26 +2568,7 @@
                                                         "POST" "/"
                                                         "InitiateLayerUpload"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil
-      '(("EmptyUploadException" . empty-upload-exception)
-        ("ImageAlreadyExistsException" . image-already-exists-exception)
-        ("ImageNotFoundException" . image-not-found-exception)
-        ("InvalidLayerException" . invalid-layer-exception)
-        ("InvalidLayerPartException" . invalid-layer-part-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LayerAlreadyExistsException" . layer-already-exists-exception)
-        ("LayerInaccessibleException" . layer-inaccessible-exception)
-        ("LayerPartTooSmallException" . layer-part-too-small-exception)
-        ("LayersNotFoundException" . layers-not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RepositoryAlreadyExistsException"
-         . repository-already-exists-exception)
-        ("RepositoryNotEmptyException" . repository-not-empty-exception)
-        ("RepositoryNotFoundException" . repository-not-found-exception)
-        ("RepositoryPolicyNotFoundException"
-         . repository-policy-not-found-exception)
-        ("ServerException" . server-exception)
-        ("UploadNotFoundException" . upload-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'initiate-layer-upload))
 (common-lisp:progn
  (common-lisp:defun list-images
@@ -2816,26 +2588,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListImages"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil
-      '(("EmptyUploadException" . empty-upload-exception)
-        ("ImageAlreadyExistsException" . image-already-exists-exception)
-        ("ImageNotFoundException" . image-not-found-exception)
-        ("InvalidLayerException" . invalid-layer-exception)
-        ("InvalidLayerPartException" . invalid-layer-part-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LayerAlreadyExistsException" . layer-already-exists-exception)
-        ("LayerInaccessibleException" . layer-inaccessible-exception)
-        ("LayerPartTooSmallException" . layer-part-too-small-exception)
-        ("LayersNotFoundException" . layers-not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RepositoryAlreadyExistsException"
-         . repository-already-exists-exception)
-        ("RepositoryNotEmptyException" . repository-not-empty-exception)
-        ("RepositoryNotFoundException" . repository-not-found-exception)
-        ("RepositoryPolicyNotFoundException"
-         . repository-policy-not-found-exception)
-        ("ServerException" . server-exception)
-        ("UploadNotFoundException" . upload-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-images))
 (common-lisp:progn
  (common-lisp:defun put-image
@@ -2855,26 +2608,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "PutImage"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil
-      '(("EmptyUploadException" . empty-upload-exception)
-        ("ImageAlreadyExistsException" . image-already-exists-exception)
-        ("ImageNotFoundException" . image-not-found-exception)
-        ("InvalidLayerException" . invalid-layer-exception)
-        ("InvalidLayerPartException" . invalid-layer-part-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LayerAlreadyExistsException" . layer-already-exists-exception)
-        ("LayerInaccessibleException" . layer-inaccessible-exception)
-        ("LayerPartTooSmallException" . layer-part-too-small-exception)
-        ("LayersNotFoundException" . layers-not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RepositoryAlreadyExistsException"
-         . repository-already-exists-exception)
-        ("RepositoryNotEmptyException" . repository-not-empty-exception)
-        ("RepositoryNotFoundException" . repository-not-found-exception)
-        ("RepositoryPolicyNotFoundException"
-         . repository-policy-not-found-exception)
-        ("ServerException" . server-exception)
-        ("UploadNotFoundException" . upload-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-image))
 (common-lisp:progn
  (common-lisp:defun set-repository-policy
@@ -2894,26 +2628,7 @@
                                                         "POST" "/"
                                                         "SetRepositoryPolicy"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil
-      '(("EmptyUploadException" . empty-upload-exception)
-        ("ImageAlreadyExistsException" . image-already-exists-exception)
-        ("ImageNotFoundException" . image-not-found-exception)
-        ("InvalidLayerException" . invalid-layer-exception)
-        ("InvalidLayerPartException" . invalid-layer-part-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LayerAlreadyExistsException" . layer-already-exists-exception)
-        ("LayerInaccessibleException" . layer-inaccessible-exception)
-        ("LayerPartTooSmallException" . layer-part-too-small-exception)
-        ("LayersNotFoundException" . layers-not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RepositoryAlreadyExistsException"
-         . repository-already-exists-exception)
-        ("RepositoryNotEmptyException" . repository-not-empty-exception)
-        ("RepositoryNotFoundException" . repository-not-found-exception)
-        ("RepositoryPolicyNotFoundException"
-         . repository-policy-not-found-exception)
-        ("ServerException" . server-exception)
-        ("UploadNotFoundException" . upload-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'set-repository-policy))
 (common-lisp:progn
  (common-lisp:defun upload-layer-part
@@ -2934,24 +2649,5 @@
                                                         "POST" "/"
                                                         "UploadLayerPart"
                                                         "2015-09-21"))
-      common-lisp:nil common-lisp:nil
-      '(("EmptyUploadException" . empty-upload-exception)
-        ("ImageAlreadyExistsException" . image-already-exists-exception)
-        ("ImageNotFoundException" . image-not-found-exception)
-        ("InvalidLayerException" . invalid-layer-exception)
-        ("InvalidLayerPartException" . invalid-layer-part-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LayerAlreadyExistsException" . layer-already-exists-exception)
-        ("LayerInaccessibleException" . layer-inaccessible-exception)
-        ("LayerPartTooSmallException" . layer-part-too-small-exception)
-        ("LayersNotFoundException" . layers-not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RepositoryAlreadyExistsException"
-         . repository-already-exists-exception)
-        ("RepositoryNotEmptyException" . repository-not-empty-exception)
-        ("RepositoryNotFoundException" . repository-not-found-exception)
-        ("RepositoryPolicyNotFoundException"
-         . repository-policy-not-found-exception)
-        ("ServerException" . server-exception)
-        ("UploadNotFoundException" . upload-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'upload-layer-part))

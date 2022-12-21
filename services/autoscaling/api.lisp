@@ -19,6 +19,13 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'autoscaling-error))
+(common-lisp:defvar *error-map*
+  '(("AlreadyExistsFault" . already-exists-fault)
+    ("InvalidNextToken" . invalid-next-token)
+    ("LimitExceededFault" . limit-exceeded-fault)
+    ("ResourceContentionFault" . resource-contention-fault)
+    ("ResourceInUseFault" . resource-in-use-fault)
+    ("ScalingActivityInProgressFault" . scaling-activity-in-progress-fault)))
 (common-lisp:progn
  (common-lisp:deftype activities () '(trivial-types:proper-list activity))
  (common-lisp:defun |make-activities|
@@ -6019,14 +6026,7 @@
                                                         "POST" "/"
                                                         "AttachInstances"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'attach-instances))
 (common-lisp:progn
  (common-lisp:defun attach-load-balancer-target-groups
@@ -6047,14 +6047,7 @@
                                                         "POST" "/"
                                                         "AttachLoadBalancerTargetGroups"
                                                         "2011-01-01"))
-      common-lisp:nil "AttachLoadBalancerTargetGroupsResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "AttachLoadBalancerTargetGroupsResult" *error-map*)))
  (common-lisp:export 'attach-load-balancer-target-groups))
 (common-lisp:progn
  (common-lisp:defun attach-load-balancers
@@ -6074,14 +6067,7 @@
                                                         "POST" "/"
                                                         "AttachLoadBalancers"
                                                         "2011-01-01"))
-      common-lisp:nil "AttachLoadBalancersResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "AttachLoadBalancersResult" *error-map*)))
  (common-lisp:export 'attach-load-balancers))
 (common-lisp:progn
  (common-lisp:defun complete-lifecycle-action
@@ -6103,14 +6089,7 @@
                                                         "POST" "/"
                                                         "CompleteLifecycleAction"
                                                         "2011-01-01"))
-      common-lisp:nil "CompleteLifecycleActionResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "CompleteLifecycleActionResult" *error-map*)))
  (common-lisp:export 'complete-lifecycle-action))
 (common-lisp:progn
  (common-lisp:defun create-auto-scaling-group
@@ -6139,14 +6118,7 @@
                                                         "POST" "/"
                                                         "CreateAutoScalingGroup"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-auto-scaling-group))
 (common-lisp:progn
  (common-lisp:defun create-launch-configuration
@@ -6175,14 +6147,7 @@
                                                         "POST" "/"
                                                         "CreateLaunchConfiguration"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-launch-configuration))
 (common-lisp:progn
  (common-lisp:defun create-or-update-tags
@@ -6200,14 +6165,7 @@
                                                         "POST" "/"
                                                         "CreateOrUpdateTags"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-or-update-tags))
 (common-lisp:progn
  (common-lisp:defun delete-auto-scaling-group
@@ -6226,14 +6184,7 @@
                                                         "POST" "/"
                                                         "DeleteAutoScalingGroup"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-auto-scaling-group))
 (common-lisp:progn
  (common-lisp:defun delete-launch-configuration
@@ -6251,14 +6202,7 @@
                                                         "POST" "/"
                                                         "DeleteLaunchConfiguration"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-launch-configuration))
 (common-lisp:progn
  (common-lisp:defun delete-lifecycle-hook
@@ -6278,14 +6222,7 @@
                                                         "POST" "/"
                                                         "DeleteLifecycleHook"
                                                         "2011-01-01"))
-      common-lisp:nil "DeleteLifecycleHookResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "DeleteLifecycleHookResult" *error-map*)))
  (common-lisp:export 'delete-lifecycle-hook))
 (common-lisp:progn
  (common-lisp:defun delete-notification-configuration
@@ -6305,14 +6242,7 @@
                                                         "POST" "/"
                                                         "DeleteNotificationConfiguration"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-notification-configuration))
 (common-lisp:progn
  (common-lisp:defun delete-policy
@@ -6331,14 +6261,7 @@
                                                         "POST" "/"
                                                         "DeletePolicy"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-policy))
 (common-lisp:progn
  (common-lisp:defun delete-scheduled-action
@@ -6358,14 +6281,7 @@
                                                         "POST" "/"
                                                         "DeleteScheduledAction"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-scheduled-action))
 (common-lisp:progn
  (common-lisp:defun delete-tags
@@ -6382,14 +6298,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteTags"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-tags))
 (common-lisp:progn
  (common-lisp:defun describe-account-limits ()
@@ -6399,14 +6308,7 @@
                                 :params
                                 `(("Action" ,@"DescribeAccountLimits")
                                   ("Version" ,@"2011-01-01"))))
-    common-lisp:nil "DescribeAccountLimitsResult"
-    '(("AlreadyExistsFault" . already-exists-fault)
-      ("InvalidNextToken" . invalid-next-token)
-      ("LimitExceededFault" . limit-exceeded-fault)
-      ("ResourceContentionFault" . resource-contention-fault)
-      ("ResourceInUseFault" . resource-in-use-fault)
-      ("ScalingActivityInProgressFault"
-       . scaling-activity-in-progress-fault))))
+    common-lisp:nil "DescribeAccountLimitsResult" *error-map*))
  (common-lisp:export 'describe-account-limits))
 (common-lisp:progn
  (common-lisp:defun describe-adjustment-types ()
@@ -6416,14 +6318,7 @@
                                 :params
                                 `(("Action" ,@"DescribeAdjustmentTypes")
                                   ("Version" ,@"2011-01-01"))))
-    common-lisp:nil "DescribeAdjustmentTypesResult"
-    '(("AlreadyExistsFault" . already-exists-fault)
-      ("InvalidNextToken" . invalid-next-token)
-      ("LimitExceededFault" . limit-exceeded-fault)
-      ("ResourceContentionFault" . resource-contention-fault)
-      ("ResourceInUseFault" . resource-in-use-fault)
-      ("ScalingActivityInProgressFault"
-       . scaling-activity-in-progress-fault))))
+    common-lisp:nil "DescribeAdjustmentTypesResult" *error-map*))
  (common-lisp:export 'describe-adjustment-types))
 (common-lisp:progn
  (common-lisp:defun describe-auto-scaling-groups
@@ -6443,14 +6338,7 @@
                                                         "POST" "/"
                                                         "DescribeAutoScalingGroups"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribeAutoScalingGroupsResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "DescribeAutoScalingGroupsResult" *error-map*)))
  (common-lisp:export 'describe-auto-scaling-groups))
 (common-lisp:progn
  (common-lisp:defun describe-auto-scaling-instances
@@ -6470,14 +6358,7 @@
                                                         "POST" "/"
                                                         "DescribeAutoScalingInstances"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribeAutoScalingInstancesResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "DescribeAutoScalingInstancesResult" *error-map*)))
  (common-lisp:export 'describe-auto-scaling-instances))
 (common-lisp:progn
  (common-lisp:defun describe-auto-scaling-notification-types ()
@@ -6488,14 +6369,7 @@
                                 `(("Action"
                                    ,@"DescribeAutoScalingNotificationTypes")
                                   ("Version" ,@"2011-01-01"))))
-    common-lisp:nil "DescribeAutoScalingNotificationTypesResult"
-    '(("AlreadyExistsFault" . already-exists-fault)
-      ("InvalidNextToken" . invalid-next-token)
-      ("LimitExceededFault" . limit-exceeded-fault)
-      ("ResourceContentionFault" . resource-contention-fault)
-      ("ResourceInUseFault" . resource-in-use-fault)
-      ("ScalingActivityInProgressFault"
-       . scaling-activity-in-progress-fault))))
+    common-lisp:nil "DescribeAutoScalingNotificationTypesResult" *error-map*))
  (common-lisp:export 'describe-auto-scaling-notification-types))
 (common-lisp:progn
  (common-lisp:defun describe-launch-configurations
@@ -6515,14 +6389,7 @@
                                                         "POST" "/"
                                                         "DescribeLaunchConfigurations"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribeLaunchConfigurationsResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "DescribeLaunchConfigurationsResult" *error-map*)))
  (common-lisp:export 'describe-launch-configurations))
 (common-lisp:progn
  (common-lisp:defun describe-lifecycle-hook-types ()
@@ -6532,14 +6399,7 @@
                                 :params
                                 `(("Action" ,@"DescribeLifecycleHookTypes")
                                   ("Version" ,@"2011-01-01"))))
-    common-lisp:nil "DescribeLifecycleHookTypesResult"
-    '(("AlreadyExistsFault" . already-exists-fault)
-      ("InvalidNextToken" . invalid-next-token)
-      ("LimitExceededFault" . limit-exceeded-fault)
-      ("ResourceContentionFault" . resource-contention-fault)
-      ("ResourceInUseFault" . resource-in-use-fault)
-      ("ScalingActivityInProgressFault"
-       . scaling-activity-in-progress-fault))))
+    common-lisp:nil "DescribeLifecycleHookTypesResult" *error-map*))
  (common-lisp:export 'describe-lifecycle-hook-types))
 (common-lisp:progn
  (common-lisp:defun describe-lifecycle-hooks
@@ -6559,14 +6419,7 @@
                                                         "POST" "/"
                                                         "DescribeLifecycleHooks"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribeLifecycleHooksResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "DescribeLifecycleHooksResult" *error-map*)))
  (common-lisp:export 'describe-lifecycle-hooks))
 (common-lisp:progn
  (common-lisp:defun describe-load-balancer-target-groups
@@ -6587,14 +6440,7 @@
                                                         "POST" "/"
                                                         "DescribeLoadBalancerTargetGroups"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribeLoadBalancerTargetGroupsResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "DescribeLoadBalancerTargetGroupsResult" *error-map*)))
  (common-lisp:export 'describe-load-balancer-target-groups))
 (common-lisp:progn
  (common-lisp:defun describe-load-balancers
@@ -6614,14 +6460,7 @@
                                                         "POST" "/"
                                                         "DescribeLoadBalancers"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribeLoadBalancersResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "DescribeLoadBalancersResult" *error-map*)))
  (common-lisp:export 'describe-load-balancers))
 (common-lisp:progn
  (common-lisp:defun describe-metric-collection-types ()
@@ -6631,14 +6470,7 @@
                                 :params
                                 `(("Action" ,@"DescribeMetricCollectionTypes")
                                   ("Version" ,@"2011-01-01"))))
-    common-lisp:nil "DescribeMetricCollectionTypesResult"
-    '(("AlreadyExistsFault" . already-exists-fault)
-      ("InvalidNextToken" . invalid-next-token)
-      ("LimitExceededFault" . limit-exceeded-fault)
-      ("ResourceContentionFault" . resource-contention-fault)
-      ("ResourceInUseFault" . resource-in-use-fault)
-      ("ScalingActivityInProgressFault"
-       . scaling-activity-in-progress-fault))))
+    common-lisp:nil "DescribeMetricCollectionTypesResult" *error-map*))
  (common-lisp:export 'describe-metric-collection-types))
 (common-lisp:progn
  (common-lisp:defun describe-notification-configurations
@@ -6659,14 +6491,7 @@
                                                         "POST" "/"
                                                         "DescribeNotificationConfigurations"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribeNotificationConfigurationsResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "DescribeNotificationConfigurationsResult" *error-map*)))
  (common-lisp:export 'describe-notification-configurations))
 (common-lisp:progn
  (common-lisp:defun describe-policies
@@ -6687,14 +6512,7 @@
                                                         "POST" "/"
                                                         "DescribePolicies"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribePoliciesResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "DescribePoliciesResult" *error-map*)))
  (common-lisp:export 'describe-policies))
 (common-lisp:progn
  (common-lisp:defun describe-scaling-activities
@@ -6715,14 +6533,7 @@
                                                         "POST" "/"
                                                         "DescribeScalingActivities"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribeScalingActivitiesResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "DescribeScalingActivitiesResult" *error-map*)))
  (common-lisp:export 'describe-scaling-activities))
 (common-lisp:progn
  (common-lisp:defun describe-scaling-process-types ()
@@ -6732,14 +6543,7 @@
                                 :params
                                 `(("Action" ,@"DescribeScalingProcessTypes")
                                   ("Version" ,@"2011-01-01"))))
-    common-lisp:nil "DescribeScalingProcessTypesResult"
-    '(("AlreadyExistsFault" . already-exists-fault)
-      ("InvalidNextToken" . invalid-next-token)
-      ("LimitExceededFault" . limit-exceeded-fault)
-      ("ResourceContentionFault" . resource-contention-fault)
-      ("ResourceInUseFault" . resource-in-use-fault)
-      ("ScalingActivityInProgressFault"
-       . scaling-activity-in-progress-fault))))
+    common-lisp:nil "DescribeScalingProcessTypesResult" *error-map*))
  (common-lisp:export 'describe-scaling-process-types))
 (common-lisp:progn
  (common-lisp:defun describe-scheduled-actions
@@ -6761,14 +6565,7 @@
                                                         "POST" "/"
                                                         "DescribeScheduledActions"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribeScheduledActionsResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "DescribeScheduledActionsResult" *error-map*)))
  (common-lisp:export 'describe-scheduled-actions))
 (common-lisp:progn
  (common-lisp:defun describe-tags
@@ -6786,14 +6583,7 @@
                                                         "POST" "/"
                                                         "DescribeTags"
                                                         "2011-01-01"))
-      common-lisp:nil "DescribeTagsResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "DescribeTagsResult" *error-map*)))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
  (common-lisp:defun describe-termination-policy-types ()
@@ -6803,14 +6593,7 @@
                                 :params
                                 `(("Action" ,@"DescribeTerminationPolicyTypes")
                                   ("Version" ,@"2011-01-01"))))
-    common-lisp:nil "DescribeTerminationPolicyTypesResult"
-    '(("AlreadyExistsFault" . already-exists-fault)
-      ("InvalidNextToken" . invalid-next-token)
-      ("LimitExceededFault" . limit-exceeded-fault)
-      ("ResourceContentionFault" . resource-contention-fault)
-      ("ResourceInUseFault" . resource-in-use-fault)
-      ("ScalingActivityInProgressFault"
-       . scaling-activity-in-progress-fault))))
+    common-lisp:nil "DescribeTerminationPolicyTypesResult" *error-map*))
  (common-lisp:export 'describe-termination-policy-types))
 (common-lisp:progn
  (common-lisp:defun detach-instances
@@ -6831,14 +6614,7 @@
                                                         "POST" "/"
                                                         "DetachInstances"
                                                         "2011-01-01"))
-      common-lisp:nil "DetachInstancesResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "DetachInstancesResult" *error-map*)))
  (common-lisp:export 'detach-instances))
 (common-lisp:progn
  (common-lisp:defun detach-load-balancer-target-groups
@@ -6859,14 +6635,7 @@
                                                         "POST" "/"
                                                         "DetachLoadBalancerTargetGroups"
                                                         "2011-01-01"))
-      common-lisp:nil "DetachLoadBalancerTargetGroupsResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "DetachLoadBalancerTargetGroupsResult" *error-map*)))
  (common-lisp:export 'detach-load-balancer-target-groups))
 (common-lisp:progn
  (common-lisp:defun detach-load-balancers
@@ -6886,14 +6655,7 @@
                                                         "POST" "/"
                                                         "DetachLoadBalancers"
                                                         "2011-01-01"))
-      common-lisp:nil "DetachLoadBalancersResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "DetachLoadBalancersResult" *error-map*)))
  (common-lisp:export 'detach-load-balancers))
 (common-lisp:progn
  (common-lisp:defun disable-metrics-collection
@@ -6912,14 +6674,7 @@
                                                         "POST" "/"
                                                         "DisableMetricsCollection"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'disable-metrics-collection))
 (common-lisp:progn
  (common-lisp:defun enable-metrics-collection
@@ -6939,14 +6694,7 @@
                                                         "POST" "/"
                                                         "EnableMetricsCollection"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'enable-metrics-collection))
 (common-lisp:progn
  (common-lisp:defun enter-standby
@@ -6967,14 +6715,7 @@
                                                         "POST" "/"
                                                         "EnterStandby"
                                                         "2011-01-01"))
-      common-lisp:nil "EnterStandbyResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "EnterStandbyResult" *error-map*)))
  (common-lisp:export 'enter-standby))
 (common-lisp:progn
  (common-lisp:defun execute-policy
@@ -6995,14 +6736,7 @@
                                                         "POST" "/"
                                                         "ExecutePolicy"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'execute-policy))
 (common-lisp:progn
  (common-lisp:defun exit-standby
@@ -7021,14 +6755,7 @@
                                                         "POST" "/"
                                                         "ExitStandby"
                                                         "2011-01-01"))
-      common-lisp:nil "ExitStandbyResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "ExitStandbyResult" *error-map*)))
  (common-lisp:export 'exit-standby))
 (common-lisp:progn
  (common-lisp:defun put-lifecycle-hook
@@ -7052,14 +6779,7 @@
                                                         "POST" "/"
                                                         "PutLifecycleHook"
                                                         "2011-01-01"))
-      common-lisp:nil "PutLifecycleHookResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "PutLifecycleHookResult" *error-map*)))
  (common-lisp:export 'put-lifecycle-hook))
 (common-lisp:progn
  (common-lisp:defun put-notification-configuration
@@ -7081,14 +6801,7 @@
                                                         "POST" "/"
                                                         "PutNotificationConfiguration"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-notification-configuration))
 (common-lisp:progn
  (common-lisp:defun put-scaling-policy
@@ -7114,14 +6827,7 @@
                                                         "POST" "/"
                                                         "PutScalingPolicy"
                                                         "2011-01-01"))
-      common-lisp:nil "PutScalingPolicyResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "PutScalingPolicyResult" *error-map*)))
  (common-lisp:export 'put-scaling-policy))
 (common-lisp:progn
  (common-lisp:defun put-scheduled-update-group-action
@@ -7144,14 +6850,7 @@
                                                         "POST" "/"
                                                         "PutScheduledUpdateGroupAction"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-scheduled-update-group-action))
 (common-lisp:progn
  (common-lisp:defun record-lifecycle-action-heartbeat
@@ -7174,14 +6873,7 @@
                                                         "POST" "/"
                                                         "RecordLifecycleActionHeartbeat"
                                                         "2011-01-01"))
-      common-lisp:nil "RecordLifecycleActionHeartbeatResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "RecordLifecycleActionHeartbeatResult" *error-map*)))
  (common-lisp:export 'record-lifecycle-action-heartbeat))
 (common-lisp:progn
  (common-lisp:defun resume-processes
@@ -7201,14 +6893,7 @@
                                                         "POST" "/"
                                                         "ResumeProcesses"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'resume-processes))
 (common-lisp:progn
  (common-lisp:defun set-desired-capacity
@@ -7229,14 +6914,7 @@
                                                         "POST" "/"
                                                         "SetDesiredCapacity"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'set-desired-capacity))
 (common-lisp:progn
  (common-lisp:defun set-instance-health
@@ -7257,14 +6935,7 @@
                                                         "POST" "/"
                                                         "SetInstanceHealth"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'set-instance-health))
 (common-lisp:progn
  (common-lisp:defun set-instance-protection
@@ -7285,14 +6956,7 @@
                                                         "POST" "/"
                                                         "SetInstanceProtection"
                                                         "2011-01-01"))
-      common-lisp:nil "SetInstanceProtectionResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil "SetInstanceProtectionResult" *error-map*)))
  (common-lisp:export 'set-instance-protection))
 (common-lisp:progn
  (common-lisp:defun suspend-processes
@@ -7312,14 +6976,7 @@
                                                         "POST" "/"
                                                         "SuspendProcesses"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'suspend-processes))
 (common-lisp:progn
  (common-lisp:defun terminate-instance-in-auto-scaling-group
@@ -7341,13 +6998,7 @@
                                                         "TerminateInstanceInAutoScalingGroup"
                                                         "2011-01-01"))
       common-lisp:nil "TerminateInstanceInAutoScalingGroupResult"
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      *error-map*)))
  (common-lisp:export 'terminate-instance-in-auto-scaling-group))
 (common-lisp:progn
  (common-lisp:defun update-auto-scaling-group
@@ -7375,12 +7026,5 @@
                                                         "POST" "/"
                                                         "UpdateAutoScalingGroup"
                                                         "2011-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsFault" . already-exists-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("ResourceContentionFault" . resource-contention-fault)
-        ("ResourceInUseFault" . resource-in-use-fault)
-        ("ScalingActivityInProgressFault"
-         . scaling-activity-in-progress-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-auto-scaling-group))

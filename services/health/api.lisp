@@ -18,6 +18,9 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'health-error))
+(common-lisp:defvar *error-map*
+  '(("InvalidPaginationToken" . invalid-pagination-token)
+    ("UnsupportedLocale" . unsupported-locale)))
 (common-lisp:progn
  (common-lisp:defstruct
      (affected-entity (:copier common-lisp:nil)
@@ -1454,9 +1457,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeAffectedEntities"
                                                         "2016-08-04"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidPaginationToken" . invalid-pagination-token)
-        ("UnsupportedLocale" . unsupported-locale)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-affected-entities))
 (common-lisp:progn
  (common-lisp:defun describe-entity-aggregates
@@ -1475,9 +1476,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeEntityAggregates"
                                                         "2016-08-04"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidPaginationToken" . invalid-pagination-token)
-        ("UnsupportedLocale" . unsupported-locale)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-entity-aggregates))
 (common-lisp:progn
  (common-lisp:defun describe-event-aggregates
@@ -1498,9 +1497,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeEventAggregates"
                                                         "2016-08-04"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidPaginationToken" . invalid-pagination-token)
-        ("UnsupportedLocale" . unsupported-locale)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-event-aggregates))
 (common-lisp:progn
  (common-lisp:defun describe-event-details
@@ -1518,9 +1515,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeEventDetails"
                                                         "2016-08-04"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidPaginationToken" . invalid-pagination-token)
-        ("UnsupportedLocale" . unsupported-locale)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-event-details))
 (common-lisp:progn
  (common-lisp:defun describe-event-types
@@ -1539,9 +1534,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeEventTypes"
                                                         "2016-08-04"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidPaginationToken" . invalid-pagination-token)
-        ("UnsupportedLocale" . unsupported-locale)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-event-types))
 (common-lisp:progn
  (common-lisp:defun describe-events
@@ -1560,7 +1553,5 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeEvents"
                                                         "2016-08-04"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidPaginationToken" . invalid-pagination-token)
-        ("UnsupportedLocale" . unsupported-locale)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-events))

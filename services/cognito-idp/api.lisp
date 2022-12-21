@@ -19,6 +19,46 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'cognito-idp-error))
+(common-lisp:defvar *error-map*
+  '(("AliasExistsException" . alias-exists-exception)
+    ("CodeDeliveryFailureException" . code-delivery-failure-exception)
+    ("CodeMismatchException" . code-mismatch-exception)
+    ("ConcurrentModificationException" . concurrent-modification-exception)
+    ("DuplicateProviderException" . duplicate-provider-exception)
+    ("ExpiredCodeException" . expired-code-exception)
+    ("GroupExistsException" . group-exists-exception)
+    ("InternalErrorException" . internal-error-exception)
+    ("InvalidEmailRoleAccessPolicyException"
+     . invalid-email-role-access-policy-exception)
+    ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
+    ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
+    ("InvalidParameterException" . invalid-parameter-exception)
+    ("InvalidPasswordException" . invalid-password-exception)
+    ("InvalidSmsRoleAccessPolicyException"
+     . invalid-sms-role-access-policy-exception)
+    ("InvalidSmsRoleTrustRelationshipException"
+     . invalid-sms-role-trust-relationship-exception)
+    ("InvalidUserPoolConfigurationException"
+     . invalid-user-pool-configuration-exception)
+    ("LimitExceededException" . limit-exceeded-exception)
+    ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
+    ("NotAuthorizedException" . not-authorized-exception)
+    ("PasswordResetRequiredException" . password-reset-required-exception)
+    ("PreconditionNotMetException" . precondition-not-met-exception)
+    ("ResourceNotFoundException" . resource-not-found-exception)
+    ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
+    ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
+    ("TooManyRequestsException" . too-many-requests-exception)
+    ("UnexpectedLambdaException" . unexpected-lambda-exception)
+    ("UnsupportedIdentityProviderException"
+     . unsupported-identity-provider-exception)
+    ("UnsupportedUserStateException" . unsupported-user-state-exception)
+    ("UserImportInProgressException" . user-import-in-progress-exception)
+    ("UserLambdaValidationException" . user-lambda-validation-exception)
+    ("UserNotConfirmedException" . user-not-confirmed-exception)
+    ("UserNotFoundException" . user-not-found-exception)
+    ("UserPoolTaggingException" . user-pool-tagging-exception)
+    ("UsernameExistsException" . username-exists-exception)))
 (common-lisp:deftype awsaccount-id-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -9621,46 +9661,7 @@
                                                         "POST" "/"
                                                         "AddCustomAttributes"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'add-custom-attributes))
 (common-lisp:progn
  (common-lisp:defun admin-add-user-to-group
@@ -9679,46 +9680,7 @@
                                                         "POST" "/"
                                                         "AdminAddUserToGroup"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-add-user-to-group))
 (common-lisp:progn
  (common-lisp:defun admin-confirm-sign-up
@@ -9736,46 +9698,7 @@
                                                         "POST" "/"
                                                         "AdminConfirmSignUp"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-confirm-sign-up))
 (common-lisp:progn
  (common-lisp:defun admin-create-user
@@ -9798,46 +9721,7 @@
                                                         "POST" "/"
                                                         "AdminCreateUser"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-create-user))
 (common-lisp:progn
  (common-lisp:defun admin-delete-user
@@ -9855,46 +9739,7 @@
                                                         "POST" "/"
                                                         "AdminDeleteUser"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-delete-user))
 (common-lisp:progn
  (common-lisp:defun admin-delete-user-attributes
@@ -9915,46 +9760,7 @@
                                                         "POST" "/"
                                                         "AdminDeleteUserAttributes"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-delete-user-attributes))
 (common-lisp:progn
  (common-lisp:defun admin-disable-provider-for-user
@@ -9973,46 +9779,7 @@
                                                         "POST" "/"
                                                         "AdminDisableProviderForUser"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-disable-provider-for-user))
 (common-lisp:progn
  (common-lisp:defun admin-disable-user
@@ -10030,46 +9797,7 @@
                                                         "POST" "/"
                                                         "AdminDisableUser"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-disable-user))
 (common-lisp:progn
  (common-lisp:defun admin-enable-user
@@ -10087,46 +9815,7 @@
                                                         "POST" "/"
                                                         "AdminEnableUser"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-enable-user))
 (common-lisp:progn
  (common-lisp:defun admin-forget-device
@@ -10145,46 +9834,7 @@
                                                         "POST" "/"
                                                         "AdminForgetDevice"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-forget-device))
 (common-lisp:progn
  (common-lisp:defun admin-get-device
@@ -10203,46 +9853,7 @@
                                                         "POST" "/"
                                                         "AdminGetDevice"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-get-device))
 (common-lisp:progn
  (common-lisp:defun admin-get-user
@@ -10260,46 +9871,7 @@
                                                         "POST" "/"
                                                         "AdminGetUser"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-get-user))
 (common-lisp:progn
  (common-lisp:defun admin-initiate-auth
@@ -10320,46 +9892,7 @@
                                                         "POST" "/"
                                                         "AdminInitiateAuth"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-initiate-auth))
 (common-lisp:progn
  (common-lisp:defun admin-link-provider-for-user
@@ -10380,46 +9913,7 @@
                                                         "POST" "/"
                                                         "AdminLinkProviderForUser"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-link-provider-for-user))
 (common-lisp:progn
  (common-lisp:defun admin-list-devices
@@ -10439,46 +9933,7 @@
                                                         "POST" "/"
                                                         "AdminListDevices"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-list-devices))
 (common-lisp:progn
  (common-lisp:defun admin-list-groups-for-user
@@ -10498,46 +9953,7 @@
                                                         "POST" "/"
                                                         "AdminListGroupsForUser"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-list-groups-for-user))
 (common-lisp:progn
  (common-lisp:defun admin-remove-user-from-group
@@ -10557,46 +9973,7 @@
                                                         "POST" "/"
                                                         "AdminRemoveUserFromGroup"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-remove-user-from-group))
 (common-lisp:progn
  (common-lisp:defun admin-reset-user-password
@@ -10615,46 +9992,7 @@
                                                         "POST" "/"
                                                         "AdminResetUserPassword"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-reset-user-password))
 (common-lisp:progn
  (common-lisp:defun admin-respond-to-auth-challenge
@@ -10676,46 +10014,7 @@
                                                         "POST" "/"
                                                         "AdminRespondToAuthChallenge"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-respond-to-auth-challenge))
 (common-lisp:progn
  (common-lisp:defun admin-set-user-settings
@@ -10734,46 +10033,7 @@
                                                         "POST" "/"
                                                         "AdminSetUserSettings"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-set-user-settings))
 (common-lisp:progn
  (common-lisp:defun admin-update-device-status
@@ -10795,46 +10055,7 @@
                                                         "POST" "/"
                                                         "AdminUpdateDeviceStatus"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-update-device-status))
 (common-lisp:progn
  (common-lisp:defun admin-update-user-attributes
@@ -10854,46 +10075,7 @@
                                                         "POST" "/"
                                                         "AdminUpdateUserAttributes"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-update-user-attributes))
 (common-lisp:progn
  (common-lisp:defun admin-user-global-sign-out
@@ -10912,46 +10094,7 @@
                                                         "POST" "/"
                                                         "AdminUserGlobalSignOut"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'admin-user-global-sign-out))
 (common-lisp:progn
  (common-lisp:defun change-password
@@ -10971,46 +10114,7 @@
                                                         "POST" "/"
                                                         "ChangePassword"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'change-password))
 (common-lisp:progn
  (common-lisp:defun confirm-device
@@ -11031,46 +10135,7 @@
                                                         "POST" "/"
                                                         "ConfirmDevice"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'confirm-device))
 (common-lisp:progn
  (common-lisp:defun confirm-forgot-password
@@ -11091,46 +10156,7 @@
                                                         "POST" "/"
                                                         "ConfirmForgotPassword"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'confirm-forgot-password))
 (common-lisp:progn
  (common-lisp:defun confirm-sign-up
@@ -11151,46 +10177,7 @@
                                                         "POST" "/"
                                                         "ConfirmSignUp"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'confirm-sign-up))
 (common-lisp:progn
  (common-lisp:defun create-group
@@ -11211,46 +10198,7 @@
                                                         "POST" "/"
                                                         "CreateGroup"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-group))
 (common-lisp:progn
  (common-lisp:defun create-identity-provider
@@ -11271,46 +10219,7 @@
                                                         "POST" "/"
                                                         "CreateIdentityProvider"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-identity-provider))
 (common-lisp:progn
  (common-lisp:defun create-resource-server
@@ -11329,46 +10238,7 @@
                                                         "POST" "/"
                                                         "CreateResourceServer"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-resource-server))
 (common-lisp:progn
  (common-lisp:defun create-user-import-job
@@ -11388,46 +10258,7 @@
                                                         "POST" "/"
                                                         "CreateUserImportJob"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-user-import-job))
 (common-lisp:progn
  (common-lisp:defun create-user-pool
@@ -11459,46 +10290,7 @@
                                                         "POST" "/"
                                                         "CreateUserPool"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-user-pool))
 (common-lisp:progn
  (common-lisp:defun create-user-pool-client
@@ -11526,46 +10318,7 @@
                                                         "POST" "/"
                                                         "CreateUserPoolClient"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-user-pool-client))
 (common-lisp:progn
  (common-lisp:defun create-user-pool-domain
@@ -11583,46 +10336,7 @@
                                                         "POST" "/"
                                                         "CreateUserPoolDomain"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-user-pool-domain))
 (common-lisp:progn
  (common-lisp:defun delete-group
@@ -11640,46 +10354,7 @@
                                                         "POST" "/"
                                                         "DeleteGroup"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-group))
 (common-lisp:progn
  (common-lisp:defun delete-identity-provider
@@ -11697,46 +10372,7 @@
                                                         "POST" "/"
                                                         "DeleteIdentityProvider"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-identity-provider))
 (common-lisp:progn
  (common-lisp:defun delete-resource-server
@@ -11754,46 +10390,7 @@
                                                         "POST" "/"
                                                         "DeleteResourceServer"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-resource-server))
 (common-lisp:progn
  (common-lisp:defun delete-user
@@ -11810,46 +10407,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteUser"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-user))
 (common-lisp:progn
  (common-lisp:defun delete-user-attributes
@@ -11868,46 +10426,7 @@
                                                         "POST" "/"
                                                         "DeleteUserAttributes"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-user-attributes))
 (common-lisp:progn
  (common-lisp:defun delete-user-pool
@@ -11925,46 +10444,7 @@
                                                         "POST" "/"
                                                         "DeleteUserPool"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-user-pool))
 (common-lisp:progn
  (common-lisp:defun delete-user-pool-client
@@ -11982,46 +10462,7 @@
                                                         "POST" "/"
                                                         "DeleteUserPoolClient"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-user-pool-client))
 (common-lisp:progn
  (common-lisp:defun delete-user-pool-domain
@@ -12039,46 +10480,7 @@
                                                         "POST" "/"
                                                         "DeleteUserPoolDomain"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-user-pool-domain))
 (common-lisp:progn
  (common-lisp:defun describe-identity-provider
@@ -12097,46 +10499,7 @@
                                                         "POST" "/"
                                                         "DescribeIdentityProvider"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-identity-provider))
 (common-lisp:progn
  (common-lisp:defun describe-resource-server
@@ -12154,46 +10517,7 @@
                                                         "POST" "/"
                                                         "DescribeResourceServer"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-resource-server))
 (common-lisp:progn
  (common-lisp:defun describe-user-import-job
@@ -12211,46 +10535,7 @@
                                                         "POST" "/"
                                                         "DescribeUserImportJob"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-user-import-job))
 (common-lisp:progn
  (common-lisp:defun describe-user-pool
@@ -12268,46 +10553,7 @@
                                                         "POST" "/"
                                                         "DescribeUserPool"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-user-pool))
 (common-lisp:progn
  (common-lisp:defun describe-user-pool-client
@@ -12326,46 +10572,7 @@
                                                         "POST" "/"
                                                         "DescribeUserPoolClient"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-user-pool-client))
 (common-lisp:progn
  (common-lisp:defun describe-user-pool-domain
@@ -12384,46 +10591,7 @@
                                                         "POST" "/"
                                                         "DescribeUserPoolDomain"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-user-pool-domain))
 (common-lisp:progn
  (common-lisp:defun forget-device
@@ -12441,46 +10609,7 @@
                                                         "POST" "/"
                                                         "ForgetDevice"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'forget-device))
 (common-lisp:progn
  (common-lisp:defun forgot-password
@@ -12498,46 +10627,7 @@
                                                         "POST" "/"
                                                         "ForgotPassword"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'forgot-password))
 (common-lisp:progn
  (common-lisp:defun get-csvheader
@@ -12555,46 +10645,7 @@
                                                         "POST" "/"
                                                         "GetCSVHeader"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-csvheader))
 (common-lisp:progn
  (common-lisp:defun get-device
@@ -12611,46 +10662,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetDevice"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-device))
 (common-lisp:progn
  (common-lisp:defun get-group
@@ -12667,46 +10679,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetGroup"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-group))
 (common-lisp:progn
  (common-lisp:defun get-identity-provider-by-identifier
@@ -12725,46 +10698,7 @@
                                                         "POST" "/"
                                                         "GetIdentityProviderByIdentifier"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-identity-provider-by-identifier))
 (common-lisp:progn
  (common-lisp:defun get-uicustomization
@@ -12782,46 +10716,7 @@
                                                         "POST" "/"
                                                         "GetUICustomization"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-uicustomization))
 (common-lisp:progn
  (common-lisp:defun get-user
@@ -12838,46 +10733,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetUser"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-user))
 (common-lisp:progn
  (common-lisp:defun get-user-attribute-verification-code
@@ -12896,46 +10752,7 @@
                                                         "POST" "/"
                                                         "GetUserAttributeVerificationCode"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-user-attribute-verification-code))
 (common-lisp:progn
  (common-lisp:defun global-sign-out
@@ -12953,46 +10770,7 @@
                                                         "POST" "/"
                                                         "GlobalSignOut"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'global-sign-out))
 (common-lisp:progn
  (common-lisp:defun initiate-auth
@@ -13013,46 +10791,7 @@
                                                         "POST" "/"
                                                         "InitiateAuth"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'initiate-auth))
 (common-lisp:progn
  (common-lisp:defun list-devices
@@ -13071,46 +10810,7 @@
                                                         "POST" "/"
                                                         "ListDevices"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-devices))
 (common-lisp:progn
  (common-lisp:defun list-groups
@@ -13127,46 +10827,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListGroups"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-groups))
 (common-lisp:progn
  (common-lisp:defun list-identity-providers
@@ -13185,46 +10846,7 @@
                                                         "POST" "/"
                                                         "ListIdentityProviders"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-identity-providers))
 (common-lisp:progn
  (common-lisp:defun list-resource-servers
@@ -13243,46 +10865,7 @@
                                                         "POST" "/"
                                                         "ListResourceServers"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-resource-servers))
 (common-lisp:progn
  (common-lisp:defun list-user-import-jobs
@@ -13302,46 +10885,7 @@
                                                         "POST" "/"
                                                         "ListUserImportJobs"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-user-import-jobs))
 (common-lisp:progn
  (common-lisp:defun list-user-pool-clients
@@ -13360,46 +10904,7 @@
                                                         "POST" "/"
                                                         "ListUserPoolClients"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-user-pool-clients))
 (common-lisp:progn
  (common-lisp:defun list-user-pools
@@ -13417,46 +10922,7 @@
                                                         "POST" "/"
                                                         "ListUserPools"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-user-pools))
 (common-lisp:progn
  (common-lisp:defun list-users
@@ -13476,46 +10942,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListUsers"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-users))
 (common-lisp:progn
  (common-lisp:defun list-users-in-group
@@ -13534,46 +10961,7 @@
                                                         "POST" "/"
                                                         "ListUsersInGroup"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-users-in-group))
 (common-lisp:progn
  (common-lisp:defun resend-confirmation-code
@@ -13591,46 +10979,7 @@
                                                         "POST" "/"
                                                         "ResendConfirmationCode"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'resend-confirmation-code))
 (common-lisp:progn
  (common-lisp:defun respond-to-auth-challenge
@@ -13652,46 +11001,7 @@
                                                         "POST" "/"
                                                         "RespondToAuthChallenge"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'respond-to-auth-challenge))
 (common-lisp:progn
  (common-lisp:defun set-uicustomization
@@ -13710,46 +11020,7 @@
                                                         "POST" "/"
                                                         "SetUICustomization"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'set-uicustomization))
 (common-lisp:progn
  (common-lisp:defun set-user-settings
@@ -13767,46 +11038,7 @@
                                                         "POST" "/"
                                                         "SetUserSettings"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'set-user-settings))
 (common-lisp:progn
  (common-lisp:defun sign-up
@@ -13826,46 +11058,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "SignUp"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'sign-up))
 (common-lisp:progn
  (common-lisp:defun start-user-import-job
@@ -13883,46 +11076,7 @@
                                                         "POST" "/"
                                                         "StartUserImportJob"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'start-user-import-job))
 (common-lisp:progn
  (common-lisp:defun stop-user-import-job
@@ -13940,46 +11094,7 @@
                                                         "POST" "/"
                                                         "StopUserImportJob"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'stop-user-import-job))
 (common-lisp:progn
  (common-lisp:defun update-device-status
@@ -13999,46 +11114,7 @@
                                                         "POST" "/"
                                                         "UpdateDeviceStatus"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-device-status))
 (common-lisp:progn
  (common-lisp:defun update-group
@@ -14059,46 +11135,7 @@
                                                         "POST" "/"
                                                         "UpdateGroup"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-group))
 (common-lisp:progn
  (common-lisp:defun update-identity-provider
@@ -14119,46 +11156,7 @@
                                                         "POST" "/"
                                                         "UpdateIdentityProvider"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-identity-provider))
 (common-lisp:progn
  (common-lisp:defun update-resource-server
@@ -14177,46 +11175,7 @@
                                                         "POST" "/"
                                                         "UpdateResourceServer"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-resource-server))
 (common-lisp:progn
  (common-lisp:defun update-user-attributes
@@ -14234,46 +11193,7 @@
                                                         "POST" "/"
                                                         "UpdateUserAttributes"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-user-attributes))
 (common-lisp:progn
  (common-lisp:defun update-user-pool
@@ -14302,46 +11222,7 @@
                                                         "POST" "/"
                                                         "UpdateUserPool"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-user-pool))
 (common-lisp:progn
  (common-lisp:defun update-user-pool-client
@@ -14369,46 +11250,7 @@
                                                         "POST" "/"
                                                         "UpdateUserPoolClient"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-user-pool-client))
 (common-lisp:progn
  (common-lisp:defun verify-user-attribute
@@ -14427,44 +11269,5 @@
                                                         "POST" "/"
                                                         "VerifyUserAttribute"
                                                         "2016-04-18"))
-      common-lisp:nil common-lisp:nil
-      '(("AliasExistsException" . alias-exists-exception)
-        ("CodeDeliveryFailureException" . code-delivery-failure-exception)
-        ("CodeMismatchException" . code-mismatch-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DuplicateProviderException" . duplicate-provider-exception)
-        ("ExpiredCodeException" . expired-code-exception)
-        ("GroupExistsException" . group-exists-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidEmailRoleAccessPolicyException"
-         . invalid-email-role-access-policy-exception)
-        ("InvalidLambdaResponseException" . invalid-lambda-response-exception)
-        ("InvalidOAuthFlowException" . invalid-oauth-flow-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidPasswordException" . invalid-password-exception)
-        ("InvalidSmsRoleAccessPolicyException"
-         . invalid-sms-role-access-policy-exception)
-        ("InvalidSmsRoleTrustRelationshipException"
-         . invalid-sms-role-trust-relationship-exception)
-        ("InvalidUserPoolConfigurationException"
-         . invalid-user-pool-configuration-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MFAMethodNotFoundException" . mfamethod-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("PasswordResetRequiredException" . password-reset-required-exception)
-        ("PreconditionNotMetException" . precondition-not-met-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ScopeDoesNotExistException" . scope-does-not-exist-exception)
-        ("TooManyFailedAttemptsException" . too-many-failed-attempts-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("UnexpectedLambdaException" . unexpected-lambda-exception)
-        ("UnsupportedIdentityProviderException"
-         . unsupported-identity-provider-exception)
-        ("UnsupportedUserStateException" . unsupported-user-state-exception)
-        ("UserImportInProgressException" . user-import-in-progress-exception)
-        ("UserLambdaValidationException" . user-lambda-validation-exception)
-        ("UserNotConfirmedException" . user-not-confirmed-exception)
-        ("UserNotFoundException" . user-not-found-exception)
-        ("UserPoolTaggingException" . user-pool-tagging-exception)
-        ("UsernameExistsException" . username-exists-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'verify-user-attribute))

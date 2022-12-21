@@ -18,6 +18,17 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'acm-error))
+(common-lisp:defvar *error-map*
+  '(("InvalidArnException" . invalid-arn-exception)
+    ("InvalidDomainValidationOptionsException"
+     . invalid-domain-validation-options-exception)
+    ("InvalidStateException" . invalid-state-exception)
+    ("InvalidTagException" . invalid-tag-exception)
+    ("LimitExceededException" . limit-exceeded-exception)
+    ("RequestInProgressException" . request-in-progress-exception)
+    ("ResourceInUseException" . resource-in-use-exception)
+    ("ResourceNotFoundException" . resource-not-found-exception)
+    ("TooManyTagsException" . too-many-tags-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (add-tags-to-certificate-request (:copier common-lisp:nil)
@@ -1196,17 +1207,7 @@
                                                         "POST" "/"
                                                         "AddTagsToCertificate"
                                                         "2015-12-08"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidArnException" . invalid-arn-exception)
-        ("InvalidDomainValidationOptionsException"
-         . invalid-domain-validation-options-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("InvalidTagException" . invalid-tag-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RequestInProgressException" . request-in-progress-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'add-tags-to-certificate))
 (common-lisp:progn
  (common-lisp:defun delete-certificate
@@ -1224,17 +1225,7 @@
                                                         "POST" "/"
                                                         "DeleteCertificate"
                                                         "2015-12-08"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidArnException" . invalid-arn-exception)
-        ("InvalidDomainValidationOptionsException"
-         . invalid-domain-validation-options-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("InvalidTagException" . invalid-tag-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RequestInProgressException" . request-in-progress-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-certificate))
 (common-lisp:progn
  (common-lisp:defun describe-certificate
@@ -1252,17 +1243,7 @@
                                                         "POST" "/"
                                                         "DescribeCertificate"
                                                         "2015-12-08"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidArnException" . invalid-arn-exception)
-        ("InvalidDomainValidationOptionsException"
-         . invalid-domain-validation-options-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("InvalidTagException" . invalid-tag-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RequestInProgressException" . request-in-progress-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-certificate))
 (common-lisp:progn
  (common-lisp:defun get-certificate
@@ -1280,17 +1261,7 @@
                                                         "POST" "/"
                                                         "GetCertificate"
                                                         "2015-12-08"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidArnException" . invalid-arn-exception)
-        ("InvalidDomainValidationOptionsException"
-         . invalid-domain-validation-options-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("InvalidTagException" . invalid-tag-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RequestInProgressException" . request-in-progress-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-certificate))
 (common-lisp:progn
  (common-lisp:defun import-certificate
@@ -1311,17 +1282,7 @@
                                                         "POST" "/"
                                                         "ImportCertificate"
                                                         "2015-12-08"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidArnException" . invalid-arn-exception)
-        ("InvalidDomainValidationOptionsException"
-         . invalid-domain-validation-options-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("InvalidTagException" . invalid-tag-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RequestInProgressException" . request-in-progress-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'import-certificate))
 (common-lisp:progn
  (common-lisp:defun list-certificates
@@ -1341,17 +1302,7 @@
                                                         "POST" "/"
                                                         "ListCertificates"
                                                         "2015-12-08"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidArnException" . invalid-arn-exception)
-        ("InvalidDomainValidationOptionsException"
-         . invalid-domain-validation-options-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("InvalidTagException" . invalid-tag-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RequestInProgressException" . request-in-progress-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-certificates))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-certificate
@@ -1370,17 +1321,7 @@
                                                         "POST" "/"
                                                         "ListTagsForCertificate"
                                                         "2015-12-08"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidArnException" . invalid-arn-exception)
-        ("InvalidDomainValidationOptionsException"
-         . invalid-domain-validation-options-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("InvalidTagException" . invalid-tag-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RequestInProgressException" . request-in-progress-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-tags-for-certificate))
 (common-lisp:progn
  (common-lisp:defun remove-tags-from-certificate
@@ -1399,17 +1340,7 @@
                                                         "POST" "/"
                                                         "RemoveTagsFromCertificate"
                                                         "2015-12-08"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidArnException" . invalid-arn-exception)
-        ("InvalidDomainValidationOptionsException"
-         . invalid-domain-validation-options-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("InvalidTagException" . invalid-tag-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RequestInProgressException" . request-in-progress-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'remove-tags-from-certificate))
 (common-lisp:progn
  (common-lisp:defun request-certificate
@@ -1430,17 +1361,7 @@
                                                         "POST" "/"
                                                         "RequestCertificate"
                                                         "2015-12-08"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidArnException" . invalid-arn-exception)
-        ("InvalidDomainValidationOptionsException"
-         . invalid-domain-validation-options-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("InvalidTagException" . invalid-tag-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RequestInProgressException" . request-in-progress-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'request-certificate))
 (common-lisp:progn
  (common-lisp:defun resend-validation-email
@@ -1459,15 +1380,5 @@
                                                         "POST" "/"
                                                         "ResendValidationEmail"
                                                         "2015-12-08"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidArnException" . invalid-arn-exception)
-        ("InvalidDomainValidationOptionsException"
-         . invalid-domain-validation-options-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("InvalidTagException" . invalid-tag-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("RequestInProgressException" . request-in-progress-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'resend-validation-email))

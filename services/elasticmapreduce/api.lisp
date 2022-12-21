@@ -19,6 +19,10 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'elasticmapreduce-error))
+(common-lisp:defvar *error-map*
+  '(("InternalServerError" . internal-server-error)
+    ("InternalServerException" . internal-server-exception)
+    ("InvalidRequestException" . invalid-request-exception)))
 (common-lisp:deftype action-on-failure () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -6677,10 +6681,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "AddInstanceFleet" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'add-instance-fleet))
 (common-lisp:progn
  (common-lisp:defun add-instance-groups
@@ -6696,10 +6697,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "AddInstanceGroups" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'add-instance-groups))
 (common-lisp:progn
  (common-lisp:defun add-job-flow-steps
@@ -6715,10 +6713,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "AddJobFlowSteps" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'add-job-flow-steps))
 (common-lisp:progn
  (common-lisp:defun add-tags
@@ -6734,10 +6729,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "AddTags" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
  (common-lisp:defun cancel-steps
@@ -6753,10 +6745,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "CancelSteps" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'cancel-steps))
 (common-lisp:progn
  (common-lisp:defun create-security-configuration
@@ -6773,10 +6762,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "CreateSecurityConfiguration" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-security-configuration))
 (common-lisp:progn
  (common-lisp:defun delete-security-configuration
@@ -6793,10 +6779,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteSecurityConfiguration" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-security-configuration))
 (common-lisp:progn
  (common-lisp:defun describe-cluster
@@ -6812,10 +6795,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeCluster" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-cluster))
 (common-lisp:progn
  (common-lisp:defun describe-job-flows
@@ -6834,10 +6814,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeJobFlows" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-job-flows))
 (common-lisp:progn
  (common-lisp:defun describe-security-configuration
@@ -6854,10 +6831,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeSecurityConfiguration" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-security-configuration))
 (common-lisp:progn
  (common-lisp:defun describe-step
@@ -6873,10 +6847,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeStep" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-step))
 (common-lisp:progn
  (common-lisp:defun list-bootstrap-actions
@@ -6892,10 +6863,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "ListBootstrapActions" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-bootstrap-actions))
 (common-lisp:progn
  (common-lisp:defun list-clusters
@@ -6913,10 +6881,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "ListClusters" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-clusters))
 (common-lisp:progn
  (common-lisp:defun list-instance-fleets
@@ -6932,10 +6897,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "ListInstanceFleets" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-instance-fleets))
 (common-lisp:progn
  (common-lisp:defun list-instance-groups
@@ -6951,10 +6913,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "ListInstanceGroups" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-instance-groups))
 (common-lisp:progn
  (common-lisp:defun list-instances
@@ -6974,10 +6933,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "ListInstances" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-instances))
 (common-lisp:progn
  (common-lisp:defun list-security-configurations
@@ -6994,10 +6950,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "ListSecurityConfigurations" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-security-configurations))
 (common-lisp:progn
  (common-lisp:defun list-steps
@@ -7014,10 +6967,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "ListSteps" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-steps))
 (common-lisp:progn
  (common-lisp:defun modify-instance-fleet
@@ -7033,10 +6983,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "ModifyInstanceFleet" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'modify-instance-fleet))
 (common-lisp:progn
  (common-lisp:defun modify-instance-groups
@@ -7052,10 +6999,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "ModifyInstanceGroups" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'modify-instance-groups))
 (common-lisp:progn
  (common-lisp:defun put-auto-scaling-policy
@@ -7073,10 +7017,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "PutAutoScalingPolicy" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-auto-scaling-policy))
 (common-lisp:progn
  (common-lisp:defun remove-auto-scaling-policy
@@ -7092,10 +7033,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "RemoveAutoScalingPolicy" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'remove-auto-scaling-policy))
 (common-lisp:progn
  (common-lisp:defun remove-tags
@@ -7111,10 +7049,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "RemoveTags" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'remove-tags))
 (common-lisp:progn
  (common-lisp:defun run-job-flow
@@ -7142,10 +7077,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "RunJobFlow" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'run-job-flow))
 (common-lisp:progn
  (common-lisp:defun set-termination-protection
@@ -7162,10 +7094,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "SetTerminationProtection" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'set-termination-protection))
 (common-lisp:progn
  (common-lisp:defun set-visible-to-all-users
@@ -7182,10 +7111,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "SetVisibleToAllUsers" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'set-visible-to-all-users))
 (common-lisp:progn
  (common-lisp:defun terminate-job-flows
@@ -7201,8 +7127,5 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticmapreduce-request aws-sdk/generator/operation::input "POST" "/"
         "TerminateJobFlows" "2009-03-31"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'terminate-job-flows))

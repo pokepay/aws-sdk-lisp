@@ -19,6 +19,16 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'workspaces-error))
+(common-lisp:defvar *error-map*
+  '(("AccessDeniedException" . access-denied-exception)
+    ("InvalidParameterValuesException" . invalid-parameter-values-exception)
+    ("InvalidResourceStateException" . invalid-resource-state-exception)
+    ("OperationInProgressException" . operation-in-progress-exception)
+    ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+    ("ResourceNotFoundException" . resource-not-found-exception)
+    ("ResourceUnavailableException" . resource-unavailable-exception)
+    ("UnsupportedWorkspaceConfigurationException"
+     . unsupported-workspace-configuration-exception)))
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:define-condition access-denied-exception
@@ -2167,17 +2177,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CreateTags"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("InvalidParameterValuesException"
-         . invalid-parameter-values-exception)
-        ("InvalidResourceStateException" . invalid-resource-state-exception)
-        ("OperationInProgressException" . operation-in-progress-exception)
-        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceUnavailableException" . resource-unavailable-exception)
-        ("UnsupportedWorkspaceConfigurationException"
-         . unsupported-workspace-configuration-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-tags))
 (common-lisp:progn
  (common-lisp:defun create-workspaces
@@ -2195,17 +2195,7 @@
                                                         "POST" "/"
                                                         "CreateWorkspaces"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("InvalidParameterValuesException"
-         . invalid-parameter-values-exception)
-        ("InvalidResourceStateException" . invalid-resource-state-exception)
-        ("OperationInProgressException" . operation-in-progress-exception)
-        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceUnavailableException" . resource-unavailable-exception)
-        ("UnsupportedWorkspaceConfigurationException"
-         . unsupported-workspace-configuration-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-workspaces))
 (common-lisp:progn
  (common-lisp:defun delete-tags
@@ -2222,17 +2212,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteTags"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("InvalidParameterValuesException"
-         . invalid-parameter-values-exception)
-        ("InvalidResourceStateException" . invalid-resource-state-exception)
-        ("OperationInProgressException" . operation-in-progress-exception)
-        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceUnavailableException" . resource-unavailable-exception)
-        ("UnsupportedWorkspaceConfigurationException"
-         . unsupported-workspace-configuration-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-tags))
 (common-lisp:progn
  (common-lisp:defun describe-tags
@@ -2250,17 +2230,7 @@
                                                         "POST" "/"
                                                         "DescribeTags"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("InvalidParameterValuesException"
-         . invalid-parameter-values-exception)
-        ("InvalidResourceStateException" . invalid-resource-state-exception)
-        ("OperationInProgressException" . operation-in-progress-exception)
-        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceUnavailableException" . resource-unavailable-exception)
-        ("UnsupportedWorkspaceConfigurationException"
-         . unsupported-workspace-configuration-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
  (common-lisp:defun describe-workspace-bundles
@@ -2279,17 +2249,7 @@
                                                         "POST" "/"
                                                         "DescribeWorkspaceBundles"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("InvalidParameterValuesException"
-         . invalid-parameter-values-exception)
-        ("InvalidResourceStateException" . invalid-resource-state-exception)
-        ("OperationInProgressException" . operation-in-progress-exception)
-        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceUnavailableException" . resource-unavailable-exception)
-        ("UnsupportedWorkspaceConfigurationException"
-         . unsupported-workspace-configuration-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-workspace-bundles))
 (common-lisp:progn
  (common-lisp:defun describe-workspace-directories
@@ -2308,17 +2268,7 @@
                                                         "POST" "/"
                                                         "DescribeWorkspaceDirectories"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("InvalidParameterValuesException"
-         . invalid-parameter-values-exception)
-        ("InvalidResourceStateException" . invalid-resource-state-exception)
-        ("OperationInProgressException" . operation-in-progress-exception)
-        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceUnavailableException" . resource-unavailable-exception)
-        ("UnsupportedWorkspaceConfigurationException"
-         . unsupported-workspace-configuration-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-workspace-directories))
 (common-lisp:progn
  (common-lisp:defun describe-workspaces
@@ -2339,17 +2289,7 @@
                                                         "POST" "/"
                                                         "DescribeWorkspaces"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("InvalidParameterValuesException"
-         . invalid-parameter-values-exception)
-        ("InvalidResourceStateException" . invalid-resource-state-exception)
-        ("OperationInProgressException" . operation-in-progress-exception)
-        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceUnavailableException" . resource-unavailable-exception)
-        ("UnsupportedWorkspaceConfigurationException"
-         . unsupported-workspace-configuration-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-workspaces))
 (common-lisp:progn
  (common-lisp:defun describe-workspaces-connection-status
@@ -2368,17 +2308,7 @@
                                                         "POST" "/"
                                                         "DescribeWorkspacesConnectionStatus"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("InvalidParameterValuesException"
-         . invalid-parameter-values-exception)
-        ("InvalidResourceStateException" . invalid-resource-state-exception)
-        ("OperationInProgressException" . operation-in-progress-exception)
-        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceUnavailableException" . resource-unavailable-exception)
-        ("UnsupportedWorkspaceConfigurationException"
-         . unsupported-workspace-configuration-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-workspaces-connection-status))
 (common-lisp:progn
  (common-lisp:defun modify-workspace-properties
@@ -2398,17 +2328,7 @@
                                                         "POST" "/"
                                                         "ModifyWorkspaceProperties"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("InvalidParameterValuesException"
-         . invalid-parameter-values-exception)
-        ("InvalidResourceStateException" . invalid-resource-state-exception)
-        ("OperationInProgressException" . operation-in-progress-exception)
-        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceUnavailableException" . resource-unavailable-exception)
-        ("UnsupportedWorkspaceConfigurationException"
-         . unsupported-workspace-configuration-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'modify-workspace-properties))
 (common-lisp:progn
  (common-lisp:defun reboot-workspaces
@@ -2426,17 +2346,7 @@
                                                         "POST" "/"
                                                         "RebootWorkspaces"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("InvalidParameterValuesException"
-         . invalid-parameter-values-exception)
-        ("InvalidResourceStateException" . invalid-resource-state-exception)
-        ("OperationInProgressException" . operation-in-progress-exception)
-        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceUnavailableException" . resource-unavailable-exception)
-        ("UnsupportedWorkspaceConfigurationException"
-         . unsupported-workspace-configuration-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'reboot-workspaces))
 (common-lisp:progn
  (common-lisp:defun rebuild-workspaces
@@ -2454,17 +2364,7 @@
                                                         "POST" "/"
                                                         "RebuildWorkspaces"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("InvalidParameterValuesException"
-         . invalid-parameter-values-exception)
-        ("InvalidResourceStateException" . invalid-resource-state-exception)
-        ("OperationInProgressException" . operation-in-progress-exception)
-        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceUnavailableException" . resource-unavailable-exception)
-        ("UnsupportedWorkspaceConfigurationException"
-         . unsupported-workspace-configuration-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'rebuild-workspaces))
 (common-lisp:progn
  (common-lisp:defun start-workspaces
@@ -2482,17 +2382,7 @@
                                                         "POST" "/"
                                                         "StartWorkspaces"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("InvalidParameterValuesException"
-         . invalid-parameter-values-exception)
-        ("InvalidResourceStateException" . invalid-resource-state-exception)
-        ("OperationInProgressException" . operation-in-progress-exception)
-        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceUnavailableException" . resource-unavailable-exception)
-        ("UnsupportedWorkspaceConfigurationException"
-         . unsupported-workspace-configuration-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'start-workspaces))
 (common-lisp:progn
  (common-lisp:defun stop-workspaces
@@ -2510,17 +2400,7 @@
                                                         "POST" "/"
                                                         "StopWorkspaces"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("InvalidParameterValuesException"
-         . invalid-parameter-values-exception)
-        ("InvalidResourceStateException" . invalid-resource-state-exception)
-        ("OperationInProgressException" . operation-in-progress-exception)
-        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceUnavailableException" . resource-unavailable-exception)
-        ("UnsupportedWorkspaceConfigurationException"
-         . unsupported-workspace-configuration-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'stop-workspaces))
 (common-lisp:progn
  (common-lisp:defun terminate-workspaces
@@ -2538,15 +2418,5 @@
                                                         "POST" "/"
                                                         "TerminateWorkspaces"
                                                         "2015-04-08"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("InvalidParameterValuesException"
-         . invalid-parameter-values-exception)
-        ("InvalidResourceStateException" . invalid-resource-state-exception)
-        ("OperationInProgressException" . operation-in-progress-exception)
-        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceUnavailableException" . resource-unavailable-exception)
-        ("UnsupportedWorkspaceConfigurationException"
-         . unsupported-workspace-configuration-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'terminate-workspaces))

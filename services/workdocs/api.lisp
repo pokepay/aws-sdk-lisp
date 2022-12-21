@@ -18,6 +18,33 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'workdocs-error))
+(common-lisp:defvar *error-map*
+  '(("ConcurrentModificationException" . concurrent-modification-exception)
+    ("CustomMetadataLimitExceededException"
+     . custom-metadata-limit-exceeded-exception)
+    ("DeactivatingLastSystemUserException"
+     . deactivating-last-system-user-exception)
+    ("DocumentLockedForCommentsException"
+     . document-locked-for-comments-exception)
+    ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
+    ("EntityAlreadyExistsException" . entity-already-exists-exception)
+    ("EntityNotExistsException" . entity-not-exists-exception)
+    ("FailedDependencyException" . failed-dependency-exception)
+    ("IllegalUserStateException" . illegal-user-state-exception)
+    ("InvalidArgumentException" . invalid-argument-exception)
+    ("InvalidOperationException" . invalid-operation-exception)
+    ("LimitExceededException" . limit-exceeded-exception)
+    ("ProhibitedStateException" . prohibited-state-exception)
+    ("ResourceAlreadyCheckedOutException"
+     . resource-already-checked-out-exception)
+    ("ServiceUnavailableException" . service-unavailable-exception)
+    ("StorageLimitExceededException" . storage-limit-exceeded-exception)
+    ("StorageLimitWillExceedException" . storage-limit-will-exceed-exception)
+    ("TooManyLabelsException" . too-many-labels-exception)
+    ("TooManySubscriptionsException" . too-many-subscriptions-exception)
+    ("UnauthorizedOperationException" . unauthorized-operation-exception)
+    ("UnauthorizedResourceAccessException"
+     . unauthorized-resource-access-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (abort-document-version-upload-request (:copier common-lisp:nil)
@@ -4200,34 +4227,7 @@
                                                              'version-id))))
                                                         "AbortDocumentVersionUpload"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'abort-document-version-upload))
 (common-lisp:progn
  (common-lisp:defun activate-user
@@ -4255,34 +4255,7 @@
                                                              'user-id))))
                                                         "ActivateUser"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'activate-user))
 (common-lisp:progn
  (common-lisp:defun add-resource-permissions
@@ -4312,34 +4285,7 @@
                                                              'resource-id))))
                                                         "AddResourcePermissions"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'add-resource-permissions))
 (common-lisp:progn
  (common-lisp:defun create-comment
@@ -4375,34 +4321,7 @@
                                                              'version-id))))
                                                         "CreateComment"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-comment))
 (common-lisp:progn
  (common-lisp:defun create-custom-metadata
@@ -4433,34 +4352,7 @@
                                                              'resource-id))))
                                                         "CreateCustomMetadata"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-custom-metadata))
 (common-lisp:progn
  (common-lisp:defun create-folder
@@ -4481,34 +4373,7 @@
                                                         "/api/v1/folders"
                                                         "CreateFolder"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-folder))
 (common-lisp:progn
  (common-lisp:defun create-labels
@@ -4537,34 +4402,7 @@
                                                              'resource-id))))
                                                         "CreateLabels"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-labels))
 (common-lisp:progn
  (common-lisp:defun create-notification-subscription
@@ -4596,34 +4434,7 @@
                                                              'organization-id))))
                                                         "CreateNotificationSubscription"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-notification-subscription))
 (common-lisp:progn
  (common-lisp:defun create-user
@@ -4645,34 +4456,7 @@
                                                         "POST" "/api/v1/users"
                                                         "CreateUser"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-user))
 (common-lisp:progn
  (common-lisp:defun deactivate-user
@@ -4700,34 +4484,7 @@
                                                              'user-id))))
                                                         "DeactivateUser"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'deactivate-user))
 (common-lisp:progn
  (common-lisp:defun delete-comment
@@ -4766,34 +4523,7 @@
                                                              'comment-id))))
                                                         "DeleteComment"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-comment))
 (common-lisp:progn
  (common-lisp:defun delete-custom-metadata
@@ -4824,34 +4554,7 @@
                                                              'resource-id))))
                                                         "DeleteCustomMetadata"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-custom-metadata))
 (common-lisp:progn
  (common-lisp:defun delete-document
@@ -4880,34 +4583,7 @@
                                                              'document-id))))
                                                         "DeleteDocument"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-document))
 (common-lisp:progn
  (common-lisp:defun delete-folder
@@ -4935,34 +4611,7 @@
                                                              'folder-id))))
                                                         "DeleteFolder"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-folder))
 (common-lisp:progn
  (common-lisp:defun delete-folder-contents
@@ -4990,34 +4639,7 @@
                                                              'folder-id))))
                                                         "DeleteFolderContents"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-folder-contents))
 (common-lisp:progn
  (common-lisp:defun delete-labels
@@ -5047,34 +4669,7 @@
                                                              'resource-id))))
                                                         "DeleteLabels"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-labels))
 (common-lisp:progn
  (common-lisp:defun delete-notification-subscription
@@ -5108,34 +4703,7 @@
                                                              'subscription-id))))
                                                         "DeleteNotificationSubscription"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-notification-subscription))
 (common-lisp:progn
  (common-lisp:defun delete-user
@@ -5163,34 +4731,7 @@
                                                              'user-id))))
                                                         "DeleteUser"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-user))
 (common-lisp:progn
  (common-lisp:defun describe-activities
@@ -5212,34 +4753,7 @@
                                                         "/api/v1/activities"
                                                         "DescribeActivities"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-activities))
 (common-lisp:progn
  (common-lisp:defun describe-comments
@@ -5274,34 +4788,7 @@
                                                              'version-id))))
                                                         "DescribeComments"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-comments))
 (common-lisp:progn
  (common-lisp:defun describe-document-versions
@@ -5333,34 +4820,7 @@
                                                              'document-id))))
                                                         "DescribeDocumentVersions"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-document-versions))
 (common-lisp:progn
  (common-lisp:defun describe-folder-contents
@@ -5391,34 +4851,7 @@
                                                              'folder-id))))
                                                         "DescribeFolderContents"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-folder-contents))
 (common-lisp:progn
  (common-lisp:defun describe-notification-subscriptions
@@ -5447,34 +4880,7 @@
                                                              'organization-id))))
                                                         "DescribeNotificationSubscriptions"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-notification-subscriptions))
 (common-lisp:progn
  (common-lisp:defun describe-resource-permissions
@@ -5505,34 +4911,7 @@
                                                              'resource-id))))
                                                         "DescribeResourcePermissions"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-resource-permissions))
 (common-lisp:progn
  (common-lisp:defun describe-root-folders
@@ -5551,34 +4930,7 @@
                                                         "GET" "/api/v1/me/root"
                                                         "DescribeRootFolders"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-root-folders))
 (common-lisp:progn
  (common-lisp:defun describe-users
@@ -5599,34 +4951,7 @@
                                                         "GET" "/api/v1/users"
                                                         "DescribeUsers"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-users))
 (common-lisp:progn
  (common-lisp:defun get-current-user
@@ -5644,34 +4969,7 @@
                                                         "GET" "/api/v1/me"
                                                         "GetCurrentUser"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-current-user))
 (common-lisp:progn
  (common-lisp:defun get-document
@@ -5702,34 +5000,7 @@
                                                              'document-id))))
                                                         "GetDocument"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-document))
 (common-lisp:progn
  (common-lisp:defun get-document-path
@@ -5760,34 +5031,7 @@
                                                              'document-id))))
                                                         "GetDocumentPath"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-document-path))
 (common-lisp:progn
  (common-lisp:defun get-document-version
@@ -5822,34 +5066,7 @@
                                                              'version-id))))
                                                         "GetDocumentVersion"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-document-version))
 (common-lisp:progn
  (common-lisp:defun get-folder
@@ -5880,34 +5097,7 @@
                                                              'folder-id))))
                                                         "GetFolder"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-folder))
 (common-lisp:progn
  (common-lisp:defun get-folder-path
@@ -5937,34 +5127,7 @@
                                                              'folder-id))))
                                                         "GetFolderPath"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-folder-path))
 (common-lisp:progn
  (common-lisp:defun initiate-document-version-upload
@@ -5989,34 +5152,7 @@
                                                         "/api/v1/documents"
                                                         "InitiateDocumentVersionUpload"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'initiate-document-version-upload))
 (common-lisp:progn
  (common-lisp:defun remove-all-resource-permissions
@@ -6046,34 +5182,7 @@
                                                              'resource-id))))
                                                         "RemoveAllResourcePermissions"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'remove-all-resource-permissions))
 (common-lisp:progn
  (common-lisp:defun remove-resource-permission
@@ -6109,34 +5218,7 @@
                                                              'principal-id))))
                                                         "RemoveResourcePermission"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'remove-resource-permission))
 (common-lisp:progn
  (common-lisp:defun update-document
@@ -6167,34 +5249,7 @@
                                                              'document-id))))
                                                         "UpdateDocument"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-document))
 (common-lisp:progn
  (common-lisp:defun update-document-version
@@ -6229,34 +5284,7 @@
                                                              'version-id))))
                                                         "UpdateDocumentVersion"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-document-version))
 (common-lisp:progn
  (common-lisp:defun update-folder
@@ -6287,34 +5315,7 @@
                                                              'folder-id))))
                                                         "UpdateFolder"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-folder))
 (common-lisp:progn
  (common-lisp:defun update-user
@@ -6345,32 +5346,5 @@
                                                              'user-id))))
                                                         "UpdateUser"
                                                         "2016-05-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CustomMetadataLimitExceededException"
-         . custom-metadata-limit-exceeded-exception)
-        ("DeactivatingLastSystemUserException"
-         . deactivating-last-system-user-exception)
-        ("DocumentLockedForCommentsException"
-         . document-locked-for-comments-exception)
-        ("DraftUploadOutOfSyncException" . draft-upload-out-of-sync-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityNotExistsException" . entity-not-exists-exception)
-        ("FailedDependencyException" . failed-dependency-exception)
-        ("IllegalUserStateException" . illegal-user-state-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProhibitedStateException" . prohibited-state-exception)
-        ("ResourceAlreadyCheckedOutException"
-         . resource-already-checked-out-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("StorageLimitExceededException" . storage-limit-exceeded-exception)
-        ("StorageLimitWillExceedException"
-         . storage-limit-will-exceed-exception)
-        ("TooManyLabelsException" . too-many-labels-exception)
-        ("TooManySubscriptionsException" . too-many-subscriptions-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("UnauthorizedResourceAccessException"
-         . unauthorized-resource-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-user))

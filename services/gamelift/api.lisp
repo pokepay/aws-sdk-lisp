@@ -18,6 +18,22 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'gamelift-error))
+(common-lisp:defvar *error-map*
+  '(("ConflictException" . conflict-exception)
+    ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
+    ("GameSessionFullException" . game-session-full-exception)
+    ("IdempotentParameterMismatchException"
+     . idempotent-parameter-mismatch-exception)
+    ("InternalServiceException" . internal-service-exception)
+    ("InvalidFleetStatusException" . invalid-fleet-status-exception)
+    ("InvalidGameSessionStatusException"
+     . invalid-game-session-status-exception)
+    ("InvalidRequestException" . invalid-request-exception)
+    ("LimitExceededException" . limit-exceeded-exception)
+    ("NotFoundException" . not-found-exception)
+    ("TerminalRoutingStrategyException" . terminal-routing-strategy-exception)
+    ("UnauthorizedException" . unauthorized-exception)
+    ("UnsupportedRegionException" . unsupported-region-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (accept-match-input (:copier common-lisp:nil)
@@ -7625,23 +7641,7 @@
                                                         "POST" "/"
                                                         "AcceptMatch"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'accept-match))
 (common-lisp:progn
  (common-lisp:defun create-alias
@@ -7660,23 +7660,7 @@
                                                         "POST" "/"
                                                         "CreateAlias"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-alias))
 (common-lisp:progn
  (common-lisp:defun create-build
@@ -7696,23 +7680,7 @@
                                                         "POST" "/"
                                                         "CreateBuild"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-build))
 (common-lisp:progn
  (common-lisp:defun create-fleet
@@ -7738,23 +7706,7 @@
                                                         "POST" "/"
                                                         "CreateFleet"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-fleet))
 (common-lisp:progn
  (common-lisp:defun create-game-session
@@ -7778,23 +7730,7 @@
                                                         "POST" "/"
                                                         "CreateGameSession"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-game-session))
 (common-lisp:progn
  (common-lisp:defun create-game-session-queue
@@ -7815,23 +7751,7 @@
                                                         "POST" "/"
                                                         "CreateGameSessionQueue"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-game-session-queue))
 (common-lisp:progn
  (common-lisp:defun create-matchmaking-configuration
@@ -7858,23 +7778,7 @@
                                                         "POST" "/"
                                                         "CreateMatchmakingConfiguration"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-matchmaking-configuration))
 (common-lisp:progn
  (common-lisp:defun create-matchmaking-rule-set
@@ -7893,23 +7797,7 @@
                                                         "POST" "/"
                                                         "CreateMatchmakingRuleSet"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-matchmaking-rule-set))
 (common-lisp:progn
  (common-lisp:defun create-player-session
@@ -7928,23 +7816,7 @@
                                                         "POST" "/"
                                                         "CreatePlayerSession"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-player-session))
 (common-lisp:progn
  (common-lisp:defun create-player-sessions
@@ -7964,23 +7836,7 @@
                                                         "POST" "/"
                                                         "CreatePlayerSessions"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-player-sessions))
 (common-lisp:progn
  (common-lisp:defun delete-alias
@@ -7998,23 +7854,7 @@
                                                         "POST" "/"
                                                         "DeleteAlias"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-alias))
 (common-lisp:progn
  (common-lisp:defun delete-build
@@ -8032,23 +7872,7 @@
                                                         "POST" "/"
                                                         "DeleteBuild"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-build))
 (common-lisp:progn
  (common-lisp:defun delete-fleet
@@ -8066,23 +7890,7 @@
                                                         "POST" "/"
                                                         "DeleteFleet"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-fleet))
 (common-lisp:progn
  (common-lisp:defun delete-game-session-queue
@@ -8100,23 +7908,7 @@
                                                         "POST" "/"
                                                         "DeleteGameSessionQueue"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-game-session-queue))
 (common-lisp:progn
  (common-lisp:defun delete-matchmaking-configuration
@@ -8135,23 +7927,7 @@
                                                         "POST" "/"
                                                         "DeleteMatchmakingConfiguration"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-matchmaking-configuration))
 (common-lisp:progn
  (common-lisp:defun delete-scaling-policy
@@ -8169,23 +7945,7 @@
                                                         "POST" "/"
                                                         "DeleteScalingPolicy"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-scaling-policy))
 (common-lisp:progn
  (common-lisp:defun describe-alias
@@ -8203,23 +7963,7 @@
                                                         "POST" "/"
                                                         "DescribeAlias"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-alias))
 (common-lisp:progn
  (common-lisp:defun describe-build
@@ -8237,23 +7981,7 @@
                                                         "POST" "/"
                                                         "DescribeBuild"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-build))
 (common-lisp:progn
  (common-lisp:defun describe-ec2instance-limits
@@ -8272,23 +8000,7 @@
                                                         "POST" "/"
                                                         "DescribeEC2InstanceLimits"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-ec2instance-limits))
 (common-lisp:progn
  (common-lisp:defun describe-fleet-attributes
@@ -8306,23 +8018,7 @@
                                                         "POST" "/"
                                                         "DescribeFleetAttributes"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-fleet-attributes))
 (common-lisp:progn
  (common-lisp:defun describe-fleet-capacity
@@ -8340,23 +8036,7 @@
                                                         "POST" "/"
                                                         "DescribeFleetCapacity"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-fleet-capacity))
 (common-lisp:progn
  (common-lisp:defun describe-fleet-events
@@ -8376,23 +8056,7 @@
                                                         "POST" "/"
                                                         "DescribeFleetEvents"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-fleet-events))
 (common-lisp:progn
  (common-lisp:defun describe-fleet-port-settings
@@ -8411,23 +8075,7 @@
                                                         "POST" "/"
                                                         "DescribeFleetPortSettings"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-fleet-port-settings))
 (common-lisp:progn
  (common-lisp:defun describe-fleet-utilization
@@ -8445,23 +8093,7 @@
                                                         "POST" "/"
                                                         "DescribeFleetUtilization"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-fleet-utilization))
 (common-lisp:progn
  (common-lisp:defun describe-game-session-details
@@ -8483,23 +8115,7 @@
                                                         "POST" "/"
                                                         "DescribeGameSessionDetails"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-game-session-details))
 (common-lisp:progn
  (common-lisp:defun describe-game-session-placement
@@ -8518,23 +8134,7 @@
                                                         "POST" "/"
                                                         "DescribeGameSessionPlacement"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-game-session-placement))
 (common-lisp:progn
  (common-lisp:defun describe-game-session-queues
@@ -8553,23 +8153,7 @@
                                                         "POST" "/"
                                                         "DescribeGameSessionQueues"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-game-session-queues))
 (common-lisp:progn
  (common-lisp:defun describe-game-sessions
@@ -8590,23 +8174,7 @@
                                                         "POST" "/"
                                                         "DescribeGameSessions"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-game-sessions))
 (common-lisp:progn
  (common-lisp:defun describe-instances
@@ -8625,23 +8193,7 @@
                                                         "POST" "/"
                                                         "DescribeInstances"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-instances))
 (common-lisp:progn
  (common-lisp:defun describe-matchmaking
@@ -8659,23 +8211,7 @@
                                                         "POST" "/"
                                                         "DescribeMatchmaking"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-matchmaking))
 (common-lisp:progn
  (common-lisp:defun describe-matchmaking-configurations
@@ -8695,23 +8231,7 @@
                                                         "POST" "/"
                                                         "DescribeMatchmakingConfigurations"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-matchmaking-configurations))
 (common-lisp:progn
  (common-lisp:defun describe-matchmaking-rule-sets
@@ -8730,23 +8250,7 @@
                                                         "POST" "/"
                                                         "DescribeMatchmakingRuleSets"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-matchmaking-rule-sets))
 (common-lisp:progn
  (common-lisp:defun describe-player-sessions
@@ -8768,23 +8272,7 @@
                                                         "POST" "/"
                                                         "DescribePlayerSessions"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-player-sessions))
 (common-lisp:progn
  (common-lisp:defun describe-runtime-configuration
@@ -8803,23 +8291,7 @@
                                                         "POST" "/"
                                                         "DescribeRuntimeConfiguration"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-runtime-configuration))
 (common-lisp:progn
  (common-lisp:defun describe-scaling-policies
@@ -8838,23 +8310,7 @@
                                                         "POST" "/"
                                                         "DescribeScalingPolicies"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-scaling-policies))
 (common-lisp:progn
  (common-lisp:defun get-game-session-log-url
@@ -8872,23 +8328,7 @@
                                                         "POST" "/"
                                                         "GetGameSessionLogUrl"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-game-session-log-url))
 (common-lisp:progn
  (common-lisp:defun get-instance-access
@@ -8906,23 +8346,7 @@
                                                         "POST" "/"
                                                         "GetInstanceAccess"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-instance-access))
 (common-lisp:progn
  (common-lisp:defun list-aliases
@@ -8942,23 +8366,7 @@
                                                         "POST" "/"
                                                         "ListAliases"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-aliases))
 (common-lisp:progn
  (common-lisp:defun list-builds
@@ -8975,23 +8383,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListBuilds"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-builds))
 (common-lisp:progn
  (common-lisp:defun list-fleets
@@ -9008,23 +8400,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListFleets"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-fleets))
 (common-lisp:progn
  (common-lisp:defun put-scaling-policy
@@ -9047,23 +8423,7 @@
                                                         "POST" "/"
                                                         "PutScalingPolicy"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-scaling-policy))
 (common-lisp:progn
  (common-lisp:defun request-upload-credentials
@@ -9081,23 +8441,7 @@
                                                         "POST" "/"
                                                         "RequestUploadCredentials"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'request-upload-credentials))
 (common-lisp:progn
  (common-lisp:defun resolve-alias
@@ -9115,23 +8459,7 @@
                                                         "POST" "/"
                                                         "ResolveAlias"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'resolve-alias))
 (common-lisp:progn
  (common-lisp:defun search-game-sessions
@@ -9152,23 +8480,7 @@
                                                         "POST" "/"
                                                         "SearchGameSessions"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'search-game-sessions))
 (common-lisp:progn
  (common-lisp:defun start-game-session-placement
@@ -9193,23 +8505,7 @@
                                                         "POST" "/"
                                                         "StartGameSessionPlacement"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'start-game-session-placement))
 (common-lisp:progn
  (common-lisp:defun start-matchmaking
@@ -9228,23 +8524,7 @@
                                                         "POST" "/"
                                                         "StartMatchmaking"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'start-matchmaking))
 (common-lisp:progn
  (common-lisp:defun stop-game-session-placement
@@ -9263,23 +8543,7 @@
                                                         "POST" "/"
                                                         "StopGameSessionPlacement"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'stop-game-session-placement))
 (common-lisp:progn
  (common-lisp:defun stop-matchmaking
@@ -9297,23 +8561,7 @@
                                                         "POST" "/"
                                                         "StopMatchmaking"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'stop-matchmaking))
 (common-lisp:progn
  (common-lisp:defun update-alias
@@ -9333,23 +8581,7 @@
                                                         "POST" "/"
                                                         "UpdateAlias"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-alias))
 (common-lisp:progn
  (common-lisp:defun update-build
@@ -9367,23 +8599,7 @@
                                                         "POST" "/"
                                                         "UpdateBuild"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-build))
 (common-lisp:progn
  (common-lisp:defun update-fleet-attributes
@@ -9406,23 +8622,7 @@
                                                         "POST" "/"
                                                         "UpdateFleetAttributes"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-fleet-attributes))
 (common-lisp:progn
  (common-lisp:defun update-fleet-capacity
@@ -9442,23 +8642,7 @@
                                                         "POST" "/"
                                                         "UpdateFleetCapacity"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-fleet-capacity))
 (common-lisp:progn
  (common-lisp:defun update-fleet-port-settings
@@ -9480,23 +8664,7 @@
                                                         "POST" "/"
                                                         "UpdateFleetPortSettings"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-fleet-port-settings))
 (common-lisp:progn
  (common-lisp:defun update-game-session
@@ -9518,23 +8686,7 @@
                                                         "POST" "/"
                                                         "UpdateGameSession"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-game-session))
 (common-lisp:progn
  (common-lisp:defun update-game-session-queue
@@ -9555,23 +8707,7 @@
                                                         "POST" "/"
                                                         "UpdateGameSessionQueue"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-game-session-queue))
 (common-lisp:progn
  (common-lisp:defun update-matchmaking-configuration
@@ -9598,23 +8734,7 @@
                                                         "POST" "/"
                                                         "UpdateMatchmakingConfiguration"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-matchmaking-configuration))
 (common-lisp:progn
  (common-lisp:defun update-runtime-configuration
@@ -9633,23 +8753,7 @@
                                                         "POST" "/"
                                                         "UpdateRuntimeConfiguration"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-runtime-configuration))
 (common-lisp:progn
  (common-lisp:defun validate-matchmaking-rule-set
@@ -9668,21 +8772,5 @@
                                                         "POST" "/"
                                                         "ValidateMatchmakingRuleSet"
                                                         "2015-10-01"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("FleetCapacityExceededException" . fleet-capacity-exceeded-exception)
-        ("GameSessionFullException" . game-session-full-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidFleetStatusException" . invalid-fleet-status-exception)
-        ("InvalidGameSessionStatusException"
-         . invalid-game-session-status-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TerminalRoutingStrategyException"
-         . terminal-routing-strategy-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedRegionException" . unsupported-region-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'validate-matchmaking-rule-set))

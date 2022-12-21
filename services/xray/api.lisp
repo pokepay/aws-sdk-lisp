@@ -18,6 +18,9 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'xray-error))
+(common-lisp:defvar *error-map*
+  '(("InvalidRequestException" . invalid-request-exception)
+    ("ThrottledException" . throttled-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (alias (:copier common-lisp:nil) (:conc-name "struct-shape-alias-"))
@@ -1765,9 +1768,7 @@
                                                         "POST" "/Traces"
                                                         "BatchGetTraces"
                                                         "2016-04-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottledException" . throttled-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'batch-get-traces))
 (common-lisp:progn
  (common-lisp:defun get-service-graph
@@ -1785,9 +1786,7 @@
                                                         "POST" "/ServiceGraph"
                                                         "GetServiceGraph"
                                                         "2016-04-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottledException" . throttled-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-service-graph))
 (common-lisp:progn
  (common-lisp:defun get-trace-graph
@@ -1805,9 +1804,7 @@
                                                         "POST" "/TraceGraph"
                                                         "GetTraceGraph"
                                                         "2016-04-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottledException" . throttled-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-trace-graph))
 (common-lisp:progn
  (common-lisp:defun get-trace-summaries
@@ -1829,9 +1826,7 @@
                                                         "/TraceSummaries"
                                                         "GetTraceSummaries"
                                                         "2016-04-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottledException" . throttled-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-trace-summaries))
 (common-lisp:progn
  (common-lisp:defun put-telemetry-records
@@ -1853,9 +1848,7 @@
                                                         "/TelemetryRecords"
                                                         "PutTelemetryRecords"
                                                         "2016-04-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottledException" . throttled-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-telemetry-records))
 (common-lisp:progn
  (common-lisp:defun put-trace-segments
@@ -1873,7 +1866,5 @@
                                                         "POST" "/TraceSegments"
                                                         "PutTraceSegments"
                                                         "2016-04-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottledException" . throttled-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-trace-segments))

@@ -18,6 +18,11 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'cur-error))
+(common-lisp:defvar *error-map*
+  '(("DuplicateReportNameException" . duplicate-report-name-exception)
+    ("InternalErrorException" . internal-error-exception)
+    ("ReportLimitReachedException" . report-limit-reached-exception)
+    ("ValidationException" . validation-exception)))
 (common-lisp:deftype awsregion () 'common-lisp:string)
 (common-lisp:deftype additional-artifact () 'common-lisp:string)
 (common-lisp:progn
@@ -396,11 +401,7 @@
                                                         "POST" "/"
                                                         "DeleteReportDefinition"
                                                         "2017-01-06"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateReportNameException" . duplicate-report-name-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("ReportLimitReachedException" . report-limit-reached-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-report-definition))
 (common-lisp:progn
  (common-lisp:defun describe-report-definitions
@@ -419,11 +420,7 @@
                                                         "POST" "/"
                                                         "DescribeReportDefinitions"
                                                         "2017-01-06"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateReportNameException" . duplicate-report-name-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("ReportLimitReachedException" . report-limit-reached-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-report-definitions))
 (common-lisp:progn
  (common-lisp:defun put-report-definition
@@ -441,9 +438,5 @@
                                                         "POST" "/"
                                                         "PutReportDefinition"
                                                         "2017-01-06"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateReportNameException" . duplicate-report-name-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("ReportLimitReachedException" . report-limit-reached-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-report-definition))

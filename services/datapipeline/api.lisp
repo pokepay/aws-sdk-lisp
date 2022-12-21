@@ -19,6 +19,12 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'datapipeline-error))
+(common-lisp:defvar *error-map*
+  '(("InternalServiceError" . internal-service-error)
+    ("InvalidRequestException" . invalid-request-exception)
+    ("PipelineDeletedException" . pipeline-deleted-exception)
+    ("PipelineNotFoundException" . pipeline-not-found-exception)
+    ("TaskNotFoundException" . task-not-found-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (activate-pipeline-input (:copier common-lisp:nil)
@@ -2145,12 +2151,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ActivatePipeline"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceError" . internal-service-error)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("PipelineDeletedException" . pipeline-deleted-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("TaskNotFoundException" . task-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'activate-pipeline))
 (common-lisp:progn
  (common-lisp:defun add-tags
@@ -2167,12 +2168,7 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "AddTags"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceError" . internal-service-error)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("PipelineDeletedException" . pipeline-deleted-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("TaskNotFoundException" . task-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
  (common-lisp:defun create-pipeline
@@ -2191,12 +2187,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "CreatePipeline"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceError" . internal-service-error)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("PipelineDeletedException" . pipeline-deleted-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("TaskNotFoundException" . task-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-pipeline))
 (common-lisp:progn
  (common-lisp:defun deactivate-pipeline
@@ -2214,12 +2205,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DeactivatePipeline"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceError" . internal-service-error)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("PipelineDeletedException" . pipeline-deleted-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("TaskNotFoundException" . task-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'deactivate-pipeline))
 (common-lisp:progn
  (common-lisp:defun delete-pipeline
@@ -2237,12 +2223,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DeletePipeline"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceError" . internal-service-error)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("PipelineDeletedException" . pipeline-deleted-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("TaskNotFoundException" . task-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-pipeline))
 (common-lisp:progn
  (common-lisp:defun describe-objects
@@ -2262,12 +2243,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribeObjects"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceError" . internal-service-error)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("PipelineDeletedException" . pipeline-deleted-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("TaskNotFoundException" . task-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-objects))
 (common-lisp:progn
  (common-lisp:defun describe-pipelines
@@ -2285,12 +2261,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "DescribePipelines"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceError" . internal-service-error)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("PipelineDeletedException" . pipeline-deleted-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("TaskNotFoundException" . task-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-pipelines))
 (common-lisp:progn
  (common-lisp:defun evaluate-expression
@@ -2309,12 +2280,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "EvaluateExpression"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceError" . internal-service-error)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("PipelineDeletedException" . pipeline-deleted-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("TaskNotFoundException" . task-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'evaluate-expression))
 (common-lisp:progn
  (common-lisp:defun get-pipeline-definition
@@ -2332,12 +2298,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "GetPipelineDefinition"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceError" . internal-service-error)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("PipelineDeletedException" . pipeline-deleted-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("TaskNotFoundException" . task-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-pipeline-definition))
 (common-lisp:progn
  (common-lisp:defun list-pipelines
@@ -2355,12 +2316,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ListPipelines"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceError" . internal-service-error)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("PipelineDeletedException" . pipeline-deleted-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("TaskNotFoundException" . task-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-pipelines))
 (common-lisp:progn
  (common-lisp:defun poll-for-task
@@ -2379,12 +2335,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "PollForTask"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceError" . internal-service-error)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("PipelineDeletedException" . pipeline-deleted-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("TaskNotFoundException" . task-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'poll-for-task))
 (common-lisp:progn
  (common-lisp:defun put-pipeline-definition
@@ -2405,12 +2356,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "PutPipelineDefinition"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceError" . internal-service-error)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("PipelineDeletedException" . pipeline-deleted-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("TaskNotFoundException" . task-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-pipeline-definition))
 (common-lisp:progn
  (common-lisp:defun query-objects
@@ -2429,12 +2375,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "QueryObjects"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceError" . internal-service-error)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("PipelineDeletedException" . pipeline-deleted-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("TaskNotFoundException" . task-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'query-objects))
 (common-lisp:progn
  (common-lisp:defun remove-tags
@@ -2451,12 +2392,7 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "RemoveTags"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceError" . internal-service-error)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("PipelineDeletedException" . pipeline-deleted-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("TaskNotFoundException" . task-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'remove-tags))
 (common-lisp:progn
  (common-lisp:defun report-task-progress
@@ -2474,12 +2410,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ReportTaskProgress"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceError" . internal-service-error)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("PipelineDeletedException" . pipeline-deleted-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("TaskNotFoundException" . task-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'report-task-progress))
 (common-lisp:progn
  (common-lisp:defun report-task-runner-heartbeat
@@ -2499,12 +2430,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ReportTaskRunnerHeartbeat"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceError" . internal-service-error)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("PipelineDeletedException" . pipeline-deleted-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("TaskNotFoundException" . task-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'report-task-runner-heartbeat))
 (common-lisp:progn
  (common-lisp:defun set-status
@@ -2521,12 +2447,7 @@ common-lisp:nil
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "SetStatus"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceError" . internal-service-error)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("PipelineDeletedException" . pipeline-deleted-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("TaskNotFoundException" . task-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'set-status))
 (common-lisp:progn
  (common-lisp:defun set-task-status
@@ -2547,12 +2468,7 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "SetTaskStatus"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceError" . internal-service-error)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("PipelineDeletedException" . pipeline-deleted-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("TaskNotFoundException" . task-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'set-task-status))
 (common-lisp:progn
  (common-lisp:defun validate-pipeline-definition
@@ -2574,10 +2490,5 @@ common-lisp:nil
                                                         "POST" "/"
                                                         "ValidatePipelineDefinition"
                                                         "2012-10-29"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceError" . internal-service-error)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("PipelineDeletedException" . pipeline-deleted-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("TaskNotFoundException" . task-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'validate-pipeline-definition))

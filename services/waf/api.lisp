@@ -18,6 +18,18 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'waf-error))
+(common-lisp:defvar *error-map*
+  '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
+    ("WAFInternalErrorException" . wafinternal-error-exception)
+    ("WAFInvalidAccountException" . wafinvalid-account-exception)
+    ("WAFInvalidOperationException" . wafinvalid-operation-exception)
+    ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
+    ("WAFLimitsExceededException" . waflimits-exceeded-exception)
+    ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
+    ("WAFNonexistentContainerException" . wafnonexistent-container-exception)
+    ("WAFNonexistentItemException" . wafnonexistent-item-exception)
+    ("WAFReferencedItemException" . wafreferenced-item-exception)
+    ("WAFStaleDataException" . wafstale-data-exception)))
 (common-lisp:deftype action () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -5006,19 +5018,7 @@
                                                         "POST" "/"
                                                         "CreateByteMatchSet"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-byte-match-set))
 (common-lisp:progn
  (common-lisp:defun create-ipset
@@ -5036,19 +5036,7 @@
                                                         "POST" "/"
                                                         "CreateIPSet"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-ipset))
 (common-lisp:progn
  (common-lisp:defun create-rate-based-rule
@@ -5068,19 +5056,7 @@
                                                         "POST" "/"
                                                         "CreateRateBasedRule"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-rate-based-rule))
 (common-lisp:progn
  (common-lisp:defun create-rule
@@ -5097,19 +5073,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CreateRule"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-rule))
 (common-lisp:progn
  (common-lisp:defun create-size-constraint-set
@@ -5128,19 +5092,7 @@
                                                         "POST" "/"
                                                         "CreateSizeConstraintSet"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-size-constraint-set))
 (common-lisp:progn
  (common-lisp:defun create-sql-injection-match-set
@@ -5159,19 +5111,7 @@
                                                         "POST" "/"
                                                         "CreateSqlInjectionMatchSet"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-sql-injection-match-set))
 (common-lisp:progn
  (common-lisp:defun create-web-acl
@@ -5191,19 +5131,7 @@
                                                         "POST" "/"
                                                         "CreateWebACL"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-web-acl))
 (common-lisp:progn
  (common-lisp:defun create-xss-match-set
@@ -5221,19 +5149,7 @@
                                                         "POST" "/"
                                                         "CreateXssMatchSet"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-xss-match-set))
 (common-lisp:progn
  (common-lisp:defun delete-byte-match-set
@@ -5251,19 +5167,7 @@
                                                         "POST" "/"
                                                         "DeleteByteMatchSet"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-byte-match-set))
 (common-lisp:progn
  (common-lisp:defun delete-ipset
@@ -5281,19 +5185,7 @@
                                                         "POST" "/"
                                                         "DeleteIPSet"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-ipset))
 (common-lisp:progn
  (common-lisp:defun delete-rate-based-rule
@@ -5311,19 +5203,7 @@
                                                         "POST" "/"
                                                         "DeleteRateBasedRule"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-rate-based-rule))
 (common-lisp:progn
  (common-lisp:defun delete-rule
@@ -5340,19 +5220,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteRule"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-rule))
 (common-lisp:progn
  (common-lisp:defun delete-size-constraint-set
@@ -5372,19 +5240,7 @@
                                                         "POST" "/"
                                                         "DeleteSizeConstraintSet"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-size-constraint-set))
 (common-lisp:progn
  (common-lisp:defun delete-sql-injection-match-set
@@ -5404,19 +5260,7 @@
                                                         "POST" "/"
                                                         "DeleteSqlInjectionMatchSet"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-sql-injection-match-set))
 (common-lisp:progn
  (common-lisp:defun delete-web-acl
@@ -5434,19 +5278,7 @@
                                                         "POST" "/"
                                                         "DeleteWebACL"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-web-acl))
 (common-lisp:progn
  (common-lisp:defun delete-xss-match-set
@@ -5464,19 +5296,7 @@
                                                         "POST" "/"
                                                         "DeleteXssMatchSet"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-xss-match-set))
 (common-lisp:progn
  (common-lisp:defun get-byte-match-set
@@ -5494,19 +5314,7 @@
                                                         "POST" "/"
                                                         "GetByteMatchSet"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-byte-match-set))
 (common-lisp:progn
  (common-lisp:defun get-change-token ()
@@ -5515,18 +5323,7 @@
      (common-lisp:make-instance 'waf-request :method "POST" :path "/" :params
                                 `(("Action" ,@"GetChangeToken")
                                   ("Version" ,@"2015-08-24"))))
-    common-lisp:nil common-lisp:nil
-    '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-      ("WAFInternalErrorException" . wafinternal-error-exception)
-      ("WAFInvalidAccountException" . wafinvalid-account-exception)
-      ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-      ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-      ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-      ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-      ("WAFNonexistentContainerException" . wafnonexistent-container-exception)
-      ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-      ("WAFReferencedItemException" . wafreferenced-item-exception)
-      ("WAFStaleDataException" . wafstale-data-exception))))
+    common-lisp:nil common-lisp:nil *error-map*))
  (common-lisp:export 'get-change-token))
 (common-lisp:progn
  (common-lisp:defun get-change-token-status
@@ -5544,19 +5341,7 @@
                                                         "POST" "/"
                                                         "GetChangeTokenStatus"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-change-token-status))
 (common-lisp:progn
  (common-lisp:defun get-ipset
@@ -5573,19 +5358,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetIPSet"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-ipset))
 (common-lisp:progn
  (common-lisp:defun get-rate-based-rule
@@ -5603,19 +5376,7 @@
                                                         "POST" "/"
                                                         "GetRateBasedRule"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-rate-based-rule))
 (common-lisp:progn
  (common-lisp:defun get-rate-based-rule-managed-keys
@@ -5634,19 +5395,7 @@
                                                         "POST" "/"
                                                         "GetRateBasedRuleManagedKeys"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-rate-based-rule-managed-keys))
 (common-lisp:progn
  (common-lisp:defun get-rule
@@ -5663,19 +5412,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetRule"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-rule))
 (common-lisp:progn
  (common-lisp:defun get-sampled-requests
@@ -5694,19 +5431,7 @@
                                                         "POST" "/"
                                                         "GetSampledRequests"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-sampled-requests))
 (common-lisp:progn
  (common-lisp:defun get-size-constraint-set
@@ -5724,19 +5449,7 @@
                                                         "POST" "/"
                                                         "GetSizeConstraintSet"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-size-constraint-set))
 (common-lisp:progn
  (common-lisp:defun get-sql-injection-match-set
@@ -5755,19 +5468,7 @@
                                                         "POST" "/"
                                                         "GetSqlInjectionMatchSet"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-sql-injection-match-set))
 (common-lisp:progn
  (common-lisp:defun get-web-acl
@@ -5784,19 +5485,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetWebACL"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-web-acl))
 (common-lisp:progn
  (common-lisp:defun get-xss-match-set
@@ -5814,19 +5503,7 @@
                                                         "POST" "/"
                                                         "GetXssMatchSet"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-xss-match-set))
 (common-lisp:progn
  (common-lisp:defun list-byte-match-sets
@@ -5844,19 +5521,7 @@
                                                         "POST" "/"
                                                         "ListByteMatchSets"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-byte-match-sets))
 (common-lisp:progn
  (common-lisp:defun list-ipsets
@@ -5873,19 +5538,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListIPSets"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-ipsets))
 (common-lisp:progn
  (common-lisp:defun list-rate-based-rules
@@ -5903,19 +5556,7 @@
                                                         "POST" "/"
                                                         "ListRateBasedRules"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-rate-based-rules))
 (common-lisp:progn
  (common-lisp:defun list-rules
@@ -5932,19 +5573,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListRules"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-rules))
 (common-lisp:progn
  (common-lisp:defun list-size-constraint-sets
@@ -5963,19 +5592,7 @@
                                                         "POST" "/"
                                                         "ListSizeConstraintSets"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-size-constraint-sets))
 (common-lisp:progn
  (common-lisp:defun list-sql-injection-match-sets
@@ -5994,19 +5611,7 @@
                                                         "POST" "/"
                                                         "ListSqlInjectionMatchSets"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-sql-injection-match-sets))
 (common-lisp:progn
  (common-lisp:defun list-web-acls
@@ -6024,19 +5629,7 @@
                                                         "POST" "/"
                                                         "ListWebACLs"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-web-acls))
 (common-lisp:progn
  (common-lisp:defun list-xss-match-sets
@@ -6054,19 +5647,7 @@
                                                         "POST" "/"
                                                         "ListXssMatchSets"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-xss-match-sets))
 (common-lisp:progn
  (common-lisp:defun update-byte-match-set
@@ -6085,19 +5666,7 @@
                                                         "POST" "/"
                                                         "UpdateByteMatchSet"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-byte-match-set))
 (common-lisp:progn
  (common-lisp:defun update-ipset
@@ -6115,19 +5684,7 @@
                                                         "POST" "/"
                                                         "UpdateIPSet"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-ipset))
 (common-lisp:progn
  (common-lisp:defun update-rate-based-rule
@@ -6146,19 +5703,7 @@
                                                         "POST" "/"
                                                         "UpdateRateBasedRule"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-rate-based-rule))
 (common-lisp:progn
  (common-lisp:defun update-rule
@@ -6175,19 +5720,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "UpdateRule"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-rule))
 (common-lisp:progn
  (common-lisp:defun update-size-constraint-set
@@ -6208,19 +5741,7 @@
                                                         "POST" "/"
                                                         "UpdateSizeConstraintSet"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-size-constraint-set))
 (common-lisp:progn
  (common-lisp:defun update-sql-injection-match-set
@@ -6241,19 +5762,7 @@
                                                         "POST" "/"
                                                         "UpdateSqlInjectionMatchSet"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-sql-injection-match-set))
 (common-lisp:progn
  (common-lisp:defun update-web-acl
@@ -6273,19 +5782,7 @@
                                                         "POST" "/"
                                                         "UpdateWebACL"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-web-acl))
 (common-lisp:progn
  (common-lisp:defun update-xss-match-set
@@ -6304,17 +5801,5 @@
                                                         "POST" "/"
                                                         "UpdateXssMatchSet"
                                                         "2015-08-24"))
-      common-lisp:nil common-lisp:nil
-      '(("WAFDisallowedNameException" . wafdisallowed-name-exception)
-        ("WAFInternalErrorException" . wafinternal-error-exception)
-        ("WAFInvalidAccountException" . wafinvalid-account-exception)
-        ("WAFInvalidOperationException" . wafinvalid-operation-exception)
-        ("WAFInvalidParameterException" . wafinvalid-parameter-exception)
-        ("WAFLimitsExceededException" . waflimits-exceeded-exception)
-        ("WAFNonEmptyEntityException" . wafnon-empty-entity-exception)
-        ("WAFNonexistentContainerException"
-         . wafnonexistent-container-exception)
-        ("WAFNonexistentItemException" . wafnonexistent-item-exception)
-        ("WAFReferencedItemException" . wafreferenced-item-exception)
-        ("WAFStaleDataException" . wafstale-data-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-xss-match-set))

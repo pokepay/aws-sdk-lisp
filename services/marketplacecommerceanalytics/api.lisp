@@ -20,6 +20,9 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'marketplacecommerceanalytics-error))
+(common-lisp:defvar *error-map*
+  '(("MarketplaceCommerceAnalyticsException"
+     . marketplace-commerce-analytics-exception)))
 (common-lisp:progn
  (common-lisp:deftype customer-defined-values () 'common-lisp:hash-table)
  (common-lisp:defun |make-customer-defined-values|
@@ -310,9 +313,7 @@
         'marketplacecommerceanalytics-request
         aws-sdk/generator/operation::input "POST" "/" "GenerateDataSet"
         "2015-07-01"))
-      common-lisp:nil common-lisp:nil
-      '(("MarketplaceCommerceAnalyticsException"
-         . marketplace-commerce-analytics-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'generate-data-set))
 (common-lisp:progn
  (common-lisp:defun start-support-data-export
@@ -335,7 +336,5 @@
         'marketplacecommerceanalytics-request
         aws-sdk/generator/operation::input "POST" "/" "StartSupportDataExport"
         "2015-07-01"))
-      common-lisp:nil common-lisp:nil
-      '(("MarketplaceCommerceAnalyticsException"
-         . marketplace-commerce-analytics-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'start-support-data-export))

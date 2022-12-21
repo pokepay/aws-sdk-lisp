@@ -19,6 +19,27 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'importexport-error))
+(common-lisp:defvar *error-map*
+  '(("BucketPermissionException" . bucket-permission-exception)
+    ("CanceledJobIdException" . canceled-job-id-exception)
+    ("CreateJobQuotaExceededException" . create-job-quota-exceeded-exception)
+    ("ExpiredJobIdException" . expired-job-id-exception)
+    ("InvalidAccessKeyIdException" . invalid-access-key-id-exception)
+    ("InvalidAddressException" . invalid-address-exception)
+    ("InvalidCustomsException" . invalid-customs-exception)
+    ("InvalidFileSystemException" . invalid-file-system-exception)
+    ("InvalidJobIdException" . invalid-job-id-exception)
+    ("InvalidManifestFieldException" . invalid-manifest-field-exception)
+    ("InvalidParameterException" . invalid-parameter-exception)
+    ("InvalidVersionException" . invalid-version-exception)
+    ("MalformedManifestException" . malformed-manifest-exception)
+    ("MissingCustomsException" . missing-customs-exception)
+    ("MissingManifestFieldException" . missing-manifest-field-exception)
+    ("MissingParameterException" . missing-parameter-exception)
+    ("MultipleRegionsException" . multiple-regions-exception)
+    ("NoSuchBucketException" . no-such-bucket-exception)
+    ("UnableToCancelJobIdException" . unable-to-cancel-job-id-exception)
+    ("UnableToUpdateJobIdException" . unable-to-update-job-id-exception)))
 (common-lisp:deftype apiversion () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -1041,29 +1062,7 @@
                                                         "/?Operation=CancelJob"
                                                         "CancelJob"
                                                         "2010-06-01"))
-      common-lisp:nil "CancelJobResult"
-      '(("BucketPermissionException" . bucket-permission-exception)
-        ("CanceledJobIdException" . canceled-job-id-exception)
-        ("CreateJobQuotaExceededException"
-         . create-job-quota-exceeded-exception)
-        ("ExpiredJobIdException" . expired-job-id-exception)
-        ("InvalidAccessKeyIdException" . invalid-access-key-id-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidCustomsException" . invalid-customs-exception)
-        ("InvalidFileSystemException" . invalid-file-system-exception)
-        ("InvalidJobIdException" . invalid-job-id-exception)
-        ("InvalidManifestFieldException" . invalid-manifest-field-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidVersionException" . invalid-version-exception)
-        ("MalformedManifestException" . malformed-manifest-exception)
-        ("MissingCustomsException" . missing-customs-exception)
-        ("MissingManifestFieldException" . missing-manifest-field-exception)
-        ("MissingParameterException" . missing-parameter-exception)
-        ("MultipleRegionsException" . multiple-regions-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("UnableToCancelJobIdException" . unable-to-cancel-job-id-exception)
-        ("UnableToUpdateJobIdException"
-         . unable-to-update-job-id-exception)))))
+      common-lisp:nil "CancelJobResult" *error-map*)))
  (common-lisp:export 'cancel-job))
 (common-lisp:progn
  (common-lisp:defun create-job
@@ -1085,29 +1084,7 @@
                                                         "/?Operation=CreateJob"
                                                         "CreateJob"
                                                         "2010-06-01"))
-      common-lisp:nil "CreateJobResult"
-      '(("BucketPermissionException" . bucket-permission-exception)
-        ("CanceledJobIdException" . canceled-job-id-exception)
-        ("CreateJobQuotaExceededException"
-         . create-job-quota-exceeded-exception)
-        ("ExpiredJobIdException" . expired-job-id-exception)
-        ("InvalidAccessKeyIdException" . invalid-access-key-id-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidCustomsException" . invalid-customs-exception)
-        ("InvalidFileSystemException" . invalid-file-system-exception)
-        ("InvalidJobIdException" . invalid-job-id-exception)
-        ("InvalidManifestFieldException" . invalid-manifest-field-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidVersionException" . invalid-version-exception)
-        ("MalformedManifestException" . malformed-manifest-exception)
-        ("MissingCustomsException" . missing-customs-exception)
-        ("MissingManifestFieldException" . missing-manifest-field-exception)
-        ("MissingParameterException" . missing-parameter-exception)
-        ("MultipleRegionsException" . multiple-regions-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("UnableToCancelJobIdException" . unable-to-cancel-job-id-exception)
-        ("UnableToUpdateJobIdException"
-         . unable-to-update-job-id-exception)))))
+      common-lisp:nil "CreateJobResult" *error-map*)))
  (common-lisp:export 'create-job))
 (common-lisp:progn
  (common-lisp:defun get-shipping-label
@@ -1130,29 +1107,7 @@
                                                         "/?Operation=GetShippingLabel"
                                                         "GetShippingLabel"
                                                         "2010-06-01"))
-      common-lisp:nil "GetShippingLabelResult"
-      '(("BucketPermissionException" . bucket-permission-exception)
-        ("CanceledJobIdException" . canceled-job-id-exception)
-        ("CreateJobQuotaExceededException"
-         . create-job-quota-exceeded-exception)
-        ("ExpiredJobIdException" . expired-job-id-exception)
-        ("InvalidAccessKeyIdException" . invalid-access-key-id-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidCustomsException" . invalid-customs-exception)
-        ("InvalidFileSystemException" . invalid-file-system-exception)
-        ("InvalidJobIdException" . invalid-job-id-exception)
-        ("InvalidManifestFieldException" . invalid-manifest-field-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidVersionException" . invalid-version-exception)
-        ("MalformedManifestException" . malformed-manifest-exception)
-        ("MissingCustomsException" . missing-customs-exception)
-        ("MissingManifestFieldException" . missing-manifest-field-exception)
-        ("MissingParameterException" . missing-parameter-exception)
-        ("MultipleRegionsException" . multiple-regions-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("UnableToCancelJobIdException" . unable-to-cancel-job-id-exception)
-        ("UnableToUpdateJobIdException"
-         . unable-to-update-job-id-exception)))))
+      common-lisp:nil "GetShippingLabelResult" *error-map*)))
  (common-lisp:export 'get-shipping-label))
 (common-lisp:progn
  (common-lisp:defun get-status
@@ -1171,29 +1126,7 @@
                                                         "/?Operation=GetStatus"
                                                         "GetStatus"
                                                         "2010-06-01"))
-      common-lisp:nil "GetStatusResult"
-      '(("BucketPermissionException" . bucket-permission-exception)
-        ("CanceledJobIdException" . canceled-job-id-exception)
-        ("CreateJobQuotaExceededException"
-         . create-job-quota-exceeded-exception)
-        ("ExpiredJobIdException" . expired-job-id-exception)
-        ("InvalidAccessKeyIdException" . invalid-access-key-id-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidCustomsException" . invalid-customs-exception)
-        ("InvalidFileSystemException" . invalid-file-system-exception)
-        ("InvalidJobIdException" . invalid-job-id-exception)
-        ("InvalidManifestFieldException" . invalid-manifest-field-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidVersionException" . invalid-version-exception)
-        ("MalformedManifestException" . malformed-manifest-exception)
-        ("MissingCustomsException" . missing-customs-exception)
-        ("MissingManifestFieldException" . missing-manifest-field-exception)
-        ("MissingParameterException" . missing-parameter-exception)
-        ("MultipleRegionsException" . multiple-regions-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("UnableToCancelJobIdException" . unable-to-cancel-job-id-exception)
-        ("UnableToUpdateJobIdException"
-         . unable-to-update-job-id-exception)))))
+      common-lisp:nil "GetStatusResult" *error-map*)))
  (common-lisp:export 'get-status))
 (common-lisp:progn
  (common-lisp:defun list-jobs
@@ -1212,29 +1145,7 @@
                                                         "/?Operation=ListJobs"
                                                         "ListJobs"
                                                         "2010-06-01"))
-      common-lisp:nil "ListJobsResult"
-      '(("BucketPermissionException" . bucket-permission-exception)
-        ("CanceledJobIdException" . canceled-job-id-exception)
-        ("CreateJobQuotaExceededException"
-         . create-job-quota-exceeded-exception)
-        ("ExpiredJobIdException" . expired-job-id-exception)
-        ("InvalidAccessKeyIdException" . invalid-access-key-id-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidCustomsException" . invalid-customs-exception)
-        ("InvalidFileSystemException" . invalid-file-system-exception)
-        ("InvalidJobIdException" . invalid-job-id-exception)
-        ("InvalidManifestFieldException" . invalid-manifest-field-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidVersionException" . invalid-version-exception)
-        ("MalformedManifestException" . malformed-manifest-exception)
-        ("MissingCustomsException" . missing-customs-exception)
-        ("MissingManifestFieldException" . missing-manifest-field-exception)
-        ("MissingParameterException" . missing-parameter-exception)
-        ("MultipleRegionsException" . multiple-regions-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("UnableToCancelJobIdException" . unable-to-cancel-job-id-exception)
-        ("UnableToUpdateJobIdException"
-         . unable-to-update-job-id-exception)))))
+      common-lisp:nil "ListJobsResult" *error-map*)))
  (common-lisp:export 'list-jobs))
 (common-lisp:progn
  (common-lisp:defun update-job
@@ -1255,27 +1166,5 @@
                                                         "/?Operation=UpdateJob"
                                                         "UpdateJob"
                                                         "2010-06-01"))
-      common-lisp:nil "UpdateJobResult"
-      '(("BucketPermissionException" . bucket-permission-exception)
-        ("CanceledJobIdException" . canceled-job-id-exception)
-        ("CreateJobQuotaExceededException"
-         . create-job-quota-exceeded-exception)
-        ("ExpiredJobIdException" . expired-job-id-exception)
-        ("InvalidAccessKeyIdException" . invalid-access-key-id-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidCustomsException" . invalid-customs-exception)
-        ("InvalidFileSystemException" . invalid-file-system-exception)
-        ("InvalidJobIdException" . invalid-job-id-exception)
-        ("InvalidManifestFieldException" . invalid-manifest-field-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidVersionException" . invalid-version-exception)
-        ("MalformedManifestException" . malformed-manifest-exception)
-        ("MissingCustomsException" . missing-customs-exception)
-        ("MissingManifestFieldException" . missing-manifest-field-exception)
-        ("MissingParameterException" . missing-parameter-exception)
-        ("MultipleRegionsException" . multiple-regions-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("UnableToCancelJobIdException" . unable-to-cancel-job-id-exception)
-        ("UnableToUpdateJobIdException"
-         . unable-to-update-job-id-exception)))))
+      common-lisp:nil "UpdateJobResult" *error-map*)))
  (common-lisp:export 'update-job))

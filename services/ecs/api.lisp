@@ -18,6 +18,21 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'ecs-error))
+(common-lisp:defvar *error-map*
+  '(("AttributeLimitExceededException" . attribute-limit-exceeded-exception)
+    ("ClientException" . client-exception)
+    ("ClusterContainsContainerInstancesException"
+     . cluster-contains-container-instances-exception)
+    ("ClusterContainsServicesException" . cluster-contains-services-exception)
+    ("ClusterNotFoundException" . cluster-not-found-exception)
+    ("InvalidParameterException" . invalid-parameter-exception)
+    ("MissingVersionException" . missing-version-exception)
+    ("NoUpdateAvailableException" . no-update-available-exception)
+    ("ServerException" . server-exception)
+    ("ServiceNotActiveException" . service-not-active-exception)
+    ("ServiceNotFoundException" . service-not-found-exception)
+    ("TargetNotFoundException" . target-not-found-exception)
+    ("UpdateInProgressException" . update-in-progress-exception)))
 (common-lisp:deftype agent-update-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -4911,23 +4926,7 @@
                                                         "POST" "/"
                                                         "CreateCluster"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-cluster))
 (common-lisp:progn
  (common-lisp:defun create-service
@@ -4951,23 +4950,7 @@
                                                         "POST" "/"
                                                         "CreateService"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-service))
 (common-lisp:progn
  (common-lisp:defun delete-attributes
@@ -4985,23 +4968,7 @@
                                                         "POST" "/"
                                                         "DeleteAttributes"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-attributes))
 (common-lisp:progn
  (common-lisp:defun delete-cluster
@@ -5019,23 +4986,7 @@
                                                         "POST" "/"
                                                         "DeleteCluster"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-cluster))
 (common-lisp:progn
  (common-lisp:defun delete-service
@@ -5053,23 +5004,7 @@
                                                         "POST" "/"
                                                         "DeleteService"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-service))
 (common-lisp:progn
  (common-lisp:defun deregister-container-instance
@@ -5089,23 +5024,7 @@
                                                         "POST" "/"
                                                         "DeregisterContainerInstance"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'deregister-container-instance))
 (common-lisp:progn
  (common-lisp:defun deregister-task-definition
@@ -5124,23 +5043,7 @@
                                                         "POST" "/"
                                                         "DeregisterTaskDefinition"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'deregister-task-definition))
 (common-lisp:progn
  (common-lisp:defun describe-clusters
@@ -5158,23 +5061,7 @@
                                                         "POST" "/"
                                                         "DescribeClusters"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-clusters))
 (common-lisp:progn
  (common-lisp:defun describe-container-instances
@@ -5193,23 +5080,7 @@
                                                         "POST" "/"
                                                         "DescribeContainerInstances"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-container-instances))
 (common-lisp:progn
  (common-lisp:defun describe-services
@@ -5227,23 +5098,7 @@
                                                         "POST" "/"
                                                         "DescribeServices"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-services))
 (common-lisp:progn
  (common-lisp:defun describe-task-definition
@@ -5261,23 +5116,7 @@
                                                         "POST" "/"
                                                         "DescribeTaskDefinition"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-task-definition))
 (common-lisp:progn
  (common-lisp:defun describe-tasks
@@ -5295,23 +5134,7 @@
                                                         "POST" "/"
                                                         "DescribeTasks"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-tasks))
 (common-lisp:progn
  (common-lisp:defun discover-poll-endpoint
@@ -5329,23 +5152,7 @@
                                                         "POST" "/"
                                                         "DiscoverPollEndpoint"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'discover-poll-endpoint))
 (common-lisp:progn
  (common-lisp:defun list-attributes
@@ -5366,23 +5173,7 @@
                                                         "POST" "/"
                                                         "ListAttributes"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-attributes))
 (common-lisp:progn
  (common-lisp:defun list-clusters
@@ -5400,23 +5191,7 @@
                                                         "POST" "/"
                                                         "ListClusters"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-clusters))
 (common-lisp:progn
  (common-lisp:defun list-container-instances
@@ -5436,23 +5211,7 @@
                                                         "POST" "/"
                                                         "ListContainerInstances"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-container-instances))
 (common-lisp:progn
  (common-lisp:defun list-services
@@ -5470,23 +5229,7 @@
                                                         "POST" "/"
                                                         "ListServices"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-services))
 (common-lisp:progn
  (common-lisp:defun list-task-definition-families
@@ -5507,23 +5250,7 @@
                                                         "POST" "/"
                                                         "ListTaskDefinitionFamilies"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-task-definition-families))
 (common-lisp:progn
  (common-lisp:defun list-task-definitions
@@ -5543,23 +5270,7 @@
                                                         "POST" "/"
                                                         "ListTaskDefinitions"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-task-definitions))
 (common-lisp:progn
  (common-lisp:defun list-tasks
@@ -5580,23 +5291,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListTasks"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-tasks))
 (common-lisp:progn
  (common-lisp:defun put-attributes
@@ -5614,23 +5309,7 @@
                                                         "POST" "/"
                                                         "PutAttributes"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-attributes))
 (common-lisp:progn
  (common-lisp:defun register-container-instance
@@ -5654,23 +5333,7 @@
                                                         "POST" "/"
                                                         "RegisterContainerInstance"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'register-container-instance))
 (common-lisp:progn
  (common-lisp:defun register-task-definition
@@ -5691,23 +5354,7 @@
                                                         "POST" "/"
                                                         "RegisterTaskDefinition"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'register-task-definition))
 (common-lisp:progn
  (common-lisp:defun run-task
@@ -5727,23 +5374,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "RunTask"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'run-task))
 (common-lisp:progn
  (common-lisp:defun start-task
@@ -5763,23 +5394,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "StartTask"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'start-task))
 (common-lisp:progn
  (common-lisp:defun stop-task
@@ -5796,23 +5411,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "StopTask"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'stop-task))
 (common-lisp:progn
  (common-lisp:defun submit-container-state-change
@@ -5834,23 +5433,7 @@
                                                         "POST" "/"
                                                         "SubmitContainerStateChange"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'submit-container-state-change))
 (common-lisp:progn
  (common-lisp:defun submit-task-state-change
@@ -5868,23 +5451,7 @@
                                                         "POST" "/"
                                                         "SubmitTaskStateChange"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'submit-task-state-change))
 (common-lisp:progn
  (common-lisp:defun update-container-agent
@@ -5902,23 +5469,7 @@
                                                         "POST" "/"
                                                         "UpdateContainerAgent"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-container-agent))
 (common-lisp:progn
  (common-lisp:defun update-container-instances-state
@@ -5938,23 +5489,7 @@
                                                         "POST" "/"
                                                         "UpdateContainerInstancesState"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-container-instances-state))
 (common-lisp:progn
  (common-lisp:defun update-service
@@ -5975,21 +5510,5 @@
                                                         "POST" "/"
                                                         "UpdateService"
                                                         "2014-11-13"))
-      common-lisp:nil common-lisp:nil
-      '(("AttributeLimitExceededException"
-         . attribute-limit-exceeded-exception)
-        ("ClientException" . client-exception)
-        ("ClusterContainsContainerInstancesException"
-         . cluster-contains-container-instances-exception)
-        ("ClusterContainsServicesException"
-         . cluster-contains-services-exception)
-        ("ClusterNotFoundException" . cluster-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("MissingVersionException" . missing-version-exception)
-        ("NoUpdateAvailableException" . no-update-available-exception)
-        ("ServerException" . server-exception)
-        ("ServiceNotActiveException" . service-not-active-exception)
-        ("ServiceNotFoundException" . service-not-found-exception)
-        ("TargetNotFoundException" . target-not-found-exception)
-        ("UpdateInProgressException" . update-in-progress-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-service))

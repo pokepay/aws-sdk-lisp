@@ -19,6 +19,13 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'opsworkscm-error))
+(common-lisp:defvar *error-map*
+  '(("InvalidNextTokenException" . invalid-next-token-exception)
+    ("InvalidStateException" . invalid-state-exception)
+    ("LimitExceededException" . limit-exceeded-exception)
+    ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+    ("ResourceNotFoundException" . resource-not-found-exception)
+    ("ValidationException" . validation-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (account-attribute (:copier common-lisp:nil)
@@ -1962,13 +1969,7 @@
                                                         "POST" "/"
                                                         "AssociateNode"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'associate-node))
 (common-lisp:progn
  (common-lisp:defun create-backup
@@ -1986,13 +1987,7 @@
                                                         "POST" "/"
                                                         "CreateBackup"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-backup))
 (common-lisp:progn
  (common-lisp:defun create-server
@@ -2020,13 +2015,7 @@
                                                         "POST" "/"
                                                         "CreateServer"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-server))
 (common-lisp:progn
  (common-lisp:defun delete-backup
@@ -2044,13 +2033,7 @@
                                                         "POST" "/"
                                                         "DeleteBackup"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-backup))
 (common-lisp:progn
  (common-lisp:defun delete-server
@@ -2068,13 +2051,7 @@
                                                         "POST" "/"
                                                         "DeleteServer"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-server))
 (common-lisp:progn
  (common-lisp:defun describe-account-attributes ()
@@ -2084,13 +2061,7 @@
                                 :params
                                 `(("Action" ,@"DescribeAccountAttributes")
                                   ("Version" ,@"2016-11-01"))))
-    common-lisp:nil common-lisp:nil
-    '(("InvalidNextTokenException" . invalid-next-token-exception)
-      ("InvalidStateException" . invalid-state-exception)
-      ("LimitExceededException" . limit-exceeded-exception)
-      ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-      ("ResourceNotFoundException" . resource-not-found-exception)
-      ("ValidationException" . validation-exception))))
+    common-lisp:nil common-lisp:nil *error-map*))
  (common-lisp:export 'describe-account-attributes))
 (common-lisp:progn
  (common-lisp:defun describe-backups
@@ -2110,13 +2081,7 @@
                                                         "POST" "/"
                                                         "DescribeBackups"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-backups))
 (common-lisp:progn
  (common-lisp:defun describe-events
@@ -2135,13 +2100,7 @@
                                                         "POST" "/"
                                                         "DescribeEvents"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
  (common-lisp:defun describe-node-association-status
@@ -2162,13 +2121,7 @@
                                                         "POST" "/"
                                                         "DescribeNodeAssociationStatus"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-node-association-status))
 (common-lisp:progn
  (common-lisp:defun describe-servers
@@ -2187,13 +2140,7 @@
                                                         "POST" "/"
                                                         "DescribeServers"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-servers))
 (common-lisp:progn
  (common-lisp:defun disassociate-node
@@ -2212,13 +2159,7 @@
                                                         "POST" "/"
                                                         "DisassociateNode"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'disassociate-node))
 (common-lisp:progn
  (common-lisp:defun restore-server
@@ -2238,13 +2179,7 @@
                                                         "POST" "/"
                                                         "RestoreServer"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'restore-server))
 (common-lisp:progn
  (common-lisp:defun start-maintenance
@@ -2262,13 +2197,7 @@
                                                         "POST" "/"
                                                         "StartMaintenance"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'start-maintenance))
 (common-lisp:progn
  (common-lisp:defun update-server
@@ -2290,13 +2219,7 @@
                                                         "POST" "/"
                                                         "UpdateServer"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-server))
 (common-lisp:progn
  (common-lisp:defun update-server-engine-attributes
@@ -2317,11 +2240,5 @@
                                                         "POST" "/"
                                                         "UpdateServerEngineAttributes"
                                                         "2016-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-server-engine-attributes))

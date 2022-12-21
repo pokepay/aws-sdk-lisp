@@ -18,6 +18,13 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'events-error))
+(common-lisp:defvar *error-map*
+  '(("ConcurrentModificationException" . concurrent-modification-exception)
+    ("InternalException" . internal-exception)
+    ("InvalidEventPatternException" . invalid-event-pattern-exception)
+    ("LimitExceededException" . limit-exceeded-exception)
+    ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+    ("ResourceNotFoundException" . resource-not-found-exception)))
 (common-lisp:deftype action () 'common-lisp:string)
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:deftype boolean () 'common-lisp:boolean)
@@ -1656,13 +1663,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteRule"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InternalException" . internal-exception)
-        ("InvalidEventPatternException" . invalid-event-pattern-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-rule))
 (common-lisp:progn
  (common-lisp:defun describe-event-bus ()
@@ -1672,13 +1673,7 @@
                                 :params
                                 `(("Action" ,@"DescribeEventBus")
                                   ("Version" ,@"2015-10-07"))))
-    common-lisp:nil common-lisp:nil
-    '(("ConcurrentModificationException" . concurrent-modification-exception)
-      ("InternalException" . internal-exception)
-      ("InvalidEventPatternException" . invalid-event-pattern-exception)
-      ("LimitExceededException" . limit-exceeded-exception)
-      ("PolicyLengthExceededException" . policy-length-exceeded-exception)
-      ("ResourceNotFoundException" . resource-not-found-exception))))
+    common-lisp:nil common-lisp:nil *error-map*))
  (common-lisp:export 'describe-event-bus))
 (common-lisp:progn
  (common-lisp:defun describe-rule
@@ -1696,13 +1691,7 @@
                                                         "POST" "/"
                                                         "DescribeRule"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InternalException" . internal-exception)
-        ("InvalidEventPatternException" . invalid-event-pattern-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-rule))
 (common-lisp:progn
  (common-lisp:defun disable-rule
@@ -1720,13 +1709,7 @@
                                                         "POST" "/"
                                                         "DisableRule"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InternalException" . internal-exception)
-        ("InvalidEventPatternException" . invalid-event-pattern-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'disable-rule))
 (common-lisp:progn
  (common-lisp:defun enable-rule
@@ -1743,13 +1726,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "EnableRule"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InternalException" . internal-exception)
-        ("InvalidEventPatternException" . invalid-event-pattern-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'enable-rule))
 (common-lisp:progn
  (common-lisp:defun list-rule-names-by-target
@@ -1768,13 +1745,7 @@
                                                         "POST" "/"
                                                         "ListRuleNamesByTarget"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InternalException" . internal-exception)
-        ("InvalidEventPatternException" . invalid-event-pattern-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-rule-names-by-target))
 (common-lisp:progn
  (common-lisp:defun list-rules
@@ -1791,13 +1762,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListRules"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InternalException" . internal-exception)
-        ("InvalidEventPatternException" . invalid-event-pattern-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-rules))
 (common-lisp:progn
  (common-lisp:defun list-targets-by-rule
@@ -1815,13 +1780,7 @@
                                                         "POST" "/"
                                                         "ListTargetsByRule"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InternalException" . internal-exception)
-        ("InvalidEventPatternException" . invalid-event-pattern-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-targets-by-rule))
 (common-lisp:progn
  (common-lisp:defun put-events
@@ -1838,13 +1797,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "PutEvents"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InternalException" . internal-exception)
-        ("InvalidEventPatternException" . invalid-event-pattern-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-events))
 (common-lisp:progn
  (common-lisp:defun put-permission
@@ -1862,13 +1815,7 @@
                                                         "POST" "/"
                                                         "PutPermission"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InternalException" . internal-exception)
-        ("InvalidEventPatternException" . invalid-event-pattern-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-permission))
 (common-lisp:progn
  (common-lisp:defun put-rule
@@ -1888,13 +1835,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "PutRule"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InternalException" . internal-exception)
-        ("InvalidEventPatternException" . invalid-event-pattern-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-rule))
 (common-lisp:progn
  (common-lisp:defun put-targets
@@ -1911,13 +1852,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "PutTargets"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InternalException" . internal-exception)
-        ("InvalidEventPatternException" . invalid-event-pattern-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-targets))
 (common-lisp:progn
  (common-lisp:defun remove-permission
@@ -1935,13 +1870,7 @@
                                                         "POST" "/"
                                                         "RemovePermission"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InternalException" . internal-exception)
-        ("InvalidEventPatternException" . invalid-event-pattern-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'remove-permission))
 (common-lisp:progn
  (common-lisp:defun remove-targets
@@ -1959,13 +1888,7 @@
                                                         "POST" "/"
                                                         "RemoveTargets"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InternalException" . internal-exception)
-        ("InvalidEventPatternException" . invalid-event-pattern-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'remove-targets))
 (common-lisp:progn
  (common-lisp:defun test-event-pattern
@@ -1983,11 +1906,5 @@
                                                         "POST" "/"
                                                         "TestEventPattern"
                                                         "2015-10-07"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InternalException" . internal-exception)
-        ("InvalidEventPatternException" . invalid-event-pattern-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'test-event-pattern))

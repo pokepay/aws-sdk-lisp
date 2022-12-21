@@ -19,6 +19,20 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'cognito-identity-error))
+(common-lisp:defvar *error-map*
+  '(("ConcurrentModificationException" . concurrent-modification-exception)
+    ("DeveloperUserAlreadyRegisteredException"
+     . developer-user-already-registered-exception)
+    ("ExternalServiceException" . external-service-exception)
+    ("InternalErrorException" . internal-error-exception)
+    ("InvalidIdentityPoolConfigurationException"
+     . invalid-identity-pool-configuration-exception)
+    ("InvalidParameterException" . invalid-parameter-exception)
+    ("LimitExceededException" . limit-exceeded-exception)
+    ("NotAuthorizedException" . not-authorized-exception)
+    ("ResourceConflictException" . resource-conflict-exception)
+    ("ResourceNotFoundException" . resource-not-found-exception)
+    ("TooManyRequestsException" . too-many-requests-exception)))
 (common-lisp:deftype arnstring () 'common-lisp:string)
 (common-lisp:deftype access-key-string () 'common-lisp:string)
 (common-lisp:deftype account-id () 'common-lisp:string)
@@ -1927,20 +1941,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "CreateIdentityPool" "2014-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DeveloperUserAlreadyRegisteredException"
-         . developer-user-already-registered-exception)
-        ("ExternalServiceException" . external-service-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidIdentityPoolConfigurationException"
-         . invalid-identity-pool-configuration-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-identity-pool))
 (common-lisp:progn
  (common-lisp:defun delete-identities
@@ -1956,20 +1957,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteIdentities" "2014-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DeveloperUserAlreadyRegisteredException"
-         . developer-user-already-registered-exception)
-        ("ExternalServiceException" . external-service-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidIdentityPoolConfigurationException"
-         . invalid-identity-pool-configuration-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-identities))
 (common-lisp:progn
  (common-lisp:defun delete-identity-pool
@@ -1985,20 +1973,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteIdentityPool" "2014-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DeveloperUserAlreadyRegisteredException"
-         . developer-user-already-registered-exception)
-        ("ExternalServiceException" . external-service-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidIdentityPoolConfigurationException"
-         . invalid-identity-pool-configuration-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-identity-pool))
 (common-lisp:progn
  (common-lisp:defun describe-identity
@@ -2014,20 +1989,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeIdentity" "2014-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DeveloperUserAlreadyRegisteredException"
-         . developer-user-already-registered-exception)
-        ("ExternalServiceException" . external-service-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidIdentityPoolConfigurationException"
-         . invalid-identity-pool-configuration-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-identity))
 (common-lisp:progn
  (common-lisp:defun describe-identity-pool
@@ -2043,20 +2005,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeIdentityPool" "2014-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DeveloperUserAlreadyRegisteredException"
-         . developer-user-already-registered-exception)
-        ("ExternalServiceException" . external-service-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidIdentityPoolConfigurationException"
-         . invalid-identity-pool-configuration-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-identity-pool))
 (common-lisp:progn
  (common-lisp:defun get-credentials-for-identity
@@ -2074,20 +2023,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "GetCredentialsForIdentity" "2014-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DeveloperUserAlreadyRegisteredException"
-         . developer-user-already-registered-exception)
-        ("ExternalServiceException" . external-service-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidIdentityPoolConfigurationException"
-         . invalid-identity-pool-configuration-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-credentials-for-identity))
 (common-lisp:progn
  (common-lisp:defun get-id
@@ -2104,20 +2040,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "GetId" "2014-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DeveloperUserAlreadyRegisteredException"
-         . developer-user-already-registered-exception)
-        ("ExternalServiceException" . external-service-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidIdentityPoolConfigurationException"
-         . invalid-identity-pool-configuration-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-id))
 (common-lisp:progn
  (common-lisp:defun get-identity-pool-roles
@@ -2133,20 +2056,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "GetIdentityPoolRoles" "2014-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DeveloperUserAlreadyRegisteredException"
-         . developer-user-already-registered-exception)
-        ("ExternalServiceException" . external-service-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidIdentityPoolConfigurationException"
-         . invalid-identity-pool-configuration-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-identity-pool-roles))
 (common-lisp:progn
  (common-lisp:defun get-open-id-token
@@ -2162,20 +2072,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "GetOpenIdToken" "2014-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DeveloperUserAlreadyRegisteredException"
-         . developer-user-already-registered-exception)
-        ("ExternalServiceException" . external-service-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidIdentityPoolConfigurationException"
-         . invalid-identity-pool-configuration-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-open-id-token))
 (common-lisp:progn
  (common-lisp:defun get-open-id-token-for-developer-identity
@@ -2194,20 +2091,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "GetOpenIdTokenForDeveloperIdentity" "2014-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DeveloperUserAlreadyRegisteredException"
-         . developer-user-already-registered-exception)
-        ("ExternalServiceException" . external-service-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidIdentityPoolConfigurationException"
-         . invalid-identity-pool-configuration-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-open-id-token-for-developer-identity))
 (common-lisp:progn
  (common-lisp:defun list-identities
@@ -2226,20 +2110,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "ListIdentities" "2014-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DeveloperUserAlreadyRegisteredException"
-         . developer-user-already-registered-exception)
-        ("ExternalServiceException" . external-service-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidIdentityPoolConfigurationException"
-         . invalid-identity-pool-configuration-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-identities))
 (common-lisp:progn
  (common-lisp:defun list-identity-pools
@@ -2255,20 +2126,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "ListIdentityPools" "2014-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DeveloperUserAlreadyRegisteredException"
-         . developer-user-already-registered-exception)
-        ("ExternalServiceException" . external-service-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidIdentityPoolConfigurationException"
-         . invalid-identity-pool-configuration-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-identity-pools))
 (common-lisp:progn
  (common-lisp:defun lookup-developer-identity
@@ -2287,20 +2145,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "LookupDeveloperIdentity" "2014-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DeveloperUserAlreadyRegisteredException"
-         . developer-user-already-registered-exception)
-        ("ExternalServiceException" . external-service-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidIdentityPoolConfigurationException"
-         . invalid-identity-pool-configuration-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'lookup-developer-identity))
 (common-lisp:progn
  (common-lisp:defun merge-developer-identities
@@ -2320,20 +2165,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "MergeDeveloperIdentities" "2014-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DeveloperUserAlreadyRegisteredException"
-         . developer-user-already-registered-exception)
-        ("ExternalServiceException" . external-service-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidIdentityPoolConfigurationException"
-         . invalid-identity-pool-configuration-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'merge-developer-identities))
 (common-lisp:progn
  (common-lisp:defun set-identity-pool-roles
@@ -2350,20 +2182,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "SetIdentityPoolRoles" "2014-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DeveloperUserAlreadyRegisteredException"
-         . developer-user-already-registered-exception)
-        ("ExternalServiceException" . external-service-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidIdentityPoolConfigurationException"
-         . invalid-identity-pool-configuration-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'set-identity-pool-roles))
 (common-lisp:progn
  (common-lisp:defun unlink-developer-identity
@@ -2382,20 +2201,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "UnlinkDeveloperIdentity" "2014-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DeveloperUserAlreadyRegisteredException"
-         . developer-user-already-registered-exception)
-        ("ExternalServiceException" . external-service-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidIdentityPoolConfigurationException"
-         . invalid-identity-pool-configuration-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'unlink-developer-identity))
 (common-lisp:progn
  (common-lisp:defun unlink-identity
@@ -2412,20 +2218,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "UnlinkIdentity" "2014-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DeveloperUserAlreadyRegisteredException"
-         . developer-user-already-registered-exception)
-        ("ExternalServiceException" . external-service-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidIdentityPoolConfigurationException"
-         . invalid-identity-pool-configuration-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'unlink-identity))
 (common-lisp:progn
  (common-lisp:defun update-identity-pool
@@ -2448,18 +2241,5 @@
        (aws-sdk/generator/shape:make-request-with-input
         'cognito-identity-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateIdentityPool" "2014-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("DeveloperUserAlreadyRegisteredException"
-         . developer-user-already-registered-exception)
-        ("ExternalServiceException" . external-service-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidIdentityPoolConfigurationException"
-         . invalid-identity-pool-configuration-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-identity-pool))

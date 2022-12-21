@@ -18,6 +18,20 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'kinesis-error))
+(common-lisp:defvar *error-map*
+  '(("ExpiredIteratorException" . expired-iterator-exception)
+    ("InvalidArgumentException" . invalid-argument-exception)
+    ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+    ("KMSDisabledException" . kmsdisabled-exception)
+    ("KMSInvalidStateException" . kmsinvalid-state-exception)
+    ("KMSNotFoundException" . kmsnot-found-exception)
+    ("KMSOptInRequired" . kmsopt-in-required)
+    ("KMSThrottlingException" . kmsthrottling-exception)
+    ("LimitExceededException" . limit-exceeded-exception)
+    ("ProvisionedThroughputExceededException"
+     . provisioned-throughput-exceeded-exception)
+    ("ResourceInUseException" . resource-in-use-exception)
+    ("ResourceNotFoundException" . resource-not-found-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (add-tags-to-stream-input (:copier common-lisp:nil)
@@ -1974,20 +1988,7 @@
                                                         "POST" "/"
                                                         "AddTagsToStream"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-        ("KMSDisabledException" . kmsdisabled-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSNotFoundException" . kmsnot-found-exception)
-        ("KMSOptInRequired" . kmsopt-in-required)
-        ("KMSThrottlingException" . kmsthrottling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'add-tags-to-stream))
 (common-lisp:progn
  (common-lisp:defun create-stream
@@ -2005,20 +2006,7 @@
                                                         "POST" "/"
                                                         "CreateStream"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-        ("KMSDisabledException" . kmsdisabled-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSNotFoundException" . kmsnot-found-exception)
-        ("KMSOptInRequired" . kmsopt-in-required)
-        ("KMSThrottlingException" . kmsthrottling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-stream))
 (common-lisp:progn
  (common-lisp:defun decrease-stream-retention-period
@@ -2038,20 +2026,7 @@
                                                         "POST" "/"
                                                         "DecreaseStreamRetentionPeriod"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-        ("KMSDisabledException" . kmsdisabled-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSNotFoundException" . kmsnot-found-exception)
-        ("KMSOptInRequired" . kmsopt-in-required)
-        ("KMSThrottlingException" . kmsthrottling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'decrease-stream-retention-period))
 (common-lisp:progn
  (common-lisp:defun delete-stream
@@ -2069,20 +2044,7 @@
                                                         "POST" "/"
                                                         "DeleteStream"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-        ("KMSDisabledException" . kmsdisabled-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSNotFoundException" . kmsnot-found-exception)
-        ("KMSOptInRequired" . kmsopt-in-required)
-        ("KMSThrottlingException" . kmsthrottling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-stream))
 (common-lisp:progn
  (common-lisp:defun describe-limits ()
@@ -2092,20 +2054,7 @@
                                 :params
                                 `(("Action" ,@"DescribeLimits")
                                   ("Version" ,@"2013-12-02"))))
-    common-lisp:nil common-lisp:nil
-    '(("ExpiredIteratorException" . expired-iterator-exception)
-      ("InvalidArgumentException" . invalid-argument-exception)
-      ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-      ("KMSDisabledException" . kmsdisabled-exception)
-      ("KMSInvalidStateException" . kmsinvalid-state-exception)
-      ("KMSNotFoundException" . kmsnot-found-exception)
-      ("KMSOptInRequired" . kmsopt-in-required)
-      ("KMSThrottlingException" . kmsthrottling-exception)
-      ("LimitExceededException" . limit-exceeded-exception)
-      ("ProvisionedThroughputExceededException"
-       . provisioned-throughput-exceeded-exception)
-      ("ResourceInUseException" . resource-in-use-exception)
-      ("ResourceNotFoundException" . resource-not-found-exception))))
+    common-lisp:nil common-lisp:nil *error-map*))
  (common-lisp:export 'describe-limits))
 (common-lisp:progn
  (common-lisp:defun describe-stream
@@ -2125,20 +2074,7 @@
                                                         "POST" "/"
                                                         "DescribeStream"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-        ("KMSDisabledException" . kmsdisabled-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSNotFoundException" . kmsnot-found-exception)
-        ("KMSOptInRequired" . kmsopt-in-required)
-        ("KMSThrottlingException" . kmsthrottling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-stream))
 (common-lisp:progn
  (common-lisp:defun disable-enhanced-monitoring
@@ -2158,20 +2094,7 @@
                                                         "POST" "/"
                                                         "DisableEnhancedMonitoring"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-        ("KMSDisabledException" . kmsdisabled-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSNotFoundException" . kmsnot-found-exception)
-        ("KMSOptInRequired" . kmsopt-in-required)
-        ("KMSThrottlingException" . kmsthrottling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'disable-enhanced-monitoring))
 (common-lisp:progn
  (common-lisp:defun enable-enhanced-monitoring
@@ -2190,20 +2113,7 @@
                                                         "POST" "/"
                                                         "EnableEnhancedMonitoring"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-        ("KMSDisabledException" . kmsdisabled-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSNotFoundException" . kmsnot-found-exception)
-        ("KMSOptInRequired" . kmsopt-in-required)
-        ("KMSThrottlingException" . kmsthrottling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'enable-enhanced-monitoring))
 (common-lisp:progn
  (common-lisp:defun get-records
@@ -2220,20 +2130,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "GetRecords"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-        ("KMSDisabledException" . kmsdisabled-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSNotFoundException" . kmsnot-found-exception)
-        ("KMSOptInRequired" . kmsopt-in-required)
-        ("KMSThrottlingException" . kmsthrottling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-records))
 (common-lisp:progn
  (common-lisp:defun get-shard-iterator
@@ -2254,20 +2151,7 @@
                                                         "POST" "/"
                                                         "GetShardIterator"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-        ("KMSDisabledException" . kmsdisabled-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSNotFoundException" . kmsnot-found-exception)
-        ("KMSOptInRequired" . kmsopt-in-required)
-        ("KMSThrottlingException" . kmsthrottling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-shard-iterator))
 (common-lisp:progn
  (common-lisp:defun increase-stream-retention-period
@@ -2287,20 +2171,7 @@
                                                         "POST" "/"
                                                         "IncreaseStreamRetentionPeriod"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-        ("KMSDisabledException" . kmsdisabled-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSNotFoundException" . kmsnot-found-exception)
-        ("KMSOptInRequired" . kmsopt-in-required)
-        ("KMSThrottlingException" . kmsthrottling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'increase-stream-retention-period))
 (common-lisp:progn
  (common-lisp:defun list-streams
@@ -2319,20 +2190,7 @@
                                                         "POST" "/"
                                                         "ListStreams"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-        ("KMSDisabledException" . kmsdisabled-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSNotFoundException" . kmsnot-found-exception)
-        ("KMSOptInRequired" . kmsopt-in-required)
-        ("KMSThrottlingException" . kmsthrottling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-streams))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-stream
@@ -2352,20 +2210,7 @@
                                                         "POST" "/"
                                                         "ListTagsForStream"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-        ("KMSDisabledException" . kmsdisabled-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSNotFoundException" . kmsnot-found-exception)
-        ("KMSOptInRequired" . kmsopt-in-required)
-        ("KMSThrottlingException" . kmsthrottling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-tags-for-stream))
 (common-lisp:progn
  (common-lisp:defun merge-shards
@@ -2385,20 +2230,7 @@
                                                         "POST" "/"
                                                         "MergeShards"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-        ("KMSDisabledException" . kmsdisabled-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSNotFoundException" . kmsnot-found-exception)
-        ("KMSOptInRequired" . kmsopt-in-required)
-        ("KMSThrottlingException" . kmsthrottling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'merge-shards))
 (common-lisp:progn
  (common-lisp:defun put-record
@@ -2418,20 +2250,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "PutRecord"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-        ("KMSDisabledException" . kmsdisabled-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSNotFoundException" . kmsnot-found-exception)
-        ("KMSOptInRequired" . kmsopt-in-required)
-        ("KMSThrottlingException" . kmsthrottling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-record))
 (common-lisp:progn
  (common-lisp:defun put-records
@@ -2448,20 +2267,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "PutRecords"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-        ("KMSDisabledException" . kmsdisabled-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSNotFoundException" . kmsnot-found-exception)
-        ("KMSOptInRequired" . kmsopt-in-required)
-        ("KMSThrottlingException" . kmsthrottling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-records))
 (common-lisp:progn
  (common-lisp:defun remove-tags-from-stream
@@ -2479,20 +2285,7 @@
                                                         "POST" "/"
                                                         "RemoveTagsFromStream"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-        ("KMSDisabledException" . kmsdisabled-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSNotFoundException" . kmsnot-found-exception)
-        ("KMSOptInRequired" . kmsopt-in-required)
-        ("KMSThrottlingException" . kmsthrottling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'remove-tags-from-stream))
 (common-lisp:progn
  (common-lisp:defun split-shard
@@ -2511,20 +2304,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "SplitShard"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-        ("KMSDisabledException" . kmsdisabled-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSNotFoundException" . kmsnot-found-exception)
-        ("KMSOptInRequired" . kmsopt-in-required)
-        ("KMSThrottlingException" . kmsthrottling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'split-shard))
 (common-lisp:progn
  (common-lisp:defun start-stream-encryption
@@ -2543,20 +2323,7 @@
                                                         "POST" "/"
                                                         "StartStreamEncryption"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-        ("KMSDisabledException" . kmsdisabled-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSNotFoundException" . kmsnot-found-exception)
-        ("KMSOptInRequired" . kmsopt-in-required)
-        ("KMSThrottlingException" . kmsthrottling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'start-stream-encryption))
 (common-lisp:progn
  (common-lisp:defun stop-stream-encryption
@@ -2575,20 +2342,7 @@
                                                         "POST" "/"
                                                         "StopStreamEncryption"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-        ("KMSDisabledException" . kmsdisabled-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSNotFoundException" . kmsnot-found-exception)
-        ("KMSOptInRequired" . kmsopt-in-required)
-        ("KMSThrottlingException" . kmsthrottling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'stop-stream-encryption))
 (common-lisp:progn
  (common-lisp:defun update-shard-count
@@ -2608,18 +2362,5 @@
                                                         "POST" "/"
                                                         "UpdateShardCount"
                                                         "2013-12-02"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
-        ("KMSDisabledException" . kmsdisabled-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSNotFoundException" . kmsnot-found-exception)
-        ("KMSOptInRequired" . kmsopt-in-required)
-        ("KMSThrottlingException" . kmsthrottling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-shard-count))

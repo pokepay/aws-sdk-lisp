@@ -19,6 +19,14 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'servicecatalog-error))
+(common-lisp:defvar *error-map*
+  '(("DuplicateResourceException" . duplicate-resource-exception)
+    ("InvalidParametersException" . invalid-parameters-exception)
+    ("InvalidStateException" . invalid-state-exception)
+    ("LimitExceededException" . limit-exceeded-exception)
+    ("ResourceInUseException" . resource-in-use-exception)
+    ("ResourceNotFoundException" . resource-not-found-exception)
+    ("TagOptionNotMigratedException" . tag-option-not-migrated-exception)))
 (common-lisp:deftype accept-language () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -6712,15 +6720,7 @@
                                                         "POST" "/"
                                                         "AcceptPortfolioShare"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'accept-portfolio-share))
 (common-lisp:progn
  (common-lisp:defun associate-principal-with-portfolio
@@ -6742,15 +6742,7 @@
                                                         "POST" "/"
                                                         "AssociatePrincipalWithPortfolio"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'associate-principal-with-portfolio))
 (common-lisp:progn
  (common-lisp:defun associate-product-with-portfolio
@@ -6772,15 +6764,7 @@
                                                         "POST" "/"
                                                         "AssociateProductWithPortfolio"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'associate-product-with-portfolio))
 (common-lisp:progn
  (common-lisp:defun associate-tag-option-with-resource
@@ -6799,15 +6783,7 @@
                                                         "POST" "/"
                                                         "AssociateTagOptionWithResource"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'associate-tag-option-with-resource))
 (common-lisp:progn
  (common-lisp:defun create-constraint
@@ -6828,15 +6804,7 @@
                                                         "POST" "/"
                                                         "CreateConstraint"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-constraint))
 (common-lisp:progn
  (common-lisp:defun create-portfolio
@@ -6857,15 +6825,7 @@
                                                         "POST" "/"
                                                         "CreatePortfolio"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-portfolio))
 (common-lisp:progn
  (common-lisp:defun create-portfolio-share
@@ -6884,15 +6844,7 @@
                                                         "POST" "/"
                                                         "CreatePortfolioShare"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-portfolio-share))
 (common-lisp:progn
  (common-lisp:defun create-product
@@ -6916,15 +6868,7 @@
                                                         "POST" "/"
                                                         "CreateProduct"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-product))
 (common-lisp:progn
  (common-lisp:defun create-provisioning-artifact
@@ -6946,15 +6890,7 @@
                                                         "POST" "/"
                                                         "CreateProvisioningArtifact"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-provisioning-artifact))
 (common-lisp:progn
  (common-lisp:defun create-tag-option
@@ -6972,15 +6908,7 @@
                                                         "POST" "/"
                                                         "CreateTagOption"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-tag-option))
 (common-lisp:progn
  (common-lisp:defun delete-constraint
@@ -6998,15 +6926,7 @@
                                                         "POST" "/"
                                                         "DeleteConstraint"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-constraint))
 (common-lisp:progn
  (common-lisp:defun delete-portfolio
@@ -7024,15 +6944,7 @@
                                                         "POST" "/"
                                                         "DeletePortfolio"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-portfolio))
 (common-lisp:progn
  (common-lisp:defun delete-portfolio-share
@@ -7051,15 +6963,7 @@
                                                         "POST" "/"
                                                         "DeletePortfolioShare"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-portfolio-share))
 (common-lisp:progn
  (common-lisp:defun delete-product
@@ -7077,15 +6981,7 @@
                                                         "POST" "/"
                                                         "DeleteProduct"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-product))
 (common-lisp:progn
  (common-lisp:defun delete-provisioning-artifact
@@ -7107,15 +7003,7 @@
                                                         "POST" "/"
                                                         "DeleteProvisioningArtifact"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-provisioning-artifact))
 (common-lisp:progn
  (common-lisp:defun describe-constraint
@@ -7133,15 +7021,7 @@
                                                         "POST" "/"
                                                         "DescribeConstraint"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-constraint))
 (common-lisp:progn
  (common-lisp:defun describe-portfolio
@@ -7159,15 +7039,7 @@
                                                         "POST" "/"
                                                         "DescribePortfolio"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-portfolio))
 (common-lisp:progn
  (common-lisp:defun describe-product
@@ -7185,15 +7057,7 @@
                                                         "POST" "/"
                                                         "DescribeProduct"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-product))
 (common-lisp:progn
  (common-lisp:defun describe-product-as-admin
@@ -7211,15 +7075,7 @@
                                                         "POST" "/"
                                                         "DescribeProductAsAdmin"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-product-as-admin))
 (common-lisp:progn
  (common-lisp:defun describe-product-view
@@ -7237,15 +7093,7 @@
                                                         "POST" "/"
                                                         "DescribeProductView"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-product-view))
 (common-lisp:progn
  (common-lisp:defun describe-provisioned-product
@@ -7264,15 +7112,7 @@
                                                         "POST" "/"
                                                         "DescribeProvisionedProduct"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-provisioned-product))
 (common-lisp:progn
  (common-lisp:defun describe-provisioning-artifact
@@ -7294,15 +7134,7 @@
                                                         "POST" "/"
                                                         "DescribeProvisioningArtifact"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-provisioning-artifact))
 (common-lisp:progn
  (common-lisp:defun describe-provisioning-parameters
@@ -7324,15 +7156,7 @@
                                                         "POST" "/"
                                                         "DescribeProvisioningParameters"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-provisioning-parameters))
 (common-lisp:progn
  (common-lisp:defun describe-record
@@ -7351,15 +7175,7 @@
                                                         "POST" "/"
                                                         "DescribeRecord"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-record))
 (common-lisp:progn
  (common-lisp:defun describe-tag-option
@@ -7377,15 +7193,7 @@
                                                         "POST" "/"
                                                         "DescribeTagOption"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-tag-option))
 (common-lisp:progn
  (common-lisp:defun disassociate-principal-from-portfolio
@@ -7406,15 +7214,7 @@
                                                         "POST" "/"
                                                         "DisassociatePrincipalFromPortfolio"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'disassociate-principal-from-portfolio))
 (common-lisp:progn
  (common-lisp:defun disassociate-product-from-portfolio
@@ -7434,15 +7234,7 @@
                                                         "POST" "/"
                                                         "DisassociateProductFromPortfolio"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'disassociate-product-from-portfolio))
 (common-lisp:progn
  (common-lisp:defun disassociate-tag-option-from-resource
@@ -7461,15 +7253,7 @@
                                                         "POST" "/"
                                                         "DisassociateTagOptionFromResource"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'disassociate-tag-option-from-resource))
 (common-lisp:progn
  (common-lisp:defun list-accepted-portfolio-shares
@@ -7489,15 +7273,7 @@
                                                         "POST" "/"
                                                         "ListAcceptedPortfolioShares"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-accepted-portfolio-shares))
 (common-lisp:progn
  (common-lisp:defun list-constraints-for-portfolio
@@ -7519,15 +7295,7 @@
                                                         "POST" "/"
                                                         "ListConstraintsForPortfolio"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-constraints-for-portfolio))
 (common-lisp:progn
  (common-lisp:defun list-launch-paths
@@ -7547,15 +7315,7 @@
                                                         "POST" "/"
                                                         "ListLaunchPaths"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-launch-paths))
 (common-lisp:progn
  (common-lisp:defun list-portfolio-access
@@ -7573,15 +7333,7 @@
                                                         "POST" "/"
                                                         "ListPortfolioAccess"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-portfolio-access))
 (common-lisp:progn
  (common-lisp:defun list-portfolios
@@ -7600,15 +7352,7 @@
                                                         "POST" "/"
                                                         "ListPortfolios"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-portfolios))
 (common-lisp:progn
  (common-lisp:defun list-portfolios-for-product
@@ -7629,15 +7373,7 @@
                                                         "POST" "/"
                                                         "ListPortfoliosForProduct"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-portfolios-for-product))
 (common-lisp:progn
  (common-lisp:defun list-principals-for-portfolio
@@ -7658,15 +7394,7 @@
                                                         "POST" "/"
                                                         "ListPrincipalsForPortfolio"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-principals-for-portfolio))
 (common-lisp:progn
  (common-lisp:defun list-provisioning-artifacts
@@ -7685,15 +7413,7 @@
                                                         "POST" "/"
                                                         "ListProvisioningArtifacts"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-provisioning-artifacts))
 (common-lisp:progn
  (common-lisp:defun list-record-history
@@ -7714,15 +7434,7 @@
                                                         "POST" "/"
                                                         "ListRecordHistory"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-record-history))
 (common-lisp:progn
  (common-lisp:defun list-resources-for-tag-option
@@ -7743,15 +7455,7 @@
                                                         "POST" "/"
                                                         "ListResourcesForTagOption"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-resources-for-tag-option))
 (common-lisp:progn
  (common-lisp:defun list-tag-options
@@ -7769,15 +7473,7 @@
                                                         "POST" "/"
                                                         "ListTagOptions"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-tag-options))
 (common-lisp:progn
  (common-lisp:defun provision-product
@@ -7801,15 +7497,7 @@
                                                         "POST" "/"
                                                         "ProvisionProduct"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'provision-product))
 (common-lisp:progn
  (common-lisp:defun reject-portfolio-share
@@ -7827,15 +7515,7 @@
                                                         "POST" "/"
                                                         "RejectPortfolioShare"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'reject-portfolio-share))
 (common-lisp:progn
  (common-lisp:defun scan-provisioned-products
@@ -7856,15 +7536,7 @@
                                                         "POST" "/"
                                                         "ScanProvisionedProducts"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'scan-provisioned-products))
 (common-lisp:progn
  (common-lisp:defun search-products
@@ -7885,15 +7557,7 @@
                                                         "POST" "/"
                                                         "SearchProducts"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'search-products))
 (common-lisp:progn
  (common-lisp:defun search-products-as-admin
@@ -7914,15 +7578,7 @@
                                                         "POST" "/"
                                                         "SearchProductsAsAdmin"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'search-products-as-admin))
 (common-lisp:progn
  (common-lisp:defun terminate-provisioned-product
@@ -7945,15 +7601,7 @@
                                                         "POST" "/"
                                                         "TerminateProvisionedProduct"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'terminate-provisioned-product))
 (common-lisp:progn
  (common-lisp:defun update-constraint
@@ -7971,15 +7619,7 @@
                                                         "POST" "/"
                                                         "UpdateConstraint"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-constraint))
 (common-lisp:progn
  (common-lisp:defun update-portfolio
@@ -8000,15 +7640,7 @@
                                                         "POST" "/"
                                                         "UpdatePortfolio"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-portfolio))
 (common-lisp:progn
  (common-lisp:defun update-product
@@ -8031,15 +7663,7 @@
                                                         "POST" "/"
                                                         "UpdateProduct"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-product))
 (common-lisp:progn
  (common-lisp:defun update-provisioned-product
@@ -8062,15 +7686,7 @@
                                                         "POST" "/"
                                                         "UpdateProvisionedProduct"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-provisioned-product))
 (common-lisp:progn
  (common-lisp:defun update-provisioning-artifact
@@ -8092,15 +7708,7 @@
                                                         "POST" "/"
                                                         "UpdateProvisioningArtifact"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-provisioning-artifact))
 (common-lisp:progn
  (common-lisp:defun update-tag-option
@@ -8118,13 +7726,5 @@
                                                         "POST" "/"
                                                         "UpdateTagOption"
                                                         "2015-12-10"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateResourceException" . duplicate-resource-exception)
-        ("InvalidParametersException" . invalid-parameters-exception)
-        ("InvalidStateException" . invalid-state-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TagOptionNotMigratedException"
-         . tag-option-not-migrated-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-tag-option))

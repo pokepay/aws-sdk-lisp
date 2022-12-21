@@ -19,6 +19,11 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'directconnect-error))
+(common-lisp:defvar *error-map*
+  '(("DirectConnectClientException" . direct-connect-client-exception)
+    ("DirectConnectServerException" . direct-connect-server-exception)
+    ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+    ("TooManyTagsException" . too-many-tags-exception)))
 (common-lisp:deftype asn () 'common-lisp:integer)
 (common-lisp:deftype address-family () 'common-lisp:string)
 (common-lisp:progn
@@ -3332,11 +3337,7 @@
                                                         "POST" "/"
                                                         "AllocateConnectionOnInterconnect"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'allocate-connection-on-interconnect))
 (common-lisp:progn
  (common-lisp:defun allocate-hosted-connection
@@ -3358,11 +3359,7 @@
                                                         "POST" "/"
                                                         "AllocateHostedConnection"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'allocate-hosted-connection))
 (common-lisp:progn
  (common-lisp:defun allocate-private-virtual-interface
@@ -3384,11 +3381,7 @@
                                                         "POST" "/"
                                                         "AllocatePrivateVirtualInterface"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'allocate-private-virtual-interface))
 (common-lisp:progn
  (common-lisp:defun allocate-public-virtual-interface
@@ -3410,11 +3403,7 @@
                                                         "POST" "/"
                                                         "AllocatePublicVirtualInterface"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'allocate-public-virtual-interface))
 (common-lisp:progn
  (common-lisp:defun associate-connection-with-lag
@@ -3433,11 +3422,7 @@
                                                         "POST" "/"
                                                         "AssociateConnectionWithLag"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'associate-connection-with-lag))
 (common-lisp:progn
  (common-lisp:defun associate-hosted-connection
@@ -3457,11 +3442,7 @@
                                                         "POST" "/"
                                                         "AssociateHostedConnection"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'associate-hosted-connection))
 (common-lisp:progn
  (common-lisp:defun associate-virtual-interface
@@ -3481,11 +3462,7 @@
                                                         "POST" "/"
                                                         "AssociateVirtualInterface"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'associate-virtual-interface))
 (common-lisp:progn
  (common-lisp:defun confirm-connection
@@ -3503,11 +3480,7 @@
                                                         "POST" "/"
                                                         "ConfirmConnection"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'confirm-connection))
 (common-lisp:progn
  (common-lisp:defun confirm-private-virtual-interface
@@ -3527,11 +3500,7 @@
                                                         "POST" "/"
                                                         "ConfirmPrivateVirtualInterface"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'confirm-private-virtual-interface))
 (common-lisp:progn
  (common-lisp:defun confirm-public-virtual-interface
@@ -3550,11 +3519,7 @@
                                                         "POST" "/"
                                                         "ConfirmPublicVirtualInterface"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'confirm-public-virtual-interface))
 (common-lisp:progn
  (common-lisp:defun create-bgppeer
@@ -3573,11 +3538,7 @@
                                                         "POST" "/"
                                                         "CreateBGPPeer"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-bgppeer))
 (common-lisp:progn
  (common-lisp:defun create-connection
@@ -3597,11 +3558,7 @@
                                                         "POST" "/"
                                                         "CreateConnection"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-connection))
 (common-lisp:progn
  (common-lisp:defun create-interconnect
@@ -3621,11 +3578,7 @@
                                                         "POST" "/"
                                                         "CreateInterconnect"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-interconnect))
 (common-lisp:progn
  (common-lisp:defun create-lag
@@ -3645,11 +3598,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CreateLag"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-lag))
 (common-lisp:progn
  (common-lisp:defun create-private-virtual-interface
@@ -3670,11 +3619,7 @@
                                                         "POST" "/"
                                                         "CreatePrivateVirtualInterface"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-private-virtual-interface))
 (common-lisp:progn
  (common-lisp:defun create-public-virtual-interface
@@ -3695,11 +3640,7 @@
                                                         "POST" "/"
                                                         "CreatePublicVirtualInterface"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-public-virtual-interface))
 (common-lisp:progn
  (common-lisp:defun delete-bgppeer
@@ -3719,11 +3660,7 @@
                                                         "POST" "/"
                                                         "DeleteBGPPeer"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-bgppeer))
 (common-lisp:progn
  (common-lisp:defun delete-connection
@@ -3741,11 +3678,7 @@
                                                         "POST" "/"
                                                         "DeleteConnection"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-connection))
 (common-lisp:progn
  (common-lisp:defun delete-interconnect
@@ -3763,11 +3696,7 @@
                                                         "POST" "/"
                                                         "DeleteInterconnect"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-interconnect))
 (common-lisp:progn
  (common-lisp:defun delete-lag
@@ -3784,11 +3713,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteLag"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-lag))
 (common-lisp:progn
  (common-lisp:defun delete-virtual-interface
@@ -3806,11 +3731,7 @@
                                                         "POST" "/"
                                                         "DeleteVirtualInterface"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-virtual-interface))
 (common-lisp:progn
  (common-lisp:defun describe-connection-loa
@@ -3830,11 +3751,7 @@
                                                         "POST" "/"
                                                         "DescribeConnectionLoa"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-connection-loa))
 (common-lisp:progn
  (common-lisp:defun describe-connections
@@ -3852,11 +3769,7 @@
                                                         "POST" "/"
                                                         "DescribeConnections"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-connections))
 (common-lisp:progn
  (common-lisp:defun describe-connections-on-interconnect
@@ -3875,11 +3788,7 @@
                                                         "POST" "/"
                                                         "DescribeConnectionsOnInterconnect"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-connections-on-interconnect))
 (common-lisp:progn
  (common-lisp:defun describe-hosted-connections
@@ -3898,11 +3807,7 @@
                                                         "POST" "/"
                                                         "DescribeHostedConnections"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-hosted-connections))
 (common-lisp:progn
  (common-lisp:defun describe-interconnect-loa
@@ -3923,11 +3828,7 @@
                                                         "POST" "/"
                                                         "DescribeInterconnectLoa"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-interconnect-loa))
 (common-lisp:progn
  (common-lisp:defun describe-interconnects
@@ -3945,11 +3846,7 @@
                                                         "POST" "/"
                                                         "DescribeInterconnects"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-interconnects))
 (common-lisp:progn
  (common-lisp:defun describe-lags
@@ -3967,11 +3864,7 @@
                                                         "POST" "/"
                                                         "DescribeLags"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-lags))
 (common-lisp:progn
  (common-lisp:defun describe-loa
@@ -3991,11 +3884,7 @@
                                                         "POST" "/"
                                                         "DescribeLoa"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-loa))
 (common-lisp:progn
  (common-lisp:defun describe-locations ()
@@ -4005,11 +3894,7 @@
                                 :params
                                 `(("Action" ,@"DescribeLocations")
                                   ("Version" ,@"2012-10-25"))))
-    common-lisp:nil common-lisp:nil
-    '(("DirectConnectClientException" . direct-connect-client-exception)
-      ("DirectConnectServerException" . direct-connect-server-exception)
-      ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-      ("TooManyTagsException" . too-many-tags-exception))))
+    common-lisp:nil common-lisp:nil *error-map*))
  (common-lisp:export 'describe-locations))
 (common-lisp:progn
  (common-lisp:defun describe-tags
@@ -4027,11 +3912,7 @@
                                                         "POST" "/"
                                                         "DescribeTags"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
  (common-lisp:defun describe-virtual-gateways ()
@@ -4041,11 +3922,7 @@
                                 :params
                                 `(("Action" ,@"DescribeVirtualGateways")
                                   ("Version" ,@"2012-10-25"))))
-    common-lisp:nil common-lisp:nil
-    '(("DirectConnectClientException" . direct-connect-client-exception)
-      ("DirectConnectServerException" . direct-connect-server-exception)
-      ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-      ("TooManyTagsException" . too-many-tags-exception))))
+    common-lisp:nil common-lisp:nil *error-map*))
  (common-lisp:export 'describe-virtual-gateways))
 (common-lisp:progn
  (common-lisp:defun describe-virtual-interfaces
@@ -4065,11 +3942,7 @@
                                                         "POST" "/"
                                                         "DescribeVirtualInterfaces"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-virtual-interfaces))
 (common-lisp:progn
  (common-lisp:defun disassociate-connection-from-lag
@@ -4088,11 +3961,7 @@
                                                         "POST" "/"
                                                         "DisassociateConnectionFromLag"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'disassociate-connection-from-lag))
 (common-lisp:progn
  (common-lisp:defun tag-resource
@@ -4110,11 +3979,7 @@
                                                         "POST" "/"
                                                         "TagResource"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
  (common-lisp:defun untag-resource
@@ -4132,11 +3997,7 @@
                                                         "POST" "/"
                                                         "UntagResource"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
  (common-lisp:defun update-lag
@@ -4153,9 +4014,5 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "UpdateLag"
                                                         "2012-10-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DirectConnectClientException" . direct-connect-client-exception)
-        ("DirectConnectServerException" . direct-connect-server-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-lag))

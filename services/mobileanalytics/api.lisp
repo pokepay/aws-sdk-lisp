@@ -19,6 +19,8 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'mobileanalytics-error))
+(common-lisp:defvar *error-map*
+  '(("BadRequestException" . bad-request-exception)))
 (common-lisp:progn
  (common-lisp:define-condition bad-request-exception
      (mobileanalytics-error)
@@ -224,6 +226,5 @@
        (aws-sdk/generator/shape:make-request-with-input
         'mobileanalytics-request aws-sdk/generator/operation::input "POST"
         "/2014-06-05/events" "PutEvents" "2014-06-05"))
-      common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-events))

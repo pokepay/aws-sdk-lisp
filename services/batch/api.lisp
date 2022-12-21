@@ -18,6 +18,9 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'batch-error))
+(common-lisp:defvar *error-map*
+  '(("ClientException" . client-exception)
+    ("ServerException" . server-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (attempt-container-detail (:copier common-lisp:nil)
@@ -2795,9 +2798,7 @@
                                                         "POST" "/v1/canceljob"
                                                         "CancelJob"
                                                         "2016-08-10"))
-      common-lisp:nil common-lisp:nil
-      '(("ClientException" . client-exception)
-        ("ServerException" . server-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'cancel-job))
 (common-lisp:progn
  (common-lisp:defun create-compute-environment
@@ -2820,9 +2821,7 @@
                                                         "/v1/createcomputeenvironment"
                                                         "CreateComputeEnvironment"
                                                         "2016-08-10"))
-      common-lisp:nil common-lisp:nil
-      '(("ClientException" . client-exception)
-        ("ServerException" . server-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-compute-environment))
 (common-lisp:progn
  (common-lisp:defun create-job-queue
@@ -2844,9 +2843,7 @@
                                                         "/v1/createjobqueue"
                                                         "CreateJobQueue"
                                                         "2016-08-10"))
-      common-lisp:nil common-lisp:nil
-      '(("ClientException" . client-exception)
-        ("ServerException" . server-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-job-queue))
 (common-lisp:progn
  (common-lisp:defun delete-compute-environment
@@ -2866,9 +2863,7 @@
                                                         "/v1/deletecomputeenvironment"
                                                         "DeleteComputeEnvironment"
                                                         "2016-08-10"))
-      common-lisp:nil common-lisp:nil
-      '(("ClientException" . client-exception)
-        ("ServerException" . server-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-compute-environment))
 (common-lisp:progn
  (common-lisp:defun delete-job-queue
@@ -2887,9 +2882,7 @@
                                                         "/v1/deletejobqueue"
                                                         "DeleteJobQueue"
                                                         "2016-08-10"))
-      common-lisp:nil common-lisp:nil
-      '(("ClientException" . client-exception)
-        ("ServerException" . server-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-job-queue))
 (common-lisp:progn
  (common-lisp:defun deregister-job-definition
@@ -2909,9 +2902,7 @@
                                                         "/v1/deregisterjobdefinition"
                                                         "DeregisterJobDefinition"
                                                         "2016-08-10"))
-      common-lisp:nil common-lisp:nil
-      '(("ClientException" . client-exception)
-        ("ServerException" . server-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'deregister-job-definition))
 (common-lisp:progn
  (common-lisp:defun describe-compute-environments
@@ -2933,9 +2924,7 @@
                                                         "/v1/describecomputeenvironments"
                                                         "DescribeComputeEnvironments"
                                                         "2016-08-10"))
-      common-lisp:nil common-lisp:nil
-      '(("ClientException" . client-exception)
-        ("ServerException" . server-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-compute-environments))
 (common-lisp:progn
  (common-lisp:defun describe-job-definitions
@@ -2957,9 +2946,7 @@
                                                         "/v1/describejobdefinitions"
                                                         "DescribeJobDefinitions"
                                                         "2016-08-10"))
-      common-lisp:nil common-lisp:nil
-      '(("ClientException" . client-exception)
-        ("ServerException" . server-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-job-definitions))
 (common-lisp:progn
  (common-lisp:defun describe-job-queues
@@ -2979,9 +2966,7 @@
                                                         "/v1/describejobqueues"
                                                         "DescribeJobQueues"
                                                         "2016-08-10"))
-      common-lisp:nil common-lisp:nil
-      '(("ClientException" . client-exception)
-        ("ServerException" . server-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-job-queues))
 (common-lisp:progn
  (common-lisp:defun describe-jobs
@@ -3000,9 +2985,7 @@
                                                         "/v1/describejobs"
                                                         "DescribeJobs"
                                                         "2016-08-10"))
-      common-lisp:nil common-lisp:nil
-      '(("ClientException" . client-exception)
-        ("ServerException" . server-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-jobs))
 (common-lisp:progn
  (common-lisp:defun list-jobs
@@ -3022,9 +3005,7 @@
                                                         "POST" "/v1/listjobs"
                                                         "ListJobs"
                                                         "2016-08-10"))
-      common-lisp:nil common-lisp:nil
-      '(("ClientException" . client-exception)
-        ("ServerException" . server-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-jobs))
 (common-lisp:progn
  (common-lisp:defun register-job-definition
@@ -3046,9 +3027,7 @@
                                                         "/v1/registerjobdefinition"
                                                         "RegisterJobDefinition"
                                                         "2016-08-10"))
-      common-lisp:nil common-lisp:nil
-      '(("ClientException" . client-exception)
-        ("ServerException" . server-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'register-job-definition))
 (common-lisp:progn
  (common-lisp:defun submit-job
@@ -3070,9 +3049,7 @@
                                                         "POST" "/v1/submitjob"
                                                         "SubmitJob"
                                                         "2016-08-10"))
-      common-lisp:nil common-lisp:nil
-      '(("ClientException" . client-exception)
-        ("ServerException" . server-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'submit-job))
 (common-lisp:progn
  (common-lisp:defun terminate-job
@@ -3091,9 +3068,7 @@
                                                         "/v1/terminatejob"
                                                         "TerminateJob"
                                                         "2016-08-10"))
-      common-lisp:nil common-lisp:nil
-      '(("ClientException" . client-exception)
-        ("ServerException" . server-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'terminate-job))
 (common-lisp:progn
  (common-lisp:defun update-compute-environment
@@ -3116,9 +3091,7 @@
                                                         "/v1/updatecomputeenvironment"
                                                         "UpdateComputeEnvironment"
                                                         "2016-08-10"))
-      common-lisp:nil common-lisp:nil
-      '(("ClientException" . client-exception)
-        ("ServerException" . server-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-compute-environment))
 (common-lisp:progn
  (common-lisp:defun update-job-queue
@@ -3139,7 +3112,5 @@
                                                         "/v1/updatejobqueue"
                                                         "UpdateJobQueue"
                                                         "2016-08-10"))
-      common-lisp:nil common-lisp:nil
-      '(("ClientException" . client-exception)
-        ("ServerException" . server-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-job-queue))

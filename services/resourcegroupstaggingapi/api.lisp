@@ -19,6 +19,11 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'resourcegroupstaggingapi-error))
+(common-lisp:defvar *error-map*
+  '(("InternalServiceException" . internal-service-exception)
+    ("InvalidParameterException" . invalid-parameter-exception)
+    ("PaginationTokenExpiredException" . pagination-token-expired-exception)
+    ("ThrottledException" . throttled-exception)))
 (common-lisp:deftype amazon-resource-type () 'common-lisp:string)
 (common-lisp:deftype error-code () 'common-lisp:string)
 (common-lisp:deftype error-message () 'common-lisp:string)
@@ -649,12 +654,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'resourcegroupstaggingapi-request aws-sdk/generator/operation::input
         "POST" "/" "GetResources" "2017-01-26"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceException" . internal-service-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("PaginationTokenExpiredException"
-         . pagination-token-expired-exception)
-        ("ThrottledException" . throttled-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-resources))
 (common-lisp:progn
  (common-lisp:defun get-tag-keys
@@ -670,12 +670,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'resourcegroupstaggingapi-request aws-sdk/generator/operation::input
         "POST" "/" "GetTagKeys" "2017-01-26"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceException" . internal-service-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("PaginationTokenExpiredException"
-         . pagination-token-expired-exception)
-        ("ThrottledException" . throttled-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-tag-keys))
 (common-lisp:progn
  (common-lisp:defun get-tag-values
@@ -691,12 +686,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'resourcegroupstaggingapi-request aws-sdk/generator/operation::input
         "POST" "/" "GetTagValues" "2017-01-26"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceException" . internal-service-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("PaginationTokenExpiredException"
-         . pagination-token-expired-exception)
-        ("ThrottledException" . throttled-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-tag-values))
 (common-lisp:progn
  (common-lisp:defun tag-resources
@@ -712,12 +702,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'resourcegroupstaggingapi-request aws-sdk/generator/operation::input
         "POST" "/" "TagResources" "2017-01-26"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceException" . internal-service-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("PaginationTokenExpiredException"
-         . pagination-token-expired-exception)
-        ("ThrottledException" . throttled-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'tag-resources))
 (common-lisp:progn
  (common-lisp:defun untag-resources
@@ -733,10 +718,5 @@
        (aws-sdk/generator/shape:make-request-with-input
         'resourcegroupstaggingapi-request aws-sdk/generator/operation::input
         "POST" "/" "UntagResources" "2017-01-26"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceException" . internal-service-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("PaginationTokenExpiredException"
-         . pagination-token-expired-exception)
-        ("ThrottledException" . throttled-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'untag-resources))

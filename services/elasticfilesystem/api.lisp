@@ -19,6 +19,25 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'elasticfilesystem-error))
+(common-lisp:defvar *error-map*
+  '(("BadRequest" . bad-request) ("DependencyTimeout" . dependency-timeout)
+    ("FileSystemAlreadyExists" . file-system-already-exists)
+    ("FileSystemInUse" . file-system-in-use)
+    ("FileSystemLimitExceeded" . file-system-limit-exceeded)
+    ("FileSystemNotFound" . file-system-not-found)
+    ("IncorrectFileSystemLifeCycleState"
+     . incorrect-file-system-life-cycle-state)
+    ("IncorrectMountTargetState" . incorrect-mount-target-state)
+    ("InternalServerError" . internal-server-error)
+    ("IpAddressInUse" . ip-address-in-use)
+    ("MountTargetConflict" . mount-target-conflict)
+    ("MountTargetNotFound" . mount-target-not-found)
+    ("NetworkInterfaceLimitExceeded" . network-interface-limit-exceeded)
+    ("NoFreeAddressesInSubnet" . no-free-addresses-in-subnet)
+    ("SecurityGroupLimitExceeded" . security-group-limit-exceeded)
+    ("SecurityGroupNotFound" . security-group-not-found)
+    ("SubnetNotFound" . subnet-not-found)
+    ("UnsupportedAvailabilityZone" . unsupported-availability-zone)))
 (common-lisp:deftype aws-account-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:define-condition bad-request
@@ -1090,25 +1109,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticfilesystem-request aws-sdk/generator/operation::input "POST"
         "/2015-02-01/file-systems" "CreateFileSystem" "2015-02-01"))
-      common-lisp:nil common-lisp:nil
-      '(("BadRequest" . bad-request) ("DependencyTimeout" . dependency-timeout)
-        ("FileSystemAlreadyExists" . file-system-already-exists)
-        ("FileSystemInUse" . file-system-in-use)
-        ("FileSystemLimitExceeded" . file-system-limit-exceeded)
-        ("FileSystemNotFound" . file-system-not-found)
-        ("IncorrectFileSystemLifeCycleState"
-         . incorrect-file-system-life-cycle-state)
-        ("IncorrectMountTargetState" . incorrect-mount-target-state)
-        ("InternalServerError" . internal-server-error)
-        ("IpAddressInUse" . ip-address-in-use)
-        ("MountTargetConflict" . mount-target-conflict)
-        ("MountTargetNotFound" . mount-target-not-found)
-        ("NetworkInterfaceLimitExceeded" . network-interface-limit-exceeded)
-        ("NoFreeAddressesInSubnet" . no-free-addresses-in-subnet)
-        ("SecurityGroupLimitExceeded" . security-group-limit-exceeded)
-        ("SecurityGroupNotFound" . security-group-not-found)
-        ("SubnetNotFound" . subnet-not-found)
-        ("UnsupportedAvailabilityZone" . unsupported-availability-zone)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-file-system))
 (common-lisp:progn
  (common-lisp:defun create-mount-target
@@ -1127,25 +1128,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticfilesystem-request aws-sdk/generator/operation::input "POST"
         "/2015-02-01/mount-targets" "CreateMountTarget" "2015-02-01"))
-      common-lisp:nil common-lisp:nil
-      '(("BadRequest" . bad-request) ("DependencyTimeout" . dependency-timeout)
-        ("FileSystemAlreadyExists" . file-system-already-exists)
-        ("FileSystemInUse" . file-system-in-use)
-        ("FileSystemLimitExceeded" . file-system-limit-exceeded)
-        ("FileSystemNotFound" . file-system-not-found)
-        ("IncorrectFileSystemLifeCycleState"
-         . incorrect-file-system-life-cycle-state)
-        ("IncorrectMountTargetState" . incorrect-mount-target-state)
-        ("InternalServerError" . internal-server-error)
-        ("IpAddressInUse" . ip-address-in-use)
-        ("MountTargetConflict" . mount-target-conflict)
-        ("MountTargetNotFound" . mount-target-not-found)
-        ("NetworkInterfaceLimitExceeded" . network-interface-limit-exceeded)
-        ("NoFreeAddressesInSubnet" . no-free-addresses-in-subnet)
-        ("SecurityGroupLimitExceeded" . security-group-limit-exceeded)
-        ("SecurityGroupNotFound" . security-group-not-found)
-        ("SubnetNotFound" . subnet-not-found)
-        ("UnsupportedAvailabilityZone" . unsupported-availability-zone)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-mount-target))
 (common-lisp:progn
  (common-lisp:defun create-tags
@@ -1167,25 +1150,7 @@
                                 aws-sdk/generator/operation::input
                                 'file-system-id))))
         "CreateTags" "2015-02-01"))
-      common-lisp:nil common-lisp:nil
-      '(("BadRequest" . bad-request) ("DependencyTimeout" . dependency-timeout)
-        ("FileSystemAlreadyExists" . file-system-already-exists)
-        ("FileSystemInUse" . file-system-in-use)
-        ("FileSystemLimitExceeded" . file-system-limit-exceeded)
-        ("FileSystemNotFound" . file-system-not-found)
-        ("IncorrectFileSystemLifeCycleState"
-         . incorrect-file-system-life-cycle-state)
-        ("IncorrectMountTargetState" . incorrect-mount-target-state)
-        ("InternalServerError" . internal-server-error)
-        ("IpAddressInUse" . ip-address-in-use)
-        ("MountTargetConflict" . mount-target-conflict)
-        ("MountTargetNotFound" . mount-target-not-found)
-        ("NetworkInterfaceLimitExceeded" . network-interface-limit-exceeded)
-        ("NoFreeAddressesInSubnet" . no-free-addresses-in-subnet)
-        ("SecurityGroupLimitExceeded" . security-group-limit-exceeded)
-        ("SecurityGroupNotFound" . security-group-not-found)
-        ("SubnetNotFound" . subnet-not-found)
-        ("UnsupportedAvailabilityZone" . unsupported-availability-zone)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-tags))
 (common-lisp:progn
  (common-lisp:defun delete-file-system
@@ -1207,25 +1172,7 @@
                                 aws-sdk/generator/operation::input
                                 'file-system-id))))
         "DeleteFileSystem" "2015-02-01"))
-      common-lisp:nil common-lisp:nil
-      '(("BadRequest" . bad-request) ("DependencyTimeout" . dependency-timeout)
-        ("FileSystemAlreadyExists" . file-system-already-exists)
-        ("FileSystemInUse" . file-system-in-use)
-        ("FileSystemLimitExceeded" . file-system-limit-exceeded)
-        ("FileSystemNotFound" . file-system-not-found)
-        ("IncorrectFileSystemLifeCycleState"
-         . incorrect-file-system-life-cycle-state)
-        ("IncorrectMountTargetState" . incorrect-mount-target-state)
-        ("InternalServerError" . internal-server-error)
-        ("IpAddressInUse" . ip-address-in-use)
-        ("MountTargetConflict" . mount-target-conflict)
-        ("MountTargetNotFound" . mount-target-not-found)
-        ("NetworkInterfaceLimitExceeded" . network-interface-limit-exceeded)
-        ("NoFreeAddressesInSubnet" . no-free-addresses-in-subnet)
-        ("SecurityGroupLimitExceeded" . security-group-limit-exceeded)
-        ("SecurityGroupNotFound" . security-group-not-found)
-        ("SubnetNotFound" . subnet-not-found)
-        ("UnsupportedAvailabilityZone" . unsupported-availability-zone)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-file-system))
 (common-lisp:progn
  (common-lisp:defun delete-mount-target
@@ -1247,25 +1194,7 @@
                                 aws-sdk/generator/operation::input
                                 'mount-target-id))))
         "DeleteMountTarget" "2015-02-01"))
-      common-lisp:nil common-lisp:nil
-      '(("BadRequest" . bad-request) ("DependencyTimeout" . dependency-timeout)
-        ("FileSystemAlreadyExists" . file-system-already-exists)
-        ("FileSystemInUse" . file-system-in-use)
-        ("FileSystemLimitExceeded" . file-system-limit-exceeded)
-        ("FileSystemNotFound" . file-system-not-found)
-        ("IncorrectFileSystemLifeCycleState"
-         . incorrect-file-system-life-cycle-state)
-        ("IncorrectMountTargetState" . incorrect-mount-target-state)
-        ("InternalServerError" . internal-server-error)
-        ("IpAddressInUse" . ip-address-in-use)
-        ("MountTargetConflict" . mount-target-conflict)
-        ("MountTargetNotFound" . mount-target-not-found)
-        ("NetworkInterfaceLimitExceeded" . network-interface-limit-exceeded)
-        ("NoFreeAddressesInSubnet" . no-free-addresses-in-subnet)
-        ("SecurityGroupLimitExceeded" . security-group-limit-exceeded)
-        ("SecurityGroupNotFound" . security-group-not-found)
-        ("SubnetNotFound" . subnet-not-found)
-        ("UnsupportedAvailabilityZone" . unsupported-availability-zone)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-mount-target))
 (common-lisp:progn
  (common-lisp:defun delete-tags
@@ -1287,25 +1216,7 @@
                                 aws-sdk/generator/operation::input
                                 'file-system-id))))
         "DeleteTags" "2015-02-01"))
-      common-lisp:nil common-lisp:nil
-      '(("BadRequest" . bad-request) ("DependencyTimeout" . dependency-timeout)
-        ("FileSystemAlreadyExists" . file-system-already-exists)
-        ("FileSystemInUse" . file-system-in-use)
-        ("FileSystemLimitExceeded" . file-system-limit-exceeded)
-        ("FileSystemNotFound" . file-system-not-found)
-        ("IncorrectFileSystemLifeCycleState"
-         . incorrect-file-system-life-cycle-state)
-        ("IncorrectMountTargetState" . incorrect-mount-target-state)
-        ("InternalServerError" . internal-server-error)
-        ("IpAddressInUse" . ip-address-in-use)
-        ("MountTargetConflict" . mount-target-conflict)
-        ("MountTargetNotFound" . mount-target-not-found)
-        ("NetworkInterfaceLimitExceeded" . network-interface-limit-exceeded)
-        ("NoFreeAddressesInSubnet" . no-free-addresses-in-subnet)
-        ("SecurityGroupLimitExceeded" . security-group-limit-exceeded)
-        ("SecurityGroupNotFound" . security-group-not-found)
-        ("SubnetNotFound" . subnet-not-found)
-        ("UnsupportedAvailabilityZone" . unsupported-availability-zone)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-tags))
 (common-lisp:progn
  (common-lisp:defun describe-file-systems
@@ -1323,25 +1234,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticfilesystem-request aws-sdk/generator/operation::input "GET"
         "/2015-02-01/file-systems" "DescribeFileSystems" "2015-02-01"))
-      common-lisp:nil common-lisp:nil
-      '(("BadRequest" . bad-request) ("DependencyTimeout" . dependency-timeout)
-        ("FileSystemAlreadyExists" . file-system-already-exists)
-        ("FileSystemInUse" . file-system-in-use)
-        ("FileSystemLimitExceeded" . file-system-limit-exceeded)
-        ("FileSystemNotFound" . file-system-not-found)
-        ("IncorrectFileSystemLifeCycleState"
-         . incorrect-file-system-life-cycle-state)
-        ("IncorrectMountTargetState" . incorrect-mount-target-state)
-        ("InternalServerError" . internal-server-error)
-        ("IpAddressInUse" . ip-address-in-use)
-        ("MountTargetConflict" . mount-target-conflict)
-        ("MountTargetNotFound" . mount-target-not-found)
-        ("NetworkInterfaceLimitExceeded" . network-interface-limit-exceeded)
-        ("NoFreeAddressesInSubnet" . no-free-addresses-in-subnet)
-        ("SecurityGroupLimitExceeded" . security-group-limit-exceeded)
-        ("SecurityGroupNotFound" . security-group-not-found)
-        ("SubnetNotFound" . subnet-not-found)
-        ("UnsupportedAvailabilityZone" . unsupported-availability-zone)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-file-systems))
 (common-lisp:progn
  (common-lisp:defun describe-mount-target-security-groups
@@ -1365,25 +1258,7 @@
                                 aws-sdk/generator/operation::input
                                 'mount-target-id))))
         "DescribeMountTargetSecurityGroups" "2015-02-01"))
-      common-lisp:nil common-lisp:nil
-      '(("BadRequest" . bad-request) ("DependencyTimeout" . dependency-timeout)
-        ("FileSystemAlreadyExists" . file-system-already-exists)
-        ("FileSystemInUse" . file-system-in-use)
-        ("FileSystemLimitExceeded" . file-system-limit-exceeded)
-        ("FileSystemNotFound" . file-system-not-found)
-        ("IncorrectFileSystemLifeCycleState"
-         . incorrect-file-system-life-cycle-state)
-        ("IncorrectMountTargetState" . incorrect-mount-target-state)
-        ("InternalServerError" . internal-server-error)
-        ("IpAddressInUse" . ip-address-in-use)
-        ("MountTargetConflict" . mount-target-conflict)
-        ("MountTargetNotFound" . mount-target-not-found)
-        ("NetworkInterfaceLimitExceeded" . network-interface-limit-exceeded)
-        ("NoFreeAddressesInSubnet" . no-free-addresses-in-subnet)
-        ("SecurityGroupLimitExceeded" . security-group-limit-exceeded)
-        ("SecurityGroupNotFound" . security-group-not-found)
-        ("SubnetNotFound" . subnet-not-found)
-        ("UnsupportedAvailabilityZone" . unsupported-availability-zone)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-mount-target-security-groups))
 (common-lisp:progn
  (common-lisp:defun describe-mount-targets
@@ -1401,25 +1276,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticfilesystem-request aws-sdk/generator/operation::input "GET"
         "/2015-02-01/mount-targets" "DescribeMountTargets" "2015-02-01"))
-      common-lisp:nil common-lisp:nil
-      '(("BadRequest" . bad-request) ("DependencyTimeout" . dependency-timeout)
-        ("FileSystemAlreadyExists" . file-system-already-exists)
-        ("FileSystemInUse" . file-system-in-use)
-        ("FileSystemLimitExceeded" . file-system-limit-exceeded)
-        ("FileSystemNotFound" . file-system-not-found)
-        ("IncorrectFileSystemLifeCycleState"
-         . incorrect-file-system-life-cycle-state)
-        ("IncorrectMountTargetState" . incorrect-mount-target-state)
-        ("InternalServerError" . internal-server-error)
-        ("IpAddressInUse" . ip-address-in-use)
-        ("MountTargetConflict" . mount-target-conflict)
-        ("MountTargetNotFound" . mount-target-not-found)
-        ("NetworkInterfaceLimitExceeded" . network-interface-limit-exceeded)
-        ("NoFreeAddressesInSubnet" . no-free-addresses-in-subnet)
-        ("SecurityGroupLimitExceeded" . security-group-limit-exceeded)
-        ("SecurityGroupNotFound" . security-group-not-found)
-        ("SubnetNotFound" . subnet-not-found)
-        ("UnsupportedAvailabilityZone" . unsupported-availability-zone)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-mount-targets))
 (common-lisp:progn
  (common-lisp:defun describe-tags
@@ -1442,25 +1299,7 @@
                                 aws-sdk/generator/operation::input
                                 'file-system-id))))
         "DescribeTags" "2015-02-01"))
-      common-lisp:nil common-lisp:nil
-      '(("BadRequest" . bad-request) ("DependencyTimeout" . dependency-timeout)
-        ("FileSystemAlreadyExists" . file-system-already-exists)
-        ("FileSystemInUse" . file-system-in-use)
-        ("FileSystemLimitExceeded" . file-system-limit-exceeded)
-        ("FileSystemNotFound" . file-system-not-found)
-        ("IncorrectFileSystemLifeCycleState"
-         . incorrect-file-system-life-cycle-state)
-        ("IncorrectMountTargetState" . incorrect-mount-target-state)
-        ("InternalServerError" . internal-server-error)
-        ("IpAddressInUse" . ip-address-in-use)
-        ("MountTargetConflict" . mount-target-conflict)
-        ("MountTargetNotFound" . mount-target-not-found)
-        ("NetworkInterfaceLimitExceeded" . network-interface-limit-exceeded)
-        ("NoFreeAddressesInSubnet" . no-free-addresses-in-subnet)
-        ("SecurityGroupLimitExceeded" . security-group-limit-exceeded)
-        ("SecurityGroupNotFound" . security-group-not-found)
-        ("SubnetNotFound" . subnet-not-found)
-        ("UnsupportedAvailabilityZone" . unsupported-availability-zone)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
  (common-lisp:defun modify-mount-target-security-groups
@@ -1485,23 +1324,5 @@
                                 aws-sdk/generator/operation::input
                                 'mount-target-id))))
         "ModifyMountTargetSecurityGroups" "2015-02-01"))
-      common-lisp:nil common-lisp:nil
-      '(("BadRequest" . bad-request) ("DependencyTimeout" . dependency-timeout)
-        ("FileSystemAlreadyExists" . file-system-already-exists)
-        ("FileSystemInUse" . file-system-in-use)
-        ("FileSystemLimitExceeded" . file-system-limit-exceeded)
-        ("FileSystemNotFound" . file-system-not-found)
-        ("IncorrectFileSystemLifeCycleState"
-         . incorrect-file-system-life-cycle-state)
-        ("IncorrectMountTargetState" . incorrect-mount-target-state)
-        ("InternalServerError" . internal-server-error)
-        ("IpAddressInUse" . ip-address-in-use)
-        ("MountTargetConflict" . mount-target-conflict)
-        ("MountTargetNotFound" . mount-target-not-found)
-        ("NetworkInterfaceLimitExceeded" . network-interface-limit-exceeded)
-        ("NoFreeAddressesInSubnet" . no-free-addresses-in-subnet)
-        ("SecurityGroupLimitExceeded" . security-group-limit-exceeded)
-        ("SecurityGroupNotFound" . security-group-not-found)
-        ("SubnetNotFound" . subnet-not-found)
-        ("UnsupportedAvailabilityZone" . unsupported-availability-zone)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'modify-mount-target-security-groups))

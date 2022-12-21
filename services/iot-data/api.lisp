@@ -18,6 +18,18 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'iot-data-error))
+(common-lisp:defvar *error-map*
+  '(("ConflictException" . conflict-exception)
+    ("InternalFailureException" . internal-failure-exception)
+    ("InvalidRequestException" . invalid-request-exception)
+    ("MethodNotAllowedException" . method-not-allowed-exception)
+    ("RequestEntityTooLargeException" . request-entity-too-large-exception)
+    ("ResourceNotFoundException" . resource-not-found-exception)
+    ("ServiceUnavailableException" . service-unavailable-exception)
+    ("ThrottlingException" . throttling-exception)
+    ("UnauthorizedException" . unauthorized-exception)
+    ("UnsupportedDocumentEncodingException"
+     . unsupported-document-encoding-exception)))
 (common-lisp:progn
  (common-lisp:define-condition conflict-exception
      (iot-data-error)
@@ -328,18 +340,7 @@
                                                              'thing-name))))
                                                         "DeleteThingShadow"
                                                         "2015-05-28"))
-      "blob" common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("InternalFailureException" . internal-failure-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("MethodNotAllowedException" . method-not-allowed-exception)
-        ("RequestEntityTooLargeException" . request-entity-too-large-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedDocumentEncodingException"
-         . unsupported-document-encoding-exception)))))
+      "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-thing-shadow))
 (common-lisp:progn
  (common-lisp:defun get-thing-shadow
@@ -367,18 +368,7 @@
                                                              'thing-name))))
                                                         "GetThingShadow"
                                                         "2015-05-28"))
-      "blob" common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("InternalFailureException" . internal-failure-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("MethodNotAllowedException" . method-not-allowed-exception)
-        ("RequestEntityTooLargeException" . request-entity-too-large-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedDocumentEncodingException"
-         . unsupported-document-encoding-exception)))))
+      "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'get-thing-shadow))
 (common-lisp:progn
  (common-lisp:defun publish
@@ -406,18 +396,7 @@
                                                              'topic))))
                                                         "Publish"
                                                         "2015-05-28"))
-      common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("InternalFailureException" . internal-failure-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("MethodNotAllowedException" . method-not-allowed-exception)
-        ("RequestEntityTooLargeException" . request-entity-too-large-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedDocumentEncodingException"
-         . unsupported-document-encoding-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'publish))
 (common-lisp:progn
  (common-lisp:defun update-thing-shadow
@@ -445,16 +424,5 @@
                                                              'thing-name))))
                                                         "UpdateThingShadow"
                                                         "2015-05-28"))
-      "blob" common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("InternalFailureException" . internal-failure-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("MethodNotAllowedException" . method-not-allowed-exception)
-        ("RequestEntityTooLargeException" . request-entity-too-large-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("UnsupportedDocumentEncodingException"
-         . unsupported-document-encoding-exception)))))
+      "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'update-thing-shadow))

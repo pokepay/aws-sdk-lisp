@@ -18,6 +18,15 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'snowball-error))
+(common-lisp:defvar *error-map*
+  '(("ClusterLimitExceededException" . cluster-limit-exceeded-exception)
+    ("InvalidAddressException" . invalid-address-exception)
+    ("InvalidInputCombinationException" . invalid-input-combination-exception)
+    ("InvalidJobStateException" . invalid-job-state-exception)
+    ("InvalidNextTokenException" . invalid-next-token-exception)
+    ("InvalidResourceException" . invalid-resource-exception)
+    ("KMSRequestFailedException" . kmsrequest-failed-exception)
+    ("UnsupportedAddressException" . unsupported-address-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (address (:copier common-lisp:nil) (:conc-name "struct-shape-address-"))
@@ -2408,16 +2417,7 @@
                                                         "POST" "/"
                                                         "CancelCluster"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ClusterLimitExceededException" . cluster-limit-exceeded-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidInputCombinationException"
-         . invalid-input-combination-exception)
-        ("InvalidJobStateException" . invalid-job-state-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("KMSRequestFailedException" . kmsrequest-failed-exception)
-        ("UnsupportedAddressException" . unsupported-address-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'cancel-cluster))
 (common-lisp:progn
  (common-lisp:defun cancel-job
@@ -2434,16 +2434,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CancelJob"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ClusterLimitExceededException" . cluster-limit-exceeded-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidInputCombinationException"
-         . invalid-input-combination-exception)
-        ("InvalidJobStateException" . invalid-job-state-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("KMSRequestFailedException" . kmsrequest-failed-exception)
-        ("UnsupportedAddressException" . unsupported-address-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'cancel-job))
 (common-lisp:progn
  (common-lisp:defun create-address
@@ -2461,16 +2452,7 @@
                                                         "POST" "/"
                                                         "CreateAddress"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ClusterLimitExceededException" . cluster-limit-exceeded-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidInputCombinationException"
-         . invalid-input-combination-exception)
-        ("InvalidJobStateException" . invalid-job-state-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("KMSRequestFailedException" . kmsrequest-failed-exception)
-        ("UnsupportedAddressException" . unsupported-address-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-address))
 (common-lisp:progn
  (common-lisp:defun create-cluster
@@ -2493,16 +2475,7 @@
                                                         "POST" "/"
                                                         "CreateCluster"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ClusterLimitExceededException" . cluster-limit-exceeded-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidInputCombinationException"
-         . invalid-input-combination-exception)
-        ("InvalidJobStateException" . invalid-job-state-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("KMSRequestFailedException" . kmsrequest-failed-exception)
-        ("UnsupportedAddressException" . unsupported-address-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-cluster))
 (common-lisp:progn
  (common-lisp:defun create-job
@@ -2525,16 +2498,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CreateJob"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ClusterLimitExceededException" . cluster-limit-exceeded-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidInputCombinationException"
-         . invalid-input-combination-exception)
-        ("InvalidJobStateException" . invalid-job-state-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("KMSRequestFailedException" . kmsrequest-failed-exception)
-        ("UnsupportedAddressException" . unsupported-address-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-job))
 (common-lisp:progn
  (common-lisp:defun describe-address
@@ -2552,16 +2516,7 @@
                                                         "POST" "/"
                                                         "DescribeAddress"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ClusterLimitExceededException" . cluster-limit-exceeded-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidInputCombinationException"
-         . invalid-input-combination-exception)
-        ("InvalidJobStateException" . invalid-job-state-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("KMSRequestFailedException" . kmsrequest-failed-exception)
-        ("UnsupportedAddressException" . unsupported-address-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-address))
 (common-lisp:progn
  (common-lisp:defun describe-addresses
@@ -2579,16 +2534,7 @@
                                                         "POST" "/"
                                                         "DescribeAddresses"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ClusterLimitExceededException" . cluster-limit-exceeded-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidInputCombinationException"
-         . invalid-input-combination-exception)
-        ("InvalidJobStateException" . invalid-job-state-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("KMSRequestFailedException" . kmsrequest-failed-exception)
-        ("UnsupportedAddressException" . unsupported-address-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-addresses))
 (common-lisp:progn
  (common-lisp:defun describe-cluster
@@ -2606,16 +2552,7 @@
                                                         "POST" "/"
                                                         "DescribeCluster"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ClusterLimitExceededException" . cluster-limit-exceeded-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidInputCombinationException"
-         . invalid-input-combination-exception)
-        ("InvalidJobStateException" . invalid-job-state-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("KMSRequestFailedException" . kmsrequest-failed-exception)
-        ("UnsupportedAddressException" . unsupported-address-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-cluster))
 (common-lisp:progn
  (common-lisp:defun describe-job
@@ -2633,16 +2570,7 @@
                                                         "POST" "/"
                                                         "DescribeJob"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ClusterLimitExceededException" . cluster-limit-exceeded-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidInputCombinationException"
-         . invalid-input-combination-exception)
-        ("InvalidJobStateException" . invalid-job-state-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("KMSRequestFailedException" . kmsrequest-failed-exception)
-        ("UnsupportedAddressException" . unsupported-address-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-job))
 (common-lisp:progn
  (common-lisp:defun get-job-manifest
@@ -2660,16 +2588,7 @@
                                                         "POST" "/"
                                                         "GetJobManifest"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ClusterLimitExceededException" . cluster-limit-exceeded-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidInputCombinationException"
-         . invalid-input-combination-exception)
-        ("InvalidJobStateException" . invalid-job-state-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("KMSRequestFailedException" . kmsrequest-failed-exception)
-        ("UnsupportedAddressException" . unsupported-address-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-job-manifest))
 (common-lisp:progn
  (common-lisp:defun get-job-unlock-code
@@ -2687,16 +2606,7 @@
                                                         "POST" "/"
                                                         "GetJobUnlockCode"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ClusterLimitExceededException" . cluster-limit-exceeded-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidInputCombinationException"
-         . invalid-input-combination-exception)
-        ("InvalidJobStateException" . invalid-job-state-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("KMSRequestFailedException" . kmsrequest-failed-exception)
-        ("UnsupportedAddressException" . unsupported-address-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-job-unlock-code))
 (common-lisp:progn
  (common-lisp:defun get-snowball-usage ()
@@ -2706,16 +2616,7 @@
                                 :params
                                 `(("Action" ,@"GetSnowballUsage")
                                   ("Version" ,@"2016-06-30"))))
-    common-lisp:nil common-lisp:nil
-    '(("ClusterLimitExceededException" . cluster-limit-exceeded-exception)
-      ("InvalidAddressException" . invalid-address-exception)
-      ("InvalidInputCombinationException"
-       . invalid-input-combination-exception)
-      ("InvalidJobStateException" . invalid-job-state-exception)
-      ("InvalidNextTokenException" . invalid-next-token-exception)
-      ("InvalidResourceException" . invalid-resource-exception)
-      ("KMSRequestFailedException" . kmsrequest-failed-exception)
-      ("UnsupportedAddressException" . unsupported-address-exception))))
+    common-lisp:nil common-lisp:nil *error-map*))
  (common-lisp:export 'get-snowball-usage))
 (common-lisp:progn
  (common-lisp:defun list-cluster-jobs
@@ -2734,16 +2635,7 @@
                                                         "POST" "/"
                                                         "ListClusterJobs"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ClusterLimitExceededException" . cluster-limit-exceeded-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidInputCombinationException"
-         . invalid-input-combination-exception)
-        ("InvalidJobStateException" . invalid-job-state-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("KMSRequestFailedException" . kmsrequest-failed-exception)
-        ("UnsupportedAddressException" . unsupported-address-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-cluster-jobs))
 (common-lisp:progn
  (common-lisp:defun list-clusters
@@ -2761,16 +2653,7 @@
                                                         "POST" "/"
                                                         "ListClusters"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ClusterLimitExceededException" . cluster-limit-exceeded-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidInputCombinationException"
-         . invalid-input-combination-exception)
-        ("InvalidJobStateException" . invalid-job-state-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("KMSRequestFailedException" . kmsrequest-failed-exception)
-        ("UnsupportedAddressException" . unsupported-address-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-clusters))
 (common-lisp:progn
  (common-lisp:defun list-jobs
@@ -2787,16 +2670,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListJobs"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ClusterLimitExceededException" . cluster-limit-exceeded-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidInputCombinationException"
-         . invalid-input-combination-exception)
-        ("InvalidJobStateException" . invalid-job-state-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("KMSRequestFailedException" . kmsrequest-failed-exception)
-        ("UnsupportedAddressException" . unsupported-address-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-jobs))
 (common-lisp:progn
  (common-lisp:defun update-cluster
@@ -2818,16 +2692,7 @@
                                                         "POST" "/"
                                                         "UpdateCluster"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ClusterLimitExceededException" . cluster-limit-exceeded-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidInputCombinationException"
-         . invalid-input-combination-exception)
-        ("InvalidJobStateException" . invalid-job-state-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("KMSRequestFailedException" . kmsrequest-failed-exception)
-        ("UnsupportedAddressException" . unsupported-address-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-cluster))
 (common-lisp:progn
  (common-lisp:defun update-job
@@ -2849,14 +2714,5 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "UpdateJob"
                                                         "2016-06-30"))
-      common-lisp:nil common-lisp:nil
-      '(("ClusterLimitExceededException" . cluster-limit-exceeded-exception)
-        ("InvalidAddressException" . invalid-address-exception)
-        ("InvalidInputCombinationException"
-         . invalid-input-combination-exception)
-        ("InvalidJobStateException" . invalid-job-state-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("KMSRequestFailedException" . kmsrequest-failed-exception)
-        ("UnsupportedAddressException" . unsupported-address-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-job))
