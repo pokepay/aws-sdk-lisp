@@ -891,6 +891,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/v1/speech"
                                                         "SynthesizeSpeech"
-                                                        "2016-06-10"))
+                                                        "2016-06-10")
+       :want-stream common-lisp:t)
       "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'synthesize-speech))

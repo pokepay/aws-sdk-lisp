@@ -8684,7 +8684,8 @@
                                                              aws-sdk/generator/operation::input
                                                              'export-type))))
                                                         "GetExport"
-                                                        "2015-07-09"))
+                                                        "2015-07-09")
+       :want-stream common-lisp:t)
       "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'get-export))
 (common-lisp:progn
@@ -9199,7 +9200,8 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'sdk-type))))
-                                                        "GetSdk" "2015-07-09"))
+                                                        "GetSdk" "2015-07-09")
+       :want-stream common-lisp:t)
       "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'get-sdk))
 (common-lisp:progn

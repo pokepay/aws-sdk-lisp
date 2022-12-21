@@ -567,7 +567,8 @@
                                                              aws-sdk/generator/operation::input
                                                              'user-id))))
                                                         "PostContent"
-                                                        "2016-11-28"))
+                                                        "2016-11-28")
+       :want-stream common-lisp:t)
       "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'post-content))
 (common-lisp:progn

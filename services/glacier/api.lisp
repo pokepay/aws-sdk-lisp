@@ -3062,7 +3062,8 @@ common-lisp:nil
                                                              aws-sdk/generator/operation::input
                                                              'job-id))))
                                                         "GetJobOutput"
-                                                        "2012-06-01"))
+                                                        "2012-06-01")
+       :want-stream common-lisp:t)
       "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'get-job-output))
 (common-lisp:progn

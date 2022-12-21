@@ -6,8 +6,11 @@
                 #:ascii-string-to-byte-array)
   (:import-from #:kebab
                 #:to-lisp-case)
+  (:import-from #:babel
+                #:octets-to-string)
   (:export #:lispify
-           #:gethash+))
+           #:gethash+
+           #:ensure-string))
 (in-package #:aws-sdk/utils)
 
 (defun lispify (value &optional (package *package*))
@@ -36,3 +39,16 @@
               (gethash key hash)))
           keys
           :initial-value hash))
+
+(defun slurp-string-stream (stream)
+  (with-output-to-string (out)
+    (loop with buffer = (make-string 1024)
+          for read-bytes = (read-sequence buffer stream)
+          collect (write-string buffer out :end read-bytes)
+          while (= read-bytes 1024))))
+
+(defun ensure-string (value)
+  (etypecase value
+    (string value)
+    (vector (babel:octets-to-string value))
+    (stream (slurp-string-stream value))))

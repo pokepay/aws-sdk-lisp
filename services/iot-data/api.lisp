@@ -339,7 +339,8 @@
                                                              aws-sdk/generator/operation::input
                                                              'thing-name))))
                                                         "DeleteThingShadow"
-                                                        "2015-05-28"))
+                                                        "2015-05-28")
+       :want-stream common-lisp:t)
       "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-thing-shadow))
 (common-lisp:progn
@@ -367,7 +368,8 @@
                                                              aws-sdk/generator/operation::input
                                                              'thing-name))))
                                                         "GetThingShadow"
-                                                        "2015-05-28"))
+                                                        "2015-05-28")
+       :want-stream common-lisp:t)
       "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'get-thing-shadow))
 (common-lisp:progn
@@ -423,6 +425,7 @@
                                                              aws-sdk/generator/operation::input
                                                              'thing-name))))
                                                         "UpdateThingShadow"
-                                                        "2015-05-28"))
+                                                        "2015-05-28")
+       :want-stream common-lisp:t)
       "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'update-thing-shadow))
