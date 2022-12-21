@@ -19,6 +19,19 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'monitoring-error))
+(common-lisp:defvar *error-map*
+  '(("DashboardInvalidInputError" . dashboard-invalid-input-error)
+    ("DashboardNotFoundError" . dashboard-not-found-error)
+    ("InternalServiceFault" . internal-service-fault)
+    ("InvalidFormatFault" . invalid-format-fault)
+    ("InvalidNextToken" . invalid-next-token)
+    ("InvalidParameterCombinationException"
+     . invalid-parameter-combination-exception)
+    ("InvalidParameterValueException" . invalid-parameter-value-exception)
+    ("LimitExceededFault" . limit-exceeded-fault)
+    ("MissingRequiredParameterException"
+     . missing-required-parameter-exception)
+    ("ResourceNotFound" . resource-not-found)))
 (common-lisp:deftype action-prefix () 'common-lisp:string)
 (common-lisp:deftype actions-enabled () 'common-lisp:boolean)
 (common-lisp:deftype alarm-arn () 'common-lisp:string)
@@ -2159,19 +2172,7 @@
                                                         "POST" "/"
                                                         "DeleteAlarms"
                                                         "2010-08-01"))
-      common-lisp:nil common-lisp:nil
-      '(("DashboardInvalidInputError" . dashboard-invalid-input-error)
-        ("DashboardNotFoundError" . dashboard-not-found-error)
-        ("InternalServiceFault" . internal-service-fault)
-        ("InvalidFormatFault" . invalid-format-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("MissingRequiredParameterException"
-         . missing-required-parameter-exception)
-        ("ResourceNotFound" . resource-not-found)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-alarms))
 (common-lisp:progn
  (common-lisp:defun delete-dashboards
@@ -2189,19 +2190,7 @@
                                                         "POST" "/"
                                                         "DeleteDashboards"
                                                         "2010-08-01"))
-      common-lisp:nil "DeleteDashboardsResult"
-      '(("DashboardInvalidInputError" . dashboard-invalid-input-error)
-        ("DashboardNotFoundError" . dashboard-not-found-error)
-        ("InternalServiceFault" . internal-service-fault)
-        ("InvalidFormatFault" . invalid-format-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("MissingRequiredParameterException"
-         . missing-required-parameter-exception)
-        ("ResourceNotFound" . resource-not-found)))))
+      common-lisp:nil "DeleteDashboardsResult" *error-map*)))
  (common-lisp:export 'delete-dashboards))
 (common-lisp:progn
  (common-lisp:defun describe-alarm-history
@@ -2222,19 +2211,7 @@
                                                         "POST" "/"
                                                         "DescribeAlarmHistory"
                                                         "2010-08-01"))
-      common-lisp:nil "DescribeAlarmHistoryResult"
-      '(("DashboardInvalidInputError" . dashboard-invalid-input-error)
-        ("DashboardNotFoundError" . dashboard-not-found-error)
-        ("InternalServiceFault" . internal-service-fault)
-        ("InvalidFormatFault" . invalid-format-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("MissingRequiredParameterException"
-         . missing-required-parameter-exception)
-        ("ResourceNotFound" . resource-not-found)))))
+      common-lisp:nil "DescribeAlarmHistoryResult" *error-map*)))
  (common-lisp:export 'describe-alarm-history))
 (common-lisp:progn
  (common-lisp:defun describe-alarms
@@ -2255,19 +2232,7 @@
                                                         "POST" "/"
                                                         "DescribeAlarms"
                                                         "2010-08-01"))
-      common-lisp:nil "DescribeAlarmsResult"
-      '(("DashboardInvalidInputError" . dashboard-invalid-input-error)
-        ("DashboardNotFoundError" . dashboard-not-found-error)
-        ("InternalServiceFault" . internal-service-fault)
-        ("InvalidFormatFault" . invalid-format-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("MissingRequiredParameterException"
-         . missing-required-parameter-exception)
-        ("ResourceNotFound" . resource-not-found)))))
+      common-lisp:nil "DescribeAlarmsResult" *error-map*)))
  (common-lisp:export 'describe-alarms))
 (common-lisp:progn
  (common-lisp:defun describe-alarms-for-metric
@@ -2288,19 +2253,7 @@
                                                         "POST" "/"
                                                         "DescribeAlarmsForMetric"
                                                         "2010-08-01"))
-      common-lisp:nil "DescribeAlarmsForMetricResult"
-      '(("DashboardInvalidInputError" . dashboard-invalid-input-error)
-        ("DashboardNotFoundError" . dashboard-not-found-error)
-        ("InternalServiceFault" . internal-service-fault)
-        ("InvalidFormatFault" . invalid-format-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("MissingRequiredParameterException"
-         . missing-required-parameter-exception)
-        ("ResourceNotFound" . resource-not-found)))))
+      common-lisp:nil "DescribeAlarmsForMetricResult" *error-map*)))
  (common-lisp:export 'describe-alarms-for-metric))
 (common-lisp:progn
  (common-lisp:defun disable-alarm-actions
@@ -2318,19 +2271,7 @@
                                                         "POST" "/"
                                                         "DisableAlarmActions"
                                                         "2010-08-01"))
-      common-lisp:nil common-lisp:nil
-      '(("DashboardInvalidInputError" . dashboard-invalid-input-error)
-        ("DashboardNotFoundError" . dashboard-not-found-error)
-        ("InternalServiceFault" . internal-service-fault)
-        ("InvalidFormatFault" . invalid-format-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("MissingRequiredParameterException"
-         . missing-required-parameter-exception)
-        ("ResourceNotFound" . resource-not-found)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'disable-alarm-actions))
 (common-lisp:progn
  (common-lisp:defun enable-alarm-actions
@@ -2348,19 +2289,7 @@
                                                         "POST" "/"
                                                         "EnableAlarmActions"
                                                         "2010-08-01"))
-      common-lisp:nil common-lisp:nil
-      '(("DashboardInvalidInputError" . dashboard-invalid-input-error)
-        ("DashboardNotFoundError" . dashboard-not-found-error)
-        ("InternalServiceFault" . internal-service-fault)
-        ("InvalidFormatFault" . invalid-format-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("MissingRequiredParameterException"
-         . missing-required-parameter-exception)
-        ("ResourceNotFound" . resource-not-found)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'enable-alarm-actions))
 (common-lisp:progn
  (common-lisp:defun get-dashboard
@@ -2378,19 +2307,7 @@
                                                         "POST" "/"
                                                         "GetDashboard"
                                                         "2010-08-01"))
-      common-lisp:nil "GetDashboardResult"
-      '(("DashboardInvalidInputError" . dashboard-invalid-input-error)
-        ("DashboardNotFoundError" . dashboard-not-found-error)
-        ("InternalServiceFault" . internal-service-fault)
-        ("InvalidFormatFault" . invalid-format-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("MissingRequiredParameterException"
-         . missing-required-parameter-exception)
-        ("ResourceNotFound" . resource-not-found)))))
+      common-lisp:nil "GetDashboardResult" *error-map*)))
  (common-lisp:export 'get-dashboard))
 (common-lisp:progn
  (common-lisp:defun get-metric-statistics
@@ -2412,19 +2329,7 @@
                                                         "POST" "/"
                                                         "GetMetricStatistics"
                                                         "2010-08-01"))
-      common-lisp:nil "GetMetricStatisticsResult"
-      '(("DashboardInvalidInputError" . dashboard-invalid-input-error)
-        ("DashboardNotFoundError" . dashboard-not-found-error)
-        ("InternalServiceFault" . internal-service-fault)
-        ("InvalidFormatFault" . invalid-format-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("MissingRequiredParameterException"
-         . missing-required-parameter-exception)
-        ("ResourceNotFound" . resource-not-found)))))
+      common-lisp:nil "GetMetricStatisticsResult" *error-map*)))
  (common-lisp:export 'get-metric-statistics))
 (common-lisp:progn
  (common-lisp:defun list-dashboards
@@ -2443,19 +2348,7 @@
                                                         "POST" "/"
                                                         "ListDashboards"
                                                         "2010-08-01"))
-      common-lisp:nil "ListDashboardsResult"
-      '(("DashboardInvalidInputError" . dashboard-invalid-input-error)
-        ("DashboardNotFoundError" . dashboard-not-found-error)
-        ("InternalServiceFault" . internal-service-fault)
-        ("InvalidFormatFault" . invalid-format-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("MissingRequiredParameterException"
-         . missing-required-parameter-exception)
-        ("ResourceNotFound" . resource-not-found)))))
+      common-lisp:nil "ListDashboardsResult" *error-map*)))
  (common-lisp:export 'list-dashboards))
 (common-lisp:progn
  (common-lisp:defun list-metrics
@@ -2475,19 +2368,7 @@
                                                         "POST" "/"
                                                         "ListMetrics"
                                                         "2010-08-01"))
-      common-lisp:nil "ListMetricsResult"
-      '(("DashboardInvalidInputError" . dashboard-invalid-input-error)
-        ("DashboardNotFoundError" . dashboard-not-found-error)
-        ("InternalServiceFault" . internal-service-fault)
-        ("InvalidFormatFault" . invalid-format-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("MissingRequiredParameterException"
-         . missing-required-parameter-exception)
-        ("ResourceNotFound" . resource-not-found)))))
+      common-lisp:nil "ListMetricsResult" *error-map*)))
  (common-lisp:export 'list-metrics))
 (common-lisp:progn
  (common-lisp:defun put-dashboard
@@ -2505,19 +2386,7 @@
                                                         "POST" "/"
                                                         "PutDashboard"
                                                         "2010-08-01"))
-      common-lisp:nil "PutDashboardResult"
-      '(("DashboardInvalidInputError" . dashboard-invalid-input-error)
-        ("DashboardNotFoundError" . dashboard-not-found-error)
-        ("InternalServiceFault" . internal-service-fault)
-        ("InvalidFormatFault" . invalid-format-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("MissingRequiredParameterException"
-         . missing-required-parameter-exception)
-        ("ResourceNotFound" . resource-not-found)))))
+      common-lisp:nil "PutDashboardResult" *error-map*)))
  (common-lisp:export 'put-dashboard))
 (common-lisp:progn
  (common-lisp:defun put-metric-alarm
@@ -2545,19 +2414,7 @@
                                                         "POST" "/"
                                                         "PutMetricAlarm"
                                                         "2010-08-01"))
-      common-lisp:nil common-lisp:nil
-      '(("DashboardInvalidInputError" . dashboard-invalid-input-error)
-        ("DashboardNotFoundError" . dashboard-not-found-error)
-        ("InternalServiceFault" . internal-service-fault)
-        ("InvalidFormatFault" . invalid-format-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("MissingRequiredParameterException"
-         . missing-required-parameter-exception)
-        ("ResourceNotFound" . resource-not-found)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-metric-alarm))
 (common-lisp:progn
  (common-lisp:defun put-metric-data
@@ -2575,19 +2432,7 @@
                                                         "POST" "/"
                                                         "PutMetricData"
                                                         "2010-08-01"))
-      common-lisp:nil common-lisp:nil
-      '(("DashboardInvalidInputError" . dashboard-invalid-input-error)
-        ("DashboardNotFoundError" . dashboard-not-found-error)
-        ("InternalServiceFault" . internal-service-fault)
-        ("InvalidFormatFault" . invalid-format-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("MissingRequiredParameterException"
-         . missing-required-parameter-exception)
-        ("ResourceNotFound" . resource-not-found)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-metric-data))
 (common-lisp:progn
  (common-lisp:defun set-alarm-state
@@ -2608,17 +2453,5 @@
                                                         "POST" "/"
                                                         "SetAlarmState"
                                                         "2010-08-01"))
-      common-lisp:nil common-lisp:nil
-      '(("DashboardInvalidInputError" . dashboard-invalid-input-error)
-        ("DashboardNotFoundError" . dashboard-not-found-error)
-        ("InternalServiceFault" . internal-service-fault)
-        ("InvalidFormatFault" . invalid-format-fault)
-        ("InvalidNextToken" . invalid-next-token)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("MissingRequiredParameterException"
-         . missing-required-parameter-exception)
-        ("ResourceNotFound" . resource-not-found)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'set-alarm-state))

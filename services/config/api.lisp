@@ -18,6 +18,46 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'config-error))
+(common-lisp:defvar *error-map*
+  '(("InsufficientDeliveryPolicyException"
+     . insufficient-delivery-policy-exception)
+    ("InsufficientPermissionsException" . insufficient-permissions-exception)
+    ("InvalidConfigurationRecorderNameException"
+     . invalid-configuration-recorder-name-exception)
+    ("InvalidDeliveryChannelNameException"
+     . invalid-delivery-channel-name-exception)
+    ("InvalidLimitException" . invalid-limit-exception)
+    ("InvalidNextTokenException" . invalid-next-token-exception)
+    ("InvalidParameterValueException" . invalid-parameter-value-exception)
+    ("InvalidRecordingGroupException" . invalid-recording-group-exception)
+    ("InvalidResultTokenException" . invalid-result-token-exception)
+    ("InvalidRoleException" . invalid-role-exception)
+    ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
+    ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
+    ("InvalidTimeRangeException" . invalid-time-range-exception)
+    ("LastDeliveryChannelDeleteFailedException"
+     . last-delivery-channel-delete-failed-exception)
+    ("LimitExceededException" . limit-exceeded-exception)
+    ("MaxNumberOfConfigRulesExceededException"
+     . max-number-of-config-rules-exceeded-exception)
+    ("MaxNumberOfConfigurationRecordersExceededException"
+     . max-number-of-configuration-recorders-exceeded-exception)
+    ("MaxNumberOfDeliveryChannelsExceededException"
+     . max-number-of-delivery-channels-exceeded-exception)
+    ("NoAvailableConfigurationRecorderException"
+     . no-available-configuration-recorder-exception)
+    ("NoAvailableDeliveryChannelException"
+     . no-available-delivery-channel-exception)
+    ("NoRunningConfigurationRecorderException"
+     . no-running-configuration-recorder-exception)
+    ("NoSuchBucketException" . no-such-bucket-exception)
+    ("NoSuchConfigRuleException" . no-such-config-rule-exception)
+    ("NoSuchConfigurationRecorderException"
+     . no-such-configuration-recorder-exception)
+    ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
+    ("ResourceInUseException" . resource-in-use-exception)
+    ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
+    ("ValidationException" . validation-exception)))
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:deftype account-id () 'common-lisp:string)
 (common-lisp:deftype all-supported () 'common-lisp:boolean)
@@ -3825,47 +3865,7 @@
                                                         "POST" "/"
                                                         "DeleteConfigRule"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-config-rule))
 (common-lisp:progn
  (common-lisp:defun delete-configuration-recorder
@@ -3884,47 +3884,7 @@
                                                         "POST" "/"
                                                         "DeleteConfigurationRecorder"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-configuration-recorder))
 (common-lisp:progn
  (common-lisp:defun delete-delivery-channel
@@ -3942,47 +3902,7 @@
                                                         "POST" "/"
                                                         "DeleteDeliveryChannel"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-delivery-channel))
 (common-lisp:progn
  (common-lisp:defun delete-evaluation-results
@@ -4001,47 +3921,7 @@
                                                         "POST" "/"
                                                         "DeleteEvaluationResults"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-evaluation-results))
 (common-lisp:progn
  (common-lisp:defun deliver-config-snapshot
@@ -4059,47 +3939,7 @@
                                                         "POST" "/"
                                                         "DeliverConfigSnapshot"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'deliver-config-snapshot))
 (common-lisp:progn
  (common-lisp:defun describe-compliance-by-config-rule
@@ -4120,47 +3960,7 @@
                                                         "POST" "/"
                                                         "DescribeComplianceByConfigRule"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-compliance-by-config-rule))
 (common-lisp:progn
  (common-lisp:defun describe-compliance-by-resource
@@ -4182,47 +3982,7 @@
                                                         "POST" "/"
                                                         "DescribeComplianceByResource"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-compliance-by-resource))
 (common-lisp:progn
  (common-lisp:defun describe-config-rule-evaluation-status
@@ -4242,47 +4002,7 @@
                                                         "POST" "/"
                                                         "DescribeConfigRuleEvaluationStatus"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-config-rule-evaluation-status))
 (common-lisp:progn
  (common-lisp:defun describe-config-rules
@@ -4300,47 +4020,7 @@
                                                         "POST" "/"
                                                         "DescribeConfigRules"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-config-rules))
 (common-lisp:progn
  (common-lisp:defun describe-configuration-recorder-status
@@ -4359,47 +4039,7 @@
                                                         "POST" "/"
                                                         "DescribeConfigurationRecorderStatus"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-configuration-recorder-status))
 (common-lisp:progn
  (common-lisp:defun describe-configuration-recorders
@@ -4418,47 +4058,7 @@
                                                         "POST" "/"
                                                         "DescribeConfigurationRecorders"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-configuration-recorders))
 (common-lisp:progn
  (common-lisp:defun describe-delivery-channel-status
@@ -4477,47 +4077,7 @@
                                                         "POST" "/"
                                                         "DescribeDeliveryChannelStatus"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-delivery-channel-status))
 (common-lisp:progn
  (common-lisp:defun describe-delivery-channels
@@ -4536,47 +4096,7 @@
                                                         "POST" "/"
                                                         "DescribeDeliveryChannels"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-delivery-channels))
 (common-lisp:progn
  (common-lisp:defun get-compliance-details-by-config-rule
@@ -4597,47 +4117,7 @@
                                                         "POST" "/"
                                                         "GetComplianceDetailsByConfigRule"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-compliance-details-by-config-rule))
 (common-lisp:progn
  (common-lisp:defun get-compliance-details-by-resource
@@ -4659,47 +4139,7 @@
                                                         "POST" "/"
                                                         "GetComplianceDetailsByResource"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-compliance-details-by-resource))
 (common-lisp:progn
  (common-lisp:defun get-compliance-summary-by-config-rule ()
@@ -4710,46 +4150,7 @@
                                 `(("Action"
                                    ,@"GetComplianceSummaryByConfigRule")
                                   ("Version" ,@"2014-11-12"))))
-    common-lisp:nil common-lisp:nil
-    '(("InsufficientDeliveryPolicyException"
-       . insufficient-delivery-policy-exception)
-      ("InsufficientPermissionsException" . insufficient-permissions-exception)
-      ("InvalidConfigurationRecorderNameException"
-       . invalid-configuration-recorder-name-exception)
-      ("InvalidDeliveryChannelNameException"
-       . invalid-delivery-channel-name-exception)
-      ("InvalidLimitException" . invalid-limit-exception)
-      ("InvalidNextTokenException" . invalid-next-token-exception)
-      ("InvalidParameterValueException" . invalid-parameter-value-exception)
-      ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-      ("InvalidResultTokenException" . invalid-result-token-exception)
-      ("InvalidRoleException" . invalid-role-exception)
-      ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-      ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-      ("InvalidTimeRangeException" . invalid-time-range-exception)
-      ("LastDeliveryChannelDeleteFailedException"
-       . last-delivery-channel-delete-failed-exception)
-      ("LimitExceededException" . limit-exceeded-exception)
-      ("MaxNumberOfConfigRulesExceededException"
-       . max-number-of-config-rules-exceeded-exception)
-      ("MaxNumberOfConfigurationRecordersExceededException"
-       . max-number-of-configuration-recorders-exceeded-exception)
-      ("MaxNumberOfDeliveryChannelsExceededException"
-       . max-number-of-delivery-channels-exceeded-exception)
-      ("NoAvailableConfigurationRecorderException"
-       . no-available-configuration-recorder-exception)
-      ("NoAvailableDeliveryChannelException"
-       . no-available-delivery-channel-exception)
-      ("NoRunningConfigurationRecorderException"
-       . no-running-configuration-recorder-exception)
-      ("NoSuchBucketException" . no-such-bucket-exception)
-      ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-      ("NoSuchConfigurationRecorderException"
-       . no-such-configuration-recorder-exception)
-      ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-      ("ResourceInUseException" . resource-in-use-exception)
-      ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-      ("ValidationException" . validation-exception))))
+    common-lisp:nil common-lisp:nil *error-map*))
  (common-lisp:export 'get-compliance-summary-by-config-rule))
 (common-lisp:progn
  (common-lisp:defun get-compliance-summary-by-resource-type
@@ -4768,47 +4169,7 @@
                                                         "POST" "/"
                                                         "GetComplianceSummaryByResourceType"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-compliance-summary-by-resource-type))
 (common-lisp:progn
  (common-lisp:defun get-discovered-resource-counts
@@ -4828,47 +4189,7 @@
                                                         "POST" "/"
                                                         "GetDiscoveredResourceCounts"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-discovered-resource-counts))
 (common-lisp:progn
  (common-lisp:defun get-resource-config-history
@@ -4890,47 +4211,7 @@
                                                         "POST" "/"
                                                         "GetResourceConfigHistory"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-resource-config-history))
 (common-lisp:progn
  (common-lisp:defun list-discovered-resources
@@ -4952,47 +4233,7 @@
                                                         "POST" "/"
                                                         "ListDiscoveredResources"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-discovered-resources))
 (common-lisp:progn
  (common-lisp:defun put-config-rule
@@ -5010,47 +4251,7 @@
                                                         "POST" "/"
                                                         "PutConfigRule"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-config-rule))
 (common-lisp:progn
  (common-lisp:defun put-configuration-recorder
@@ -5069,47 +4270,7 @@
                                                         "POST" "/"
                                                         "PutConfigurationRecorder"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-configuration-recorder))
 (common-lisp:progn
  (common-lisp:defun put-delivery-channel
@@ -5127,47 +4288,7 @@
                                                         "POST" "/"
                                                         "PutDeliveryChannel"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-delivery-channel))
 (common-lisp:progn
  (common-lisp:defun put-evaluations
@@ -5186,47 +4307,7 @@
                                                         "POST" "/"
                                                         "PutEvaluations"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-evaluations))
 (common-lisp:progn
  (common-lisp:defun start-config-rules-evaluation
@@ -5245,47 +4326,7 @@
                                                         "POST" "/"
                                                         "StartConfigRulesEvaluation"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'start-config-rules-evaluation))
 (common-lisp:progn
  (common-lisp:defun start-configuration-recorder
@@ -5304,47 +4345,7 @@
                                                         "POST" "/"
                                                         "StartConfigurationRecorder"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'start-configuration-recorder))
 (common-lisp:progn
  (common-lisp:defun stop-configuration-recorder
@@ -5363,45 +4364,5 @@
                                                         "POST" "/"
                                                         "StopConfigurationRecorder"
                                                         "2014-11-12"))
-      common-lisp:nil common-lisp:nil
-      '(("InsufficientDeliveryPolicyException"
-         . insufficient-delivery-policy-exception)
-        ("InsufficientPermissionsException"
-         . insufficient-permissions-exception)
-        ("InvalidConfigurationRecorderNameException"
-         . invalid-configuration-recorder-name-exception)
-        ("InvalidDeliveryChannelNameException"
-         . invalid-delivery-channel-name-exception)
-        ("InvalidLimitException" . invalid-limit-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidRecordingGroupException" . invalid-recording-group-exception)
-        ("InvalidResultTokenException" . invalid-result-token-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("InvalidS3KeyPrefixException" . invalid-s3key-prefix-exception)
-        ("InvalidSNSTopicARNException" . invalid-snstopic-arnexception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("LastDeliveryChannelDeleteFailedException"
-         . last-delivery-channel-delete-failed-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MaxNumberOfConfigRulesExceededException"
-         . max-number-of-config-rules-exceeded-exception)
-        ("MaxNumberOfConfigurationRecordersExceededException"
-         . max-number-of-configuration-recorders-exceeded-exception)
-        ("MaxNumberOfDeliveryChannelsExceededException"
-         . max-number-of-delivery-channels-exceeded-exception)
-        ("NoAvailableConfigurationRecorderException"
-         . no-available-configuration-recorder-exception)
-        ("NoAvailableDeliveryChannelException"
-         . no-available-delivery-channel-exception)
-        ("NoRunningConfigurationRecorderException"
-         . no-running-configuration-recorder-exception)
-        ("NoSuchBucketException" . no-such-bucket-exception)
-        ("NoSuchConfigRuleException" . no-such-config-rule-exception)
-        ("NoSuchConfigurationRecorderException"
-         . no-such-configuration-recorder-exception)
-        ("NoSuchDeliveryChannelException" . no-such-delivery-channel-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotDiscoveredException" . resource-not-discovered-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'stop-configuration-recorder))

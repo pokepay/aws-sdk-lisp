@@ -19,6 +19,13 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'discovery-error))
+(common-lisp:defvar *error-map*
+  '(("AuthorizationErrorException" . authorization-error-exception)
+    ("InvalidParameterException" . invalid-parameter-exception)
+    ("InvalidParameterValueException" . invalid-parameter-value-exception)
+    ("OperationNotPermittedException" . operation-not-permitted-exception)
+    ("ResourceNotFoundException" . resource-not-found-exception)
+    ("ServerInternalErrorException" . server-internal-error-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (agent-configuration-status (:copier common-lisp:nil)
@@ -2439,13 +2446,7 @@
                                                         "POST" "/"
                                                         "AssociateConfigurationItemsToApplication"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServerInternalErrorException" . server-internal-error-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'associate-configuration-items-to-application))
 (common-lisp:progn
  (common-lisp:defun create-application
@@ -2463,13 +2464,7 @@
                                                         "POST" "/"
                                                         "CreateApplication"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServerInternalErrorException" . server-internal-error-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-application))
 (common-lisp:progn
  (common-lisp:defun create-tags
@@ -2486,13 +2481,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CreateTags"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServerInternalErrorException" . server-internal-error-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-tags))
 (common-lisp:progn
  (common-lisp:defun delete-applications
@@ -2510,13 +2499,7 @@
                                                         "POST" "/"
                                                         "DeleteApplications"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServerInternalErrorException" . server-internal-error-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-applications))
 (common-lisp:progn
  (common-lisp:defun delete-tags
@@ -2533,13 +2516,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DeleteTags"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServerInternalErrorException" . server-internal-error-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-tags))
 (common-lisp:progn
  (common-lisp:defun describe-agents
@@ -2558,13 +2535,7 @@
                                                         "POST" "/"
                                                         "DescribeAgents"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServerInternalErrorException" . server-internal-error-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-agents))
 (common-lisp:progn
  (common-lisp:defun describe-configurations
@@ -2582,13 +2553,7 @@
                                                         "POST" "/"
                                                         "DescribeConfigurations"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServerInternalErrorException" . server-internal-error-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-configurations))
 (common-lisp:progn
  (common-lisp:defun describe-export-configurations
@@ -2608,13 +2573,7 @@
                                                         "POST" "/"
                                                         "DescribeExportConfigurations"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServerInternalErrorException" . server-internal-error-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-export-configurations))
 (common-lisp:progn
  (common-lisp:defun describe-export-tasks
@@ -2634,13 +2593,7 @@
                                                         "POST" "/"
                                                         "DescribeExportTasks"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServerInternalErrorException" . server-internal-error-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-export-tasks))
 (common-lisp:progn
  (common-lisp:defun describe-tags
@@ -2658,13 +2611,7 @@
                                                         "POST" "/"
                                                         "DescribeTags"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServerInternalErrorException" . server-internal-error-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
  (common-lisp:defun disassociate-configuration-items-from-application
@@ -2685,13 +2632,7 @@
                                                         "POST" "/"
                                                         "DisassociateConfigurationItemsFromApplication"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServerInternalErrorException" . server-internal-error-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'disassociate-configuration-items-from-application))
 (common-lisp:progn
  (common-lisp:defun export-configurations ()
@@ -2701,13 +2642,7 @@
                                 :params
                                 `(("Action" ,@"ExportConfigurations")
                                   ("Version" ,@"2015-11-01"))))
-    common-lisp:nil common-lisp:nil
-    '(("AuthorizationErrorException" . authorization-error-exception)
-      ("InvalidParameterException" . invalid-parameter-exception)
-      ("InvalidParameterValueException" . invalid-parameter-value-exception)
-      ("OperationNotPermittedException" . operation-not-permitted-exception)
-      ("ResourceNotFoundException" . resource-not-found-exception)
-      ("ServerInternalErrorException" . server-internal-error-exception))))
+    common-lisp:nil common-lisp:nil *error-map*))
  (common-lisp:export 'export-configurations))
 (common-lisp:progn
  (common-lisp:defun get-discovery-summary ()
@@ -2717,13 +2652,7 @@
                                 :params
                                 `(("Action" ,@"GetDiscoverySummary")
                                   ("Version" ,@"2015-11-01"))))
-    common-lisp:nil common-lisp:nil
-    '(("AuthorizationErrorException" . authorization-error-exception)
-      ("InvalidParameterException" . invalid-parameter-exception)
-      ("InvalidParameterValueException" . invalid-parameter-value-exception)
-      ("OperationNotPermittedException" . operation-not-permitted-exception)
-      ("ResourceNotFoundException" . resource-not-found-exception)
-      ("ServerInternalErrorException" . server-internal-error-exception))))
+    common-lisp:nil common-lisp:nil *error-map*))
  (common-lisp:export 'get-discovery-summary))
 (common-lisp:progn
  (common-lisp:defun list-configurations
@@ -2744,13 +2673,7 @@
                                                         "POST" "/"
                                                         "ListConfigurations"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServerInternalErrorException" . server-internal-error-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-configurations))
 (common-lisp:progn
  (common-lisp:defun list-server-neighbors
@@ -2771,13 +2694,7 @@
                                                         "POST" "/"
                                                         "ListServerNeighbors"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServerInternalErrorException" . server-internal-error-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-server-neighbors))
 (common-lisp:progn
  (common-lisp:defun start-data-collection-by-agent-ids
@@ -2796,13 +2713,7 @@
                                                         "POST" "/"
                                                         "StartDataCollectionByAgentIds"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServerInternalErrorException" . server-internal-error-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'start-data-collection-by-agent-ids))
 (common-lisp:progn
  (common-lisp:defun start-export-task
@@ -2822,13 +2733,7 @@
                                                         "POST" "/"
                                                         "StartExportTask"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServerInternalErrorException" . server-internal-error-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'start-export-task))
 (common-lisp:progn
  (common-lisp:defun stop-data-collection-by-agent-ids
@@ -2847,13 +2752,7 @@
                                                         "POST" "/"
                                                         "StopDataCollectionByAgentIds"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServerInternalErrorException" . server-internal-error-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'stop-data-collection-by-agent-ids))
 (common-lisp:progn
  (common-lisp:defun update-application
@@ -2872,11 +2771,5 @@
                                                         "POST" "/"
                                                         "UpdateApplication"
                                                         "2015-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ServerInternalErrorException" . server-internal-error-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-application))

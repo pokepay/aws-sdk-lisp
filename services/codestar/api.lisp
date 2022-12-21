@@ -18,6 +18,22 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'codestar-error))
+(common-lisp:defvar *error-map*
+  '(("ConcurrentModificationException" . concurrent-modification-exception)
+    ("InvalidNextTokenException" . invalid-next-token-exception)
+    ("InvalidServiceRoleException" . invalid-service-role-exception)
+    ("LimitExceededException" . limit-exceeded-exception)
+    ("ProjectAlreadyExistsException" . project-already-exists-exception)
+    ("ProjectConfigurationException" . project-configuration-exception)
+    ("ProjectCreationFailedException" . project-creation-failed-exception)
+    ("ProjectNotFoundException" . project-not-found-exception)
+    ("TeamMemberAlreadyAssociatedException"
+     . team-member-already-associated-exception)
+    ("TeamMemberNotFoundException" . team-member-not-found-exception)
+    ("UserProfileAlreadyExistsException"
+     . user-profile-already-exists-exception)
+    ("UserProfileNotFoundException" . user-profile-not-found-exception)
+    ("ValidationException" . validation-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (associate-team-member-request (:copier common-lisp:nil)
@@ -1728,22 +1744,7 @@
                                                         "POST" "/"
                                                         "AssociateTeamMember"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidServiceRoleException" . invalid-service-role-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProjectAlreadyExistsException" . project-already-exists-exception)
-        ("ProjectConfigurationException" . project-configuration-exception)
-        ("ProjectCreationFailedException" . project-creation-failed-exception)
-        ("ProjectNotFoundException" . project-not-found-exception)
-        ("TeamMemberAlreadyAssociatedException"
-         . team-member-already-associated-exception)
-        ("TeamMemberNotFoundException" . team-member-not-found-exception)
-        ("UserProfileAlreadyExistsException"
-         . user-profile-already-exists-exception)
-        ("UserProfileNotFoundException" . user-profile-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'associate-team-member))
 (common-lisp:progn
  (common-lisp:defun create-project
@@ -1762,22 +1763,7 @@
                                                         "POST" "/"
                                                         "CreateProject"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidServiceRoleException" . invalid-service-role-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProjectAlreadyExistsException" . project-already-exists-exception)
-        ("ProjectConfigurationException" . project-configuration-exception)
-        ("ProjectCreationFailedException" . project-creation-failed-exception)
-        ("ProjectNotFoundException" . project-not-found-exception)
-        ("TeamMemberAlreadyAssociatedException"
-         . team-member-already-associated-exception)
-        ("TeamMemberNotFoundException" . team-member-not-found-exception)
-        ("UserProfileAlreadyExistsException"
-         . user-profile-already-exists-exception)
-        ("UserProfileNotFoundException" . user-profile-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-project))
 (common-lisp:progn
  (common-lisp:defun create-user-profile
@@ -1797,22 +1783,7 @@
                                                         "POST" "/"
                                                         "CreateUserProfile"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidServiceRoleException" . invalid-service-role-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProjectAlreadyExistsException" . project-already-exists-exception)
-        ("ProjectConfigurationException" . project-configuration-exception)
-        ("ProjectCreationFailedException" . project-creation-failed-exception)
-        ("ProjectNotFoundException" . project-not-found-exception)
-        ("TeamMemberAlreadyAssociatedException"
-         . team-member-already-associated-exception)
-        ("TeamMemberNotFoundException" . team-member-not-found-exception)
-        ("UserProfileAlreadyExistsException"
-         . user-profile-already-exists-exception)
-        ("UserProfileNotFoundException" . user-profile-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-user-profile))
 (common-lisp:progn
  (common-lisp:defun delete-project
@@ -1831,22 +1802,7 @@
                                                         "POST" "/"
                                                         "DeleteProject"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidServiceRoleException" . invalid-service-role-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProjectAlreadyExistsException" . project-already-exists-exception)
-        ("ProjectConfigurationException" . project-configuration-exception)
-        ("ProjectCreationFailedException" . project-creation-failed-exception)
-        ("ProjectNotFoundException" . project-not-found-exception)
-        ("TeamMemberAlreadyAssociatedException"
-         . team-member-already-associated-exception)
-        ("TeamMemberNotFoundException" . team-member-not-found-exception)
-        ("UserProfileAlreadyExistsException"
-         . user-profile-already-exists-exception)
-        ("UserProfileNotFoundException" . user-profile-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-project))
 (common-lisp:progn
  (common-lisp:defun delete-user-profile
@@ -1864,22 +1820,7 @@
                                                         "POST" "/"
                                                         "DeleteUserProfile"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidServiceRoleException" . invalid-service-role-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProjectAlreadyExistsException" . project-already-exists-exception)
-        ("ProjectConfigurationException" . project-configuration-exception)
-        ("ProjectCreationFailedException" . project-creation-failed-exception)
-        ("ProjectNotFoundException" . project-not-found-exception)
-        ("TeamMemberAlreadyAssociatedException"
-         . team-member-already-associated-exception)
-        ("TeamMemberNotFoundException" . team-member-not-found-exception)
-        ("UserProfileAlreadyExistsException"
-         . user-profile-already-exists-exception)
-        ("UserProfileNotFoundException" . user-profile-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-user-profile))
 (common-lisp:progn
  (common-lisp:defun describe-project
@@ -1897,22 +1838,7 @@
                                                         "POST" "/"
                                                         "DescribeProject"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidServiceRoleException" . invalid-service-role-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProjectAlreadyExistsException" . project-already-exists-exception)
-        ("ProjectConfigurationException" . project-configuration-exception)
-        ("ProjectCreationFailedException" . project-creation-failed-exception)
-        ("ProjectNotFoundException" . project-not-found-exception)
-        ("TeamMemberAlreadyAssociatedException"
-         . team-member-already-associated-exception)
-        ("TeamMemberNotFoundException" . team-member-not-found-exception)
-        ("UserProfileAlreadyExistsException"
-         . user-profile-already-exists-exception)
-        ("UserProfileNotFoundException" . user-profile-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-project))
 (common-lisp:progn
  (common-lisp:defun describe-user-profile
@@ -1930,22 +1856,7 @@
                                                         "POST" "/"
                                                         "DescribeUserProfile"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidServiceRoleException" . invalid-service-role-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProjectAlreadyExistsException" . project-already-exists-exception)
-        ("ProjectConfigurationException" . project-configuration-exception)
-        ("ProjectCreationFailedException" . project-creation-failed-exception)
-        ("ProjectNotFoundException" . project-not-found-exception)
-        ("TeamMemberAlreadyAssociatedException"
-         . team-member-already-associated-exception)
-        ("TeamMemberNotFoundException" . team-member-not-found-exception)
-        ("UserProfileAlreadyExistsException"
-         . user-profile-already-exists-exception)
-        ("UserProfileNotFoundException" . user-profile-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-user-profile))
 (common-lisp:progn
  (common-lisp:defun disassociate-team-member
@@ -1963,22 +1874,7 @@
                                                         "POST" "/"
                                                         "DisassociateTeamMember"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidServiceRoleException" . invalid-service-role-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProjectAlreadyExistsException" . project-already-exists-exception)
-        ("ProjectConfigurationException" . project-configuration-exception)
-        ("ProjectCreationFailedException" . project-creation-failed-exception)
-        ("ProjectNotFoundException" . project-not-found-exception)
-        ("TeamMemberAlreadyAssociatedException"
-         . team-member-already-associated-exception)
-        ("TeamMemberNotFoundException" . team-member-not-found-exception)
-        ("UserProfileAlreadyExistsException"
-         . user-profile-already-exists-exception)
-        ("UserProfileNotFoundException" . user-profile-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'disassociate-team-member))
 (common-lisp:progn
  (common-lisp:defun list-projects
@@ -1996,22 +1892,7 @@
                                                         "POST" "/"
                                                         "ListProjects"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidServiceRoleException" . invalid-service-role-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProjectAlreadyExistsException" . project-already-exists-exception)
-        ("ProjectConfigurationException" . project-configuration-exception)
-        ("ProjectCreationFailedException" . project-creation-failed-exception)
-        ("ProjectNotFoundException" . project-not-found-exception)
-        ("TeamMemberAlreadyAssociatedException"
-         . team-member-already-associated-exception)
-        ("TeamMemberNotFoundException" . team-member-not-found-exception)
-        ("UserProfileAlreadyExistsException"
-         . user-profile-already-exists-exception)
-        ("UserProfileNotFoundException" . user-profile-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-projects))
 (common-lisp:progn
  (common-lisp:defun list-resources
@@ -2030,22 +1911,7 @@
                                                         "POST" "/"
                                                         "ListResources"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidServiceRoleException" . invalid-service-role-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProjectAlreadyExistsException" . project-already-exists-exception)
-        ("ProjectConfigurationException" . project-configuration-exception)
-        ("ProjectCreationFailedException" . project-creation-failed-exception)
-        ("ProjectNotFoundException" . project-not-found-exception)
-        ("TeamMemberAlreadyAssociatedException"
-         . team-member-already-associated-exception)
-        ("TeamMemberNotFoundException" . team-member-not-found-exception)
-        ("UserProfileAlreadyExistsException"
-         . user-profile-already-exists-exception)
-        ("UserProfileNotFoundException" . user-profile-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-resources))
 (common-lisp:progn
  (common-lisp:defun list-team-members
@@ -2064,22 +1930,7 @@
                                                         "POST" "/"
                                                         "ListTeamMembers"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidServiceRoleException" . invalid-service-role-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProjectAlreadyExistsException" . project-already-exists-exception)
-        ("ProjectConfigurationException" . project-configuration-exception)
-        ("ProjectCreationFailedException" . project-creation-failed-exception)
-        ("ProjectNotFoundException" . project-not-found-exception)
-        ("TeamMemberAlreadyAssociatedException"
-         . team-member-already-associated-exception)
-        ("TeamMemberNotFoundException" . team-member-not-found-exception)
-        ("UserProfileAlreadyExistsException"
-         . user-profile-already-exists-exception)
-        ("UserProfileNotFoundException" . user-profile-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-team-members))
 (common-lisp:progn
  (common-lisp:defun list-user-profiles
@@ -2097,22 +1948,7 @@
                                                         "POST" "/"
                                                         "ListUserProfiles"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidServiceRoleException" . invalid-service-role-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProjectAlreadyExistsException" . project-already-exists-exception)
-        ("ProjectConfigurationException" . project-configuration-exception)
-        ("ProjectCreationFailedException" . project-creation-failed-exception)
-        ("ProjectNotFoundException" . project-not-found-exception)
-        ("TeamMemberAlreadyAssociatedException"
-         . team-member-already-associated-exception)
-        ("TeamMemberNotFoundException" . team-member-not-found-exception)
-        ("UserProfileAlreadyExistsException"
-         . user-profile-already-exists-exception)
-        ("UserProfileNotFoundException" . user-profile-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-user-profiles))
 (common-lisp:progn
  (common-lisp:defun update-project
@@ -2130,22 +1966,7 @@
                                                         "POST" "/"
                                                         "UpdateProject"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidServiceRoleException" . invalid-service-role-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProjectAlreadyExistsException" . project-already-exists-exception)
-        ("ProjectConfigurationException" . project-configuration-exception)
-        ("ProjectCreationFailedException" . project-creation-failed-exception)
-        ("ProjectNotFoundException" . project-not-found-exception)
-        ("TeamMemberAlreadyAssociatedException"
-         . team-member-already-associated-exception)
-        ("TeamMemberNotFoundException" . team-member-not-found-exception)
-        ("UserProfileAlreadyExistsException"
-         . user-profile-already-exists-exception)
-        ("UserProfileNotFoundException" . user-profile-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-project))
 (common-lisp:progn
  (common-lisp:defun update-team-member
@@ -2166,22 +1987,7 @@
                                                         "POST" "/"
                                                         "UpdateTeamMember"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidServiceRoleException" . invalid-service-role-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProjectAlreadyExistsException" . project-already-exists-exception)
-        ("ProjectConfigurationException" . project-configuration-exception)
-        ("ProjectCreationFailedException" . project-creation-failed-exception)
-        ("ProjectNotFoundException" . project-not-found-exception)
-        ("TeamMemberAlreadyAssociatedException"
-         . team-member-already-associated-exception)
-        ("TeamMemberNotFoundException" . team-member-not-found-exception)
-        ("UserProfileAlreadyExistsException"
-         . user-profile-already-exists-exception)
-        ("UserProfileNotFoundException" . user-profile-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-team-member))
 (common-lisp:progn
  (common-lisp:defun update-user-profile
@@ -2201,20 +2007,5 @@
                                                         "POST" "/"
                                                         "UpdateUserProfile"
                                                         "2017-04-19"))
-      common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidServiceRoleException" . invalid-service-role-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ProjectAlreadyExistsException" . project-already-exists-exception)
-        ("ProjectConfigurationException" . project-configuration-exception)
-        ("ProjectCreationFailedException" . project-creation-failed-exception)
-        ("ProjectNotFoundException" . project-not-found-exception)
-        ("TeamMemberAlreadyAssociatedException"
-         . team-member-already-associated-exception)
-        ("TeamMemberNotFoundException" . team-member-not-found-exception)
-        ("UserProfileAlreadyExistsException"
-         . user-profile-already-exists-exception)
-        ("UserProfileNotFoundException" . user-profile-not-found-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-user-profile))

@@ -19,6 +19,10 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'entitlement.marketplace-error))
+(common-lisp:defvar *error-map*
+  '(("InternalServiceErrorException" . internal-service-error-exception)
+    ("InvalidParameterException" . invalid-parameter-exception)
+    ("ThrottlingException" . throttling-exception)))
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:deftype double () 'common-lisp:double-float)
 (common-lisp:progn
@@ -298,8 +302,5 @@
        (aws-sdk/generator/shape:make-request-with-input
         'entitlement.marketplace-request aws-sdk/generator/operation::input
         "POST" "/" "GetEntitlements" "2017-01-11"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalServiceErrorException" . internal-service-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("ThrottlingException" . throttling-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-entitlements))

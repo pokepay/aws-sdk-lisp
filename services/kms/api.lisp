@@ -18,6 +18,28 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'kms-error))
+(common-lisp:defvar *error-map*
+  '(("AlreadyExistsException" . already-exists-exception)
+    ("DependencyTimeoutException" . dependency-timeout-exception)
+    ("DisabledException" . disabled-exception)
+    ("ExpiredImportTokenException" . expired-import-token-exception)
+    ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
+    ("InvalidAliasNameException" . invalid-alias-name-exception)
+    ("InvalidArnException" . invalid-arn-exception)
+    ("InvalidCiphertextException" . invalid-ciphertext-exception)
+    ("InvalidGrantIdException" . invalid-grant-id-exception)
+    ("InvalidGrantTokenException" . invalid-grant-token-exception)
+    ("InvalidImportTokenException" . invalid-import-token-exception)
+    ("InvalidKeyUsageException" . invalid-key-usage-exception)
+    ("InvalidMarkerException" . invalid-marker-exception)
+    ("KMSInternalException" . kmsinternal-exception)
+    ("KMSInvalidStateException" . kmsinvalid-state-exception)
+    ("KeyUnavailableException" . key-unavailable-exception)
+    ("LimitExceededException" . limit-exceeded-exception)
+    ("MalformedPolicyDocumentException" . malformed-policy-document-exception)
+    ("NotFoundException" . not-found-exception)
+    ("TagException" . tag-exception)
+    ("UnsupportedOperationException" . unsupported-operation-exception)))
 (common-lisp:deftype awsaccount-id-type () 'common-lisp:string)
 (common-lisp:deftype algorithm-spec () 'common-lisp:string)
 (common-lisp:progn
@@ -2894,29 +2916,7 @@
                                                         "POST" "/"
                                                         "CancelKeyDeletion"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'cancel-key-deletion))
 (common-lisp:progn
  (common-lisp:defun create-alias
@@ -2934,29 +2934,7 @@
                                                         "POST" "/"
                                                         "CreateAlias"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-alias))
 (common-lisp:progn
  (common-lisp:defun create-grant
@@ -2978,29 +2956,7 @@
                                                         "POST" "/"
                                                         "CreateGrant"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-grant))
 (common-lisp:progn
  (common-lisp:defun create-key
@@ -3020,29 +2976,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "CreateKey"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-key))
 (common-lisp:progn
  (common-lisp:defun decrypt
@@ -3061,29 +2995,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "Decrypt"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'decrypt))
 (common-lisp:progn
  (common-lisp:defun delete-alias
@@ -3101,29 +3013,7 @@
                                                         "POST" "/"
                                                         "DeleteAlias"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-alias))
 (common-lisp:progn
  (common-lisp:defun delete-imported-key-material
@@ -3142,29 +3032,7 @@
                                                         "POST" "/"
                                                         "DeleteImportedKeyMaterial"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-imported-key-material))
 (common-lisp:progn
  (common-lisp:defun describe-key
@@ -3182,29 +3050,7 @@
                                                         "POST" "/"
                                                         "DescribeKey"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-key))
 (common-lisp:progn
  (common-lisp:defun disable-key
@@ -3221,29 +3067,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "DisableKey"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'disable-key))
 (common-lisp:progn
  (common-lisp:defun disable-key-rotation
@@ -3261,29 +3085,7 @@
                                                         "POST" "/"
                                                         "DisableKeyRotation"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'disable-key-rotation))
 (common-lisp:progn
  (common-lisp:defun enable-key
@@ -3300,29 +3102,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "EnableKey"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'enable-key))
 (common-lisp:progn
  (common-lisp:defun enable-key-rotation
@@ -3340,29 +3120,7 @@
                                                         "POST" "/"
                                                         "EnableKeyRotation"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'enable-key-rotation))
 (common-lisp:progn
  (common-lisp:defun encrypt
@@ -3381,29 +3139,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "Encrypt"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'encrypt))
 (common-lisp:progn
  (common-lisp:defun generate-data-key
@@ -3424,29 +3160,7 @@
                                                         "POST" "/"
                                                         "GenerateDataKey"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'generate-data-key))
 (common-lisp:progn
  (common-lisp:defun generate-data-key-without-plaintext
@@ -3468,29 +3182,7 @@
                                                         "POST" "/"
                                                         "GenerateDataKeyWithoutPlaintext"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'generate-data-key-without-plaintext))
 (common-lisp:progn
  (common-lisp:defun generate-random
@@ -3508,29 +3200,7 @@
                                                         "POST" "/"
                                                         "GenerateRandom"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'generate-random))
 (common-lisp:progn
  (common-lisp:defun get-key-policy
@@ -3548,29 +3218,7 @@
                                                         "POST" "/"
                                                         "GetKeyPolicy"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-key-policy))
 (common-lisp:progn
  (common-lisp:defun get-key-rotation-status
@@ -3588,29 +3236,7 @@
                                                         "POST" "/"
                                                         "GetKeyRotationStatus"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-key-rotation-status))
 (common-lisp:progn
  (common-lisp:defun get-parameters-for-import
@@ -3631,29 +3257,7 @@
                                                         "POST" "/"
                                                         "GetParametersForImport"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-parameters-for-import))
 (common-lisp:progn
  (common-lisp:defun import-key-material
@@ -3674,29 +3278,7 @@
                                                         "POST" "/"
                                                         "ImportKeyMaterial"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'import-key-material))
 (common-lisp:progn
  (common-lisp:defun list-aliases
@@ -3714,29 +3296,7 @@
                                                         "POST" "/"
                                                         "ListAliases"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-aliases))
 (common-lisp:progn
  (common-lisp:defun list-grants
@@ -3753,29 +3313,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListGrants"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-grants))
 (common-lisp:progn
  (common-lisp:defun list-key-policies
@@ -3793,29 +3331,7 @@
                                                         "POST" "/"
                                                         "ListKeyPolicies"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-key-policies))
 (common-lisp:progn
  (common-lisp:defun list-keys
@@ -3832,29 +3348,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListKeys"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-keys))
 (common-lisp:progn
  (common-lisp:defun list-resource-tags
@@ -3872,29 +3366,7 @@
                                                         "POST" "/"
                                                         "ListResourceTags"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-resource-tags))
 (common-lisp:progn
  (common-lisp:defun list-retirable-grants
@@ -3913,29 +3385,7 @@
                                                         "POST" "/"
                                                         "ListRetirableGrants"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-retirable-grants))
 (common-lisp:progn
  (common-lisp:defun put-key-policy
@@ -3956,29 +3406,7 @@
                                                         "POST" "/"
                                                         "PutKeyPolicy"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-key-policy))
 (common-lisp:progn
  (common-lisp:defun re-encrypt
@@ -3999,29 +3427,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ReEncrypt"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 're-encrypt))
 (common-lisp:progn
  (common-lisp:defun retire-grant
@@ -4039,29 +3445,7 @@
                                                         "POST" "/"
                                                         "RetireGrant"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'retire-grant))
 (common-lisp:progn
  (common-lisp:defun revoke-grant
@@ -4079,29 +3463,7 @@
                                                         "POST" "/"
                                                         "RevokeGrant"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'revoke-grant))
 (common-lisp:progn
  (common-lisp:defun schedule-key-deletion
@@ -4119,29 +3481,7 @@
                                                         "POST" "/"
                                                         "ScheduleKeyDeletion"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'schedule-key-deletion))
 (common-lisp:progn
  (common-lisp:defun tag-resource
@@ -4159,29 +3499,7 @@
                                                         "POST" "/"
                                                         "TagResource"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
  (common-lisp:defun untag-resource
@@ -4199,29 +3517,7 @@
                                                         "POST" "/"
                                                         "UntagResource"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
  (common-lisp:defun update-alias
@@ -4239,29 +3535,7 @@
                                                         "POST" "/"
                                                         "UpdateAlias"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-alias))
 (common-lisp:progn
  (common-lisp:defun update-key-description
@@ -4279,27 +3553,5 @@
                                                         "POST" "/"
                                                         "UpdateKeyDescription"
                                                         "2014-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("DependencyTimeoutException" . dependency-timeout-exception)
-        ("DisabledException" . disabled-exception)
-        ("ExpiredImportTokenException" . expired-import-token-exception)
-        ("IncorrectKeyMaterialException" . incorrect-key-material-exception)
-        ("InvalidAliasNameException" . invalid-alias-name-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidCiphertextException" . invalid-ciphertext-exception)
-        ("InvalidGrantIdException" . invalid-grant-id-exception)
-        ("InvalidGrantTokenException" . invalid-grant-token-exception)
-        ("InvalidImportTokenException" . invalid-import-token-exception)
-        ("InvalidKeyUsageException" . invalid-key-usage-exception)
-        ("InvalidMarkerException" . invalid-marker-exception)
-        ("KMSInternalException" . kmsinternal-exception)
-        ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KeyUnavailableException" . key-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("MalformedPolicyDocumentException"
-         . malformed-policy-document-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TagException" . tag-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-key-description))

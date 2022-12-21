@@ -19,6 +19,18 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'runtime.lex-error))
+(common-lisp:defvar *error-map*
+  '(("BadGatewayException" . bad-gateway-exception)
+    ("BadRequestException" . bad-request-exception)
+    ("ConflictException" . conflict-exception)
+    ("DependencyFailedException" . dependency-failed-exception)
+    ("InternalFailureException" . internal-failure-exception)
+    ("LimitExceededException" . limit-exceeded-exception)
+    ("LoopDetectedException" . loop-detected-exception)
+    ("NotAcceptableException" . not-acceptable-exception)
+    ("NotFoundException" . not-found-exception)
+    ("RequestTimeoutException" . request-timeout-exception)
+    ("UnsupportedMediaTypeException" . unsupported-media-type-exception)))
 (common-lisp:deftype accept () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:define-condition bad-gateway-exception
@@ -556,19 +568,7 @@
                                                              'user-id))))
                                                         "PostContent"
                                                         "2016-11-28"))
-      "blob" common-lisp:nil
-      '(("BadGatewayException" . bad-gateway-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("ConflictException" . conflict-exception)
-        ("DependencyFailedException" . dependency-failed-exception)
-        ("InternalFailureException" . internal-failure-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LoopDetectedException" . loop-detected-exception)
-        ("NotAcceptableException" . not-acceptable-exception)
-        ("NotFoundException" . not-found-exception)
-        ("RequestTimeoutException" . request-timeout-exception)
-        ("UnsupportedMediaTypeException"
-         . unsupported-media-type-exception)))))
+      "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'post-content))
 (common-lisp:progn
  (common-lisp:defun post-text
@@ -607,17 +607,5 @@
                                                              'user-id))))
                                                         "PostText"
                                                         "2016-11-28"))
-      common-lisp:nil common-lisp:nil
-      '(("BadGatewayException" . bad-gateway-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("ConflictException" . conflict-exception)
-        ("DependencyFailedException" . dependency-failed-exception)
-        ("InternalFailureException" . internal-failure-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LoopDetectedException" . loop-detected-exception)
-        ("NotAcceptableException" . not-acceptable-exception)
-        ("NotFoundException" . not-found-exception)
-        ("RequestTimeoutException" . request-timeout-exception)
-        ("UnsupportedMediaTypeException"
-         . unsupported-media-type-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'post-text))

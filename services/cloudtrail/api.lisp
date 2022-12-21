@@ -19,6 +19,50 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'cloudtrail-error))
+(common-lisp:defvar *error-map*
+  '(("CloudTrailARNInvalidException" . cloud-trail-arninvalid-exception)
+    ("CloudWatchLogsDeliveryUnavailableException"
+     . cloud-watch-logs-delivery-unavailable-exception)
+    ("InsufficientEncryptionPolicyException"
+     . insufficient-encryption-policy-exception)
+    ("InsufficientS3BucketPolicyException"
+     . insufficient-s3bucket-policy-exception)
+    ("InsufficientSnsTopicPolicyException"
+     . insufficient-sns-topic-policy-exception)
+    ("InvalidCloudWatchLogsLogGroupArnException"
+     . invalid-cloud-watch-logs-log-group-arn-exception)
+    ("InvalidCloudWatchLogsRoleArnException"
+     . invalid-cloud-watch-logs-role-arn-exception)
+    ("InvalidEventSelectorsException" . invalid-event-selectors-exception)
+    ("InvalidHomeRegionException" . invalid-home-region-exception)
+    ("InvalidKmsKeyIdException" . invalid-kms-key-id-exception)
+    ("InvalidLookupAttributesException" . invalid-lookup-attributes-exception)
+    ("InvalidMaxResultsException" . invalid-max-results-exception)
+    ("InvalidNextTokenException" . invalid-next-token-exception)
+    ("InvalidParameterCombinationException"
+     . invalid-parameter-combination-exception)
+    ("InvalidS3BucketNameException" . invalid-s3bucket-name-exception)
+    ("InvalidS3PrefixException" . invalid-s3prefix-exception)
+    ("InvalidSnsTopicNameException" . invalid-sns-topic-name-exception)
+    ("InvalidTagParameterException" . invalid-tag-parameter-exception)
+    ("InvalidTimeRangeException" . invalid-time-range-exception)
+    ("InvalidTokenException" . invalid-token-exception)
+    ("InvalidTrailNameException" . invalid-trail-name-exception)
+    ("KmsException" . kms-exception)
+    ("KmsKeyDisabledException" . kms-key-disabled-exception)
+    ("KmsKeyNotFoundException" . kms-key-not-found-exception)
+    ("MaximumNumberOfTrailsExceededException"
+     . maximum-number-of-trails-exceeded-exception)
+    ("OperationNotPermittedException" . operation-not-permitted-exception)
+    ("ResourceNotFoundException" . resource-not-found-exception)
+    ("ResourceTypeNotSupportedException"
+     . resource-type-not-supported-exception)
+    ("S3BucketDoesNotExistException" . s3bucket-does-not-exist-exception)
+    ("TagsLimitExceededException" . tags-limit-exceeded-exception)
+    ("TrailAlreadyExistsException" . trail-already-exists-exception)
+    ("TrailNotFoundException" . trail-not-found-exception)
+    ("TrailNotProvidedException" . trail-not-provided-exception)
+    ("UnsupportedOperationException" . unsupported-operation-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (add-tags-request (:copier common-lisp:nil)
@@ -2175,51 +2219,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "AddTags"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("CloudTrailARNInvalidException" . cloud-trail-arninvalid-exception)
-        ("CloudWatchLogsDeliveryUnavailableException"
-         . cloud-watch-logs-delivery-unavailable-exception)
-        ("InsufficientEncryptionPolicyException"
-         . insufficient-encryption-policy-exception)
-        ("InsufficientS3BucketPolicyException"
-         . insufficient-s3bucket-policy-exception)
-        ("InsufficientSnsTopicPolicyException"
-         . insufficient-sns-topic-policy-exception)
-        ("InvalidCloudWatchLogsLogGroupArnException"
-         . invalid-cloud-watch-logs-log-group-arn-exception)
-        ("InvalidCloudWatchLogsRoleArnException"
-         . invalid-cloud-watch-logs-role-arn-exception)
-        ("InvalidEventSelectorsException" . invalid-event-selectors-exception)
-        ("InvalidHomeRegionException" . invalid-home-region-exception)
-        ("InvalidKmsKeyIdException" . invalid-kms-key-id-exception)
-        ("InvalidLookupAttributesException"
-         . invalid-lookup-attributes-exception)
-        ("InvalidMaxResultsException" . invalid-max-results-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidS3BucketNameException" . invalid-s3bucket-name-exception)
-        ("InvalidS3PrefixException" . invalid-s3prefix-exception)
-        ("InvalidSnsTopicNameException" . invalid-sns-topic-name-exception)
-        ("InvalidTagParameterException" . invalid-tag-parameter-exception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("InvalidTokenException" . invalid-token-exception)
-        ("InvalidTrailNameException" . invalid-trail-name-exception)
-        ("KmsException" . kms-exception)
-        ("KmsKeyDisabledException" . kms-key-disabled-exception)
-        ("KmsKeyNotFoundException" . kms-key-not-found-exception)
-        ("MaximumNumberOfTrailsExceededException"
-         . maximum-number-of-trails-exceeded-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceTypeNotSupportedException"
-         . resource-type-not-supported-exception)
-        ("S3BucketDoesNotExistException" . s3bucket-does-not-exist-exception)
-        ("TagsLimitExceededException" . tags-limit-exceeded-exception)
-        ("TrailAlreadyExistsException" . trail-already-exists-exception)
-        ("TrailNotFoundException" . trail-not-found-exception)
-        ("TrailNotProvidedException" . trail-not-provided-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
  (common-lisp:defun create-trail
@@ -2245,51 +2245,7 @@
                                                         "POST" "/"
                                                         "CreateTrail"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("CloudTrailARNInvalidException" . cloud-trail-arninvalid-exception)
-        ("CloudWatchLogsDeliveryUnavailableException"
-         . cloud-watch-logs-delivery-unavailable-exception)
-        ("InsufficientEncryptionPolicyException"
-         . insufficient-encryption-policy-exception)
-        ("InsufficientS3BucketPolicyException"
-         . insufficient-s3bucket-policy-exception)
-        ("InsufficientSnsTopicPolicyException"
-         . insufficient-sns-topic-policy-exception)
-        ("InvalidCloudWatchLogsLogGroupArnException"
-         . invalid-cloud-watch-logs-log-group-arn-exception)
-        ("InvalidCloudWatchLogsRoleArnException"
-         . invalid-cloud-watch-logs-role-arn-exception)
-        ("InvalidEventSelectorsException" . invalid-event-selectors-exception)
-        ("InvalidHomeRegionException" . invalid-home-region-exception)
-        ("InvalidKmsKeyIdException" . invalid-kms-key-id-exception)
-        ("InvalidLookupAttributesException"
-         . invalid-lookup-attributes-exception)
-        ("InvalidMaxResultsException" . invalid-max-results-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidS3BucketNameException" . invalid-s3bucket-name-exception)
-        ("InvalidS3PrefixException" . invalid-s3prefix-exception)
-        ("InvalidSnsTopicNameException" . invalid-sns-topic-name-exception)
-        ("InvalidTagParameterException" . invalid-tag-parameter-exception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("InvalidTokenException" . invalid-token-exception)
-        ("InvalidTrailNameException" . invalid-trail-name-exception)
-        ("KmsException" . kms-exception)
-        ("KmsKeyDisabledException" . kms-key-disabled-exception)
-        ("KmsKeyNotFoundException" . kms-key-not-found-exception)
-        ("MaximumNumberOfTrailsExceededException"
-         . maximum-number-of-trails-exceeded-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceTypeNotSupportedException"
-         . resource-type-not-supported-exception)
-        ("S3BucketDoesNotExistException" . s3bucket-does-not-exist-exception)
-        ("TagsLimitExceededException" . tags-limit-exceeded-exception)
-        ("TrailAlreadyExistsException" . trail-already-exists-exception)
-        ("TrailNotFoundException" . trail-not-found-exception)
-        ("TrailNotProvidedException" . trail-not-provided-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-trail))
 (common-lisp:progn
  (common-lisp:defun delete-trail
@@ -2307,51 +2263,7 @@
                                                         "POST" "/"
                                                         "DeleteTrail"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("CloudTrailARNInvalidException" . cloud-trail-arninvalid-exception)
-        ("CloudWatchLogsDeliveryUnavailableException"
-         . cloud-watch-logs-delivery-unavailable-exception)
-        ("InsufficientEncryptionPolicyException"
-         . insufficient-encryption-policy-exception)
-        ("InsufficientS3BucketPolicyException"
-         . insufficient-s3bucket-policy-exception)
-        ("InsufficientSnsTopicPolicyException"
-         . insufficient-sns-topic-policy-exception)
-        ("InvalidCloudWatchLogsLogGroupArnException"
-         . invalid-cloud-watch-logs-log-group-arn-exception)
-        ("InvalidCloudWatchLogsRoleArnException"
-         . invalid-cloud-watch-logs-role-arn-exception)
-        ("InvalidEventSelectorsException" . invalid-event-selectors-exception)
-        ("InvalidHomeRegionException" . invalid-home-region-exception)
-        ("InvalidKmsKeyIdException" . invalid-kms-key-id-exception)
-        ("InvalidLookupAttributesException"
-         . invalid-lookup-attributes-exception)
-        ("InvalidMaxResultsException" . invalid-max-results-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidS3BucketNameException" . invalid-s3bucket-name-exception)
-        ("InvalidS3PrefixException" . invalid-s3prefix-exception)
-        ("InvalidSnsTopicNameException" . invalid-sns-topic-name-exception)
-        ("InvalidTagParameterException" . invalid-tag-parameter-exception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("InvalidTokenException" . invalid-token-exception)
-        ("InvalidTrailNameException" . invalid-trail-name-exception)
-        ("KmsException" . kms-exception)
-        ("KmsKeyDisabledException" . kms-key-disabled-exception)
-        ("KmsKeyNotFoundException" . kms-key-not-found-exception)
-        ("MaximumNumberOfTrailsExceededException"
-         . maximum-number-of-trails-exceeded-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceTypeNotSupportedException"
-         . resource-type-not-supported-exception)
-        ("S3BucketDoesNotExistException" . s3bucket-does-not-exist-exception)
-        ("TagsLimitExceededException" . tags-limit-exceeded-exception)
-        ("TrailAlreadyExistsException" . trail-already-exists-exception)
-        ("TrailNotFoundException" . trail-not-found-exception)
-        ("TrailNotProvidedException" . trail-not-provided-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-trail))
 (common-lisp:progn
  (common-lisp:defun describe-trails
@@ -2370,51 +2282,7 @@
                                                         "POST" "/"
                                                         "DescribeTrails"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("CloudTrailARNInvalidException" . cloud-trail-arninvalid-exception)
-        ("CloudWatchLogsDeliveryUnavailableException"
-         . cloud-watch-logs-delivery-unavailable-exception)
-        ("InsufficientEncryptionPolicyException"
-         . insufficient-encryption-policy-exception)
-        ("InsufficientS3BucketPolicyException"
-         . insufficient-s3bucket-policy-exception)
-        ("InsufficientSnsTopicPolicyException"
-         . insufficient-sns-topic-policy-exception)
-        ("InvalidCloudWatchLogsLogGroupArnException"
-         . invalid-cloud-watch-logs-log-group-arn-exception)
-        ("InvalidCloudWatchLogsRoleArnException"
-         . invalid-cloud-watch-logs-role-arn-exception)
-        ("InvalidEventSelectorsException" . invalid-event-selectors-exception)
-        ("InvalidHomeRegionException" . invalid-home-region-exception)
-        ("InvalidKmsKeyIdException" . invalid-kms-key-id-exception)
-        ("InvalidLookupAttributesException"
-         . invalid-lookup-attributes-exception)
-        ("InvalidMaxResultsException" . invalid-max-results-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidS3BucketNameException" . invalid-s3bucket-name-exception)
-        ("InvalidS3PrefixException" . invalid-s3prefix-exception)
-        ("InvalidSnsTopicNameException" . invalid-sns-topic-name-exception)
-        ("InvalidTagParameterException" . invalid-tag-parameter-exception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("InvalidTokenException" . invalid-token-exception)
-        ("InvalidTrailNameException" . invalid-trail-name-exception)
-        ("KmsException" . kms-exception)
-        ("KmsKeyDisabledException" . kms-key-disabled-exception)
-        ("KmsKeyNotFoundException" . kms-key-not-found-exception)
-        ("MaximumNumberOfTrailsExceededException"
-         . maximum-number-of-trails-exceeded-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceTypeNotSupportedException"
-         . resource-type-not-supported-exception)
-        ("S3BucketDoesNotExistException" . s3bucket-does-not-exist-exception)
-        ("TagsLimitExceededException" . tags-limit-exceeded-exception)
-        ("TrailAlreadyExistsException" . trail-already-exists-exception)
-        ("TrailNotFoundException" . trail-not-found-exception)
-        ("TrailNotProvidedException" . trail-not-provided-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-trails))
 (common-lisp:progn
  (common-lisp:defun get-event-selectors
@@ -2432,51 +2300,7 @@
                                                         "POST" "/"
                                                         "GetEventSelectors"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("CloudTrailARNInvalidException" . cloud-trail-arninvalid-exception)
-        ("CloudWatchLogsDeliveryUnavailableException"
-         . cloud-watch-logs-delivery-unavailable-exception)
-        ("InsufficientEncryptionPolicyException"
-         . insufficient-encryption-policy-exception)
-        ("InsufficientS3BucketPolicyException"
-         . insufficient-s3bucket-policy-exception)
-        ("InsufficientSnsTopicPolicyException"
-         . insufficient-sns-topic-policy-exception)
-        ("InvalidCloudWatchLogsLogGroupArnException"
-         . invalid-cloud-watch-logs-log-group-arn-exception)
-        ("InvalidCloudWatchLogsRoleArnException"
-         . invalid-cloud-watch-logs-role-arn-exception)
-        ("InvalidEventSelectorsException" . invalid-event-selectors-exception)
-        ("InvalidHomeRegionException" . invalid-home-region-exception)
-        ("InvalidKmsKeyIdException" . invalid-kms-key-id-exception)
-        ("InvalidLookupAttributesException"
-         . invalid-lookup-attributes-exception)
-        ("InvalidMaxResultsException" . invalid-max-results-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidS3BucketNameException" . invalid-s3bucket-name-exception)
-        ("InvalidS3PrefixException" . invalid-s3prefix-exception)
-        ("InvalidSnsTopicNameException" . invalid-sns-topic-name-exception)
-        ("InvalidTagParameterException" . invalid-tag-parameter-exception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("InvalidTokenException" . invalid-token-exception)
-        ("InvalidTrailNameException" . invalid-trail-name-exception)
-        ("KmsException" . kms-exception)
-        ("KmsKeyDisabledException" . kms-key-disabled-exception)
-        ("KmsKeyNotFoundException" . kms-key-not-found-exception)
-        ("MaximumNumberOfTrailsExceededException"
-         . maximum-number-of-trails-exceeded-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceTypeNotSupportedException"
-         . resource-type-not-supported-exception)
-        ("S3BucketDoesNotExistException" . s3bucket-does-not-exist-exception)
-        ("TagsLimitExceededException" . tags-limit-exceeded-exception)
-        ("TrailAlreadyExistsException" . trail-already-exists-exception)
-        ("TrailNotFoundException" . trail-not-found-exception)
-        ("TrailNotProvidedException" . trail-not-provided-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-event-selectors))
 (common-lisp:progn
  (common-lisp:defun get-trail-status
@@ -2494,51 +2318,7 @@
                                                         "POST" "/"
                                                         "GetTrailStatus"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("CloudTrailARNInvalidException" . cloud-trail-arninvalid-exception)
-        ("CloudWatchLogsDeliveryUnavailableException"
-         . cloud-watch-logs-delivery-unavailable-exception)
-        ("InsufficientEncryptionPolicyException"
-         . insufficient-encryption-policy-exception)
-        ("InsufficientS3BucketPolicyException"
-         . insufficient-s3bucket-policy-exception)
-        ("InsufficientSnsTopicPolicyException"
-         . insufficient-sns-topic-policy-exception)
-        ("InvalidCloudWatchLogsLogGroupArnException"
-         . invalid-cloud-watch-logs-log-group-arn-exception)
-        ("InvalidCloudWatchLogsRoleArnException"
-         . invalid-cloud-watch-logs-role-arn-exception)
-        ("InvalidEventSelectorsException" . invalid-event-selectors-exception)
-        ("InvalidHomeRegionException" . invalid-home-region-exception)
-        ("InvalidKmsKeyIdException" . invalid-kms-key-id-exception)
-        ("InvalidLookupAttributesException"
-         . invalid-lookup-attributes-exception)
-        ("InvalidMaxResultsException" . invalid-max-results-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidS3BucketNameException" . invalid-s3bucket-name-exception)
-        ("InvalidS3PrefixException" . invalid-s3prefix-exception)
-        ("InvalidSnsTopicNameException" . invalid-sns-topic-name-exception)
-        ("InvalidTagParameterException" . invalid-tag-parameter-exception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("InvalidTokenException" . invalid-token-exception)
-        ("InvalidTrailNameException" . invalid-trail-name-exception)
-        ("KmsException" . kms-exception)
-        ("KmsKeyDisabledException" . kms-key-disabled-exception)
-        ("KmsKeyNotFoundException" . kms-key-not-found-exception)
-        ("MaximumNumberOfTrailsExceededException"
-         . maximum-number-of-trails-exceeded-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceTypeNotSupportedException"
-         . resource-type-not-supported-exception)
-        ("S3BucketDoesNotExistException" . s3bucket-does-not-exist-exception)
-        ("TagsLimitExceededException" . tags-limit-exceeded-exception)
-        ("TrailAlreadyExistsException" . trail-already-exists-exception)
-        ("TrailNotFoundException" . trail-not-found-exception)
-        ("TrailNotProvidedException" . trail-not-provided-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-trail-status))
 (common-lisp:progn
  (common-lisp:defun list-public-keys
@@ -2556,51 +2336,7 @@
                                                         "POST" "/"
                                                         "ListPublicKeys"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("CloudTrailARNInvalidException" . cloud-trail-arninvalid-exception)
-        ("CloudWatchLogsDeliveryUnavailableException"
-         . cloud-watch-logs-delivery-unavailable-exception)
-        ("InsufficientEncryptionPolicyException"
-         . insufficient-encryption-policy-exception)
-        ("InsufficientS3BucketPolicyException"
-         . insufficient-s3bucket-policy-exception)
-        ("InsufficientSnsTopicPolicyException"
-         . insufficient-sns-topic-policy-exception)
-        ("InvalidCloudWatchLogsLogGroupArnException"
-         . invalid-cloud-watch-logs-log-group-arn-exception)
-        ("InvalidCloudWatchLogsRoleArnException"
-         . invalid-cloud-watch-logs-role-arn-exception)
-        ("InvalidEventSelectorsException" . invalid-event-selectors-exception)
-        ("InvalidHomeRegionException" . invalid-home-region-exception)
-        ("InvalidKmsKeyIdException" . invalid-kms-key-id-exception)
-        ("InvalidLookupAttributesException"
-         . invalid-lookup-attributes-exception)
-        ("InvalidMaxResultsException" . invalid-max-results-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidS3BucketNameException" . invalid-s3bucket-name-exception)
-        ("InvalidS3PrefixException" . invalid-s3prefix-exception)
-        ("InvalidSnsTopicNameException" . invalid-sns-topic-name-exception)
-        ("InvalidTagParameterException" . invalid-tag-parameter-exception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("InvalidTokenException" . invalid-token-exception)
-        ("InvalidTrailNameException" . invalid-trail-name-exception)
-        ("KmsException" . kms-exception)
-        ("KmsKeyDisabledException" . kms-key-disabled-exception)
-        ("KmsKeyNotFoundException" . kms-key-not-found-exception)
-        ("MaximumNumberOfTrailsExceededException"
-         . maximum-number-of-trails-exceeded-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceTypeNotSupportedException"
-         . resource-type-not-supported-exception)
-        ("S3BucketDoesNotExistException" . s3bucket-does-not-exist-exception)
-        ("TagsLimitExceededException" . tags-limit-exceeded-exception)
-        ("TrailAlreadyExistsException" . trail-already-exists-exception)
-        ("TrailNotFoundException" . trail-not-found-exception)
-        ("TrailNotProvidedException" . trail-not-provided-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-public-keys))
 (common-lisp:progn
  (common-lisp:defun list-tags
@@ -2617,51 +2353,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListTags"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("CloudTrailARNInvalidException" . cloud-trail-arninvalid-exception)
-        ("CloudWatchLogsDeliveryUnavailableException"
-         . cloud-watch-logs-delivery-unavailable-exception)
-        ("InsufficientEncryptionPolicyException"
-         . insufficient-encryption-policy-exception)
-        ("InsufficientS3BucketPolicyException"
-         . insufficient-s3bucket-policy-exception)
-        ("InsufficientSnsTopicPolicyException"
-         . insufficient-sns-topic-policy-exception)
-        ("InvalidCloudWatchLogsLogGroupArnException"
-         . invalid-cloud-watch-logs-log-group-arn-exception)
-        ("InvalidCloudWatchLogsRoleArnException"
-         . invalid-cloud-watch-logs-role-arn-exception)
-        ("InvalidEventSelectorsException" . invalid-event-selectors-exception)
-        ("InvalidHomeRegionException" . invalid-home-region-exception)
-        ("InvalidKmsKeyIdException" . invalid-kms-key-id-exception)
-        ("InvalidLookupAttributesException"
-         . invalid-lookup-attributes-exception)
-        ("InvalidMaxResultsException" . invalid-max-results-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidS3BucketNameException" . invalid-s3bucket-name-exception)
-        ("InvalidS3PrefixException" . invalid-s3prefix-exception)
-        ("InvalidSnsTopicNameException" . invalid-sns-topic-name-exception)
-        ("InvalidTagParameterException" . invalid-tag-parameter-exception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("InvalidTokenException" . invalid-token-exception)
-        ("InvalidTrailNameException" . invalid-trail-name-exception)
-        ("KmsException" . kms-exception)
-        ("KmsKeyDisabledException" . kms-key-disabled-exception)
-        ("KmsKeyNotFoundException" . kms-key-not-found-exception)
-        ("MaximumNumberOfTrailsExceededException"
-         . maximum-number-of-trails-exceeded-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceTypeNotSupportedException"
-         . resource-type-not-supported-exception)
-        ("S3BucketDoesNotExistException" . s3bucket-does-not-exist-exception)
-        ("TagsLimitExceededException" . tags-limit-exceeded-exception)
-        ("TrailAlreadyExistsException" . trail-already-exists-exception)
-        ("TrailNotFoundException" . trail-not-found-exception)
-        ("TrailNotProvidedException" . trail-not-provided-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-tags))
 (common-lisp:progn
  (common-lisp:defun lookup-events
@@ -2682,51 +2374,7 @@
                                                         "POST" "/"
                                                         "LookupEvents"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("CloudTrailARNInvalidException" . cloud-trail-arninvalid-exception)
-        ("CloudWatchLogsDeliveryUnavailableException"
-         . cloud-watch-logs-delivery-unavailable-exception)
-        ("InsufficientEncryptionPolicyException"
-         . insufficient-encryption-policy-exception)
-        ("InsufficientS3BucketPolicyException"
-         . insufficient-s3bucket-policy-exception)
-        ("InsufficientSnsTopicPolicyException"
-         . insufficient-sns-topic-policy-exception)
-        ("InvalidCloudWatchLogsLogGroupArnException"
-         . invalid-cloud-watch-logs-log-group-arn-exception)
-        ("InvalidCloudWatchLogsRoleArnException"
-         . invalid-cloud-watch-logs-role-arn-exception)
-        ("InvalidEventSelectorsException" . invalid-event-selectors-exception)
-        ("InvalidHomeRegionException" . invalid-home-region-exception)
-        ("InvalidKmsKeyIdException" . invalid-kms-key-id-exception)
-        ("InvalidLookupAttributesException"
-         . invalid-lookup-attributes-exception)
-        ("InvalidMaxResultsException" . invalid-max-results-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidS3BucketNameException" . invalid-s3bucket-name-exception)
-        ("InvalidS3PrefixException" . invalid-s3prefix-exception)
-        ("InvalidSnsTopicNameException" . invalid-sns-topic-name-exception)
-        ("InvalidTagParameterException" . invalid-tag-parameter-exception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("InvalidTokenException" . invalid-token-exception)
-        ("InvalidTrailNameException" . invalid-trail-name-exception)
-        ("KmsException" . kms-exception)
-        ("KmsKeyDisabledException" . kms-key-disabled-exception)
-        ("KmsKeyNotFoundException" . kms-key-not-found-exception)
-        ("MaximumNumberOfTrailsExceededException"
-         . maximum-number-of-trails-exceeded-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceTypeNotSupportedException"
-         . resource-type-not-supported-exception)
-        ("S3BucketDoesNotExistException" . s3bucket-does-not-exist-exception)
-        ("TagsLimitExceededException" . tags-limit-exceeded-exception)
-        ("TrailAlreadyExistsException" . trail-already-exists-exception)
-        ("TrailNotFoundException" . trail-not-found-exception)
-        ("TrailNotProvidedException" . trail-not-provided-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'lookup-events))
 (common-lisp:progn
  (common-lisp:defun put-event-selectors
@@ -2744,51 +2392,7 @@
                                                         "POST" "/"
                                                         "PutEventSelectors"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("CloudTrailARNInvalidException" . cloud-trail-arninvalid-exception)
-        ("CloudWatchLogsDeliveryUnavailableException"
-         . cloud-watch-logs-delivery-unavailable-exception)
-        ("InsufficientEncryptionPolicyException"
-         . insufficient-encryption-policy-exception)
-        ("InsufficientS3BucketPolicyException"
-         . insufficient-s3bucket-policy-exception)
-        ("InsufficientSnsTopicPolicyException"
-         . insufficient-sns-topic-policy-exception)
-        ("InvalidCloudWatchLogsLogGroupArnException"
-         . invalid-cloud-watch-logs-log-group-arn-exception)
-        ("InvalidCloudWatchLogsRoleArnException"
-         . invalid-cloud-watch-logs-role-arn-exception)
-        ("InvalidEventSelectorsException" . invalid-event-selectors-exception)
-        ("InvalidHomeRegionException" . invalid-home-region-exception)
-        ("InvalidKmsKeyIdException" . invalid-kms-key-id-exception)
-        ("InvalidLookupAttributesException"
-         . invalid-lookup-attributes-exception)
-        ("InvalidMaxResultsException" . invalid-max-results-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidS3BucketNameException" . invalid-s3bucket-name-exception)
-        ("InvalidS3PrefixException" . invalid-s3prefix-exception)
-        ("InvalidSnsTopicNameException" . invalid-sns-topic-name-exception)
-        ("InvalidTagParameterException" . invalid-tag-parameter-exception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("InvalidTokenException" . invalid-token-exception)
-        ("InvalidTrailNameException" . invalid-trail-name-exception)
-        ("KmsException" . kms-exception)
-        ("KmsKeyDisabledException" . kms-key-disabled-exception)
-        ("KmsKeyNotFoundException" . kms-key-not-found-exception)
-        ("MaximumNumberOfTrailsExceededException"
-         . maximum-number-of-trails-exceeded-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceTypeNotSupportedException"
-         . resource-type-not-supported-exception)
-        ("S3BucketDoesNotExistException" . s3bucket-does-not-exist-exception)
-        ("TagsLimitExceededException" . tags-limit-exceeded-exception)
-        ("TrailAlreadyExistsException" . trail-already-exists-exception)
-        ("TrailNotFoundException" . trail-not-found-exception)
-        ("TrailNotProvidedException" . trail-not-provided-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-event-selectors))
 (common-lisp:progn
  (common-lisp:defun remove-tags
@@ -2805,51 +2409,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "RemoveTags"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("CloudTrailARNInvalidException" . cloud-trail-arninvalid-exception)
-        ("CloudWatchLogsDeliveryUnavailableException"
-         . cloud-watch-logs-delivery-unavailable-exception)
-        ("InsufficientEncryptionPolicyException"
-         . insufficient-encryption-policy-exception)
-        ("InsufficientS3BucketPolicyException"
-         . insufficient-s3bucket-policy-exception)
-        ("InsufficientSnsTopicPolicyException"
-         . insufficient-sns-topic-policy-exception)
-        ("InvalidCloudWatchLogsLogGroupArnException"
-         . invalid-cloud-watch-logs-log-group-arn-exception)
-        ("InvalidCloudWatchLogsRoleArnException"
-         . invalid-cloud-watch-logs-role-arn-exception)
-        ("InvalidEventSelectorsException" . invalid-event-selectors-exception)
-        ("InvalidHomeRegionException" . invalid-home-region-exception)
-        ("InvalidKmsKeyIdException" . invalid-kms-key-id-exception)
-        ("InvalidLookupAttributesException"
-         . invalid-lookup-attributes-exception)
-        ("InvalidMaxResultsException" . invalid-max-results-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidS3BucketNameException" . invalid-s3bucket-name-exception)
-        ("InvalidS3PrefixException" . invalid-s3prefix-exception)
-        ("InvalidSnsTopicNameException" . invalid-sns-topic-name-exception)
-        ("InvalidTagParameterException" . invalid-tag-parameter-exception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("InvalidTokenException" . invalid-token-exception)
-        ("InvalidTrailNameException" . invalid-trail-name-exception)
-        ("KmsException" . kms-exception)
-        ("KmsKeyDisabledException" . kms-key-disabled-exception)
-        ("KmsKeyNotFoundException" . kms-key-not-found-exception)
-        ("MaximumNumberOfTrailsExceededException"
-         . maximum-number-of-trails-exceeded-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceTypeNotSupportedException"
-         . resource-type-not-supported-exception)
-        ("S3BucketDoesNotExistException" . s3bucket-does-not-exist-exception)
-        ("TagsLimitExceededException" . tags-limit-exceeded-exception)
-        ("TrailAlreadyExistsException" . trail-already-exists-exception)
-        ("TrailNotFoundException" . trail-not-found-exception)
-        ("TrailNotProvidedException" . trail-not-provided-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'remove-tags))
 (common-lisp:progn
  (common-lisp:defun start-logging
@@ -2867,51 +2427,7 @@
                                                         "POST" "/"
                                                         "StartLogging"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("CloudTrailARNInvalidException" . cloud-trail-arninvalid-exception)
-        ("CloudWatchLogsDeliveryUnavailableException"
-         . cloud-watch-logs-delivery-unavailable-exception)
-        ("InsufficientEncryptionPolicyException"
-         . insufficient-encryption-policy-exception)
-        ("InsufficientS3BucketPolicyException"
-         . insufficient-s3bucket-policy-exception)
-        ("InsufficientSnsTopicPolicyException"
-         . insufficient-sns-topic-policy-exception)
-        ("InvalidCloudWatchLogsLogGroupArnException"
-         . invalid-cloud-watch-logs-log-group-arn-exception)
-        ("InvalidCloudWatchLogsRoleArnException"
-         . invalid-cloud-watch-logs-role-arn-exception)
-        ("InvalidEventSelectorsException" . invalid-event-selectors-exception)
-        ("InvalidHomeRegionException" . invalid-home-region-exception)
-        ("InvalidKmsKeyIdException" . invalid-kms-key-id-exception)
-        ("InvalidLookupAttributesException"
-         . invalid-lookup-attributes-exception)
-        ("InvalidMaxResultsException" . invalid-max-results-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidS3BucketNameException" . invalid-s3bucket-name-exception)
-        ("InvalidS3PrefixException" . invalid-s3prefix-exception)
-        ("InvalidSnsTopicNameException" . invalid-sns-topic-name-exception)
-        ("InvalidTagParameterException" . invalid-tag-parameter-exception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("InvalidTokenException" . invalid-token-exception)
-        ("InvalidTrailNameException" . invalid-trail-name-exception)
-        ("KmsException" . kms-exception)
-        ("KmsKeyDisabledException" . kms-key-disabled-exception)
-        ("KmsKeyNotFoundException" . kms-key-not-found-exception)
-        ("MaximumNumberOfTrailsExceededException"
-         . maximum-number-of-trails-exceeded-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceTypeNotSupportedException"
-         . resource-type-not-supported-exception)
-        ("S3BucketDoesNotExistException" . s3bucket-does-not-exist-exception)
-        ("TagsLimitExceededException" . tags-limit-exceeded-exception)
-        ("TrailAlreadyExistsException" . trail-already-exists-exception)
-        ("TrailNotFoundException" . trail-not-found-exception)
-        ("TrailNotProvidedException" . trail-not-provided-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'start-logging))
 (common-lisp:progn
  (common-lisp:defun stop-logging
@@ -2929,51 +2445,7 @@
                                                         "POST" "/"
                                                         "StopLogging"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("CloudTrailARNInvalidException" . cloud-trail-arninvalid-exception)
-        ("CloudWatchLogsDeliveryUnavailableException"
-         . cloud-watch-logs-delivery-unavailable-exception)
-        ("InsufficientEncryptionPolicyException"
-         . insufficient-encryption-policy-exception)
-        ("InsufficientS3BucketPolicyException"
-         . insufficient-s3bucket-policy-exception)
-        ("InsufficientSnsTopicPolicyException"
-         . insufficient-sns-topic-policy-exception)
-        ("InvalidCloudWatchLogsLogGroupArnException"
-         . invalid-cloud-watch-logs-log-group-arn-exception)
-        ("InvalidCloudWatchLogsRoleArnException"
-         . invalid-cloud-watch-logs-role-arn-exception)
-        ("InvalidEventSelectorsException" . invalid-event-selectors-exception)
-        ("InvalidHomeRegionException" . invalid-home-region-exception)
-        ("InvalidKmsKeyIdException" . invalid-kms-key-id-exception)
-        ("InvalidLookupAttributesException"
-         . invalid-lookup-attributes-exception)
-        ("InvalidMaxResultsException" . invalid-max-results-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidS3BucketNameException" . invalid-s3bucket-name-exception)
-        ("InvalidS3PrefixException" . invalid-s3prefix-exception)
-        ("InvalidSnsTopicNameException" . invalid-sns-topic-name-exception)
-        ("InvalidTagParameterException" . invalid-tag-parameter-exception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("InvalidTokenException" . invalid-token-exception)
-        ("InvalidTrailNameException" . invalid-trail-name-exception)
-        ("KmsException" . kms-exception)
-        ("KmsKeyDisabledException" . kms-key-disabled-exception)
-        ("KmsKeyNotFoundException" . kms-key-not-found-exception)
-        ("MaximumNumberOfTrailsExceededException"
-         . maximum-number-of-trails-exceeded-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceTypeNotSupportedException"
-         . resource-type-not-supported-exception)
-        ("S3BucketDoesNotExistException" . s3bucket-does-not-exist-exception)
-        ("TagsLimitExceededException" . tags-limit-exceeded-exception)
-        ("TrailAlreadyExistsException" . trail-already-exists-exception)
-        ("TrailNotFoundException" . trail-not-found-exception)
-        ("TrailNotProvidedException" . trail-not-provided-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'stop-logging))
 (common-lisp:progn
  (common-lisp:defun update-trail
@@ -2999,49 +2471,5 @@
                                                         "POST" "/"
                                                         "UpdateTrail"
                                                         "2013-11-01"))
-      common-lisp:nil common-lisp:nil
-      '(("CloudTrailARNInvalidException" . cloud-trail-arninvalid-exception)
-        ("CloudWatchLogsDeliveryUnavailableException"
-         . cloud-watch-logs-delivery-unavailable-exception)
-        ("InsufficientEncryptionPolicyException"
-         . insufficient-encryption-policy-exception)
-        ("InsufficientS3BucketPolicyException"
-         . insufficient-s3bucket-policy-exception)
-        ("InsufficientSnsTopicPolicyException"
-         . insufficient-sns-topic-policy-exception)
-        ("InvalidCloudWatchLogsLogGroupArnException"
-         . invalid-cloud-watch-logs-log-group-arn-exception)
-        ("InvalidCloudWatchLogsRoleArnException"
-         . invalid-cloud-watch-logs-role-arn-exception)
-        ("InvalidEventSelectorsException" . invalid-event-selectors-exception)
-        ("InvalidHomeRegionException" . invalid-home-region-exception)
-        ("InvalidKmsKeyIdException" . invalid-kms-key-id-exception)
-        ("InvalidLookupAttributesException"
-         . invalid-lookup-attributes-exception)
-        ("InvalidMaxResultsException" . invalid-max-results-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)
-        ("InvalidS3BucketNameException" . invalid-s3bucket-name-exception)
-        ("InvalidS3PrefixException" . invalid-s3prefix-exception)
-        ("InvalidSnsTopicNameException" . invalid-sns-topic-name-exception)
-        ("InvalidTagParameterException" . invalid-tag-parameter-exception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
-        ("InvalidTokenException" . invalid-token-exception)
-        ("InvalidTrailNameException" . invalid-trail-name-exception)
-        ("KmsException" . kms-exception)
-        ("KmsKeyDisabledException" . kms-key-disabled-exception)
-        ("KmsKeyNotFoundException" . kms-key-not-found-exception)
-        ("MaximumNumberOfTrailsExceededException"
-         . maximum-number-of-trails-exceeded-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceTypeNotSupportedException"
-         . resource-type-not-supported-exception)
-        ("S3BucketDoesNotExistException" . s3bucket-does-not-exist-exception)
-        ("TagsLimitExceededException" . tags-limit-exceeded-exception)
-        ("TrailAlreadyExistsException" . trail-already-exists-exception)
-        ("TrailNotFoundException" . trail-not-found-exception)
-        ("TrailNotProvidedException" . trail-not-provided-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-trail))

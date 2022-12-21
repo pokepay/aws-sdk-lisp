@@ -19,6 +19,12 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'route53domains-error))
+(common-lisp:defvar *error-map*
+  '(("DomainLimitExceeded" . domain-limit-exceeded)
+    ("DuplicateRequest" . duplicate-request) ("InvalidInput" . invalid-input)
+    ("OperationLimitExceeded" . operation-limit-exceeded)
+    ("TLDRulesViolation" . tldrules-violation)
+    ("UnsupportedTLD" . unsupported-tld)))
 (common-lisp:deftype address-line () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -2610,13 +2616,7 @@
                                                         "POST" "/"
                                                         "CheckDomainAvailability"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'check-domain-availability))
 (common-lisp:progn
  (common-lisp:defun delete-tags-for-domain
@@ -2634,13 +2634,7 @@
                                                         "POST" "/"
                                                         "DeleteTagsForDomain"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-tags-for-domain))
 (common-lisp:progn
  (common-lisp:defun disable-domain-auto-renew
@@ -2659,13 +2653,7 @@
                                                         "POST" "/"
                                                         "DisableDomainAutoRenew"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'disable-domain-auto-renew))
 (common-lisp:progn
  (common-lisp:defun disable-domain-transfer-lock
@@ -2684,13 +2672,7 @@
                                                         "POST" "/"
                                                         "DisableDomainTransferLock"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'disable-domain-transfer-lock))
 (common-lisp:progn
  (common-lisp:defun enable-domain-auto-renew
@@ -2708,13 +2690,7 @@
                                                         "POST" "/"
                                                         "EnableDomainAutoRenew"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'enable-domain-auto-renew))
 (common-lisp:progn
  (common-lisp:defun enable-domain-transfer-lock
@@ -2733,13 +2709,7 @@
                                                         "POST" "/"
                                                         "EnableDomainTransferLock"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'enable-domain-transfer-lock))
 (common-lisp:progn
  (common-lisp:defun get-contact-reachability-status
@@ -2758,13 +2728,7 @@
                                                         "POST" "/"
                                                         "GetContactReachabilityStatus"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-contact-reachability-status))
 (common-lisp:progn
  (common-lisp:defun get-domain-detail
@@ -2782,13 +2746,7 @@
                                                         "POST" "/"
                                                         "GetDomainDetail"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-domain-detail))
 (common-lisp:progn
  (common-lisp:defun get-domain-suggestions
@@ -2808,13 +2766,7 @@
                                                         "POST" "/"
                                                         "GetDomainSuggestions"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-domain-suggestions))
 (common-lisp:progn
  (common-lisp:defun get-operation-detail
@@ -2832,13 +2784,7 @@
                                                         "POST" "/"
                                                         "GetOperationDetail"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-operation-detail))
 (common-lisp:progn
  (common-lisp:defun list-domains
@@ -2856,13 +2802,7 @@
                                                         "POST" "/"
                                                         "ListDomains"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-domains))
 (common-lisp:progn
  (common-lisp:defun list-operations
@@ -2880,13 +2820,7 @@
                                                         "POST" "/"
                                                         "ListOperations"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-operations))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-domain
@@ -2904,13 +2838,7 @@
                                                         "POST" "/"
                                                         "ListTagsForDomain"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-tags-for-domain))
 (common-lisp:progn
  (common-lisp:defun register-domain
@@ -2937,13 +2865,7 @@
                                                         "POST" "/"
                                                         "RegisterDomain"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'register-domain))
 (common-lisp:progn
  (common-lisp:defun renew-domain
@@ -2963,13 +2885,7 @@
                                                         "POST" "/"
                                                         "RenewDomain"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'renew-domain))
 (common-lisp:progn
  (common-lisp:defun resend-contact-reachability-email
@@ -2988,13 +2904,7 @@
                                                         "POST" "/"
                                                         "ResendContactReachabilityEmail"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'resend-contact-reachability-email))
 (common-lisp:progn
  (common-lisp:defun retrieve-domain-auth-code
@@ -3013,13 +2923,7 @@
                                                         "POST" "/"
                                                         "RetrieveDomainAuthCode"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'retrieve-domain-auth-code))
 (common-lisp:progn
  (common-lisp:defun transfer-domain
@@ -3046,13 +2950,7 @@
                                                         "POST" "/"
                                                         "TransferDomain"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'transfer-domain))
 (common-lisp:progn
  (common-lisp:defun update-domain-contact
@@ -3073,13 +2971,7 @@
                                                         "POST" "/"
                                                         "UpdateDomainContact"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-domain-contact))
 (common-lisp:progn
  (common-lisp:defun update-domain-contact-privacy
@@ -3101,13 +2993,7 @@
                                                         "POST" "/"
                                                         "UpdateDomainContactPrivacy"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-domain-contact-privacy))
 (common-lisp:progn
  (common-lisp:defun update-domain-nameservers
@@ -3127,13 +3013,7 @@
                                                         "POST" "/"
                                                         "UpdateDomainNameservers"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-domain-nameservers))
 (common-lisp:progn
  (common-lisp:defun update-tags-for-domain
@@ -3151,13 +3031,7 @@
                                                         "POST" "/"
                                                         "UpdateTagsForDomain"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-tags-for-domain))
 (common-lisp:progn
  (common-lisp:defun view-billing
@@ -3175,11 +3049,5 @@
                                                         "POST" "/"
                                                         "ViewBilling"
                                                         "2014-05-15"))
-      common-lisp:nil common-lisp:nil
-      '(("DomainLimitExceeded" . domain-limit-exceeded)
-        ("DuplicateRequest" . duplicate-request)
-        ("InvalidInput" . invalid-input)
-        ("OperationLimitExceeded" . operation-limit-exceeded)
-        ("TLDRulesViolation" . tldrules-violation)
-        ("UnsupportedTLD" . unsupported-tld)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'view-billing))

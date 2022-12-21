@@ -18,6 +18,14 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'budgets-error))
+(common-lisp:defvar *error-map*
+  '(("CreationLimitExceededException" . creation-limit-exceeded-exception)
+    ("DuplicateRecordException" . duplicate-record-exception)
+    ("ExpiredNextTokenException" . expired-next-token-exception)
+    ("InternalErrorException" . internal-error-exception)
+    ("InvalidNextTokenException" . invalid-next-token-exception)
+    ("InvalidParameterException" . invalid-parameter-exception)
+    ("NotFoundException" . not-found-exception)))
 (common-lisp:deftype account-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -1521,14 +1529,7 @@
                                                         "POST" "/"
                                                         "CreateBudget"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil
-      '(("CreationLimitExceededException" . creation-limit-exceeded-exception)
-        ("DuplicateRecordException" . duplicate-record-exception)
-        ("ExpiredNextTokenException" . expired-next-token-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("NotFoundException" . not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-budget))
 (common-lisp:progn
  (common-lisp:defun create-notification
@@ -1548,14 +1549,7 @@
                                                         "POST" "/"
                                                         "CreateNotification"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil
-      '(("CreationLimitExceededException" . creation-limit-exceeded-exception)
-        ("DuplicateRecordException" . duplicate-record-exception)
-        ("ExpiredNextTokenException" . expired-next-token-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("NotFoundException" . not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-notification))
 (common-lisp:progn
  (common-lisp:defun create-subscriber
@@ -1575,14 +1569,7 @@
                                                         "POST" "/"
                                                         "CreateSubscriber"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil
-      '(("CreationLimitExceededException" . creation-limit-exceeded-exception)
-        ("DuplicateRecordException" . duplicate-record-exception)
-        ("ExpiredNextTokenException" . expired-next-token-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("NotFoundException" . not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-subscriber))
 (common-lisp:progn
  (common-lisp:defun delete-budget
@@ -1600,14 +1587,7 @@
                                                         "POST" "/"
                                                         "DeleteBudget"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil
-      '(("CreationLimitExceededException" . creation-limit-exceeded-exception)
-        ("DuplicateRecordException" . duplicate-record-exception)
-        ("ExpiredNextTokenException" . expired-next-token-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("NotFoundException" . not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-budget))
 (common-lisp:progn
  (common-lisp:defun delete-notification
@@ -1626,14 +1606,7 @@
                                                         "POST" "/"
                                                         "DeleteNotification"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil
-      '(("CreationLimitExceededException" . creation-limit-exceeded-exception)
-        ("DuplicateRecordException" . duplicate-record-exception)
-        ("ExpiredNextTokenException" . expired-next-token-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("NotFoundException" . not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-notification))
 (common-lisp:progn
  (common-lisp:defun delete-subscriber
@@ -1653,14 +1626,7 @@
                                                         "POST" "/"
                                                         "DeleteSubscriber"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil
-      '(("CreationLimitExceededException" . creation-limit-exceeded-exception)
-        ("DuplicateRecordException" . duplicate-record-exception)
-        ("ExpiredNextTokenException" . expired-next-token-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("NotFoundException" . not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-subscriber))
 (common-lisp:progn
  (common-lisp:defun describe-budget
@@ -1678,14 +1644,7 @@
                                                         "POST" "/"
                                                         "DescribeBudget"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil
-      '(("CreationLimitExceededException" . creation-limit-exceeded-exception)
-        ("DuplicateRecordException" . duplicate-record-exception)
-        ("ExpiredNextTokenException" . expired-next-token-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("NotFoundException" . not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-budget))
 (common-lisp:progn
  (common-lisp:defun describe-budgets
@@ -1704,14 +1663,7 @@
                                                         "POST" "/"
                                                         "DescribeBudgets"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil
-      '(("CreationLimitExceededException" . creation-limit-exceeded-exception)
-        ("DuplicateRecordException" . duplicate-record-exception)
-        ("ExpiredNextTokenException" . expired-next-token-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("NotFoundException" . not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-budgets))
 (common-lisp:progn
  (common-lisp:defun describe-notifications-for-budget
@@ -1732,14 +1684,7 @@
                                                         "POST" "/"
                                                         "DescribeNotificationsForBudget"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil
-      '(("CreationLimitExceededException" . creation-limit-exceeded-exception)
-        ("DuplicateRecordException" . duplicate-record-exception)
-        ("ExpiredNextTokenException" . expired-next-token-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("NotFoundException" . not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-notifications-for-budget))
 (common-lisp:progn
  (common-lisp:defun describe-subscribers-for-notification
@@ -1761,14 +1706,7 @@
                                                         "POST" "/"
                                                         "DescribeSubscribersForNotification"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil
-      '(("CreationLimitExceededException" . creation-limit-exceeded-exception)
-        ("DuplicateRecordException" . duplicate-record-exception)
-        ("ExpiredNextTokenException" . expired-next-token-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("NotFoundException" . not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-subscribers-for-notification))
 (common-lisp:progn
  (common-lisp:defun update-budget
@@ -1786,14 +1724,7 @@
                                                         "POST" "/"
                                                         "UpdateBudget"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil
-      '(("CreationLimitExceededException" . creation-limit-exceeded-exception)
-        ("DuplicateRecordException" . duplicate-record-exception)
-        ("ExpiredNextTokenException" . expired-next-token-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("NotFoundException" . not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-budget))
 (common-lisp:progn
  (common-lisp:defun update-notification
@@ -1814,14 +1745,7 @@
                                                         "POST" "/"
                                                         "UpdateNotification"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil
-      '(("CreationLimitExceededException" . creation-limit-exceeded-exception)
-        ("DuplicateRecordException" . duplicate-record-exception)
-        ("ExpiredNextTokenException" . expired-next-token-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("NotFoundException" . not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-notification))
 (common-lisp:progn
  (common-lisp:defun update-subscriber
@@ -1842,12 +1766,5 @@
                                                         "POST" "/"
                                                         "UpdateSubscriber"
                                                         "2016-10-20"))
-      common-lisp:nil common-lisp:nil
-      '(("CreationLimitExceededException" . creation-limit-exceeded-exception)
-        ("DuplicateRecordException" . duplicate-record-exception)
-        ("ExpiredNextTokenException" . expired-next-token-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("NotFoundException" . not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-subscriber))

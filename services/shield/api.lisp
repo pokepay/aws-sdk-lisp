@@ -18,6 +18,16 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'shield-error))
+(common-lisp:defvar *error-map*
+  '(("InternalErrorException" . internal-error-exception)
+    ("InvalidOperationException" . invalid-operation-exception)
+    ("InvalidParameterException" . invalid-parameter-exception)
+    ("InvalidResourceException" . invalid-resource-exception)
+    ("LimitsExceededException" . limits-exceeded-exception)
+    ("LockedSubscriptionException" . locked-subscription-exception)
+    ("OptimisticLockException" . optimistic-lock-exception)
+    ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+    ("ResourceNotFoundException" . resource-not-found-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (attack-detail (:copier common-lisp:nil)
@@ -1200,16 +1210,7 @@
                                                         "POST" "/"
                                                         "CreateProtection"
                                                         "2016-06-02"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalErrorException" . internal-error-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("LimitsExceededException" . limits-exceeded-exception)
-        ("LockedSubscriptionException" . locked-subscription-exception)
-        ("OptimisticLockException" . optimistic-lock-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-protection))
 (common-lisp:progn
  (common-lisp:defun create-subscription ()
@@ -1219,16 +1220,7 @@
                                 :params
                                 `(("Action" ,@"CreateSubscription")
                                   ("Version" ,@"2016-06-02"))))
-    common-lisp:nil common-lisp:nil
-    '(("InternalErrorException" . internal-error-exception)
-      ("InvalidOperationException" . invalid-operation-exception)
-      ("InvalidParameterException" . invalid-parameter-exception)
-      ("InvalidResourceException" . invalid-resource-exception)
-      ("LimitsExceededException" . limits-exceeded-exception)
-      ("LockedSubscriptionException" . locked-subscription-exception)
-      ("OptimisticLockException" . optimistic-lock-exception)
-      ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-      ("ResourceNotFoundException" . resource-not-found-exception))))
+    common-lisp:nil common-lisp:nil *error-map*))
  (common-lisp:export 'create-subscription))
 (common-lisp:progn
  (common-lisp:defun delete-protection
@@ -1246,16 +1238,7 @@
                                                         "POST" "/"
                                                         "DeleteProtection"
                                                         "2016-06-02"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalErrorException" . internal-error-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("LimitsExceededException" . limits-exceeded-exception)
-        ("LockedSubscriptionException" . locked-subscription-exception)
-        ("OptimisticLockException" . optimistic-lock-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-protection))
 (common-lisp:progn
  (common-lisp:defun delete-subscription ()
@@ -1265,16 +1248,7 @@
                                 :params
                                 `(("Action" ,@"DeleteSubscription")
                                   ("Version" ,@"2016-06-02"))))
-    common-lisp:nil common-lisp:nil
-    '(("InternalErrorException" . internal-error-exception)
-      ("InvalidOperationException" . invalid-operation-exception)
-      ("InvalidParameterException" . invalid-parameter-exception)
-      ("InvalidResourceException" . invalid-resource-exception)
-      ("LimitsExceededException" . limits-exceeded-exception)
-      ("LockedSubscriptionException" . locked-subscription-exception)
-      ("OptimisticLockException" . optimistic-lock-exception)
-      ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-      ("ResourceNotFoundException" . resource-not-found-exception))))
+    common-lisp:nil common-lisp:nil *error-map*))
  (common-lisp:export 'delete-subscription))
 (common-lisp:progn
  (common-lisp:defun describe-attack
@@ -1292,16 +1266,7 @@
                                                         "POST" "/"
                                                         "DescribeAttack"
                                                         "2016-06-02"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalErrorException" . internal-error-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("LimitsExceededException" . limits-exceeded-exception)
-        ("LockedSubscriptionException" . locked-subscription-exception)
-        ("OptimisticLockException" . optimistic-lock-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-attack))
 (common-lisp:progn
  (common-lisp:defun describe-protection
@@ -1319,16 +1284,7 @@
                                                         "POST" "/"
                                                         "DescribeProtection"
                                                         "2016-06-02"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalErrorException" . internal-error-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("LimitsExceededException" . limits-exceeded-exception)
-        ("LockedSubscriptionException" . locked-subscription-exception)
-        ("OptimisticLockException" . optimistic-lock-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-protection))
 (common-lisp:progn
  (common-lisp:defun describe-subscription ()
@@ -1338,16 +1294,7 @@
                                 :params
                                 `(("Action" ,@"DescribeSubscription")
                                   ("Version" ,@"2016-06-02"))))
-    common-lisp:nil common-lisp:nil
-    '(("InternalErrorException" . internal-error-exception)
-      ("InvalidOperationException" . invalid-operation-exception)
-      ("InvalidParameterException" . invalid-parameter-exception)
-      ("InvalidResourceException" . invalid-resource-exception)
-      ("LimitsExceededException" . limits-exceeded-exception)
-      ("LockedSubscriptionException" . locked-subscription-exception)
-      ("OptimisticLockException" . optimistic-lock-exception)
-      ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-      ("ResourceNotFoundException" . resource-not-found-exception))))
+    common-lisp:nil common-lisp:nil *error-map*))
  (common-lisp:export 'describe-subscription))
 (common-lisp:progn
  (common-lisp:defun list-attacks
@@ -1368,16 +1315,7 @@
                                                         "POST" "/"
                                                         "ListAttacks"
                                                         "2016-06-02"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalErrorException" . internal-error-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("LimitsExceededException" . limits-exceeded-exception)
-        ("LockedSubscriptionException" . locked-subscription-exception)
-        ("OptimisticLockException" . optimistic-lock-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-attacks))
 (common-lisp:progn
  (common-lisp:defun list-protections
@@ -1395,14 +1333,5 @@
                                                         "POST" "/"
                                                         "ListProtections"
                                                         "2016-06-02"))
-      common-lisp:nil common-lisp:nil
-      '(("InternalErrorException" . internal-error-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidResourceException" . invalid-resource-exception)
-        ("LimitsExceededException" . limits-exceeded-exception)
-        ("LockedSubscriptionException" . locked-subscription-exception)
-        ("OptimisticLockException" . optimistic-lock-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-protections))

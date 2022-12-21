@@ -18,6 +18,24 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'dms-error))
+(common-lisp:defvar *error-map*
+  '(("AccessDeniedFault" . access-denied-fault)
+    ("InsufficientResourceCapacityFault"
+     . insufficient-resource-capacity-fault)
+    ("InvalidCertificateFault" . invalid-certificate-fault)
+    ("InvalidResourceStateFault" . invalid-resource-state-fault)
+    ("InvalidSubnet" . invalid-subnet)
+    ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+    ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
+     . replication-subnet-group-does-not-cover-enough-azs)
+    ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
+    ("ResourceNotFoundFault" . resource-not-found-fault)
+    ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
+    ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+    ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+    ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+    ("SubnetAlreadyInUse" . subnet-already-in-use)
+    ("UpgradeDependencyFailureFault" . upgrade-dependency-failure-fault)))
 (common-lisp:progn
  (common-lisp:define-condition access-denied-fault
      (dms-error)
@@ -5887,25 +5905,7 @@
                                                         "POST" "/"
                                                         "AddTagsToResource"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'add-tags-to-resource))
 (common-lisp:progn
  (common-lisp:defun create-endpoint
@@ -5931,25 +5931,7 @@
                                                         "POST" "/"
                                                         "CreateEndpoint"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-endpoint))
 (common-lisp:progn
  (common-lisp:defun create-event-subscription
@@ -5971,25 +5953,7 @@
                                                         "POST" "/"
                                                         "CreateEventSubscription"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-event-subscription))
 (common-lisp:progn
  (common-lisp:defun create-replication-instance
@@ -6019,25 +5983,7 @@
                                                         "POST" "/"
                                                         "CreateReplicationInstance"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-replication-instance))
 (common-lisp:progn
  (common-lisp:defun create-replication-subnet-group
@@ -6059,25 +6005,7 @@
                                                         "POST" "/"
                                                         "CreateReplicationSubnetGroup"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-replication-subnet-group))
 (common-lisp:progn
  (common-lisp:defun create-replication-task
@@ -6101,25 +6029,7 @@
                                                         "POST" "/"
                                                         "CreateReplicationTask"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-replication-task))
 (common-lisp:progn
  (common-lisp:defun delete-certificate
@@ -6137,25 +6047,7 @@
                                                         "POST" "/"
                                                         "DeleteCertificate"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-certificate))
 (common-lisp:progn
  (common-lisp:defun delete-endpoint
@@ -6173,25 +6065,7 @@
                                                         "POST" "/"
                                                         "DeleteEndpoint"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-endpoint))
 (common-lisp:progn
  (common-lisp:defun delete-event-subscription
@@ -6210,25 +6084,7 @@
                                                         "POST" "/"
                                                         "DeleteEventSubscription"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-event-subscription))
 (common-lisp:progn
  (common-lisp:defun delete-replication-instance
@@ -6247,25 +6103,7 @@
                                                         "POST" "/"
                                                         "DeleteReplicationInstance"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-replication-instance))
 (common-lisp:progn
  (common-lisp:defun delete-replication-subnet-group
@@ -6285,25 +6123,7 @@
                                                         "POST" "/"
                                                         "DeleteReplicationSubnetGroup"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-replication-subnet-group))
 (common-lisp:progn
  (common-lisp:defun delete-replication-task
@@ -6321,25 +6141,7 @@
                                                         "POST" "/"
                                                         "DeleteReplicationTask"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-replication-task))
 (common-lisp:progn
  (common-lisp:defun describe-account-attributes ()
@@ -6348,24 +6150,7 @@
      (common-lisp:make-instance 'dms-request :method "POST" :path "/" :params
                                 `(("Action" ,@"DescribeAccountAttributes")
                                   ("Version" ,@"2016-01-01"))))
-    common-lisp:nil common-lisp:nil
-    '(("AccessDeniedFault" . access-denied-fault)
-      ("InsufficientResourceCapacityFault"
-       . insufficient-resource-capacity-fault)
-      ("InvalidCertificateFault" . invalid-certificate-fault)
-      ("InvalidResourceStateFault" . invalid-resource-state-fault)
-      ("InvalidSubnet" . invalid-subnet)
-      ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-      ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-       . replication-subnet-group-does-not-cover-enough-azs)
-      ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-      ("ResourceNotFoundFault" . resource-not-found-fault)
-      ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-      ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-      ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-      ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-      ("SubnetAlreadyInUse" . subnet-already-in-use)
-      ("UpgradeDependencyFailureFault" . upgrade-dependency-failure-fault))))
+    common-lisp:nil common-lisp:nil *error-map*))
  (common-lisp:export 'describe-account-attributes))
 (common-lisp:progn
  (common-lisp:defun describe-certificates
@@ -6383,25 +6168,7 @@
                                                         "POST" "/"
                                                         "DescribeCertificates"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-certificates))
 (common-lisp:progn
  (common-lisp:defun describe-connections
@@ -6419,25 +6186,7 @@
                                                         "POST" "/"
                                                         "DescribeConnections"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-connections))
 (common-lisp:progn
  (common-lisp:defun describe-endpoint-types
@@ -6455,25 +6204,7 @@
                                                         "POST" "/"
                                                         "DescribeEndpointTypes"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-endpoint-types))
 (common-lisp:progn
  (common-lisp:defun describe-endpoints
@@ -6491,25 +6222,7 @@
                                                         "POST" "/"
                                                         "DescribeEndpoints"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-endpoints))
 (common-lisp:progn
  (common-lisp:defun describe-event-categories
@@ -6528,25 +6241,7 @@
                                                         "POST" "/"
                                                         "DescribeEventCategories"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-event-categories))
 (common-lisp:progn
  (common-lisp:defun describe-event-subscriptions
@@ -6567,25 +6262,7 @@
                                                         "POST" "/"
                                                         "DescribeEventSubscriptions"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-event-subscriptions))
 (common-lisp:progn
  (common-lisp:defun describe-events
@@ -6607,25 +6284,7 @@
                                                         "POST" "/"
                                                         "DescribeEvents"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
  (common-lisp:defun describe-orderable-replication-instances
@@ -6644,25 +6303,7 @@
                                                         "POST" "/"
                                                         "DescribeOrderableReplicationInstances"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-orderable-replication-instances))
 (common-lisp:progn
  (common-lisp:defun describe-refresh-schemas-status
@@ -6681,25 +6322,7 @@
                                                         "POST" "/"
                                                         "DescribeRefreshSchemasStatus"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-refresh-schemas-status))
 (common-lisp:progn
  (common-lisp:defun describe-replication-instances
@@ -6718,25 +6341,7 @@
                                                         "POST" "/"
                                                         "DescribeReplicationInstances"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-replication-instances))
 (common-lisp:progn
  (common-lisp:defun describe-replication-subnet-groups
@@ -6755,25 +6360,7 @@
                                                         "POST" "/"
                                                         "DescribeReplicationSubnetGroups"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-replication-subnet-groups))
 (common-lisp:progn
  (common-lisp:defun describe-replication-tasks
@@ -6792,25 +6379,7 @@
                                                         "POST" "/"
                                                         "DescribeReplicationTasks"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-replication-tasks))
 (common-lisp:progn
  (common-lisp:defun describe-schemas
@@ -6829,25 +6398,7 @@
                                                         "POST" "/"
                                                         "DescribeSchemas"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-schemas))
 (common-lisp:progn
  (common-lisp:defun describe-table-statistics
@@ -6867,25 +6418,7 @@
                                                         "POST" "/"
                                                         "DescribeTableStatistics"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-table-statistics))
 (common-lisp:progn
  (common-lisp:defun import-certificate
@@ -6906,25 +6439,7 @@
                                                         "POST" "/"
                                                         "ImportCertificate"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'import-certificate))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-resource
@@ -6942,25 +6457,7 @@
                                                         "POST" "/"
                                                         "ListTagsForResource"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
  (common-lisp:defun modify-endpoint
@@ -6986,25 +6483,7 @@
                                                         "POST" "/"
                                                         "ModifyEndpoint"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'modify-endpoint))
 (common-lisp:progn
  (common-lisp:defun modify-event-subscription
@@ -7026,25 +6505,7 @@
                                                         "POST" "/"
                                                         "ModifyEventSubscription"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'modify-event-subscription))
 (common-lisp:progn
  (common-lisp:defun modify-replication-instance
@@ -7073,25 +6534,7 @@
                                                         "POST" "/"
                                                         "ModifyReplicationInstance"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'modify-replication-instance))
 (common-lisp:progn
  (common-lisp:defun modify-replication-subnet-group
@@ -7113,25 +6556,7 @@
                                                         "POST" "/"
                                                         "ModifyReplicationSubnetGroup"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'modify-replication-subnet-group))
 (common-lisp:progn
  (common-lisp:defun modify-replication-task
@@ -7153,25 +6578,7 @@
                                                         "POST" "/"
                                                         "ModifyReplicationTask"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'modify-replication-task))
 (common-lisp:progn
  (common-lisp:defun refresh-schemas
@@ -7190,25 +6597,7 @@
                                                         "POST" "/"
                                                         "RefreshSchemas"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'refresh-schemas))
 (common-lisp:progn
  (common-lisp:defun reload-tables
@@ -7227,25 +6616,7 @@
                                                         "POST" "/"
                                                         "ReloadTables"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'reload-tables))
 (common-lisp:progn
  (common-lisp:defun remove-tags-from-resource
@@ -7264,25 +6635,7 @@
                                                         "POST" "/"
                                                         "RemoveTagsFromResource"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'remove-tags-from-resource))
 (common-lisp:progn
  (common-lisp:defun start-replication-task
@@ -7303,25 +6656,7 @@
                                                         "POST" "/"
                                                         "StartReplicationTask"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'start-replication-task))
 (common-lisp:progn
  (common-lisp:defun stop-replication-task
@@ -7339,25 +6674,7 @@
                                                         "POST" "/"
                                                         "StopReplicationTask"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'stop-replication-task))
 (common-lisp:progn
  (common-lisp:defun test-connection
@@ -7376,23 +6693,5 @@
                                                         "POST" "/"
                                                         "TestConnection"
                                                         "2016-01-01"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedFault" . access-denied-fault)
-        ("InsufficientResourceCapacityFault"
-         . insufficient-resource-capacity-fault)
-        ("InvalidCertificateFault" . invalid-certificate-fault)
-        ("InvalidResourceStateFault" . invalid-resource-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-         . replication-subnet-group-does-not-cover-enough-azs)
-        ("ResourceAlreadyExistsFault" . resource-already-exists-fault)
-        ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("ResourceQuotaExceededFault" . resource-quota-exceeded-fault)
-        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
-        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("UpgradeDependencyFailureFault"
-         . upgrade-dependency-failure-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'test-connection))

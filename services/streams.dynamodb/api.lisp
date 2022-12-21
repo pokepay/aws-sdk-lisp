@@ -19,6 +19,12 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'streams.dynamodb-error))
+(common-lisp:defvar *error-map*
+  '(("ExpiredIteratorException" . expired-iterator-exception)
+    ("InternalServerError" . internal-server-error)
+    ("LimitExceededException" . limit-exceeded-exception)
+    ("ResourceNotFoundException" . resource-not-found-exception)
+    ("TrimmedDataAccessException" . trimmed-data-access-exception)))
 (common-lisp:progn
  (common-lisp:deftype attribute-map () 'common-lisp:hash-table)
  (common-lisp:defun |make-attribute-map| (aws-sdk/generator/shape::key-values)
@@ -1021,12 +1027,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'streams.dynamodb-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeStream" "2012-08-10"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InternalServerError" . internal-server-error)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TrimmedDataAccessException" . trimmed-data-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-stream))
 (common-lisp:progn
  (common-lisp:defun get-records
@@ -1042,12 +1043,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'streams.dynamodb-request aws-sdk/generator/operation::input "POST" "/"
         "GetRecords" "2012-08-10"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InternalServerError" . internal-server-error)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TrimmedDataAccessException" . trimmed-data-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-records))
 (common-lisp:progn
  (common-lisp:defun get-shard-iterator
@@ -1066,12 +1062,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'streams.dynamodb-request aws-sdk/generator/operation::input "POST" "/"
         "GetShardIterator" "2012-08-10"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InternalServerError" . internal-server-error)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TrimmedDataAccessException" . trimmed-data-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-shard-iterator))
 (common-lisp:progn
  (common-lisp:defun list-streams
@@ -1089,10 +1080,5 @@
        (aws-sdk/generator/shape:make-request-with-input
         'streams.dynamodb-request aws-sdk/generator/operation::input "POST" "/"
         "ListStreams" "2012-08-10"))
-      common-lisp:nil common-lisp:nil
-      '(("ExpiredIteratorException" . expired-iterator-exception)
-        ("InternalServerError" . internal-server-error)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TrimmedDataAccessException" . trimmed-data-access-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-streams))

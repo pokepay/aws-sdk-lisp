@@ -19,6 +19,41 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'clouddirectory-error))
+(common-lisp:defvar *error-map*
+  '(("AccessDeniedException" . access-denied-exception)
+    ("BatchWriteException" . batch-write-exception)
+    ("CannotListParentOfRootException" . cannot-list-parent-of-root-exception)
+    ("DirectoryAlreadyExistsException" . directory-already-exists-exception)
+    ("DirectoryDeletedException" . directory-deleted-exception)
+    ("DirectoryNotDisabledException" . directory-not-disabled-exception)
+    ("DirectoryNotEnabledException" . directory-not-enabled-exception)
+    ("FacetAlreadyExistsException" . facet-already-exists-exception)
+    ("FacetInUseException" . facet-in-use-exception)
+    ("FacetNotFoundException" . facet-not-found-exception)
+    ("FacetValidationException" . facet-validation-exception)
+    ("IndexedAttributeMissingException" . indexed-attribute-missing-exception)
+    ("InternalServiceException" . internal-service-exception)
+    ("InvalidArnException" . invalid-arn-exception)
+    ("InvalidAttachmentException" . invalid-attachment-exception)
+    ("InvalidFacetUpdateException" . invalid-facet-update-exception)
+    ("InvalidNextTokenException" . invalid-next-token-exception)
+    ("InvalidRuleException" . invalid-rule-exception)
+    ("InvalidSchemaDocException" . invalid-schema-doc-exception)
+    ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
+    ("LimitExceededException" . limit-exceeded-exception)
+    ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
+    ("NotIndexException" . not-index-exception)
+    ("NotNodeException" . not-node-exception)
+    ("NotPolicyException" . not-policy-exception)
+    ("ObjectAlreadyDetachedException" . object-already-detached-exception)
+    ("ObjectNotDetachedException" . object-not-detached-exception)
+    ("ResourceNotFoundException" . resource-not-found-exception)
+    ("RetryableConflictException" . retryable-conflict-exception)
+    ("SchemaAlreadyExistsException" . schema-already-exists-exception)
+    ("SchemaAlreadyPublishedException" . schema-already-published-exception)
+    ("StillContainsLinksException" . still-contains-links-exception)
+    ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
+    ("ValidationException" . validation-exception)))
 (common-lisp:progn
  (common-lisp:define-condition access-denied-exception
      (clouddirectory-error)
@@ -9056,45 +9091,7 @@
                                                         "/amazonclouddirectory/2017-01-11/object/facets"
                                                         "AddFacetToObject"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'add-facet-to-object))
 (common-lisp:progn
  (common-lisp:defun apply-schema
@@ -9114,45 +9111,7 @@
                                                         "/amazonclouddirectory/2017-01-11/schema/apply"
                                                         "ApplySchema"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'apply-schema))
 (common-lisp:progn
  (common-lisp:defun attach-object
@@ -9174,45 +9133,7 @@
                                                         "/amazonclouddirectory/2017-01-11/object/attach"
                                                         "AttachObject"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'attach-object))
 (common-lisp:progn
  (common-lisp:defun attach-policy
@@ -9233,45 +9154,7 @@
                                                         "/amazonclouddirectory/2017-01-11/policy/attach"
                                                         "AttachPolicy"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'attach-policy))
 (common-lisp:progn
  (common-lisp:defun attach-to-index
@@ -9292,45 +9175,7 @@
                                                         "/amazonclouddirectory/2017-01-11/index/attach"
                                                         "AttachToIndex"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'attach-to-index))
 (common-lisp:progn
  (common-lisp:defun attach-typed-link
@@ -9352,45 +9197,7 @@
                                                         "/amazonclouddirectory/2017-01-11/typedlink/attach"
                                                         "AttachTypedLink"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'attach-typed-link))
 (common-lisp:progn
  (common-lisp:defun batch-read
@@ -9411,45 +9218,7 @@
                                                         "/amazonclouddirectory/2017-01-11/batchread"
                                                         "BatchRead"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'batch-read))
 (common-lisp:progn
  (common-lisp:defun batch-write
@@ -9468,45 +9237,7 @@
                                                         "/amazonclouddirectory/2017-01-11/batchwrite"
                                                         "BatchWrite"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'batch-write))
 (common-lisp:progn
  (common-lisp:defun create-directory
@@ -9525,45 +9256,7 @@
                                                         "/amazonclouddirectory/2017-01-11/directory/create"
                                                         "CreateDirectory"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-directory))
 (common-lisp:progn
  (common-lisp:defun create-facet
@@ -9583,45 +9276,7 @@
                                                         "/amazonclouddirectory/2017-01-11/facet/create"
                                                         "CreateFacet"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-facet))
 (common-lisp:progn
  (common-lisp:defun create-index
@@ -9644,45 +9299,7 @@
                                                         "/amazonclouddirectory/2017-01-11/index"
                                                         "CreateIndex"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-index))
 (common-lisp:progn
  (common-lisp:defun create-object
@@ -9704,45 +9321,7 @@
                                                         "/amazonclouddirectory/2017-01-11/object"
                                                         "CreateObject"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-object))
 (common-lisp:progn
  (common-lisp:defun create-schema
@@ -9761,45 +9340,7 @@
                                                         "/amazonclouddirectory/2017-01-11/schema/create"
                                                         "CreateSchema"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-schema))
 (common-lisp:progn
  (common-lisp:defun create-typed-link-facet
@@ -9818,45 +9359,7 @@
                                                         "/amazonclouddirectory/2017-01-11/typedlink/facet/create"
                                                         "CreateTypedLinkFacet"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-typed-link-facet))
 (common-lisp:progn
  (common-lisp:defun delete-directory
@@ -9875,45 +9378,7 @@
                                                         "/amazonclouddirectory/2017-01-11/directory"
                                                         "DeleteDirectory"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-directory))
 (common-lisp:progn
  (common-lisp:defun delete-facet
@@ -9932,45 +9397,7 @@
                                                         "/amazonclouddirectory/2017-01-11/facet/delete"
                                                         "DeleteFacet"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-facet))
 (common-lisp:progn
  (common-lisp:defun delete-object
@@ -9989,45 +9416,7 @@
                                                         "/amazonclouddirectory/2017-01-11/object/delete"
                                                         "DeleteObject"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-object))
 (common-lisp:progn
  (common-lisp:defun delete-schema
@@ -10046,45 +9435,7 @@
                                                         "/amazonclouddirectory/2017-01-11/schema"
                                                         "DeleteSchema"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-schema))
 (common-lisp:progn
  (common-lisp:defun delete-typed-link-facet
@@ -10103,45 +9454,7 @@
                                                         "/amazonclouddirectory/2017-01-11/typedlink/facet/delete"
                                                         "DeleteTypedLinkFacet"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-typed-link-facet))
 (common-lisp:progn
  (common-lisp:defun detach-from-index
@@ -10162,45 +9475,7 @@
                                                         "/amazonclouddirectory/2017-01-11/index/detach"
                                                         "DetachFromIndex"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'detach-from-index))
 (common-lisp:progn
  (common-lisp:defun detach-object
@@ -10220,45 +9495,7 @@
                                                         "/amazonclouddirectory/2017-01-11/object/detach"
                                                         "DetachObject"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'detach-object))
 (common-lisp:progn
  (common-lisp:defun detach-policy
@@ -10279,45 +9516,7 @@
                                                         "/amazonclouddirectory/2017-01-11/policy/detach"
                                                         "DetachPolicy"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'detach-policy))
 (common-lisp:progn
  (common-lisp:defun detach-typed-link
@@ -10337,45 +9536,7 @@
                                                         "/amazonclouddirectory/2017-01-11/typedlink/detach"
                                                         "DetachTypedLink"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'detach-typed-link))
 (common-lisp:progn
  (common-lisp:defun disable-directory
@@ -10394,45 +9555,7 @@
                                                         "/amazonclouddirectory/2017-01-11/directory/disable"
                                                         "DisableDirectory"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'disable-directory))
 (common-lisp:progn
  (common-lisp:defun enable-directory
@@ -10451,45 +9574,7 @@
                                                         "/amazonclouddirectory/2017-01-11/directory/enable"
                                                         "EnableDirectory"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'enable-directory))
 (common-lisp:progn
  (common-lisp:defun get-directory
@@ -10508,45 +9593,7 @@
                                                         "/amazonclouddirectory/2017-01-11/directory/get"
                                                         "GetDirectory"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-directory))
 (common-lisp:progn
  (common-lisp:defun get-facet
@@ -10565,45 +9612,7 @@
                                                         "/amazonclouddirectory/2017-01-11/facet"
                                                         "GetFacet"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-facet))
 (common-lisp:progn
  (common-lisp:defun get-object-information
@@ -10624,45 +9633,7 @@
                                                         "/amazonclouddirectory/2017-01-11/object/information"
                                                         "GetObjectInformation"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-object-information))
 (common-lisp:progn
  (common-lisp:defun get-schema-as-json
@@ -10681,45 +9652,7 @@
                                                         "/amazonclouddirectory/2017-01-11/schema/json"
                                                         "GetSchemaAsJson"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-schema-as-json))
 (common-lisp:progn
  (common-lisp:defun get-typed-link-facet-information
@@ -10739,45 +9672,7 @@
                                                         "/amazonclouddirectory/2017-01-11/typedlink/facet/get"
                                                         "GetTypedLinkFacetInformation"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-typed-link-facet-information))
 (common-lisp:progn
  (common-lisp:defun list-applied-schema-arns
@@ -10797,45 +9692,7 @@
                                                         "/amazonclouddirectory/2017-01-11/schema/applied"
                                                         "ListAppliedSchemaArns"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-applied-schema-arns))
 (common-lisp:progn
  (common-lisp:defun list-attached-indices
@@ -10857,45 +9714,7 @@
                                                         "/amazonclouddirectory/2017-01-11/object/indices"
                                                         "ListAttachedIndices"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-attached-indices))
 (common-lisp:progn
  (common-lisp:defun list-development-schema-arns
@@ -10915,45 +9734,7 @@
                                                         "/amazonclouddirectory/2017-01-11/schema/development"
                                                         "ListDevelopmentSchemaArns"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-development-schema-arns))
 (common-lisp:progn
  (common-lisp:defun list-directories
@@ -10972,45 +9753,7 @@
                                                         "/amazonclouddirectory/2017-01-11/directory/list"
                                                         "ListDirectories"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-directories))
 (common-lisp:progn
  (common-lisp:defun list-facet-attributes
@@ -11030,45 +9773,7 @@
                                                         "/amazonclouddirectory/2017-01-11/facet/attributes"
                                                         "ListFacetAttributes"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-facet-attributes))
 (common-lisp:progn
  (common-lisp:defun list-facet-names
@@ -11088,45 +9793,7 @@
                                                         "/amazonclouddirectory/2017-01-11/facet/list"
                                                         "ListFacetNames"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-facet-names))
 (common-lisp:progn
  (common-lisp:defun list-incoming-typed-links
@@ -11151,45 +9818,7 @@
                                                         "/amazonclouddirectory/2017-01-11/typedlink/incoming"
                                                         "ListIncomingTypedLinks"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-incoming-typed-links))
 (common-lisp:progn
  (common-lisp:defun list-index
@@ -11211,45 +9840,7 @@
                                                         "/amazonclouddirectory/2017-01-11/index/targets"
                                                         "ListIndex"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-index))
 (common-lisp:progn
  (common-lisp:defun list-object-attributes
@@ -11271,45 +9862,7 @@
                                                         "/amazonclouddirectory/2017-01-11/object/attributes"
                                                         "ListObjectAttributes"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-object-attributes))
 (common-lisp:progn
  (common-lisp:defun list-object-children
@@ -11331,45 +9884,7 @@
                                                         "/amazonclouddirectory/2017-01-11/object/children"
                                                         "ListObjectChildren"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-object-children))
 (common-lisp:progn
  (common-lisp:defun list-object-parent-paths
@@ -11391,45 +9906,7 @@
                                                         "/amazonclouddirectory/2017-01-11/object/parentpaths"
                                                         "ListObjectParentPaths"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-object-parent-paths))
 (common-lisp:progn
  (common-lisp:defun list-object-parents
@@ -11451,45 +9928,7 @@
                                                         "/amazonclouddirectory/2017-01-11/object/parent"
                                                         "ListObjectParents"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-object-parents))
 (common-lisp:progn
  (common-lisp:defun list-object-policies
@@ -11511,45 +9950,7 @@
                                                         "/amazonclouddirectory/2017-01-11/object/policy"
                                                         "ListObjectPolicies"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-object-policies))
 (common-lisp:progn
  (common-lisp:defun list-outgoing-typed-links
@@ -11574,45 +9975,7 @@
                                                         "/amazonclouddirectory/2017-01-11/typedlink/outgoing"
                                                         "ListOutgoingTypedLinks"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-outgoing-typed-links))
 (common-lisp:progn
  (common-lisp:defun list-policy-attachments
@@ -11634,45 +9997,7 @@
                                                         "/amazonclouddirectory/2017-01-11/policy/attachment"
                                                         "ListPolicyAttachments"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-policy-attachments))
 (common-lisp:progn
  (common-lisp:defun list-published-schema-arns
@@ -11692,45 +10017,7 @@
                                                         "/amazonclouddirectory/2017-01-11/schema/published"
                                                         "ListPublishedSchemaArns"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-published-schema-arns))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-resource
@@ -11750,45 +10037,7 @@
                                                         "/amazonclouddirectory/2017-01-11/tags"
                                                         "ListTagsForResource"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
  (common-lisp:defun list-typed-link-facet-attributes
@@ -11809,45 +10058,7 @@
                                                         "/amazonclouddirectory/2017-01-11/typedlink/facet/attributes"
                                                         "ListTypedLinkFacetAttributes"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-typed-link-facet-attributes))
 (common-lisp:progn
  (common-lisp:defun list-typed-link-facet-names
@@ -11868,45 +10079,7 @@
                                                         "/amazonclouddirectory/2017-01-11/typedlink/facet/list"
                                                         "ListTypedLinkFacetNames"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-typed-link-facet-names))
 (common-lisp:progn
  (common-lisp:defun lookup-policy
@@ -11928,45 +10101,7 @@
                                                         "/amazonclouddirectory/2017-01-11/policy/lookup"
                                                         "LookupPolicy"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'lookup-policy))
 (common-lisp:progn
  (common-lisp:defun publish-schema
@@ -11986,45 +10121,7 @@
                                                         "/amazonclouddirectory/2017-01-11/schema/publish"
                                                         "PublishSchema"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'publish-schema))
 (common-lisp:progn
  (common-lisp:defun put-schema-from-json
@@ -12043,45 +10140,7 @@
                                                         "/amazonclouddirectory/2017-01-11/schema/json"
                                                         "PutSchemaFromJson"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-schema-from-json))
 (common-lisp:progn
  (common-lisp:defun remove-facet-from-object
@@ -12102,45 +10161,7 @@
                                                         "/amazonclouddirectory/2017-01-11/object/facets/delete"
                                                         "RemoveFacetFromObject"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'remove-facet-from-object))
 (common-lisp:progn
  (common-lisp:defun tag-resource
@@ -12159,45 +10180,7 @@
                                                         "/amazonclouddirectory/2017-01-11/tags/add"
                                                         "TagResource"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
  (common-lisp:defun untag-resource
@@ -12216,45 +10199,7 @@
                                                         "/amazonclouddirectory/2017-01-11/tags/remove"
                                                         "UntagResource"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
  (common-lisp:defun update-facet
@@ -12275,45 +10220,7 @@
                                                         "/amazonclouddirectory/2017-01-11/facet"
                                                         "UpdateFacet"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-facet))
 (common-lisp:progn
  (common-lisp:defun update-object-attributes
@@ -12334,45 +10241,7 @@
                                                         "/amazonclouddirectory/2017-01-11/object/update"
                                                         "UpdateObjectAttributes"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-object-attributes))
 (common-lisp:progn
  (common-lisp:defun update-schema
@@ -12391,45 +10260,7 @@
                                                         "/amazonclouddirectory/2017-01-11/schema/update"
                                                         "UpdateSchema"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-schema))
 (common-lisp:progn
  (common-lisp:defun update-typed-link-facet
@@ -12451,43 +10282,5 @@
                                                         "/amazonclouddirectory/2017-01-11/typedlink/facet"
                                                         "UpdateTypedLinkFacet"
                                                         "2016-05-10"))
-      common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("BatchWriteException" . batch-write-exception)
-        ("CannotListParentOfRootException"
-         . cannot-list-parent-of-root-exception)
-        ("DirectoryAlreadyExistsException"
-         . directory-already-exists-exception)
-        ("DirectoryDeletedException" . directory-deleted-exception)
-        ("DirectoryNotDisabledException" . directory-not-disabled-exception)
-        ("DirectoryNotEnabledException" . directory-not-enabled-exception)
-        ("FacetAlreadyExistsException" . facet-already-exists-exception)
-        ("FacetInUseException" . facet-in-use-exception)
-        ("FacetNotFoundException" . facet-not-found-exception)
-        ("FacetValidationException" . facet-validation-exception)
-        ("IndexedAttributeMissingException"
-         . indexed-attribute-missing-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("InvalidArnException" . invalid-arn-exception)
-        ("InvalidAttachmentException" . invalid-attachment-exception)
-        ("InvalidFacetUpdateException" . invalid-facet-update-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidRuleException" . invalid-rule-exception)
-        ("InvalidSchemaDocException" . invalid-schema-doc-exception)
-        ("InvalidTaggingRequestException" . invalid-tagging-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("LinkNameAlreadyInUseException" . link-name-already-in-use-exception)
-        ("NotIndexException" . not-index-exception)
-        ("NotNodeException" . not-node-exception)
-        ("NotPolicyException" . not-policy-exception)
-        ("ObjectAlreadyDetachedException" . object-already-detached-exception)
-        ("ObjectNotDetachedException" . object-not-detached-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("RetryableConflictException" . retryable-conflict-exception)
-        ("SchemaAlreadyExistsException" . schema-already-exists-exception)
-        ("SchemaAlreadyPublishedException"
-         . schema-already-published-exception)
-        ("StillContainsLinksException" . still-contains-links-exception)
-        ("UnsupportedIndexTypeException" . unsupported-index-type-exception)
-        ("ValidationException" . validation-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-typed-link-facet))

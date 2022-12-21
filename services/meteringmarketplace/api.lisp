@@ -19,6 +19,18 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'meteringmarketplace-error))
+(common-lisp:defvar *error-map*
+  '(("DuplicateRequestException" . duplicate-request-exception)
+    ("ExpiredTokenException" . expired-token-exception)
+    ("InternalServiceErrorException" . internal-service-error-exception)
+    ("InvalidCustomerIdentifierException"
+     . invalid-customer-identifier-exception)
+    ("InvalidEndpointRegionException" . invalid-endpoint-region-exception)
+    ("InvalidProductCodeException" . invalid-product-code-exception)
+    ("InvalidTokenException" . invalid-token-exception)
+    ("InvalidUsageDimensionException" . invalid-usage-dimension-exception)
+    ("ThrottlingException" . throttling-exception)
+    ("TimestampOutOfBoundsException" . timestamp-out-of-bounds-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-meter-usage-request (:copier common-lisp:nil)
@@ -460,19 +472,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'meteringmarketplace-request aws-sdk/generator/operation::input "POST"
         "/" "BatchMeterUsage" "2016-01-14"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateRequestException" . duplicate-request-exception)
-        ("ExpiredTokenException" . expired-token-exception)
-        ("InternalServiceErrorException" . internal-service-error-exception)
-        ("InvalidCustomerIdentifierException"
-         . invalid-customer-identifier-exception)
-        ("InvalidEndpointRegionException" . invalid-endpoint-region-exception)
-        ("InvalidProductCodeException" . invalid-product-code-exception)
-        ("InvalidTokenException" . invalid-token-exception)
-        ("InvalidUsageDimensionException" . invalid-usage-dimension-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("TimestampOutOfBoundsException"
-         . timestamp-out-of-bounds-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'batch-meter-usage))
 (common-lisp:progn
  (common-lisp:defun meter-usage
@@ -491,19 +491,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'meteringmarketplace-request aws-sdk/generator/operation::input "POST"
         "/" "MeterUsage" "2016-01-14"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateRequestException" . duplicate-request-exception)
-        ("ExpiredTokenException" . expired-token-exception)
-        ("InternalServiceErrorException" . internal-service-error-exception)
-        ("InvalidCustomerIdentifierException"
-         . invalid-customer-identifier-exception)
-        ("InvalidEndpointRegionException" . invalid-endpoint-region-exception)
-        ("InvalidProductCodeException" . invalid-product-code-exception)
-        ("InvalidTokenException" . invalid-token-exception)
-        ("InvalidUsageDimensionException" . invalid-usage-dimension-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("TimestampOutOfBoundsException"
-         . timestamp-out-of-bounds-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'meter-usage))
 (common-lisp:progn
  (common-lisp:defun resolve-customer
@@ -519,17 +507,5 @@
        (aws-sdk/generator/shape:make-request-with-input
         'meteringmarketplace-request aws-sdk/generator/operation::input "POST"
         "/" "ResolveCustomer" "2016-01-14"))
-      common-lisp:nil common-lisp:nil
-      '(("DuplicateRequestException" . duplicate-request-exception)
-        ("ExpiredTokenException" . expired-token-exception)
-        ("InternalServiceErrorException" . internal-service-error-exception)
-        ("InvalidCustomerIdentifierException"
-         . invalid-customer-identifier-exception)
-        ("InvalidEndpointRegionException" . invalid-endpoint-region-exception)
-        ("InvalidProductCodeException" . invalid-product-code-exception)
-        ("InvalidTokenException" . invalid-token-exception)
-        ("InvalidUsageDimensionException" . invalid-usage-dimension-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("TimestampOutOfBoundsException"
-         . timestamp-out-of-bounds-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'resolve-customer))

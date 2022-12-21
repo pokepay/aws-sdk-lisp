@@ -19,6 +19,31 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'elasticloadbalancing-error))
+(common-lisp:defvar *error-map*
+  '(("AccessPointNotFoundException" . access-point-not-found-exception)
+    ("CertificateNotFoundException" . certificate-not-found-exception)
+    ("DependencyThrottleException" . dependency-throttle-exception)
+    ("DuplicateAccessPointNameException"
+     . duplicate-access-point-name-exception)
+    ("DuplicateListenerException" . duplicate-listener-exception)
+    ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
+    ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+    ("InvalidConfigurationRequestException"
+     . invalid-configuration-request-exception)
+    ("InvalidEndPointException" . invalid-end-point-exception)
+    ("InvalidSchemeException" . invalid-scheme-exception)
+    ("InvalidSecurityGroupException" . invalid-security-group-exception)
+    ("InvalidSubnetException" . invalid-subnet-exception)
+    ("ListenerNotFoundException" . listener-not-found-exception)
+    ("LoadBalancerAttributeNotFoundException"
+     . load-balancer-attribute-not-found-exception)
+    ("PolicyNotFoundException" . policy-not-found-exception)
+    ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
+    ("SubnetNotFoundException" . subnet-not-found-exception)
+    ("TooManyAccessPointsException" . too-many-access-points-exception)
+    ("TooManyPoliciesException" . too-many-policies-exception)
+    ("TooManyTagsException" . too-many-tags-exception)
+    ("UnsupportedProtocolException" . unsupported-protocol-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (access-log (:copier common-lisp:nil)
@@ -3593,31 +3618,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "AddTags" "2012-06-01"))
-      common-lisp:nil "AddTagsResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "AddTagsResult" *error-map*)))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
  (common-lisp:defun apply-security-groups-to-load-balancer
@@ -3635,31 +3636,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "ApplySecurityGroupsToLoadBalancer" "2012-06-01"))
-      common-lisp:nil "ApplySecurityGroupsToLoadBalancerResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "ApplySecurityGroupsToLoadBalancerResult" *error-map*)))
  (common-lisp:export 'apply-security-groups-to-load-balancer))
 (common-lisp:progn
  (common-lisp:defun attach-load-balancer-to-subnets
@@ -3676,31 +3653,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "AttachLoadBalancerToSubnets" "2012-06-01"))
-      common-lisp:nil "AttachLoadBalancerToSubnetsResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "AttachLoadBalancerToSubnetsResult" *error-map*)))
  (common-lisp:export 'attach-load-balancer-to-subnets))
 (common-lisp:progn
  (common-lisp:defun configure-health-check
@@ -3717,31 +3670,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "ConfigureHealthCheck" "2012-06-01"))
-      common-lisp:nil "ConfigureHealthCheckResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "ConfigureHealthCheckResult" *error-map*)))
  (common-lisp:export 'configure-health-check))
 (common-lisp:progn
  (common-lisp:defun create-app-cookie-stickiness-policy
@@ -3760,31 +3689,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "CreateAppCookieStickinessPolicy" "2012-06-01"))
-      common-lisp:nil "CreateAppCookieStickinessPolicyResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "CreateAppCookieStickinessPolicyResult" *error-map*)))
  (common-lisp:export 'create-app-cookie-stickiness-policy))
 (common-lisp:progn
  (common-lisp:defun create-lbcookie-stickiness-policy
@@ -3804,31 +3709,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "CreateLBCookieStickinessPolicy" "2012-06-01"))
-      common-lisp:nil "CreateLBCookieStickinessPolicyResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "CreateLBCookieStickinessPolicyResult" *error-map*)))
  (common-lisp:export 'create-lbcookie-stickiness-policy))
 (common-lisp:progn
  (common-lisp:defun create-load-balancer
@@ -3847,31 +3728,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "CreateLoadBalancer" "2012-06-01"))
-      common-lisp:nil "CreateLoadBalancerResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "CreateLoadBalancerResult" *error-map*)))
  (common-lisp:export 'create-load-balancer))
 (common-lisp:progn
  (common-lisp:defun create-load-balancer-listeners
@@ -3888,31 +3745,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "CreateLoadBalancerListeners" "2012-06-01"))
-      common-lisp:nil "CreateLoadBalancerListenersResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "CreateLoadBalancerListenersResult" *error-map*)))
  (common-lisp:export 'create-load-balancer-listeners))
 (common-lisp:progn
  (common-lisp:defun create-load-balancer-policy
@@ -3932,31 +3765,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "CreateLoadBalancerPolicy" "2012-06-01"))
-      common-lisp:nil "CreateLoadBalancerPolicyResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "CreateLoadBalancerPolicyResult" *error-map*)))
  (common-lisp:export 'create-load-balancer-policy))
 (common-lisp:progn
  (common-lisp:defun delete-load-balancer
@@ -3972,31 +3781,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "DeleteLoadBalancer" "2012-06-01"))
-      common-lisp:nil "DeleteLoadBalancerResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "DeleteLoadBalancerResult" *error-map*)))
  (common-lisp:export 'delete-load-balancer))
 (common-lisp:progn
  (common-lisp:defun delete-load-balancer-listeners
@@ -4014,31 +3799,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "DeleteLoadBalancerListeners" "2012-06-01"))
-      common-lisp:nil "DeleteLoadBalancerListenersResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "DeleteLoadBalancerListenersResult" *error-map*)))
  (common-lisp:export 'delete-load-balancer-listeners))
 (common-lisp:progn
  (common-lisp:defun delete-load-balancer-policy
@@ -4055,31 +3816,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "DeleteLoadBalancerPolicy" "2012-06-01"))
-      common-lisp:nil "DeleteLoadBalancerPolicyResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "DeleteLoadBalancerPolicyResult" *error-map*)))
  (common-lisp:export 'delete-load-balancer-policy))
 (common-lisp:progn
  (common-lisp:defun deregister-instances-from-load-balancer
@@ -4096,30 +3833,7 @@
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "DeregisterInstancesFromLoadBalancer" "2012-06-01"))
       common-lisp:nil "DeregisterInstancesFromLoadBalancerResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      *error-map*)))
  (common-lisp:export 'deregister-instances-from-load-balancer))
 (common-lisp:progn
  (common-lisp:defun describe-account-limits
@@ -4135,31 +3849,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "DescribeAccountLimits" "2012-06-01"))
-      common-lisp:nil "DescribeAccountLimitsResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "DescribeAccountLimitsResult" *error-map*)))
  (common-lisp:export 'describe-account-limits))
 (common-lisp:progn
  (common-lisp:defun describe-instance-health
@@ -4175,31 +3865,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "DescribeInstanceHealth" "2012-06-01"))
-      common-lisp:nil "DescribeInstanceHealthResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "DescribeInstanceHealthResult" *error-map*)))
  (common-lisp:export 'describe-instance-health))
 (common-lisp:progn
  (common-lisp:defun describe-load-balancer-attributes
@@ -4216,31 +3882,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "DescribeLoadBalancerAttributes" "2012-06-01"))
-      common-lisp:nil "DescribeLoadBalancerAttributesResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "DescribeLoadBalancerAttributesResult" *error-map*)))
  (common-lisp:export 'describe-load-balancer-attributes))
 (common-lisp:progn
  (common-lisp:defun describe-load-balancer-policies
@@ -4258,31 +3900,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "DescribeLoadBalancerPolicies" "2012-06-01"))
-      common-lisp:nil "DescribeLoadBalancerPoliciesResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "DescribeLoadBalancerPoliciesResult" *error-map*)))
  (common-lisp:export 'describe-load-balancer-policies))
 (common-lisp:progn
  (common-lisp:defun describe-load-balancer-policy-types
@@ -4299,31 +3917,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "DescribeLoadBalancerPolicyTypes" "2012-06-01"))
-      common-lisp:nil "DescribeLoadBalancerPolicyTypesResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "DescribeLoadBalancerPolicyTypesResult" *error-map*)))
  (common-lisp:export 'describe-load-balancer-policy-types))
 (common-lisp:progn
  (common-lisp:defun describe-load-balancers
@@ -4340,31 +3934,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "DescribeLoadBalancers" "2012-06-01"))
-      common-lisp:nil "DescribeLoadBalancersResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "DescribeLoadBalancersResult" *error-map*)))
  (common-lisp:export 'describe-load-balancers))
 (common-lisp:progn
  (common-lisp:defun describe-tags
@@ -4380,31 +3950,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "DescribeTags" "2012-06-01"))
-      common-lisp:nil "DescribeTagsResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "DescribeTagsResult" *error-map*)))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
  (common-lisp:defun detach-load-balancer-from-subnets
@@ -4421,31 +3967,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "DetachLoadBalancerFromSubnets" "2012-06-01"))
-      common-lisp:nil "DetachLoadBalancerFromSubnetsResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "DetachLoadBalancerFromSubnetsResult" *error-map*)))
  (common-lisp:export 'detach-load-balancer-from-subnets))
 (common-lisp:progn
  (common-lisp:defun disable-availability-zones-for-load-balancer
@@ -4463,30 +3985,7 @@
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "DisableAvailabilityZonesForLoadBalancer" "2012-06-01"))
       common-lisp:nil "DisableAvailabilityZonesForLoadBalancerResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      *error-map*)))
  (common-lisp:export 'disable-availability-zones-for-load-balancer))
 (common-lisp:progn
  (common-lisp:defun enable-availability-zones-for-load-balancer
@@ -4504,30 +4003,7 @@
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "EnableAvailabilityZonesForLoadBalancer" "2012-06-01"))
       common-lisp:nil "EnableAvailabilityZonesForLoadBalancerResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      *error-map*)))
  (common-lisp:export 'enable-availability-zones-for-load-balancer))
 (common-lisp:progn
  (common-lisp:defun modify-load-balancer-attributes
@@ -4546,31 +4022,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "ModifyLoadBalancerAttributes" "2012-06-01"))
-      common-lisp:nil "ModifyLoadBalancerAttributesResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "ModifyLoadBalancerAttributesResult" *error-map*)))
  (common-lisp:export 'modify-load-balancer-attributes))
 (common-lisp:progn
  (common-lisp:defun register-instances-with-load-balancer
@@ -4586,31 +4038,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "RegisterInstancesWithLoadBalancer" "2012-06-01"))
-      common-lisp:nil "RegisterInstancesWithLoadBalancerResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "RegisterInstancesWithLoadBalancerResult" *error-map*)))
  (common-lisp:export 'register-instances-with-load-balancer))
 (common-lisp:progn
  (common-lisp:defun remove-tags
@@ -4626,31 +4054,7 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "RemoveTags" "2012-06-01"))
-      common-lisp:nil "RemoveTagsResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "RemoveTagsResult" *error-map*)))
  (common-lisp:export 'remove-tags))
 (common-lisp:progn
  (common-lisp:defun set-load-balancer-listener-sslcertificate
@@ -4671,30 +4075,7 @@
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "SetLoadBalancerListenerSSLCertificate" "2012-06-01"))
       common-lisp:nil "SetLoadBalancerListenerSSLCertificateResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      *error-map*)))
  (common-lisp:export 'set-load-balancer-listener-sslcertificate))
 (common-lisp:progn
  (common-lisp:defun set-load-balancer-policies-for-backend-server
@@ -4714,30 +4095,7 @@
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "SetLoadBalancerPoliciesForBackendServer" "2012-06-01"))
       common-lisp:nil "SetLoadBalancerPoliciesForBackendServerResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      *error-map*)))
  (common-lisp:export 'set-load-balancer-policies-for-backend-server))
 (common-lisp:progn
  (common-lisp:defun set-load-balancer-policies-of-listener
@@ -4756,29 +4114,5 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
         "/" "SetLoadBalancerPoliciesOfListener" "2012-06-01"))
-      common-lisp:nil "SetLoadBalancerPoliciesOfListenerResult"
-      '(("AccessPointNotFoundException" . access-point-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("DependencyThrottleException" . dependency-throttle-exception)
-        ("DuplicateAccessPointNameException"
-         . duplicate-access-point-name-exception)
-        ("DuplicateListenerException" . duplicate-listener-exception)
-        ("DuplicatePolicyNameException" . duplicate-policy-name-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)
-        ("InvalidEndPointException" . invalid-end-point-exception)
-        ("InvalidSchemeException" . invalid-scheme-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerAttributeNotFoundException"
-         . load-balancer-attribute-not-found-exception)
-        ("PolicyNotFoundException" . policy-not-found-exception)
-        ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("TooManyAccessPointsException" . too-many-access-points-exception)
-        ("TooManyPoliciesException" . too-many-policies-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
+      common-lisp:nil "SetLoadBalancerPoliciesOfListenerResult" *error-map*)))
  (common-lisp:export 'set-load-balancer-policies-of-listener))

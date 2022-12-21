@@ -18,6 +18,24 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'polly-error))
+(common-lisp:defvar *error-map*
+  '(("InvalidLexiconException" . invalid-lexicon-exception)
+    ("InvalidNextTokenException" . invalid-next-token-exception)
+    ("InvalidSampleRateException" . invalid-sample-rate-exception)
+    ("InvalidSsmlException" . invalid-ssml-exception)
+    ("LexiconNotFoundException" . lexicon-not-found-exception)
+    ("LexiconSizeExceededException" . lexicon-size-exceeded-exception)
+    ("MarksNotSupportedForFormatException"
+     . marks-not-supported-for-format-exception)
+    ("MaxLexemeLengthExceededException" . max-lexeme-length-exceeded-exception)
+    ("MaxLexiconsNumberExceededException"
+     . max-lexicons-number-exceeded-exception)
+    ("ServiceFailureException" . service-failure-exception)
+    ("SsmlMarksNotSupportedForTextTypeException"
+     . ssml-marks-not-supported-for-text-type-exception)
+    ("TextLengthExceededException" . text-length-exceeded-exception)
+    ("UnsupportedPlsAlphabetException" . unsupported-pls-alphabet-exception)
+    ("UnsupportedPlsLanguageException" . unsupported-pls-language-exception)))
 (common-lisp:deftype alphabet () 'common-lisp:string)
 (common-lisp:deftype audio-stream ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
@@ -761,27 +779,7 @@
                                                              'lexicon-name))))
                                                         "DeleteLexicon"
                                                         "2016-06-10"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidLexiconException" . invalid-lexicon-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidSampleRateException" . invalid-sample-rate-exception)
-        ("InvalidSsmlException" . invalid-ssml-exception)
-        ("LexiconNotFoundException" . lexicon-not-found-exception)
-        ("LexiconSizeExceededException" . lexicon-size-exceeded-exception)
-        ("MarksNotSupportedForFormatException"
-         . marks-not-supported-for-format-exception)
-        ("MaxLexemeLengthExceededException"
-         . max-lexeme-length-exceeded-exception)
-        ("MaxLexiconsNumberExceededException"
-         . max-lexicons-number-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)
-        ("SsmlMarksNotSupportedForTextTypeException"
-         . ssml-marks-not-supported-for-text-type-exception)
-        ("TextLengthExceededException" . text-length-exceeded-exception)
-        ("UnsupportedPlsAlphabetException"
-         . unsupported-pls-alphabet-exception)
-        ("UnsupportedPlsLanguageException"
-         . unsupported-pls-language-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-lexicon))
 (common-lisp:progn
  (common-lisp:defun describe-voices
@@ -799,27 +797,7 @@
                                                         "GET" "/v1/voices"
                                                         "DescribeVoices"
                                                         "2016-06-10"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidLexiconException" . invalid-lexicon-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidSampleRateException" . invalid-sample-rate-exception)
-        ("InvalidSsmlException" . invalid-ssml-exception)
-        ("LexiconNotFoundException" . lexicon-not-found-exception)
-        ("LexiconSizeExceededException" . lexicon-size-exceeded-exception)
-        ("MarksNotSupportedForFormatException"
-         . marks-not-supported-for-format-exception)
-        ("MaxLexemeLengthExceededException"
-         . max-lexeme-length-exceeded-exception)
-        ("MaxLexiconsNumberExceededException"
-         . max-lexicons-number-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)
-        ("SsmlMarksNotSupportedForTextTypeException"
-         . ssml-marks-not-supported-for-text-type-exception)
-        ("TextLengthExceededException" . text-length-exceeded-exception)
-        ("UnsupportedPlsAlphabetException"
-         . unsupported-pls-alphabet-exception)
-        ("UnsupportedPlsLanguageException"
-         . unsupported-pls-language-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-voices))
 (common-lisp:progn
  (common-lisp:defun get-lexicon
@@ -847,27 +825,7 @@
                                                              'lexicon-name))))
                                                         "GetLexicon"
                                                         "2016-06-10"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidLexiconException" . invalid-lexicon-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidSampleRateException" . invalid-sample-rate-exception)
-        ("InvalidSsmlException" . invalid-ssml-exception)
-        ("LexiconNotFoundException" . lexicon-not-found-exception)
-        ("LexiconSizeExceededException" . lexicon-size-exceeded-exception)
-        ("MarksNotSupportedForFormatException"
-         . marks-not-supported-for-format-exception)
-        ("MaxLexemeLengthExceededException"
-         . max-lexeme-length-exceeded-exception)
-        ("MaxLexiconsNumberExceededException"
-         . max-lexicons-number-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)
-        ("SsmlMarksNotSupportedForTextTypeException"
-         . ssml-marks-not-supported-for-text-type-exception)
-        ("TextLengthExceededException" . text-length-exceeded-exception)
-        ("UnsupportedPlsAlphabetException"
-         . unsupported-pls-alphabet-exception)
-        ("UnsupportedPlsLanguageException"
-         . unsupported-pls-language-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-lexicon))
 (common-lisp:progn
  (common-lisp:defun list-lexicons
@@ -885,27 +843,7 @@
                                                         "GET" "/v1/lexicons"
                                                         "ListLexicons"
                                                         "2016-06-10"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidLexiconException" . invalid-lexicon-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidSampleRateException" . invalid-sample-rate-exception)
-        ("InvalidSsmlException" . invalid-ssml-exception)
-        ("LexiconNotFoundException" . lexicon-not-found-exception)
-        ("LexiconSizeExceededException" . lexicon-size-exceeded-exception)
-        ("MarksNotSupportedForFormatException"
-         . marks-not-supported-for-format-exception)
-        ("MaxLexemeLengthExceededException"
-         . max-lexeme-length-exceeded-exception)
-        ("MaxLexiconsNumberExceededException"
-         . max-lexicons-number-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)
-        ("SsmlMarksNotSupportedForTextTypeException"
-         . ssml-marks-not-supported-for-text-type-exception)
-        ("TextLengthExceededException" . text-length-exceeded-exception)
-        ("UnsupportedPlsAlphabetException"
-         . unsupported-pls-alphabet-exception)
-        ("UnsupportedPlsLanguageException"
-         . unsupported-pls-language-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-lexicons))
 (common-lisp:progn
  (common-lisp:defun put-lexicon
@@ -933,27 +871,7 @@
                                                              'lexicon-name))))
                                                         "PutLexicon"
                                                         "2016-06-10"))
-      common-lisp:nil common-lisp:nil
-      '(("InvalidLexiconException" . invalid-lexicon-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidSampleRateException" . invalid-sample-rate-exception)
-        ("InvalidSsmlException" . invalid-ssml-exception)
-        ("LexiconNotFoundException" . lexicon-not-found-exception)
-        ("LexiconSizeExceededException" . lexicon-size-exceeded-exception)
-        ("MarksNotSupportedForFormatException"
-         . marks-not-supported-for-format-exception)
-        ("MaxLexemeLengthExceededException"
-         . max-lexeme-length-exceeded-exception)
-        ("MaxLexiconsNumberExceededException"
-         . max-lexicons-number-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)
-        ("SsmlMarksNotSupportedForTextTypeException"
-         . ssml-marks-not-supported-for-text-type-exception)
-        ("TextLengthExceededException" . text-length-exceeded-exception)
-        ("UnsupportedPlsAlphabetException"
-         . unsupported-pls-alphabet-exception)
-        ("UnsupportedPlsLanguageException"
-         . unsupported-pls-language-exception)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-lexicon))
 (common-lisp:progn
  (common-lisp:defun synthesize-speech
@@ -974,25 +892,5 @@
                                                         "POST" "/v1/speech"
                                                         "SynthesizeSpeech"
                                                         "2016-06-10"))
-      "blob" common-lisp:nil
-      '(("InvalidLexiconException" . invalid-lexicon-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("InvalidSampleRateException" . invalid-sample-rate-exception)
-        ("InvalidSsmlException" . invalid-ssml-exception)
-        ("LexiconNotFoundException" . lexicon-not-found-exception)
-        ("LexiconSizeExceededException" . lexicon-size-exceeded-exception)
-        ("MarksNotSupportedForFormatException"
-         . marks-not-supported-for-format-exception)
-        ("MaxLexemeLengthExceededException"
-         . max-lexeme-length-exceeded-exception)
-        ("MaxLexiconsNumberExceededException"
-         . max-lexicons-number-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)
-        ("SsmlMarksNotSupportedForTextTypeException"
-         . ssml-marks-not-supported-for-text-type-exception)
-        ("TextLengthExceededException" . text-length-exceeded-exception)
-        ("UnsupportedPlsAlphabetException"
-         . unsupported-pls-alphabet-exception)
-        ("UnsupportedPlsLanguageException"
-         . unsupported-pls-language-exception)))))
+      "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'synthesize-speech))

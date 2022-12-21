@@ -18,6 +18,17 @@
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'swf-error))
+(common-lisp:defvar *error-map*
+  '(("DefaultUndefinedFault" . default-undefined-fault)
+    ("DomainAlreadyExistsFault" . domain-already-exists-fault)
+    ("DomainDeprecatedFault" . domain-deprecated-fault)
+    ("LimitExceededFault" . limit-exceeded-fault)
+    ("OperationNotPermittedFault" . operation-not-permitted-fault)
+    ("TypeAlreadyExistsFault" . type-already-exists-fault)
+    ("TypeDeprecatedFault" . type-deprecated-fault)
+    ("UnknownResourceFault" . unknown-resource-fault)
+    ("WorkflowExecutionAlreadyStartedFault"
+     . workflow-execution-already-started-fault)))
 (common-lisp:deftype activity-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -8406,17 +8417,7 @@
                                                         "POST" "/"
                                                         "CountClosedWorkflowExecutions"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'count-closed-workflow-executions))
 (common-lisp:progn
  (common-lisp:defun count-open-workflow-executions
@@ -8438,17 +8439,7 @@
                                                         "POST" "/"
                                                         "CountOpenWorkflowExecutions"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'count-open-workflow-executions))
 (common-lisp:progn
  (common-lisp:defun count-pending-activity-tasks
@@ -8467,17 +8458,7 @@
                                                         "POST" "/"
                                                         "CountPendingActivityTasks"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'count-pending-activity-tasks))
 (common-lisp:progn
  (common-lisp:defun count-pending-decision-tasks
@@ -8496,17 +8477,7 @@
                                                         "POST" "/"
                                                         "CountPendingDecisionTasks"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'count-pending-decision-tasks))
 (common-lisp:progn
  (common-lisp:defun deprecate-activity-type
@@ -8524,17 +8495,7 @@
                                                         "POST" "/"
                                                         "DeprecateActivityType"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'deprecate-activity-type))
 (common-lisp:progn
  (common-lisp:defun deprecate-domain
@@ -8552,17 +8513,7 @@
                                                         "POST" "/"
                                                         "DeprecateDomain"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'deprecate-domain))
 (common-lisp:progn
  (common-lisp:defun deprecate-workflow-type
@@ -8580,17 +8531,7 @@
                                                         "POST" "/"
                                                         "DeprecateWorkflowType"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'deprecate-workflow-type))
 (common-lisp:progn
  (common-lisp:defun describe-activity-type
@@ -8608,17 +8549,7 @@
                                                         "POST" "/"
                                                         "DescribeActivityType"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-activity-type))
 (common-lisp:progn
  (common-lisp:defun describe-domain
@@ -8636,17 +8567,7 @@
                                                         "POST" "/"
                                                         "DescribeDomain"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-domain))
 (common-lisp:progn
  (common-lisp:defun describe-workflow-execution
@@ -8665,17 +8586,7 @@
                                                         "POST" "/"
                                                         "DescribeWorkflowExecution"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-workflow-execution))
 (common-lisp:progn
  (common-lisp:defun describe-workflow-type
@@ -8693,17 +8604,7 @@
                                                         "POST" "/"
                                                         "DescribeWorkflowType"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-workflow-type))
 (common-lisp:progn
  (common-lisp:defun get-workflow-execution-history
@@ -8725,17 +8626,7 @@
                                                         "POST" "/"
                                                         "GetWorkflowExecutionHistory"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-workflow-execution-history))
 (common-lisp:progn
  (common-lisp:defun list-activity-types
@@ -8756,17 +8647,7 @@
                                                         "POST" "/"
                                                         "ListActivityTypes"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-activity-types))
 (common-lisp:progn
  (common-lisp:defun list-closed-workflow-executions
@@ -8791,17 +8672,7 @@
                                                         "POST" "/"
                                                         "ListClosedWorkflowExecutions"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-closed-workflow-executions))
 (common-lisp:progn
  (common-lisp:defun list-domains
@@ -8822,17 +8693,7 @@
                                                         "POST" "/"
                                                         "ListDomains"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-domains))
 (common-lisp:progn
  (common-lisp:defun list-open-workflow-executions
@@ -8855,17 +8716,7 @@
                                                         "POST" "/"
                                                         "ListOpenWorkflowExecutions"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-open-workflow-executions))
 (common-lisp:progn
  (common-lisp:defun list-workflow-types
@@ -8886,17 +8737,7 @@
                                                         "POST" "/"
                                                         "ListWorkflowTypes"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-workflow-types))
 (common-lisp:progn
  (common-lisp:defun poll-for-activity-task
@@ -8914,17 +8755,7 @@
                                                         "POST" "/"
                                                         "PollForActivityTask"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'poll-for-activity-task))
 (common-lisp:progn
  (common-lisp:defun poll-for-decision-task
@@ -8945,17 +8776,7 @@
                                                         "POST" "/"
                                                         "PollForDecisionTask"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'poll-for-decision-task))
 (common-lisp:progn
  (common-lisp:defun record-activity-task-heartbeat
@@ -8974,17 +8795,7 @@
                                                         "POST" "/"
                                                         "RecordActivityTaskHeartbeat"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'record-activity-task-heartbeat))
 (common-lisp:progn
  (common-lisp:defun register-activity-type
@@ -9012,17 +8823,7 @@
                                                         "POST" "/"
                                                         "RegisterActivityType"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'register-activity-type))
 (common-lisp:progn
  (common-lisp:defun register-domain
@@ -9043,17 +8844,7 @@
                                                         "POST" "/"
                                                         "RegisterDomain"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'register-domain))
 (common-lisp:progn
  (common-lisp:defun register-workflow-type
@@ -9079,17 +8870,7 @@
                                                         "POST" "/"
                                                         "RegisterWorkflowType"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'register-workflow-type))
 (common-lisp:progn
  (common-lisp:defun request-cancel-workflow-execution
@@ -9108,17 +8889,7 @@
                                                         "POST" "/"
                                                         "RequestCancelWorkflowExecution"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'request-cancel-workflow-execution))
 (common-lisp:progn
  (common-lisp:defun respond-activity-task-canceled
@@ -9137,17 +8908,7 @@
                                                         "POST" "/"
                                                         "RespondActivityTaskCanceled"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'respond-activity-task-canceled))
 (common-lisp:progn
  (common-lisp:defun respond-activity-task-completed
@@ -9166,17 +8927,7 @@
                                                         "POST" "/"
                                                         "RespondActivityTaskCompleted"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'respond-activity-task-completed))
 (common-lisp:progn
  (common-lisp:defun respond-activity-task-failed
@@ -9195,17 +8946,7 @@
                                                         "POST" "/"
                                                         "RespondActivityTaskFailed"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'respond-activity-task-failed))
 (common-lisp:progn
  (common-lisp:defun respond-decision-task-completed
@@ -9225,17 +8966,7 @@
                                                         "POST" "/"
                                                         "RespondDecisionTaskCompleted"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'respond-decision-task-completed))
 (common-lisp:progn
  (common-lisp:defun signal-workflow-execution
@@ -9255,17 +8986,7 @@
                                                         "POST" "/"
                                                         "SignalWorkflowExecution"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'signal-workflow-execution))
 (common-lisp:progn
  (common-lisp:defun start-workflow-execution
@@ -9289,17 +9010,7 @@
                                                         "POST" "/"
                                                         "StartWorkflowExecution"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'start-workflow-execution))
 (common-lisp:progn
  (common-lisp:defun terminate-workflow-execution
@@ -9321,15 +9032,5 @@
                                                         "POST" "/"
                                                         "TerminateWorkflowExecution"
                                                         "2012-01-25"))
-      common-lisp:nil common-lisp:nil
-      '(("DefaultUndefinedFault" . default-undefined-fault)
-        ("DomainAlreadyExistsFault" . domain-already-exists-fault)
-        ("DomainDeprecatedFault" . domain-deprecated-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("OperationNotPermittedFault" . operation-not-permitted-fault)
-        ("TypeAlreadyExistsFault" . type-already-exists-fault)
-        ("TypeDeprecatedFault" . type-deprecated-fault)
-        ("UnknownResourceFault" . unknown-resource-fault)
-        ("WorkflowExecutionAlreadyStartedFault"
-         . workflow-execution-already-started-fault)))))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'terminate-workflow-execution))
