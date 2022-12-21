@@ -104,7 +104,7 @@
                   ,body-type
                   ,(and output
                         (gethash "resultWrapper" output))
-                  ',error-map)))
+                  ,error-map)))
              (export ',(lispify name))))
         `(progn
            (defun ,(lispify name) ()
@@ -117,5 +117,5 @@
               ,body-type
               ,(and output
                     (gethash "resultWrapper" output))
-              ',error-map))
+              ,error-map))
            (export ',(lispify name))))))
