@@ -10625,7 +10625,8 @@
                                                             aws-sdk/generator/operation::input
                                                             'key)))
                                                         "GetObject"
-                                                        "2006-03-01"))
+                                                        "2006-03-01")
+       :want-stream common-lisp:t)
       "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'get-object))
 (common-lisp:progn
@@ -10719,7 +10720,8 @@
                                                             aws-sdk/generator/operation::input
                                                             'key)))
                                                         "GetObjectTorrent"
-                                                        "2006-03-01"))
+                                                        "2006-03-01")
+       :want-stream common-lisp:t)
       "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'get-object-torrent))
 (common-lisp:progn

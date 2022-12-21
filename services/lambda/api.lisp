@@ -3036,7 +3036,8 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'function-name))))
-                                                        "Invoke" "2015-03-31"))
+                                                        "Invoke" "2015-03-31")
+       :want-stream common-lisp:t)
       "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'invoke))
 (common-lisp:progn
