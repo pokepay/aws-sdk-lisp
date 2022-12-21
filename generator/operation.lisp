@@ -13,8 +13,6 @@
   (:import-from #:cl-ppcre
                 #:regex-replace-all
                 #:do-matches-as-strings)
-  (:import-from #:babel
-                #:octets-to-string)
   (:import-from #:assoc-utils
                 #:aget)
   (:import-from #:alexandria
@@ -35,18 +33,15 @@
 (defun xmls-to-alist (xmls)
   (list (%xmls-to-alist xmls)))
 
-(defun ensure-string (value)
-  (if (stringp value)
-      value
-      (babel:octets-to-string value)))
-
 (defun parse-response (response body-type wrapper-name error-map)
   (destructuring-bind (body status headers &rest ignore-args)
       response
     (declare (ignore ignore-args headers))
     (if (<= 400 status 599)
-        (when (and body (/= 0 (length body)))
-          (let* ((output (xmls-to-alist (xmls:parse-to-list (ensure-string body))))
+        (let ((body (ensure-string (or body ""))))
+          (when (= 0 (length body))
+            (error "Unexpected error raised with status=~A" status))
+          (let* ((output (xmls-to-alist (xmls:parse-to-list body)))
                  (error-alist (aget output "Error"))
                  (error-class (or (aget error-map (first (aget error-alist "Code")))
                                   'aws-error)))
@@ -57,14 +52,15 @@
                    :body body)))
         (if (equal body-type "blob")
             body
-            (when (and body (/= 0 (length body)))
-              (let* ((output (xmls-to-alist (xmls:parse-to-list (ensure-string body))))
-                     (output ;; Unwrap the root element
-                       (cdr (first output))))
-                (if wrapper-name
-                    (values (aget output wrapper-name)
-                            (aget output "ResponseMetadata"))
-                    output)))))))
+            (let ((body (ensure-string (or body ""))))
+              (when (/= 0 (length body))
+                (let* ((output (xmls-to-alist (xmls:parse-to-list body)))
+                       (output ;; Unwrap the root element
+                         (cdr (first output))))
+                  (if wrapper-name
+                      (values (aget output wrapper-name)
+                              (aget output "ResponseMetadata"))
+                      output))))))))
 
 (defun compile-path-pattern (path-pattern)
   (when path-pattern
@@ -100,7 +96,9 @@
                   (aws-request
                     (make-request-with-input
                       ',(intern (format nil "~:@(~A-REQUEST~)" service))
-                      input ,method ,(compile-path-pattern request-uri) ,name ,version))
+                      input ,method ,(compile-path-pattern request-uri) ,name ,version)
+                    ,@(when (equal body-type "blob")
+                        '(:want-stream t)))
                   ,body-type
                   ,(and output
                         (gethash "resultWrapper" output))
@@ -113,7 +111,9 @@
                  (make-instance ',(intern (format nil "~:@(~A-REQUEST~)" service))
                                 :method ,method
                                 :path ,request-uri
-                                :params `(("Action" . ,,name) ("Version" . ,,version))))
+                                :params `(("Action" . ,,name) ("Version" . ,,version)))
+                 ,@(when (equal body-type "blob")
+                     '(:want-stream t)))
               ,body-type
               ,(and output
                     (gethash "resultWrapper" output))

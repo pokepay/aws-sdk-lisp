@@ -26,7 +26,7 @@
            #:aws-request))
 (in-package #:aws-sdk/api)
 
-(defun aws-request (req)
+(defun aws-request (req &key want-stream)
   (check-type req request)
   (let* ((session (request-session req))
          (credentials (or (session-credentials session)
@@ -63,4 +63,5 @@
                                     ("X-Amz-Content-Sha256" . ,(aws-sdk/utils::sha-256 (or payload "")))
                                     ("Content-Type" . "application/x-amz-json-1.0")
                                     ,@headers)
-                         :content payload)))))))
+                         :content payload
+                         :want-stream want-stream)))))))
