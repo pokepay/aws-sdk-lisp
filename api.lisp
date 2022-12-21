@@ -64,4 +64,5 @@
                                     ("Content-Type" . "application/x-amz-json-1.0")
                                     ,@headers)
                          :content payload
+                         :keep-alive nil
                          :want-stream want-stream)))))))
