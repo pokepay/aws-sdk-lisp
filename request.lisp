@@ -66,7 +66,8 @@
                        append (to-query-params k v)))
          (loop for i from 1
                for v in value
-               collect (cons (format nil "~A.member.~A" key i) v))))
+               append (to-query-params (format nil "~A.member.~A" key i)
+                                       (aws-sdk/generator/shape::input-params v)))))
     (boolean
      (list (cons key
                  (if value
