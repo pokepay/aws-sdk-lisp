@@ -119,14 +119,14 @@
 (defun compile-list-shape (name member)
   `(progn
      (deftype ,(lispify* name) () '(proper-list ,(lispify* member)))
-     (defun ,(intern (format nil "~A-~A" '#:make (lispify* name))) (&rest members)
+     (defun ,(intern (format nil "~:@(~A-~A~)" '#:make (lispify* name))) (&rest members)
        (check-type members (proper-list ,(lispify* member)))
        members)))
 
 (defun compile-map-shape (name)
   `(progn
      (deftype ,(lispify* name) () 'hash-table)
-     (defun ,(intern (format nil "~A-~A" '#:make (lispify* name))) (key-values)
+     (defun ,(intern (format nil "~:@(~A-~A~)" '#:make (lispify* name))) (key-values)
        (etypecase key-values
          (hash-table key-values)
          (list (alist-hash-table key-values))))))
