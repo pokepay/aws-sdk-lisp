@@ -6,6 +6,7 @@
     "jsonVersion":"1.1",
     "protocol":"json",
     "serviceFullName":"Amazon Cognito Identity",
+    "serviceId":"Cognito Identity",
     "signatureVersion":"v4",
     "targetPrefix":"AWSCognitoIdentityService",
     "uid":"cognito-identity-2014-06-30"
@@ -106,7 +107,8 @@
         {"shape":"InvalidIdentityPoolConfigurationException"},
         {"shape":"InternalErrorException"},
         {"shape":"ExternalServiceException"}
-      ]
+      ],
+      "authtype":"none"
     },
     "GetId":{
       "name":"GetId",
@@ -125,7 +127,8 @@
         {"shape":"InternalErrorException"},
         {"shape":"LimitExceededException"},
         {"shape":"ExternalServiceException"}
-      ]
+      ],
+      "authtype":"none"
     },
     "GetIdentityPoolRoles":{
       "name":"GetIdentityPoolRoles",
@@ -160,7 +163,8 @@
         {"shape":"TooManyRequestsException"},
         {"shape":"InternalErrorException"},
         {"shape":"ExternalServiceException"}
-      ]
+      ],
+      "authtype":"none"
     },
     "GetOpenIdTokenForDeveloperIdentity":{
       "name":"GetOpenIdTokenForDeveloperIdentity",
@@ -178,6 +182,22 @@
         {"shape":"TooManyRequestsException"},
         {"shape":"InternalErrorException"},
         {"shape":"DeveloperUserAlreadyRegisteredException"}
+      ]
+    },
+    "GetPrincipalTagAttributeMap":{
+      "name":"GetPrincipalTagAttributeMap",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"GetPrincipalTagAttributeMapInput"},
+      "output":{"shape":"GetPrincipalTagAttributeMapResponse"},
+      "errors":[
+        {"shape":"InvalidParameterException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"NotAuthorizedException"},
+        {"shape":"TooManyRequestsException"},
+        {"shape":"InternalErrorException"}
       ]
     },
     "ListIdentities":{
@@ -206,6 +226,23 @@
       "output":{"shape":"ListIdentityPoolsResponse"},
       "errors":[
         {"shape":"InvalidParameterException"},
+        {"shape":"NotAuthorizedException"},
+        {"shape":"TooManyRequestsException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InternalErrorException"}
+      ]
+    },
+    "ListTagsForResource":{
+      "name":"ListTagsForResource",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListTagsForResourceInput"},
+      "output":{"shape":"ListTagsForResourceResponse"},
+      "errors":[
+        {"shape":"InvalidParameterException"},
+        {"shape":"ResourceNotFoundException"},
         {"shape":"NotAuthorizedException"},
         {"shape":"TooManyRequestsException"},
         {"shape":"InternalErrorException"}
@@ -262,6 +299,38 @@
         {"shape":"ConcurrentModificationException"}
       ]
     },
+    "SetPrincipalTagAttributeMap":{
+      "name":"SetPrincipalTagAttributeMap",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"SetPrincipalTagAttributeMapInput"},
+      "output":{"shape":"SetPrincipalTagAttributeMapResponse"},
+      "errors":[
+        {"shape":"InvalidParameterException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"NotAuthorizedException"},
+        {"shape":"TooManyRequestsException"},
+        {"shape":"InternalErrorException"}
+      ]
+    },
+    "TagResource":{
+      "name":"TagResource",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"TagResourceInput"},
+      "output":{"shape":"TagResourceResponse"},
+      "errors":[
+        {"shape":"InvalidParameterException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"NotAuthorizedException"},
+        {"shape":"TooManyRequestsException"},
+        {"shape":"InternalErrorException"}
+      ]
+    },
     "UnlinkDeveloperIdentity":{
       "name":"UnlinkDeveloperIdentity",
       "http":{
@@ -293,6 +362,23 @@
         {"shape":"TooManyRequestsException"},
         {"shape":"InternalErrorException"},
         {"shape":"ExternalServiceException"}
+      ],
+      "authtype":"none"
+    },
+    "UntagResource":{
+      "name":"UntagResource",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UntagResourceInput"},
+      "output":{"shape":"UntagResourceResponse"},
+      "errors":[
+        {"shape":"InvalidParameterException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"NotAuthorizedException"},
+        {"shape":"TooManyRequestsException"},
+        {"shape":"InternalErrorException"}
       ]
     },
     "UpdateIdentityPool":{
@@ -346,6 +432,7 @@
       "max":128,
       "min":1
     },
+    "ClassicFlow":{"type":"boolean"},
     "CognitoIdentityProvider":{
       "type":"structure",
       "members":{
@@ -390,11 +477,13 @@
       "members":{
         "IdentityPoolName":{"shape":"IdentityPoolName"},
         "AllowUnauthenticatedIdentities":{"shape":"IdentityPoolUnauthenticated"},
+        "AllowClassicFlow":{"shape":"ClassicFlow"},
         "SupportedLoginProviders":{"shape":"IdentityProviders"},
         "DeveloperProviderName":{"shape":"DeveloperProviderName"},
         "OpenIdConnectProviderARNs":{"shape":"OIDCProviderList"},
         "CognitoIdentityProviders":{"shape":"CognitoIdentityProviderList"},
-        "SamlProviderARNs":{"shape":"SAMLProviderList"}
+        "SamlProviderARNs":{"shape":"SAMLProviderList"},
+        "IdentityPoolTags":{"shape":"IdentityPoolTagsType"}
       }
     },
     "Credentials":{
@@ -533,6 +622,7 @@
         "IdentityPoolId":{"shape":"IdentityPoolId"},
         "IdentityId":{"shape":"IdentityId"},
         "Logins":{"shape":"LoginsMap"},
+        "PrincipalTags":{"shape":"PrincipalTags"},
         "TokenDuration":{"shape":"TokenDuration"}
       }
     },
@@ -556,6 +646,26 @@
       "members":{
         "IdentityId":{"shape":"IdentityId"},
         "Token":{"shape":"OIDCToken"}
+      }
+    },
+    "GetPrincipalTagAttributeMapInput":{
+      "type":"structure",
+      "required":[
+        "IdentityPoolId",
+        "IdentityProviderName"
+      ],
+      "members":{
+        "IdentityPoolId":{"shape":"IdentityPoolId"},
+        "IdentityProviderName":{"shape":"IdentityProviderName"}
+      }
+    },
+    "GetPrincipalTagAttributeMapResponse":{
+      "type":"structure",
+      "members":{
+        "IdentityPoolId":{"shape":"IdentityPoolId"},
+        "IdentityProviderName":{"shape":"IdentityProviderName"},
+        "UseDefaults":{"shape":"UseDefaults"},
+        "PrincipalTags":{"shape":"PrincipalTags"}
       }
     },
     "HideDisabled":{"type":"boolean"},
@@ -595,11 +705,13 @@
         "IdentityPoolId":{"shape":"IdentityPoolId"},
         "IdentityPoolName":{"shape":"IdentityPoolName"},
         "AllowUnauthenticatedIdentities":{"shape":"IdentityPoolUnauthenticated"},
+        "AllowClassicFlow":{"shape":"ClassicFlow"},
         "SupportedLoginProviders":{"shape":"IdentityProviders"},
         "DeveloperProviderName":{"shape":"DeveloperProviderName"},
         "OpenIdConnectProviderARNs":{"shape":"OIDCProviderList"},
         "CognitoIdentityProviders":{"shape":"CognitoIdentityProviderList"},
-        "SamlProviderARNs":{"shape":"SAMLProviderList"}
+        "SamlProviderARNs":{"shape":"SAMLProviderList"},
+        "IdentityPoolTags":{"shape":"IdentityPoolTagsType"}
       }
     },
     "IdentityPoolId":{
@@ -612,7 +724,7 @@
       "type":"string",
       "max":128,
       "min":1,
-      "pattern":"[\\w ]+"
+      "pattern":"[\\w\\s+=,.@-]+"
     },
     "IdentityPoolShortDescription":{
       "type":"structure",
@@ -620,6 +732,15 @@
         "IdentityPoolId":{"shape":"IdentityPoolId"},
         "IdentityPoolName":{"shape":"IdentityPoolName"}
       }
+    },
+    "IdentityPoolTagsListType":{
+      "type":"list",
+      "member":{"shape":"TagKeysType"}
+    },
+    "IdentityPoolTagsType":{
+      "type":"map",
+      "key":{"shape":"TagKeysType"},
+      "value":{"shape":"TagValueType"}
     },
     "IdentityPoolUnauthenticated":{"type":"boolean"},
     "IdentityPoolsList":{
@@ -713,6 +834,19 @@
         "NextToken":{"shape":"PaginationKey"}
       }
     },
+    "ListTagsForResourceInput":{
+      "type":"structure",
+      "required":["ResourceArn"],
+      "members":{
+        "ResourceArn":{"shape":"ARNString"}
+      }
+    },
+    "ListTagsForResourceResponse":{
+      "type":"structure",
+      "members":{
+        "Tags":{"shape":"IdentityPoolTagsType"}
+      }
+    },
     "LoginsList":{
       "type":"list",
       "member":{"shape":"IdentityProviderName"}
@@ -769,7 +903,7 @@
     "MappingRulesList":{
       "type":"list",
       "member":{"shape":"MappingRule"},
-      "max":25,
+      "max":400,
       "min":1
     },
     "MergeDeveloperIdentitiesInput":{
@@ -807,8 +941,25 @@
     "OIDCToken":{"type":"string"},
     "PaginationKey":{
       "type":"string",
+      "max":65535,
       "min":1,
       "pattern":"[\\S]+"
+    },
+    "PrincipalTagID":{
+      "type":"string",
+      "max":128,
+      "min":1
+    },
+    "PrincipalTagValue":{
+      "type":"string",
+      "max":256,
+      "min":1
+    },
+    "PrincipalTags":{
+      "type":"map",
+      "key":{"shape":"PrincipalTagID"},
+      "value":{"shape":"PrincipalTagValue"},
+      "max":50
     },
     "QueryLimit":{
       "type":"integer",
@@ -853,6 +1004,8 @@
     },
     "RoleType":{
       "type":"string",
+      "max":128,
+      "min":1,
       "pattern":"(un)?authenticated"
     },
     "RolesMap":{
@@ -886,7 +1039,55 @@
         "RoleMappings":{"shape":"RoleMappingMap"}
       }
     },
+    "SetPrincipalTagAttributeMapInput":{
+      "type":"structure",
+      "required":[
+        "IdentityPoolId",
+        "IdentityProviderName"
+      ],
+      "members":{
+        "IdentityPoolId":{"shape":"IdentityPoolId"},
+        "IdentityProviderName":{"shape":"IdentityProviderName"},
+        "UseDefaults":{"shape":"UseDefaults"},
+        "PrincipalTags":{"shape":"PrincipalTags"}
+      }
+    },
+    "SetPrincipalTagAttributeMapResponse":{
+      "type":"structure",
+      "members":{
+        "IdentityPoolId":{"shape":"IdentityPoolId"},
+        "IdentityProviderName":{"shape":"IdentityProviderName"},
+        "UseDefaults":{"shape":"UseDefaults"},
+        "PrincipalTags":{"shape":"PrincipalTags"}
+      }
+    },
     "String":{"type":"string"},
+    "TagKeysType":{
+      "type":"string",
+      "max":128,
+      "min":1
+    },
+    "TagResourceInput":{
+      "type":"structure",
+      "required":[
+        "ResourceArn",
+        "Tags"
+      ],
+      "members":{
+        "ResourceArn":{"shape":"ARNString"},
+        "Tags":{"shape":"IdentityPoolTagsType"}
+      }
+    },
+    "TagResourceResponse":{
+      "type":"structure",
+      "members":{
+      }
+    },
+    "TagValueType":{
+      "type":"string",
+      "max":256,
+      "min":0
+    },
     "TokenDuration":{
       "type":"long",
       "max":86400,
@@ -938,6 +1139,23 @@
       "type":"list",
       "member":{"shape":"UnprocessedIdentityId"},
       "max":60
-    }
+    },
+    "UntagResourceInput":{
+      "type":"structure",
+      "required":[
+        "ResourceArn",
+        "TagKeys"
+      ],
+      "members":{
+        "ResourceArn":{"shape":"ARNString"},
+        "TagKeys":{"shape":"IdentityPoolTagsListType"}
+      }
+    },
+    "UntagResourceResponse":{
+      "type":"structure",
+      "members":{
+      }
+    },
+    "UseDefaults":{"type":"boolean"}
   }
 }

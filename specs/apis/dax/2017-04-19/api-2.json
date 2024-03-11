@@ -7,6 +7,7 @@
     "protocol":"json",
     "serviceAbbreviation":"Amazon DAX",
     "serviceFullName":"Amazon DynamoDB Accelerator (DAX)",
+    "serviceId":"DAX",
     "signatureVersion":"v4",
     "targetPrefix":"AmazonDAXV3",
     "uid":"dax-2017-04-19"
@@ -32,8 +33,10 @@
         {"shape":"NodeQuotaForCustomerExceededFault"},
         {"shape":"InvalidVPCNetworkStateFault"},
         {"shape":"TagQuotaPerResourceExceeded"},
+        {"shape":"ServiceLinkedRoleNotFoundFault"},
         {"shape":"InvalidParameterValueException"},
-        {"shape":"InvalidParameterCombinationException"}
+        {"shape":"InvalidParameterCombinationException"},
+        {"shape":"ServiceQuotaExceededException"}
       ]
     },
     "CreateParameterGroup":{
@@ -48,6 +51,7 @@
         {"shape":"ParameterGroupQuotaExceededFault"},
         {"shape":"ParameterGroupAlreadyExistsFault"},
         {"shape":"InvalidParameterGroupStateFault"},
+        {"shape":"ServiceLinkedRoleNotFoundFault"},
         {"shape":"InvalidParameterValueException"},
         {"shape":"InvalidParameterCombinationException"}
       ]
@@ -64,7 +68,8 @@
         {"shape":"SubnetGroupAlreadyExistsFault"},
         {"shape":"SubnetGroupQuotaExceededFault"},
         {"shape":"SubnetQuotaExceededFault"},
-        {"shape":"InvalidSubnet"}
+        {"shape":"InvalidSubnet"},
+        {"shape":"ServiceLinkedRoleNotFoundFault"}
       ]
     },
     "DecreaseReplicationFactor":{
@@ -79,6 +84,7 @@
         {"shape":"ClusterNotFoundFault"},
         {"shape":"NodeNotFoundFault"},
         {"shape":"InvalidClusterStateFault"},
+        {"shape":"ServiceLinkedRoleNotFoundFault"},
         {"shape":"InvalidParameterValueException"},
         {"shape":"InvalidParameterCombinationException"}
       ]
@@ -94,6 +100,7 @@
       "errors":[
         {"shape":"ClusterNotFoundFault"},
         {"shape":"InvalidClusterStateFault"},
+        {"shape":"ServiceLinkedRoleNotFoundFault"},
         {"shape":"InvalidParameterValueException"},
         {"shape":"InvalidParameterCombinationException"}
       ]
@@ -109,6 +116,7 @@
       "errors":[
         {"shape":"InvalidParameterGroupStateFault"},
         {"shape":"ParameterGroupNotFoundFault"},
+        {"shape":"ServiceLinkedRoleNotFoundFault"},
         {"shape":"InvalidParameterValueException"},
         {"shape":"InvalidParameterCombinationException"}
       ]
@@ -123,7 +131,8 @@
       "output":{"shape":"DeleteSubnetGroupResponse"},
       "errors":[
         {"shape":"SubnetGroupInUseFault"},
-        {"shape":"SubnetGroupNotFoundFault"}
+        {"shape":"SubnetGroupNotFoundFault"},
+        {"shape":"ServiceLinkedRoleNotFoundFault"}
       ]
     },
     "DescribeClusters":{
@@ -136,6 +145,7 @@
       "output":{"shape":"DescribeClustersResponse"},
       "errors":[
         {"shape":"ClusterNotFoundFault"},
+        {"shape":"ServiceLinkedRoleNotFoundFault"},
         {"shape":"InvalidParameterValueException"},
         {"shape":"InvalidParameterCombinationException"}
       ]
@@ -149,6 +159,7 @@
       "input":{"shape":"DescribeDefaultParametersRequest"},
       "output":{"shape":"DescribeDefaultParametersResponse"},
       "errors":[
+        {"shape":"ServiceLinkedRoleNotFoundFault"},
         {"shape":"InvalidParameterValueException"},
         {"shape":"InvalidParameterCombinationException"}
       ]
@@ -162,6 +173,7 @@
       "input":{"shape":"DescribeEventsRequest"},
       "output":{"shape":"DescribeEventsResponse"},
       "errors":[
+        {"shape":"ServiceLinkedRoleNotFoundFault"},
         {"shape":"InvalidParameterValueException"},
         {"shape":"InvalidParameterCombinationException"}
       ]
@@ -176,6 +188,7 @@
       "output":{"shape":"DescribeParameterGroupsResponse"},
       "errors":[
         {"shape":"ParameterGroupNotFoundFault"},
+        {"shape":"ServiceLinkedRoleNotFoundFault"},
         {"shape":"InvalidParameterValueException"},
         {"shape":"InvalidParameterCombinationException"}
       ]
@@ -190,6 +203,7 @@
       "output":{"shape":"DescribeParametersResponse"},
       "errors":[
         {"shape":"ParameterGroupNotFoundFault"},
+        {"shape":"ServiceLinkedRoleNotFoundFault"},
         {"shape":"InvalidParameterValueException"},
         {"shape":"InvalidParameterCombinationException"}
       ]
@@ -203,7 +217,8 @@
       "input":{"shape":"DescribeSubnetGroupsRequest"},
       "output":{"shape":"DescribeSubnetGroupsResponse"},
       "errors":[
-        {"shape":"SubnetGroupNotFoundFault"}
+        {"shape":"SubnetGroupNotFoundFault"},
+        {"shape":"ServiceLinkedRoleNotFoundFault"}
       ]
     },
     "IncreaseReplicationFactor":{
@@ -221,6 +236,7 @@
         {"shape":"InvalidVPCNetworkStateFault"},
         {"shape":"NodeQuotaForClusterExceededFault"},
         {"shape":"NodeQuotaForCustomerExceededFault"},
+        {"shape":"ServiceLinkedRoleNotFoundFault"},
         {"shape":"InvalidParameterValueException"},
         {"shape":"InvalidParameterCombinationException"}
       ]
@@ -237,6 +253,7 @@
         {"shape":"ClusterNotFoundFault"},
         {"shape":"InvalidARNFault"},
         {"shape":"InvalidClusterStateFault"},
+        {"shape":"ServiceLinkedRoleNotFoundFault"},
         {"shape":"InvalidParameterValueException"},
         {"shape":"InvalidParameterCombinationException"}
       ]
@@ -253,6 +270,7 @@
         {"shape":"ClusterNotFoundFault"},
         {"shape":"NodeNotFoundFault"},
         {"shape":"InvalidClusterStateFault"},
+        {"shape":"ServiceLinkedRoleNotFoundFault"},
         {"shape":"InvalidParameterValueException"},
         {"shape":"InvalidParameterCombinationException"}
       ]
@@ -270,6 +288,7 @@
         {"shape":"TagQuotaPerResourceExceeded"},
         {"shape":"InvalidARNFault"},
         {"shape":"InvalidClusterStateFault"},
+        {"shape":"ServiceLinkedRoleNotFoundFault"},
         {"shape":"InvalidParameterValueException"},
         {"shape":"InvalidParameterCombinationException"}
       ]
@@ -287,6 +306,7 @@
         {"shape":"InvalidARNFault"},
         {"shape":"TagNotFoundFault"},
         {"shape":"InvalidClusterStateFault"},
+        {"shape":"ServiceLinkedRoleNotFoundFault"},
         {"shape":"InvalidParameterValueException"},
         {"shape":"InvalidParameterCombinationException"}
       ]
@@ -304,6 +324,7 @@
         {"shape":"ClusterNotFoundFault"},
         {"shape":"InvalidParameterGroupStateFault"},
         {"shape":"ParameterGroupNotFoundFault"},
+        {"shape":"ServiceLinkedRoleNotFoundFault"},
         {"shape":"InvalidParameterValueException"},
         {"shape":"InvalidParameterCombinationException"}
       ]
@@ -319,6 +340,7 @@
       "errors":[
         {"shape":"InvalidParameterGroupStateFault"},
         {"shape":"ParameterGroupNotFoundFault"},
+        {"shape":"ServiceLinkedRoleNotFoundFault"},
         {"shape":"InvalidParameterValueException"},
         {"shape":"InvalidParameterCombinationException"}
       ]
@@ -335,7 +357,8 @@
         {"shape":"SubnetGroupNotFoundFault"},
         {"shape":"SubnetQuotaExceededFault"},
         {"shape":"SubnetInUse"},
-        {"shape":"InvalidSubnet"}
+        {"shape":"InvalidSubnet"},
+        {"shape":"ServiceLinkedRoleNotFoundFault"}
       ]
     }
   },
@@ -370,7 +393,9 @@
         "SubnetGroup":{"shape":"String"},
         "SecurityGroups":{"shape":"SecurityGroupMembershipList"},
         "IamRoleArn":{"shape":"String"},
-        "ParameterGroup":{"shape":"ParameterGroupStatus"}
+        "ParameterGroup":{"shape":"ParameterGroupStatus"},
+        "SSEDescription":{"shape":"SSEDescription"},
+        "ClusterEndpointEncryptionType":{"shape":"ClusterEndpointEncryptionType"}
       }
     },
     "ClusterAlreadyExistsFault":{
@@ -378,6 +403,13 @@
       "members":{
       },
       "exception":true
+    },
+    "ClusterEndpointEncryptionType":{
+      "type":"string",
+      "enum":[
+        "NONE",
+        "TLS"
+      ]
     },
     "ClusterList":{
       "type":"list",
@@ -419,7 +451,9 @@
         "NotificationTopicArn":{"shape":"String"},
         "IamRoleArn":{"shape":"String"},
         "ParameterGroupName":{"shape":"String"},
-        "Tags":{"shape":"TagList"}
+        "Tags":{"shape":"TagList"},
+        "SSESpecification":{"shape":"SSESpecification"},
+        "ClusterEndpointEncryptionType":{"shape":"ClusterEndpointEncryptionType"}
       }
     },
     "CreateClusterResponse":{
@@ -617,7 +651,8 @@
       "type":"structure",
       "members":{
         "Address":{"shape":"String"},
-        "Port":{"shape":"Integer"}
+        "Port":{"shape":"Integer"},
+        "URL":{"shape":"String"}
       }
     },
     "Event":{
@@ -676,7 +711,8 @@
       "members":{
         "message":{"shape":"AwsQueryErrorMessage"}
       },
-      "exception":true
+      "exception":true,
+      "synthetic":true
     },
     "InvalidParameterGroupStateFault":{
       "type":"structure",
@@ -689,7 +725,8 @@
       "members":{
         "message":{"shape":"AwsQueryErrorMessage"}
       },
-      "exception":true
+      "exception":true,
+      "synthetic":true
     },
     "InvalidSubnet":{
       "type":"structure",
@@ -880,6 +917,29 @@
         "Cluster":{"shape":"Cluster"}
       }
     },
+    "SSEDescription":{
+      "type":"structure",
+      "members":{
+        "Status":{"shape":"SSEStatus"}
+      }
+    },
+    "SSEEnabled":{"type":"boolean"},
+    "SSESpecification":{
+      "type":"structure",
+      "required":["Enabled"],
+      "members":{
+        "Enabled":{"shape":"SSEEnabled"}
+      }
+    },
+    "SSEStatus":{
+      "type":"string",
+      "enum":[
+        "ENABLING",
+        "ENABLED",
+        "DISABLING",
+        "DISABLED"
+      ]
+    },
     "SecurityGroupIdentifierList":{
       "type":"list",
       "member":{"shape":"String"}
@@ -894,6 +954,18 @@
     "SecurityGroupMembershipList":{
       "type":"list",
       "member":{"shape":"SecurityGroupMembership"}
+    },
+    "ServiceLinkedRoleNotFoundFault":{
+      "type":"structure",
+      "members":{
+      },
+      "exception":true
+    },
+    "ServiceQuotaExceededException":{
+      "type":"structure",
+      "members":{
+      },
+      "exception":true
     },
     "SourceType":{
       "type":"string",
