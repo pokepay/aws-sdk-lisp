@@ -38,17 +38,17 @@
 (defgeneric input-headers (input))
 (defgeneric input-payload (input))
 
-(defun make-request-with-input (request-class input method path-conversion action version)
+(defun make-request-with-input (request-class input method path-conversion action)
   (make-instance request-class
                  :method method
                  :path (etypecase path-conversion
                          (string path-conversion)
                          (function (funcall path-conversion input))
                          (null "/"))
-                 :params (append `(("Action" . ,action) ("Version" . ,version))
-                                 (input-params input))
+                 :params (input-params input)
                  :headers (input-headers input)
-                 :payload (input-payload input)))
+                 :payload (input-payload input)
+                 :operation action))
 
 (defun filter-member (key value members)
   (loop for member-name being each hash-key of members
