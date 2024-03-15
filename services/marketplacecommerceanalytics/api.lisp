@@ -7,25 +7,35 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/marketplacecommerceanalytics/api)
-(common-lisp:progn
- (common-lisp:defclass marketplacecommerceanalytics-request
-                       (aws-sdk/request:request) common-lisp:nil
-                       (:default-initargs :service
-                        "marketplacecommerceanalytics"))
- (common-lisp:export 'marketplacecommerceanalytics-request))
 (common-lisp:progn
  (common-lisp:define-condition marketplacecommerceanalytics-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'marketplacecommerceanalytics-error))
+(common-lisp:progn
+ (common-lisp:defclass marketplacecommerceanalytics-request
+                       (aws-sdk/json-request:json-request) common-lisp:nil
+                       (:default-initargs :service
+                        "marketplacecommerceanalytics" :api-version
+                        "2015-07-01" :host-prefix
+                        "marketplacecommerceanalytics" :signing-name
+                        "marketplacecommerceanalytics" :global-host
+                        common-lisp:nil :target-prefix
+                        "MarketplaceCommerceAnalytics20150701" :json-version
+                        "1.1"))
+ (common-lisp:export 'marketplacecommerceanalytics-request))
 (common-lisp:defvar *error-map*
   '(("MarketplaceCommerceAnalyticsException"
      . marketplace-commerce-analytics-exception)))
 (common-lisp:progn
  (common-lisp:deftype customer-defined-values () 'common-lisp:hash-table)
- (common-lisp:defun |make-customer-defined-values|
+ (common-lisp:defun make-customer-defined-values
                     (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
@@ -311,8 +321,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'marketplacecommerceanalytics-request
-        aws-sdk/generator/operation::input "POST" "/" "GenerateDataSet"
-        "2015-07-01"))
+        aws-sdk/generator/operation::input "POST" "/" "GenerateDataSet"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'generate-data-set))
 (common-lisp:progn
@@ -334,7 +343,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'marketplacecommerceanalytics-request
-        aws-sdk/generator/operation::input "POST" "/" "StartSupportDataExport"
-        "2015-07-01"))
+        aws-sdk/generator/operation::input "POST" "/"
+        "StartSupportDataExport"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'start-support-data-export))

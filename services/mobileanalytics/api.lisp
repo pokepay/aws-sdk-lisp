@@ -7,18 +7,26 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/mobileanalytics/api)
-(common-lisp:progn
- (common-lisp:defclass mobileanalytics-request (aws-sdk/request:request)
-                       common-lisp:nil
-                       (:default-initargs :service "mobileanalytics"))
- (common-lisp:export 'mobileanalytics-request))
 (common-lisp:progn
  (common-lisp:define-condition mobileanalytics-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'mobileanalytics-error))
+(common-lisp:progn
+ (common-lisp:defclass mobileanalytics-request
+                       (aws-sdk/generator/service::rest-json-request)
+                       common-lisp:nil
+                       (:default-initargs :service "mobileanalytics"
+                        :api-version "2014-06-05" :host-prefix
+                        "mobileanalytics" :signing-name common-lisp:nil
+                        :global-host common-lisp:nil))
+ (common-lisp:export 'mobileanalytics-request))
 (common-lisp:defvar *error-map*
   '(("BadRequestException" . bad-request-exception)))
 (common-lisp:progn
@@ -98,7 +106,7 @@
 (common-lisp:progn
  (common-lisp:deftype event-list-definition ()
    '(trivial-types:proper-list event))
- (common-lisp:defun |make-event-list-definition|
+ (common-lisp:defun make-event-list-definition
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list event))
@@ -107,7 +115,7 @@
 (common-lisp:deftype long () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:deftype map-of-string-to-number () 'common-lisp:hash-table)
- (common-lisp:defun |make-map-of-string-to-number|
+ (common-lisp:defun make-map-of-string-to-number
                     (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
@@ -115,7 +123,7 @@
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
  (common-lisp:deftype map-of-string-to-string () 'common-lisp:hash-table)
- (common-lisp:defun |make-map-of-string-to-string|
+ (common-lisp:defun make-map-of-string-to-string
                     (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
@@ -225,6 +233,6 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mobileanalytics-request aws-sdk/generator/operation::input "POST"
-        "/2014-06-05/events" "PutEvents" "2014-06-05"))
+        "/2014-06-05/events" "PutEvents"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-events))

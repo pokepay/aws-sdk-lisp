@@ -7,17 +7,25 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/dax/api)
-(common-lisp:progn
- (common-lisp:defclass dax-request (aws-sdk/request:request) common-lisp:nil
-                       (:default-initargs :service "dax"))
- (common-lisp:export 'dax-request))
 (common-lisp:progn
  (common-lisp:define-condition dax-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'dax-error))
+(common-lisp:progn
+ (common-lisp:defclass dax-request (aws-sdk/json-request:json-request)
+                       common-lisp:nil
+                       (:default-initargs :service "dax" :api-version
+                        "2017-04-19" :host-prefix "dax" :signing-name
+                        common-lisp:nil :global-host common-lisp:nil
+                        :target-prefix "AmazonDAXV3" :json-version "1.1"))
+ (common-lisp:export 'dax-request))
 (common-lisp:defvar *error-map*
   '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
     ("ClusterNotFoundFault" . cluster-not-found-fault)
@@ -40,6 +48,8 @@
     ("ParameterGroupAlreadyExistsFault" . parameter-group-already-exists-fault)
     ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
     ("ParameterGroupQuotaExceededFault" . parameter-group-quota-exceeded-fault)
+    ("ServiceLinkedRoleNotFoundFault" . service-linked-role-not-found-fault)
+    ("ServiceQuotaExceededException" . service-quota-exceeded-exception)
     ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
     ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
     ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
@@ -51,7 +61,7 @@
 (common-lisp:progn
  (common-lisp:deftype availability-zone-list ()
    '(trivial-types:proper-list string))
- (common-lisp:defun |make-availability-zone-list|
+ (common-lisp:defun make-availability-zone-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
@@ -87,7 +97,11 @@
    (iam-role-arn common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (parameter-group common-lisp:nil :type
-    (common-lisp:or parameter-group-status common-lisp:null)))
+    (common-lisp:or parameter-group-status common-lisp:null))
+   (ssedescription common-lisp:nil :type
+    (common-lisp:or ssedescription common-lisp:null))
+   (cluster-endpoint-encryption-type common-lisp:nil :type
+    (common-lisp:or cluster-endpoint-encryption-type common-lisp:null)))
  (common-lisp:export (common-lisp:list 'cluster 'make-cluster))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input cluster))
@@ -209,6 +223,21 @@
       (common-lisp:list
        (common-lisp:cons "ParameterGroup"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'ssedescription))
+      (common-lisp:list
+       (common-lisp:cons "SSEDescription"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'cluster-endpoint-encryption-type))
+      (common-lisp:list
+       (common-lisp:cons "ClusterEndpointEncryptionType"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input cluster))
@@ -218,16 +247,17 @@
      (dax-error)
      common-lisp:nil)
  (common-lisp:export (common-lisp:list 'cluster-already-exists-fault)))
+(common-lisp:deftype cluster-endpoint-encryption-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype cluster-list () '(trivial-types:proper-list cluster))
- (common-lisp:defun |make-cluster-list|
+ (common-lisp:defun make-cluster-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list cluster))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:deftype cluster-name-list () '(trivial-types:proper-list string))
- (common-lisp:defun |make-cluster-name-list|
+ (common-lisp:defun make-cluster-name-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
@@ -268,7 +298,11 @@
     (common-lisp:or string common-lisp:null))
    (parameter-group-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
+   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
+   (ssespecification common-lisp:nil :type
+    (common-lisp:or ssespecification common-lisp:null))
+   (cluster-endpoint-encryption-type common-lisp:nil :type
+    (common-lisp:or cluster-endpoint-encryption-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-cluster-request 'make-create-cluster-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -366,6 +400,21 @@
                            aws-sdk/generator/shape::input 'tags))
       (common-lisp:list
        (common-lisp:cons "Tags"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'ssespecification))
+      (common-lisp:list
+       (common-lisp:cons "SSESpecification"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'cluster-endpoint-encryption-type))
+      (common-lisp:list
+       (common-lisp:cons "ClusterEndpointEncryptionType"
                          (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
@@ -1387,7 +1436,8 @@
  (common-lisp:defstruct
      (endpoint (:copier common-lisp:nil) (:conc-name "struct-shape-endpoint-"))
    (address common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (port common-lisp:nil :type (common-lisp:or integer common-lisp:null)))
+   (port common-lisp:nil :type (common-lisp:or integer common-lisp:null))
+   (url common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export (common-lisp:list 'endpoint 'make-endpoint))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input endpoint))
@@ -1407,6 +1457,13 @@
                            aws-sdk/generator/shape::input 'port))
       (common-lisp:list
        (common-lisp:cons "Port"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'url))
+      (common-lisp:list
+       (common-lisp:cons "URL"
                          (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
@@ -1460,7 +1517,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype event-list () '(trivial-types:proper-list event))
- (common-lisp:defun |make-event-list|
+ (common-lisp:defun make-event-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list event))
@@ -1597,7 +1654,7 @@
 (common-lisp:deftype is-modifiable () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype key-list () '(trivial-types:proper-list string))
- (common-lisp:defun |make-key-list|
+ (common-lisp:defun make-key-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
@@ -1733,14 +1790,14 @@
 (common-lisp:progn
  (common-lisp:deftype node-identifier-list ()
    '(trivial-types:proper-list string))
- (common-lisp:defun |make-node-identifier-list|
+ (common-lisp:defun make-node-identifier-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:deftype node-list () '(trivial-types:proper-list node))
- (common-lisp:defun |make-node-list|
+ (common-lisp:defun make-node-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list node))
@@ -1801,7 +1858,7 @@
 (common-lisp:progn
  (common-lisp:deftype node-type-specific-value-list ()
    '(trivial-types:proper-list node-type-specific-value))
- (common-lisp:defun |make-node-type-specific-value-list|
+ (common-lisp:defun make-node-type-specific-value-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -1989,7 +2046,7 @@
 (common-lisp:progn
  (common-lisp:deftype parameter-group-list ()
    '(trivial-types:proper-list parameter-group))
- (common-lisp:defun |make-parameter-group-list|
+ (common-lisp:defun make-parameter-group-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list parameter-group))
@@ -1997,7 +2054,7 @@
 (common-lisp:progn
  (common-lisp:deftype parameter-group-name-list ()
    '(trivial-types:proper-list string))
- (common-lisp:defun |make-parameter-group-name-list|
+ (common-lisp:defun make-parameter-group-name-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
@@ -2064,7 +2121,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype parameter-list () '(trivial-types:proper-list parameter))
- (common-lisp:defun |make-parameter-list|
+ (common-lisp:defun make-parameter-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list parameter))
@@ -2105,7 +2162,7 @@
 (common-lisp:progn
  (common-lisp:deftype parameter-name-value-list ()
    '(trivial-types:proper-list parameter-name-value))
- (common-lisp:defun |make-parameter-name-value-list|
+ (common-lisp:defun make-parameter-name-value-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list parameter-name-value))
@@ -2168,9 +2225,57 @@
                         ((aws-sdk/generator/shape::input reboot-node-response))
    common-lisp:nil))
 (common-lisp:progn
+ (common-lisp:defstruct
+     (ssedescription (:copier common-lisp:nil)
+      (:conc-name "struct-shape-ssedescription-"))
+   (status common-lisp:nil :type (common-lisp:or ssestatus common-lisp:null)))
+ (common-lisp:export (common-lisp:list 'ssedescription 'make-ssedescription))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input ssedescription))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input ssedescription))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'status))
+      (common-lisp:list
+       (common-lisp:cons "Status"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input ssedescription))
+   common-lisp:nil))
+(common-lisp:deftype sseenabled () 'common-lisp:boolean)
+(common-lisp:progn
+ (common-lisp:defstruct
+     (ssespecification (:copier common-lisp:nil)
+      (:conc-name "struct-shape-ssespecification-"))
+   (enabled (common-lisp:error ":enabled is required") :type
+    (common-lisp:or sseenabled common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'ssespecification 'make-ssespecification))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input ssespecification))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input ssespecification))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'enabled))
+      (common-lisp:list
+       (common-lisp:cons "Enabled"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input ssespecification))
+   common-lisp:nil))
+(common-lisp:deftype ssestatus () 'common-lisp:string)
+(common-lisp:progn
  (common-lisp:deftype security-group-identifier-list ()
    '(trivial-types:proper-list string))
- (common-lisp:defun |make-security-group-identifier-list|
+ (common-lisp:defun make-security-group-identifier-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
@@ -2218,12 +2323,22 @@
 (common-lisp:progn
  (common-lisp:deftype security-group-membership-list ()
    '(trivial-types:proper-list security-group-membership))
- (common-lisp:defun |make-security-group-membership-list|
+ (common-lisp:defun make-security-group-membership-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
                             security-group-membership))
    aws-sdk/generator/shape::members))
+(common-lisp:progn
+ (common-lisp:define-condition service-linked-role-not-found-fault
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'service-linked-role-not-found-fault)))
+(common-lisp:progn
+ (common-lisp:define-condition service-quota-exceeded-exception
+     (dax-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'service-quota-exceeded-exception)))
 (common-lisp:deftype source-type () 'common-lisp:string)
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
@@ -2319,7 +2434,7 @@
 (common-lisp:progn
  (common-lisp:deftype subnet-group-list ()
    '(trivial-types:proper-list subnet-group))
- (common-lisp:defun |make-subnet-group-list|
+ (common-lisp:defun make-subnet-group-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list subnet-group))
@@ -2327,7 +2442,7 @@
 (common-lisp:progn
  (common-lisp:deftype subnet-group-name-list ()
    '(trivial-types:proper-list string))
- (common-lisp:defun |make-subnet-group-name-list|
+ (common-lisp:defun make-subnet-group-name-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
@@ -2345,7 +2460,7 @@
 (common-lisp:progn
  (common-lisp:deftype subnet-identifier-list ()
    '(trivial-types:proper-list string))
- (common-lisp:defun |make-subnet-identifier-list|
+ (common-lisp:defun make-subnet-identifier-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
@@ -2357,7 +2472,7 @@
  (common-lisp:export (common-lisp:list 'subnet-in-use)))
 (common-lisp:progn
  (common-lisp:deftype subnet-list () '(trivial-types:proper-list subnet))
- (common-lisp:defun |make-subnet-list|
+ (common-lisp:defun make-subnet-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list subnet))
@@ -2399,7 +2514,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype tag-list () '(trivial-types:proper-list tag))
- (common-lisp:defun |make-tag-list|
+ (common-lisp:defun make-tag-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list tag))
@@ -2822,12 +2937,13 @@
                      replication-factor availability-zones subnet-group-name
                      security-group-ids preferred-maintenance-window
                      notification-topic-arn iam-role-arn parameter-group-name
-                     tags)
+                     tags ssespecification cluster-endpoint-encryption-type)
    (common-lisp:declare
     (common-lisp:ignorable cluster-name node-type description
      replication-factor availability-zones subnet-group-name security-group-ids
      preferred-maintenance-window notification-topic-arn iam-role-arn
-     parameter-group-name tags))
+     parameter-group-name tags ssespecification
+     cluster-endpoint-encryption-type))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-create-cluster-request
                                          aws-sdk/generator/operation::args)))
@@ -2836,8 +2952,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "CreateCluster"
-                                                        "2017-04-19"))
+                                                        "CreateCluster"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-cluster))
 (common-lisp:progn
@@ -2855,8 +2970,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "CreateParameterGroup"
-                                                        "2017-04-19"))
+                                                        "CreateParameterGroup"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-parameter-group))
 (common-lisp:progn
@@ -2874,8 +2988,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "CreateSubnetGroup"
-                                                        "2017-04-19"))
+                                                        "CreateSubnetGroup"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-subnet-group))
 (common-lisp:progn
@@ -2896,8 +3009,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DecreaseReplicationFactor"
-                                                        "2017-04-19"))
+                                                        "DecreaseReplicationFactor"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'decrease-replication-factor))
 (common-lisp:progn
@@ -2914,8 +3026,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeleteCluster"
-                                                        "2017-04-19"))
+                                                        "DeleteCluster"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-cluster))
 (common-lisp:progn
@@ -2932,8 +3043,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeleteParameterGroup"
-                                                        "2017-04-19"))
+                                                        "DeleteParameterGroup"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-parameter-group))
 (common-lisp:progn
@@ -2950,8 +3060,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeleteSubnetGroup"
-                                                        "2017-04-19"))
+                                                        "DeleteSubnetGroup"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-subnet-group))
 (common-lisp:progn
@@ -2969,8 +3078,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeClusters"
-                                                        "2017-04-19"))
+                                                        "DescribeClusters"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-clusters))
 (common-lisp:progn
@@ -2988,8 +3096,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeDefaultParameters"
-                                                        "2017-04-19"))
+                                                        "DescribeDefaultParameters"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-default-parameters))
 (common-lisp:progn
@@ -3009,8 +3116,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeEvents"
-                                                        "2017-04-19"))
+                                                        "DescribeEvents"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
@@ -3030,8 +3136,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeParameterGroups"
-                                                        "2017-04-19"))
+                                                        "DescribeParameterGroups"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-parameter-groups))
 (common-lisp:progn
@@ -3050,8 +3155,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeParameters"
-                                                        "2017-04-19"))
+                                                        "DescribeParameters"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-parameters))
 (common-lisp:progn
@@ -3070,8 +3174,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeSubnetGroups"
-                                                        "2017-04-19"))
+                                                        "DescribeSubnetGroups"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-subnet-groups))
 (common-lisp:progn
@@ -3092,8 +3195,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "IncreaseReplicationFactor"
-                                                        "2017-04-19"))
+                                                        "IncreaseReplicationFactor"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'increase-replication-factor))
 (common-lisp:progn
@@ -3109,8 +3211,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
-                                                        "POST" "/" "ListTags"
-                                                        "2017-04-19"))
+                                                        "POST" "/" "ListTags"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-tags))
 (common-lisp:progn
@@ -3126,8 +3227,8 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
-                                                        "POST" "/" "RebootNode"
-                                                        "2017-04-19"))
+                                                        "POST" "/"
+                                                        "RebootNode"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'reboot-node))
 (common-lisp:progn
@@ -3144,8 +3245,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "TagResource"
-                                                        "2017-04-19"))
+                                                        "TagResource"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
@@ -3162,8 +3262,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "UntagResource"
-                                                        "2017-04-19"))
+                                                        "UntagResource"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
@@ -3186,8 +3285,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "UpdateCluster"
-                                                        "2017-04-19"))
+                                                        "UpdateCluster"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-cluster))
 (common-lisp:progn
@@ -3206,8 +3304,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "UpdateParameterGroup"
-                                                        "2017-04-19"))
+                                                        "UpdateParameterGroup"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-parameter-group))
 (common-lisp:progn
@@ -3225,7 +3322,6 @@
        (aws-sdk/generator/shape:make-request-with-input 'dax-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "UpdateSubnetGroup"
-                                                        "2017-04-19"))
+                                                        "UpdateSubnetGroup"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-subnet-group))

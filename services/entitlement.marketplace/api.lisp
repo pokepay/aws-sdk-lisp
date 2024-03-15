@@ -7,18 +7,27 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/entitlement.marketplace/api)
-(common-lisp:progn
- (common-lisp:defclass entitlement.marketplace-request
-                       (aws-sdk/request:request) common-lisp:nil
-                       (:default-initargs :service "entitlement.marketplace"))
- (common-lisp:export 'entitlement.marketplace-request))
 (common-lisp:progn
  (common-lisp:define-condition entitlement.marketplace-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'entitlement.marketplace-error))
+(common-lisp:progn
+ (common-lisp:defclass entitlement.marketplace-request
+                       (aws-sdk/json-request:json-request) common-lisp:nil
+                       (:default-initargs :service "entitlement.marketplace"
+                        :api-version "2017-01-11" :host-prefix
+                        "entitlement.marketplace" :signing-name
+                        "aws-marketplace" :global-host common-lisp:nil
+                        :target-prefix "AWSMPEntitlementService" :json-version
+                        "1.1"))
+ (common-lisp:export 'entitlement.marketplace-request))
 (common-lisp:defvar *error-map*
   '(("InternalServiceErrorException" . internal-service-error-exception)
     ("InvalidParameterException" . invalid-parameter-exception)
@@ -87,7 +96,7 @@
 (common-lisp:progn
  (common-lisp:deftype entitlement-list ()
    '(trivial-types:proper-list entitlement))
- (common-lisp:defun |make-entitlement-list|
+ (common-lisp:defun make-entitlement-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list entitlement))
@@ -148,7 +157,7 @@
 (common-lisp:progn
  (common-lisp:deftype filter-value-list ()
    '(trivial-types:proper-list filter-value))
- (common-lisp:defun |make-filter-value-list|
+ (common-lisp:defun make-filter-value-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list filter-value))
@@ -156,7 +165,7 @@
 (common-lisp:deftype get-entitlement-filter-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype get-entitlement-filters () 'common-lisp:hash-table)
- (common-lisp:defun |make-get-entitlement-filters|
+ (common-lisp:defun make-get-entitlement-filters
                     (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
@@ -173,7 +182,7 @@
    (next-token common-lisp:nil :type
     (common-lisp:or non-empty-string common-lisp:null))
    (max-results common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null)))
+    (common-lisp:or page-size-integer common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-entitlements-request 'make-get-entitlements-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -276,6 +285,7 @@
   (common-lisp:list 'invalid-parameter-exception
                     'invalid-parameter-exception-message)))
 (common-lisp:deftype non-empty-string () 'common-lisp:string)
+(common-lisp:deftype page-size-integer () 'common-lisp:integer)
 (common-lisp:deftype product-code () 'common-lisp:string)
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
@@ -301,6 +311,6 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'entitlement.marketplace-request aws-sdk/generator/operation::input
-        "POST" "/" "GetEntitlements" "2017-01-11"))
+        "POST" "/" "GetEntitlements"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-entitlements))

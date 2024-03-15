@@ -7,44 +7,61 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/sqs/api)
-(common-lisp:progn
- (common-lisp:defclass sqs-request (aws-sdk/request:request) common-lisp:nil
-                       (:default-initargs :service "sqs"))
- (common-lisp:export 'sqs-request))
 (common-lisp:progn
  (common-lisp:define-condition sqs-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'sqs-error))
+(common-lisp:progn
+ (common-lisp:defclass sqs-request (aws-sdk/json-request:json-request)
+                       common-lisp:nil
+                       (:default-initargs :service "sqs" :api-version
+                        "2012-11-05" :host-prefix "sqs" :signing-name
+                        common-lisp:nil :global-host common-lisp:nil
+                        :target-prefix "AmazonSQS" :json-version "1.0"))
+ (common-lisp:export 'sqs-request))
 (common-lisp:defvar *error-map*
   '(("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
     ("BatchRequestTooLong" . batch-request-too-long)
     ("EmptyBatchRequest" . empty-batch-request)
+    ("InvalidAddress" . invalid-address)
     ("InvalidAttributeName" . invalid-attribute-name)
+    ("InvalidAttributeValue" . invalid-attribute-value)
     ("InvalidBatchEntryId" . invalid-batch-entry-id)
     ("InvalidIdFormat" . invalid-id-format)
     ("InvalidMessageContents" . invalid-message-contents)
+    ("InvalidSecurity" . invalid-security)
+    ("KmsAccessDenied" . kms-access-denied) ("KmsDisabled" . kms-disabled)
+    ("KmsInvalidKeyUsage" . kms-invalid-key-usage)
+    ("KmsInvalidState" . kms-invalid-state) ("KmsNotFound" . kms-not-found)
+    ("KmsOptInRequired" . kms-opt-in-required) ("KmsThrottled" . kms-throttled)
     ("MessageNotInflight" . message-not-inflight) ("OverLimit" . over-limit)
     ("PurgeQueueInProgress" . purge-queue-in-progress)
     ("QueueDeletedRecently" . queue-deleted-recently)
     ("QueueDoesNotExist" . queue-does-not-exist)
     ("QueueNameExists" . queue-name-exists)
     ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)
+    ("RequestThrottled" . request-throttled)
+    ("ResourceNotFoundException" . resource-not-found-exception)
     ("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
     ("UnsupportedOperation" . unsupported-operation)))
 (common-lisp:progn
  (common-lisp:deftype awsaccount-id-list ()
    '(trivial-types:proper-list string))
- (common-lisp:defun |make-awsaccount-id-list|
+ (common-lisp:defun make-awsaccount-id-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:deftype action-name-list () '(trivial-types:proper-list string))
- (common-lisp:defun |make-action-name-list|
+ (common-lisp:defun make-action-name-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
@@ -109,7 +126,7 @@
 (common-lisp:progn
  (common-lisp:deftype attribute-name-list ()
    '(trivial-types:proper-list queue-attribute-name))
- (common-lisp:defun |make-attribute-name-list|
+ (common-lisp:defun make-attribute-name-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list queue-attribute-name))
@@ -117,13 +134,18 @@
 (common-lisp:progn
  (common-lisp:define-condition batch-entry-ids-not-distinct
      (sqs-error)
-     common-lisp:nil)
- (common-lisp:export (common-lisp:list 'batch-entry-ids-not-distinct)))
+     ((message :initarg :message :initform common-lisp:nil :reader
+       batch-entry-ids-not-distinct-message)))
+ (common-lisp:export
+  (common-lisp:list 'batch-entry-ids-not-distinct
+                    'batch-entry-ids-not-distinct-message)))
 (common-lisp:progn
  (common-lisp:define-condition batch-request-too-long
      (sqs-error)
-     common-lisp:nil)
- (common-lisp:export (common-lisp:list 'batch-request-too-long)))
+     ((message :initarg :message :initform common-lisp:nil :reader
+       batch-request-too-long-message)))
+ (common-lisp:export
+  (common-lisp:list 'batch-request-too-long 'batch-request-too-long-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-result-error-entry (:copier common-lisp:nil)
@@ -183,7 +205,7 @@
 (common-lisp:progn
  (common-lisp:deftype batch-result-error-entry-list ()
    '(trivial-types:proper-list batch-result-error-entry))
- (common-lisp:defun |make-batch-result-error-entry-list|
+ (common-lisp:defun make-batch-result-error-entry-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -193,12 +215,76 @@
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
  (common-lisp:deftype binary-list () '(trivial-types:proper-list binary))
- (common-lisp:defun |make-binary-list|
+ (common-lisp:defun make-binary-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list binary))
    aws-sdk/generator/shape::members))
 (common-lisp:deftype boolean () 'common-lisp:boolean)
+(common-lisp:deftype boxed-integer () 'common-lisp:integer)
+(common-lisp:progn
+ (common-lisp:defstruct
+     (cancel-message-move-task-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-cancel-message-move-task-request-"))
+   (task-handle (common-lisp:error ":task-handle is required") :type
+    (common-lisp:or string common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'cancel-message-move-task-request
+                    'make-cancel-message-move-task-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          cancel-message-move-task-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          cancel-message-move-task-request))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-handle))
+      (common-lisp:list
+       (common-lisp:cons "TaskHandle"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          cancel-message-move-task-request))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (cancel-message-move-task-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-cancel-message-move-task-result-"))
+   (approximate-number-of-messages-moved common-lisp:nil :type
+    (common-lisp:or long common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'cancel-message-move-task-result
+                    'make-cancel-message-move-task-result))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          cancel-message-move-task-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          cancel-message-move-task-result))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'approximate-number-of-messages-moved))
+      (common-lisp:list
+       (common-lisp:cons "ApproximateNumberOfMessagesMoved"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          cancel-message-move-task-result))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (change-message-visibility-batch-request (:copier common-lisp:nil)
@@ -250,7 +336,7 @@
    (receipt-handle (common-lisp:error ":receipt-handle is required") :type
     (common-lisp:or string common-lisp:null))
    (visibility-timeout common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null)))
+    (common-lisp:or nullable-integer common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'change-message-visibility-batch-request-entry
                     'make-change-message-visibility-batch-request-entry))
@@ -293,7 +379,7 @@
 (common-lisp:progn
  (common-lisp:deftype change-message-visibility-batch-request-entry-list ()
    '(trivial-types:proper-list change-message-visibility-batch-request-entry))
- (common-lisp:defun |make-change-message-visibility-batch-request-entry-list|
+ (common-lisp:defun make-change-message-visibility-batch-request-entry-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -375,7 +461,7 @@
 (common-lisp:progn
  (common-lisp:deftype change-message-visibility-batch-result-entry-list ()
    '(trivial-types:proper-list change-message-visibility-batch-result-entry))
- (common-lisp:defun |make-change-message-visibility-batch-result-entry-list|
+ (common-lisp:defun make-change-message-visibility-batch-result-entry-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -390,7 +476,7 @@
    (receipt-handle (common-lisp:error ":receipt-handle is required") :type
     (common-lisp:or string common-lisp:null))
    (visibility-timeout (common-lisp:error ":visibility-timeout is required")
-    :type (common-lisp:or integer common-lisp:null)))
+    :type (common-lisp:or nullable-integer common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'change-message-visibility-request
                     'make-change-message-visibility-request))
@@ -437,7 +523,8 @@
    (queue-name (common-lisp:error ":queue-name is required") :type
     (common-lisp:or string common-lisp:null))
    (attributes common-lisp:nil :type
-    (common-lisp:or queue-attribute-map common-lisp:null)))
+    (common-lisp:or queue-attribute-map common-lisp:null))
+   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-queue-request 'make-create-queue-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -458,6 +545,13 @@
                            aws-sdk/generator/shape::input 'attributes))
       (common-lisp:list
        (common-lisp:cons "Attributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tags))
+      (common-lisp:list
+       (common-lisp:cons "tags"
                          (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
@@ -569,7 +663,7 @@
 (common-lisp:progn
  (common-lisp:deftype delete-message-batch-request-entry-list ()
    '(trivial-types:proper-list delete-message-batch-request-entry))
- (common-lisp:defun |make-delete-message-batch-request-entry-list|
+ (common-lisp:defun make-delete-message-batch-request-entry-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -649,7 +743,7 @@
 (common-lisp:progn
  (common-lisp:deftype delete-message-batch-result-entry-list ()
    '(trivial-types:proper-list delete-message-batch-result-entry))
- (common-lisp:defun |make-delete-message-batch-result-entry-list|
+ (common-lisp:defun make-delete-message-batch-result-entry-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -721,8 +815,11 @@
 (common-lisp:progn
  (common-lisp:define-condition empty-batch-request
      (sqs-error)
-     common-lisp:nil)
- (common-lisp:export (common-lisp:list 'empty-batch-request)))
+     ((message :initarg :message :initform common-lisp:nil :reader
+       empty-batch-request-message)))
+ (common-lisp:export
+  (common-lisp:list 'empty-batch-request 'empty-batch-request-message)))
+(common-lisp:deftype exception-message () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (get-queue-attributes-request (:copier common-lisp:nil)
@@ -857,17 +954,34 @@
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input get-queue-url-result))
    common-lisp:nil))
-(common-lisp:deftype integer () 'common-lisp:integer)
+(common-lisp:progn
+ (common-lisp:define-condition invalid-address
+     (sqs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-address-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-address 'invalid-address-message)))
 (common-lisp:progn
  (common-lisp:define-condition invalid-attribute-name
      (sqs-error)
-     common-lisp:nil)
- (common-lisp:export (common-lisp:list 'invalid-attribute-name)))
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-attribute-name-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-attribute-name 'invalid-attribute-name-message)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-attribute-value
+     (sqs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-attribute-value-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-attribute-value 'invalid-attribute-value-message)))
 (common-lisp:progn
  (common-lisp:define-condition invalid-batch-entry-id
      (sqs-error)
-     common-lisp:nil)
- (common-lisp:export (common-lisp:list 'invalid-batch-entry-id)))
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-batch-entry-id-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-batch-entry-id 'invalid-batch-entry-id-message)))
 (common-lisp:progn
  (common-lisp:define-condition invalid-id-format
      (sqs-error)
@@ -876,14 +990,73 @@
 (common-lisp:progn
  (common-lisp:define-condition invalid-message-contents
      (sqs-error)
-     common-lisp:nil)
- (common-lisp:export (common-lisp:list 'invalid-message-contents)))
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-message-contents-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-message-contents
+                    'invalid-message-contents-message)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-security
+     (sqs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-security-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-security 'invalid-security-message)))
+(common-lisp:progn
+ (common-lisp:define-condition kms-access-denied
+     (sqs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       kms-access-denied-message)))
+ (common-lisp:export
+  (common-lisp:list 'kms-access-denied 'kms-access-denied-message)))
+(common-lisp:progn
+ (common-lisp:define-condition kms-disabled
+     (sqs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       kms-disabled-message)))
+ (common-lisp:export (common-lisp:list 'kms-disabled 'kms-disabled-message)))
+(common-lisp:progn
+ (common-lisp:define-condition kms-invalid-key-usage
+     (sqs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       kms-invalid-key-usage-message)))
+ (common-lisp:export
+  (common-lisp:list 'kms-invalid-key-usage 'kms-invalid-key-usage-message)))
+(common-lisp:progn
+ (common-lisp:define-condition kms-invalid-state
+     (sqs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       kms-invalid-state-message)))
+ (common-lisp:export
+  (common-lisp:list 'kms-invalid-state 'kms-invalid-state-message)))
+(common-lisp:progn
+ (common-lisp:define-condition kms-not-found
+     (sqs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       kms-not-found-message)))
+ (common-lisp:export (common-lisp:list 'kms-not-found 'kms-not-found-message)))
+(common-lisp:progn
+ (common-lisp:define-condition kms-opt-in-required
+     (sqs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       kms-opt-in-required-message)))
+ (common-lisp:export
+  (common-lisp:list 'kms-opt-in-required 'kms-opt-in-required-message)))
+(common-lisp:progn
+ (common-lisp:define-condition kms-throttled
+     (sqs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       kms-throttled-message)))
+ (common-lisp:export (common-lisp:list 'kms-throttled 'kms-throttled-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-dead-letter-source-queues-request (:copier common-lisp:nil)
       (:conc-name "struct-shape-list-dead-letter-source-queues-request-"))
    (queue-url (common-lisp:error ":queue-url is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:or string common-lisp:null))
+   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null))
+   (max-results common-lisp:nil :type
+    (common-lisp:or boxed-integer common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-dead-letter-source-queues-request
                     'make-list-dead-letter-source-queues-request))
@@ -903,6 +1076,20 @@
       (common-lisp:list
        (common-lisp:cons "QueueUrl"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "NextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'max-results))
+      (common-lisp:list
+       (common-lisp:cons "MaxResults"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         (
@@ -914,7 +1101,8 @@
      (list-dead-letter-source-queues-result (:copier common-lisp:nil)
       (:conc-name "struct-shape-list-dead-letter-source-queues-result-"))
    (queue-urls (common-lisp:error ":queueurls is required") :type
-    (common-lisp:or queue-url-list common-lisp:null)))
+    (common-lisp:or queue-url-list common-lisp:null))
+   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-dead-letter-source-queues-result
                     'make-list-dead-letter-source-queues-result))
@@ -934,6 +1122,13 @@
       (common-lisp:list
        (common-lisp:cons "queueUrls"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "NextToken"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         (
@@ -942,10 +1137,256 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
+     (list-message-move-tasks-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-message-move-tasks-request-"))
+   (source-arn (common-lisp:error ":source-arn is required") :type
+    (common-lisp:or string common-lisp:null))
+   (max-results common-lisp:nil :type
+    (common-lisp:or nullable-integer common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'list-message-move-tasks-request
+                    'make-list-message-move-tasks-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-message-move-tasks-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-message-move-tasks-request))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'source-arn))
+      (common-lisp:list
+       (common-lisp:cons "SourceArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'max-results))
+      (common-lisp:list
+       (common-lisp:cons "MaxResults"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-message-move-tasks-request))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (list-message-move-tasks-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-message-move-tasks-result-"))
+   (results common-lisp:nil :type
+    (common-lisp:or list-message-move-tasks-result-entry-list
+                    common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'list-message-move-tasks-result
+                    'make-list-message-move-tasks-result))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-message-move-tasks-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-message-move-tasks-result))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'results))
+      (common-lisp:list
+       (common-lisp:cons "Results"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-message-move-tasks-result))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (list-message-move-tasks-result-entry (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-message-move-tasks-result-entry-"))
+   (task-handle common-lisp:nil :type (common-lisp:or string common-lisp:null))
+   (status common-lisp:nil :type (common-lisp:or string common-lisp:null))
+   (source-arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
+   (destination-arn common-lisp:nil :type
+    (common-lisp:or string common-lisp:null))
+   (max-number-of-messages-per-second common-lisp:nil :type
+    (common-lisp:or nullable-integer common-lisp:null))
+   (approximate-number-of-messages-moved common-lisp:nil :type
+    (common-lisp:or long common-lisp:null))
+   (approximate-number-of-messages-to-move common-lisp:nil :type
+    (common-lisp:or nullable-long common-lisp:null))
+   (failure-reason common-lisp:nil :type
+    (common-lisp:or string common-lisp:null))
+   (started-timestamp common-lisp:nil :type
+    (common-lisp:or long common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'list-message-move-tasks-result-entry
+                    'make-list-message-move-tasks-result-entry))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-message-move-tasks-result-entry))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-message-move-tasks-result-entry))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-handle))
+      (common-lisp:list
+       (common-lisp:cons "TaskHandle"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'status))
+      (common-lisp:list
+       (common-lisp:cons "Status"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'source-arn))
+      (common-lisp:list
+       (common-lisp:cons "SourceArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'destination-arn))
+      (common-lisp:list
+       (common-lisp:cons "DestinationArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'max-number-of-messages-per-second))
+      (common-lisp:list
+       (common-lisp:cons "MaxNumberOfMessagesPerSecond"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'approximate-number-of-messages-moved))
+      (common-lisp:list
+       (common-lisp:cons "ApproximateNumberOfMessagesMoved"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'approximate-number-of-messages-to-move))
+      (common-lisp:list
+       (common-lisp:cons "ApproximateNumberOfMessagesToMove"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'failure-reason))
+      (common-lisp:list
+       (common-lisp:cons "FailureReason"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'started-timestamp))
+      (common-lisp:list
+       (common-lisp:cons "StartedTimestamp"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-message-move-tasks-result-entry))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:deftype list-message-move-tasks-result-entry-list ()
+   '(trivial-types:proper-list list-message-move-tasks-result-entry))
+ (common-lisp:defun make-list-message-move-tasks-result-entry-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list
+                            list-message-move-tasks-result-entry))
+   aws-sdk/generator/shape::members))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (list-queue-tags-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-queue-tags-request-"))
+   (queue-url (common-lisp:error ":queue-url is required") :type
+    (common-lisp:or string common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'list-queue-tags-request 'make-list-queue-tags-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-queue-tags-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-queue-tags-request))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'queue-url))
+      (common-lisp:list
+       (common-lisp:cons "QueueUrl"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-queue-tags-request))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (list-queue-tags-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-queue-tags-result-"))
+   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'list-queue-tags-result 'make-list-queue-tags-result))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-queue-tags-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-queue-tags-result))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tags))
+      (common-lisp:list
+       (common-lisp:cons "Tags"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-queue-tags-result))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
      (list-queues-request (:copier common-lisp:nil)
       (:conc-name "struct-shape-list-queues-request-"))
    (queue-name-prefix common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:or string common-lisp:null))
+   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null))
+   (max-results common-lisp:nil :type
+    (common-lisp:or boxed-integer common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-queues-request 'make-list-queues-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -960,6 +1401,20 @@
       (common-lisp:list
        (common-lisp:cons "QueueNamePrefix"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "NextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'max-results))
+      (common-lisp:list
+       (common-lisp:cons "MaxResults"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input list-queues-request))
@@ -969,7 +1424,8 @@
      (list-queues-result (:copier common-lisp:nil)
       (:conc-name "struct-shape-list-queues-result-"))
    (queue-urls common-lisp:nil :type
-    (common-lisp:or queue-url-list common-lisp:null)))
+    (common-lisp:or queue-url-list common-lisp:null))
+   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-queues-result 'make-list-queues-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -984,10 +1440,18 @@
       (common-lisp:list
        (common-lisp:cons "QueueUrls"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "NextToken"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input list-queues-result))
    common-lisp:nil))
+(common-lisp:deftype long () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct
      (message (:copier common-lisp:nil) (:conc-name "struct-shape-message-"))
@@ -1066,7 +1530,7 @@
 (common-lisp:progn
  (common-lisp:deftype message-attribute-name-list ()
    '(trivial-types:proper-list message-attribute-name))
- (common-lisp:defun |make-message-attribute-name-list|
+ (common-lisp:defun make-message-attribute-name-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list message-attribute-name))
@@ -1139,7 +1603,16 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype message-body-attribute-map () 'common-lisp:hash-table)
- (common-lisp:defun |make-message-body-attribute-map|
+ (common-lisp:defun make-message-body-attribute-map
+                    (aws-sdk/generator/shape::key-values)
+   (common-lisp:etypecase aws-sdk/generator/shape::key-values
+     (common-lisp:hash-table aws-sdk/generator/shape::key-values)
+     (common-lisp:list
+      (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
+(common-lisp:progn
+ (common-lisp:deftype message-body-system-attribute-map ()
+   'common-lisp:hash-table)
+ (common-lisp:defun make-message-body-system-attribute-map
                     (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
@@ -1147,7 +1620,7 @@
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
  (common-lisp:deftype message-list () '(trivial-types:proper-list message))
- (common-lisp:defun |make-message-list|
+ (common-lisp:defun make-message-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list message))
@@ -1159,23 +1632,97 @@
  (common-lisp:export (common-lisp:list 'message-not-inflight)))
 (common-lisp:progn
  (common-lisp:deftype message-system-attribute-map () 'common-lisp:hash-table)
- (common-lisp:defun |make-message-system-attribute-map|
+ (common-lisp:defun make-message-system-attribute-map
                     (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:deftype message-system-attribute-name () 'common-lisp:string)
+(common-lisp:deftype message-system-attribute-name-for-sends ()
+  'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:defstruct
+     (message-system-attribute-value (:copier common-lisp:nil)
+      (:conc-name "struct-shape-message-system-attribute-value-"))
+   (string-value common-lisp:nil :type
+    (common-lisp:or string common-lisp:null))
+   (binary-value common-lisp:nil :type
+    (common-lisp:or binary common-lisp:null))
+   (string-list-values common-lisp:nil :type
+    (common-lisp:or string-list common-lisp:null))
+   (binary-list-values common-lisp:nil :type
+    (common-lisp:or binary-list common-lisp:null))
+   (data-type (common-lisp:error ":data-type is required") :type
+    (common-lisp:or string common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'message-system-attribute-value
+                    'make-message-system-attribute-value))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          message-system-attribute-value))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          message-system-attribute-value))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'string-value))
+      (common-lisp:list
+       (common-lisp:cons "StringValue"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'binary-value))
+      (common-lisp:list
+       (common-lisp:cons "BinaryValue"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'string-list-values))
+      (common-lisp:list
+       (common-lisp:cons "StringListValues"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'binary-list-values))
+      (common-lisp:list
+       (common-lisp:cons "BinaryListValues"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'data-type))
+      (common-lisp:list
+       (common-lisp:cons "DataType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          message-system-attribute-value))
+   common-lisp:nil))
+(common-lisp:deftype nullable-integer () 'common-lisp:integer)
+(common-lisp:deftype nullable-long () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:define-condition over-limit
      (sqs-error)
-     common-lisp:nil)
- (common-lisp:export (common-lisp:list 'over-limit)))
+     ((message :initarg :message :initform common-lisp:nil :reader
+       over-limit-message)))
+ (common-lisp:export (common-lisp:list 'over-limit 'over-limit-message)))
 (common-lisp:progn
  (common-lisp:define-condition purge-queue-in-progress
      (sqs-error)
-     common-lisp:nil)
- (common-lisp:export (common-lisp:list 'purge-queue-in-progress)))
+     ((message :initarg :message :initform common-lisp:nil :reader
+       purge-queue-in-progress-message)))
+ (common-lisp:export
+  (common-lisp:list 'purge-queue-in-progress 'purge-queue-in-progress-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (purge-queue-request (:copier common-lisp:nil)
@@ -1202,7 +1749,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype queue-attribute-map () 'common-lisp:hash-table)
- (common-lisp:defun |make-queue-attribute-map|
+ (common-lisp:defun make-queue-attribute-map
                     (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
@@ -1212,21 +1759,27 @@
 (common-lisp:progn
  (common-lisp:define-condition queue-deleted-recently
      (sqs-error)
-     common-lisp:nil)
- (common-lisp:export (common-lisp:list 'queue-deleted-recently)))
+     ((message :initarg :message :initform common-lisp:nil :reader
+       queue-deleted-recently-message)))
+ (common-lisp:export
+  (common-lisp:list 'queue-deleted-recently 'queue-deleted-recently-message)))
 (common-lisp:progn
  (common-lisp:define-condition queue-does-not-exist
      (sqs-error)
-     common-lisp:nil)
- (common-lisp:export (common-lisp:list 'queue-does-not-exist)))
+     ((message :initarg :message :initform common-lisp:nil :reader
+       queue-does-not-exist-message)))
+ (common-lisp:export
+  (common-lisp:list 'queue-does-not-exist 'queue-does-not-exist-message)))
 (common-lisp:progn
  (common-lisp:define-condition queue-name-exists
      (sqs-error)
-     common-lisp:nil)
- (common-lisp:export (common-lisp:list 'queue-name-exists)))
+     ((message :initarg :message :initform common-lisp:nil :reader
+       queue-name-exists-message)))
+ (common-lisp:export
+  (common-lisp:list 'queue-name-exists 'queue-name-exists-message)))
 (common-lisp:progn
  (common-lisp:deftype queue-url-list () '(trivial-types:proper-list string))
- (common-lisp:defun |make-queue-url-list|
+ (common-lisp:defun make-queue-url-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
@@ -1234,8 +1787,11 @@
 (common-lisp:progn
  (common-lisp:define-condition receipt-handle-is-invalid
      (sqs-error)
-     common-lisp:nil)
- (common-lisp:export (common-lisp:list 'receipt-handle-is-invalid)))
+     ((message :initarg :message :initform common-lisp:nil :reader
+       receipt-handle-is-invalid-message)))
+ (common-lisp:export
+  (common-lisp:list 'receipt-handle-is-invalid
+                    'receipt-handle-is-invalid-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (receive-message-request (:copier common-lisp:nil)
@@ -1247,11 +1803,11 @@
    (message-attribute-names common-lisp:nil :type
     (common-lisp:or message-attribute-name-list common-lisp:null))
    (max-number-of-messages common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null))
+    (common-lisp:or nullable-integer common-lisp:null))
    (visibility-timeout common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null))
+    (common-lisp:or nullable-integer common-lisp:null))
    (wait-time-seconds common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null))
+    (common-lisp:or nullable-integer common-lisp:null))
    (receive-request-attempt-id common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export
@@ -1394,6 +1950,21 @@
                           remove-permission-request))
    common-lisp:nil))
 (common-lisp:progn
+ (common-lisp:define-condition request-throttled
+     (sqs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       request-throttled-message)))
+ (common-lisp:export
+  (common-lisp:list 'request-throttled 'request-throttled-message)))
+(common-lisp:progn
+ (common-lisp:define-condition resource-not-found-exception
+     (sqs-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       resource-not-found-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'resource-not-found-exception
+                    'resource-not-found-exception-message)))
+(common-lisp:progn
  (common-lisp:defstruct
      (send-message-batch-request (:copier common-lisp:nil)
       (:conc-name "struct-shape-send-message-batch-request-"))
@@ -1442,9 +2013,11 @@
    (message-body (common-lisp:error ":message-body is required") :type
     (common-lisp:or string common-lisp:null))
    (delay-seconds common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null))
+    (common-lisp:or nullable-integer common-lisp:null))
    (message-attributes common-lisp:nil :type
     (common-lisp:or message-body-attribute-map common-lisp:null))
+   (message-system-attributes common-lisp:nil :type
+    (common-lisp:or message-body-system-attribute-map common-lisp:null))
    (message-deduplication-id common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (message-group-id common-lisp:nil :type
@@ -1493,6 +2066,14 @@
     (alexandria:when-let (aws-sdk/generator/shape::value
                           (common-lisp:slot-value
                            aws-sdk/generator/shape::input
+                           'message-system-attributes))
+      (common-lisp:list
+       (common-lisp:cons "MessageSystemAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
                            'message-deduplication-id))
       (common-lisp:list
        (common-lisp:cons "MessageDeduplicationId"
@@ -1513,7 +2094,7 @@
 (common-lisp:progn
  (common-lisp:deftype send-message-batch-request-entry-list ()
    '(trivial-types:proper-list send-message-batch-request-entry))
- (common-lisp:defun |make-send-message-batch-request-entry-list|
+ (common-lisp:defun make-send-message-batch-request-entry-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -1571,6 +2152,8 @@
     :type (common-lisp:or string common-lisp:null))
    (md5of-message-attributes common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
+   (md5of-message-system-attributes common-lisp:nil :type
+    (common-lisp:or string common-lisp:null))
    (sequence-number common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export
@@ -1617,6 +2200,14 @@
                           aws-sdk/generator/shape::value))))
     (alexandria:when-let (aws-sdk/generator/shape::value
                           (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'md5of-message-system-attributes))
+      (common-lisp:list
+       (common-lisp:cons "MD5OfMessageSystemAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
                            aws-sdk/generator/shape::input 'sequence-number))
       (common-lisp:list
        (common-lisp:cons "SequenceNumber"
@@ -1630,7 +2221,7 @@
 (common-lisp:progn
  (common-lisp:deftype send-message-batch-result-entry-list ()
    '(trivial-types:proper-list send-message-batch-result-entry))
- (common-lisp:defun |make-send-message-batch-result-entry-list|
+ (common-lisp:defun make-send-message-batch-result-entry-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -1645,9 +2236,11 @@
    (message-body (common-lisp:error ":message-body is required") :type
     (common-lisp:or string common-lisp:null))
    (delay-seconds common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null))
+    (common-lisp:or nullable-integer common-lisp:null))
    (message-attributes common-lisp:nil :type
     (common-lisp:or message-body-attribute-map common-lisp:null))
+   (message-system-attributes common-lisp:nil :type
+    (common-lisp:or message-body-system-attribute-map common-lisp:null))
    (message-deduplication-id common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (message-group-id common-lisp:nil :type
@@ -1691,6 +2284,14 @@
     (alexandria:when-let (aws-sdk/generator/shape::value
                           (common-lisp:slot-value
                            aws-sdk/generator/shape::input
+                           'message-system-attributes))
+      (common-lisp:list
+       (common-lisp:cons "MessageSystemAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
                            'message-deduplication-id))
       (common-lisp:list
        (common-lisp:cons "MessageDeduplicationId"
@@ -1713,6 +2314,8 @@
    (md5of-message-body common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (md5of-message-attributes common-lisp:nil :type
+    (common-lisp:or string common-lisp:null))
+   (md5of-message-system-attributes common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (message-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (sequence-number common-lisp:nil :type
@@ -1738,6 +2341,14 @@
                            'md5of-message-attributes))
       (common-lisp:list
        (common-lisp:cons "MD5OfMessageAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'md5of-message-system-attributes))
+      (common-lisp:list
+       (common-lisp:cons "MD5OfMessageSystemAttributes"
                          (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))
     (alexandria:when-let (aws-sdk/generator/shape::value
@@ -1797,24 +2408,193 @@
                          (aws-sdk/generator/shape::input
                           set-queue-attributes-request))
    common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (start-message-move-task-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-start-message-move-task-request-"))
+   (source-arn (common-lisp:error ":source-arn is required") :type
+    (common-lisp:or string common-lisp:null))
+   (destination-arn common-lisp:nil :type
+    (common-lisp:or string common-lisp:null))
+   (max-number-of-messages-per-second common-lisp:nil :type
+    (common-lisp:or nullable-integer common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'start-message-move-task-request
+                    'make-start-message-move-task-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-message-move-task-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-message-move-task-request))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'source-arn))
+      (common-lisp:list
+       (common-lisp:cons "SourceArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'destination-arn))
+      (common-lisp:list
+       (common-lisp:cons "DestinationArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'max-number-of-messages-per-second))
+      (common-lisp:list
+       (common-lisp:cons "MaxNumberOfMessagesPerSecond"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-message-move-task-request))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (start-message-move-task-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-start-message-move-task-result-"))
+   (task-handle common-lisp:nil :type
+    (common-lisp:or string common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'start-message-move-task-result
+                    'make-start-message-move-task-result))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-message-move-task-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-message-move-task-result))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-handle))
+      (common-lisp:list
+       (common-lisp:cons "TaskHandle"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-message-move-task-result))
+   common-lisp:nil))
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype string-list () '(trivial-types:proper-list string))
- (common-lisp:defun |make-string-list|
+ (common-lisp:defun make-string-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
+(common-lisp:deftype tag-key () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:deftype tag-key-list () '(trivial-types:proper-list tag-key))
+ (common-lisp:defun make-tag-key-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list tag-key))
+   aws-sdk/generator/shape::members))
+(common-lisp:progn
+ (common-lisp:deftype tag-map () 'common-lisp:hash-table)
+ (common-lisp:defun make-tag-map (aws-sdk/generator/shape::key-values)
+   (common-lisp:etypecase aws-sdk/generator/shape::key-values
+     (common-lisp:hash-table aws-sdk/generator/shape::key-values)
+     (common-lisp:list
+      (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (tag-queue-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-tag-queue-request-"))
+   (queue-url (common-lisp:error ":queue-url is required") :type
+    (common-lisp:or string common-lisp:null))
+   (tags (common-lisp:error ":tags is required") :type
+    (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'tag-queue-request 'make-tag-queue-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input tag-queue-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input tag-queue-request))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'queue-url))
+      (common-lisp:list
+       (common-lisp:cons "QueueUrl"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tags))
+      (common-lisp:list
+       (common-lisp:cons "Tags"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input tag-queue-request))
+   common-lisp:nil))
+(common-lisp:deftype tag-value () 'common-lisp:string)
+(common-lisp:deftype token () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:define-condition too-many-entries-in-batch-request
      (sqs-error)
-     common-lisp:nil)
- (common-lisp:export (common-lisp:list 'too-many-entries-in-batch-request)))
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-entries-in-batch-request-message)))
+ (common-lisp:export
+  (common-lisp:list 'too-many-entries-in-batch-request
+                    'too-many-entries-in-batch-request-message)))
 (common-lisp:progn
  (common-lisp:define-condition unsupported-operation
      (sqs-error)
-     common-lisp:nil)
- (common-lisp:export (common-lisp:list 'unsupported-operation)))
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unsupported-operation-message)))
+ (common-lisp:export
+  (common-lisp:list 'unsupported-operation 'unsupported-operation-message)))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (untag-queue-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-untag-queue-request-"))
+   (queue-url (common-lisp:error ":queue-url is required") :type
+    (common-lisp:or string common-lisp:null))
+   (tag-keys (common-lisp:error ":tag-keys is required") :type
+    (common-lisp:or tag-key-list common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'untag-queue-request 'make-untag-queue-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input untag-queue-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input untag-queue-request))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'queue-url))
+      (common-lisp:list
+       (common-lisp:cons "QueueUrl"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-keys))
+      (common-lisp:list
+       (common-lisp:cons "TagKeys"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input untag-queue-request))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defun add-permission
                     (
@@ -1830,10 +2610,26 @@
        (aws-sdk/generator/shape:make-request-with-input 'sqs-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "AddPermission"
-                                                        "2012-11-05"))
+                                                        "AddPermission"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'add-permission))
+(common-lisp:progn
+ (common-lisp:defun cancel-message-move-task
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key task-handle)
+   (common-lisp:declare (common-lisp:ignorable task-handle))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-cancel-message-move-task-request
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'sqs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "CancelMessageMoveTask"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'cancel-message-move-task))
 (common-lisp:progn
  (common-lisp:defun change-message-visibility
                     (
@@ -1851,8 +2647,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'sqs-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "ChangeMessageVisibility"
-                                                        "2012-11-05"))
+                                                        "ChangeMessageVisibility"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'change-message-visibility))
 (common-lisp:progn
@@ -1870,16 +2665,15 @@
        (aws-sdk/generator/shape:make-request-with-input 'sqs-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "ChangeMessageVisibilityBatch"
-                                                        "2012-11-05"))
-      common-lisp:nil "ChangeMessageVisibilityBatchResult" *error-map*)))
+                                                        "ChangeMessageVisibilityBatch"))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'change-message-visibility-batch))
 (common-lisp:progn
  (common-lisp:defun create-queue
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
-                     common-lisp:&key queue-name attributes)
-   (common-lisp:declare (common-lisp:ignorable queue-name attributes))
+                     common-lisp:&key queue-name attributes tags)
+   (common-lisp:declare (common-lisp:ignorable queue-name attributes tags))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-create-queue-request
                                          aws-sdk/generator/operation::args)))
@@ -1888,9 +2682,8 @@
        (aws-sdk/generator/shape:make-request-with-input 'sqs-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "CreateQueue"
-                                                        "2012-11-05"))
-      common-lisp:nil "CreateQueueResult" *error-map*)))
+                                                        "CreateQueue"))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-queue))
 (common-lisp:progn
  (common-lisp:defun delete-message
@@ -1906,8 +2699,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'sqs-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeleteMessage"
-                                                        "2012-11-05"))
+                                                        "DeleteMessage"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-message))
 (common-lisp:progn
@@ -1924,9 +2716,8 @@
        (aws-sdk/generator/shape:make-request-with-input 'sqs-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeleteMessageBatch"
-                                                        "2012-11-05"))
-      common-lisp:nil "DeleteMessageBatchResult" *error-map*)))
+                                                        "DeleteMessageBatch"))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-message-batch))
 (common-lisp:progn
  (common-lisp:defun delete-queue
@@ -1942,8 +2733,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'sqs-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeleteQueue"
-                                                        "2012-11-05"))
+                                                        "DeleteQueue"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-queue))
 (common-lisp:progn
@@ -1960,9 +2750,8 @@
        (aws-sdk/generator/shape:make-request-with-input 'sqs-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "GetQueueAttributes"
-                                                        "2012-11-05"))
-      common-lisp:nil "GetQueueAttributesResult" *error-map*)))
+                                                        "GetQueueAttributes"))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-queue-attributes))
 (common-lisp:progn
  (common-lisp:defun get-queue-url
@@ -1979,16 +2768,16 @@
        (aws-sdk/generator/shape:make-request-with-input 'sqs-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "GetQueueUrl"
-                                                        "2012-11-05"))
-      common-lisp:nil "GetQueueUrlResult" *error-map*)))
+                                                        "GetQueueUrl"))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-queue-url))
 (common-lisp:progn
  (common-lisp:defun list-dead-letter-source-queues
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
-                     common-lisp:&key queue-url)
-   (common-lisp:declare (common-lisp:ignorable queue-url))
+                     common-lisp:&key queue-url next-token max-results)
+   (common-lisp:declare
+    (common-lisp:ignorable queue-url next-token max-results))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply
                        'make-list-dead-letter-source-queues-request
@@ -1998,16 +2787,50 @@
        (aws-sdk/generator/shape:make-request-with-input 'sqs-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "ListDeadLetterSourceQueues"
-                                                        "2012-11-05"))
-      common-lisp:nil "ListDeadLetterSourceQueuesResult" *error-map*)))
+                                                        "ListDeadLetterSourceQueues"))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-dead-letter-source-queues))
+(common-lisp:progn
+ (common-lisp:defun list-message-move-tasks
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key source-arn max-results)
+   (common-lisp:declare (common-lisp:ignorable source-arn max-results))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-list-message-move-tasks-request
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'sqs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "ListMessageMoveTasks"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'list-message-move-tasks))
+(common-lisp:progn
+ (common-lisp:defun list-queue-tags
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key queue-url)
+   (common-lisp:declare (common-lisp:ignorable queue-url))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-list-queue-tags-request
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'sqs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "ListQueueTags"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'list-queue-tags))
 (common-lisp:progn
  (common-lisp:defun list-queues
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
-                     common-lisp:&key queue-name-prefix)
-   (common-lisp:declare (common-lisp:ignorable queue-name-prefix))
+                     common-lisp:&key queue-name-prefix next-token max-results)
+   (common-lisp:declare
+    (common-lisp:ignorable queue-name-prefix next-token max-results))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-list-queues-request
                                          aws-sdk/generator/operation::args)))
@@ -2015,9 +2838,9 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input 'sqs-request
                                                         aws-sdk/generator/operation::input
-                                                        "POST" "/" "ListQueues"
-                                                        "2012-11-05"))
-      common-lisp:nil "ListQueuesResult" *error-map*)))
+                                                        "POST" "/"
+                                                        "ListQueues"))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-queues))
 (common-lisp:progn
  (common-lisp:defun purge-queue
@@ -2032,8 +2855,8 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input 'sqs-request
                                                         aws-sdk/generator/operation::input
-                                                        "POST" "/" "PurgeQueue"
-                                                        "2012-11-05"))
+                                                        "POST" "/"
+                                                        "PurgeQueue"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'purge-queue))
 (common-lisp:progn
@@ -2056,9 +2879,8 @@
        (aws-sdk/generator/shape:make-request-with-input 'sqs-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "ReceiveMessage"
-                                                        "2012-11-05"))
-      common-lisp:nil "ReceiveMessageResult" *error-map*)))
+                                                        "ReceiveMessage"))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'receive-message))
 (common-lisp:progn
  (common-lisp:defun remove-permission
@@ -2074,8 +2896,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'sqs-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "RemovePermission"
-                                                        "2012-11-05"))
+                                                        "RemovePermission"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'remove-permission))
 (common-lisp:progn
@@ -2083,11 +2904,12 @@
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
                      common-lisp:&key queue-url message-body delay-seconds
-                     message-attributes message-deduplication-id
-                     message-group-id)
+                     message-attributes message-system-attributes
+                     message-deduplication-id message-group-id)
    (common-lisp:declare
     (common-lisp:ignorable queue-url message-body delay-seconds
-     message-attributes message-deduplication-id message-group-id))
+     message-attributes message-system-attributes message-deduplication-id
+     message-group-id))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-send-message-request
                                          aws-sdk/generator/operation::args)))
@@ -2096,9 +2918,8 @@
        (aws-sdk/generator/shape:make-request-with-input 'sqs-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "SendMessage"
-                                                        "2012-11-05"))
-      common-lisp:nil "SendMessageResult" *error-map*)))
+                                                        "SendMessage"))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'send-message))
 (common-lisp:progn
  (common-lisp:defun send-message-batch
@@ -2114,9 +2935,8 @@
        (aws-sdk/generator/shape:make-request-with-input 'sqs-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "SendMessageBatch"
-                                                        "2012-11-05"))
-      common-lisp:nil "SendMessageBatchResult" *error-map*)))
+                                                        "SendMessageBatch"))
+      common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'send-message-batch))
 (common-lisp:progn
  (common-lisp:defun set-queue-attributes
@@ -2132,7 +2952,59 @@
        (aws-sdk/generator/shape:make-request-with-input 'sqs-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "SetQueueAttributes"
-                                                        "2012-11-05"))
+                                                        "SetQueueAttributes"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'set-queue-attributes))
+(common-lisp:progn
+ (common-lisp:defun start-message-move-task
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key source-arn destination-arn
+                     max-number-of-messages-per-second)
+   (common-lisp:declare
+    (common-lisp:ignorable source-arn destination-arn
+     max-number-of-messages-per-second))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-start-message-move-task-request
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'sqs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "StartMessageMoveTask"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'start-message-move-task))
+(common-lisp:progn
+ (common-lisp:defun tag-queue
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key queue-url tags)
+   (common-lisp:declare (common-lisp:ignorable queue-url tags))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-tag-queue-request
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'sqs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/" "TagQueue"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'tag-queue))
+(common-lisp:progn
+ (common-lisp:defun untag-queue
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key queue-url tag-keys)
+   (common-lisp:declare (common-lisp:ignorable queue-url tag-keys))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-untag-queue-request
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'sqs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "UntagQueue"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'untag-queue))

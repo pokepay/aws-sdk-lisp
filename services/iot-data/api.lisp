@@ -7,17 +7,25 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/iot-data/api)
-(common-lisp:progn
- (common-lisp:defclass iot-data-request (aws-sdk/request:request)
-                       common-lisp:nil (:default-initargs :service "iot-data"))
- (common-lisp:export 'iot-data-request))
 (common-lisp:progn
  (common-lisp:define-condition iot-data-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'iot-data-error))
+(common-lisp:progn
+ (common-lisp:defclass iot-data-request
+                       (aws-sdk/generator/service::rest-json-request)
+                       common-lisp:nil
+                       (:default-initargs :service "iot-data" :api-version
+                        "2015-05-28" :host-prefix "data-ats.iot" :signing-name
+                        "iotdata" :global-host common-lisp:nil))
+ (common-lisp:export 'iot-data-request))
 (common-lisp:defvar *error-map*
   '(("ConflictException" . conflict-exception)
     ("InternalFailureException" . internal-failure-exception)
@@ -37,12 +45,16 @@
        conflict-exception-message)))
  (common-lisp:export
   (common-lisp:list 'conflict-exception 'conflict-exception-message)))
+(common-lisp:deftype content-type () 'common-lisp:string)
+(common-lisp:deftype correlation-data () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-thing-shadow-request (:copier common-lisp:nil)
       (:conc-name "struct-shape-delete-thing-shadow-request-"))
    (thing-name (common-lisp:error ":thingname is required") :type
-    (common-lisp:or thing-name common-lisp:null)))
+    (common-lisp:or thing-name common-lisp:null))
+   (shadow-name common-lisp:nil :type
+    (common-lisp:or shadow-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-thing-shadow-request
                     'make-delete-thing-shadow-request))
@@ -92,13 +104,102 @@
                          (aws-sdk/generator/shape::input
                           delete-thing-shadow-response))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'payload)))
-(common-lisp:deftype error-message () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:defstruct
+     (get-retained-message-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-retained-message-request-"))
+   (topic (common-lisp:error ":topic is required") :type
+    (common-lisp:or topic common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'get-retained-message-request
+                    'make-get-retained-message-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-retained-message-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-retained-message-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-retained-message-request))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (get-retained-message-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-retained-message-response-"))
+   (topic common-lisp:nil :type (common-lisp:or topic common-lisp:null))
+   (payload common-lisp:nil :type (common-lisp:or payload common-lisp:null))
+   (qos common-lisp:nil :type (common-lisp:or qos common-lisp:null))
+   (last-modified-time common-lisp:nil :type
+    (common-lisp:or timestamp common-lisp:null))
+   (user-properties common-lisp:nil :type
+    (common-lisp:or user-properties-blob common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'get-retained-message-response
+                    'make-get-retained-message-response))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-retained-message-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-retained-message-response))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'topic))
+      (common-lisp:list
+       (common-lisp:cons "topic"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'payload))
+      (common-lisp:list
+       (common-lisp:cons "payload"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'qos))
+      (common-lisp:list
+       (common-lisp:cons "qos"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'last-modified-time))
+      (common-lisp:list
+       (common-lisp:cons "lastModifiedTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'user-properties))
+      (common-lisp:list
+       (common-lisp:cons "userProperties"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-retained-message-response))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-thing-shadow-request (:copier common-lisp:nil)
       (:conc-name "struct-shape-get-thing-shadow-request-"))
    (thing-name (common-lisp:error ":thingname is required") :type
-    (common-lisp:or thing-name common-lisp:null)))
+    (common-lisp:or thing-name common-lisp:null))
+   (shadow-name common-lisp:nil :type
+    (common-lisp:or shadow-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-thing-shadow-request 'make-get-thing-shadow-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -166,6 +267,151 @@
 (common-lisp:deftype json-document ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
+ (common-lisp:defstruct
+     (list-named-shadows-for-thing-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-named-shadows-for-thing-request-"))
+   (thing-name (common-lisp:error ":thingname is required") :type
+    (common-lisp:or thing-name common-lisp:null))
+   (next-token common-lisp:nil :type
+    (common-lisp:or next-token common-lisp:null))
+   (page-size common-lisp:nil :type
+    (common-lisp:or page-size common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'list-named-shadows-for-thing-request
+                    'make-list-named-shadows-for-thing-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-named-shadows-for-thing-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-named-shadows-for-thing-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-named-shadows-for-thing-request))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (list-named-shadows-for-thing-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-named-shadows-for-thing-response-"))
+   (results common-lisp:nil :type
+    (common-lisp:or named-shadow-list common-lisp:null))
+   (next-token common-lisp:nil :type
+    (common-lisp:or next-token common-lisp:null))
+   (timestamp common-lisp:nil :type
+    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'list-named-shadows-for-thing-response
+                    'make-list-named-shadows-for-thing-response))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-named-shadows-for-thing-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-named-shadows-for-thing-response))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'results))
+      (common-lisp:list
+       (common-lisp:cons "results"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "nextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'timestamp))
+      (common-lisp:list
+       (common-lisp:cons "timestamp"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-named-shadows-for-thing-response))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (list-retained-messages-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-retained-messages-request-"))
+   (next-token common-lisp:nil :type
+    (common-lisp:or next-token common-lisp:null))
+   (max-results common-lisp:nil :type
+    (common-lisp:or max-results common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'list-retained-messages-request
+                    'make-list-retained-messages-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-retained-messages-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-retained-messages-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-retained-messages-request))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (list-retained-messages-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-retained-messages-response-"))
+   (retained-topics common-lisp:nil :type
+    (common-lisp:or retained-message-list common-lisp:null))
+   (next-token common-lisp:nil :type
+    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'list-retained-messages-response
+                    'make-list-retained-messages-response))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-retained-messages-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-retained-messages-response))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'retained-topics))
+      (common-lisp:list
+       (common-lisp:cons "retainedTopics"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "nextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-retained-messages-response))
+   common-lisp:nil))
+(common-lisp:deftype max-results () 'common-lisp:integer)
+(common-lisp:deftype message-expiry () 'common-lisp:integer)
+(common-lisp:progn
  (common-lisp:define-condition method-not-allowed-exception
      (iot-data-error)
      ((message :initarg :message :initform common-lisp:nil :reader
@@ -173,8 +419,20 @@
  (common-lisp:export
   (common-lisp:list 'method-not-allowed-exception
                     'method-not-allowed-exception-message)))
+(common-lisp:progn
+ (common-lisp:deftype named-shadow-list ()
+   '(trivial-types:proper-list shadow-name))
+ (common-lisp:defun make-named-shadow-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list shadow-name))
+   aws-sdk/generator/shape::members))
+(common-lisp:deftype next-token () 'common-lisp:string)
+(common-lisp:deftype page-size () 'common-lisp:integer)
 (common-lisp:deftype payload ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
+(common-lisp:deftype payload-format-indicator () 'common-lisp:string)
+(common-lisp:deftype payload-size () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct
      (publish-request (:copier common-lisp:nil)
@@ -182,11 +440,40 @@
    (topic (common-lisp:error ":topic is required") :type
     (common-lisp:or topic common-lisp:null))
    (qos common-lisp:nil :type (common-lisp:or qos common-lisp:null))
-   (payload common-lisp:nil :type (common-lisp:or payload common-lisp:null)))
+   (retain common-lisp:nil :type (common-lisp:or retain common-lisp:null))
+   (payload common-lisp:nil :type (common-lisp:or payload common-lisp:null))
+   (user-properties common-lisp:nil :type
+    (common-lisp:or user-properties common-lisp:null))
+   (payload-format-indicator common-lisp:nil :type
+    (common-lisp:or payload-format-indicator common-lisp:null))
+   (content-type common-lisp:nil :type
+    (common-lisp:or content-type common-lisp:null))
+   (response-topic common-lisp:nil :type
+    (common-lisp:or response-topic common-lisp:null))
+   (correlation-data common-lisp:nil :type
+    (common-lisp:or correlation-data common-lisp:null))
+   (message-expiry common-lisp:nil :type
+    (common-lisp:or message-expiry common-lisp:null)))
  (common-lisp:export (common-lisp:list 'publish-request 'make-publish-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input publish-request))
-   (common-lisp:append))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'user-properties))
+      (common-lisp:cons "x-amz-mqtt5-user-properties"
+                        aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'payload-format-indicator))
+      (common-lisp:cons "x-amz-mqtt5-payload-format-indicator"
+                        aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'correlation-data))
+      (common-lisp:cons "x-amz-mqtt5-correlation-data"
+                        aws-sdk/generator/shape::value))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-params
                         ((aws-sdk/generator/shape::input publish-request))
    (common-lisp:append
@@ -217,6 +504,72 @@
  (common-lisp:export
   (common-lisp:list 'resource-not-found-exception
                     'resource-not-found-exception-message)))
+(common-lisp:deftype response-topic () 'common-lisp:string)
+(common-lisp:deftype retain () 'common-lisp:boolean)
+(common-lisp:progn
+ (common-lisp:deftype retained-message-list ()
+   '(trivial-types:proper-list retained-message-summary))
+ (common-lisp:defun make-retained-message-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list
+                            retained-message-summary))
+   aws-sdk/generator/shape::members))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (retained-message-summary (:copier common-lisp:nil)
+      (:conc-name "struct-shape-retained-message-summary-"))
+   (topic common-lisp:nil :type (common-lisp:or topic common-lisp:null))
+   (payload-size common-lisp:nil :type
+    (common-lisp:or payload-size common-lisp:null))
+   (qos common-lisp:nil :type (common-lisp:or qos common-lisp:null))
+   (last-modified-time common-lisp:nil :type
+    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'retained-message-summary 'make-retained-message-summary))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          retained-message-summary))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          retained-message-summary))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'topic))
+      (common-lisp:list
+       (common-lisp:cons "topic"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'payload-size))
+      (common-lisp:list
+       (common-lisp:cons "payloadSize"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'qos))
+      (common-lisp:list
+       (common-lisp:cons "qos"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'last-modified-time))
+      (common-lisp:list
+       (common-lisp:cons "lastModifiedTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          retained-message-summary))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:define-condition service-unavailable-exception
      (iot-data-error)
@@ -225,6 +578,7 @@
  (common-lisp:export
   (common-lisp:list 'service-unavailable-exception
                     'service-unavailable-exception-message)))
+(common-lisp:deftype shadow-name () 'common-lisp:string)
 (common-lisp:deftype thing-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:define-condition throttling-exception
@@ -233,6 +587,7 @@
        throttling-exception-message)))
  (common-lisp:export
   (common-lisp:list 'throttling-exception 'throttling-exception-message)))
+(common-lisp:deftype timestamp () 'common-lisp:integer)
 (common-lisp:deftype topic () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:define-condition unauthorized-exception
@@ -255,6 +610,8 @@
       (:conc-name "struct-shape-update-thing-shadow-request-"))
    (thing-name (common-lisp:error ":thingname is required") :type
     (common-lisp:or thing-name common-lisp:null))
+   (shadow-name common-lisp:nil :type
+    (common-lisp:or shadow-name common-lisp:null))
    (payload (common-lisp:error ":payload is required") :type
     (common-lisp:or json-document common-lisp:null)))
  (common-lisp:export
@@ -313,13 +670,16 @@
                          (aws-sdk/generator/shape::input
                           update-thing-shadow-response))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'payload)))
+(common-lisp:deftype user-properties () 'common-lisp:string)
+(common-lisp:deftype user-properties-blob ()
+  '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:deftype |errorMessage| () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defun delete-thing-shadow
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
-                     common-lisp:&key thing-name)
-   (common-lisp:declare (common-lisp:ignorable thing-name))
+                     common-lisp:&key thing-name shadow-name)
+   (common-lisp:declare (common-lisp:ignorable thing-name shadow-name))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-delete-thing-shadow-request
                                          aws-sdk/generator/operation::args)))
@@ -338,17 +698,43 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'thing-name))))
-                                                        "DeleteThingShadow"
-                                                        "2015-05-28")
+                                                        "DeleteThingShadow")
        :want-stream common-lisp:t)
       "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-thing-shadow))
 (common-lisp:progn
+ (common-lisp:defun get-retained-message
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key topic)
+   (common-lisp:declare (common-lisp:ignorable topic))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-get-retained-message-request
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'iot-data-request
+                                                        aws-sdk/generator/operation::input
+                                                        "GET"
+                                                        (common-lisp:lambda
+                                                            (
+                                                             aws-sdk/generator/operation::input)
+                                                          (common-lisp:format
+                                                           common-lisp:nil
+                                                           "/retainedMessage/~A"
+                                                           (quri.encode:url-encode
+                                                            (common-lisp:slot-value
+                                                             aws-sdk/generator/operation::input
+                                                             'topic))))
+                                                        "GetRetainedMessage"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'get-retained-message))
+(common-lisp:progn
  (common-lisp:defun get-thing-shadow
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
-                     common-lisp:&key thing-name)
-   (common-lisp:declare (common-lisp:ignorable thing-name))
+                     common-lisp:&key thing-name shadow-name)
+   (common-lisp:declare (common-lisp:ignorable thing-name shadow-name))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-get-thing-shadow-request
                                          aws-sdk/generator/operation::args)))
@@ -367,17 +753,68 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'thing-name))))
-                                                        "GetThingShadow"
-                                                        "2015-05-28")
+                                                        "GetThingShadow")
        :want-stream common-lisp:t)
       "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'get-thing-shadow))
 (common-lisp:progn
+ (common-lisp:defun list-named-shadows-for-thing
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key thing-name next-token page-size)
+   (common-lisp:declare
+    (common-lisp:ignorable thing-name next-token page-size))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply
+                       'make-list-named-shadows-for-thing-request
+                       aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'iot-data-request
+                                                        aws-sdk/generator/operation::input
+                                                        "GET"
+                                                        (common-lisp:lambda
+                                                            (
+                                                             aws-sdk/generator/operation::input)
+                                                          (common-lisp:format
+                                                           common-lisp:nil
+                                                           "/api/things/shadow/ListNamedShadowsForThing/~A"
+                                                           (quri.encode:url-encode
+                                                            (common-lisp:slot-value
+                                                             aws-sdk/generator/operation::input
+                                                             'thing-name))))
+                                                        "ListNamedShadowsForThing"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'list-named-shadows-for-thing))
+(common-lisp:progn
+ (common-lisp:defun list-retained-messages
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key next-token max-results)
+   (common-lisp:declare (common-lisp:ignorable next-token max-results))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-list-retained-messages-request
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'iot-data-request
+                                                        aws-sdk/generator/operation::input
+                                                        "GET"
+                                                        "/retainedMessage"
+                                                        "ListRetainedMessages"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'list-retained-messages))
+(common-lisp:progn
  (common-lisp:defun publish
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
-                     common-lisp:&key topic qos payload)
-   (common-lisp:declare (common-lisp:ignorable topic qos payload))
+                     common-lisp:&key topic qos retain payload user-properties
+                     payload-format-indicator content-type response-topic
+                     correlation-data message-expiry)
+   (common-lisp:declare
+    (common-lisp:ignorable topic qos retain payload user-properties
+     payload-format-indicator content-type response-topic correlation-data
+     message-expiry))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-publish-request
                                          aws-sdk/generator/operation::args)))
@@ -396,16 +833,15 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'topic))))
-                                                        "Publish"
-                                                        "2015-05-28"))
+                                                        "Publish"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'publish))
 (common-lisp:progn
  (common-lisp:defun update-thing-shadow
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
-                     common-lisp:&key thing-name payload)
-   (common-lisp:declare (common-lisp:ignorable thing-name payload))
+                     common-lisp:&key thing-name shadow-name payload)
+   (common-lisp:declare (common-lisp:ignorable thing-name shadow-name payload))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-update-thing-shadow-request
                                          aws-sdk/generator/operation::args)))
@@ -424,8 +860,7 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'thing-name))))
-                                                        "UpdateThingShadow"
-                                                        "2015-05-28")
+                                                        "UpdateThingShadow")
        :want-stream common-lisp:t)
       "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'update-thing-shadow))

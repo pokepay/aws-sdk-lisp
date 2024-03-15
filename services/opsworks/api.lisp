@@ -7,17 +7,26 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/opsworks/api)
-(common-lisp:progn
- (common-lisp:defclass opsworks-request (aws-sdk/request:request)
-                       common-lisp:nil (:default-initargs :service "opsworks"))
- (common-lisp:export 'opsworks-request))
 (common-lisp:progn
  (common-lisp:define-condition opsworks-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'opsworks-error))
+(common-lisp:progn
+ (common-lisp:defclass opsworks-request (aws-sdk/json-request:json-request)
+                       common-lisp:nil
+                       (:default-initargs :service "opsworks" :api-version
+                        "2013-02-18" :host-prefix "opsworks" :signing-name
+                        common-lisp:nil :global-host common-lisp:nil
+                        :target-prefix "OpsWorks_20130218" :json-version
+                        "1.1"))
+ (common-lisp:export 'opsworks-request))
 (common-lisp:defvar *error-map*
   '(("ResourceNotFoundException" . resource-not-found-exception)
     ("ValidationException" . validation-exception)))
@@ -56,7 +65,7 @@
 (common-lisp:progn
  (common-lisp:deftype agent-versions ()
    '(trivial-types:proper-list agent-version))
- (common-lisp:defun |make-agent-versions|
+ (common-lisp:defun make-agent-versions
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list agent-version))
@@ -192,7 +201,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype app-attributes () 'common-lisp:hash-table)
- (common-lisp:defun |make-app-attributes| (aws-sdk/generator/shape::key-values)
+ (common-lisp:defun make-app-attributes (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
      (common-lisp:list
@@ -201,7 +210,7 @@
 (common-lisp:deftype app-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype apps () '(trivial-types:proper-list app))
- (common-lisp:defun |make-apps|
+ (common-lisp:defun make-apps
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list app))
@@ -504,7 +513,7 @@
 (common-lisp:progn
  (common-lisp:deftype block-device-mappings ()
    '(trivial-types:proper-list block-device-mapping))
- (common-lisp:defun |make-block-device-mappings|
+ (common-lisp:defun make-block-device-mappings
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list block-device-mapping))
@@ -948,7 +957,7 @@
 (common-lisp:progn
  (common-lisp:deftype cloud-watch-logs-log-streams ()
    '(trivial-types:proper-list cloud-watch-logs-log-stream))
- (common-lisp:defun |make-cloud-watch-logs-log-streams|
+ (common-lisp:defun make-cloud-watch-logs-log-streams
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -1054,7 +1063,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype commands () '(trivial-types:proper-list command))
- (common-lisp:defun |make-commands|
+ (common-lisp:defun make-commands
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list command))
@@ -2036,7 +2045,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype daily-auto-scaling-schedule () 'common-lisp:hash-table)
- (common-lisp:defun |make-daily-auto-scaling-schedule|
+ (common-lisp:defun make-daily-auto-scaling-schedule
                     (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
@@ -2083,7 +2092,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype data-sources () '(trivial-types:proper-list data-source))
- (common-lisp:defun |make-data-sources|
+ (common-lisp:defun make-data-sources
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list data-source))
@@ -2391,7 +2400,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype deployment-command-args () 'common-lisp:hash-table)
- (common-lisp:defun |make-deployment-command-args|
+ (common-lisp:defun make-deployment-command-args
                     (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
@@ -2400,7 +2409,7 @@
 (common-lisp:deftype deployment-command-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype deployments () '(trivial-types:proper-list deployment))
- (common-lisp:defun |make-deployments|
+ (common-lisp:defun make-deployments
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list deployment))
@@ -3328,6 +3337,37 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
+     (describe-operating-systems-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-operating-systems-response-"))
+   (operating-systems common-lisp:nil :type
+    (common-lisp:or operating-systems common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'describe-operating-systems-response
+                    'make-describe-operating-systems-response))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-operating-systems-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-operating-systems-response))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'operating-systems))
+      (common-lisp:list
+       (common-lisp:cons "OperatingSystems"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-operating-systems-response))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
      (describe-permissions-request (:copier common-lisp:nil)
       (:conc-name "struct-shape-describe-permissions-request-"))
    (iam-user-arn common-lisp:nil :type
@@ -4210,7 +4250,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype ecs-clusters () '(trivial-types:proper-list ecs-cluster))
- (common-lisp:defun |make-ecs-clusters|
+ (common-lisp:defun make-ecs-clusters
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list ecs-cluster))
@@ -4272,7 +4312,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype elastic-ips () '(trivial-types:proper-list elastic-ip))
- (common-lisp:defun |make-elastic-ips|
+ (common-lisp:defun make-elastic-ips
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list elastic-ip))
@@ -4377,7 +4417,7 @@
 (common-lisp:progn
  (common-lisp:deftype elastic-load-balancers ()
    '(trivial-types:proper-list elastic-load-balancer))
- (common-lisp:defun |make-elastic-load-balancers|
+ (common-lisp:defun make-elastic-load-balancers
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list elastic-load-balancer))
@@ -4426,7 +4466,7 @@
 (common-lisp:progn
  (common-lisp:deftype environment-variables ()
    '(trivial-types:proper-list environment-variable))
- (common-lisp:defun |make-environment-variables|
+ (common-lisp:defun make-environment-variables
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list environment-variable))
@@ -4969,7 +5009,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype instances () '(trivial-types:proper-list instance))
- (common-lisp:defun |make-instances|
+ (common-lisp:defun make-instances
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list instance))
@@ -4998,6 +5038,8 @@
    (shutting-down common-lisp:nil :type
     (common-lisp:or integer common-lisp:null))
    (start-failed common-lisp:nil :type
+    (common-lisp:or integer common-lisp:null))
+   (stop-failed common-lisp:nil :type
     (common-lisp:or integer common-lisp:null))
    (stopped common-lisp:nil :type (common-lisp:or integer common-lisp:null))
    (stopping common-lisp:nil :type (common-lisp:or integer common-lisp:null))
@@ -5109,6 +5151,13 @@
                            aws-sdk/generator/shape::input 'start-failed))
       (common-lisp:list
        (common-lisp:cons "StartFailed"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'stop-failed))
+      (common-lisp:list
+       (common-lisp:cons "StopFailed"
                          (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))
     (alexandria:when-let (aws-sdk/generator/shape::value
@@ -5374,8 +5423,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype layer-attributes () 'common-lisp:hash-table)
- (common-lisp:defun |make-layer-attributes|
-                    (aws-sdk/generator/shape::key-values)
+ (common-lisp:defun make-layer-attributes (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
      (common-lisp:list
@@ -5384,7 +5432,7 @@
 (common-lisp:deftype layer-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype layers () '(trivial-types:proper-list layer))
- (common-lisp:defun |make-layers|
+ (common-lisp:defun make-layers
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list layer))
@@ -5553,7 +5601,7 @@
 (common-lisp:progn
  (common-lisp:deftype load-based-auto-scaling-configurations ()
    '(trivial-types:proper-list load-based-auto-scaling-configuration))
- (common-lisp:defun |make-load-based-auto-scaling-configurations|
+ (common-lisp:defun make-load-based-auto-scaling-configurations
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -5563,8 +5611,138 @@
 (common-lisp:deftype minute () 'common-lisp:integer)
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:progn
+ (common-lisp:defstruct
+     (operating-system (:copier common-lisp:nil)
+      (:conc-name "struct-shape-operating-system-"))
+   (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
+   (id common-lisp:nil :type (common-lisp:or string common-lisp:null))
+   (type common-lisp:nil :type (common-lisp:or string common-lisp:null))
+   (configuration-managers common-lisp:nil :type
+    (common-lisp:or operating-system-configuration-managers common-lisp:null))
+   (reported-name common-lisp:nil :type
+    (common-lisp:or string common-lisp:null))
+   (reported-version common-lisp:nil :type
+    (common-lisp:or string common-lisp:null))
+   (supported common-lisp:nil :type (common-lisp:or boolean common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'operating-system 'make-operating-system))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input operating-system))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input operating-system))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "Name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'id))
+      (common-lisp:list
+       (common-lisp:cons "Id"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'type))
+      (common-lisp:list
+       (common-lisp:cons "Type"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'configuration-managers))
+      (common-lisp:list
+       (common-lisp:cons "ConfigurationManagers"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'reported-name))
+      (common-lisp:list
+       (common-lisp:cons "ReportedName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'reported-version))
+      (common-lisp:list
+       (common-lisp:cons "ReportedVersion"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'supported))
+      (common-lisp:list
+       (common-lisp:cons "Supported"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input operating-system))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (operating-system-configuration-manager (:copier common-lisp:nil)
+      (:conc-name "struct-shape-operating-system-configuration-manager-"))
+   (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
+   (version common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'operating-system-configuration-manager
+                    'make-operating-system-configuration-manager))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          operating-system-configuration-manager))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          operating-system-configuration-manager))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "Name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'version))
+      (common-lisp:list
+       (common-lisp:cons "Version"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          operating-system-configuration-manager))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:deftype operating-system-configuration-managers ()
+   '(trivial-types:proper-list operating-system-configuration-manager))
+ (common-lisp:defun make-operating-system-configuration-managers
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list
+                            operating-system-configuration-manager))
+   aws-sdk/generator/shape::members))
+(common-lisp:progn
+ (common-lisp:deftype operating-systems ()
+   '(trivial-types:proper-list operating-system))
+ (common-lisp:defun make-operating-systems
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list operating-system))
+   aws-sdk/generator/shape::members))
+(common-lisp:progn
  (common-lisp:deftype parameters () 'common-lisp:hash-table)
- (common-lisp:defun |make-parameters| (aws-sdk/generator/shape::key-values)
+ (common-lisp:defun make-parameters (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
      (common-lisp:list
@@ -5626,7 +5804,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype permissions () '(trivial-types:proper-list permission))
- (common-lisp:defun |make-permissions|
+ (common-lisp:defun make-permissions
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list permission))
@@ -5755,7 +5933,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype raid-arrays () '(trivial-types:proper-list raid-array))
- (common-lisp:defun |make-raid-arrays|
+ (common-lisp:defun make-raid-arrays
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list raid-array))
@@ -5853,7 +6031,7 @@
 (common-lisp:progn
  (common-lisp:deftype rds-db-instances ()
    '(trivial-types:proper-list rds-db-instance))
- (common-lisp:defun |make-rds-db-instances|
+ (common-lisp:defun make-rds-db-instances
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list rds-db-instance))
@@ -6486,7 +6664,7 @@
 (common-lisp:progn
  (common-lisp:deftype service-errors ()
    '(trivial-types:proper-list service-error))
- (common-lisp:defun |make-service-errors|
+ (common-lisp:defun make-service-errors
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list service-error))
@@ -7010,8 +7188,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype stack-attributes () 'common-lisp:hash-table)
- (common-lisp:defun |make-stack-attributes|
-                    (aws-sdk/generator/shape::key-values)
+ (common-lisp:defun make-stack-attributes (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
      (common-lisp:list
@@ -7121,7 +7298,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype stacks () '(trivial-types:proper-list stack))
- (common-lisp:defun |make-stacks|
+ (common-lisp:defun make-stacks
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list stack))
@@ -7185,7 +7362,8 @@
      (stop-instance-request (:copier common-lisp:nil)
       (:conc-name "struct-shape-stop-instance-request-"))
    (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:or string common-lisp:null))
+   (force common-lisp:nil :type (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-instance-request 'make-stop-instance-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -7203,6 +7381,13 @@
                            aws-sdk/generator/shape::input 'instance-id))
       (common-lisp:list
        (common-lisp:cons "InstanceId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'force))
+      (common-lisp:list
+       (common-lisp:cons "Force"
                          (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
@@ -7237,7 +7422,7 @@
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype strings () '(trivial-types:proper-list string))
- (common-lisp:defun |make-strings|
+ (common-lisp:defun make-strings
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
@@ -7246,7 +7431,7 @@
 (common-lisp:deftype tag-key () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype tag-keys () '(trivial-types:proper-list tag-key))
- (common-lisp:defun |make-tag-keys|
+ (common-lisp:defun make-tag-keys
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list tag-key))
@@ -7287,7 +7472,7 @@
 (common-lisp:deftype tag-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype tags () 'common-lisp:hash-table)
- (common-lisp:defun |make-tags| (aws-sdk/generator/shape::key-values)
+ (common-lisp:defun make-tags (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
      (common-lisp:list
@@ -7385,7 +7570,7 @@
 (common-lisp:progn
  (common-lisp:deftype time-based-auto-scaling-configurations ()
    '(trivial-types:proper-list time-based-auto-scaling-configuration))
- (common-lisp:defun |make-time-based-auto-scaling-configurations|
+ (common-lisp:defun make-time-based-auto-scaling-configurations
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -8366,7 +8551,7 @@
 (common-lisp:progn
  (common-lisp:deftype user-profiles ()
    '(trivial-types:proper-list user-profile))
- (common-lisp:defun |make-user-profiles|
+ (common-lisp:defun make-user-profiles
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list user-profile))
@@ -8398,7 +8583,8 @@
    (availability-zone common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (volume-type common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (iops common-lisp:nil :type (common-lisp:or integer common-lisp:null)))
+   (iops common-lisp:nil :type (common-lisp:or integer common-lisp:null))
+   (encrypted common-lisp:nil :type (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export (common-lisp:list 'volume 'make-volume))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input volume))
@@ -8496,6 +8682,13 @@
       (common-lisp:list
        (common-lisp:cons "Iops"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'encrypted))
+      (common-lisp:list
+       (common-lisp:cons "Encrypted"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input volume))
@@ -8512,7 +8705,8 @@
    (size (common-lisp:error ":size is required") :type
     (common-lisp:or integer common-lisp:null))
    (volume-type common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (iops common-lisp:nil :type (common-lisp:or integer common-lisp:null)))
+   (iops common-lisp:nil :type (common-lisp:or integer common-lisp:null))
+   (encrypted common-lisp:nil :type (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'volume-configuration 'make-volume-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8562,6 +8756,13 @@
       (common-lisp:list
        (common-lisp:cons "Iops"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'encrypted))
+      (common-lisp:list
+       (common-lisp:cons "Encrypted"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input volume-configuration))
@@ -8569,7 +8770,7 @@
 (common-lisp:progn
  (common-lisp:deftype volume-configurations ()
    '(trivial-types:proper-list volume-configuration))
- (common-lisp:defun |make-volume-configurations|
+ (common-lisp:defun make-volume-configurations
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list volume-configuration))
@@ -8577,7 +8778,7 @@
 (common-lisp:deftype volume-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype volumes () '(trivial-types:proper-list volume))
- (common-lisp:defun |make-volumes|
+ (common-lisp:defun make-volumes
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list volume))
@@ -8681,8 +8882,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "AssignInstance"
-                                                        "2013-02-18"))
+                                                        "AssignInstance"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'assign-instance))
 (common-lisp:progn
@@ -8699,8 +8899,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "AssignVolume"
-                                                        "2013-02-18"))
+                                                        "AssignVolume"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'assign-volume))
 (common-lisp:progn
@@ -8717,8 +8916,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "AssociateElasticIp"
-                                                        "2013-02-18"))
+                                                        "AssociateElasticIp"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'associate-elastic-ip))
 (common-lisp:progn
@@ -8737,8 +8935,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "AttachElasticLoadBalancer"
-                                                        "2013-02-18"))
+                                                        "AttachElasticLoadBalancer"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'attach-elastic-load-balancer))
 (common-lisp:progn
@@ -8767,8 +8964,8 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
-                                                        "POST" "/" "CloneStack"
-                                                        "2013-02-18"))
+                                                        "POST" "/"
+                                                        "CloneStack"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'clone-stack))
 (common-lisp:progn
@@ -8789,8 +8986,8 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
-                                                        "POST" "/" "CreateApp"
-                                                        "2013-02-18"))
+                                                        "POST" "/"
+                                                        "CreateApp"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-app))
 (common-lisp:progn
@@ -8810,8 +9007,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "CreateDeployment"
-                                                        "2013-02-18"))
+                                                        "CreateDeployment"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-deployment))
 (common-lisp:progn
@@ -8837,8 +9033,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "CreateInstance"
-                                                        "2013-02-18"))
+                                                        "CreateInstance"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-instance))
 (common-lisp:progn
@@ -8867,8 +9062,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "CreateLayer"
-                                                        "2013-02-18"))
+                                                        "CreateLayer"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-layer))
 (common-lisp:progn
@@ -8897,8 +9091,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "CreateStack"
-                                                        "2013-02-18"))
+                                                        "CreateStack"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-stack))
 (common-lisp:progn
@@ -8918,8 +9111,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "CreateUserProfile"
-                                                        "2013-02-18"))
+                                                        "CreateUserProfile"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-user-profile))
 (common-lisp:progn
@@ -8935,8 +9127,8 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
-                                                        "POST" "/" "DeleteApp"
-                                                        "2013-02-18"))
+                                                        "POST" "/"
+                                                        "DeleteApp"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-app))
 (common-lisp:progn
@@ -8955,8 +9147,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeleteInstance"
-                                                        "2013-02-18"))
+                                                        "DeleteInstance"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-instance))
 (common-lisp:progn
@@ -8973,8 +9164,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeleteLayer"
-                                                        "2013-02-18"))
+                                                        "DeleteLayer"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-layer))
 (common-lisp:progn
@@ -8991,8 +9181,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeleteStack"
-                                                        "2013-02-18"))
+                                                        "DeleteStack"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-stack))
 (common-lisp:progn
@@ -9009,8 +9198,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeleteUserProfile"
-                                                        "2013-02-18"))
+                                                        "DeleteUserProfile"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-user-profile))
 (common-lisp:progn
@@ -9027,8 +9215,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeregisterEcsCluster"
-                                                        "2013-02-18"))
+                                                        "DeregisterEcsCluster"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'deregister-ecs-cluster))
 (common-lisp:progn
@@ -9045,8 +9232,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeregisterElasticIp"
-                                                        "2013-02-18"))
+                                                        "DeregisterElasticIp"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'deregister-elastic-ip))
 (common-lisp:progn
@@ -9063,8 +9249,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeregisterInstance"
-                                                        "2013-02-18"))
+                                                        "DeregisterInstance"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'deregister-instance))
 (common-lisp:progn
@@ -9082,8 +9267,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeregisterRdsDbInstance"
-                                                        "2013-02-18"))
+                                                        "DeregisterRdsDbInstance"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'deregister-rds-db-instance))
 (common-lisp:progn
@@ -9100,8 +9284,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeregisterVolume"
-                                                        "2013-02-18"))
+                                                        "DeregisterVolume"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'deregister-volume))
 (common-lisp:progn
@@ -9118,8 +9301,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeAgentVersions"
-                                                        "2013-02-18"))
+                                                        "DescribeAgentVersions"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-agent-versions))
 (common-lisp:progn
@@ -9136,8 +9318,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeApps"
-                                                        "2013-02-18"))
+                                                        "DescribeApps"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-apps))
 (common-lisp:progn
@@ -9155,8 +9336,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeCommands"
-                                                        "2013-02-18"))
+                                                        "DescribeCommands"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-commands))
 (common-lisp:progn
@@ -9173,8 +9353,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeDeployments"
-                                                        "2013-02-18"))
+                                                        "DescribeDeployments"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-deployments))
 (common-lisp:progn
@@ -9193,8 +9372,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeEcsClusters"
-                                                        "2013-02-18"))
+                                                        "DescribeEcsClusters"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-ecs-clusters))
 (common-lisp:progn
@@ -9211,8 +9389,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeElasticIps"
-                                                        "2013-02-18"))
+                                                        "DescribeElasticIps"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-elastic-ips))
 (common-lisp:progn
@@ -9230,8 +9407,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeElasticLoadBalancers"
-                                                        "2013-02-18"))
+                                                        "DescribeElasticLoadBalancers"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-elastic-load-balancers))
 (common-lisp:progn
@@ -9248,8 +9424,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeInstances"
-                                                        "2013-02-18"))
+                                                        "DescribeInstances"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-instances))
 (common-lisp:progn
@@ -9266,8 +9441,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeLayers"
-                                                        "2013-02-18"))
+                                                        "DescribeLayers"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-layers))
 (common-lisp:progn
@@ -9285,8 +9459,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeLoadBasedAutoScaling"
-                                                        "2013-02-18"))
+                                                        "DescribeLoadBasedAutoScaling"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-load-based-auto-scaling))
 (common-lisp:progn
@@ -9294,11 +9467,17 @@
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request
      (common-lisp:make-instance 'opsworks-request :method "POST" :path "/"
-                                :params
-                                `(("Action" ,@"DescribeMyUserProfile")
-                                  ("Version" ,@"2013-02-18"))))
+                                :operation "DescribeMyUserProfile"))
     common-lisp:nil common-lisp:nil *error-map*))
  (common-lisp:export 'describe-my-user-profile))
+(common-lisp:progn
+ (common-lisp:defun describe-operating-systems ()
+   (aws-sdk/generator/operation::parse-response
+    (aws-sdk/api:aws-request
+     (common-lisp:make-instance 'opsworks-request :method "POST" :path "/"
+                                :operation "DescribeOperatingSystems"))
+    common-lisp:nil common-lisp:nil *error-map*))
+ (common-lisp:export 'describe-operating-systems))
 (common-lisp:progn
  (common-lisp:defun describe-permissions
                     (
@@ -9313,8 +9492,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribePermissions"
-                                                        "2013-02-18"))
+                                                        "DescribePermissions"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-permissions))
 (common-lisp:progn
@@ -9332,8 +9510,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeRaidArrays"
-                                                        "2013-02-18"))
+                                                        "DescribeRaidArrays"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-raid-arrays))
 (common-lisp:progn
@@ -9351,8 +9528,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeRdsDbInstances"
-                                                        "2013-02-18"))
+                                                        "DescribeRdsDbInstances"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-rds-db-instances))
 (common-lisp:progn
@@ -9370,8 +9546,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeServiceErrors"
-                                                        "2013-02-18"))
+                                                        "DescribeServiceErrors"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-service-errors))
 (common-lisp:progn
@@ -9389,8 +9564,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeStackProvisioningParameters"
-                                                        "2013-02-18"))
+                                                        "DescribeStackProvisioningParameters"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-stack-provisioning-parameters))
 (common-lisp:progn
@@ -9407,8 +9581,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeStackSummary"
-                                                        "2013-02-18"))
+                                                        "DescribeStackSummary"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-stack-summary))
 (common-lisp:progn
@@ -9425,8 +9598,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeStacks"
-                                                        "2013-02-18"))
+                                                        "DescribeStacks"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-stacks))
 (common-lisp:progn
@@ -9444,8 +9616,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeTimeBasedAutoScaling"
-                                                        "2013-02-18"))
+                                                        "DescribeTimeBasedAutoScaling"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-time-based-auto-scaling))
 (common-lisp:progn
@@ -9462,8 +9633,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeUserProfiles"
-                                                        "2013-02-18"))
+                                                        "DescribeUserProfiles"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-user-profiles))
 (common-lisp:progn
@@ -9482,8 +9652,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeVolumes"
-                                                        "2013-02-18"))
+                                                        "DescribeVolumes"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-volumes))
 (common-lisp:progn
@@ -9502,8 +9671,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DetachElasticLoadBalancer"
-                                                        "2013-02-18"))
+                                                        "DetachElasticLoadBalancer"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'detach-elastic-load-balancer))
 (common-lisp:progn
@@ -9520,8 +9688,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DisassociateElasticIp"
-                                                        "2013-02-18"))
+                                                        "DisassociateElasticIp"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'disassociate-elastic-ip))
 (common-lisp:progn
@@ -9538,8 +9705,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "GetHostnameSuggestion"
-                                                        "2013-02-18"))
+                                                        "GetHostnameSuggestion"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-hostname-suggestion))
 (common-lisp:progn
@@ -9557,8 +9723,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "GrantAccess"
-                                                        "2013-02-18"))
+                                                        "GrantAccess"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'grant-access))
 (common-lisp:progn
@@ -9575,8 +9740,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
-                                                        "POST" "/" "ListTags"
-                                                        "2013-02-18"))
+                                                        "POST" "/" "ListTags"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-tags))
 (common-lisp:progn
@@ -9593,8 +9757,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "RebootInstance"
-                                                        "2013-02-18"))
+                                                        "RebootInstance"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'reboot-instance))
 (common-lisp:progn
@@ -9611,8 +9774,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "RegisterEcsCluster"
-                                                        "2013-02-18"))
+                                                        "RegisterEcsCluster"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'register-ecs-cluster))
 (common-lisp:progn
@@ -9629,8 +9791,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "RegisterElasticIp"
-                                                        "2013-02-18"))
+                                                        "RegisterElasticIp"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'register-elastic-ip))
 (common-lisp:progn
@@ -9651,8 +9812,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "RegisterInstance"
-                                                        "2013-02-18"))
+                                                        "RegisterInstance"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'register-instance))
 (common-lisp:progn
@@ -9671,8 +9831,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "RegisterRdsDbInstance"
-                                                        "2013-02-18"))
+                                                        "RegisterRdsDbInstance"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'register-rds-db-instance))
 (common-lisp:progn
@@ -9689,8 +9848,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "RegisterVolume"
-                                                        "2013-02-18"))
+                                                        "RegisterVolume"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'register-volume))
 (common-lisp:progn
@@ -9709,8 +9867,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "SetLoadBasedAutoScaling"
-                                                        "2013-02-18"))
+                                                        "SetLoadBasedAutoScaling"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'set-load-based-auto-scaling))
 (common-lisp:progn
@@ -9729,8 +9886,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "SetPermission"
-                                                        "2013-02-18"))
+                                                        "SetPermission"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'set-permission))
 (common-lisp:progn
@@ -9749,8 +9905,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "SetTimeBasedAutoScaling"
-                                                        "2013-02-18"))
+                                                        "SetTimeBasedAutoScaling"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'set-time-based-auto-scaling))
 (common-lisp:progn
@@ -9767,8 +9922,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "StartInstance"
-                                                        "2013-02-18"))
+                                                        "StartInstance"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'start-instance))
 (common-lisp:progn
@@ -9784,16 +9938,16 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
-                                                        "POST" "/" "StartStack"
-                                                        "2013-02-18"))
+                                                        "POST" "/"
+                                                        "StartStack"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'start-stack))
 (common-lisp:progn
  (common-lisp:defun stop-instance
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
-                     common-lisp:&key instance-id)
-   (common-lisp:declare (common-lisp:ignorable instance-id))
+                     common-lisp:&key instance-id force)
+   (common-lisp:declare (common-lisp:ignorable instance-id force))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-stop-instance-request
                                          aws-sdk/generator/operation::args)))
@@ -9802,8 +9956,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "StopInstance"
-                                                        "2013-02-18"))
+                                                        "StopInstance"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'stop-instance))
 (common-lisp:progn
@@ -9819,8 +9972,8 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
-                                                        "POST" "/" "StopStack"
-                                                        "2013-02-18"))
+                                                        "POST" "/"
+                                                        "StopStack"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'stop-stack))
 (common-lisp:progn
@@ -9837,8 +9990,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "TagResource"
-                                                        "2013-02-18"))
+                                                        "TagResource"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
@@ -9855,8 +10007,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "UnassignInstance"
-                                                        "2013-02-18"))
+                                                        "UnassignInstance"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'unassign-instance))
 (common-lisp:progn
@@ -9873,8 +10024,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "UnassignVolume"
-                                                        "2013-02-18"))
+                                                        "UnassignVolume"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'unassign-volume))
 (common-lisp:progn
@@ -9891,8 +10041,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "UntagResource"
-                                                        "2013-02-18"))
+                                                        "UntagResource"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
@@ -9912,8 +10061,8 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
-                                                        "POST" "/" "UpdateApp"
-                                                        "2013-02-18"))
+                                                        "POST" "/"
+                                                        "UpdateApp"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-app))
 (common-lisp:progn
@@ -9930,8 +10079,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "UpdateElasticIp"
-                                                        "2013-02-18"))
+                                                        "UpdateElasticIp"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-elastic-ip))
 (common-lisp:progn
@@ -9954,8 +10102,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "UpdateInstance"
-                                                        "2013-02-18"))
+                                                        "UpdateInstance"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-instance))
 (common-lisp:progn
@@ -9984,8 +10131,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "UpdateLayer"
-                                                        "2013-02-18"))
+                                                        "UpdateLayer"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-layer))
 (common-lisp:progn
@@ -10002,8 +10148,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "UpdateMyUserProfile"
-                                                        "2013-02-18"))
+                                                        "UpdateMyUserProfile"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-my-user-profile))
 (common-lisp:progn
@@ -10021,8 +10166,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "UpdateRdsDbInstance"
-                                                        "2013-02-18"))
+                                                        "UpdateRdsDbInstance"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-rds-db-instance))
 (common-lisp:progn
@@ -10051,8 +10195,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "UpdateStack"
-                                                        "2013-02-18"))
+                                                        "UpdateStack"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-stack))
 (common-lisp:progn
@@ -10072,8 +10215,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "UpdateUserProfile"
-                                                        "2013-02-18"))
+                                                        "UpdateUserProfile"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-user-profile))
 (common-lisp:progn
@@ -10090,7 +10232,6 @@
        (aws-sdk/generator/shape:make-request-with-input 'opsworks-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "UpdateVolume"
-                                                        "2013-02-18"))
+                                                        "UpdateVolume"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-volume))
