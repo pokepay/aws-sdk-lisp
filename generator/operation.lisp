@@ -21,6 +21,8 @@
                 #:ensure-car
                 #:length=
                 #:emptyp)
+  (:import-from #:uiop
+                #:string-prefix-p)
   (:import-from #:xmls)
   (:export #:compile-operation))
 (in-package #:aws-sdk/generator/operation)
@@ -58,7 +60,8 @@
       ((uiop:string-prefix-p "application/x-amz-json-1." content-type)
        (let* ((json-data (yason:parse body-str))
               (_type (gethash "__type" json-data)))
-         (setf err-message (gethash "message" json-data)
+         (setf err-message (or (gethash "message" json-data)
+                               (gethash "Message" json-data))
                err-class (or (aget error-map
                                    (if (string= content-type "application/x-amz-json-1.1")
                                        _type
@@ -83,7 +86,8 @@
               body
               (let ((body-str (ensure-string (or body ""))))
                 (cond
-                  ((string= content-type "application/xml")
+                  ((or (string-prefix-p "text/xml" content-type)
+                       (string-prefix-p "application/xml" content-type))
                    (let* ((output (xmls-to-alist (xmls:parse-to-list body-str)))
                           (output ;; Unwrap the root element
                             (cdr (first output))))
