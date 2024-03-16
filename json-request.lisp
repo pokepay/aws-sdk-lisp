@@ -35,7 +35,8 @@
 
 (defun %to-json (object)
   (typecase object
-    (null (yason:encode :null))
+    (null
+     (yason:encode :null))
     ((satisfies association-list-p)
      (yason:with-object ()
        (loop for (key . val) in object
@@ -47,9 +48,11 @@
          (yason:encode-array-element i))))
     ((and vector (not string))
      (yason:encode (base64:usb8-array-to-base64-string object)))
-    (keyword (let ((*print-case* :downcase))
-               (yason:encode (princ-to-string object))))
-    (t (yason:encode object))))
+    (keyword
+     (let ((*print-case* :downcase))
+       (yason:encode (princ-to-string object))))
+    (t
+     (yason:encode object))))
 
 (defun to-json (params)
   (yason:with-output-to-string* () (%to-json params)))

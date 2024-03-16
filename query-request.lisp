@@ -15,7 +15,7 @@
 (defmethod initialize-instance :after ((req query-request) &rest args &key params operation api-version &allow-other-keys)
   (declare (ignore args))
   (alexandria:appendf (request-headers req)
-  					          '(("Content-Type" . "application/x-www-form-urlencoded")))
+                      '(("Content-Type" . "application/x-www-form-urlencoded")))
   (setf (request-payload req)
         (quri:url-encode-params (append `(("Action" . ,operation)
                                           ("Version" . ,api-version))
