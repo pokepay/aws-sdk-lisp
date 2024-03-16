@@ -6,9 +6,17 @@
         #:aws-sdk/utils)
   (:import-from #:aws-sdk/request
                 #:request)
+  (:import-from #:aws-sdk/query-request
+                #:query-request)
+  (:import-from #:aws-sdk/json-request
+                #:json-request)
+  (:import-from #:aws-sdk/rest-xml-request
+                #:rest-xml-request)
   (:import-from #:yason)
   (:import-from #:alexandria
-                #:when-let*)
+                #:when-let*
+                #:when-let
+                #:make-keyword)
   (:export #:dump-service
            #:load-service
            #:generate-service
@@ -32,24 +40,40 @@
                  (:import-from #:aws-sdk/generator/operation)
                  (:import-from #:aws-sdk/api)
                  (:import-from #:aws-sdk/request)
+                 (:import-from #:aws-sdk/json-request)
+                 (:import-from #:aws-sdk/rest-json-request)
+                 (:import-from #:aws-sdk/rest-xml-request)
+                 (:import-from #:aws-sdk/query-request)
                  (:import-from #:aws-sdk/error)))
       (format stream "~&~S~%" `(in-package ,package-name))
-      (format stream "~&~S~%"
-              `(progn
-                 (defclass ,request-name (request) ()
-                   (:default-initargs :service ,service))
-                 (export ',request-name)))
       (format stream "~&~S~%"
               `(progn
                  (define-condition ,exception-name (aws-error) ())
                  (export ',exception-name)))
       (let* ((hash (yason:parse
                      (uiop:read-file-string json)))
+             (protocol (make-keyword (string-upcase (gethash+ '("metadata" "protocol") hash))))
              (error-map (loop for name being each hash-key of (gethash "shapes" hash)
                               using (hash-value options)
                               if (gethash "exception" options)
                               collect (cons name (lispify name)))))
-
+        (format stream "~&~S~%"
+                `(progn
+                   (defclass ,request-name (,(case protocol
+                                               (:json 'json-request)
+                                               ((:query :ec2) 'query-request)
+                                               (:rest-json 'rest-json-request)
+                                               (:rest-xml 'rest-xml-request)))
+                     ()
+                     (:default-initargs :service ,service
+                                        :api-version ,(gethash+ '("metadata" "apiVersion") hash)
+                                        :host-prefix ,(gethash+ '("metadata" "endpointPrefix") hash)
+                                        :signing-name ,(gethash+ '("metadata" "signingName") hash)
+                                        :global-host ,(gethash+ '("metadata" "globalEndpoint") hash)
+                      ,@(when (eq protocol :json)
+                          (list :target-prefix (gethash+ '("metadata" "targetPrefix") hash)
+                                :json-version (gethash+ '("metadata" "jsonVersion") hash)))))
+                   (export ',request-name)))
         (format stream "~&~S~%"
                 `(defvar ,(intern (string :*error-map*)) ',error-map))
 
@@ -63,29 +87,28 @@
               for output = (gethash "output" options)
               do (format stream "~&~S~%"
                          (compile-operation
-                           service
-                           action
-                           (gethash+ '("metadata" "apiVersion") hash)
-                           options
-                           (and input
-                                (loop for key being each hash-key of (gethash+ `("shapes" ,(gethash "shape" input) "members")
-                                                                               hash)
-                                      collect (lispify key)))
-                           (and output
-                                (when-let* ((payload-shape
-                                              (gethash+ `("shapes" ,(gethash "shape" output) "payload") hash))
-                                            (payload-shape (gethash+ `("shapes"
-                                                                       ,(gethash "shape" output)
-                                                                       "members"
-                                                                       ,payload-shape)
-                                                                     hash)))
-                                  (labels ((find-output-type (shape)
-                                             (and shape
-                                                  (or (gethash "type" shape)
-                                                      (find-output-type
-                                                        (gethash+ `("shapes" ,(gethash "shape" shape)) hash))))))
-                                    (find-output-type payload-shape))))
-                           (intern (string :*error-map*)))))
+                          service
+                          action
+                          options
+                          (and input
+                               (loop for key being each hash-key of (gethash+ `("shapes" ,(gethash "shape" input) "members")
+                                                                              hash)
+                                     collect (lispify key)))
+                          (and output
+                               (when-let* ((payload-shape
+                                            (gethash+ `("shapes" ,(gethash "shape" output) "payload") hash))
+                                           (payload-shape (gethash+ `("shapes"
+                                                                      ,(gethash "shape" output)
+                                                                      "members"
+                                                                      ,payload-shape)
+                                                                    hash)))
+                                 (labels ((find-output-type (shape)
+                                            (and shape
+                                                 (or (gethash "type" shape)
+                                                     (find-output-type
+                                                      (gethash+ `("shapes" ,(gethash "shape" shape)) hash))))))
+                                   (find-output-type payload-shape))))
+                          (intern (string :*error-map*)))))
         (force-output stream)))))
 
 (defun dump-service-base-file-to-stream (service service-dir &optional (stream *standard-output*))

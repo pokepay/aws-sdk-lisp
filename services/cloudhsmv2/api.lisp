@@ -7,25 +7,33 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/cloudhsmv2/api)
-(common-lisp:progn
- (common-lisp:defclass cloudhsmv2-request (aws-sdk/request:request)
-                       common-lisp:nil
-                       (:default-initargs :service "cloudhsmv2"))
- (common-lisp:export 'cloudhsmv2-request))
 (common-lisp:progn
  (common-lisp:define-condition cloudhsmv2-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'cloudhsmv2-error))
+(common-lisp:progn
+ (common-lisp:defclass cloudhsmv2-request (aws-sdk/json-request:json-request)
+                       common-lisp:nil
+                       (:default-initargs :service "cloudhsmv2" :api-version
+                        "2017-04-28" :host-prefix "cloudhsmv2" :signing-name
+                        "cloudhsm" :global-host common-lisp:nil :target-prefix
+                        "BaldrApiService" :json-version "1.1"))
+ (common-lisp:export 'cloudhsmv2-request))
 (common-lisp:defvar *error-map*
   '(("CloudHsmAccessDeniedException" . cloud-hsm-access-denied-exception)
     ("CloudHsmInternalFailureException" . cloud-hsm-internal-failure-exception)
     ("CloudHsmInvalidRequestException" . cloud-hsm-invalid-request-exception)
     ("CloudHsmResourceNotFoundException"
      . cloud-hsm-resource-not-found-exception)
-    ("CloudHsmServiceException" . cloud-hsm-service-exception)))
+    ("CloudHsmServiceException" . cloud-hsm-service-exception)
+    ("CloudHsmTagException" . cloud-hsm-tag-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (backup (:copier common-lisp:nil) (:conc-name "struct-shape-backup-"))
@@ -36,7 +44,20 @@
    (cluster-id common-lisp:nil :type
     (common-lisp:or cluster-id common-lisp:null))
    (create-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+    (common-lisp:or timestamp common-lisp:null))
+   (copy-timestamp common-lisp:nil :type
+    (common-lisp:or timestamp common-lisp:null))
+   (never-expires common-lisp:nil :type
+    (common-lisp:or boolean common-lisp:null))
+   (source-region common-lisp:nil :type
+    (common-lisp:or region common-lisp:null))
+   (source-backup common-lisp:nil :type
+    (common-lisp:or backup-id common-lisp:null))
+   (source-cluster common-lisp:nil :type
+    (common-lisp:or cluster-id common-lisp:null))
+   (delete-timestamp common-lisp:nil :type
+    (common-lisp:or timestamp common-lisp:null))
+   (tag-list common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'backup 'make-backup))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input backup))
@@ -71,20 +92,112 @@
       (common-lisp:list
        (common-lisp:cons "CreateTimestamp"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'copy-timestamp))
+      (common-lisp:list
+       (common-lisp:cons "CopyTimestamp"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'never-expires))
+      (common-lisp:list
+       (common-lisp:cons "NeverExpires"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'source-region))
+      (common-lisp:list
+       (common-lisp:cons "SourceRegion"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'source-backup))
+      (common-lisp:list
+       (common-lisp:cons "SourceBackup"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'source-cluster))
+      (common-lisp:list
+       (common-lisp:cons "SourceCluster"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'delete-timestamp))
+      (common-lisp:list
+       (common-lisp:cons "DeleteTimestamp"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-list))
+      (common-lisp:list
+       (common-lisp:cons "TagList"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input backup))
    common-lisp:nil))
 (common-lisp:deftype backup-id () 'common-lisp:string)
 (common-lisp:deftype backup-policy () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:defstruct
+     (backup-retention-policy (:copier common-lisp:nil)
+      (:conc-name "struct-shape-backup-retention-policy-"))
+   (type common-lisp:nil :type
+    (common-lisp:or backup-retention-type common-lisp:null))
+   (value common-lisp:nil :type
+    (common-lisp:or backup-retention-value common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'backup-retention-policy 'make-backup-retention-policy))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          backup-retention-policy))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          backup-retention-policy))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'type))
+      (common-lisp:list
+       (common-lisp:cons "Type"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'value))
+      (common-lisp:list
+       (common-lisp:cons "Value"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          backup-retention-policy))
+   common-lisp:nil))
+(common-lisp:deftype backup-retention-type () 'common-lisp:string)
+(common-lisp:deftype backup-retention-value () 'common-lisp:string)
 (common-lisp:deftype backup-state () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype backups () '(trivial-types:proper-list backup))
- (common-lisp:defun |make-backups|
+ (common-lisp:defun make-backups
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list backup))
    aws-sdk/generator/shape::members))
+(common-lisp:deftype backups-max-size () 'common-lisp:integer)
+(common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:deftype cert () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -187,10 +300,19 @@
   (common-lisp:list 'cloud-hsm-service-exception
                     'cloud-hsm-service-exception-message)))
 (common-lisp:progn
+ (common-lisp:define-condition cloud-hsm-tag-exception
+     (cloudhsmv2-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       cloud-hsm-tag-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'cloud-hsm-tag-exception 'cloud-hsm-tag-exception-message)))
+(common-lisp:progn
  (common-lisp:defstruct
      (cluster (:copier common-lisp:nil) (:conc-name "struct-shape-cluster-"))
    (backup-policy common-lisp:nil :type
     (common-lisp:or backup-policy common-lisp:null))
+   (backup-retention-policy common-lisp:nil :type
+    (common-lisp:or backup-retention-policy common-lisp:null))
    (cluster-id common-lisp:nil :type
     (common-lisp:or cluster-id common-lisp:null))
    (create-timestamp common-lisp:nil :type
@@ -211,7 +333,8 @@
     (common-lisp:or external-subnet-mapping common-lisp:null))
    (vpc-id common-lisp:nil :type (common-lisp:or vpc-id common-lisp:null))
    (certificates common-lisp:nil :type
-    (common-lisp:or certificates common-lisp:null)))
+    (common-lisp:or certificates common-lisp:null))
+   (tag-list common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'cluster 'make-cluster))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input cluster))
@@ -224,6 +347,14 @@
                            aws-sdk/generator/shape::input 'backup-policy))
       (common-lisp:list
        (common-lisp:cons "BackupPolicy"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'backup-retention-policy))
+      (common-lisp:list
+       (common-lisp:cons "BackupRetentionPolicy"
                          (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))
     (alexandria:when-let (aws-sdk/generator/shape::value
@@ -309,6 +440,13 @@
       (common-lisp:list
        (common-lisp:cons "Certificates"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-list))
+      (common-lisp:list
+       (common-lisp:cons "TagList"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input cluster))
@@ -317,21 +455,104 @@
 (common-lisp:deftype cluster-state () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype clusters () '(trivial-types:proper-list cluster))
- (common-lisp:defun |make-clusters|
+ (common-lisp:defun make-clusters
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list cluster))
    aws-sdk/generator/shape::members))
+(common-lisp:deftype clusters-max-size () 'common-lisp:integer)
+(common-lisp:progn
+ (common-lisp:defstruct
+     (copy-backup-to-region-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-copy-backup-to-region-request-"))
+   (destination-region (common-lisp:error ":destination-region is required")
+    :type (common-lisp:or region common-lisp:null))
+   (backup-id (common-lisp:error ":backup-id is required") :type
+    (common-lisp:or backup-id common-lisp:null))
+   (tag-list common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'copy-backup-to-region-request
+                    'make-copy-backup-to-region-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          copy-backup-to-region-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          copy-backup-to-region-request))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'destination-region))
+      (common-lisp:list
+       (common-lisp:cons "DestinationRegion"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'backup-id))
+      (common-lisp:list
+       (common-lisp:cons "BackupId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-list))
+      (common-lisp:list
+       (common-lisp:cons "TagList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          copy-backup-to-region-request))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (copy-backup-to-region-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-copy-backup-to-region-response-"))
+   (destination-backup common-lisp:nil :type
+    (common-lisp:or destination-backup common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'copy-backup-to-region-response
+                    'make-copy-backup-to-region-response))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          copy-backup-to-region-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          copy-backup-to-region-response))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'destination-backup))
+      (common-lisp:list
+       (common-lisp:cons "DestinationBackup"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          copy-backup-to-region-response))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-cluster-request (:copier common-lisp:nil)
       (:conc-name "struct-shape-create-cluster-request-"))
-   (subnet-ids (common-lisp:error ":subnet-ids is required") :type
-    (common-lisp:or subnet-ids common-lisp:null))
+   (backup-retention-policy common-lisp:nil :type
+    (common-lisp:or backup-retention-policy common-lisp:null))
    (hsm-type (common-lisp:error ":hsm-type is required") :type
     (common-lisp:or hsm-type common-lisp:null))
    (source-backup-id common-lisp:nil :type
-    (common-lisp:or backup-id common-lisp:null)))
+    (common-lisp:or backup-id common-lisp:null))
+   (subnet-ids (common-lisp:error ":subnet-ids is required") :type
+    (common-lisp:or subnet-ids common-lisp:null))
+   (tag-list common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-cluster-request 'make-create-cluster-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -346,9 +567,10 @@
    (common-lisp:append
     (alexandria:when-let (aws-sdk/generator/shape::value
                           (common-lisp:slot-value
-                           aws-sdk/generator/shape::input 'subnet-ids))
+                           aws-sdk/generator/shape::input
+                           'backup-retention-policy))
       (common-lisp:list
-       (common-lisp:cons "SubnetIds"
+       (common-lisp:cons "BackupRetentionPolicy"
                          (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))
     (alexandria:when-let (aws-sdk/generator/shape::value
@@ -363,6 +585,20 @@
                            aws-sdk/generator/shape::input 'source-backup-id))
       (common-lisp:list
        (common-lisp:cons "SourceBackupId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'subnet-ids))
+      (common-lisp:list
+       (common-lisp:cons "SubnetIds"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-list))
+      (common-lisp:list
+       (common-lisp:cons "TagList"
                          (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
@@ -463,6 +699,65 @@
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input create-hsm-response))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (delete-backup-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-backup-request-"))
+   (backup-id (common-lisp:error ":backup-id is required") :type
+    (common-lisp:or backup-id common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'delete-backup-request 'make-delete-backup-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-backup-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-backup-request))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'backup-id))
+      (common-lisp:list
+       (common-lisp:cons "BackupId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-backup-request))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (delete-backup-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-backup-response-"))
+   (backup common-lisp:nil :type (common-lisp:or backup common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'delete-backup-response 'make-delete-backup-response))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-backup-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-backup-response))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'backup))
+      (common-lisp:list
+       (common-lisp:cons "Backup"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-backup-response))
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
@@ -601,8 +896,10 @@
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
-    (common-lisp:or max-size common-lisp:null))
-   (filters common-lisp:nil :type (common-lisp:or filters common-lisp:null)))
+    (common-lisp:or backups-max-size common-lisp:null))
+   (filters common-lisp:nil :type (common-lisp:or filters common-lisp:null))
+   (sort-ascending common-lisp:nil :type
+    (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-backups-request 'make-describe-backups-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -634,6 +931,13 @@
                            aws-sdk/generator/shape::input 'filters))
       (common-lisp:list
        (common-lisp:cons "Filters"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'sort-ascending))
+      (common-lisp:list
+       (common-lisp:cons "SortAscending"
                          (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
@@ -688,7 +992,7 @@
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
-    (common-lisp:or max-size common-lisp:null)))
+    (common-lisp:or clusters-max-size common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-clusters-request
                     'make-describe-clusters-request))
@@ -767,11 +1071,62 @@
                          (aws-sdk/generator/shape::input
                           describe-clusters-response))
    common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (destination-backup (:copier common-lisp:nil)
+      (:conc-name "struct-shape-destination-backup-"))
+   (create-timestamp common-lisp:nil :type
+    (common-lisp:or timestamp common-lisp:null))
+   (source-region common-lisp:nil :type
+    (common-lisp:or region common-lisp:null))
+   (source-backup common-lisp:nil :type
+    (common-lisp:or backup-id common-lisp:null))
+   (source-cluster common-lisp:nil :type
+    (common-lisp:or cluster-id common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'destination-backup 'make-destination-backup))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input destination-backup))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input destination-backup))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'create-timestamp))
+      (common-lisp:list
+       (common-lisp:cons "CreateTimestamp"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'source-region))
+      (common-lisp:list
+       (common-lisp:cons "SourceRegion"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'source-backup))
+      (common-lisp:list
+       (common-lisp:cons "SourceBackup"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'source-cluster))
+      (common-lisp:list
+       (common-lisp:cons "SourceCluster"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input destination-backup))
+   common-lisp:nil))
 (common-lisp:deftype eni-id () 'common-lisp:string)
 (common-lisp:deftype external-az () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype external-subnet-mapping () 'common-lisp:hash-table)
- (common-lisp:defun |make-external-subnet-mapping|
+ (common-lisp:defun make-external-subnet-mapping
                     (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
@@ -780,7 +1135,7 @@
 (common-lisp:deftype field () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype filters () 'common-lisp:hash-table)
- (common-lisp:defun |make-filters| (aws-sdk/generator/shape::key-values)
+ (common-lisp:defun make-filters (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
      (common-lisp:list
@@ -872,7 +1227,7 @@
 (common-lisp:deftype hsm-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype hsms () '(trivial-types:proper-list hsm))
- (common-lisp:defun |make-hsms|
+ (common-lisp:defun make-hsms
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list hsm))
@@ -972,7 +1327,7 @@
      (list-tags-request (:copier common-lisp:nil)
       (:conc-name "struct-shape-list-tags-request-"))
    (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null))
+    (common-lisp:or resource-id common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1043,14 +1398,215 @@
                         ((aws-sdk/generator/shape::input list-tags-response))
    common-lisp:nil))
 (common-lisp:deftype max-size () 'common-lisp:integer)
+(common-lisp:progn
+ (common-lisp:defstruct
+     (modify-backup-attributes-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-modify-backup-attributes-request-"))
+   (backup-id (common-lisp:error ":backup-id is required") :type
+    (common-lisp:or backup-id common-lisp:null))
+   (never-expires (common-lisp:error ":never-expires is required") :type
+    (common-lisp:or boolean common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'modify-backup-attributes-request
+                    'make-modify-backup-attributes-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          modify-backup-attributes-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          modify-backup-attributes-request))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'backup-id))
+      (common-lisp:list
+       (common-lisp:cons "BackupId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'never-expires))
+      (common-lisp:list
+       (common-lisp:cons "NeverExpires"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          modify-backup-attributes-request))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (modify-backup-attributes-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-modify-backup-attributes-response-"))
+   (backup common-lisp:nil :type (common-lisp:or backup common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'modify-backup-attributes-response
+                    'make-modify-backup-attributes-response))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          modify-backup-attributes-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          modify-backup-attributes-response))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'backup))
+      (common-lisp:list
+       (common-lisp:cons "Backup"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          modify-backup-attributes-response))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (modify-cluster-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-modify-cluster-request-"))
+   (backup-retention-policy
+    (common-lisp:error ":backup-retention-policy is required") :type
+    (common-lisp:or backup-retention-policy common-lisp:null))
+   (cluster-id (common-lisp:error ":cluster-id is required") :type
+    (common-lisp:or cluster-id common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'modify-cluster-request 'make-modify-cluster-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          modify-cluster-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          modify-cluster-request))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'backup-retention-policy))
+      (common-lisp:list
+       (common-lisp:cons "BackupRetentionPolicy"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cluster-id))
+      (common-lisp:list
+       (common-lisp:cons "ClusterId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          modify-cluster-request))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (modify-cluster-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-modify-cluster-response-"))
+   (cluster common-lisp:nil :type (common-lisp:or cluster common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'modify-cluster-response 'make-modify-cluster-response))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          modify-cluster-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          modify-cluster-response))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cluster))
+      (common-lisp:list
+       (common-lisp:cons "Cluster"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          modify-cluster-response))
+   common-lisp:nil))
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:deftype pre-co-password () 'common-lisp:string)
+(common-lisp:deftype region () 'common-lisp:string)
+(common-lisp:deftype resource-id () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:defstruct
+     (restore-backup-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-restore-backup-request-"))
+   (backup-id (common-lisp:error ":backup-id is required") :type
+    (common-lisp:or backup-id common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'restore-backup-request 'make-restore-backup-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          restore-backup-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          restore-backup-request))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'backup-id))
+      (common-lisp:list
+       (common-lisp:cons "BackupId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          restore-backup-request))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (restore-backup-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-restore-backup-response-"))
+   (backup common-lisp:nil :type (common-lisp:or backup common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'restore-backup-response 'make-restore-backup-response))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          restore-backup-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          restore-backup-response))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'backup))
+      (common-lisp:list
+       (common-lisp:cons "Backup"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          restore-backup-response))
+   common-lisp:nil))
 (common-lisp:deftype security-group () 'common-lisp:string)
 (common-lisp:deftype state-message () 'common-lisp:string)
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype strings () '(trivial-types:proper-list string))
- (common-lisp:defun |make-strings|
+ (common-lisp:defun make-strings
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
@@ -1058,7 +1614,7 @@
 (common-lisp:deftype subnet-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype subnet-ids () '(trivial-types:proper-list subnet-id))
- (common-lisp:defun |make-subnet-ids|
+ (common-lisp:defun make-subnet-ids
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list subnet-id))
@@ -1097,14 +1653,14 @@
 (common-lisp:deftype tag-key () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype tag-key-list () '(trivial-types:proper-list tag-key))
- (common-lisp:defun |make-tag-key-list|
+ (common-lisp:defun make-tag-key-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list tag-key))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:deftype tag-list () '(trivial-types:proper-list tag))
- (common-lisp:defun |make-tag-list|
+ (common-lisp:defun make-tag-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list tag))
@@ -1114,7 +1670,7 @@
      (tag-resource-request (:copier common-lisp:nil)
       (:conc-name "struct-shape-tag-resource-request-"))
    (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null))
+    (common-lisp:or resource-id common-lisp:null))
    (tag-list (common-lisp:error ":tag-list is required") :type
     (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
@@ -1170,7 +1726,7 @@
      (untag-resource-request (:copier common-lisp:nil)
       (:conc-name "struct-shape-untag-resource-request-"))
    (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null))
+    (common-lisp:or resource-id common-lisp:null))
    (tag-key-list (common-lisp:error ":tag-key-list is required") :type
     (common-lisp:or tag-key-list common-lisp:null)))
  (common-lisp:export
@@ -1228,12 +1784,32 @@
 (common-lisp:deftype vpc-id () 'common-lisp:string)
 (common-lisp:deftype |errorMessage| () 'common-lisp:string)
 (common-lisp:progn
+ (common-lisp:defun copy-backup-to-region
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key destination-region backup-id tag-list)
+   (common-lisp:declare
+    (common-lisp:ignorable destination-region backup-id tag-list))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-copy-backup-to-region-request
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'cloudhsmv2-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "CopyBackupToRegion"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'copy-backup-to-region))
+(common-lisp:progn
  (common-lisp:defun create-cluster
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
-                     common-lisp:&key subnet-ids hsm-type source-backup-id)
+                     common-lisp:&key backup-retention-policy hsm-type
+                     source-backup-id subnet-ids tag-list)
    (common-lisp:declare
-    (common-lisp:ignorable subnet-ids hsm-type source-backup-id))
+    (common-lisp:ignorable backup-retention-policy hsm-type source-backup-id
+     subnet-ids tag-list))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-create-cluster-request
                                          aws-sdk/generator/operation::args)))
@@ -1242,8 +1818,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'cloudhsmv2-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "CreateCluster"
-                                                        "2017-04-28"))
+                                                        "CreateCluster"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-cluster))
 (common-lisp:progn
@@ -1260,10 +1835,27 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input 'cloudhsmv2-request
                                                         aws-sdk/generator/operation::input
-                                                        "POST" "/" "CreateHsm"
-                                                        "2017-04-28"))
+                                                        "POST" "/"
+                                                        "CreateHsm"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-hsm))
+(common-lisp:progn
+ (common-lisp:defun delete-backup
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key backup-id)
+   (common-lisp:declare (common-lisp:ignorable backup-id))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-delete-backup-request
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'cloudhsmv2-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DeleteBackup"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'delete-backup))
 (common-lisp:progn
  (common-lisp:defun delete-cluster
                     (
@@ -1278,8 +1870,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'cloudhsmv2-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeleteCluster"
-                                                        "2017-04-28"))
+                                                        "DeleteCluster"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-cluster))
 (common-lisp:progn
@@ -1296,16 +1887,18 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input 'cloudhsmv2-request
                                                         aws-sdk/generator/operation::input
-                                                        "POST" "/" "DeleteHsm"
-                                                        "2017-04-28"))
+                                                        "POST" "/"
+                                                        "DeleteHsm"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-hsm))
 (common-lisp:progn
  (common-lisp:defun describe-backups
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
-                     common-lisp:&key next-token max-results filters)
-   (common-lisp:declare (common-lisp:ignorable next-token max-results filters))
+                     common-lisp:&key next-token max-results filters
+                     sort-ascending)
+   (common-lisp:declare
+    (common-lisp:ignorable next-token max-results filters sort-ascending))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-describe-backups-request
                                          aws-sdk/generator/operation::args)))
@@ -1314,8 +1907,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'cloudhsmv2-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeBackups"
-                                                        "2017-04-28"))
+                                                        "DescribeBackups"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-backups))
 (common-lisp:progn
@@ -1332,8 +1924,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'cloudhsmv2-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeClusters"
-                                                        "2017-04-28"))
+                                                        "DescribeClusters"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-clusters))
 (common-lisp:progn
@@ -1351,8 +1942,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'cloudhsmv2-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "InitializeCluster"
-                                                        "2017-04-28"))
+                                                        "InitializeCluster"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'initialize-cluster))
 (common-lisp:progn
@@ -1369,10 +1959,61 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input 'cloudhsmv2-request
                                                         aws-sdk/generator/operation::input
-                                                        "POST" "/" "ListTags"
-                                                        "2017-04-28"))
+                                                        "POST" "/" "ListTags"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-tags))
+(common-lisp:progn
+ (common-lisp:defun modify-backup-attributes
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key backup-id never-expires)
+   (common-lisp:declare (common-lisp:ignorable backup-id never-expires))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-modify-backup-attributes-request
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'cloudhsmv2-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "ModifyBackupAttributes"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'modify-backup-attributes))
+(common-lisp:progn
+ (common-lisp:defun modify-cluster
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key backup-retention-policy cluster-id)
+   (common-lisp:declare
+    (common-lisp:ignorable backup-retention-policy cluster-id))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-modify-cluster-request
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'cloudhsmv2-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "ModifyCluster"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'modify-cluster))
+(common-lisp:progn
+ (common-lisp:defun restore-backup
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key backup-id)
+   (common-lisp:declare (common-lisp:ignorable backup-id))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-restore-backup-request
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'cloudhsmv2-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "RestoreBackup"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'restore-backup))
 (common-lisp:progn
  (common-lisp:defun tag-resource
                     (
@@ -1387,8 +2028,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'cloudhsmv2-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "TagResource"
-                                                        "2017-04-28"))
+                                                        "TagResource"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
@@ -1405,7 +2045,6 @@
        (aws-sdk/generator/shape:make-request-with-input 'cloudhsmv2-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "UntagResource"
-                                                        "2017-04-28"))
+                                                        "UntagResource"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'untag-resource))

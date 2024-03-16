@@ -7,18 +7,25 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/importexport/api)
-(common-lisp:progn
- (common-lisp:defclass importexport-request (aws-sdk/request:request)
-                       common-lisp:nil
-                       (:default-initargs :service "importexport"))
- (common-lisp:export 'importexport-request))
 (common-lisp:progn
  (common-lisp:define-condition importexport-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'importexport-error))
+(common-lisp:progn
+ (common-lisp:defclass importexport-request
+                       (aws-sdk/query-request:query-request) common-lisp:nil
+                       (:default-initargs :service "importexport" :api-version
+                        "2010-06-01" :host-prefix "importexport" :signing-name
+                        common-lisp:nil :global-host
+                        "importexport.amazonaws.com"))
+ (common-lisp:export 'importexport-request))
 (common-lisp:defvar *error-map*
   '(("BucketPermissionException" . bucket-permission-exception)
     ("CanceledJobIdException" . canceled-job-id-exception)
@@ -73,7 +80,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype artifact-list () '(trivial-types:proper-list artifact))
- (common-lisp:defun |make-artifact-list|
+ (common-lisp:defun make-artifact-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list artifact))
@@ -769,7 +776,7 @@
 (common-lisp:progn
  (common-lisp:deftype job-id-list ()
    '(trivial-types:proper-list generic-string))
- (common-lisp:defun |make-job-id-list|
+ (common-lisp:defun make-job-id-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list generic-string))
@@ -777,7 +784,7 @@
 (common-lisp:deftype job-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype jobs-list () '(trivial-types:proper-list job))
- (common-lisp:defun |make-jobs-list|
+ (common-lisp:defun make-jobs-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list job))
@@ -1060,8 +1067,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST"
                                                         "/?Operation=CancelJob"
-                                                        "CancelJob"
-                                                        "2010-06-01"))
+                                                        "CancelJob"))
       common-lisp:nil "CancelJobResult" *error-map*)))
  (common-lisp:export 'cancel-job))
 (common-lisp:progn
@@ -1082,8 +1088,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST"
                                                         "/?Operation=CreateJob"
-                                                        "CreateJob"
-                                                        "2010-06-01"))
+                                                        "CreateJob"))
       common-lisp:nil "CreateJobResult" *error-map*)))
  (common-lisp:export 'create-job))
 (common-lisp:progn
@@ -1105,8 +1110,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST"
                                                         "/?Operation=GetShippingLabel"
-                                                        "GetShippingLabel"
-                                                        "2010-06-01"))
+                                                        "GetShippingLabel"))
       common-lisp:nil "GetShippingLabelResult" *error-map*)))
  (common-lisp:export 'get-shipping-label))
 (common-lisp:progn
@@ -1124,8 +1128,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST"
                                                         "/?Operation=GetStatus"
-                                                        "GetStatus"
-                                                        "2010-06-01"))
+                                                        "GetStatus"))
       common-lisp:nil "GetStatusResult" *error-map*)))
  (common-lisp:export 'get-status))
 (common-lisp:progn
@@ -1143,8 +1146,7 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST"
                                                         "/?Operation=ListJobs"
-                                                        "ListJobs"
-                                                        "2010-06-01"))
+                                                        "ListJobs"))
       common-lisp:nil "ListJobsResult" *error-map*)))
  (common-lisp:export 'list-jobs))
 (common-lisp:progn
@@ -1164,7 +1166,6 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST"
                                                         "/?Operation=UpdateJob"
-                                                        "UpdateJob"
-                                                        "2010-06-01"))
+                                                        "UpdateJob"))
       common-lisp:nil "UpdateJobResult" *error-map*)))
  (common-lisp:export 'update-job))

@@ -17,7 +17,12 @@
                 #:aget)
   (:import-from #:alexandria
                 #:when-let
-                #:ensure-car)
+                #:when-let*
+                #:ensure-car
+                #:length=
+                #:emptyp)
+  (:import-from #:uiop
+                #:string-prefix-p)
   (:import-from #:xmls)
   (:export #:compile-operation))
 (in-package #:aws-sdk/generator/operation)
@@ -33,34 +38,68 @@
 (defun xmls-to-alist (xmls)
   (list (%xmls-to-alist xmls)))
 
+(defun parse-response-error (body status content-type error-map)
+  (let ((body-str (ensure-string (or body "")))
+        err-class
+        err-message
+        err-code)
+    (cond
+      ((emptyp body-str)
+       (error "Unexpected error raised with status=~A" status))
+      ((member content-type '("application/xml" "text/xml")
+               :test #'string=)
+       (let* ((xml-data (xmls-to-alist (xmls:parse-to-list body-str))))
+         (when-let* ((err-response (aget xml-data "ErrorResponse"))
+                     (err (aget err-response "Error")))
+           (setf err-class (aget error-map (aget err "Code"))
+                 err-message (aget err "Message")))
+         (when-let ((err-alist (aget xml-data "Error")))
+           (setf err-class (aget error-map (first (aget err-alist "Code")))
+                 err-code (aget err-alist "Code")
+                 err-message (aget err-alist "Message")))))
+      ((uiop:string-prefix-p "application/x-amz-json-1." content-type)
+       (let* ((json-data (yason:parse body-str))
+              (_type (gethash "__type" json-data)))
+         (setf err-message (or (gethash "message" json-data)
+                               (gethash "Message" json-data))
+               err-class (or (aget error-map
+                                   (if (string= content-type "application/x-amz-json-1.1")
+                                       _type
+                                       (subseq _type (1+ (position #\# _type)))))
+                             'aws-error))))
+      ((string= content-type "application/vnd.error+json")
+       (setf err-message (gethash "message" (yason:parse body-str)))))
+    (error (or err-class 'aws-error)
+           :code err-code
+           :message (or err-message "Unknown")
+           :status status
+           :body body-str)))
+
 (defun parse-response (response body-type wrapper-name error-map)
   (destructuring-bind (body status headers &rest ignore-args)
       response
-    (declare (ignore ignore-args headers))
-    (if (<= 400 status 599)
-        (let ((body (ensure-string (or body ""))))
-          (when (= 0 (length body))
-            (error "Unexpected error raised with status=~A" status))
-          (let* ((output (xmls-to-alist (xmls:parse-to-list body)))
-                 (error-alist (aget output "Error"))
-                 (error-class (or (aget error-map (first (aget error-alist "Code")))
-                                  'aws-error)))
-            (error error-class
-                   :code (first (aget error-alist "Code"))
-                   :message (first (aget error-alist "Message"))
-                   :status status
-                   :body body)))
-        (if (equal body-type "blob")
-            body
-            (let ((body (ensure-string (or body ""))))
-              (when (/= 0 (length body))
-                (let* ((output (xmls-to-alist (xmls:parse-to-list body)))
-                       (output ;; Unwrap the root element
-                         (cdr (first output))))
-                  (if wrapper-name
-                      (values (aget output wrapper-name)
-                              (aget output "ResponseMetadata"))
-                      output))))))))
+    (declare (ignore ignore-args))
+    (let ((content-type (gethash "content-type" headers)))
+      (if (<= 400 status 599)
+          (parse-response-error body status content-type error-map)
+          (if (equal body-type "blob")
+              body
+              (let ((body-str (ensure-string (or body ""))))
+                (cond
+                  ((or (string-prefix-p "text/xml" content-type)
+                       (string-prefix-p "application/xml" content-type))
+                   (let* ((output (xmls-to-alist (xmls:parse-to-list body-str)))
+                          (output ;; Unwrap the root element
+                            (cdr (first output))))
+                     (if wrapper-name
+                         (values (aget output wrapper-name)
+                                 (aget output "ResponseMetadata"))
+                         output)))
+                  ((member content-type '("application/json" "application/x-amz-json-1.1" "application/x-amz-json-1.0")
+                           :test #'string=)
+                   (yason:parse body-str :object-as :alist))
+                  (t
+                   body-str))))))))
 
 (defun compile-path-pattern (path-pattern)
   (when path-pattern
@@ -82,7 +121,7 @@
                      ,@slots))
           path-pattern))))
 
-(defun compile-operation (service name version options params body-type error-map)
+(defun compile-operation (service name options params body-type error-map)
   (let* ((output (gethash "output" options))
          (method (gethash "method" (gethash "http" options)))
          (request-uri (gethash "requestUri" (gethash "http" options))))
@@ -96,7 +135,7 @@
                   (aws-request
                     (make-request-with-input
                       ',(intern (format nil "~:@(~A-REQUEST~)" service))
-                      input ,method ,(compile-path-pattern request-uri) ,name ,version)
+                      input ,method ,(compile-path-pattern request-uri) ,name)
                     ,@(when (equal body-type "blob")
                         '(:want-stream t)))
                   ,body-type
@@ -111,7 +150,7 @@
                  (make-instance ',(intern (format nil "~:@(~A-REQUEST~)" service))
                                 :method ,method
                                 :path ,request-uri
-                                :params `(("Action" . ,,name) ("Version" . ,,version)))
+                                :operation ,name)
                  ,@(when (equal body-type "blob")
                      '(:want-stream t)))
               ,body-type

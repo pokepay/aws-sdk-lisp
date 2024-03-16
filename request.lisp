@@ -17,73 +17,68 @@
            #:request-payload
            #:request-session
            #:request-host
-           #:request-endpoint))
+           #:request-endpoint
+           #:request-signing-name))
 (in-package #:aws-sdk/request)
+
+(defparameter *global-service-endpoints* '("iam"
+                                           "globalaccelerator"
+                                           "cloudfront"
+                                           "networkmanager"
+                                           "organizations"
+                                           "route53"
+                                           "shield"
+                                           "waf"))
 
 (defclass request ()
   ((service :initarg :service
             :initform (error ":service is required")
             :reader request-service)
+   (host-prefix :initarg :host-prefix
+                :initform nil
+                :reader request-host-prefix)
+   (global-host :initarg :global-host
+                :initform nil
+                :reader request-global-host)
+   (api-version :initarg :api-version
+                :initform (error ":api-version is required")
+                :reader request-api-version)
+   (operation :initarg :operation
+              :initform (error ":operation is required")
+              :reader request-operation)
+   (signing-name :initarg :signing-name
+                 :initform nil
+                 :reader request-signing-name)
    (method :initarg :method
-           :initform ":method is required"
+           :initform (error ":method is required")
            :reader request-method)
    (path :initarg :path
          :initform "/"
-         :reader request-path)
+         :accessor request-path)
    (params :initarg :params
            :initform nil
-           :reader request-params)
+           :accessor request-params)
    (headers :initarg :headers
             :initform nil
-            :reader request-headers)
+            :accessor request-headers)
    (payload :initarg :payload
             :initform nil
-            :reader request-payload)
+            :accessor request-payload)
    (session :initarg :session
             :initform *session*
             :reader request-session)))
 
-(defmethod initialize-instance :after ((req request) &rest args &key path params &allow-other-keys)
-  (declare (ignore args))
-  (let ((uri (quri:uri path)))
-    (setf (slot-value req 'path) (quri:uri-path uri))
-    (setf (slot-value req 'params)
-          (append
-            (quri:uri-query-params uri)
-            (loop for (k . v) in params
-                  append (to-query-params k v))))))
-
-(defun to-query-params (key value)
-  (typecase value
-    (null)
-    (cons
-     (if (alistp value)
-         (mapcar (lambda (kv)
-                   (cons
-                    (format nil "~A.~A" key (car kv))
-                    (cdr kv)))
-                 (loop for (k . v) in value
-                       append (to-query-params k v)))
-         (loop for i from 1
-               for v in value
-               collect (cons (format nil "~A.member.~A" key i) v))))
-    (boolean
-     (list (cons key
-                 (if value
-                     "true"
-                     "false"))))
-    (otherwise (list (cons key value)))))
-
 (defgeneric request-host (request region)
   (:method ((req request) region)
-    (format nil "~(~A~).~(~A~).amazonaws.com" (request-service req) region)))
+    (if (member (request-service req) *global-service-endpoints* :test #'string=)
+        (or (request-global-host req)
+            (format nil "~(~A~).amazonaws.com" (request-service req)))
+        (format nil "~(~A~).~(~A~).amazonaws.com" (request-host-prefix req) region))))
 
 (defgeneric request-endpoint (request region)
   (:method ((req request) region)
     (with-slots (path params) req
       (quri:render-uri
-        (quri:make-uri :scheme "https"
+       (quri:make-uri  :scheme "https"
                        :host (request-host req region)
-                       :path path
-                       :query (and params
-                                   (quri:url-encode-params params)))))))
+                       :path path)))))

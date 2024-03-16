@@ -7,18 +7,25 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/elasticloadbalancing/api)
-(common-lisp:progn
- (common-lisp:defclass elasticloadbalancing-request (aws-sdk/request:request)
-                       common-lisp:nil
-                       (:default-initargs :service "elasticloadbalancing"))
- (common-lisp:export 'elasticloadbalancing-request))
 (common-lisp:progn
  (common-lisp:define-condition elasticloadbalancing-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'elasticloadbalancing-error))
+(common-lisp:progn
+ (common-lisp:defclass elasticloadbalancing-request
+                       (aws-sdk/query-request:query-request) common-lisp:nil
+                       (:default-initargs :service "elasticloadbalancing"
+                        :api-version "2012-06-01" :host-prefix
+                        "elasticloadbalancing" :signing-name common-lisp:nil
+                        :global-host common-lisp:nil))
+ (common-lisp:export 'elasticloadbalancing-request))
 (common-lisp:defvar *error-map*
   '(("AccessPointNotFoundException" . access-point-not-found-exception)
     ("CertificateNotFoundException" . certificate-not-found-exception)
@@ -37,6 +44,7 @@
     ("ListenerNotFoundException" . listener-not-found-exception)
     ("LoadBalancerAttributeNotFoundException"
      . load-balancer-attribute-not-found-exception)
+    ("OperationNotPermittedException" . operation-not-permitted-exception)
     ("PolicyNotFoundException" . policy-not-found-exception)
     ("PolicyTypeNotFoundException" . policy-type-not-found-exception)
     ("SubnetNotFoundException" . subnet-not-found-exception)
@@ -259,7 +267,7 @@
 (common-lisp:progn
  (common-lisp:deftype additional-attributes ()
    '(trivial-types:proper-list additional-attribute))
- (common-lisp:defun |make-additional-attributes|
+ (common-lisp:defun make-additional-attributes
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list additional-attribute))
@@ -267,7 +275,7 @@
 (common-lisp:progn
  (common-lisp:deftype app-cookie-stickiness-policies ()
    '(trivial-types:proper-list app-cookie-stickiness-policy))
- (common-lisp:defun |make-app-cookie-stickiness-policies|
+ (common-lisp:defun make-app-cookie-stickiness-policies
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -463,7 +471,7 @@
 (common-lisp:progn
  (common-lisp:deftype availability-zones ()
    '(trivial-types:proper-list availability-zone))
- (common-lisp:defun |make-availability-zones|
+ (common-lisp:defun make-availability-zones
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list availability-zone))
@@ -511,7 +519,7 @@
 (common-lisp:progn
  (common-lisp:deftype backend-server-descriptions ()
    '(trivial-types:proper-list backend-server-description))
- (common-lisp:defun |make-backend-server-descriptions|
+ (common-lisp:defun make-backend-server-descriptions
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -2056,14 +2064,14 @@
 (common-lisp:progn
  (common-lisp:deftype instance-states ()
    '(trivial-types:proper-list instance-state))
- (common-lisp:defun |make-instance-states|
+ (common-lisp:defun make-instance-states
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list instance-state))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:deftype instances () '(trivial-types:proper-list instance))
- (common-lisp:defun |make-instances|
+ (common-lisp:defun make-instances
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list instance))
@@ -2097,7 +2105,7 @@
 (common-lisp:progn
  (common-lisp:deftype lbcookie-stickiness-policies ()
    '(trivial-types:proper-list lbcookie-stickiness-policy))
- (common-lisp:defun |make-lbcookie-stickiness-policies|
+ (common-lisp:defun make-lbcookie-stickiness-policies
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -2175,7 +2183,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype limits () '(trivial-types:proper-list limit))
- (common-lisp:defun |make-limits|
+ (common-lisp:defun make-limits
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list limit))
@@ -2273,7 +2281,7 @@
 (common-lisp:progn
  (common-lisp:deftype listener-descriptions ()
    '(trivial-types:proper-list listener-description))
- (common-lisp:defun |make-listener-descriptions|
+ (common-lisp:defun make-listener-descriptions
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list listener-description))
@@ -2285,7 +2293,7 @@
  (common-lisp:export (common-lisp:list 'listener-not-found-exception)))
 (common-lisp:progn
  (common-lisp:deftype listeners () '(trivial-types:proper-list listener))
- (common-lisp:defun |make-listeners|
+ (common-lisp:defun make-listeners
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list listener))
@@ -2534,7 +2542,7 @@
 (common-lisp:progn
  (common-lisp:deftype load-balancer-descriptions ()
    '(trivial-types:proper-list load-balancer-description))
- (common-lisp:defun |make-load-balancer-descriptions|
+ (common-lisp:defun make-load-balancer-descriptions
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -2543,7 +2551,7 @@
 (common-lisp:progn
  (common-lisp:deftype load-balancer-names ()
    '(trivial-types:proper-list access-point-name))
- (common-lisp:defun |make-load-balancer-names|
+ (common-lisp:defun make-load-balancer-names
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list access-point-name))
@@ -2551,7 +2559,7 @@
 (common-lisp:progn
  (common-lisp:deftype load-balancer-names-max20 ()
    '(trivial-types:proper-list access-point-name))
- (common-lisp:defun |make-load-balancer-names-max20|
+ (common-lisp:defun make-load-balancer-names-max20
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list access-point-name))
@@ -2643,6 +2651,11 @@
                           modify-load-balancer-attributes-output))
    common-lisp:nil))
 (common-lisp:deftype name () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:define-condition operation-not-permitted-exception
+     (elasticloadbalancing-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'operation-not-permitted-exception)))
 (common-lisp:deftype page-size () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -2762,7 +2775,7 @@
 (common-lisp:progn
  (common-lisp:deftype policy-attribute-descriptions ()
    '(trivial-types:proper-list policy-attribute-description))
- (common-lisp:defun |make-policy-attribute-descriptions|
+ (common-lisp:defun make-policy-attribute-descriptions
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -2838,7 +2851,7 @@
 (common-lisp:progn
  (common-lisp:deftype policy-attribute-type-descriptions ()
    '(trivial-types:proper-list policy-attribute-type-description))
- (common-lisp:defun |make-policy-attribute-type-descriptions|
+ (common-lisp:defun make-policy-attribute-type-descriptions
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -2847,7 +2860,7 @@
 (common-lisp:progn
  (common-lisp:deftype policy-attributes ()
    '(trivial-types:proper-list policy-attribute))
- (common-lisp:defun |make-policy-attributes|
+ (common-lisp:defun make-policy-attributes
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list policy-attribute))
@@ -2898,7 +2911,7 @@
 (common-lisp:progn
  (common-lisp:deftype policy-descriptions ()
    '(trivial-types:proper-list policy-description))
- (common-lisp:defun |make-policy-descriptions|
+ (common-lisp:defun make-policy-descriptions
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list policy-description))
@@ -2906,7 +2919,7 @@
 (common-lisp:deftype policy-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype policy-names () '(trivial-types:proper-list policy-name))
- (common-lisp:defun |make-policy-names|
+ (common-lisp:defun make-policy-names
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list policy-name))
@@ -2968,7 +2981,7 @@
 (common-lisp:progn
  (common-lisp:deftype policy-type-descriptions ()
    '(trivial-types:proper-list policy-type-description))
- (common-lisp:defun |make-policy-type-descriptions|
+ (common-lisp:defun make-policy-type-descriptions
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list policy-type-description))
@@ -2977,7 +2990,7 @@
 (common-lisp:progn
  (common-lisp:deftype policy-type-names ()
    '(trivial-types:proper-list policy-type-name))
- (common-lisp:defun |make-policy-type-names|
+ (common-lisp:defun make-policy-type-names
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list policy-type-name))
@@ -2989,7 +3002,7 @@
  (common-lisp:export (common-lisp:list 'policy-type-not-found-exception)))
 (common-lisp:progn
  (common-lisp:deftype ports () '(trivial-types:proper-list access-point-port))
- (common-lisp:defun |make-ports|
+ (common-lisp:defun make-ports
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list access-point-port))
@@ -3194,7 +3207,7 @@
 (common-lisp:progn
  (common-lisp:deftype security-groups ()
    '(trivial-types:proper-list security-group-id))
- (common-lisp:defun |make-security-groups|
+ (common-lisp:defun make-security-groups
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list security-group-id))
@@ -3469,7 +3482,7 @@
  (common-lisp:export (common-lisp:list 'subnet-not-found-exception)))
 (common-lisp:progn
  (common-lisp:deftype subnets () '(trivial-types:proper-list subnet-id))
- (common-lisp:defun |make-subnets|
+ (common-lisp:defun make-subnets
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list subnet-id))
@@ -3538,7 +3551,7 @@
 (common-lisp:progn
  (common-lisp:deftype tag-descriptions ()
    '(trivial-types:proper-list tag-description))
- (common-lisp:defun |make-tag-descriptions|
+ (common-lisp:defun make-tag-descriptions
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list tag-description))
@@ -3547,7 +3560,7 @@
 (common-lisp:progn
  (common-lisp:deftype tag-key-list ()
    '(trivial-types:proper-list tag-key-only))
- (common-lisp:defun |make-tag-key-list|
+ (common-lisp:defun make-tag-key-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list tag-key-only))
@@ -3576,7 +3589,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype tag-list () '(trivial-types:proper-list tag))
- (common-lisp:defun |make-tag-list|
+ (common-lisp:defun make-tag-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list tag))
@@ -3617,7 +3630,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "AddTags" "2012-06-01"))
+        "/" "AddTags"))
       common-lisp:nil "AddTagsResult" *error-map*)))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
@@ -3635,7 +3648,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "ApplySecurityGroupsToLoadBalancer" "2012-06-01"))
+        "/" "ApplySecurityGroupsToLoadBalancer"))
       common-lisp:nil "ApplySecurityGroupsToLoadBalancerResult" *error-map*)))
  (common-lisp:export 'apply-security-groups-to-load-balancer))
 (common-lisp:progn
@@ -3652,7 +3665,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "AttachLoadBalancerToSubnets" "2012-06-01"))
+        "/" "AttachLoadBalancerToSubnets"))
       common-lisp:nil "AttachLoadBalancerToSubnetsResult" *error-map*)))
  (common-lisp:export 'attach-load-balancer-to-subnets))
 (common-lisp:progn
@@ -3669,7 +3682,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "ConfigureHealthCheck" "2012-06-01"))
+        "/" "ConfigureHealthCheck"))
       common-lisp:nil "ConfigureHealthCheckResult" *error-map*)))
  (common-lisp:export 'configure-health-check))
 (common-lisp:progn
@@ -3688,7 +3701,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "CreateAppCookieStickinessPolicy" "2012-06-01"))
+        "/" "CreateAppCookieStickinessPolicy"))
       common-lisp:nil "CreateAppCookieStickinessPolicyResult" *error-map*)))
  (common-lisp:export 'create-app-cookie-stickiness-policy))
 (common-lisp:progn
@@ -3708,7 +3721,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "CreateLBCookieStickinessPolicy" "2012-06-01"))
+        "/" "CreateLBCookieStickinessPolicy"))
       common-lisp:nil "CreateLBCookieStickinessPolicyResult" *error-map*)))
  (common-lisp:export 'create-lbcookie-stickiness-policy))
 (common-lisp:progn
@@ -3727,7 +3740,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "CreateLoadBalancer" "2012-06-01"))
+        "/" "CreateLoadBalancer"))
       common-lisp:nil "CreateLoadBalancerResult" *error-map*)))
  (common-lisp:export 'create-load-balancer))
 (common-lisp:progn
@@ -3744,7 +3757,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "CreateLoadBalancerListeners" "2012-06-01"))
+        "/" "CreateLoadBalancerListeners"))
       common-lisp:nil "CreateLoadBalancerListenersResult" *error-map*)))
  (common-lisp:export 'create-load-balancer-listeners))
 (common-lisp:progn
@@ -3764,7 +3777,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "CreateLoadBalancerPolicy" "2012-06-01"))
+        "/" "CreateLoadBalancerPolicy"))
       common-lisp:nil "CreateLoadBalancerPolicyResult" *error-map*)))
  (common-lisp:export 'create-load-balancer-policy))
 (common-lisp:progn
@@ -3780,7 +3793,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "DeleteLoadBalancer" "2012-06-01"))
+        "/" "DeleteLoadBalancer"))
       common-lisp:nil "DeleteLoadBalancerResult" *error-map*)))
  (common-lisp:export 'delete-load-balancer))
 (common-lisp:progn
@@ -3798,7 +3811,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "DeleteLoadBalancerListeners" "2012-06-01"))
+        "/" "DeleteLoadBalancerListeners"))
       common-lisp:nil "DeleteLoadBalancerListenersResult" *error-map*)))
  (common-lisp:export 'delete-load-balancer-listeners))
 (common-lisp:progn
@@ -3815,7 +3828,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "DeleteLoadBalancerPolicy" "2012-06-01"))
+        "/" "DeleteLoadBalancerPolicy"))
       common-lisp:nil "DeleteLoadBalancerPolicyResult" *error-map*)))
  (common-lisp:export 'delete-load-balancer-policy))
 (common-lisp:progn
@@ -3831,7 +3844,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "DeregisterInstancesFromLoadBalancer" "2012-06-01"))
+        "/" "DeregisterInstancesFromLoadBalancer"))
       common-lisp:nil "DeregisterInstancesFromLoadBalancerResult"
       *error-map*)))
  (common-lisp:export 'deregister-instances-from-load-balancer))
@@ -3848,7 +3861,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "DescribeAccountLimits" "2012-06-01"))
+        "/" "DescribeAccountLimits"))
       common-lisp:nil "DescribeAccountLimitsResult" *error-map*)))
  (common-lisp:export 'describe-account-limits))
 (common-lisp:progn
@@ -3864,7 +3877,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "DescribeInstanceHealth" "2012-06-01"))
+        "/" "DescribeInstanceHealth"))
       common-lisp:nil "DescribeInstanceHealthResult" *error-map*)))
  (common-lisp:export 'describe-instance-health))
 (common-lisp:progn
@@ -3881,7 +3894,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "DescribeLoadBalancerAttributes" "2012-06-01"))
+        "/" "DescribeLoadBalancerAttributes"))
       common-lisp:nil "DescribeLoadBalancerAttributesResult" *error-map*)))
  (common-lisp:export 'describe-load-balancer-attributes))
 (common-lisp:progn
@@ -3899,7 +3912,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "DescribeLoadBalancerPolicies" "2012-06-01"))
+        "/" "DescribeLoadBalancerPolicies"))
       common-lisp:nil "DescribeLoadBalancerPoliciesResult" *error-map*)))
  (common-lisp:export 'describe-load-balancer-policies))
 (common-lisp:progn
@@ -3916,7 +3929,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "DescribeLoadBalancerPolicyTypes" "2012-06-01"))
+        "/" "DescribeLoadBalancerPolicyTypes"))
       common-lisp:nil "DescribeLoadBalancerPolicyTypesResult" *error-map*)))
  (common-lisp:export 'describe-load-balancer-policy-types))
 (common-lisp:progn
@@ -3933,7 +3946,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "DescribeLoadBalancers" "2012-06-01"))
+        "/" "DescribeLoadBalancers"))
       common-lisp:nil "DescribeLoadBalancersResult" *error-map*)))
  (common-lisp:export 'describe-load-balancers))
 (common-lisp:progn
@@ -3949,7 +3962,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "DescribeTags" "2012-06-01"))
+        "/" "DescribeTags"))
       common-lisp:nil "DescribeTagsResult" *error-map*)))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
@@ -3966,7 +3979,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "DetachLoadBalancerFromSubnets" "2012-06-01"))
+        "/" "DetachLoadBalancerFromSubnets"))
       common-lisp:nil "DetachLoadBalancerFromSubnetsResult" *error-map*)))
  (common-lisp:export 'detach-load-balancer-from-subnets))
 (common-lisp:progn
@@ -3983,7 +3996,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "DisableAvailabilityZonesForLoadBalancer" "2012-06-01"))
+        "/" "DisableAvailabilityZonesForLoadBalancer"))
       common-lisp:nil "DisableAvailabilityZonesForLoadBalancerResult"
       *error-map*)))
  (common-lisp:export 'disable-availability-zones-for-load-balancer))
@@ -4001,7 +4014,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "EnableAvailabilityZonesForLoadBalancer" "2012-06-01"))
+        "/" "EnableAvailabilityZonesForLoadBalancer"))
       common-lisp:nil "EnableAvailabilityZonesForLoadBalancerResult"
       *error-map*)))
  (common-lisp:export 'enable-availability-zones-for-load-balancer))
@@ -4021,7 +4034,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "ModifyLoadBalancerAttributes" "2012-06-01"))
+        "/" "ModifyLoadBalancerAttributes"))
       common-lisp:nil "ModifyLoadBalancerAttributesResult" *error-map*)))
  (common-lisp:export 'modify-load-balancer-attributes))
 (common-lisp:progn
@@ -4037,7 +4050,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "RegisterInstancesWithLoadBalancer" "2012-06-01"))
+        "/" "RegisterInstancesWithLoadBalancer"))
       common-lisp:nil "RegisterInstancesWithLoadBalancerResult" *error-map*)))
  (common-lisp:export 'register-instances-with-load-balancer))
 (common-lisp:progn
@@ -4053,7 +4066,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "RemoveTags" "2012-06-01"))
+        "/" "RemoveTags"))
       common-lisp:nil "RemoveTagsResult" *error-map*)))
  (common-lisp:export 'remove-tags))
 (common-lisp:progn
@@ -4073,7 +4086,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "SetLoadBalancerListenerSSLCertificate" "2012-06-01"))
+        "/" "SetLoadBalancerListenerSSLCertificate"))
       common-lisp:nil "SetLoadBalancerListenerSSLCertificateResult"
       *error-map*)))
  (common-lisp:export 'set-load-balancer-listener-sslcertificate))
@@ -4093,7 +4106,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "SetLoadBalancerPoliciesForBackendServer" "2012-06-01"))
+        "/" "SetLoadBalancerPoliciesForBackendServer"))
       common-lisp:nil "SetLoadBalancerPoliciesForBackendServerResult"
       *error-map*)))
  (common-lisp:export 'set-load-balancer-policies-for-backend-server))
@@ -4113,6 +4126,6 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
-        "/" "SetLoadBalancerPoliciesOfListener" "2012-06-01"))
+        "/" "SetLoadBalancerPoliciesOfListener"))
       common-lisp:nil "SetLoadBalancerPoliciesOfListenerResult" *error-map*)))
  (common-lisp:export 'set-load-balancer-policies-of-listener))

@@ -7,30 +7,46 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/meteringmarketplace/api)
-(common-lisp:progn
- (common-lisp:defclass meteringmarketplace-request (aws-sdk/request:request)
-                       common-lisp:nil
-                       (:default-initargs :service "meteringmarketplace"))
- (common-lisp:export 'meteringmarketplace-request))
 (common-lisp:progn
  (common-lisp:define-condition meteringmarketplace-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'meteringmarketplace-error))
+(common-lisp:progn
+ (common-lisp:defclass meteringmarketplace-request
+                       (aws-sdk/json-request:json-request) common-lisp:nil
+                       (:default-initargs :service "meteringmarketplace"
+                        :api-version "2016-01-14" :host-prefix
+                        "metering.marketplace" :signing-name "aws-marketplace"
+                        :global-host common-lisp:nil :target-prefix
+                        "AWSMPMeteringService" :json-version "1.1"))
+ (common-lisp:export 'meteringmarketplace-request))
 (common-lisp:defvar *error-map*
-  '(("DuplicateRequestException" . duplicate-request-exception)
+  '(("CustomerNotEntitledException" . customer-not-entitled-exception)
+    ("DisabledApiException" . disabled-api-exception)
+    ("DuplicateRequestException" . duplicate-request-exception)
     ("ExpiredTokenException" . expired-token-exception)
     ("InternalServiceErrorException" . internal-service-error-exception)
     ("InvalidCustomerIdentifierException"
      . invalid-customer-identifier-exception)
     ("InvalidEndpointRegionException" . invalid-endpoint-region-exception)
     ("InvalidProductCodeException" . invalid-product-code-exception)
+    ("InvalidPublicKeyVersionException" . invalid-public-key-version-exception)
+    ("InvalidRegionException" . invalid-region-exception)
+    ("InvalidTagException" . invalid-tag-exception)
     ("InvalidTokenException" . invalid-token-exception)
+    ("InvalidUsageAllocationsException" . invalid-usage-allocations-exception)
     ("InvalidUsageDimensionException" . invalid-usage-dimension-exception)
+    ("PlatformNotSupportedException" . platform-not-supported-exception)
     ("ThrottlingException" . throttling-exception)
     ("TimestampOutOfBoundsException" . timestamp-out-of-bounds-exception)))
+(common-lisp:deftype allocated-usage-quantity () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-meter-usage-request (:copier common-lisp:nil)
@@ -111,7 +127,23 @@
                           batch-meter-usage-result))
    common-lisp:nil))
 (common-lisp:deftype boolean () 'common-lisp:boolean)
+(common-lisp:deftype customer-awsaccount-id () 'common-lisp:string)
 (common-lisp:deftype customer-identifier () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:define-condition customer-not-entitled-exception
+     (meteringmarketplace-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       customer-not-entitled-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'customer-not-entitled-exception
+                    'customer-not-entitled-exception-message)))
+(common-lisp:progn
+ (common-lisp:define-condition disabled-api-exception
+     (meteringmarketplace-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       disabled-api-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'disabled-api-exception 'disabled-api-exception-message)))
 (common-lisp:progn
  (common-lisp:define-condition duplicate-request-exception
      (meteringmarketplace-error)
@@ -160,12 +192,43 @@
   (common-lisp:list 'invalid-product-code-exception
                     'invalid-product-code-exception-message)))
 (common-lisp:progn
+ (common-lisp:define-condition invalid-public-key-version-exception
+     (meteringmarketplace-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-public-key-version-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-public-key-version-exception
+                    'invalid-public-key-version-exception-message)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-region-exception
+     (meteringmarketplace-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-region-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-region-exception
+                    'invalid-region-exception-message)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-tag-exception
+     (meteringmarketplace-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-tag-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-tag-exception 'invalid-tag-exception-message)))
+(common-lisp:progn
  (common-lisp:define-condition invalid-token-exception
      (meteringmarketplace-error)
      ((message :initarg :message :initform common-lisp:nil :reader
        invalid-token-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-token-exception 'invalid-token-exception-message)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-usage-allocations-exception
+     (meteringmarketplace-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-usage-allocations-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-usage-allocations-exception
+                    'invalid-usage-allocations-exception-message)))
 (common-lisp:progn
  (common-lisp:define-condition invalid-usage-dimension-exception
      (meteringmarketplace-error)
@@ -184,10 +247,11 @@
     (common-lisp:or timestamp common-lisp:null))
    (usage-dimension (common-lisp:error ":usage-dimension is required") :type
     (common-lisp:or usage-dimension common-lisp:null))
-   (usage-quantity (common-lisp:error ":usage-quantity is required") :type
+   (usage-quantity common-lisp:nil :type
     (common-lisp:or usage-quantity common-lisp:null))
-   (dry-run (common-lisp:error ":dry-run is required") :type
-    (common-lisp:or boolean common-lisp:null)))
+   (dry-run common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
+   (usage-allocations common-lisp:nil :type
+    (common-lisp:or usage-allocations common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'meter-usage-request 'make-meter-usage-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -230,6 +294,13 @@
       (common-lisp:list
        (common-lisp:cons "DryRun"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'usage-allocations))
+      (common-lisp:list
+       (common-lisp:cons "UsageAllocations"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input meter-usage-request))
@@ -259,7 +330,103 @@
                         ((aws-sdk/generator/shape::input meter-usage-result))
    common-lisp:nil))
 (common-lisp:deftype non-empty-string () 'common-lisp:string)
+(common-lisp:deftype nonce () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:define-condition platform-not-supported-exception
+     (meteringmarketplace-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       platform-not-supported-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'platform-not-supported-exception
+                    'platform-not-supported-exception-message)))
 (common-lisp:deftype product-code () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:defstruct
+     (register-usage-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-register-usage-request-"))
+   (product-code (common-lisp:error ":product-code is required") :type
+    (common-lisp:or product-code common-lisp:null))
+   (public-key-version (common-lisp:error ":public-key-version is required")
+    :type (common-lisp:or version-integer common-lisp:null))
+   (nonce common-lisp:nil :type (common-lisp:or nonce common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'register-usage-request 'make-register-usage-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          register-usage-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          register-usage-request))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'product-code))
+      (common-lisp:list
+       (common-lisp:cons "ProductCode"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'public-key-version))
+      (common-lisp:list
+       (common-lisp:cons "PublicKeyVersion"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'nonce))
+      (common-lisp:list
+       (common-lisp:cons "Nonce"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          register-usage-request))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (register-usage-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-register-usage-result-"))
+   (public-key-rotation-timestamp common-lisp:nil :type
+    (common-lisp:or timestamp common-lisp:null))
+   (signature common-lisp:nil :type
+    (common-lisp:or non-empty-string common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'register-usage-result 'make-register-usage-result))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          register-usage-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          register-usage-result))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'public-key-rotation-timestamp))
+      (common-lisp:list
+       (common-lisp:cons "PublicKeyRotationTimestamp"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'signature))
+      (common-lisp:list
+       (common-lisp:cons "Signature"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          register-usage-result))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (resolve-customer-request (:copier common-lisp:nil)
@@ -297,7 +464,9 @@
    (customer-identifier common-lisp:nil :type
     (common-lisp:or customer-identifier common-lisp:null))
    (product-code common-lisp:nil :type
-    (common-lisp:or product-code common-lisp:null)))
+    (common-lisp:or product-code common-lisp:null))
+   (customer-awsaccount-id common-lisp:nil :type
+    (common-lisp:or customer-awsaccount-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'resolve-customer-result 'make-resolve-customer-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -323,6 +492,14 @@
       (common-lisp:list
        (common-lisp:cons "ProductCode"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'customer-awsaccount-id))
+      (common-lisp:list
+       (common-lisp:cons "CustomerAWSAccountId"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         (
@@ -330,6 +507,46 @@
                           resolve-customer-result))
    common-lisp:nil))
 (common-lisp:deftype string () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:defstruct
+     (tag (:copier common-lisp:nil) (:conc-name "struct-shape-tag-"))
+   (key (common-lisp:error ":key is required") :type
+    (common-lisp:or tag-key common-lisp:null))
+   (value (common-lisp:error ":value is required") :type
+    (common-lisp:or tag-value common-lisp:null)))
+ (common-lisp:export (common-lisp:list 'tag 'make-tag))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input tag))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input tag))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'key))
+      (common-lisp:list
+       (common-lisp:cons "Key"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'value))
+      (common-lisp:list
+       (common-lisp:cons "Value"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input tag))
+   common-lisp:nil))
+(common-lisp:deftype tag-key () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:deftype tag-list () '(trivial-types:proper-list tag))
+ (common-lisp:defun make-tag-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list tag))
+   aws-sdk/generator/shape::members))
+(common-lisp:deftype tag-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:define-condition throttling-exception
      (meteringmarketplace-error)
@@ -346,6 +563,48 @@
  (common-lisp:export
   (common-lisp:list 'timestamp-out-of-bounds-exception
                     'timestamp-out-of-bounds-exception-message)))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (usage-allocation (:copier common-lisp:nil)
+      (:conc-name "struct-shape-usage-allocation-"))
+   (allocated-usage-quantity
+    (common-lisp:error ":allocated-usage-quantity is required") :type
+    (common-lisp:or allocated-usage-quantity common-lisp:null))
+   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'usage-allocation 'make-usage-allocation))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input usage-allocation))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input usage-allocation))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'allocated-usage-quantity))
+      (common-lisp:list
+       (common-lisp:cons "AllocatedUsageQuantity"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tags))
+      (common-lisp:list
+       (common-lisp:cons "Tags"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input usage-allocation))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:deftype usage-allocations ()
+   '(trivial-types:proper-list usage-allocation))
+ (common-lisp:defun make-usage-allocations
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list usage-allocation))
+   aws-sdk/generator/shape::members))
 (common-lisp:deftype usage-dimension () 'common-lisp:string)
 (common-lisp:deftype usage-quantity () 'common-lisp:integer)
 (common-lisp:progn
@@ -358,8 +617,10 @@
     :type (common-lisp:or customer-identifier common-lisp:null))
    (dimension (common-lisp:error ":dimension is required") :type
     (common-lisp:or usage-dimension common-lisp:null))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or usage-quantity common-lisp:null)))
+   (quantity common-lisp:nil :type
+    (common-lisp:or usage-quantity common-lisp:null))
+   (usage-allocations common-lisp:nil :type
+    (common-lisp:or usage-allocations common-lisp:null)))
  (common-lisp:export (common-lisp:list 'usage-record 'make-usage-record))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input usage-record))
@@ -394,6 +655,13 @@
       (common-lisp:list
        (common-lisp:cons "Quantity"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'usage-allocations))
+      (common-lisp:list
+       (common-lisp:cons "UsageAllocations"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input usage-record))
@@ -401,7 +669,7 @@
 (common-lisp:progn
  (common-lisp:deftype usage-record-list ()
    '(trivial-types:proper-list usage-record))
- (common-lisp:defun |make-usage-record-list|
+ (common-lisp:defun make-usage-record-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list usage-record))
@@ -451,12 +719,13 @@
 (common-lisp:progn
  (common-lisp:deftype usage-record-result-list ()
    '(trivial-types:proper-list usage-record-result))
- (common-lisp:defun |make-usage-record-result-list|
+ (common-lisp:defun make-usage-record-result-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list usage-record-result))
    aws-sdk/generator/shape::members))
 (common-lisp:deftype usage-record-result-status () 'common-lisp:string)
+(common-lisp:deftype version-integer () 'common-lisp:integer)
 (common-lisp:deftype |errorMessage| () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defun batch-meter-usage
@@ -471,7 +740,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'meteringmarketplace-request aws-sdk/generator/operation::input "POST"
-        "/" "BatchMeterUsage" "2016-01-14"))
+        "/" "BatchMeterUsage"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'batch-meter-usage))
 (common-lisp:progn
@@ -479,10 +748,10 @@
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
                      common-lisp:&key product-code timestamp usage-dimension
-                     usage-quantity dry-run)
+                     usage-quantity dry-run usage-allocations)
    (common-lisp:declare
     (common-lisp:ignorable product-code timestamp usage-dimension
-     usage-quantity dry-run))
+     usage-quantity dry-run usage-allocations))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-meter-usage-request
                                          aws-sdk/generator/operation::args)))
@@ -490,9 +759,26 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'meteringmarketplace-request aws-sdk/generator/operation::input "POST"
-        "/" "MeterUsage" "2016-01-14"))
+        "/" "MeterUsage"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'meter-usage))
+(common-lisp:progn
+ (common-lisp:defun register-usage
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key product-code public-key-version nonce)
+   (common-lisp:declare
+    (common-lisp:ignorable product-code public-key-version nonce))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-register-usage-request
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input
+        'meteringmarketplace-request aws-sdk/generator/operation::input "POST"
+        "/" "RegisterUsage"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'register-usage))
 (common-lisp:progn
  (common-lisp:defun resolve-customer
                     (
@@ -506,6 +792,6 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'meteringmarketplace-request aws-sdk/generator/operation::input "POST"
-        "/" "ResolveCustomer" "2016-01-14"))
+        "/" "ResolveCustomer"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'resolve-customer))

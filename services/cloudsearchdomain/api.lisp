@@ -7,18 +7,26 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/cloudsearchdomain/api)
-(common-lisp:progn
- (common-lisp:defclass cloudsearchdomain-request (aws-sdk/request:request)
-                       common-lisp:nil
-                       (:default-initargs :service "cloudsearchdomain"))
- (common-lisp:export 'cloudsearchdomain-request))
 (common-lisp:progn
  (common-lisp:define-condition cloudsearchdomain-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'cloudsearchdomain-error))
+(common-lisp:progn
+ (common-lisp:defclass cloudsearchdomain-request
+                       (aws-sdk/generator/service::rest-json-request)
+                       common-lisp:nil
+                       (:default-initargs :service "cloudsearchdomain"
+                        :api-version "2013-01-01" :host-prefix
+                        "cloudsearchdomain" :signing-name "cloudsearch"
+                        :global-host common-lisp:nil))
+ (common-lisp:export 'cloudsearchdomain-request))
 (common-lisp:defvar *error-map*
   '(("DocumentServiceException" . document-service-exception)
     ("SearchException" . search-exception)))
@@ -79,7 +87,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype bucket-list () '(trivial-types:proper-list bucket))
- (common-lisp:defun |make-bucket-list|
+ (common-lisp:defun make-bucket-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list bucket))
@@ -130,7 +138,7 @@
 (common-lisp:progn
  (common-lisp:deftype document-service-warnings ()
    '(trivial-types:proper-list document-service-warning))
- (common-lisp:defun |make-document-service-warnings|
+ (common-lisp:defun make-document-service-warnings
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -140,7 +148,7 @@
 (common-lisp:deftype expr () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype exprs () 'common-lisp:hash-table)
- (common-lisp:defun |make-exprs| (aws-sdk/generator/shape::key-values)
+ (common-lisp:defun make-exprs (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
      (common-lisp:list
@@ -148,7 +156,7 @@
 (common-lisp:deftype facet () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype facets () 'common-lisp:hash-table)
- (common-lisp:defun |make-facets| (aws-sdk/generator/shape::key-values)
+ (common-lisp:defun make-facets (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
      (common-lisp:list
@@ -234,14 +242,14 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype field-value () '(trivial-types:proper-list string))
- (common-lisp:defun |make-field-value|
+ (common-lisp:defun make-field-value
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:deftype fields () 'common-lisp:hash-table)
- (common-lisp:defun |make-fields| (aws-sdk/generator/shape::key-values)
+ (common-lisp:defun make-fields (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
      (common-lisp:list
@@ -250,7 +258,7 @@
 (common-lisp:deftype highlight () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype highlights () 'common-lisp:hash-table)
- (common-lisp:defun |make-highlights| (aws-sdk/generator/shape::key-values)
+ (common-lisp:defun make-highlights (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
      (common-lisp:list
@@ -303,7 +311,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype hit-list () '(trivial-types:proper-list hit))
- (common-lisp:defun |make-hit-list|
+ (common-lisp:defun make-hit-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list hit))
@@ -482,7 +490,7 @@
 (common-lisp:deftype stat () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype stats () 'common-lisp:hash-table)
- (common-lisp:defun |make-stats| (aws-sdk/generator/shape::key-values)
+ (common-lisp:defun make-stats (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
      (common-lisp:list
@@ -653,7 +661,7 @@
 (common-lisp:progn
  (common-lisp:deftype suggestions ()
    '(trivial-types:proper-list suggestion-match))
- (common-lisp:defun |make-suggestions|
+ (common-lisp:defun make-suggestions
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list suggestion-match))
@@ -767,7 +775,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'cloudsearchdomain-request aws-sdk/generator/operation::input "GET"
-        "/2013-01-01/search?format=sdk&pretty=true" "Search" "2013-01-01"))
+        "/2013-01-01/search?format=sdk&pretty=true" "Search"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'search))
 (common-lisp:progn
@@ -783,7 +791,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'cloudsearchdomain-request aws-sdk/generator/operation::input "GET"
-        "/2013-01-01/suggest?format=sdk&pretty=true" "Suggest" "2013-01-01"))
+        "/2013-01-01/suggest?format=sdk&pretty=true" "Suggest"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'suggest))
 (common-lisp:progn
@@ -799,7 +807,6 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'cloudsearchdomain-request aws-sdk/generator/operation::input "POST"
-        "/2013-01-01/documents/batch?format=sdk" "UploadDocuments"
-        "2013-01-01"))
+        "/2013-01-01/documents/batch?format=sdk" "UploadDocuments"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'upload-documents))

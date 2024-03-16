@@ -7,18 +7,25 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/cognito-sync/api)
-(common-lisp:progn
- (common-lisp:defclass cognito-sync-request (aws-sdk/request:request)
-                       common-lisp:nil
-                       (:default-initargs :service "cognito-sync"))
- (common-lisp:export 'cognito-sync-request))
 (common-lisp:progn
  (common-lisp:define-condition cognito-sync-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'cognito-sync-error))
+(common-lisp:progn
+ (common-lisp:defclass cognito-sync-request
+                       (aws-sdk/generator/service::rest-json-request)
+                       common-lisp:nil
+                       (:default-initargs :service "cognito-sync" :api-version
+                        "2014-06-30" :host-prefix "cognito-sync" :signing-name
+                        common-lisp:nil :global-host common-lisp:nil))
+ (common-lisp:export 'cognito-sync-request))
 (common-lisp:defvar *error-map*
   '(("AlreadyStreamedException" . already-streamed-exception)
     ("ConcurrentModificationException" . concurrent-modification-exception)
@@ -46,7 +53,7 @@
 (common-lisp:progn
  (common-lisp:deftype application-arn-list ()
    '(trivial-types:proper-list application-arn))
- (common-lisp:defun |make-application-arn-list|
+ (common-lisp:defun make-application-arn-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list application-arn))
@@ -227,7 +234,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype dataset-list () '(trivial-types:proper-list dataset))
- (common-lisp:defun |make-dataset-list|
+ (common-lisp:defun make-dataset-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list dataset))
@@ -470,7 +477,7 @@
                     'duplicate-request-exception-message)))
 (common-lisp:progn
  (common-lisp:deftype events () 'common-lisp:hash-table)
- (common-lisp:defun |make-events| (aws-sdk/generator/shape::key-values)
+ (common-lisp:defun make-events (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
      (common-lisp:list
@@ -751,7 +758,7 @@
 (common-lisp:progn
  (common-lisp:deftype identity-pool-usage-list ()
    '(trivial-types:proper-list identity-pool-usage))
- (common-lisp:defun |make-identity-pool-usage-list|
+ (common-lisp:defun make-identity-pool-usage-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list identity-pool-usage))
@@ -1155,7 +1162,7 @@
 (common-lisp:progn
  (common-lisp:deftype merged-dataset-name-list ()
    '(trivial-types:proper-list string))
- (common-lisp:defun |make-merged-dataset-name-list|
+ (common-lisp:defun make-merged-dataset-name-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
@@ -1271,7 +1278,7 @@
 (common-lisp:deftype record-key () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype record-list () '(trivial-types:proper-list record))
- (common-lisp:defun |make-record-list|
+ (common-lisp:defun make-record-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list record))
@@ -1338,7 +1345,7 @@
 (common-lisp:progn
  (common-lisp:deftype record-patch-list ()
    '(trivial-types:proper-list record-patch))
- (common-lisp:defun |make-record-patch-list|
+ (common-lisp:defun make-record-patch-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list record-patch))
@@ -1788,8 +1795,7 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'identity-pool-id))))
-                                                        "BulkPublish"
-                                                        "2014-06-30"))
+                                                        "BulkPublish"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'bulk-publish))
 (common-lisp:progn
@@ -1826,8 +1832,7 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'dataset-name))))
-                                                        "DeleteDataset"
-                                                        "2014-06-30"))
+                                                        "DeleteDataset"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-dataset))
 (common-lisp:progn
@@ -1864,8 +1869,7 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'dataset-name))))
-                                                        "DescribeDataset"
-                                                        "2014-06-30"))
+                                                        "DescribeDataset"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-dataset))
 (common-lisp:progn
@@ -1893,8 +1897,7 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'identity-pool-id))))
-                                                        "DescribeIdentityPoolUsage"
-                                                        "2014-06-30"))
+                                                        "DescribeIdentityPoolUsage"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-identity-pool-usage))
 (common-lisp:progn
@@ -1925,8 +1928,7 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'identity-id))))
-                                                        "DescribeIdentityUsage"
-                                                        "2014-06-30"))
+                                                        "DescribeIdentityUsage"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-identity-usage))
 (common-lisp:progn
@@ -1953,8 +1955,7 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'identity-pool-id))))
-                                                        "GetBulkPublishDetails"
-                                                        "2014-06-30"))
+                                                        "GetBulkPublishDetails"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-bulk-publish-details))
 (common-lisp:progn
@@ -1981,8 +1982,7 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'identity-pool-id))))
-                                                        "GetCognitoEvents"
-                                                        "2014-06-30"))
+                                                        "GetCognitoEvents"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-cognito-events))
 (common-lisp:progn
@@ -2010,8 +2010,7 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'identity-pool-id))))
-                                                        "GetIdentityPoolConfiguration"
-                                                        "2014-06-30"))
+                                                        "GetIdentityPoolConfiguration"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-identity-pool-configuration))
 (common-lisp:progn
@@ -2045,8 +2044,7 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'identity-id))))
-                                                        "ListDatasets"
-                                                        "2014-06-30"))
+                                                        "ListDatasets"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-datasets))
 (common-lisp:progn
@@ -2063,8 +2061,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'cognito-sync-request
                                                         aws-sdk/generator/operation::input
                                                         "GET" "/identitypools"
-                                                        "ListIdentityPoolUsage"
-                                                        "2014-06-30"))
+                                                        "ListIdentityPoolUsage"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-identity-pool-usage))
 (common-lisp:progn
@@ -2102,8 +2099,7 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'dataset-name))))
-                                                        "ListRecords"
-                                                        "2014-06-30"))
+                                                        "ListRecords"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-records))
 (common-lisp:progn
@@ -2136,8 +2132,7 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'identity-id))))
-                                                        "RegisterDevice"
-                                                        "2014-06-30"))
+                                                        "RegisterDevice"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'register-device))
 (common-lisp:progn
@@ -2164,8 +2159,7 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'identity-pool-id))))
-                                                        "SetCognitoEvents"
-                                                        "2014-06-30"))
+                                                        "SetCognitoEvents"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'set-cognito-events))
 (common-lisp:progn
@@ -2195,8 +2189,7 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'identity-pool-id))))
-                                                        "SetIdentityPoolConfiguration"
-                                                        "2014-06-30"))
+                                                        "SetIdentityPoolConfiguration"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'set-identity-pool-configuration))
 (common-lisp:progn
@@ -2238,8 +2231,7 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'device-id))))
-                                                        "SubscribeToDataset"
-                                                        "2014-06-30"))
+                                                        "SubscribeToDataset"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'subscribe-to-dataset))
 (common-lisp:progn
@@ -2281,8 +2273,7 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'device-id))))
-                                                        "UnsubscribeFromDataset"
-                                                        "2014-06-30"))
+                                                        "UnsubscribeFromDataset"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'unsubscribe-from-dataset))
 (common-lisp:progn
@@ -2321,7 +2312,6 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'dataset-name))))
-                                                        "UpdateRecords"
-                                                        "2014-06-30"))
+                                                        "UpdateRecords"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-records))

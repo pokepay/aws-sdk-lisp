@@ -7,23 +7,33 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/swf/api)
-(common-lisp:progn
- (common-lisp:defclass swf-request (aws-sdk/request:request) common-lisp:nil
-                       (:default-initargs :service "swf"))
- (common-lisp:export 'swf-request))
 (common-lisp:progn
  (common-lisp:define-condition swf-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'swf-error))
+(common-lisp:progn
+ (common-lisp:defclass swf-request (aws-sdk/json-request:json-request)
+                       common-lisp:nil
+                       (:default-initargs :service "swf" :api-version
+                        "2012-01-25" :host-prefix "swf" :signing-name
+                        common-lisp:nil :global-host common-lisp:nil
+                        :target-prefix "SimpleWorkflowService" :json-version
+                        "1.0"))
+ (common-lisp:export 'swf-request))
 (common-lisp:defvar *error-map*
   '(("DefaultUndefinedFault" . default-undefined-fault)
     ("DomainAlreadyExistsFault" . domain-already-exists-fault)
     ("DomainDeprecatedFault" . domain-deprecated-fault)
     ("LimitExceededFault" . limit-exceeded-fault)
     ("OperationNotPermittedFault" . operation-not-permitted-fault)
+    ("TooManyTagsFault" . too-many-tags-fault)
     ("TypeAlreadyExistsFault" . type-already-exists-fault)
     ("TypeDeprecatedFault" . type-deprecated-fault)
     ("UnknownResourceFault" . unknown-resource-fault)
@@ -758,7 +768,7 @@
 (common-lisp:progn
  (common-lisp:deftype activity-type-info-list ()
    '(trivial-types:proper-list activity-type-info))
- (common-lisp:defun |make-activity-type-info-list|
+ (common-lisp:defun make-activity-type-info-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list activity-type-info))
@@ -2010,7 +2020,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype decision-list () '(trivial-types:proper-list decision))
- (common-lisp:defun |make-decision-list|
+ (common-lisp:defun make-decision-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list decision))
@@ -2102,7 +2112,11 @@
    (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
     :type (common-lisp:or event-id common-lisp:null))
    (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+    (common-lisp:or event-id common-lisp:null))
+   (task-list common-lisp:nil :type
+    (common-lisp:or task-list common-lisp:null))
+   (task-list-schedule-to-start-timeout common-lisp:nil :type
+    (common-lisp:or duration-in-seconds-optional common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'decision-task-completed-event-attributes
                     'make-decision-task-completed-event-attributes))
@@ -2136,6 +2150,21 @@
       (common-lisp:list
        (common-lisp:cons "startedEventId"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-list))
+      (common-lisp:list
+       (common-lisp:cons "taskList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'task-list-schedule-to-start-timeout))
+      (common-lisp:list
+       (common-lisp:cons "taskListScheduleToStartTimeout"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         (
@@ -2151,6 +2180,8 @@
    (task-priority common-lisp:nil :type
     (common-lisp:or task-priority common-lisp:null))
    (start-to-close-timeout common-lisp:nil :type
+    (common-lisp:or duration-in-seconds-optional common-lisp:null))
+   (schedule-to-start-timeout common-lisp:nil :type
     (common-lisp:or duration-in-seconds-optional common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'decision-task-scheduled-event-attributes
@@ -2185,6 +2216,14 @@
                            'start-to-close-timeout))
       (common-lisp:list
        (common-lisp:cons "startToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'schedule-to-start-timeout))
+      (common-lisp:list
+       (common-lisp:cons "scheduleToStartTimeout"
                          (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
@@ -2632,7 +2671,8 @@
    (status (common-lisp:error ":status is required") :type
     (common-lisp:or registration-status common-lisp:null))
    (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null)))
+    (common-lisp:or description common-lisp:null))
+   (arn common-lisp:nil :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export (common-lisp:list 'domain-info 'make-domain-info))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input domain-info))
@@ -2660,6 +2700,13 @@
       (common-lisp:list
        (common-lisp:cons "description"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'arn))
+      (common-lisp:list
+       (common-lisp:cons "arn"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input domain-info))
@@ -2667,7 +2714,7 @@
 (common-lisp:progn
  (common-lisp:deftype domain-info-list ()
    '(trivial-types:proper-list domain-info))
- (common-lisp:defun |make-domain-info-list|
+ (common-lisp:defun make-domain-info-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list domain-info))
@@ -3657,7 +3704,7 @@
 (common-lisp:progn
  (common-lisp:deftype history-event-list ()
    '(trivial-types:proper-list history-event))
- (common-lisp:defun |make-history-event-list|
+ (common-lisp:defun make-history-event-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list history-event))
@@ -4269,6 +4316,68 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
+     (list-tags-for-resource-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-tags-for-resource-input-"))
+   (resource-arn (common-lisp:error ":resourcearn is required") :type
+    (common-lisp:or arn common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'list-tags-for-resource-input
+                    'make-list-tags-for-resource-input))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-tags-for-resource-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-tags-for-resource-input))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'resource-arn))
+      (common-lisp:list
+       (common-lisp:cons "resourceArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-tags-for-resource-input))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (list-tags-for-resource-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-tags-for-resource-output-"))
+   (tags common-lisp:nil :type
+    (common-lisp:or resource-tag-list common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'list-tags-for-resource-output
+                    'make-list-tags-for-resource-output))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-tags-for-resource-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-tags-for-resource-output))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tags))
+      (common-lisp:list
+       (common-lisp:cons "tags"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-tags-for-resource-output))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
      (list-workflow-types-input (:copier common-lisp:nil)
       (:conc-name "struct-shape-list-workflow-types-input-"))
    (domain (common-lisp:error ":domain is required") :type
@@ -4500,7 +4609,9 @@
    (maximum-page-size common-lisp:nil :type
     (common-lisp:or page-size common-lisp:null))
    (reverse-order common-lisp:nil :type
-    (common-lisp:or reverse-order common-lisp:null)))
+    (common-lisp:or reverse-order common-lisp:null))
+   (start-at-previous-started-event common-lisp:nil :type
+    (common-lisp:or start-at-previous-started-event common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'poll-for-decision-task-input
                     'make-poll-for-decision-task-input))
@@ -4554,6 +4665,14 @@
                            aws-sdk/generator/shape::input 'reverse-order))
       (common-lisp:list
        (common-lisp:cons "reverseOrder"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'start-at-previous-started-event))
+      (common-lisp:list
+       (common-lisp:cons "startAtPreviousStartedEvent"
                          (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
@@ -4819,7 +4938,9 @@
     (common-lisp:or description common-lisp:null))
    (workflow-execution-retention-period-in-days
     (common-lisp:error ":workflowexecutionretentionperiodindays is required")
-    :type (common-lisp:or duration-in-days common-lisp:null)))
+    :type (common-lisp:or duration-in-days common-lisp:null))
+   (tags common-lisp:nil :type
+    (common-lisp:or resource-tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'register-domain-input 'make-register-domain-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4852,6 +4973,13 @@
                            'workflow-execution-retention-period-in-days))
       (common-lisp:list
        (common-lisp:cons "workflowExecutionRetentionPeriodInDays"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tags))
+      (common-lisp:list
+       (common-lisp:cons "tags"
                          (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
@@ -5312,6 +5440,56 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
+     (resource-tag (:copier common-lisp:nil)
+      (:conc-name "struct-shape-resource-tag-"))
+   (key (common-lisp:error ":key is required") :type
+    (common-lisp:or resource-tag-key common-lisp:null))
+   (value common-lisp:nil :type
+    (common-lisp:or resource-tag-value common-lisp:null)))
+ (common-lisp:export (common-lisp:list 'resource-tag 'make-resource-tag))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input resource-tag))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input resource-tag))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'key))
+      (common-lisp:list
+       (common-lisp:cons "key"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'value))
+      (common-lisp:list
+       (common-lisp:cons "value"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input resource-tag))
+   common-lisp:nil))
+(common-lisp:deftype resource-tag-key () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:deftype resource-tag-key-list ()
+   '(trivial-types:proper-list resource-tag-key))
+ (common-lisp:defun make-resource-tag-key-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list resource-tag-key))
+   aws-sdk/generator/shape::members))
+(common-lisp:progn
+ (common-lisp:deftype resource-tag-list ()
+   '(trivial-types:proper-list resource-tag))
+ (common-lisp:defun make-resource-tag-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list resource-tag))
+   aws-sdk/generator/shape::members))
+(common-lisp:deftype resource-tag-value () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:defstruct
      (respond-activity-task-canceled-input (:copier common-lisp:nil)
       (:conc-name "struct-shape-respond-activity-task-canceled-input-"))
    (task-token (common-lisp:error ":tasktoken is required") :type
@@ -5445,7 +5623,11 @@
    (decisions common-lisp:nil :type
     (common-lisp:or decision-list common-lisp:null))
    (execution-context common-lisp:nil :type
-    (common-lisp:or data common-lisp:null)))
+    (common-lisp:or data common-lisp:null))
+   (task-list common-lisp:nil :type
+    (common-lisp:or task-list common-lisp:null))
+   (task-list-schedule-to-start-timeout common-lisp:nil :type
+    (common-lisp:or duration-in-seconds-optional common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'respond-decision-task-completed-input
                     'make-respond-decision-task-completed-input))
@@ -5478,6 +5660,21 @@
                            aws-sdk/generator/shape::input 'execution-context))
       (common-lisp:list
        (common-lisp:cons "executionContext"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-list))
+      (common-lisp:list
+       (common-lisp:cons "taskList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'task-list-schedule-to-start-timeout))
+      (common-lisp:list
+       (common-lisp:cons "taskListScheduleToStartTimeout"
                          (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
@@ -6110,6 +6307,7 @@
                          (aws-sdk/generator/shape::input
                           signal-workflow-execution-input))
    common-lisp:nil))
+(common-lisp:deftype start-at-previous-started-event () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct
      (start-child-workflow-execution-decision-attributes
@@ -6743,11 +6941,44 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype tag-list () '(trivial-types:proper-list tag))
- (common-lisp:defun |make-tag-list|
+ (common-lisp:defun make-tag-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list tag))
    aws-sdk/generator/shape::members))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (tag-resource-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-tag-resource-input-"))
+   (resource-arn (common-lisp:error ":resourcearn is required") :type
+    (common-lisp:or arn common-lisp:null))
+   (tags (common-lisp:error ":tags is required") :type
+    (common-lisp:or resource-tag-list common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'tag-resource-input 'make-tag-resource-input))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input tag-resource-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input tag-resource-input))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'resource-arn))
+      (common-lisp:list
+       (common-lisp:cons "resourceArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tags))
+      (common-lisp:list
+       (common-lisp:cons "tags"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input tag-resource-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (task-list (:copier common-lisp:nil)
@@ -7002,6 +7233,13 @@
                           timer-started-event-attributes))
    common-lisp:nil))
 (common-lisp:deftype timestamp () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:define-condition too-many-tags-fault
+     (swf-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       too-many-tags-fault-message)))
+ (common-lisp:export
+  (common-lisp:list 'too-many-tags-fault 'too-many-tags-fault-message)))
 (common-lisp:deftype truncated () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:define-condition type-already-exists-fault
@@ -7019,12 +7257,155 @@
  (common-lisp:export
   (common-lisp:list 'type-deprecated-fault 'type-deprecated-fault-message)))
 (common-lisp:progn
+ (common-lisp:defstruct
+     (undeprecate-activity-type-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-undeprecate-activity-type-input-"))
+   (domain (common-lisp:error ":domain is required") :type
+    (common-lisp:or domain-name common-lisp:null))
+   (activity-type (common-lisp:error ":activitytype is required") :type
+    (common-lisp:or activity-type common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'undeprecate-activity-type-input
+                    'make-undeprecate-activity-type-input))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          undeprecate-activity-type-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          undeprecate-activity-type-input))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'activity-type))
+      (common-lisp:list
+       (common-lisp:cons "activityType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          undeprecate-activity-type-input))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (undeprecate-domain-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-undeprecate-domain-input-"))
+   (name (common-lisp:error ":name is required") :type
+    (common-lisp:or domain-name common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'undeprecate-domain-input 'make-undeprecate-domain-input))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          undeprecate-domain-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          undeprecate-domain-input))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          undeprecate-domain-input))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (undeprecate-workflow-type-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-undeprecate-workflow-type-input-"))
+   (domain (common-lisp:error ":domain is required") :type
+    (common-lisp:or domain-name common-lisp:null))
+   (workflow-type (common-lisp:error ":workflowtype is required") :type
+    (common-lisp:or workflow-type common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'undeprecate-workflow-type-input
+                    'make-undeprecate-workflow-type-input))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          undeprecate-workflow-type-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          undeprecate-workflow-type-input))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-type))
+      (common-lisp:list
+       (common-lisp:cons "workflowType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          undeprecate-workflow-type-input))
+   common-lisp:nil))
+(common-lisp:progn
  (common-lisp:define-condition unknown-resource-fault
      (swf-error)
      ((message :initarg :message :initform common-lisp:nil :reader
        unknown-resource-fault-message)))
  (common-lisp:export
   (common-lisp:list 'unknown-resource-fault 'unknown-resource-fault-message)))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (untag-resource-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-untag-resource-input-"))
+   (resource-arn (common-lisp:error ":resourcearn is required") :type
+    (common-lisp:or arn common-lisp:null))
+   (tag-keys (common-lisp:error ":tagkeys is required") :type
+    (common-lisp:or resource-tag-key-list common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'untag-resource-input 'make-untag-resource-input))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input untag-resource-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input untag-resource-input))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'resource-arn))
+      (common-lisp:list
+       (common-lisp:cons "resourceArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-keys))
+      (common-lisp:list
+       (common-lisp:cons "tagKeys"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input untag-resource-input))
+   common-lisp:nil))
 (common-lisp:deftype version () 'common-lisp:string)
 (common-lisp:deftype version-optional () 'common-lisp:string)
 (common-lisp:progn
@@ -7707,7 +8088,7 @@
 (common-lisp:progn
  (common-lisp:deftype workflow-execution-info-list ()
    '(trivial-types:proper-list workflow-execution-info))
- (common-lisp:defun |make-workflow-execution-info-list|
+ (common-lisp:defun make-workflow-execution-info-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list workflow-execution-info))
@@ -8358,7 +8739,7 @@
 (common-lisp:progn
  (common-lisp:deftype workflow-type-info-list ()
    '(trivial-types:proper-list workflow-type-info))
- (common-lisp:defun |make-workflow-type-info-list|
+ (common-lisp:defun make-workflow-type-info-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list workflow-type-info))
@@ -8415,8 +8796,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "CountClosedWorkflowExecutions"
-                                                        "2012-01-25"))
+                                                        "CountClosedWorkflowExecutions"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'count-closed-workflow-executions))
 (common-lisp:progn
@@ -8437,8 +8817,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "CountOpenWorkflowExecutions"
-                                                        "2012-01-25"))
+                                                        "CountOpenWorkflowExecutions"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'count-open-workflow-executions))
 (common-lisp:progn
@@ -8456,8 +8835,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "CountPendingActivityTasks"
-                                                        "2012-01-25"))
+                                                        "CountPendingActivityTasks"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'count-pending-activity-tasks))
 (common-lisp:progn
@@ -8475,8 +8853,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "CountPendingDecisionTasks"
-                                                        "2012-01-25"))
+                                                        "CountPendingDecisionTasks"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'count-pending-decision-tasks))
 (common-lisp:progn
@@ -8493,8 +8870,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeprecateActivityType"
-                                                        "2012-01-25"))
+                                                        "DeprecateActivityType"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'deprecate-activity-type))
 (common-lisp:progn
@@ -8511,8 +8887,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeprecateDomain"
-                                                        "2012-01-25"))
+                                                        "DeprecateDomain"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'deprecate-domain))
 (common-lisp:progn
@@ -8529,8 +8904,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeprecateWorkflowType"
-                                                        "2012-01-25"))
+                                                        "DeprecateWorkflowType"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'deprecate-workflow-type))
 (common-lisp:progn
@@ -8547,8 +8921,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeActivityType"
-                                                        "2012-01-25"))
+                                                        "DescribeActivityType"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-activity-type))
 (common-lisp:progn
@@ -8565,8 +8938,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeDomain"
-                                                        "2012-01-25"))
+                                                        "DescribeDomain"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-domain))
 (common-lisp:progn
@@ -8584,8 +8956,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeWorkflowExecution"
-                                                        "2012-01-25"))
+                                                        "DescribeWorkflowExecution"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-workflow-execution))
 (common-lisp:progn
@@ -8602,8 +8973,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeWorkflowType"
-                                                        "2012-01-25"))
+                                                        "DescribeWorkflowType"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-workflow-type))
 (common-lisp:progn
@@ -8624,8 +8994,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "GetWorkflowExecutionHistory"
-                                                        "2012-01-25"))
+                                                        "GetWorkflowExecutionHistory"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-workflow-execution-history))
 (common-lisp:progn
@@ -8645,8 +9014,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "ListActivityTypes"
-                                                        "2012-01-25"))
+                                                        "ListActivityTypes"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-activity-types))
 (common-lisp:progn
@@ -8670,8 +9038,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "ListClosedWorkflowExecutions"
-                                                        "2012-01-25"))
+                                                        "ListClosedWorkflowExecutions"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-closed-workflow-executions))
 (common-lisp:progn
@@ -8691,8 +9058,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "ListDomains"
-                                                        "2012-01-25"))
+                                                        "ListDomains"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-domains))
 (common-lisp:progn
@@ -8714,10 +9080,26 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "ListOpenWorkflowExecutions"
-                                                        "2012-01-25"))
+                                                        "ListOpenWorkflowExecutions"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-open-workflow-executions))
+(common-lisp:progn
+ (common-lisp:defun list-tags-for-resource
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key resource-arn)
+   (common-lisp:declare (common-lisp:ignorable resource-arn))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-list-tags-for-resource-input
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "ListTagsForResource"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
  (common-lisp:defun list-workflow-types
                     (
@@ -8735,8 +9117,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "ListWorkflowTypes"
-                                                        "2012-01-25"))
+                                                        "ListWorkflowTypes"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-workflow-types))
 (common-lisp:progn
@@ -8753,8 +9134,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "PollForActivityTask"
-                                                        "2012-01-25"))
+                                                        "PollForActivityTask"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'poll-for-activity-task))
 (common-lisp:progn
@@ -8762,10 +9142,11 @@
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
                      common-lisp:&key domain task-list identity next-page-token
-                     maximum-page-size reverse-order)
+                     maximum-page-size reverse-order
+                     start-at-previous-started-event)
    (common-lisp:declare
     (common-lisp:ignorable domain task-list identity next-page-token
-     maximum-page-size reverse-order))
+     maximum-page-size reverse-order start-at-previous-started-event))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-poll-for-decision-task-input
                                          aws-sdk/generator/operation::args)))
@@ -8774,8 +9155,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "PollForDecisionTask"
-                                                        "2012-01-25"))
+                                                        "PollForDecisionTask"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'poll-for-decision-task))
 (common-lisp:progn
@@ -8793,8 +9173,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "RecordActivityTaskHeartbeat"
-                                                        "2012-01-25"))
+                                                        "RecordActivityTaskHeartbeat"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'record-activity-task-heartbeat))
 (common-lisp:progn
@@ -8821,8 +9200,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "RegisterActivityType"
-                                                        "2012-01-25"))
+                                                        "RegisterActivityType"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'register-activity-type))
 (common-lisp:progn
@@ -8830,10 +9208,10 @@
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
                      common-lisp:&key name description
-                     workflow-execution-retention-period-in-days)
+                     workflow-execution-retention-period-in-days tags)
    (common-lisp:declare
     (common-lisp:ignorable name description
-     workflow-execution-retention-period-in-days))
+     workflow-execution-retention-period-in-days tags))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-register-domain-input
                                          aws-sdk/generator/operation::args)))
@@ -8842,8 +9220,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "RegisterDomain"
-                                                        "2012-01-25"))
+                                                        "RegisterDomain"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'register-domain))
 (common-lisp:progn
@@ -8868,8 +9245,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "RegisterWorkflowType"
-                                                        "2012-01-25"))
+                                                        "RegisterWorkflowType"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'register-workflow-type))
 (common-lisp:progn
@@ -8887,8 +9263,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "RequestCancelWorkflowExecution"
-                                                        "2012-01-25"))
+                                                        "RequestCancelWorkflowExecution"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'request-cancel-workflow-execution))
 (common-lisp:progn
@@ -8906,8 +9281,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "RespondActivityTaskCanceled"
-                                                        "2012-01-25"))
+                                                        "RespondActivityTaskCanceled"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'respond-activity-task-canceled))
 (common-lisp:progn
@@ -8925,8 +9299,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "RespondActivityTaskCompleted"
-                                                        "2012-01-25"))
+                                                        "RespondActivityTaskCompleted"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'respond-activity-task-completed))
 (common-lisp:progn
@@ -8944,17 +9317,18 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "RespondActivityTaskFailed"
-                                                        "2012-01-25"))
+                                                        "RespondActivityTaskFailed"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'respond-activity-task-failed))
 (common-lisp:progn
  (common-lisp:defun respond-decision-task-completed
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
-                     common-lisp:&key task-token decisions execution-context)
+                     common-lisp:&key task-token decisions execution-context
+                     task-list task-list-schedule-to-start-timeout)
    (common-lisp:declare
-    (common-lisp:ignorable task-token decisions execution-context))
+    (common-lisp:ignorable task-token decisions execution-context task-list
+     task-list-schedule-to-start-timeout))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply
                        'make-respond-decision-task-completed-input
@@ -8964,8 +9338,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "RespondDecisionTaskCompleted"
-                                                        "2012-01-25"))
+                                                        "RespondDecisionTaskCompleted"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'respond-decision-task-completed))
 (common-lisp:progn
@@ -8984,8 +9357,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "SignalWorkflowExecution"
-                                                        "2012-01-25"))
+                                                        "SignalWorkflowExecution"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'signal-workflow-execution))
 (common-lisp:progn
@@ -9008,10 +9380,26 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "StartWorkflowExecution"
-                                                        "2012-01-25"))
+                                                        "StartWorkflowExecution"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'start-workflow-execution))
+(common-lisp:progn
+ (common-lisp:defun tag-resource
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key resource-arn tags)
+   (common-lisp:declare (common-lisp:ignorable resource-arn tags))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-tag-resource-input
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "TagResource"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'tag-resource))
 (common-lisp:progn
  (common-lisp:defun terminate-workflow-execution
                     (
@@ -9030,7 +9418,74 @@
        (aws-sdk/generator/shape:make-request-with-input 'swf-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "TerminateWorkflowExecution"
-                                                        "2012-01-25"))
+                                                        "TerminateWorkflowExecution"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'terminate-workflow-execution))
+(common-lisp:progn
+ (common-lisp:defun undeprecate-activity-type
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key domain activity-type)
+   (common-lisp:declare (common-lisp:ignorable domain activity-type))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-undeprecate-activity-type-input
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "UndeprecateActivityType"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'undeprecate-activity-type))
+(common-lisp:progn
+ (common-lisp:defun undeprecate-domain
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key name)
+   (common-lisp:declare (common-lisp:ignorable name))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-undeprecate-domain-input
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "UndeprecateDomain"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'undeprecate-domain))
+(common-lisp:progn
+ (common-lisp:defun undeprecate-workflow-type
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key domain workflow-type)
+   (common-lisp:declare (common-lisp:ignorable domain workflow-type))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-undeprecate-workflow-type-input
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "UndeprecateWorkflowType"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'undeprecate-workflow-type))
+(common-lisp:progn
+ (common-lisp:defun untag-resource
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key resource-arn tag-keys)
+   (common-lisp:declare (common-lisp:ignorable resource-arn tag-keys))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-untag-resource-input
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "UntagResource"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'untag-resource))

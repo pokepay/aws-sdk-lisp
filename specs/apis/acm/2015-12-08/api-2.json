@@ -7,6 +7,7 @@
     "protocol":"json",
     "serviceAbbreviation":"ACM",
     "serviceFullName":"AWS Certificate Manager",
+    "serviceId":"ACM",
     "signatureVersion":"v4",
     "targetPrefix":"CertificateManager",
     "uid":"acm-2015-12-08"
@@ -23,7 +24,10 @@
         {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidArnException"},
         {"shape":"InvalidTagException"},
-        {"shape":"TooManyTagsException"}
+        {"shape":"TooManyTagsException"},
+        {"shape":"TagPolicyException"},
+        {"shape":"InvalidParameterException"},
+        {"shape":"ThrottlingException"}
       ]
     },
     "DeleteCertificate":{
@@ -36,6 +40,9 @@
       "errors":[
         {"shape":"ResourceNotFoundException"},
         {"shape":"ResourceInUseException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"ConflictException"},
         {"shape":"InvalidArnException"}
       ]
     },
@@ -50,6 +57,32 @@
       "errors":[
         {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidArnException"}
+      ]
+    },
+    "ExportCertificate":{
+      "name":"ExportCertificate",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ExportCertificateRequest"},
+      "output":{"shape":"ExportCertificateResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"RequestInProgressException"},
+        {"shape":"InvalidArnException"}
+      ]
+    },
+    "GetAccountConfiguration":{
+      "name":"GetAccountConfiguration",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "output":{"shape":"GetAccountConfigurationResponse"},
+      "errors":[
+        {"shape":"AccessDeniedException"},
+        {"shape":"ThrottlingException"}
       ]
     },
     "GetCertificate":{
@@ -76,7 +109,12 @@
       "output":{"shape":"ImportCertificateResponse"},
       "errors":[
         {"shape":"ResourceNotFoundException"},
-        {"shape":"LimitExceededException"}
+        {"shape":"LimitExceededException"},
+        {"shape":"InvalidTagException"},
+        {"shape":"TooManyTagsException"},
+        {"shape":"TagPolicyException"},
+        {"shape":"InvalidParameterException"},
+        {"shape":"InvalidArnException"}
       ]
     },
     "ListCertificates":{
@@ -86,7 +124,11 @@
         "requestUri":"/"
       },
       "input":{"shape":"ListCertificatesRequest"},
-      "output":{"shape":"ListCertificatesResponse"}
+      "output":{"shape":"ListCertificatesResponse"},
+      "errors":[
+        {"shape":"InvalidArgsException"},
+        {"shape":"ValidationException"}
+      ]
     },
     "ListTagsForCertificate":{
       "name":"ListTagsForCertificate",
@@ -101,6 +143,20 @@
         {"shape":"InvalidArnException"}
       ]
     },
+    "PutAccountConfiguration":{
+      "name":"PutAccountConfiguration",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"PutAccountConfigurationRequest"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ConflictException"}
+      ]
+    },
     "RemoveTagsFromCertificate":{
       "name":"RemoveTagsFromCertificate",
       "http":{
@@ -111,7 +167,22 @@
       "errors":[
         {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidArnException"},
-        {"shape":"InvalidTagException"}
+        {"shape":"InvalidTagException"},
+        {"shape":"TagPolicyException"},
+        {"shape":"InvalidParameterException"},
+        {"shape":"ThrottlingException"}
+      ]
+    },
+    "RenewCertificate":{
+      "name":"RenewCertificate",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"RenewCertificateRequest"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InvalidArnException"}
       ]
     },
     "RequestCertificate":{
@@ -124,7 +195,12 @@
       "output":{"shape":"RequestCertificateResponse"},
       "errors":[
         {"shape":"LimitExceededException"},
-        {"shape":"InvalidDomainValidationOptionsException"}
+        {"shape":"InvalidDomainValidationOptionsException"},
+        {"shape":"InvalidArnException"},
+        {"shape":"InvalidTagException"},
+        {"shape":"TooManyTagsException"},
+        {"shape":"TagPolicyException"},
+        {"shape":"InvalidParameterException"}
       ]
     },
     "ResendValidationEmail":{
@@ -140,9 +216,31 @@
         {"shape":"InvalidArnException"},
         {"shape":"InvalidDomainValidationOptionsException"}
       ]
+    },
+    "UpdateCertificateOptions":{
+      "name":"UpdateCertificateOptions",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UpdateCertificateOptionsRequest"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"LimitExceededException"},
+        {"shape":"InvalidStateException"},
+        {"shape":"InvalidArnException"}
+      ]
     }
   },
   "shapes":{
+    "AccessDeniedException":{
+      "type":"structure",
+      "members":{
+        "Message":{"shape":"ServiceErrorMessage"}
+      },
+      "exception":true,
+      "synthetic":true
+    },
     "AddTagsToCertificateRequest":{
       "type":"structure",
       "required":[
@@ -158,8 +256,9 @@
       "type":"string",
       "max":2048,
       "min":20,
-      "pattern":"arn:[\\w+=/,.@-]+:[\\w+=/,.@-]+:[\\w+=/,.@-]*:[0-9]+:[\\w+=,.@-]+(/[\\w+=/,.@-]+)*"
+      "pattern":"arn:[\\w+=/,.@-]+:acm:[\\w+=/,.@-]*:[0-9]+:[\\w+=,.@-]+(/[\\w+=,.@-]+)*"
     },
+    "AvailabilityErrorMessage":{"type":"string"},
     "CertificateBody":{
       "type":"string",
       "max":32768,
@@ -205,7 +304,18 @@
         "InUseBy":{"shape":"InUseList"},
         "FailureReason":{"shape":"FailureReason"},
         "Type":{"shape":"CertificateType"},
-        "RenewalSummary":{"shape":"RenewalSummary"}
+        "RenewalSummary":{"shape":"RenewalSummary"},
+        "KeyUsages":{"shape":"KeyUsageList"},
+        "ExtendedKeyUsages":{"shape":"ExtendedKeyUsageList"},
+        "CertificateAuthorityArn":{"shape":"Arn"},
+        "RenewalEligibility":{"shape":"RenewalEligibility"},
+        "Options":{"shape":"CertificateOptions"}
+      }
+    },
+    "CertificateOptions":{
+      "type":"structure",
+      "members":{
+        "CertificateTransparencyLoggingPreference":{"shape":"CertificateTransparencyLoggingPreference"}
       }
     },
     "CertificateStatus":{
@@ -228,19 +338,59 @@
       "type":"structure",
       "members":{
         "CertificateArn":{"shape":"Arn"},
-        "DomainName":{"shape":"DomainNameString"}
+        "DomainName":{"shape":"DomainNameString"},
+        "SubjectAlternativeNameSummaries":{"shape":"DomainList"},
+        "HasAdditionalSubjectAlternativeNames":{
+          "shape":"NullableBoolean",
+          "box":true
+        },
+        "Status":{"shape":"CertificateStatus"},
+        "Type":{"shape":"CertificateType"},
+        "KeyAlgorithm":{"shape":"KeyAlgorithm"},
+        "KeyUsages":{"shape":"KeyUsageNames"},
+        "ExtendedKeyUsages":{"shape":"ExtendedKeyUsageNames"},
+        "InUse":{
+          "shape":"NullableBoolean",
+          "box":true
+        },
+        "Exported":{
+          "shape":"NullableBoolean",
+          "box":true
+        },
+        "RenewalEligibility":{"shape":"RenewalEligibility"},
+        "NotBefore":{"shape":"TStamp"},
+        "NotAfter":{"shape":"TStamp"},
+        "CreatedAt":{"shape":"TStamp"},
+        "IssuedAt":{"shape":"TStamp"},
+        "ImportedAt":{"shape":"TStamp"},
+        "RevokedAt":{"shape":"TStamp"}
       }
     },
     "CertificateSummaryList":{
       "type":"list",
       "member":{"shape":"CertificateSummary"}
     },
+    "CertificateTransparencyLoggingPreference":{
+      "type":"string",
+      "enum":[
+        "ENABLED",
+        "DISABLED"
+      ]
+    },
     "CertificateType":{
       "type":"string",
       "enum":[
         "IMPORTED",
-        "AMAZON_ISSUED"
+        "AMAZON_ISSUED",
+        "PRIVATE"
       ]
+    },
+    "ConflictException":{
+      "type":"structure",
+      "members":{
+        "message":{"shape":"String"}
+      },
+      "exception":true
     },
     "DeleteCertificateRequest":{
       "type":"structure",
@@ -289,7 +439,9 @@
         "DomainName":{"shape":"DomainNameString"},
         "ValidationEmails":{"shape":"ValidationEmailList"},
         "ValidationDomain":{"shape":"DomainNameString"},
-        "ValidationStatus":{"shape":"DomainStatus"}
+        "ValidationStatus":{"shape":"DomainStatus"},
+        "ResourceRecord":{"shape":"ResourceRecord"},
+        "ValidationMethod":{"shape":"ValidationMethod"}
       }
     },
     "DomainValidationList":{
@@ -315,6 +467,67 @@
       "max":100,
       "min":1
     },
+    "ExpiryEventsConfiguration":{
+      "type":"structure",
+      "members":{
+        "DaysBeforeExpiry":{"shape":"PositiveInteger"}
+      }
+    },
+    "ExportCertificateRequest":{
+      "type":"structure",
+      "required":[
+        "CertificateArn",
+        "Passphrase"
+      ],
+      "members":{
+        "CertificateArn":{"shape":"Arn"},
+        "Passphrase":{"shape":"PassphraseBlob"}
+      }
+    },
+    "ExportCertificateResponse":{
+      "type":"structure",
+      "members":{
+        "Certificate":{"shape":"CertificateBody"},
+        "CertificateChain":{"shape":"CertificateChain"},
+        "PrivateKey":{"shape":"PrivateKey"}
+      }
+    },
+    "ExtendedKeyUsage":{
+      "type":"structure",
+      "members":{
+        "Name":{"shape":"ExtendedKeyUsageName"},
+        "OID":{"shape":"String"}
+      }
+    },
+    "ExtendedKeyUsageFilterList":{
+      "type":"list",
+      "member":{"shape":"ExtendedKeyUsageName"}
+    },
+    "ExtendedKeyUsageList":{
+      "type":"list",
+      "member":{"shape":"ExtendedKeyUsage"}
+    },
+    "ExtendedKeyUsageName":{
+      "type":"string",
+      "enum":[
+        "TLS_WEB_SERVER_AUTHENTICATION",
+        "TLS_WEB_CLIENT_AUTHENTICATION",
+        "CODE_SIGNING",
+        "EMAIL_PROTECTION",
+        "TIME_STAMPING",
+        "OCSP_SIGNING",
+        "IPSEC_END_SYSTEM",
+        "IPSEC_TUNNEL",
+        "IPSEC_USER",
+        "ANY",
+        "NONE",
+        "CUSTOM"
+      ]
+    },
+    "ExtendedKeyUsageNames":{
+      "type":"list",
+      "member":{"shape":"ExtendedKeyUsageName"}
+    },
     "FailureReason":{
       "type":"string",
       "enum":[
@@ -322,8 +535,34 @@
         "ADDITIONAL_VERIFICATION_REQUIRED",
         "DOMAIN_NOT_ALLOWED",
         "INVALID_PUBLIC_DOMAIN",
+        "DOMAIN_VALIDATION_DENIED",
+        "CAA_ERROR",
+        "PCA_LIMIT_EXCEEDED",
+        "PCA_INVALID_ARN",
+        "PCA_INVALID_STATE",
+        "PCA_REQUEST_FAILED",
+        "PCA_NAME_CONSTRAINTS_VALIDATION",
+        "PCA_RESOURCE_NOT_FOUND",
+        "PCA_INVALID_ARGS",
+        "PCA_INVALID_DURATION",
+        "PCA_ACCESS_DENIED",
+        "SLR_NOT_FOUND",
         "OTHER"
       ]
+    },
+    "Filters":{
+      "type":"structure",
+      "members":{
+        "extendedKeyUsage":{"shape":"ExtendedKeyUsageFilterList"},
+        "keyUsage":{"shape":"KeyUsageFilterList"},
+        "keyTypes":{"shape":"KeyAlgorithmList"}
+      }
+    },
+    "GetAccountConfigurationResponse":{
+      "type":"structure",
+      "members":{
+        "ExpiryEvents":{"shape":"ExpiryEventsConfiguration"}
+      }
     },
     "GetCertificateRequest":{
       "type":"structure",
@@ -355,7 +594,8 @@
         "CertificateArn":{"shape":"Arn"},
         "Certificate":{"shape":"CertificateBodyBlob"},
         "PrivateKey":{"shape":"PrivateKeyBlob"},
-        "CertificateChain":{"shape":"CertificateChainBlob"}
+        "CertificateChain":{"shape":"CertificateChainBlob"},
+        "Tags":{"shape":"TagList"}
       }
     },
     "ImportCertificateResponse":{
@@ -368,6 +608,13 @@
       "type":"list",
       "member":{"shape":"String"}
     },
+    "InvalidArgsException":{
+      "type":"structure",
+      "members":{
+        "message":{"shape":"String"}
+      },
+      "exception":true
+    },
     "InvalidArnException":{
       "type":"structure",
       "members":{
@@ -376,6 +623,13 @@
       "exception":true
     },
     "InvalidDomainValidationOptionsException":{
+      "type":"structure",
+      "members":{
+        "message":{"shape":"String"}
+      },
+      "exception":true
+    },
+    "InvalidParameterException":{
       "type":"structure",
       "members":{
         "message":{"shape":"String"}
@@ -399,10 +653,52 @@
     "KeyAlgorithm":{
       "type":"string",
       "enum":[
-        "RSA_2048",
         "RSA_1024",
-        "EC_prime256v1"
+        "RSA_2048",
+        "RSA_3072",
+        "RSA_4096",
+        "EC_prime256v1",
+        "EC_secp384r1",
+        "EC_secp521r1"
       ]
+    },
+    "KeyAlgorithmList":{
+      "type":"list",
+      "member":{"shape":"KeyAlgorithm"}
+    },
+    "KeyUsage":{
+      "type":"structure",
+      "members":{
+        "Name":{"shape":"KeyUsageName"}
+      }
+    },
+    "KeyUsageFilterList":{
+      "type":"list",
+      "member":{"shape":"KeyUsageName"}
+    },
+    "KeyUsageList":{
+      "type":"list",
+      "member":{"shape":"KeyUsage"}
+    },
+    "KeyUsageName":{
+      "type":"string",
+      "enum":[
+        "DIGITAL_SIGNATURE",
+        "NON_REPUDIATION",
+        "KEY_ENCIPHERMENT",
+        "DATA_ENCIPHERMENT",
+        "KEY_AGREEMENT",
+        "CERTIFICATE_SIGNING",
+        "CRL_SIGNING",
+        "ENCIPHER_ONLY",
+        "DECIPHER_ONLY",
+        "ANY",
+        "CUSTOM"
+      ]
+    },
+    "KeyUsageNames":{
+      "type":"list",
+      "member":{"shape":"KeyUsageName"}
     },
     "LimitExceededException":{
       "type":"structure",
@@ -415,8 +711,11 @@
       "type":"structure",
       "members":{
         "CertificateStatuses":{"shape":"CertificateStatuses"},
+        "Includes":{"shape":"Filters"},
         "NextToken":{"shape":"NextToken"},
-        "MaxItems":{"shape":"MaxItems"}
+        "MaxItems":{"shape":"MaxItems"},
+        "SortBy":{"shape":"SortBy"},
+        "SortOrder":{"shape":"SortOrder"}
       }
     },
     "ListCertificatesResponse":{
@@ -446,15 +745,51 @@
     },
     "NextToken":{
       "type":"string",
-      "max":320,
+      "max":10000,
       "min":1,
       "pattern":"[\\u0009\\u000A\\u000D\\u0020-\\u00FF]*"
     },
-    "PrivateKeyBlob":{
+    "NullableBoolean":{"type":"boolean"},
+    "PassphraseBlob":{
       "type":"blob",
+      "max":128,
+      "min":4,
+      "sensitive":true
+    },
+    "PcaArn":{
+      "type":"string",
+      "max":2048,
+      "min":20,
+      "pattern":"arn:[\\w+=/,.@-]+:acm-pca:[\\w+=/,.@-]*:[0-9]+:[\\w+=,.@-]+(/[\\w+=,.@-]+)*"
+    },
+    "PositiveInteger":{
+      "type":"integer",
+      "min":1
+    },
+    "PrivateKey":{
+      "type":"string",
       "max":524288,
       "min":1,
+      "pattern":"-{5}BEGIN PRIVATE KEY-{5}\\u000D?\\u000A([A-Za-z0-9/+]{64}\\u000D?\\u000A)*[A-Za-z0-9/+]{1,64}={0,2}\\u000D?\\u000A-{5}END PRIVATE KEY-{5}(\\u000D?\\u000A)?",
       "sensitive":true
+    },
+    "PrivateKeyBlob":{
+      "type":"blob",
+      "max":5120,
+      "min":1,
+      "sensitive":true
+    },
+    "PutAccountConfigurationRequest":{
+      "type":"structure",
+      "required":["IdempotencyToken"],
+      "members":{
+        "ExpiryEvents":{"shape":"ExpiryEventsConfiguration"},
+        "IdempotencyToken":{"shape":"IdempotencyToken"}
+      }
+    },
+    "RecordType":{
+      "type":"string",
+      "enum":["CNAME"]
     },
     "RemoveTagsFromCertificateRequest":{
       "type":"structure",
@@ -466,6 +801,20 @@
         "CertificateArn":{"shape":"Arn"},
         "Tags":{"shape":"TagList"}
       }
+    },
+    "RenewCertificateRequest":{
+      "type":"structure",
+      "required":["CertificateArn"],
+      "members":{
+        "CertificateArn":{"shape":"Arn"}
+      }
+    },
+    "RenewalEligibility":{
+      "type":"string",
+      "enum":[
+        "ELIGIBLE",
+        "INELIGIBLE"
+      ]
     },
     "RenewalStatus":{
       "type":"string",
@@ -480,11 +829,14 @@
       "type":"structure",
       "required":[
         "RenewalStatus",
-        "DomainValidationOptions"
+        "DomainValidationOptions",
+        "UpdatedAt"
       ],
       "members":{
         "RenewalStatus":{"shape":"RenewalStatus"},
-        "DomainValidationOptions":{"shape":"DomainValidationList"}
+        "DomainValidationOptions":{"shape":"DomainValidationList"},
+        "RenewalStatusReason":{"shape":"FailureReason"},
+        "UpdatedAt":{"shape":"TStamp"}
       }
     },
     "RequestCertificateRequest":{
@@ -492,9 +844,14 @@
       "required":["DomainName"],
       "members":{
         "DomainName":{"shape":"DomainNameString"},
+        "ValidationMethod":{"shape":"ValidationMethod"},
         "SubjectAlternativeNames":{"shape":"DomainList"},
         "IdempotencyToken":{"shape":"IdempotencyToken"},
-        "DomainValidationOptions":{"shape":"DomainValidationOptionList"}
+        "DomainValidationOptions":{"shape":"DomainValidationOptionList"},
+        "Options":{"shape":"CertificateOptions"},
+        "CertificateAuthorityArn":{"shape":"PcaArn"},
+        "Tags":{"shape":"TagList"},
+        "KeyAlgorithm":{"shape":"KeyAlgorithm"}
       }
     },
     "RequestCertificateResponse":{
@@ -537,6 +894,19 @@
       },
       "exception":true
     },
+    "ResourceRecord":{
+      "type":"structure",
+      "required":[
+        "Name",
+        "Type",
+        "Value"
+      ],
+      "members":{
+        "Name":{"shape":"String"},
+        "Type":{"shape":"RecordType"},
+        "Value":{"shape":"String"}
+      }
+    },
     "RevocationReason":{
       "type":"string",
       "enum":[
@@ -550,6 +920,18 @@
         "REMOVE_FROM_CRL",
         "PRIVILEGE_WITHDRAWN",
         "A_A_COMPROMISE"
+      ]
+    },
+    "ServiceErrorMessage":{"type":"string"},
+    "SortBy":{
+      "type":"string",
+      "enum":["CREATED_AT"]
+    },
+    "SortOrder":{
+      "type":"string",
+      "enum":[
+        "ASCENDING",
+        "DESCENDING"
       ]
     },
     "String":{"type":"string"},
@@ -574,11 +956,26 @@
       "max":50,
       "min":1
     },
+    "TagPolicyException":{
+      "type":"structure",
+      "members":{
+        "message":{"shape":"String"}
+      },
+      "exception":true
+    },
     "TagValue":{
       "type":"string",
       "max":256,
       "min":0,
       "pattern":"[\\p{L}\\p{Z}\\p{N}_.:\\/=+\\-@]*"
+    },
+    "ThrottlingException":{
+      "type":"structure",
+      "members":{
+        "message":{"shape":"AvailabilityErrorMessage"}
+      },
+      "exception":true,
+      "synthetic":true
     },
     "TooManyTagsException":{
       "type":"structure",
@@ -587,9 +984,36 @@
       },
       "exception":true
     },
+    "UpdateCertificateOptionsRequest":{
+      "type":"structure",
+      "required":[
+        "CertificateArn",
+        "Options"
+      ],
+      "members":{
+        "CertificateArn":{"shape":"Arn"},
+        "Options":{"shape":"CertificateOptions"}
+      }
+    },
     "ValidationEmailList":{
       "type":"list",
       "member":{"shape":"String"}
+    },
+    "ValidationException":{
+      "type":"structure",
+      "members":{
+        "message":{"shape":"ValidationExceptionMessage"}
+      },
+      "exception":true,
+      "synthetic":true
+    },
+    "ValidationExceptionMessage":{"type":"string"},
+    "ValidationMethod":{
+      "type":"string",
+      "enum":[
+        "EMAIL",
+        "DNS"
+      ]
     }
   }
 }

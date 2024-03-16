@@ -7,17 +7,24 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/sdb/api)
-(common-lisp:progn
- (common-lisp:defclass sdb-request (aws-sdk/request:request) common-lisp:nil
-                       (:default-initargs :service "sdb"))
- (common-lisp:export 'sdb-request))
 (common-lisp:progn
  (common-lisp:define-condition sdb-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'sdb-error))
+(common-lisp:progn
+ (common-lisp:defclass sdb-request (aws-sdk/query-request:query-request)
+                       common-lisp:nil
+                       (:default-initargs :service "sdb" :api-version
+                        "2009-04-15" :host-prefix "sdb" :signing-name
+                        common-lisp:nil :global-host common-lisp:nil))
+ (common-lisp:export 'sdb-request))
 (common-lisp:defvar *error-map*
   '(("AttributeDoesNotExist" . attribute-does-not-exist)
     ("DuplicateItemName" . duplicate-item-name)
@@ -98,7 +105,7 @@
                     'attribute-does-not-exist-box-usage)))
 (common-lisp:progn
  (common-lisp:deftype attribute-list () '(trivial-types:proper-list attribute))
- (common-lisp:defun |make-attribute-list|
+ (common-lisp:defun make-attribute-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list attribute))
@@ -106,7 +113,7 @@
 (common-lisp:progn
  (common-lisp:deftype attribute-name-list ()
    '(trivial-types:proper-list string))
- (common-lisp:defun |make-attribute-name-list|
+ (common-lisp:defun make-attribute-name-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
@@ -257,7 +264,7 @@
 (common-lisp:progn
  (common-lisp:deftype deletable-attribute-list ()
    '(trivial-types:proper-list deletable-attribute))
- (common-lisp:defun |make-deletable-attribute-list|
+ (common-lisp:defun make-deletable-attribute-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list deletable-attribute))
@@ -297,7 +304,7 @@
 (common-lisp:progn
  (common-lisp:deftype deletable-item-list ()
    '(trivial-types:proper-list deletable-item))
- (common-lisp:defun |make-deletable-item-list|
+ (common-lisp:defun make-deletable-item-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list deletable-item))
@@ -509,7 +516,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype domain-name-list () '(trivial-types:proper-list string))
- (common-lisp:defun |make-domain-name-list|
+ (common-lisp:defun make-domain-name-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
@@ -692,7 +699,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype item-list () '(trivial-types:proper-list item))
- (common-lisp:defun |make-item-list|
+ (common-lisp:defun make-item-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list item))
@@ -932,7 +939,7 @@
 (common-lisp:progn
  (common-lisp:deftype replaceable-attribute-list ()
    '(trivial-types:proper-list replaceable-attribute))
- (common-lisp:defun |make-replaceable-attribute-list|
+ (common-lisp:defun make-replaceable-attribute-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list replaceable-attribute))
@@ -973,7 +980,7 @@
 (common-lisp:progn
  (common-lisp:deftype replaceable-item-list ()
    '(trivial-types:proper-list replaceable-item))
- (common-lisp:defun |make-replaceable-item-list|
+ (common-lisp:defun make-replaceable-item-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list replaceable-item))
@@ -1117,8 +1124,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'sdb-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "BatchDeleteAttributes"
-                                                        "2009-04-15"))
+                                                        "BatchDeleteAttributes"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'batch-delete-attributes))
 (common-lisp:progn
@@ -1135,8 +1141,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'sdb-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "BatchPutAttributes"
-                                                        "2009-04-15"))
+                                                        "BatchPutAttributes"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'batch-put-attributes))
 (common-lisp:progn
@@ -1153,8 +1158,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'sdb-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "CreateDomain"
-                                                        "2009-04-15"))
+                                                        "CreateDomain"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-domain))
 (common-lisp:progn
@@ -1173,8 +1177,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'sdb-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeleteAttributes"
-                                                        "2009-04-15"))
+                                                        "DeleteAttributes"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-attributes))
 (common-lisp:progn
@@ -1191,8 +1194,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'sdb-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeleteDomain"
-                                                        "2009-04-15"))
+                                                        "DeleteDomain"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-domain))
 (common-lisp:progn
@@ -1209,8 +1211,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'sdb-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DomainMetadata"
-                                                        "2009-04-15"))
+                                                        "DomainMetadata"))
       common-lisp:nil "DomainMetadataResult" *error-map*)))
  (common-lisp:export 'domain-metadata))
 (common-lisp:progn
@@ -1230,8 +1231,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'sdb-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "GetAttributes"
-                                                        "2009-04-15"))
+                                                        "GetAttributes"))
       common-lisp:nil "GetAttributesResult" *error-map*)))
  (common-lisp:export 'get-attributes))
 (common-lisp:progn
@@ -1249,8 +1249,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'sdb-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "ListDomains"
-                                                        "2009-04-15"))
+                                                        "ListDomains"))
       common-lisp:nil "ListDomainsResult" *error-map*)))
  (common-lisp:export 'list-domains))
 (common-lisp:progn
@@ -1269,8 +1268,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'sdb-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "PutAttributes"
-                                                        "2009-04-15"))
+                                                        "PutAttributes"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-attributes))
 (common-lisp:progn
@@ -1288,7 +1286,6 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input 'sdb-request
                                                         aws-sdk/generator/operation::input
-                                                        "POST" "/" "Select"
-                                                        "2009-04-15"))
+                                                        "POST" "/" "Select"))
       common-lisp:nil "SelectResult" *error-map*)))
  (common-lisp:export 'select))

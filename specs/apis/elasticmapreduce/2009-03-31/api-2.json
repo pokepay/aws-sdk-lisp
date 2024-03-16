@@ -6,10 +6,10 @@
     "jsonVersion":"1.1",
     "protocol":"json",
     "serviceAbbreviation":"Amazon EMR",
-    "serviceFullName":"Amazon Elastic MapReduce",
+    "serviceFullName":"Amazon EMR",
+    "serviceId":"EMR",
     "signatureVersion":"v4",
     "targetPrefix":"ElasticMapReduce",
-    "timestampFormat":"unixTimestamp",
     "uid":"elasticmapreduce-2009-03-31"
   },
   "operations":{
@@ -89,6 +89,31 @@
         {"shape":"InvalidRequestException"}
       ]
     },
+    "CreateStudio":{
+      "name":"CreateStudio",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"CreateStudioInput"},
+      "output":{"shape":"CreateStudioOutput"},
+      "errors":[
+        {"shape":"InternalServerException"},
+        {"shape":"InvalidRequestException"}
+      ]
+    },
+    "CreateStudioSessionMapping":{
+      "name":"CreateStudioSessionMapping",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"CreateStudioSessionMappingInput"},
+      "errors":[
+        {"shape":"InternalServerError"},
+        {"shape":"InvalidRequestException"}
+      ]
+    },
     "DeleteSecurityConfiguration":{
       "name":"DeleteSecurityConfiguration",
       "http":{
@@ -99,6 +124,30 @@
       "output":{"shape":"DeleteSecurityConfigurationOutput"},
       "errors":[
         {"shape":"InternalServerException"},
+        {"shape":"InvalidRequestException"}
+      ]
+    },
+    "DeleteStudio":{
+      "name":"DeleteStudio",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DeleteStudioInput"},
+      "errors":[
+        {"shape":"InternalServerException"},
+        {"shape":"InvalidRequestException"}
+      ]
+    },
+    "DeleteStudioSessionMapping":{
+      "name":"DeleteStudioSessionMapping",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DeleteStudioSessionMappingInput"},
+      "errors":[
+        {"shape":"InternalServerError"},
         {"shape":"InvalidRequestException"}
       ]
     },
@@ -128,6 +177,32 @@
       ],
       "deprecated":true
     },
+    "DescribeNotebookExecution":{
+      "name":"DescribeNotebookExecution",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DescribeNotebookExecutionInput"},
+      "output":{"shape":"DescribeNotebookExecutionOutput"},
+      "errors":[
+        {"shape":"InternalServerError"},
+        {"shape":"InvalidRequestException"}
+      ]
+    },
+    "DescribeReleaseLabel":{
+      "name":"DescribeReleaseLabel",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DescribeReleaseLabelInput"},
+      "output":{"shape":"DescribeReleaseLabelOutput"},
+      "errors":[
+        {"shape":"InternalServerException"},
+        {"shape":"InvalidRequestException"}
+      ]
+    },
     "DescribeSecurityConfiguration":{
       "name":"DescribeSecurityConfiguration",
       "http":{
@@ -151,6 +226,76 @@
       "output":{"shape":"DescribeStepOutput"},
       "errors":[
         {"shape":"InternalServerException"},
+        {"shape":"InvalidRequestException"}
+      ]
+    },
+    "DescribeStudio":{
+      "name":"DescribeStudio",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DescribeStudioInput"},
+      "output":{"shape":"DescribeStudioOutput"},
+      "errors":[
+        {"shape":"InternalServerException"},
+        {"shape":"InvalidRequestException"}
+      ]
+    },
+    "GetAutoTerminationPolicy":{
+      "name":"GetAutoTerminationPolicy",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"GetAutoTerminationPolicyInput"},
+      "output":{"shape":"GetAutoTerminationPolicyOutput"}
+    },
+    "GetBlockPublicAccessConfiguration":{
+      "name":"GetBlockPublicAccessConfiguration",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"GetBlockPublicAccessConfigurationInput"},
+      "output":{"shape":"GetBlockPublicAccessConfigurationOutput"},
+      "errors":[
+        {"shape":"InternalServerException"},
+        {"shape":"InvalidRequestException"}
+      ]
+    },
+    "GetClusterSessionCredentials":{
+      "name":"GetClusterSessionCredentials",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"GetClusterSessionCredentialsInput"},
+      "output":{"shape":"GetClusterSessionCredentialsOutput"},
+      "errors":[
+        {"shape":"InternalServerError"},
+        {"shape":"InvalidRequestException"}
+      ]
+    },
+    "GetManagedScalingPolicy":{
+      "name":"GetManagedScalingPolicy",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"GetManagedScalingPolicyInput"},
+      "output":{"shape":"GetManagedScalingPolicyOutput"}
+    },
+    "GetStudioSessionMapping":{
+      "name":"GetStudioSessionMapping",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"GetStudioSessionMappingInput"},
+      "output":{"shape":"GetStudioSessionMappingOutput"},
+      "errors":[
+        {"shape":"InternalServerError"},
         {"shape":"InvalidRequestException"}
       ]
     },
@@ -219,6 +364,32 @@
         {"shape":"InvalidRequestException"}
       ]
     },
+    "ListNotebookExecutions":{
+      "name":"ListNotebookExecutions",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListNotebookExecutionsInput"},
+      "output":{"shape":"ListNotebookExecutionsOutput"},
+      "errors":[
+        {"shape":"InternalServerError"},
+        {"shape":"InvalidRequestException"}
+      ]
+    },
+    "ListReleaseLabels":{
+      "name":"ListReleaseLabels",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListReleaseLabelsInput"},
+      "output":{"shape":"ListReleaseLabelsOutput"},
+      "errors":[
+        {"shape":"InternalServerException"},
+        {"shape":"InvalidRequestException"}
+      ]
+    },
     "ListSecurityConfigurations":{
       "name":"ListSecurityConfigurations",
       "http":{
@@ -242,6 +413,58 @@
       "output":{"shape":"ListStepsOutput"},
       "errors":[
         {"shape":"InternalServerException"},
+        {"shape":"InvalidRequestException"}
+      ]
+    },
+    "ListStudioSessionMappings":{
+      "name":"ListStudioSessionMappings",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListStudioSessionMappingsInput"},
+      "output":{"shape":"ListStudioSessionMappingsOutput"},
+      "errors":[
+        {"shape":"InternalServerError"},
+        {"shape":"InvalidRequestException"}
+      ]
+    },
+    "ListStudios":{
+      "name":"ListStudios",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListStudiosInput"},
+      "output":{"shape":"ListStudiosOutput"},
+      "errors":[
+        {"shape":"InternalServerException"},
+        {"shape":"InvalidRequestException"}
+      ]
+    },
+    "ListSupportedInstanceTypes":{
+      "name":"ListSupportedInstanceTypes",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListSupportedInstanceTypesInput"},
+      "output":{"shape":"ListSupportedInstanceTypesOutput"},
+      "errors":[
+        {"shape":"InternalServerException"},
+        {"shape":"InvalidRequestException"}
+      ]
+    },
+    "ModifyCluster":{
+      "name":"ModifyCluster",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ModifyClusterInput"},
+      "output":{"shape":"ModifyClusterOutput"},
+      "errors":[
+        {"shape":"InternalServerError"},
         {"shape":"InvalidRequestException"}
       ]
     },
@@ -277,6 +500,37 @@
       "input":{"shape":"PutAutoScalingPolicyInput"},
       "output":{"shape":"PutAutoScalingPolicyOutput"}
     },
+    "PutAutoTerminationPolicy":{
+      "name":"PutAutoTerminationPolicy",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"PutAutoTerminationPolicyInput"},
+      "output":{"shape":"PutAutoTerminationPolicyOutput"}
+    },
+    "PutBlockPublicAccessConfiguration":{
+      "name":"PutBlockPublicAccessConfiguration",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"PutBlockPublicAccessConfigurationInput"},
+      "output":{"shape":"PutBlockPublicAccessConfigurationOutput"},
+      "errors":[
+        {"shape":"InternalServerException"},
+        {"shape":"InvalidRequestException"}
+      ]
+    },
+    "PutManagedScalingPolicy":{
+      "name":"PutManagedScalingPolicy",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"PutManagedScalingPolicyInput"},
+      "output":{"shape":"PutManagedScalingPolicyOutput"}
+    },
     "RemoveAutoScalingPolicy":{
       "name":"RemoveAutoScalingPolicy",
       "http":{
@@ -285,6 +539,24 @@
       },
       "input":{"shape":"RemoveAutoScalingPolicyInput"},
       "output":{"shape":"RemoveAutoScalingPolicyOutput"}
+    },
+    "RemoveAutoTerminationPolicy":{
+      "name":"RemoveAutoTerminationPolicy",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"RemoveAutoTerminationPolicyInput"},
+      "output":{"shape":"RemoveAutoTerminationPolicyOutput"}
+    },
+    "RemoveManagedScalingPolicy":{
+      "name":"RemoveManagedScalingPolicy",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"RemoveManagedScalingPolicyInput"},
+      "output":{"shape":"RemoveManagedScalingPolicyOutput"}
     },
     "RemoveTags":{
       "name":"RemoveTags",
@@ -311,6 +583,17 @@
         {"shape":"InternalServerError"}
       ]
     },
+    "SetKeepJobFlowAliveWhenNoSteps":{
+      "name":"SetKeepJobFlowAliveWhenNoSteps",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"SetKeepJobFlowAliveWhenNoStepsInput"},
+      "errors":[
+        {"shape":"InternalServerError"}
+      ]
+    },
     "SetTerminationProtection":{
       "name":"SetTerminationProtection",
       "http":{
@@ -318,6 +601,17 @@
         "requestUri":"/"
       },
       "input":{"shape":"SetTerminationProtectionInput"},
+      "errors":[
+        {"shape":"InternalServerError"}
+      ]
+    },
+    "SetUnhealthyNodeReplacement":{
+      "name":"SetUnhealthyNodeReplacement",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"SetUnhealthyNodeReplacementInput"},
       "errors":[
         {"shape":"InternalServerError"}
       ]
@@ -333,6 +627,31 @@
         {"shape":"InternalServerError"}
       ]
     },
+    "StartNotebookExecution":{
+      "name":"StartNotebookExecution",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"StartNotebookExecutionInput"},
+      "output":{"shape":"StartNotebookExecutionOutput"},
+      "errors":[
+        {"shape":"InternalServerException"},
+        {"shape":"InvalidRequestException"}
+      ]
+    },
+    "StopNotebookExecution":{
+      "name":"StopNotebookExecution",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"StopNotebookExecutionInput"},
+      "errors":[
+        {"shape":"InternalServerError"},
+        {"shape":"InvalidRequestException"}
+      ]
+    },
     "TerminateJobFlows":{
       "name":"TerminateJobFlows",
       "http":{
@@ -342,6 +661,30 @@
       "input":{"shape":"TerminateJobFlowsInput"},
       "errors":[
         {"shape":"InternalServerError"}
+      ]
+    },
+    "UpdateStudio":{
+      "name":"UpdateStudio",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UpdateStudioInput"},
+      "errors":[
+        {"shape":"InternalServerException"},
+        {"shape":"InvalidRequestException"}
+      ]
+    },
+    "UpdateStudioSessionMapping":{
+      "name":"UpdateStudioSessionMapping",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UpdateStudioSessionMappingInput"},
+      "errors":[
+        {"shape":"InternalServerError"},
+        {"shape":"InvalidRequestException"}
       ]
     }
   },
@@ -370,7 +713,8 @@
       "type":"structure",
       "members":{
         "ClusterId":{"shape":"XmlStringMaxLen256"},
-        "InstanceFleetId":{"shape":"InstanceFleetId"}
+        "InstanceFleetId":{"shape":"InstanceFleetId"},
+        "ClusterArn":{"shape":"ArnType"}
       }
     },
     "AddInstanceGroupsInput":{
@@ -388,7 +732,8 @@
       "type":"structure",
       "members":{
         "JobFlowId":{"shape":"XmlStringMaxLen256"},
-        "InstanceGroupIds":{"shape":"InstanceGroupIdsList"}
+        "InstanceGroupIds":{"shape":"InstanceGroupIdsList"},
+        "ClusterArn":{"shape":"ArnType"}
       }
     },
     "AddJobFlowStepsInput":{
@@ -399,7 +744,8 @@
       ],
       "members":{
         "JobFlowId":{"shape":"XmlStringMaxLen256"},
-        "Steps":{"shape":"StepConfigList"}
+        "Steps":{"shape":"StepConfigList"},
+        "ExecutionRoleArn":{"shape":"ArnType"}
       }
     },
     "AddJobFlowStepsOutput":{
@@ -444,6 +790,18 @@
     "ApplicationList":{
       "type":"list",
       "member":{"shape":"Application"}
+    },
+    "ArnType":{
+      "type":"string",
+      "max":2048,
+      "min":20
+    },
+    "AuthMode":{
+      "type":"string",
+      "enum":[
+        "SSO",
+        "IAM"
+      ]
     },
     "AutoScalingPolicy":{
       "type":"structure",
@@ -497,6 +855,31 @@
         "StateChangeReason":{"shape":"AutoScalingPolicyStateChangeReason"}
       }
     },
+    "AutoTerminationPolicy":{
+      "type":"structure",
+      "members":{
+        "IdleTimeout":{"shape":"Long"}
+      }
+    },
+    "BlockPublicAccessConfiguration":{
+      "type":"structure",
+      "required":["BlockPublicSecurityGroupRules"],
+      "members":{
+        "BlockPublicSecurityGroupRules":{"shape":"Boolean"},
+        "PermittedPublicSecurityGroupRuleRanges":{"shape":"PortRanges"}
+      }
+    },
+    "BlockPublicAccessConfigurationMetadata":{
+      "type":"structure",
+      "required":[
+        "CreationDateTime",
+        "CreatedByArn"
+      ],
+      "members":{
+        "CreationDateTime":{"shape":"Date"},
+        "CreatedByArn":{"shape":"ArnType"}
+      }
+    },
     "Boolean":{"type":"boolean"},
     "BooleanObject":{"type":"boolean"},
     "BootstrapActionConfig":{
@@ -538,9 +921,14 @@
     },
     "CancelStepsInput":{
       "type":"structure",
+      "required":[
+        "ClusterId",
+        "StepIds"
+      ],
       "members":{
         "ClusterId":{"shape":"XmlStringMaxLen256"},
-        "StepIds":{"shape":"StepIdsList"}
+        "StepIds":{"shape":"StepIdsList"},
+        "StepCancellationOption":{"shape":"StepCancellationOption"}
       }
     },
     "CancelStepsOutput":{
@@ -585,11 +973,13 @@
         "Ec2InstanceAttributes":{"shape":"Ec2InstanceAttributes"},
         "InstanceCollectionType":{"shape":"InstanceCollectionType"},
         "LogUri":{"shape":"String"},
+        "LogEncryptionKmsKeyId":{"shape":"String"},
         "RequestedAmiVersion":{"shape":"String"},
         "RunningAmiVersion":{"shape":"String"},
         "ReleaseLabel":{"shape":"String"},
         "AutoTerminate":{"shape":"Boolean"},
         "TerminationProtected":{"shape":"Boolean"},
+        "UnhealthyNodeReplacement":{"shape":"BooleanObject"},
         "VisibleToAllUsers":{"shape":"Boolean"},
         "Applications":{"shape":"ApplicationList"},
         "Tags":{"shape":"TagList"},
@@ -602,7 +992,15 @@
         "ScaleDownBehavior":{"shape":"ScaleDownBehavior"},
         "CustomAmiId":{"shape":"XmlStringMaxLen256"},
         "EbsRootVolumeSize":{"shape":"Integer"},
-        "RepoUpgradeOnBoot":{"shape":"RepoUpgradeOnBoot"}
+        "RepoUpgradeOnBoot":{"shape":"RepoUpgradeOnBoot"},
+        "KerberosAttributes":{"shape":"KerberosAttributes"},
+        "ClusterArn":{"shape":"ArnType"},
+        "OutpostArn":{"shape":"OptionalArnType"},
+        "StepConcurrencyLevel":{"shape":"Integer"},
+        "PlacementGroups":{"shape":"PlacementGroupConfigList"},
+        "OSReleaseLabel":{"shape":"String"},
+        "EbsRootVolumeIops":{"shape":"Integer"},
+        "EbsRootVolumeThroughput":{"shape":"Integer"}
       }
     },
     "ClusterId":{"type":"string"},
@@ -647,7 +1045,8 @@
       "members":{
         "State":{"shape":"ClusterState"},
         "StateChangeReason":{"shape":"ClusterStateChangeReason"},
-        "Timeline":{"shape":"ClusterTimeline"}
+        "Timeline":{"shape":"ClusterTimeline"},
+        "ErrorDetails":{"shape":"ErrorDetailList"}
       }
     },
     "ClusterSummary":{
@@ -656,7 +1055,9 @@
         "Id":{"shape":"ClusterId"},
         "Name":{"shape":"String"},
         "Status":{"shape":"ClusterStatus"},
-        "NormalizedInstanceHours":{"shape":"Integer"}
+        "NormalizedInstanceHours":{"shape":"Integer"},
+        "ClusterArn":{"shape":"ArnType"},
+        "OutpostArn":{"shape":"OptionalArnType"}
       }
     },
     "ClusterSummaryList":{
@@ -690,6 +1091,29 @@
         "GREATER_THAN",
         "LESS_THAN",
         "LESS_THAN_OR_EQUAL"
+      ]
+    },
+    "ComputeLimits":{
+      "type":"structure",
+      "required":[
+        "UnitType",
+        "MinimumCapacityUnits",
+        "MaximumCapacityUnits"
+      ],
+      "members":{
+        "UnitType":{"shape":"ComputeLimitsUnitType"},
+        "MinimumCapacityUnits":{"shape":"Integer"},
+        "MaximumCapacityUnits":{"shape":"Integer"},
+        "MaximumOnDemandCapacityUnits":{"shape":"Integer"},
+        "MaximumCoreCapacityUnits":{"shape":"Integer"}
+      }
+    },
+    "ComputeLimitsUnitType":{
+      "type":"string",
+      "enum":[
+        "InstanceFleetUnits",
+        "Instances",
+        "VCPU"
       ]
     },
     "Configuration":{
@@ -726,6 +1150,67 @@
         "CreationDateTime":{"shape":"Date"}
       }
     },
+    "CreateStudioInput":{
+      "type":"structure",
+      "required":[
+        "Name",
+        "AuthMode",
+        "VpcId",
+        "SubnetIds",
+        "ServiceRole",
+        "WorkspaceSecurityGroupId",
+        "EngineSecurityGroupId",
+        "DefaultS3Location"
+      ],
+      "members":{
+        "Name":{"shape":"XmlStringMaxLen256"},
+        "Description":{"shape":"XmlStringMaxLen256"},
+        "AuthMode":{"shape":"AuthMode"},
+        "VpcId":{"shape":"XmlStringMaxLen256"},
+        "SubnetIds":{"shape":"SubnetIdList"},
+        "ServiceRole":{"shape":"XmlString"},
+        "UserRole":{"shape":"XmlString"},
+        "WorkspaceSecurityGroupId":{"shape":"XmlStringMaxLen256"},
+        "EngineSecurityGroupId":{"shape":"XmlStringMaxLen256"},
+        "DefaultS3Location":{"shape":"XmlString"},
+        "IdpAuthUrl":{"shape":"XmlString"},
+        "IdpRelayStateParameterName":{"shape":"XmlStringMaxLen256"},
+        "Tags":{"shape":"TagList"},
+        "TrustedIdentityPropagationEnabled":{"shape":"BooleanObject"},
+        "IdcUserAssignment":{"shape":"IdcUserAssignment"},
+        "IdcInstanceArn":{"shape":"ArnType"},
+        "EncryptionKeyArn":{"shape":"XmlString"}
+      }
+    },
+    "CreateStudioOutput":{
+      "type":"structure",
+      "members":{
+        "StudioId":{"shape":"XmlStringMaxLen256"},
+        "Url":{"shape":"XmlString"}
+      }
+    },
+    "CreateStudioSessionMappingInput":{
+      "type":"structure",
+      "required":[
+        "StudioId",
+        "IdentityType",
+        "SessionPolicyArn"
+      ],
+      "members":{
+        "StudioId":{"shape":"XmlStringMaxLen256"},
+        "IdentityId":{"shape":"XmlStringMaxLen256"},
+        "IdentityName":{"shape":"XmlStringMaxLen256"},
+        "IdentityType":{"shape":"IdentityType"},
+        "SessionPolicyArn":{"shape":"XmlStringMaxLen256"}
+      }
+    },
+    "Credentials":{
+      "type":"structure",
+      "members":{
+        "UsernamePassword":{"shape":"UsernamePassword"}
+      },
+      "union":true
+    },
     "Date":{"type":"timestamp"},
     "DeleteSecurityConfigurationInput":{
       "type":"structure",
@@ -737,6 +1222,26 @@
     "DeleteSecurityConfigurationOutput":{
       "type":"structure",
       "members":{
+      }
+    },
+    "DeleteStudioInput":{
+      "type":"structure",
+      "required":["StudioId"],
+      "members":{
+        "StudioId":{"shape":"XmlStringMaxLen256"}
+      }
+    },
+    "DeleteStudioSessionMappingInput":{
+      "type":"structure",
+      "required":[
+        "StudioId",
+        "IdentityType"
+      ],
+      "members":{
+        "StudioId":{"shape":"XmlStringMaxLen256"},
+        "IdentityId":{"shape":"XmlStringMaxLen256"},
+        "IdentityName":{"shape":"XmlStringMaxLen256"},
+        "IdentityType":{"shape":"IdentityType"}
       }
     },
     "DescribeClusterInput":{
@@ -765,6 +1270,36 @@
       "type":"structure",
       "members":{
         "JobFlows":{"shape":"JobFlowDetailList"}
+      }
+    },
+    "DescribeNotebookExecutionInput":{
+      "type":"structure",
+      "required":["NotebookExecutionId"],
+      "members":{
+        "NotebookExecutionId":{"shape":"XmlStringMaxLen256"}
+      }
+    },
+    "DescribeNotebookExecutionOutput":{
+      "type":"structure",
+      "members":{
+        "NotebookExecution":{"shape":"NotebookExecution"}
+      }
+    },
+    "DescribeReleaseLabelInput":{
+      "type":"structure",
+      "members":{
+        "ReleaseLabel":{"shape":"String"},
+        "NextToken":{"shape":"String"},
+        "MaxResults":{"shape":"MaxResultsNumber"}
+      }
+    },
+    "DescribeReleaseLabelOutput":{
+      "type":"structure",
+      "members":{
+        "ReleaseLabel":{"shape":"String"},
+        "Applications":{"shape":"SimplifiedApplicationList"},
+        "NextToken":{"shape":"String"},
+        "AvailableOSReleases":{"shape":"OSReleaseList"}
       }
     },
     "DescribeSecurityConfigurationInput":{
@@ -797,6 +1332,19 @@
       "type":"structure",
       "members":{
         "Step":{"shape":"Step"}
+      }
+    },
+    "DescribeStudioInput":{
+      "type":"structure",
+      "required":["StudioId"],
+      "members":{
+        "StudioId":{"shape":"XmlStringMaxLen256"}
+      }
+    },
+    "DescribeStudioOutput":{
+      "type":"structure",
+      "members":{
+        "Studio":{"shape":"Studio"}
       }
     },
     "EC2InstanceIdsList":{
@@ -864,18 +1412,130 @@
         "AdditionalSlaveSecurityGroups":{"shape":"StringList"}
       }
     },
+    "EnvironmentVariablesMap":{
+      "type":"map",
+      "key":{"shape":"XmlStringMaxLen256"},
+      "value":{"shape":"XmlString"}
+    },
     "ErrorCode":{
       "type":"string",
       "max":256,
       "min":1
     },
+    "ErrorData":{
+      "type":"list",
+      "member":{"shape":"StringMap"}
+    },
+    "ErrorDetail":{
+      "type":"structure",
+      "members":{
+        "ErrorCode":{"shape":"String"},
+        "ErrorData":{"shape":"ErrorData"},
+        "ErrorMessage":{"shape":"String"}
+      }
+    },
+    "ErrorDetailList":{
+      "type":"list",
+      "member":{"shape":"ErrorDetail"}
+    },
     "ErrorMessage":{"type":"string"},
+    "ExecutionEngineConfig":{
+      "type":"structure",
+      "required":["Id"],
+      "members":{
+        "Id":{"shape":"XmlStringMaxLen256"},
+        "Type":{"shape":"ExecutionEngineType"},
+        "MasterInstanceSecurityGroupId":{"shape":"XmlStringMaxLen256"},
+        "ExecutionRoleArn":{"shape":"IAMRoleArn"}
+      }
+    },
+    "ExecutionEngineType":{
+      "type":"string",
+      "enum":["EMR"]
+    },
     "FailureDetails":{
       "type":"structure",
       "members":{
         "Reason":{"shape":"String"},
         "Message":{"shape":"String"},
         "LogFile":{"shape":"String"}
+      }
+    },
+    "Float":{"type":"float"},
+    "GetAutoTerminationPolicyInput":{
+      "type":"structure",
+      "required":["ClusterId"],
+      "members":{
+        "ClusterId":{"shape":"ClusterId"}
+      }
+    },
+    "GetAutoTerminationPolicyOutput":{
+      "type":"structure",
+      "members":{
+        "AutoTerminationPolicy":{"shape":"AutoTerminationPolicy"}
+      }
+    },
+    "GetBlockPublicAccessConfigurationInput":{
+      "type":"structure",
+      "members":{
+      }
+    },
+    "GetBlockPublicAccessConfigurationOutput":{
+      "type":"structure",
+      "required":[
+        "BlockPublicAccessConfiguration",
+        "BlockPublicAccessConfigurationMetadata"
+      ],
+      "members":{
+        "BlockPublicAccessConfiguration":{"shape":"BlockPublicAccessConfiguration"},
+        "BlockPublicAccessConfigurationMetadata":{"shape":"BlockPublicAccessConfigurationMetadata"}
+      }
+    },
+    "GetClusterSessionCredentialsInput":{
+      "type":"structure",
+      "required":["ClusterId"],
+      "members":{
+        "ClusterId":{"shape":"XmlStringMaxLen256"},
+        "ExecutionRoleArn":{"shape":"ArnType"}
+      }
+    },
+    "GetClusterSessionCredentialsOutput":{
+      "type":"structure",
+      "members":{
+        "Credentials":{"shape":"Credentials"},
+        "ExpiresAt":{"shape":"Date"}
+      }
+    },
+    "GetManagedScalingPolicyInput":{
+      "type":"structure",
+      "required":["ClusterId"],
+      "members":{
+        "ClusterId":{"shape":"ClusterId"}
+      }
+    },
+    "GetManagedScalingPolicyOutput":{
+      "type":"structure",
+      "members":{
+        "ManagedScalingPolicy":{"shape":"ManagedScalingPolicy"}
+      }
+    },
+    "GetStudioSessionMappingInput":{
+      "type":"structure",
+      "required":[
+        "StudioId",
+        "IdentityType"
+      ],
+      "members":{
+        "StudioId":{"shape":"XmlStringMaxLen256"},
+        "IdentityId":{"shape":"XmlStringMaxLen256"},
+        "IdentityName":{"shape":"XmlStringMaxLen256"},
+        "IdentityType":{"shape":"IdentityType"}
+      }
+    },
+    "GetStudioSessionMappingOutput":{
+      "type":"structure",
+      "members":{
+        "SessionMapping":{"shape":"SessionMappingDetail"}
       }
     },
     "HadoopJarStepConfig":{
@@ -896,6 +1556,26 @@
         "MainClass":{"shape":"String"},
         "Args":{"shape":"StringList"}
       }
+    },
+    "IAMRoleArn":{
+      "type":"string",
+      "max":2048,
+      "min":20,
+      "pattern":"^arn:(aws[a-zA-Z0-9-]*):iam::(\\d{12})?:(role((\\u002F)|(\\u002F[\\u0021-\\u007F]+\\u002F))[\\w+=,.@-]+)$"
+    },
+    "IdcUserAssignment":{
+      "type":"string",
+      "enum":[
+        "REQUIRED",
+        "OPTIONAL"
+      ]
+    },
+    "IdentityType":{
+      "type":"string",
+      "enum":[
+        "USER",
+        "GROUP"
+      ]
     },
     "Instance":{
       "type":"structure",
@@ -933,7 +1613,8 @@
         "ProvisionedOnDemandCapacity":{"shape":"WholeNumber"},
         "ProvisionedSpotCapacity":{"shape":"WholeNumber"},
         "InstanceTypeSpecifications":{"shape":"InstanceTypeSpecificationList"},
-        "LaunchSpecifications":{"shape":"InstanceFleetProvisioningSpecifications"}
+        "LaunchSpecifications":{"shape":"InstanceFleetProvisioningSpecifications"},
+        "ResizeSpecifications":{"shape":"InstanceFleetResizingSpecifications"}
       }
     },
     "InstanceFleetConfig":{
@@ -945,7 +1626,8 @@
         "TargetOnDemandCapacity":{"shape":"WholeNumber"},
         "TargetSpotCapacity":{"shape":"WholeNumber"},
         "InstanceTypeConfigs":{"shape":"InstanceTypeConfigList"},
-        "LaunchSpecifications":{"shape":"InstanceFleetProvisioningSpecifications"}
+        "LaunchSpecifications":{"shape":"InstanceFleetProvisioningSpecifications"},
+        "ResizeSpecifications":{"shape":"InstanceFleetResizingSpecifications"}
       }
     },
     "InstanceFleetConfigList":{
@@ -963,14 +1645,22 @@
       "members":{
         "InstanceFleetId":{"shape":"InstanceFleetId"},
         "TargetOnDemandCapacity":{"shape":"WholeNumber"},
-        "TargetSpotCapacity":{"shape":"WholeNumber"}
+        "TargetSpotCapacity":{"shape":"WholeNumber"},
+        "ResizeSpecifications":{"shape":"InstanceFleetResizingSpecifications"}
       }
     },
     "InstanceFleetProvisioningSpecifications":{
       "type":"structure",
-      "required":["SpotSpecification"],
       "members":{
-        "SpotSpecification":{"shape":"SpotProvisioningSpecification"}
+        "SpotSpecification":{"shape":"SpotProvisioningSpecification"},
+        "OnDemandSpecification":{"shape":"OnDemandProvisioningSpecification"}
+      }
+    },
+    "InstanceFleetResizingSpecifications":{
+      "type":"structure",
+      "members":{
+        "SpotResizeSpecification":{"shape":"SpotResizingSpecification"},
+        "OnDemandResizeSpecification":{"shape":"OnDemandResizingSpecification"}
       }
     },
     "InstanceFleetState":{
@@ -1038,10 +1728,14 @@
         "RunningInstanceCount":{"shape":"Integer"},
         "Status":{"shape":"InstanceGroupStatus"},
         "Configurations":{"shape":"ConfigurationList"},
+        "ConfigurationsVersion":{"shape":"Long"},
+        "LastSuccessfullyAppliedConfigurations":{"shape":"ConfigurationList"},
+        "LastSuccessfullyAppliedConfigurationsVersion":{"shape":"Long"},
         "EbsBlockDevices":{"shape":"EbsBlockDeviceList"},
         "EbsOptimized":{"shape":"BooleanObject"},
         "ShrinkPolicy":{"shape":"ShrinkPolicy"},
-        "AutoScalingPolicy":{"shape":"AutoScalingPolicyDescription"}
+        "AutoScalingPolicy":{"shape":"AutoScalingPolicyDescription"},
+        "CustomAmiId":{"shape":"XmlStringMaxLen256"}
       }
     },
     "InstanceGroupConfig":{
@@ -1060,7 +1754,8 @@
         "InstanceCount":{"shape":"Integer"},
         "Configurations":{"shape":"ConfigurationList"},
         "EbsConfiguration":{"shape":"EbsConfiguration"},
-        "AutoScalingPolicy":{"shape":"AutoScalingPolicy"}
+        "AutoScalingPolicy":{"shape":"AutoScalingPolicy"},
+        "CustomAmiId":{"shape":"XmlStringMaxLen256"}
       }
     },
     "InstanceGroupConfigList":{
@@ -1092,7 +1787,8 @@
         "CreationDateTime":{"shape":"Date"},
         "StartDateTime":{"shape":"Date"},
         "ReadyDateTime":{"shape":"Date"},
-        "EndDateTime":{"shape":"Date"}
+        "EndDateTime":{"shape":"Date"},
+        "CustomAmiId":{"shape":"XmlStringMaxLen256"}
       }
     },
     "InstanceGroupDetailList":{
@@ -1115,7 +1811,9 @@
         "InstanceGroupId":{"shape":"XmlStringMaxLen256"},
         "InstanceCount":{"shape":"Integer"},
         "EC2InstanceIdsToTerminate":{"shape":"EC2InstanceIdsToTerminateList"},
-        "ShrinkPolicy":{"shape":"ShrinkPolicy"}
+        "ShrinkPolicy":{"shape":"ShrinkPolicy"},
+        "ReconfigurationType":{"shape":"ReconfigurationType"},
+        "Configurations":{"shape":"ConfigurationList"}
       }
     },
     "InstanceGroupModifyConfigList":{
@@ -1128,6 +1826,7 @@
         "PROVISIONING",
         "BOOTSTRAPPING",
         "RUNNING",
+        "RECONFIGURING",
         "RESIZING",
         "SUSPENDED",
         "TERMINATING",
@@ -1264,7 +1963,8 @@
         "BidPrice":{"shape":"XmlStringMaxLen256"},
         "BidPriceAsPercentageOfOnDemandPrice":{"shape":"NonNegativeDouble"},
         "EbsConfiguration":{"shape":"EbsConfiguration"},
-        "Configurations":{"shape":"ConfigurationList"}
+        "Configurations":{"shape":"ConfigurationList"},
+        "CustomAmiId":{"shape":"XmlStringMaxLen256"}
       }
     },
     "InstanceTypeConfigList":{
@@ -1280,7 +1980,8 @@
         "BidPriceAsPercentageOfOnDemandPrice":{"shape":"NonNegativeDouble"},
         "Configurations":{"shape":"ConfigurationList"},
         "EbsBlockDevices":{"shape":"EbsBlockDeviceList"},
-        "EbsOptimized":{"shape":"BooleanObject"}
+        "EbsOptimized":{"shape":"BooleanObject"},
+        "CustomAmiId":{"shape":"XmlStringMaxLen256"}
       }
     },
     "InstanceTypeSpecificationList":{
@@ -1322,6 +2023,7 @@
         "JobFlowId":{"shape":"XmlStringMaxLen256"},
         "Name":{"shape":"XmlStringMaxLen256"},
         "LogUri":{"shape":"XmlString"},
+        "LogEncryptionKmsKeyId":{"shape":"XmlString"},
         "AmiVersion":{"shape":"XmlStringMaxLen256"},
         "ExecutionStatusDetail":{"shape":"JobFlowExecutionStatusDetail"},
         "Instances":{"shape":"JobFlowInstancesDetail"},
@@ -1383,6 +2085,7 @@
         "Placement":{"shape":"PlacementType"},
         "KeepJobFlowAliveWhenNoSteps":{"shape":"Boolean"},
         "TerminationProtected":{"shape":"Boolean"},
+        "UnhealthyNodeReplacement":{"shape":"BooleanObject"},
         "HadoopVersion":{"shape":"XmlStringMaxLen256"},
         "Ec2SubnetId":{"shape":"XmlStringMaxLen256"},
         "Ec2SubnetIds":{"shape":"XmlStringMaxLen256List"},
@@ -1413,7 +2116,22 @@
         "Placement":{"shape":"PlacementType"},
         "KeepJobFlowAliveWhenNoSteps":{"shape":"Boolean"},
         "TerminationProtected":{"shape":"Boolean"},
+        "UnhealthyNodeReplacement":{"shape":"BooleanObject"},
         "HadoopVersion":{"shape":"XmlStringMaxLen256"}
+      }
+    },
+    "KerberosAttributes":{
+      "type":"structure",
+      "required":[
+        "Realm",
+        "KdcAdminPassword"
+      ],
+      "members":{
+        "Realm":{"shape":"XmlStringMaxLen256"},
+        "KdcAdminPassword":{"shape":"XmlStringMaxLen256"},
+        "CrossRealmTrustPrincipalPassword":{"shape":"XmlStringMaxLen256"},
+        "ADDomainJoinUser":{"shape":"XmlStringMaxLen256"},
+        "ADDomainJoinPassword":{"shape":"XmlStringMaxLen256"}
       }
     },
     "KeyValue":{
@@ -1508,6 +2226,39 @@
         "Marker":{"shape":"Marker"}
       }
     },
+    "ListNotebookExecutionsInput":{
+      "type":"structure",
+      "members":{
+        "EditorId":{"shape":"XmlStringMaxLen256"},
+        "Status":{"shape":"NotebookExecutionStatus"},
+        "From":{"shape":"Date"},
+        "To":{"shape":"Date"},
+        "Marker":{"shape":"Marker"},
+        "ExecutionEngineId":{"shape":"XmlString"}
+      }
+    },
+    "ListNotebookExecutionsOutput":{
+      "type":"structure",
+      "members":{
+        "NotebookExecutions":{"shape":"NotebookExecutionSummaryList"},
+        "Marker":{"shape":"Marker"}
+      }
+    },
+    "ListReleaseLabelsInput":{
+      "type":"structure",
+      "members":{
+        "Filters":{"shape":"ReleaseLabelFilter"},
+        "NextToken":{"shape":"String"},
+        "MaxResults":{"shape":"MaxResultsNumber"}
+      }
+    },
+    "ListReleaseLabelsOutput":{
+      "type":"structure",
+      "members":{
+        "ReleaseLabels":{"shape":"StringList"},
+        "NextToken":{"shape":"String"}
+      }
+    },
     "ListSecurityConfigurationsInput":{
       "type":"structure",
       "members":{
@@ -1538,6 +2289,56 @@
         "Marker":{"shape":"Marker"}
       }
     },
+    "ListStudioSessionMappingsInput":{
+      "type":"structure",
+      "members":{
+        "StudioId":{"shape":"XmlStringMaxLen256"},
+        "IdentityType":{"shape":"IdentityType"},
+        "Marker":{"shape":"Marker"}
+      }
+    },
+    "ListStudioSessionMappingsOutput":{
+      "type":"structure",
+      "members":{
+        "SessionMappings":{"shape":"SessionMappingSummaryList"},
+        "Marker":{"shape":"Marker"}
+      }
+    },
+    "ListStudiosInput":{
+      "type":"structure",
+      "members":{
+        "Marker":{"shape":"Marker"}
+      }
+    },
+    "ListStudiosOutput":{
+      "type":"structure",
+      "members":{
+        "Studios":{"shape":"StudioSummaryList"},
+        "Marker":{"shape":"Marker"}
+      }
+    },
+    "ListSupportedInstanceTypesInput":{
+      "type":"structure",
+      "required":["ReleaseLabel"],
+      "members":{
+        "ReleaseLabel":{"shape":"String"},
+        "Marker":{"shape":"String"}
+      }
+    },
+    "ListSupportedInstanceTypesOutput":{
+      "type":"structure",
+      "members":{
+        "SupportedInstanceTypes":{"shape":"SupportedInstanceTypesList"},
+        "Marker":{"shape":"String"}
+      }
+    },
+    "Long":{"type":"long"},
+    "ManagedScalingPolicy":{
+      "type":"structure",
+      "members":{
+        "ComputeLimits":{"shape":"ComputeLimits"}
+      }
+    },
     "Marker":{"type":"string"},
     "MarketType":{
       "type":"string",
@@ -1545,6 +2346,11 @@
         "ON_DEMAND",
         "SPOT"
       ]
+    },
+    "MaxResultsNumber":{
+      "type":"integer",
+      "max":100,
+      "min":1
     },
     "MetricDimension":{
       "type":"structure",
@@ -1556,6 +2362,20 @@
     "MetricDimensionList":{
       "type":"list",
       "member":{"shape":"MetricDimension"}
+    },
+    "ModifyClusterInput":{
+      "type":"structure",
+      "required":["ClusterId"],
+      "members":{
+        "ClusterId":{"shape":"String"},
+        "StepConcurrencyLevel":{"shape":"Integer"}
+      }
+    },
+    "ModifyClusterOutput":{
+      "type":"structure",
+      "members":{
+        "StepConcurrencyLevel":{"shape":"Integer"}
+      }
     },
     "ModifyInstanceFleetInput":{
       "type":"structure",
@@ -1583,12 +2403,189 @@
       "type":"double",
       "min":0.0
     },
+    "NotebookExecution":{
+      "type":"structure",
+      "members":{
+        "NotebookExecutionId":{"shape":"XmlStringMaxLen256"},
+        "EditorId":{"shape":"XmlStringMaxLen256"},
+        "ExecutionEngine":{"shape":"ExecutionEngineConfig"},
+        "NotebookExecutionName":{"shape":"XmlStringMaxLen256"},
+        "NotebookParams":{"shape":"XmlString"},
+        "Status":{"shape":"NotebookExecutionStatus"},
+        "StartTime":{"shape":"Date"},
+        "EndTime":{"shape":"Date"},
+        "Arn":{"shape":"XmlStringMaxLen256"},
+        "OutputNotebookURI":{"shape":"XmlString"},
+        "LastStateChangeReason":{"shape":"XmlString"},
+        "NotebookInstanceSecurityGroupId":{"shape":"XmlStringMaxLen256"},
+        "Tags":{"shape":"TagList"},
+        "NotebookS3Location":{"shape":"NotebookS3LocationForOutput"},
+        "OutputNotebookS3Location":{"shape":"OutputNotebookS3LocationForOutput"},
+        "OutputNotebookFormat":{"shape":"OutputNotebookFormat"},
+        "EnvironmentVariables":{"shape":"EnvironmentVariablesMap"}
+      }
+    },
+    "NotebookExecutionStatus":{
+      "type":"string",
+      "enum":[
+        "START_PENDING",
+        "STARTING",
+        "RUNNING",
+        "FINISHING",
+        "FINISHED",
+        "FAILING",
+        "FAILED",
+        "STOP_PENDING",
+        "STOPPING",
+        "STOPPED"
+      ]
+    },
+    "NotebookExecutionSummary":{
+      "type":"structure",
+      "members":{
+        "NotebookExecutionId":{"shape":"XmlStringMaxLen256"},
+        "EditorId":{"shape":"XmlStringMaxLen256"},
+        "NotebookExecutionName":{"shape":"XmlStringMaxLen256"},
+        "Status":{"shape":"NotebookExecutionStatus"},
+        "StartTime":{"shape":"Date"},
+        "EndTime":{"shape":"Date"},
+        "NotebookS3Location":{"shape":"NotebookS3LocationForOutput"},
+        "ExecutionEngineId":{"shape":"XmlString"}
+      }
+    },
+    "NotebookExecutionSummaryList":{
+      "type":"list",
+      "member":{"shape":"NotebookExecutionSummary"}
+    },
+    "NotebookS3LocationForOutput":{
+      "type":"structure",
+      "members":{
+        "Bucket":{"shape":"XmlStringMaxLen256"},
+        "Key":{"shape":"UriString"}
+      }
+    },
+    "NotebookS3LocationFromInput":{
+      "type":"structure",
+      "members":{
+        "Bucket":{"shape":"XmlStringMaxLen256"},
+        "Key":{"shape":"UriString"}
+      }
+    },
+    "OSRelease":{
+      "type":"structure",
+      "members":{
+        "Label":{"shape":"String"}
+      }
+    },
+    "OSReleaseList":{
+      "type":"list",
+      "member":{"shape":"OSRelease"}
+    },
+    "OnDemandCapacityReservationOptions":{
+      "type":"structure",
+      "members":{
+        "UsageStrategy":{"shape":"OnDemandCapacityReservationUsageStrategy"},
+        "CapacityReservationPreference":{"shape":"OnDemandCapacityReservationPreference"},
+        "CapacityReservationResourceGroupArn":{"shape":"XmlStringMaxLen256"}
+      }
+    },
+    "OnDemandCapacityReservationPreference":{
+      "type":"string",
+      "enum":[
+        "open",
+        "none"
+      ]
+    },
+    "OnDemandCapacityReservationUsageStrategy":{
+      "type":"string",
+      "enum":["use-capacity-reservations-first"]
+    },
+    "OnDemandProvisioningAllocationStrategy":{
+      "type":"string",
+      "enum":["lowest-price"]
+    },
+    "OnDemandProvisioningSpecification":{
+      "type":"structure",
+      "required":["AllocationStrategy"],
+      "members":{
+        "AllocationStrategy":{"shape":"OnDemandProvisioningAllocationStrategy"},
+        "CapacityReservationOptions":{"shape":"OnDemandCapacityReservationOptions"}
+      }
+    },
+    "OnDemandResizingSpecification":{
+      "type":"structure",
+      "required":["TimeoutDurationMinutes"],
+      "members":{
+        "TimeoutDurationMinutes":{"shape":"WholeNumber"}
+      }
+    },
+    "OptionalArnType":{
+      "type":"string",
+      "max":2048,
+      "min":0
+    },
+    "OutputNotebookFormat":{
+      "type":"string",
+      "enum":["HTML"]
+    },
+    "OutputNotebookS3LocationForOutput":{
+      "type":"structure",
+      "members":{
+        "Bucket":{"shape":"XmlStringMaxLen256"},
+        "Key":{"shape":"UriString"}
+      }
+    },
+    "OutputNotebookS3LocationFromInput":{
+      "type":"structure",
+      "members":{
+        "Bucket":{"shape":"XmlStringMaxLen256"},
+        "Key":{"shape":"UriString"}
+      }
+    },
+    "PlacementGroupConfig":{
+      "type":"structure",
+      "required":["InstanceRole"],
+      "members":{
+        "InstanceRole":{"shape":"InstanceRoleType"},
+        "PlacementStrategy":{"shape":"PlacementGroupStrategy"}
+      }
+    },
+    "PlacementGroupConfigList":{
+      "type":"list",
+      "member":{"shape":"PlacementGroupConfig"}
+    },
+    "PlacementGroupStrategy":{
+      "type":"string",
+      "enum":[
+        "SPREAD",
+        "PARTITION",
+        "CLUSTER",
+        "NONE"
+      ]
+    },
     "PlacementType":{
       "type":"structure",
       "members":{
         "AvailabilityZone":{"shape":"XmlString"},
         "AvailabilityZones":{"shape":"XmlStringMaxLen256List"}
       }
+    },
+    "Port":{
+      "type":"integer",
+      "max":65535,
+      "min":-1
+    },
+    "PortRange":{
+      "type":"structure",
+      "required":["MinRange"],
+      "members":{
+        "MinRange":{"shape":"Port"},
+        "MaxRange":{"shape":"Port"}
+      }
+    },
+    "PortRanges":{
+      "type":"list",
+      "member":{"shape":"PortRange"}
     },
     "PutAutoScalingPolicyInput":{
       "type":"structure",
@@ -1608,7 +2605,63 @@
       "members":{
         "ClusterId":{"shape":"ClusterId"},
         "InstanceGroupId":{"shape":"InstanceGroupId"},
-        "AutoScalingPolicy":{"shape":"AutoScalingPolicyDescription"}
+        "AutoScalingPolicy":{"shape":"AutoScalingPolicyDescription"},
+        "ClusterArn":{"shape":"ArnType"}
+      }
+    },
+    "PutAutoTerminationPolicyInput":{
+      "type":"structure",
+      "required":["ClusterId"],
+      "members":{
+        "ClusterId":{"shape":"ClusterId"},
+        "AutoTerminationPolicy":{"shape":"AutoTerminationPolicy"}
+      }
+    },
+    "PutAutoTerminationPolicyOutput":{
+      "type":"structure",
+      "members":{
+      }
+    },
+    "PutBlockPublicAccessConfigurationInput":{
+      "type":"structure",
+      "required":["BlockPublicAccessConfiguration"],
+      "members":{
+        "BlockPublicAccessConfiguration":{"shape":"BlockPublicAccessConfiguration"}
+      }
+    },
+    "PutBlockPublicAccessConfigurationOutput":{
+      "type":"structure",
+      "members":{
+      }
+    },
+    "PutManagedScalingPolicyInput":{
+      "type":"structure",
+      "required":[
+        "ClusterId",
+        "ManagedScalingPolicy"
+      ],
+      "members":{
+        "ClusterId":{"shape":"ClusterId"},
+        "ManagedScalingPolicy":{"shape":"ManagedScalingPolicy"}
+      }
+    },
+    "PutManagedScalingPolicyOutput":{
+      "type":"structure",
+      "members":{
+      }
+    },
+    "ReconfigurationType":{
+      "type":"string",
+      "enum":[
+        "OVERWRITE",
+        "MERGE"
+      ]
+    },
+    "ReleaseLabelFilter":{
+      "type":"structure",
+      "members":{
+        "Prefix":{"shape":"String"},
+        "Application":{"shape":"String"}
       }
     },
     "RemoveAutoScalingPolicyInput":{
@@ -1623,6 +2676,30 @@
       }
     },
     "RemoveAutoScalingPolicyOutput":{
+      "type":"structure",
+      "members":{
+      }
+    },
+    "RemoveAutoTerminationPolicyInput":{
+      "type":"structure",
+      "required":["ClusterId"],
+      "members":{
+        "ClusterId":{"shape":"ClusterId"}
+      }
+    },
+    "RemoveAutoTerminationPolicyOutput":{
+      "type":"structure",
+      "members":{
+      }
+    },
+    "RemoveManagedScalingPolicyInput":{
+      "type":"structure",
+      "required":["ClusterId"],
+      "members":{
+        "ClusterId":{"shape":"ClusterId"}
+      }
+    },
+    "RemoveManagedScalingPolicyOutput":{
       "type":"structure",
       "members":{
       }
@@ -1660,6 +2737,7 @@
       "members":{
         "Name":{"shape":"XmlStringMaxLen256"},
         "LogUri":{"shape":"XmlString"},
+        "LogEncryptionKmsKeyId":{"shape":"XmlString"},
         "AdditionalInfo":{"shape":"XmlString"},
         "AmiVersion":{"shape":"XmlStringMaxLen256"},
         "ReleaseLabel":{"shape":"XmlStringMaxLen256"},
@@ -1679,13 +2757,22 @@
         "ScaleDownBehavior":{"shape":"ScaleDownBehavior"},
         "CustomAmiId":{"shape":"XmlStringMaxLen256"},
         "EbsRootVolumeSize":{"shape":"Integer"},
-        "RepoUpgradeOnBoot":{"shape":"RepoUpgradeOnBoot"}
+        "RepoUpgradeOnBoot":{"shape":"RepoUpgradeOnBoot"},
+        "KerberosAttributes":{"shape":"KerberosAttributes"},
+        "StepConcurrencyLevel":{"shape":"Integer"},
+        "ManagedScalingPolicy":{"shape":"ManagedScalingPolicy"},
+        "PlacementGroupConfigs":{"shape":"PlacementGroupConfigList"},
+        "AutoTerminationPolicy":{"shape":"AutoTerminationPolicy"},
+        "OSReleaseLabel":{"shape":"XmlStringMaxLen256"},
+        "EbsRootVolumeIops":{"shape":"Integer"},
+        "EbsRootVolumeThroughput":{"shape":"Integer"}
       }
     },
     "RunJobFlowOutput":{
       "type":"structure",
       "members":{
-        "JobFlowId":{"shape":"XmlStringMaxLen256"}
+        "JobFlowId":{"shape":"XmlStringMaxLen256"},
+        "ClusterArn":{"shape":"ArnType"}
       }
     },
     "ScaleDownBehavior":{
@@ -1762,6 +2849,44 @@
       "type":"list",
       "member":{"shape":"XmlStringMaxLen256"}
     },
+    "SessionMappingDetail":{
+      "type":"structure",
+      "members":{
+        "StudioId":{"shape":"XmlStringMaxLen256"},
+        "IdentityId":{"shape":"XmlStringMaxLen256"},
+        "IdentityName":{"shape":"XmlStringMaxLen256"},
+        "IdentityType":{"shape":"IdentityType"},
+        "SessionPolicyArn":{"shape":"XmlStringMaxLen256"},
+        "CreationTime":{"shape":"Date"},
+        "LastModifiedTime":{"shape":"Date"}
+      }
+    },
+    "SessionMappingSummary":{
+      "type":"structure",
+      "members":{
+        "StudioId":{"shape":"XmlStringMaxLen256"},
+        "IdentityId":{"shape":"XmlStringMaxLen256"},
+        "IdentityName":{"shape":"XmlStringMaxLen256"},
+        "IdentityType":{"shape":"IdentityType"},
+        "SessionPolicyArn":{"shape":"XmlStringMaxLen256"},
+        "CreationTime":{"shape":"Date"}
+      }
+    },
+    "SessionMappingSummaryList":{
+      "type":"list",
+      "member":{"shape":"SessionMappingSummary"}
+    },
+    "SetKeepJobFlowAliveWhenNoStepsInput":{
+      "type":"structure",
+      "required":[
+        "JobFlowIds",
+        "KeepJobFlowAliveWhenNoSteps"
+      ],
+      "members":{
+        "JobFlowIds":{"shape":"XmlStringList"},
+        "KeepJobFlowAliveWhenNoSteps":{"shape":"Boolean"}
+      }
+    },
     "SetTerminationProtectionInput":{
       "type":"structure",
       "required":[
@@ -1771,6 +2896,17 @@
       "members":{
         "JobFlowIds":{"shape":"XmlStringList"},
         "TerminationProtected":{"shape":"Boolean"}
+      }
+    },
+    "SetUnhealthyNodeReplacementInput":{
+      "type":"structure",
+      "required":[
+        "JobFlowIds",
+        "UnhealthyNodeReplacement"
+      ],
+      "members":{
+        "JobFlowIds":{"shape":"XmlStringList"},
+        "UnhealthyNodeReplacement":{"shape":"BooleanObject"}
       }
     },
     "SetVisibleToAllUsersInput":{
@@ -1800,6 +2936,26 @@
         "CoolDown":{"shape":"Integer"}
       }
     },
+    "SimplifiedApplication":{
+      "type":"structure",
+      "members":{
+        "Name":{"shape":"String"},
+        "Version":{"shape":"String"}
+      }
+    },
+    "SimplifiedApplicationList":{
+      "type":"list",
+      "member":{"shape":"SimplifiedApplication"}
+    },
+    "SpotProvisioningAllocationStrategy":{
+      "type":"string",
+      "enum":[
+        "capacity-optimized",
+        "price-capacity-optimized",
+        "lowest-price",
+        "diversified"
+      ]
+    },
     "SpotProvisioningSpecification":{
       "type":"structure",
       "required":[
@@ -1809,7 +2965,8 @@
       "members":{
         "TimeoutDurationMinutes":{"shape":"WholeNumber"},
         "TimeoutAction":{"shape":"SpotProvisioningTimeoutAction"},
-        "BlockDurationMinutes":{"shape":"WholeNumber"}
+        "BlockDurationMinutes":{"shape":"WholeNumber"},
+        "AllocationStrategy":{"shape":"SpotProvisioningAllocationStrategy"}
       }
     },
     "SpotProvisioningTimeoutAction":{
@@ -1818,6 +2975,40 @@
         "SWITCH_TO_ON_DEMAND",
         "TERMINATE_CLUSTER"
       ]
+    },
+    "SpotResizingSpecification":{
+      "type":"structure",
+      "required":["TimeoutDurationMinutes"],
+      "members":{
+        "TimeoutDurationMinutes":{"shape":"WholeNumber"}
+      }
+    },
+    "StartNotebookExecutionInput":{
+      "type":"structure",
+      "required":[
+        "ExecutionEngine",
+        "ServiceRole"
+      ],
+      "members":{
+        "EditorId":{"shape":"XmlStringMaxLen256"},
+        "RelativePath":{"shape":"XmlString"},
+        "NotebookExecutionName":{"shape":"XmlStringMaxLen256"},
+        "NotebookParams":{"shape":"XmlString"},
+        "ExecutionEngine":{"shape":"ExecutionEngineConfig"},
+        "ServiceRole":{"shape":"XmlString"},
+        "NotebookInstanceSecurityGroupId":{"shape":"XmlStringMaxLen256"},
+        "Tags":{"shape":"TagList"},
+        "NotebookS3Location":{"shape":"NotebookS3LocationFromInput"},
+        "OutputNotebookS3Location":{"shape":"OutputNotebookS3LocationFromInput"},
+        "OutputNotebookFormat":{"shape":"OutputNotebookFormat"},
+        "EnvironmentVariables":{"shape":"EnvironmentVariablesMap"}
+      }
+    },
+    "StartNotebookExecutionOutput":{
+      "type":"structure",
+      "members":{
+        "NotebookExecutionId":{"shape":"XmlStringMaxLen256"}
+      }
     },
     "Statistic":{
       "type":"string",
@@ -1836,8 +3027,16 @@
         "Name":{"shape":"String"},
         "Config":{"shape":"HadoopStepConfig"},
         "ActionOnFailure":{"shape":"ActionOnFailure"},
-        "Status":{"shape":"StepStatus"}
+        "Status":{"shape":"StepStatus"},
+        "ExecutionRoleArn":{"shape":"OptionalArnType"}
       }
+    },
+    "StepCancellationOption":{
+      "type":"string",
+      "enum":[
+        "SEND_INTERRUPT",
+        "TERMINATE_PROCESS"
+      ]
     },
     "StepConfig":{
       "type":"structure",
@@ -1959,6 +3158,13 @@
         "EndDateTime":{"shape":"Date"}
       }
     },
+    "StopNotebookExecutionInput":{
+      "type":"structure",
+      "required":["NotebookExecutionId"],
+      "members":{
+        "NotebookExecutionId":{"shape":"XmlStringMaxLen256"}
+      }
+    },
     "String":{"type":"string"},
     "StringList":{
       "type":"list",
@@ -1968,6 +3174,72 @@
       "type":"map",
       "key":{"shape":"String"},
       "value":{"shape":"String"}
+    },
+    "Studio":{
+      "type":"structure",
+      "members":{
+        "StudioId":{"shape":"XmlStringMaxLen256"},
+        "StudioArn":{"shape":"XmlStringMaxLen256"},
+        "Name":{"shape":"XmlStringMaxLen256"},
+        "Description":{"shape":"XmlStringMaxLen256"},
+        "AuthMode":{"shape":"AuthMode"},
+        "VpcId":{"shape":"XmlStringMaxLen256"},
+        "SubnetIds":{"shape":"SubnetIdList"},
+        "ServiceRole":{"shape":"XmlString"},
+        "UserRole":{"shape":"XmlString"},
+        "WorkspaceSecurityGroupId":{"shape":"XmlStringMaxLen256"},
+        "EngineSecurityGroupId":{"shape":"XmlStringMaxLen256"},
+        "Url":{"shape":"XmlString"},
+        "CreationTime":{"shape":"Date"},
+        "DefaultS3Location":{"shape":"XmlString"},
+        "IdpAuthUrl":{"shape":"XmlString"},
+        "IdpRelayStateParameterName":{"shape":"XmlStringMaxLen256"},
+        "Tags":{"shape":"TagList"},
+        "IdcInstanceArn":{"shape":"ArnType"},
+        "TrustedIdentityPropagationEnabled":{"shape":"BooleanObject"},
+        "IdcUserAssignment":{"shape":"IdcUserAssignment"},
+        "EncryptionKeyArn":{"shape":"XmlString"}
+      }
+    },
+    "StudioSummary":{
+      "type":"structure",
+      "members":{
+        "StudioId":{"shape":"XmlStringMaxLen256"},
+        "Name":{"shape":"XmlStringMaxLen256"},
+        "VpcId":{"shape":"XmlStringMaxLen256"},
+        "Description":{"shape":"XmlStringMaxLen256"},
+        "Url":{"shape":"XmlStringMaxLen256"},
+        "AuthMode":{"shape":"AuthMode"},
+        "CreationTime":{"shape":"Date"}
+      }
+    },
+    "StudioSummaryList":{
+      "type":"list",
+      "member":{"shape":"StudioSummary"}
+    },
+    "SubnetIdList":{
+      "type":"list",
+      "member":{"shape":"String"}
+    },
+    "SupportedInstanceType":{
+      "type":"structure",
+      "members":{
+        "Type":{"shape":"String"},
+        "MemoryGB":{"shape":"Float"},
+        "StorageGB":{"shape":"Integer"},
+        "VCPU":{"shape":"Integer"},
+        "Is64BitsOnly":{"shape":"Boolean"},
+        "InstanceFamilyId":{"shape":"String"},
+        "EbsOptimizedAvailable":{"shape":"Boolean"},
+        "EbsOptimizedByDefault":{"shape":"Boolean"},
+        "NumberOfDisks":{"shape":"Integer"},
+        "EbsStorageOnly":{"shape":"Boolean"},
+        "Architecture":{"shape":"String"}
+      }
+    },
+    "SupportedInstanceTypesList":{
+      "type":"list",
+      "member":{"shape":"SupportedInstanceType"}
     },
     "SupportedProductConfig":{
       "type":"structure",
@@ -1997,6 +3269,10 @@
       "members":{
         "JobFlowIds":{"shape":"XmlStringList"}
       }
+    },
+    "ThroughputVal":{
+      "type":"integer",
+      "min":0
     },
     "Unit":{
       "type":"string",
@@ -2030,6 +3306,47 @@
         "COUNT_PER_SECOND"
       ]
     },
+    "UpdateStudioInput":{
+      "type":"structure",
+      "required":["StudioId"],
+      "members":{
+        "StudioId":{"shape":"XmlStringMaxLen256"},
+        "Name":{"shape":"XmlStringMaxLen256"},
+        "Description":{"shape":"XmlStringMaxLen256"},
+        "SubnetIds":{"shape":"SubnetIdList"},
+        "DefaultS3Location":{"shape":"XmlString"},
+        "EncryptionKeyArn":{"shape":"XmlString"}
+      }
+    },
+    "UpdateStudioSessionMappingInput":{
+      "type":"structure",
+      "required":[
+        "StudioId",
+        "IdentityType",
+        "SessionPolicyArn"
+      ],
+      "members":{
+        "StudioId":{"shape":"XmlStringMaxLen256"},
+        "IdentityId":{"shape":"XmlStringMaxLen256"},
+        "IdentityName":{"shape":"XmlStringMaxLen256"},
+        "IdentityType":{"shape":"IdentityType"},
+        "SessionPolicyArn":{"shape":"XmlStringMaxLen256"}
+      }
+    },
+    "UriString":{
+      "type":"string",
+      "max":10280,
+      "min":1,
+      "pattern":"[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDBFF-\\uDC00\\uDFFF\\r\\n\\t]*"
+    },
+    "UsernamePassword":{
+      "type":"structure",
+      "members":{
+        "Username":{"shape":"XmlStringMaxLen256"},
+        "Password":{"shape":"XmlStringMaxLen256"}
+      },
+      "sensitive":true
+    },
     "VolumeSpecification":{
       "type":"structure",
       "required":[
@@ -2039,7 +3356,8 @@
       "members":{
         "VolumeType":{"shape":"String"},
         "Iops":{"shape":"Integer"},
-        "SizeInGB":{"shape":"Integer"}
+        "SizeInGB":{"shape":"Integer"},
+        "Throughput":{"shape":"ThroughputVal"}
       }
     },
     "WholeNumber":{

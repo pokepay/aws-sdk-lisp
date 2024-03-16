@@ -7,18 +7,26 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/streams.dynamodb/api)
-(common-lisp:progn
- (common-lisp:defclass streams.dynamodb-request (aws-sdk/request:request)
-                       common-lisp:nil
-                       (:default-initargs :service "streams.dynamodb"))
- (common-lisp:export 'streams.dynamodb-request))
 (common-lisp:progn
  (common-lisp:define-condition streams.dynamodb-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'streams.dynamodb-error))
+(common-lisp:progn
+ (common-lisp:defclass streams.dynamodb-request
+                       (aws-sdk/json-request:json-request) common-lisp:nil
+                       (:default-initargs :service "streams.dynamodb"
+                        :api-version "2012-08-10" :host-prefix
+                        "streams.dynamodb" :signing-name "dynamodb"
+                        :global-host common-lisp:nil :target-prefix
+                        "DynamoDBStreams_20120810" :json-version "1.0"))
+ (common-lisp:export 'streams.dynamodb-request))
 (common-lisp:defvar *error-map*
   '(("ExpiredIteratorException" . expired-iterator-exception)
     ("InternalServerError" . internal-server-error)
@@ -27,7 +35,7 @@
     ("TrimmedDataAccessException" . trimmed-data-access-exception)))
 (common-lisp:progn
  (common-lisp:deftype attribute-map () 'common-lisp:hash-table)
- (common-lisp:defun |make-attribute-map| (aws-sdk/generator/shape::key-values)
+ (common-lisp:defun make-attribute-map (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
      (common-lisp:list
@@ -142,7 +150,7 @@
 (common-lisp:progn
  (common-lisp:deftype binary-set-attribute-value ()
    '(trivial-types:proper-list binary-attribute-value))
- (common-lisp:defun |make-binary-set-attribute-value|
+ (common-lisp:defun make-binary-set-attribute-value
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list binary-attribute-value))
@@ -431,7 +439,7 @@
 (common-lisp:progn
  (common-lisp:deftype key-schema ()
    '(trivial-types:proper-list key-schema-element))
- (common-lisp:defun |make-key-schema|
+ (common-lisp:defun make-key-schema
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list key-schema-element))
@@ -482,7 +490,7 @@
 (common-lisp:progn
  (common-lisp:deftype list-attribute-value ()
    '(trivial-types:proper-list attribute-value))
- (common-lisp:defun |make-list-attribute-value|
+ (common-lisp:defun make-list-attribute-value
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list attribute-value))
@@ -566,7 +574,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype map-attribute-value () 'common-lisp:hash-table)
- (common-lisp:defun |make-map-attribute-value|
+ (common-lisp:defun make-map-attribute-value
                     (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
@@ -577,7 +585,7 @@
 (common-lisp:progn
  (common-lisp:deftype number-set-attribute-value ()
    '(trivial-types:proper-list number-attribute-value))
- (common-lisp:defun |make-number-set-attribute-value|
+ (common-lisp:defun make-number-set-attribute-value
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list number-attribute-value))
@@ -661,7 +669,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype record-list () '(trivial-types:proper-list record))
- (common-lisp:defun |make-record-list|
+ (common-lisp:defun make-record-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list record))
@@ -759,7 +767,7 @@
 (common-lisp:progn
  (common-lisp:deftype shard-description-list ()
    '(trivial-types:proper-list shard))
- (common-lisp:defun |make-shard-description-list|
+ (common-lisp:defun make-shard-description-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list shard))
@@ -908,7 +916,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype stream-list () '(trivial-types:proper-list stream))
- (common-lisp:defun |make-stream-list|
+ (common-lisp:defun make-stream-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list stream))
@@ -997,7 +1005,7 @@
 (common-lisp:progn
  (common-lisp:deftype string-set-attribute-value ()
    '(trivial-types:proper-list string-attribute-value))
- (common-lisp:defun |make-string-set-attribute-value|
+ (common-lisp:defun make-string-set-attribute-value
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string-attribute-value))
@@ -1026,7 +1034,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'streams.dynamodb-request aws-sdk/generator/operation::input "POST" "/"
-        "DescribeStream" "2012-08-10"))
+        "DescribeStream"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-stream))
 (common-lisp:progn
@@ -1042,7 +1050,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'streams.dynamodb-request aws-sdk/generator/operation::input "POST" "/"
-        "GetRecords" "2012-08-10"))
+        "GetRecords"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-records))
 (common-lisp:progn
@@ -1061,7 +1069,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'streams.dynamodb-request aws-sdk/generator/operation::input "POST" "/"
-        "GetShardIterator" "2012-08-10"))
+        "GetShardIterator"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-shard-iterator))
 (common-lisp:progn
@@ -1079,6 +1087,6 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'streams.dynamodb-request aws-sdk/generator/operation::input "POST" "/"
-        "ListStreams" "2012-08-10"))
+        "ListStreams"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-streams))

@@ -7,17 +7,26 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/support/api)
-(common-lisp:progn
- (common-lisp:defclass support-request (aws-sdk/request:request)
-                       common-lisp:nil (:default-initargs :service "support"))
- (common-lisp:export 'support-request))
 (common-lisp:progn
  (common-lisp:define-condition support-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'support-error))
+(common-lisp:progn
+ (common-lisp:defclass support-request (aws-sdk/json-request:json-request)
+                       common-lisp:nil
+                       (:default-initargs :service "support" :api-version
+                        "2013-04-15" :host-prefix "support" :signing-name
+                        common-lisp:nil :global-host common-lisp:nil
+                        :target-prefix "AWSSupport_20130415" :json-version
+                        "1.1"))
+ (common-lisp:export 'support-request))
 (common-lisp:defvar *error-map*
   '(("AttachmentIdNotFound" . attachment-id-not-found)
     ("AttachmentLimitExceeded" . attachment-limit-exceeded)
@@ -27,7 +36,8 @@
     ("CaseCreationLimitExceeded" . case-creation-limit-exceeded)
     ("CaseIdNotFound" . case-id-not-found)
     ("DescribeAttachmentLimitExceeded" . describe-attachment-limit-exceeded)
-    ("InternalServerError" . internal-server-error)))
+    ("InternalServerError" . internal-server-error)
+    ("ThrottlingException" . throttling-exception)))
 (common-lisp:progn
  (common-lisp:defstruct
      (add-attachments-to-set-request (:copier common-lisp:nil)
@@ -279,7 +289,7 @@
 (common-lisp:progn
  (common-lisp:deftype attachment-set ()
    '(trivial-types:proper-list attachment-details))
- (common-lisp:defun |make-attachment-set|
+ (common-lisp:defun make-attachment-set
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list attachment-details))
@@ -310,11 +320,12 @@
                     'attachment-set-size-limit-exceeded-message)))
 (common-lisp:progn
  (common-lisp:deftype attachments () '(trivial-types:proper-list attachment))
- (common-lisp:defun |make-attachments|
+ (common-lisp:defun make-attachments
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list attachment))
    aws-sdk/generator/shape::members))
+(common-lisp:deftype availability-error-message () 'common-lisp:string)
 (common-lisp:deftype before-time () 'common-lisp:string)
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:progn
@@ -447,7 +458,7 @@
 (common-lisp:deftype case-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype case-id-list () '(trivial-types:proper-list case-id))
- (common-lisp:defun |make-case-id-list|
+ (common-lisp:defun make-case-id-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list case-id))
@@ -461,7 +472,7 @@
   (common-lisp:list 'case-id-not-found 'case-id-not-found-message)))
 (common-lisp:progn
  (common-lisp:deftype case-list () '(trivial-types:proper-list case-details))
- (common-lisp:defun |make-case-list|
+ (common-lisp:defun make-case-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list case-details))
@@ -500,7 +511,7 @@
 (common-lisp:deftype category-code () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype category-list () '(trivial-types:proper-list category))
- (common-lisp:defun |make-category-list|
+ (common-lisp:defun make-category-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list category))
@@ -510,18 +521,19 @@
 (common-lisp:progn
  (common-lisp:deftype cc-email-address-list ()
    '(trivial-types:proper-list cc-email-address))
- (common-lisp:defun |make-cc-email-address-list|
+ (common-lisp:defun make-cc-email-address-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list cc-email-address))
    aws-sdk/generator/shape::members))
+(common-lisp:deftype code () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (communication (:copier common-lisp:nil)
       (:conc-name "struct-shape-communication-"))
    (case-id common-lisp:nil :type (common-lisp:or case-id common-lisp:null))
    (body common-lisp:nil :type
-    (common-lisp:or communication-body common-lisp:null))
+    (common-lisp:or validated-communication-body common-lisp:null))
    (submitted-by common-lisp:nil :type
     (common-lisp:or submitted-by common-lisp:null))
    (time-created common-lisp:nil :type
@@ -577,10 +589,68 @@
 (common-lisp:progn
  (common-lisp:deftype communication-list ()
    '(trivial-types:proper-list communication))
- (common-lisp:defun |make-communication-list|
+ (common-lisp:defun make-communication-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list communication))
+   aws-sdk/generator/shape::members))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (communication-type-options (:copier common-lisp:nil)
+      (:conc-name "struct-shape-communication-type-options-"))
+   (type common-lisp:nil :type (common-lisp:or type common-lisp:null))
+   (supported-hours common-lisp:nil :type
+    (common-lisp:or supported-hours-list common-lisp:null))
+   (dates-without-support common-lisp:nil :type
+    (common-lisp:or dates-without-support-list common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'communication-type-options
+                    'make-communication-type-options))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          communication-type-options))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          communication-type-options))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'type))
+      (common-lisp:list
+       (common-lisp:cons "type"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'supported-hours))
+      (common-lisp:list
+       (common-lisp:cons "supportedHours"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'dates-without-support))
+      (common-lisp:list
+       (common-lisp:cons "datesWithoutSupport"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          communication-type-options))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:deftype communication-type-options-list ()
+   '(trivial-types:proper-list communication-type-options))
+ (common-lisp:defun make-communication-type-options-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list
+                            communication-type-options))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct
@@ -702,6 +772,46 @@
    common-lisp:nil))
 (common-lisp:deftype data ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (date-interval (:copier common-lisp:nil)
+      (:conc-name "struct-shape-date-interval-"))
+   (start-date-time common-lisp:nil :type
+    (common-lisp:or validated-date-time common-lisp:null))
+   (end-date-time common-lisp:nil :type
+    (common-lisp:or validated-date-time common-lisp:null)))
+ (common-lisp:export (common-lisp:list 'date-interval 'make-date-interval))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input date-interval))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input date-interval))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'start-date-time))
+      (common-lisp:list
+       (common-lisp:cons "startDateTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'end-date-time))
+      (common-lisp:list
+       (common-lisp:cons "endDateTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input date-interval))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:deftype dates-without-support-list ()
+   '(trivial-types:proper-list date-interval))
+ (common-lisp:defun make-dates-without-support-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list date-interval))
+   aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:define-condition describe-attachment-limit-exceeded
      (support-error)
@@ -1022,6 +1132,105 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
+     (describe-create-case-options-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-create-case-options-request-"))
+   (issue-type (common-lisp:error ":issuetype is required") :type
+    (common-lisp:or issue-type common-lisp:null))
+   (service-code (common-lisp:error ":servicecode is required") :type
+    (common-lisp:or service-code common-lisp:null))
+   (language (common-lisp:error ":language is required") :type
+    (common-lisp:or language common-lisp:null))
+   (category-code (common-lisp:error ":categorycode is required") :type
+    (common-lisp:or category-code common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'describe-create-case-options-request
+                    'make-describe-create-case-options-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-create-case-options-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-create-case-options-request))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'issue-type))
+      (common-lisp:list
+       (common-lisp:cons "issueType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'service-code))
+      (common-lisp:list
+       (common-lisp:cons "serviceCode"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'language))
+      (common-lisp:list
+       (common-lisp:cons "language"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'category-code))
+      (common-lisp:list
+       (common-lisp:cons "categoryCode"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-create-case-options-request))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (describe-create-case-options-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-create-case-options-response-"))
+   (language-availability common-lisp:nil :type
+    (common-lisp:or validated-language-availability common-lisp:null))
+   (communication-types common-lisp:nil :type
+    (common-lisp:or communication-type-options-list common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'describe-create-case-options-response
+                    'make-describe-create-case-options-response))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-create-case-options-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-create-case-options-response))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'language-availability))
+      (common-lisp:list
+       (common-lisp:cons "languageAvailability"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'communication-types))
+      (common-lisp:list
+       (common-lisp:cons "communicationTypes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-create-case-options-response))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
      (describe-services-request (:copier common-lisp:nil)
       (:conc-name "struct-shape-describe-services-request-"))
    (service-code-list common-lisp:nil :type
@@ -1150,6 +1359,86 @@
                         (
                          (aws-sdk/generator/shape::input
                           describe-severity-levels-response))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (describe-supported-languages-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-supported-languages-request-"))
+   (issue-type (common-lisp:error ":issuetype is required") :type
+    (common-lisp:or validated-issue-type-string common-lisp:null))
+   (service-code (common-lisp:error ":servicecode is required") :type
+    (common-lisp:or validated-service-code common-lisp:null))
+   (category-code (common-lisp:error ":categorycode is required") :type
+    (common-lisp:or validated-category-code common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'describe-supported-languages-request
+                    'make-describe-supported-languages-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-supported-languages-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-supported-languages-request))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'issue-type))
+      (common-lisp:list
+       (common-lisp:cons "issueType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'service-code))
+      (common-lisp:list
+       (common-lisp:cons "serviceCode"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'category-code))
+      (common-lisp:list
+       (common-lisp:cons "categoryCode"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-supported-languages-request))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (describe-supported-languages-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-supported-languages-response-"))
+   (supported-languages common-lisp:nil :type
+    (common-lisp:or supported-languages-list common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'describe-supported-languages-response
+                    'make-describe-supported-languages-response))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-supported-languages-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-supported-languages-response))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'supported-languages))
+      (common-lisp:list
+       (common-lisp:cons "supportedLanguages"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-supported-languages-response))
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
@@ -1418,8 +1707,10 @@
                          (aws-sdk/generator/shape::input
                           describe-trusted-advisor-checks-response))
    common-lisp:nil))
+(common-lisp:deftype display () 'common-lisp:string)
 (common-lisp:deftype display-id () 'common-lisp:string)
 (common-lisp:deftype double () 'common-lisp:double-float)
+(common-lisp:deftype end-time () 'common-lisp:string)
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:deftype expiry-time () 'common-lisp:string)
 (common-lisp:deftype file-name () 'common-lisp:string)
@@ -1644,14 +1935,14 @@
 (common-lisp:progn
  (common-lisp:deftype service-code-list ()
    '(trivial-types:proper-list service-code))
- (common-lisp:defun |make-service-code-list|
+ (common-lisp:defun make-service-code-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list service-code))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:deftype service-list () '(trivial-types:proper-list service))
- (common-lisp:defun |make-service-list|
+ (common-lisp:defun make-service-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list service))
@@ -1695,22 +1986,116 @@
 (common-lisp:progn
  (common-lisp:deftype severity-levels-list ()
    '(trivial-types:proper-list severity-level))
- (common-lisp:defun |make-severity-levels-list|
+ (common-lisp:defun make-severity-levels-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list severity-level))
    aws-sdk/generator/shape::members))
+(common-lisp:deftype start-time () 'common-lisp:string)
 (common-lisp:deftype status () 'common-lisp:string)
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype string-list () '(trivial-types:proper-list string))
- (common-lisp:defun |make-string-list|
+ (common-lisp:defun make-string-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:deftype subject () 'common-lisp:string)
 (common-lisp:deftype submitted-by () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:defstruct
+     (supported-hour (:copier common-lisp:nil)
+      (:conc-name "struct-shape-supported-hour-"))
+   (start-time common-lisp:nil :type
+    (common-lisp:or start-time common-lisp:null))
+   (end-time common-lisp:nil :type (common-lisp:or end-time common-lisp:null)))
+ (common-lisp:export (common-lisp:list 'supported-hour 'make-supported-hour))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input supported-hour))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input supported-hour))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'start-time))
+      (common-lisp:list
+       (common-lisp:cons "startTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'end-time))
+      (common-lisp:list
+       (common-lisp:cons "endTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input supported-hour))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:deftype supported-hours-list ()
+   '(trivial-types:proper-list supported-hour))
+ (common-lisp:defun make-supported-hours-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list supported-hour))
+   aws-sdk/generator/shape::members))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (supported-language (:copier common-lisp:nil)
+      (:conc-name "struct-shape-supported-language-"))
+   (code common-lisp:nil :type (common-lisp:or code common-lisp:null))
+   (language common-lisp:nil :type (common-lisp:or language common-lisp:null))
+   (display common-lisp:nil :type (common-lisp:or display common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'supported-language 'make-supported-language))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input supported-language))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input supported-language))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'code))
+      (common-lisp:list
+       (common-lisp:cons "code"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'language))
+      (common-lisp:list
+       (common-lisp:cons "language"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'display))
+      (common-lisp:list
+       (common-lisp:cons "display"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input supported-language))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:deftype supported-languages-list ()
+   '(trivial-types:proper-list supported-language))
+ (common-lisp:defun make-supported-languages-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list supported-language))
+   aws-sdk/generator/shape::members))
+(common-lisp:progn
+ (common-lisp:define-condition throttling-exception
+     (support-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       throttling-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'throttling-exception 'throttling-exception-message)))
 (common-lisp:deftype time-created () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -1813,7 +2198,7 @@
 (common-lisp:progn
  (common-lisp:deftype trusted-advisor-check-list ()
    '(trivial-types:proper-list trusted-advisor-check-description))
- (common-lisp:defun |make-trusted-advisor-check-list|
+ (common-lisp:defun make-trusted-advisor-check-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -1873,7 +2258,7 @@
 (common-lisp:progn
  (common-lisp:deftype trusted-advisor-check-refresh-status-list ()
    '(trivial-types:proper-list trusted-advisor-check-refresh-status))
- (common-lisp:defun |make-trusted-advisor-check-refresh-status-list|
+ (common-lisp:defun make-trusted-advisor-check-refresh-status-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -2041,7 +2426,7 @@
 (common-lisp:progn
  (common-lisp:deftype trusted-advisor-check-summary-list ()
    '(trivial-types:proper-list trusted-advisor-check-summary))
- (common-lisp:defun |make-trusted-advisor-check-summary-list|
+ (common-lisp:defun make-trusted-advisor-check-summary-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -2160,7 +2545,7 @@
 (common-lisp:progn
  (common-lisp:deftype trusted-advisor-resource-detail-list ()
    '(trivial-types:proper-list trusted-advisor-resource-detail))
- (common-lisp:defun |make-trusted-advisor-resource-detail-list|
+ (common-lisp:defun make-trusted-advisor-resource-detail-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -2225,6 +2610,13 @@
                          (aws-sdk/generator/shape::input
                           trusted-advisor-resources-summary))
    common-lisp:nil))
+(common-lisp:deftype type () 'common-lisp:string)
+(common-lisp:deftype validated-category-code () 'common-lisp:string)
+(common-lisp:deftype validated-communication-body () 'common-lisp:string)
+(common-lisp:deftype validated-date-time () 'common-lisp:string)
+(common-lisp:deftype validated-issue-type-string () 'common-lisp:string)
+(common-lisp:deftype validated-language-availability () 'common-lisp:string)
+(common-lisp:deftype validated-service-code () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defun add-attachments-to-set
                     (
@@ -2239,8 +2631,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'support-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "AddAttachmentsToSet"
-                                                        "2013-04-15"))
+                                                        "AddAttachmentsToSet"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'add-attachments-to-set))
 (common-lisp:progn
@@ -2261,8 +2652,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'support-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "AddCommunicationToCase"
-                                                        "2013-04-15"))
+                                                        "AddCommunicationToCase"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'add-communication-to-case))
 (common-lisp:progn
@@ -2283,8 +2673,8 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input 'support-request
                                                         aws-sdk/generator/operation::input
-                                                        "POST" "/" "CreateCase"
-                                                        "2013-04-15"))
+                                                        "POST" "/"
+                                                        "CreateCase"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-case))
 (common-lisp:progn
@@ -2301,8 +2691,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'support-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeAttachment"
-                                                        "2013-04-15"))
+                                                        "DescribeAttachment"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-attachment))
 (common-lisp:progn
@@ -2324,8 +2713,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'support-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeCases"
-                                                        "2013-04-15"))
+                                                        "DescribeCases"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-cases))
 (common-lisp:progn
@@ -2345,10 +2733,29 @@
        (aws-sdk/generator/shape:make-request-with-input 'support-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeCommunications"
-                                                        "2013-04-15"))
+                                                        "DescribeCommunications"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-communications))
+(common-lisp:progn
+ (common-lisp:defun describe-create-case-options
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key issue-type service-code language
+                     category-code)
+   (common-lisp:declare
+    (common-lisp:ignorable issue-type service-code language category-code))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply
+                       'make-describe-create-case-options-request
+                       aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'support-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DescribeCreateCaseOptions"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'describe-create-case-options))
 (common-lisp:progn
  (common-lisp:defun describe-services
                     (
@@ -2363,8 +2770,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'support-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeServices"
-                                                        "2013-04-15"))
+                                                        "DescribeServices"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-services))
 (common-lisp:progn
@@ -2381,10 +2787,28 @@
        (aws-sdk/generator/shape:make-request-with-input 'support-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeSeverityLevels"
-                                                        "2013-04-15"))
+                                                        "DescribeSeverityLevels"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-severity-levels))
+(common-lisp:progn
+ (common-lisp:defun describe-supported-languages
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key issue-type service-code category-code)
+   (common-lisp:declare
+    (common-lisp:ignorable issue-type service-code category-code))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply
+                       'make-describe-supported-languages-request
+                       aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'support-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DescribeSupportedLanguages"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'describe-supported-languages))
 (common-lisp:progn
  (common-lisp:defun describe-trusted-advisor-check-refresh-statuses
                     (
@@ -2400,8 +2824,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'support-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeTrustedAdvisorCheckRefreshStatuses"
-                                                        "2013-04-15"))
+                                                        "DescribeTrustedAdvisorCheckRefreshStatuses"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-trusted-advisor-check-refresh-statuses))
 (common-lisp:progn
@@ -2419,8 +2842,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'support-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeTrustedAdvisorCheckResult"
-                                                        "2013-04-15"))
+                                                        "DescribeTrustedAdvisorCheckResult"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-trusted-advisor-check-result))
 (common-lisp:progn
@@ -2438,8 +2860,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'support-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeTrustedAdvisorCheckSummaries"
-                                                        "2013-04-15"))
+                                                        "DescribeTrustedAdvisorCheckSummaries"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-trusted-advisor-check-summaries))
 (common-lisp:progn
@@ -2457,8 +2878,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'support-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeTrustedAdvisorChecks"
-                                                        "2013-04-15"))
+                                                        "DescribeTrustedAdvisorChecks"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-trusted-advisor-checks))
 (common-lisp:progn
@@ -2476,8 +2896,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'support-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "RefreshTrustedAdvisorCheck"
-                                                        "2013-04-15"))
+                                                        "RefreshTrustedAdvisorCheck"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'refresh-trusted-advisor-check))
 (common-lisp:progn
@@ -2494,7 +2913,6 @@
        (aws-sdk/generator/shape:make-request-with-input 'support-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "ResolveCase"
-                                                        "2013-04-15"))
+                                                        "ResolveCase"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'resolve-case))
