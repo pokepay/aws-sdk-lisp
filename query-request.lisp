@@ -6,6 +6,8 @@
                 #:request-headers)
   (:import-from #:aws-sdk/session
                 #:*session*)
+  (:import-from #:assoc-utils
+                #:alistp)
   (:export #:query-request))
 (in-package #:aws-sdk/query-request)
 

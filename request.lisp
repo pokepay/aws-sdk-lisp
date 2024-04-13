@@ -6,8 +6,6 @@
                 #:url-encode-params
                 #:make-uri
                 #:render-uri)
-  (:import-from #:assoc-utils
-                #:alistp)
   (:export #:request
            #:request-service
            #:request-method
