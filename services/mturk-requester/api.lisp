@@ -7,18 +7,26 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/mturk-requester/api)
-(common-lisp:progn
- (common-lisp:defclass mturk-requester-request (aws-sdk/request:request)
-                       common-lisp:nil
-                       (:default-initargs :service "mturk-requester"))
- (common-lisp:export 'mturk-requester-request))
 (common-lisp:progn
  (common-lisp:define-condition mturk-requester-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'mturk-requester-error))
+(common-lisp:progn
+ (common-lisp:defclass mturk-requester-request
+                       (aws-sdk/json-request:json-request) common-lisp:nil
+                       (:default-initargs :service "mturk-requester"
+                        :api-version "2017-01-17" :host-prefix
+                        "mturk-requester" :signing-name common-lisp:nil
+                        :global-host common-lisp:nil :target-prefix
+                        "MTurkRequesterServiceV20170117" :json-version "1.1"))
+ (common-lisp:export 'mturk-requester-request))
 (common-lisp:defvar *error-map*
   '(("RequestError" . request-error) ("ServiceFault" . service-fault)))
 (common-lisp:progn
@@ -278,7 +286,7 @@
 (common-lisp:progn
  (common-lisp:deftype assignment-list ()
    '(trivial-types:proper-list assignment))
- (common-lisp:defun |make-assignment-list|
+ (common-lisp:defun make-assignment-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list assignment))
@@ -287,7 +295,7 @@
 (common-lisp:progn
  (common-lisp:deftype assignment-status-list ()
    '(trivial-types:proper-list assignment-status))
- (common-lisp:defun |make-assignment-status-list|
+ (common-lisp:defun make-assignment-status-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list assignment-status))
@@ -382,7 +390,7 @@
    (worker-id common-lisp:nil :type
     (common-lisp:or customer-id common-lisp:null))
    (bonus-amount common-lisp:nil :type
-    (common-lisp:or numeric-value common-lisp:null))
+    (common-lisp:or currency-amount common-lisp:null))
    (assignment-id common-lisp:nil :type
     (common-lisp:or entity-id common-lisp:null))
    (reason common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -436,7 +444,7 @@
 (common-lisp:progn
  (common-lisp:deftype bonus-payment-list ()
    '(trivial-types:proper-list bonus-payment))
- (common-lisp:defun |make-bonus-payment-list|
+ (common-lisp:defun make-bonus-payment-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list bonus-payment))
@@ -451,7 +459,8 @@
        "struct-shape-create-additional-assignments-for-hitrequest-"))
    (hitid (common-lisp:error ":hitid is required") :type
     (common-lisp:or entity-id common-lisp:null))
-   (number-of-additional-assignments common-lisp:nil :type
+   (number-of-additional-assignments
+    (common-lisp:error ":number-of-additional-assignments is required") :type
     (common-lisp:or integer common-lisp:null))
    (unique-request-token common-lisp:nil :type
     (common-lisp:or idempotency-token common-lisp:null)))
@@ -533,7 +542,7 @@
     (common-lisp:error ":assignment-duration-in-seconds is required") :type
     (common-lisp:or long common-lisp:null))
    (reward (common-lisp:error ":reward is required") :type
-    (common-lisp:or numeric-value common-lisp:null))
+    (common-lisp:or currency-amount common-lisp:null))
    (title (common-lisp:error ":title is required") :type
     (common-lisp:or string common-lisp:null))
    (keywords common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -717,7 +726,7 @@
     (common-lisp:error ":assignment-duration-in-seconds is required") :type
     (common-lisp:or long common-lisp:null))
    (reward (common-lisp:error ":reward is required") :type
-    (common-lisp:or numeric-value common-lisp:null))
+    (common-lisp:or currency-amount common-lisp:null))
    (title (common-lisp:error ":title is required") :type
     (common-lisp:or string common-lisp:null))
    (keywords common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -1175,11 +1184,12 @@
                          (aws-sdk/generator/shape::input
                           create-worker-block-response))
    common-lisp:nil))
+(common-lisp:deftype currency-amount () 'common-lisp:string)
 (common-lisp:deftype customer-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype customer-id-list ()
    '(trivial-types:proper-list customer-id))
- (common-lisp:defun |make-customer-id-list|
+ (common-lisp:defun make-customer-id-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list customer-id))
@@ -1418,7 +1428,7 @@
 (common-lisp:progn
  (common-lisp:deftype event-type-list ()
    '(trivial-types:proper-list event-type))
- (common-lisp:defun |make-event-type-list|
+ (common-lisp:defun make-event-type-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list event-type))
@@ -1451,9 +1461,9 @@
      (get-account-balance-response (:copier common-lisp:nil)
       (:conc-name "struct-shape-get-account-balance-response-"))
    (available-balance common-lisp:nil :type
-    (common-lisp:or numeric-value common-lisp:null))
+    (common-lisp:or currency-amount common-lisp:null))
    (on-hold-balance common-lisp:nil :type
-    (common-lisp:or numeric-value common-lisp:null)))
+    (common-lisp:or currency-amount common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-account-balance-response
                     'make-get-account-balance-response))
@@ -1828,7 +1838,7 @@
    (max-assignments common-lisp:nil :type
     (common-lisp:or integer common-lisp:null))
    (reward common-lisp:nil :type
-    (common-lisp:or numeric-value common-lisp:null))
+    (common-lisp:or currency-amount common-lisp:null))
    (auto-approval-delay-in-seconds common-lisp:nil :type
     (common-lisp:or long common-lisp:null))
    (expiration common-lisp:nil :type
@@ -2011,12 +2021,15 @@
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input hit))
    common-lisp:nil))
+(common-lisp:deftype hitaccess-actions () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (hitlayout-parameter (:copier common-lisp:nil)
       (:conc-name "struct-shape-hitlayout-parameter-"))
-   (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (value common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+   (name (common-lisp:error ":name is required") :type
+    (common-lisp:or string common-lisp:null))
+   (value (common-lisp:error ":value is required") :type
+    (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'hitlayout-parameter 'make-hitlayout-parameter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2045,14 +2058,14 @@
 (common-lisp:progn
  (common-lisp:deftype hitlayout-parameter-list ()
    '(trivial-types:proper-list hitlayout-parameter))
- (common-lisp:defun |make-hitlayout-parameter-list|
+ (common-lisp:defun make-hitlayout-parameter-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list hitlayout-parameter))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:deftype hitlist () '(trivial-types:proper-list hit))
- (common-lisp:defun |make-hitlist|
+ (common-lisp:defun make-hitlist
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list hit))
@@ -2063,7 +2076,7 @@
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:deftype integer-list () '(trivial-types:proper-list integer))
- (common-lisp:defun |make-integer-list|
+ (common-lisp:defun make-integer-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list integer))
@@ -3162,7 +3175,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype locale-list () '(trivial-types:proper-list locale))
- (common-lisp:defun |make-locale-list|
+ (common-lisp:defun make-locale-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list locale))
@@ -3176,8 +3189,9 @@
     (common-lisp:or string common-lisp:null))
    (transport (common-lisp:error ":transport is required") :type
     (common-lisp:or notification-transport common-lisp:null))
-   (version common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (event-types common-lisp:nil :type
+   (version (common-lisp:error ":version is required") :type
+    (common-lisp:or string common-lisp:null))
+   (event-types (common-lisp:error ":event-types is required") :type
     (common-lisp:or event-type-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'notification-specification
@@ -3281,7 +3295,7 @@
 (common-lisp:progn
  (common-lisp:deftype notify-workers-failure-status-list ()
    '(trivial-types:proper-list notify-workers-failure-status))
- (common-lisp:defun |make-notify-workers-failure-status-list|
+ (common-lisp:defun make-notify-workers-failure-status-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -3366,7 +3380,6 @@
                          (aws-sdk/generator/shape::input
                           notify-workers-response))
    common-lisp:nil))
-(common-lisp:deftype numeric-value () 'common-lisp:string)
 (common-lisp:deftype pagination-token () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -3403,7 +3416,7 @@
 (common-lisp:progn
  (common-lisp:deftype parameter-map-entry-list ()
    '(trivial-types:proper-list parameter-map-entry))
- (common-lisp:defun |make-parameter-map-entry-list|
+ (common-lisp:defun make-parameter-map-entry-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list parameter-map-entry))
@@ -3451,7 +3464,7 @@
 (common-lisp:progn
  (common-lisp:deftype policy-parameter-list ()
    '(trivial-types:proper-list policy-parameter))
- (common-lisp:defun |make-policy-parameter-list|
+ (common-lisp:defun make-policy-parameter-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list policy-parameter))
@@ -3528,7 +3541,7 @@
 (common-lisp:progn
  (common-lisp:deftype qualification-list ()
    '(trivial-types:proper-list qualification))
- (common-lisp:defun |make-qualification-list|
+ (common-lisp:defun make-qualification-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list qualification))
@@ -3611,7 +3624,7 @@
 (common-lisp:progn
  (common-lisp:deftype qualification-request-list ()
    '(trivial-types:proper-list qualification-request))
- (common-lisp:defun |make-qualification-request-list|
+ (common-lisp:defun make-qualification-request-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list qualification-request))
@@ -3630,7 +3643,9 @@
    (locale-values common-lisp:nil :type
     (common-lisp:or locale-list common-lisp:null))
    (required-to-preview common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null)))
+    (common-lisp:or boolean common-lisp:null))
+   (actions-guarded common-lisp:nil :type
+    (common-lisp:or hitaccess-actions common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'qualification-requirement
                     'make-qualification-requirement))
@@ -3679,6 +3694,13 @@
       (common-lisp:list
        (common-lisp:cons "RequiredToPreview"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'actions-guarded))
+      (common-lisp:list
+       (common-lisp:cons "ActionsGuarded"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         (
@@ -3688,7 +3710,7 @@
 (common-lisp:progn
  (common-lisp:deftype qualification-requirement-list ()
    '(trivial-types:proper-list qualification-requirement))
- (common-lisp:defun |make-qualification-requirement-list|
+ (common-lisp:defun make-qualification-requirement-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
@@ -3829,7 +3851,7 @@
 (common-lisp:progn
  (common-lisp:deftype qualification-type-list ()
    '(trivial-types:proper-list qualification-type))
- (common-lisp:defun |make-qualification-type-list|
+ (common-lisp:defun make-qualification-type-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list qualification-type))
@@ -3841,8 +3863,8 @@
       (:conc-name "struct-shape-reject-assignment-request-"))
    (assignment-id (common-lisp:error ":assignment-id is required") :type
     (common-lisp:or entity-id common-lisp:null))
-   (requester-feedback common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+   (requester-feedback (common-lisp:error ":requester-feedback is required")
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'reject-assignment-request
                     'make-reject-assignment-request))
@@ -4057,7 +4079,7 @@
 (common-lisp:progn
  (common-lisp:deftype review-action-detail-list ()
    '(trivial-types:proper-list review-action-detail))
- (common-lisp:defun |make-review-action-detail-list|
+ (common-lisp:defun make-review-action-detail-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list review-action-detail))
@@ -4067,7 +4089,8 @@
  (common-lisp:defstruct
      (review-policy (:copier common-lisp:nil)
       (:conc-name "struct-shape-review-policy-"))
-   (policy-name common-lisp:nil :type (common-lisp:or string common-lisp:null))
+   (policy-name (common-lisp:error ":policy-name is required") :type
+    (common-lisp:or string common-lisp:null))
    (parameters common-lisp:nil :type
     (common-lisp:or policy-parameter-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'review-policy 'make-review-policy))
@@ -4098,7 +4121,7 @@
 (common-lisp:progn
  (common-lisp:deftype review-policy-level-list ()
    '(trivial-types:proper-list review-policy-level))
- (common-lisp:defun |make-review-policy-level-list|
+ (common-lisp:defun make-review-policy-level-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list review-policy-level))
@@ -4205,7 +4228,7 @@
 (common-lisp:progn
  (common-lisp:deftype review-result-detail-list ()
    '(trivial-types:proper-list review-result-detail))
- (common-lisp:defun |make-review-result-detail-list|
+ (common-lisp:defun make-review-result-detail-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list review-result-detail))
@@ -4218,10 +4241,11 @@
    (worker-id (common-lisp:error ":worker-id is required") :type
     (common-lisp:or customer-id common-lisp:null))
    (bonus-amount (common-lisp:error ":bonus-amount is required") :type
-    (common-lisp:or numeric-value common-lisp:null))
+    (common-lisp:or currency-amount common-lisp:null))
    (assignment-id (common-lisp:error ":assignment-id is required") :type
     (common-lisp:or entity-id common-lisp:null))
-   (reason common-lisp:nil :type (common-lisp:or string common-lisp:null))
+   (reason (common-lisp:error ":reason is required") :type
+    (common-lisp:or string common-lisp:null))
    (unique-request-token common-lisp:nil :type
     (common-lisp:or idempotency-token common-lisp:null)))
  (common-lisp:export
@@ -4361,7 +4385,7 @@
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype string-list () '(trivial-types:proper-list string))
- (common-lisp:defun |make-string-list|
+ (common-lisp:defun make-string-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
@@ -4374,7 +4398,7 @@
       (:conc-name "struct-shape-update-expiration-for-hitrequest-"))
    (hitid (common-lisp:error ":hitid is required") :type
     (common-lisp:or entity-id common-lisp:null))
-   (expire-at common-lisp:nil :type
+   (expire-at (common-lisp:error ":expire-at is required") :type
     (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-expiration-for-hitrequest
@@ -4793,7 +4817,7 @@
 (common-lisp:progn
  (common-lisp:deftype worker-block-list ()
    '(trivial-types:proper-list worker-block))
- (common-lisp:defun |make-worker-block-list|
+ (common-lisp:defun make-worker-block-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list worker-block))
@@ -4813,7 +4837,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "AcceptQualificationRequest" "2017-01-17"))
+        "AcceptQualificationRequest"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'accept-qualification-request))
 (common-lisp:progn
@@ -4832,7 +4856,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "ApproveAssignment" "2017-01-17"))
+        "ApproveAssignment"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'approve-assignment))
 (common-lisp:progn
@@ -4852,7 +4876,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "AssociateQualificationWithWorker" "2017-01-17"))
+        "AssociateQualificationWithWorker"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'associate-qualification-with-worker))
 (common-lisp:progn
@@ -4872,7 +4896,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "CreateAdditionalAssignmentsForHIT" "2017-01-17"))
+        "CreateAdditionalAssignmentsForHIT"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-additional-assignments-for-hit))
 (common-lisp:progn
@@ -4899,7 +4923,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "CreateHIT" "2017-01-17"))
+        "CreateHIT"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-hit))
 (common-lisp:progn
@@ -4920,7 +4944,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "CreateHITType" "2017-01-17"))
+        "CreateHITType"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-hittype))
 (common-lisp:progn
@@ -4943,7 +4967,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "CreateHITWithHITType" "2017-01-17"))
+        "CreateHITWithHITType"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-hitwith-hittype))
 (common-lisp:progn
@@ -4966,7 +4990,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "CreateQualificationType" "2017-01-17"))
+        "CreateQualificationType"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-qualification-type))
 (common-lisp:progn
@@ -4982,7 +5006,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "CreateWorkerBlock" "2017-01-17"))
+        "CreateWorkerBlock"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-worker-block))
 (common-lisp:progn
@@ -4998,7 +5022,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "DeleteHIT" "2017-01-17"))
+        "DeleteHIT"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-hit))
 (common-lisp:progn
@@ -5015,7 +5039,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "DeleteQualificationType" "2017-01-17"))
+        "DeleteQualificationType"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-qualification-type))
 (common-lisp:progn
@@ -5031,7 +5055,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "DeleteWorkerBlock" "2017-01-17"))
+        "DeleteWorkerBlock"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-worker-block))
 (common-lisp:progn
@@ -5049,7 +5073,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "DisassociateQualificationFromWorker" "2017-01-17"))
+        "DisassociateQualificationFromWorker"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'disassociate-qualification-from-worker))
 (common-lisp:progn
@@ -5057,9 +5081,7 @@
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request
      (common-lisp:make-instance 'mturk-requester-request :method "POST" :path
-                                "/" :params
-                                `(("Action" ,@"GetAccountBalance")
-                                  ("Version" ,@"2017-01-17"))))
+                                "/" :operation "GetAccountBalance"))
     common-lisp:nil common-lisp:nil *error-map*))
  (common-lisp:export 'get-account-balance))
 (common-lisp:progn
@@ -5075,7 +5097,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "GetAssignment" "2017-01-17"))
+        "GetAssignment"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-assignment))
 (common-lisp:progn
@@ -5092,7 +5114,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "GetFileUploadURL" "2017-01-17"))
+        "GetFileUploadURL"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-file-upload-url))
 (common-lisp:progn
@@ -5108,7 +5130,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "GetHIT" "2017-01-17"))
+        "GetHIT"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-hit))
 (common-lisp:progn
@@ -5125,7 +5147,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "GetQualificationScore" "2017-01-17"))
+        "GetQualificationScore"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-qualification-score))
 (common-lisp:progn
@@ -5141,7 +5163,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "GetQualificationType" "2017-01-17"))
+        "GetQualificationType"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-qualification-type))
 (common-lisp:progn
@@ -5159,7 +5181,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "ListAssignmentsForHIT" "2017-01-17"))
+        "ListAssignmentsForHIT"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-assignments-for-hit))
 (common-lisp:progn
@@ -5177,7 +5199,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "ListBonusPayments" "2017-01-17"))
+        "ListBonusPayments"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-bonus-payments))
 (common-lisp:progn
@@ -5193,7 +5215,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "ListHITs" "2017-01-17"))
+        "ListHITs"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-hits))
 (common-lisp:progn
@@ -5212,7 +5234,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "ListHITsForQualificationType" "2017-01-17"))
+        "ListHITsForQualificationType"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-hits-for-qualification-type))
 (common-lisp:progn
@@ -5231,7 +5253,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "ListQualificationRequests" "2017-01-17"))
+        "ListQualificationRequests"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-qualification-requests))
 (common-lisp:progn
@@ -5250,7 +5272,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "ListQualificationTypes" "2017-01-17"))
+        "ListQualificationTypes"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-qualification-types))
 (common-lisp:progn
@@ -5270,7 +5292,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "ListReviewPolicyResultsForHIT" "2017-01-17"))
+        "ListReviewPolicyResultsForHIT"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-review-policy-results-for-hit))
 (common-lisp:progn
@@ -5287,7 +5309,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "ListReviewableHITs" "2017-01-17"))
+        "ListReviewableHITs"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-reviewable-hits))
 (common-lisp:progn
@@ -5303,7 +5325,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "ListWorkerBlocks" "2017-01-17"))
+        "ListWorkerBlocks"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-worker-blocks))
 (common-lisp:progn
@@ -5323,7 +5345,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "ListWorkersWithQualificationType" "2017-01-17"))
+        "ListWorkersWithQualificationType"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-workers-with-qualification-type))
 (common-lisp:progn
@@ -5340,7 +5362,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "NotifyWorkers" "2017-01-17"))
+        "NotifyWorkers"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'notify-workers))
 (common-lisp:progn
@@ -5357,7 +5379,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "RejectAssignment" "2017-01-17"))
+        "RejectAssignment"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'reject-assignment))
 (common-lisp:progn
@@ -5375,7 +5397,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "RejectQualificationRequest" "2017-01-17"))
+        "RejectQualificationRequest"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'reject-qualification-request))
 (common-lisp:progn
@@ -5394,7 +5416,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "SendBonus" "2017-01-17"))
+        "SendBonus"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'send-bonus))
 (common-lisp:progn
@@ -5411,7 +5433,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "SendTestEventNotification" "2017-01-17"))
+        "SendTestEventNotification"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'send-test-event-notification))
 (common-lisp:progn
@@ -5427,7 +5449,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "UpdateExpirationForHIT" "2017-01-17"))
+        "UpdateExpirationForHIT"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-expiration-for-hit))
 (common-lisp:progn
@@ -5443,7 +5465,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "UpdateHITReviewStatus" "2017-01-17"))
+        "UpdateHITReviewStatus"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-hitreview-status))
 (common-lisp:progn
@@ -5459,7 +5481,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "UpdateHITTypeOfHIT" "2017-01-17"))
+        "UpdateHITTypeOfHIT"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-hittype-of-hit))
 (common-lisp:progn
@@ -5476,7 +5498,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "UpdateNotificationSettings" "2017-01-17"))
+        "UpdateNotificationSettings"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-notification-settings))
 (common-lisp:progn
@@ -5499,6 +5521,6 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'mturk-requester-request aws-sdk/generator/operation::input "POST" "/"
-        "UpdateQualificationType" "2017-01-17"))
+        "UpdateQualificationType"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-qualification-type))

@@ -7,22 +7,36 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/polly/api)
-(common-lisp:progn
- (common-lisp:defclass polly-request (aws-sdk/request:request) common-lisp:nil
-                       (:default-initargs :service "polly"))
- (common-lisp:export 'polly-request))
 (common-lisp:progn
  (common-lisp:define-condition polly-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'polly-error))
+(common-lisp:progn
+ (common-lisp:defclass polly-request
+                       (aws-sdk/generator/service::rest-json-request)
+                       common-lisp:nil
+                       (:default-initargs :service "polly" :api-version
+                        "2016-06-10" :host-prefix "polly" :signing-name
+                        common-lisp:nil :global-host common-lisp:nil))
+ (common-lisp:export 'polly-request))
 (common-lisp:defvar *error-map*
-  '(("InvalidLexiconException" . invalid-lexicon-exception)
+  '(("EngineNotSupportedException" . engine-not-supported-exception)
+    ("InvalidLexiconException" . invalid-lexicon-exception)
     ("InvalidNextTokenException" . invalid-next-token-exception)
+    ("InvalidS3BucketException" . invalid-s3bucket-exception)
+    ("InvalidS3KeyException" . invalid-s3key-exception)
     ("InvalidSampleRateException" . invalid-sample-rate-exception)
+    ("InvalidSnsTopicArnException" . invalid-sns-topic-arn-exception)
     ("InvalidSsmlException" . invalid-ssml-exception)
+    ("InvalidTaskIdException" . invalid-task-id-exception)
+    ("LanguageNotSupportedException" . language-not-supported-exception)
     ("LexiconNotFoundException" . lexicon-not-found-exception)
     ("LexiconSizeExceededException" . lexicon-size-exceeded-exception)
     ("MarksNotSupportedForFormatException"
@@ -33,6 +47,7 @@
     ("ServiceFailureException" . service-failure-exception)
     ("SsmlMarksNotSupportedForTextTypeException"
      . ssml-marks-not-supported-for-text-type-exception)
+    ("SynthesisTaskNotFoundException" . synthesis-task-not-found-exception)
     ("TextLengthExceededException" . text-length-exceeded-exception)
     ("UnsupportedPlsAlphabetException" . unsupported-pls-alphabet-exception)
     ("UnsupportedPlsLanguageException" . unsupported-pls-language-exception)))
@@ -40,6 +55,7 @@
 (common-lisp:deftype audio-stream ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:deftype content-type () 'common-lisp:string)
+(common-lisp:deftype date-time () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-lexicon-input (:copier common-lisp:nil)
@@ -82,8 +98,11 @@
  (common-lisp:defstruct
      (describe-voices-input (:copier common-lisp:nil)
       (:conc-name "struct-shape-describe-voices-input-"))
+   (engine common-lisp:nil :type (common-lisp:or engine common-lisp:null))
    (language-code common-lisp:nil :type
     (common-lisp:or language-code common-lisp:null))
+   (include-additional-language-codes common-lisp:nil :type
+    (common-lisp:or include-additional-language-codes common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null)))
  (common-lisp:export
@@ -141,6 +160,22 @@
                          (aws-sdk/generator/shape::input
                           describe-voices-output))
    common-lisp:nil))
+(common-lisp:deftype engine () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:deftype engine-list () '(trivial-types:proper-list engine))
+ (common-lisp:defun make-engine-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list engine))
+   aws-sdk/generator/shape::members))
+(common-lisp:progn
+ (common-lisp:define-condition engine-not-supported-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       engine-not-supported-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'engine-not-supported-exception
+                    'engine-not-supported-exception-message)))
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:deftype gender () 'common-lisp:string)
 (common-lisp:progn
@@ -193,6 +228,62 @@
                         ((aws-sdk/generator/shape::input get-lexicon-output))
    common-lisp:nil))
 (common-lisp:progn
+ (common-lisp:defstruct
+     (get-speech-synthesis-task-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-speech-synthesis-task-input-"))
+   (task-id (common-lisp:error ":task-id is required") :type
+    (common-lisp:or task-id common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'get-speech-synthesis-task-input
+                    'make-get-speech-synthesis-task-input))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-speech-synthesis-task-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-speech-synthesis-task-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-speech-synthesis-task-input))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (get-speech-synthesis-task-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-speech-synthesis-task-output-"))
+   (synthesis-task common-lisp:nil :type
+    (common-lisp:or synthesis-task common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'get-speech-synthesis-task-output
+                    'make-get-speech-synthesis-task-output))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-speech-synthesis-task-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-speech-synthesis-task-output))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'synthesis-task))
+      (common-lisp:list
+       (common-lisp:cons "SynthesisTask"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-speech-synthesis-task-output))
+   common-lisp:nil))
+(common-lisp:deftype include-additional-language-codes () 'common-lisp:boolean)
+(common-lisp:progn
  (common-lisp:define-condition invalid-lexicon-exception
      (polly-error)
      ((message :initarg :message :initform common-lisp:nil :reader
@@ -209,6 +300,21 @@
   (common-lisp:list 'invalid-next-token-exception
                     'invalid-next-token-exception-message)))
 (common-lisp:progn
+ (common-lisp:define-condition invalid-s3bucket-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-s3bucket-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-s3bucket-exception
+                    'invalid-s3bucket-exception-message)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-s3key-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-s3key-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-s3key-exception 'invalid-s3key-exception-message)))
+(common-lisp:progn
  (common-lisp:define-condition invalid-sample-rate-exception
      (polly-error)
      ((message :initarg :message :initform common-lisp:nil :reader
@@ -217,14 +323,46 @@
   (common-lisp:list 'invalid-sample-rate-exception
                     'invalid-sample-rate-exception-message)))
 (common-lisp:progn
+ (common-lisp:define-condition invalid-sns-topic-arn-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-sns-topic-arn-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-sns-topic-arn-exception
+                    'invalid-sns-topic-arn-exception-message)))
+(common-lisp:progn
  (common-lisp:define-condition invalid-ssml-exception
      (polly-error)
      ((message :initarg :message :initform common-lisp:nil :reader
        invalid-ssml-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-ssml-exception 'invalid-ssml-exception-message)))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-task-id-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-task-id-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-task-id-exception
+                    'invalid-task-id-exception-message)))
 (common-lisp:deftype language-code () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:deftype language-code-list ()
+   '(trivial-types:proper-list language-code))
+ (common-lisp:defun make-language-code-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list language-code))
+   aws-sdk/generator/shape::members))
 (common-lisp:deftype language-name () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:define-condition language-not-supported-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       language-not-supported-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'language-not-supported-exception
+                    'language-not-supported-exception-message)))
 (common-lisp:deftype last-modified () 'common-lisp:string)
 (common-lisp:deftype lexemes-count () 'common-lisp:integer)
 (common-lisp:progn
@@ -361,7 +499,7 @@
 (common-lisp:progn
  (common-lisp:deftype lexicon-description-list ()
    '(trivial-types:proper-list lexicon-description))
- (common-lisp:defun |make-lexicon-description-list|
+ (common-lisp:defun make-lexicon-description-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list lexicon-description))
@@ -370,7 +508,7 @@
 (common-lisp:progn
  (common-lisp:deftype lexicon-name-list ()
    '(trivial-types:proper-list lexicon-name))
- (common-lisp:defun |make-lexicon-name-list|
+ (common-lisp:defun make-lexicon-name-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list lexicon-name))
@@ -442,6 +580,74 @@
                         ((aws-sdk/generator/shape::input list-lexicons-output))
    common-lisp:nil))
 (common-lisp:progn
+ (common-lisp:defstruct
+     (list-speech-synthesis-tasks-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-speech-synthesis-tasks-input-"))
+   (max-results common-lisp:nil :type
+    (common-lisp:or max-results common-lisp:null))
+   (next-token common-lisp:nil :type
+    (common-lisp:or next-token common-lisp:null))
+   (status common-lisp:nil :type
+    (common-lisp:or task-status common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'list-speech-synthesis-tasks-input
+                    'make-list-speech-synthesis-tasks-input))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-speech-synthesis-tasks-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-speech-synthesis-tasks-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-speech-synthesis-tasks-input))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (list-speech-synthesis-tasks-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-speech-synthesis-tasks-output-"))
+   (next-token common-lisp:nil :type
+    (common-lisp:or next-token common-lisp:null))
+   (synthesis-tasks common-lisp:nil :type
+    (common-lisp:or synthesis-tasks common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'list-speech-synthesis-tasks-output
+                    'make-list-speech-synthesis-tasks-output))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-speech-synthesis-tasks-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-speech-synthesis-tasks-output))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "NextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'synthesis-tasks))
+      (common-lisp:list
+       (common-lisp:cons "SynthesisTasks"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-speech-synthesis-tasks-output))
+   common-lisp:nil))
+(common-lisp:progn
  (common-lisp:define-condition marks-not-supported-for-format-exception
      (polly-error)
      ((message :initarg :message :initform common-lisp:nil :reader
@@ -465,8 +671,12 @@
  (common-lisp:export
   (common-lisp:list 'max-lexicons-number-exceeded-exception
                     'max-lexicons-number-exceeded-exception-message)))
+(common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:deftype output-format () 'common-lisp:string)
+(common-lisp:deftype output-s3bucket-name () 'common-lisp:string)
+(common-lisp:deftype output-s3key-prefix () 'common-lisp:string)
+(common-lisp:deftype output-uri () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (put-lexicon-input (:copier common-lisp:nil)
@@ -519,11 +729,12 @@
   (common-lisp:list 'service-failure-exception
                     'service-failure-exception-message)))
 (common-lisp:deftype size () 'common-lisp:integer)
+(common-lisp:deftype sns-topic-arn () 'common-lisp:string)
 (common-lisp:deftype speech-mark-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype speech-mark-type-list ()
    '(trivial-types:proper-list speech-mark-type))
- (common-lisp:defun |make-speech-mark-type-list|
+ (common-lisp:defun make-speech-mark-type-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list speech-mark-type))
@@ -538,8 +749,335 @@
                     'ssml-marks-not-supported-for-text-type-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
+     (start-speech-synthesis-task-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-start-speech-synthesis-task-input-"))
+   (engine common-lisp:nil :type (common-lisp:or engine common-lisp:null))
+   (language-code common-lisp:nil :type
+    (common-lisp:or language-code common-lisp:null))
+   (lexicon-names common-lisp:nil :type
+    (common-lisp:or lexicon-name-list common-lisp:null))
+   (output-format (common-lisp:error ":output-format is required") :type
+    (common-lisp:or output-format common-lisp:null))
+   (output-s3bucket-name
+    (common-lisp:error ":output-s3bucket-name is required") :type
+    (common-lisp:or output-s3bucket-name common-lisp:null))
+   (output-s3key-prefix common-lisp:nil :type
+    (common-lisp:or output-s3key-prefix common-lisp:null))
+   (sample-rate common-lisp:nil :type
+    (common-lisp:or sample-rate common-lisp:null))
+   (sns-topic-arn common-lisp:nil :type
+    (common-lisp:or sns-topic-arn common-lisp:null))
+   (speech-mark-types common-lisp:nil :type
+    (common-lisp:or speech-mark-type-list common-lisp:null))
+   (text (common-lisp:error ":text is required") :type
+    (common-lisp:or text common-lisp:null))
+   (text-type common-lisp:nil :type
+    (common-lisp:or text-type common-lisp:null))
+   (voice-id (common-lisp:error ":voice-id is required") :type
+    (common-lisp:or voice-id common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'start-speech-synthesis-task-input
+                    'make-start-speech-synthesis-task-input))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-speech-synthesis-task-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-speech-synthesis-task-input))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'engine))
+      (common-lisp:list
+       (common-lisp:cons "Engine"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'language-code))
+      (common-lisp:list
+       (common-lisp:cons "LanguageCode"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'lexicon-names))
+      (common-lisp:list
+       (common-lisp:cons "LexiconNames"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'output-format))
+      (common-lisp:list
+       (common-lisp:cons "OutputFormat"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'output-s3bucket-name))
+      (common-lisp:list
+       (common-lisp:cons "OutputS3BucketName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'output-s3key-prefix))
+      (common-lisp:list
+       (common-lisp:cons "OutputS3KeyPrefix"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'sample-rate))
+      (common-lisp:list
+       (common-lisp:cons "SampleRate"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'sns-topic-arn))
+      (common-lisp:list
+       (common-lisp:cons "SnsTopicArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'speech-mark-types))
+      (common-lisp:list
+       (common-lisp:cons "SpeechMarkTypes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'text))
+      (common-lisp:list
+       (common-lisp:cons "Text"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'text-type))
+      (common-lisp:list
+       (common-lisp:cons "TextType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'voice-id))
+      (common-lisp:list
+       (common-lisp:cons "VoiceId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-speech-synthesis-task-input))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (start-speech-synthesis-task-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-start-speech-synthesis-task-output-"))
+   (synthesis-task common-lisp:nil :type
+    (common-lisp:or synthesis-task common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'start-speech-synthesis-task-output
+                    'make-start-speech-synthesis-task-output))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-speech-synthesis-task-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-speech-synthesis-task-output))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'synthesis-task))
+      (common-lisp:list
+       (common-lisp:cons "SynthesisTask"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-speech-synthesis-task-output))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (synthesis-task (:copier common-lisp:nil)
+      (:conc-name "struct-shape-synthesis-task-"))
+   (engine common-lisp:nil :type (common-lisp:or engine common-lisp:null))
+   (task-id common-lisp:nil :type (common-lisp:or task-id common-lisp:null))
+   (task-status common-lisp:nil :type
+    (common-lisp:or task-status common-lisp:null))
+   (task-status-reason common-lisp:nil :type
+    (common-lisp:or task-status-reason common-lisp:null))
+   (output-uri common-lisp:nil :type
+    (common-lisp:or output-uri common-lisp:null))
+   (creation-time common-lisp:nil :type
+    (common-lisp:or date-time common-lisp:null))
+   (request-characters common-lisp:nil :type
+    (common-lisp:or request-characters common-lisp:null))
+   (sns-topic-arn common-lisp:nil :type
+    (common-lisp:or sns-topic-arn common-lisp:null))
+   (lexicon-names common-lisp:nil :type
+    (common-lisp:or lexicon-name-list common-lisp:null))
+   (output-format common-lisp:nil :type
+    (common-lisp:or output-format common-lisp:null))
+   (sample-rate common-lisp:nil :type
+    (common-lisp:or sample-rate common-lisp:null))
+   (speech-mark-types common-lisp:nil :type
+    (common-lisp:or speech-mark-type-list common-lisp:null))
+   (text-type common-lisp:nil :type
+    (common-lisp:or text-type common-lisp:null))
+   (voice-id common-lisp:nil :type (common-lisp:or voice-id common-lisp:null))
+   (language-code common-lisp:nil :type
+    (common-lisp:or language-code common-lisp:null)))
+ (common-lisp:export (common-lisp:list 'synthesis-task 'make-synthesis-task))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input synthesis-task))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input synthesis-task))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'engine))
+      (common-lisp:list
+       (common-lisp:cons "Engine"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-id))
+      (common-lisp:list
+       (common-lisp:cons "TaskId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-status))
+      (common-lisp:list
+       (common-lisp:cons "TaskStatus"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-status-reason))
+      (common-lisp:list
+       (common-lisp:cons "TaskStatusReason"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'output-uri))
+      (common-lisp:list
+       (common-lisp:cons "OutputUri"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'creation-time))
+      (common-lisp:list
+       (common-lisp:cons "CreationTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'request-characters))
+      (common-lisp:list
+       (common-lisp:cons "RequestCharacters"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'sns-topic-arn))
+      (common-lisp:list
+       (common-lisp:cons "SnsTopicArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'lexicon-names))
+      (common-lisp:list
+       (common-lisp:cons "LexiconNames"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'output-format))
+      (common-lisp:list
+       (common-lisp:cons "OutputFormat"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'sample-rate))
+      (common-lisp:list
+       (common-lisp:cons "SampleRate"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'speech-mark-types))
+      (common-lisp:list
+       (common-lisp:cons "SpeechMarkTypes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'text-type))
+      (common-lisp:list
+       (common-lisp:cons "TextType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'voice-id))
+      (common-lisp:list
+       (common-lisp:cons "VoiceId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'language-code))
+      (common-lisp:list
+       (common-lisp:cons "LanguageCode"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input synthesis-task))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:define-condition synthesis-task-not-found-exception
+     (polly-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       synthesis-task-not-found-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'synthesis-task-not-found-exception
+                    'synthesis-task-not-found-exception-message)))
+(common-lisp:progn
+ (common-lisp:deftype synthesis-tasks ()
+   '(trivial-types:proper-list synthesis-task))
+ (common-lisp:defun make-synthesis-tasks
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list synthesis-task))
+   aws-sdk/generator/shape::members))
+(common-lisp:progn
+ (common-lisp:defstruct
      (synthesize-speech-input (:copier common-lisp:nil)
       (:conc-name "struct-shape-synthesize-speech-input-"))
+   (engine common-lisp:nil :type (common-lisp:or engine common-lisp:null))
+   (language-code common-lisp:nil :type
+    (common-lisp:or language-code common-lisp:null))
    (lexicon-names common-lisp:nil :type
     (common-lisp:or lexicon-name-list common-lisp:null))
    (output-format (common-lisp:error ":output-format is required") :type
@@ -566,6 +1104,20 @@
                          (aws-sdk/generator/shape::input
                           synthesize-speech-input))
    (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'engine))
+      (common-lisp:list
+       (common-lisp:cons "Engine"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'language-code))
+      (common-lisp:list
+       (common-lisp:cons "LanguageCode"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
     (alexandria:when-let (aws-sdk/generator/shape::value
                           (common-lisp:slot-value
                            aws-sdk/generator/shape::input 'lexicon-names))
@@ -663,6 +1215,9 @@
                          (aws-sdk/generator/shape::input
                           synthesize-speech-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'audio-stream)))
+(common-lisp:deftype task-id () 'common-lisp:string)
+(common-lisp:deftype task-status () 'common-lisp:string)
+(common-lisp:deftype task-status-reason () 'common-lisp:string)
 (common-lisp:deftype text () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:define-condition text-length-exceeded-exception
@@ -698,7 +1253,11 @@
     (common-lisp:or language-code common-lisp:null))
    (language-name common-lisp:nil :type
     (common-lisp:or language-name common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or voice-name common-lisp:null)))
+   (name common-lisp:nil :type (common-lisp:or voice-name common-lisp:null))
+   (additional-language-codes common-lisp:nil :type
+    (common-lisp:or language-code-list common-lisp:null))
+   (supported-engines common-lisp:nil :type
+    (common-lisp:or engine-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'voice 'make-voice))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input voice))
@@ -740,6 +1299,21 @@
       (common-lisp:list
        (common-lisp:cons "Name"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'additional-language-codes))
+      (common-lisp:list
+       (common-lisp:cons "AdditionalLanguageCodes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'supported-engines))
+      (common-lisp:list
+       (common-lisp:cons "SupportedEngines"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input voice))
@@ -747,7 +1321,7 @@
 (common-lisp:deftype voice-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype voice-list () '(trivial-types:proper-list voice))
- (common-lisp:defun |make-voice-list|
+ (common-lisp:defun make-voice-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list voice))
@@ -777,16 +1351,18 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'lexicon-name))))
-                                                        "DeleteLexicon"
-                                                        "2016-06-10"))
+                                                        "DeleteLexicon"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-lexicon))
 (common-lisp:progn
  (common-lisp:defun describe-voices
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
-                     common-lisp:&key language-code next-token)
-   (common-lisp:declare (common-lisp:ignorable language-code next-token))
+                     common-lisp:&key engine language-code
+                     include-additional-language-codes next-token)
+   (common-lisp:declare
+    (common-lisp:ignorable engine language-code
+     include-additional-language-codes next-token))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-describe-voices-input
                                          aws-sdk/generator/operation::args)))
@@ -795,8 +1371,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'polly-request
                                                         aws-sdk/generator/operation::input
                                                         "GET" "/v1/voices"
-                                                        "DescribeVoices"
-                                                        "2016-06-10"))
+                                                        "DescribeVoices"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-voices))
 (common-lisp:progn
@@ -823,10 +1398,36 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'lexicon-name))))
-                                                        "GetLexicon"
-                                                        "2016-06-10"))
+                                                        "GetLexicon"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-lexicon))
+(common-lisp:progn
+ (common-lisp:defun get-speech-synthesis-task
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key task-id)
+   (common-lisp:declare (common-lisp:ignorable task-id))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-get-speech-synthesis-task-input
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'polly-request
+                                                        aws-sdk/generator/operation::input
+                                                        "GET"
+                                                        (common-lisp:lambda
+                                                            (
+                                                             aws-sdk/generator/operation::input)
+                                                          (common-lisp:format
+                                                           common-lisp:nil
+                                                           "/v1/synthesisTasks/~A"
+                                                           (quri.encode:url-encode
+                                                            (common-lisp:slot-value
+                                                             aws-sdk/generator/operation::input
+                                                             'task-id))))
+                                                        "GetSpeechSynthesisTask"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'get-speech-synthesis-task))
 (common-lisp:progn
  (common-lisp:defun list-lexicons
                     (
@@ -841,10 +1442,28 @@
        (aws-sdk/generator/shape:make-request-with-input 'polly-request
                                                         aws-sdk/generator/operation::input
                                                         "GET" "/v1/lexicons"
-                                                        "ListLexicons"
-                                                        "2016-06-10"))
+                                                        "ListLexicons"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-lexicons))
+(common-lisp:progn
+ (common-lisp:defun list-speech-synthesis-tasks
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key max-results next-token status)
+   (common-lisp:declare (common-lisp:ignorable max-results next-token status))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply
+                       'make-list-speech-synthesis-tasks-input
+                       aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'polly-request
+                                                        aws-sdk/generator/operation::input
+                                                        "GET"
+                                                        "/v1/synthesisTasks"
+                                                        "ListSpeechSynthesisTasks"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'list-speech-synthesis-tasks))
 (common-lisp:progn
  (common-lisp:defun put-lexicon
                     (
@@ -869,19 +1488,44 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'lexicon-name))))
-                                                        "PutLexicon"
-                                                        "2016-06-10"))
+                                                        "PutLexicon"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'put-lexicon))
+(common-lisp:progn
+ (common-lisp:defun start-speech-synthesis-task
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key engine language-code lexicon-names
+                     output-format output-s3bucket-name output-s3key-prefix
+                     sample-rate sns-topic-arn speech-mark-types text text-type
+                     voice-id)
+   (common-lisp:declare
+    (common-lisp:ignorable engine language-code lexicon-names output-format
+     output-s3bucket-name output-s3key-prefix sample-rate sns-topic-arn
+     speech-mark-types text text-type voice-id))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply
+                       'make-start-speech-synthesis-task-input
+                       aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'polly-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST"
+                                                        "/v1/synthesisTasks"
+                                                        "StartSpeechSynthesisTask"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'start-speech-synthesis-task))
 (common-lisp:progn
  (common-lisp:defun synthesize-speech
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
-                     common-lisp:&key lexicon-names output-format sample-rate
-                     speech-mark-types text text-type voice-id)
+                     common-lisp:&key engine language-code lexicon-names
+                     output-format sample-rate speech-mark-types text text-type
+                     voice-id)
    (common-lisp:declare
-    (common-lisp:ignorable lexicon-names output-format sample-rate
-     speech-mark-types text text-type voice-id))
+    (common-lisp:ignorable engine language-code lexicon-names output-format
+     sample-rate speech-mark-types text text-type voice-id))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-synthesize-speech-input
                                          aws-sdk/generator/operation::args)))
@@ -890,8 +1534,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'polly-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/v1/speech"
-                                                        "SynthesizeSpeech"
-                                                        "2016-06-10")
+                                                        "SynthesizeSpeech")
        :want-stream common-lisp:t)
       "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'synthesize-speech))

@@ -6,6 +6,7 @@
     "jsonVersion":"1.1",
     "protocol":"json",
     "serviceFullName":"AWS Application Discovery Service",
+    "serviceId":"Application Discovery Service",
     "signatureVersion":"v4",
     "targetPrefix":"AWSPoseidonService_V2015_11_01",
     "uid":"discovery-2015-11-01"
@@ -23,7 +24,39 @@
         {"shape":"AuthorizationErrorException"},
         {"shape":"InvalidParameterException"},
         {"shape":"InvalidParameterValueException"},
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
+      ]
+    },
+    "BatchDeleteAgents":{
+      "name":"BatchDeleteAgents",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"BatchDeleteAgentsRequest"},
+      "output":{"shape":"BatchDeleteAgentsResponse"},
+      "errors":[
+        {"shape":"AuthorizationErrorException"},
+        {"shape":"InvalidParameterException"},
+        {"shape":"InvalidParameterValueException"},
         {"shape":"ServerInternalErrorException"}
+      ]
+    },
+    "BatchDeleteImportData":{
+      "name":"BatchDeleteImportData",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"BatchDeleteImportDataRequest"},
+      "output":{"shape":"BatchDeleteImportDataResponse"},
+      "errors":[
+        {"shape":"AuthorizationErrorException"},
+        {"shape":"InvalidParameterException"},
+        {"shape":"InvalidParameterValueException"},
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
       ]
     },
     "CreateApplication":{
@@ -38,7 +71,8 @@
         {"shape":"AuthorizationErrorException"},
         {"shape":"InvalidParameterException"},
         {"shape":"InvalidParameterValueException"},
-        {"shape":"ServerInternalErrorException"}
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
       ]
     },
     "CreateTags":{
@@ -54,7 +88,8 @@
         {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidParameterException"},
         {"shape":"InvalidParameterValueException"},
-        {"shape":"ServerInternalErrorException"}
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
       ]
     },
     "DeleteApplications":{
@@ -69,7 +104,8 @@
         {"shape":"AuthorizationErrorException"},
         {"shape":"InvalidParameterException"},
         {"shape":"InvalidParameterValueException"},
-        {"shape":"ServerInternalErrorException"}
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
       ]
     },
     "DeleteTags":{
@@ -85,7 +121,8 @@
         {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidParameterException"},
         {"shape":"InvalidParameterValueException"},
-        {"shape":"ServerInternalErrorException"}
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
       ]
     },
     "DescribeAgents":{
@@ -100,7 +137,23 @@
         {"shape":"AuthorizationErrorException"},
         {"shape":"InvalidParameterException"},
         {"shape":"InvalidParameterValueException"},
-        {"shape":"ServerInternalErrorException"}
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
+      ]
+    },
+    "DescribeBatchDeleteConfigurationTask":{
+      "name":"DescribeBatchDeleteConfigurationTask",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DescribeBatchDeleteConfigurationTaskRequest"},
+      "output":{"shape":"DescribeBatchDeleteConfigurationTaskResponse"},
+      "errors":[
+        {"shape":"AuthorizationErrorException"},
+        {"shape":"InvalidParameterValueException"},
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
       ]
     },
     "DescribeConfigurations":{
@@ -115,7 +168,26 @@
         {"shape":"AuthorizationErrorException"},
         {"shape":"InvalidParameterException"},
         {"shape":"InvalidParameterValueException"},
-        {"shape":"ServerInternalErrorException"}
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
+      ]
+    },
+    "DescribeContinuousExports":{
+      "name":"DescribeContinuousExports",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DescribeContinuousExportsRequest"},
+      "output":{"shape":"DescribeContinuousExportsResponse"},
+      "errors":[
+        {"shape":"AuthorizationErrorException"},
+        {"shape":"InvalidParameterException"},
+        {"shape":"InvalidParameterValueException"},
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"OperationNotPermittedException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"HomeRegionNotSetException"}
       ]
     },
     "DescribeExportConfigurations":{
@@ -131,7 +203,8 @@
         {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidParameterException"},
         {"shape":"InvalidParameterValueException"},
-        {"shape":"ServerInternalErrorException"}
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
       ],
       "deprecated":true
     },
@@ -147,7 +220,24 @@
         {"shape":"AuthorizationErrorException"},
         {"shape":"InvalidParameterException"},
         {"shape":"InvalidParameterValueException"},
-        {"shape":"ServerInternalErrorException"}
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
+      ]
+    },
+    "DescribeImportTasks":{
+      "name":"DescribeImportTasks",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DescribeImportTasksRequest"},
+      "output":{"shape":"DescribeImportTasksResponse"},
+      "errors":[
+        {"shape":"AuthorizationErrorException"},
+        {"shape":"InvalidParameterException"},
+        {"shape":"InvalidParameterValueException"},
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
       ]
     },
     "DescribeTags":{
@@ -163,7 +253,8 @@
         {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidParameterException"},
         {"shape":"InvalidParameterValueException"},
-        {"shape":"ServerInternalErrorException"}
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
       ]
     },
     "DisassociateConfigurationItemsFromApplication":{
@@ -178,7 +269,8 @@
         {"shape":"AuthorizationErrorException"},
         {"shape":"InvalidParameterException"},
         {"shape":"InvalidParameterValueException"},
-        {"shape":"ServerInternalErrorException"}
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
       ]
     },
     "ExportConfigurations":{
@@ -193,7 +285,8 @@
         {"shape":"InvalidParameterException"},
         {"shape":"InvalidParameterValueException"},
         {"shape":"ServerInternalErrorException"},
-        {"shape":"OperationNotPermittedException"}
+        {"shape":"OperationNotPermittedException"},
+        {"shape":"HomeRegionNotSetException"}
       ],
       "deprecated":true
     },
@@ -209,7 +302,8 @@
         {"shape":"AuthorizationErrorException"},
         {"shape":"InvalidParameterException"},
         {"shape":"InvalidParameterValueException"},
-        {"shape":"ServerInternalErrorException"}
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
       ]
     },
     "ListConfigurations":{
@@ -225,7 +319,8 @@
         {"shape":"ResourceNotFoundException"},
         {"shape":"InvalidParameterException"},
         {"shape":"InvalidParameterValueException"},
-        {"shape":"ServerInternalErrorException"}
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
       ]
     },
     "ListServerNeighbors":{
@@ -240,7 +335,44 @@
         {"shape":"AuthorizationErrorException"},
         {"shape":"InvalidParameterException"},
         {"shape":"InvalidParameterValueException"},
-        {"shape":"ServerInternalErrorException"}
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
+      ]
+    },
+    "StartBatchDeleteConfigurationTask":{
+      "name":"StartBatchDeleteConfigurationTask",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"StartBatchDeleteConfigurationTaskRequest"},
+      "output":{"shape":"StartBatchDeleteConfigurationTaskResponse"},
+      "errors":[
+        {"shape":"LimitExceededException"},
+        {"shape":"AuthorizationErrorException"},
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"},
+        {"shape":"OperationNotPermittedException"},
+        {"shape":"InvalidParameterValueException"}
+      ]
+    },
+    "StartContinuousExport":{
+      "name":"StartContinuousExport",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"StartContinuousExportRequest"},
+      "output":{"shape":"StartContinuousExportResponse"},
+      "errors":[
+        {"shape":"ConflictErrorException"},
+        {"shape":"AuthorizationErrorException"},
+        {"shape":"InvalidParameterException"},
+        {"shape":"InvalidParameterValueException"},
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"OperationNotPermittedException"},
+        {"shape":"ResourceInUseException"},
+        {"shape":"HomeRegionNotSetException"}
       ]
     },
     "StartDataCollectionByAgentIds":{
@@ -255,7 +387,8 @@
         {"shape":"AuthorizationErrorException"},
         {"shape":"InvalidParameterException"},
         {"shape":"InvalidParameterValueException"},
-        {"shape":"ServerInternalErrorException"}
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
       ]
     },
     "StartExportTask":{
@@ -271,7 +404,44 @@
         {"shape":"InvalidParameterException"},
         {"shape":"InvalidParameterValueException"},
         {"shape":"ServerInternalErrorException"},
-        {"shape":"OperationNotPermittedException"}
+        {"shape":"OperationNotPermittedException"},
+        {"shape":"HomeRegionNotSetException"}
+      ]
+    },
+    "StartImportTask":{
+      "name":"StartImportTask",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"StartImportTaskRequest"},
+      "output":{"shape":"StartImportTaskResponse"},
+      "errors":[
+        {"shape":"ResourceInUseException"},
+        {"shape":"AuthorizationErrorException"},
+        {"shape":"InvalidParameterException"},
+        {"shape":"InvalidParameterValueException"},
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
+      ]
+    },
+    "StopContinuousExport":{
+      "name":"StopContinuousExport",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"StopContinuousExportRequest"},
+      "output":{"shape":"StopContinuousExportResponse"},
+      "errors":[
+        {"shape":"AuthorizationErrorException"},
+        {"shape":"InvalidParameterException"},
+        {"shape":"InvalidParameterValueException"},
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"OperationNotPermittedException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ResourceInUseException"},
+        {"shape":"HomeRegionNotSetException"}
       ]
     },
     "StopDataCollectionByAgentIds":{
@@ -286,7 +456,8 @@
         {"shape":"AuthorizationErrorException"},
         {"shape":"InvalidParameterException"},
         {"shape":"InvalidParameterValueException"},
-        {"shape":"ServerInternalErrorException"}
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
       ]
     },
     "UpdateApplication":{
@@ -301,7 +472,8 @@
         {"shape":"AuthorizationErrorException"},
         {"shape":"InvalidParameterException"},
         {"shape":"InvalidParameterValueException"},
-        {"shape":"ServerInternalErrorException"}
+        {"shape":"ServerInternalErrorException"},
+        {"shape":"HomeRegionNotSetException"}
       ]
     }
   },
@@ -318,7 +490,12 @@
       "type":"list",
       "member":{"shape":"AgentConfigurationStatus"}
     },
-    "AgentId":{"type":"string"},
+    "AgentId":{
+      "type":"string",
+      "max":20,
+      "min":10,
+      "pattern":"\\S+"
+    },
     "AgentIds":{
       "type":"list",
       "member":{"shape":"AgentId"}
@@ -343,7 +520,8 @@
       "members":{
         "ipAddress":{"shape":"String"},
         "macAddress":{"shape":"String"}
-      }
+      },
+      "sensitive":true
     },
     "AgentNetworkInfoList":{
       "type":"list",
@@ -364,10 +542,24 @@
       "type":"list",
       "member":{"shape":"AgentInfo"}
     },
-    "ApplicationId":{"type":"string"},
+    "ApplicationDescription":{
+      "type":"string",
+      "max":1000,
+      "pattern":"(^$|[\\s\\S]*\\S[\\s\\S]*)"
+    },
+    "ApplicationId":{
+      "type":"string",
+      "max":200,
+      "pattern":"\\S+"
+    },
     "ApplicationIdsList":{
       "type":"list",
       "member":{"shape":"ApplicationId"}
+    },
+    "ApplicationName":{
+      "type":"string",
+      "max":127,
+      "pattern":"[\\s\\S]*\\S[\\s\\S]*"
     },
     "AssociateConfigurationItemsToApplicationRequest":{
       "type":"structure",
@@ -392,18 +584,120 @@
       },
       "exception":true
     },
+    "BatchDeleteAgentError":{
+      "type":"structure",
+      "required":[
+        "agentId",
+        "errorMessage",
+        "errorCode"
+      ],
+      "members":{
+        "agentId":{"shape":"AgentId"},
+        "errorMessage":{"shape":"String"},
+        "errorCode":{"shape":"DeleteAgentErrorCode"}
+      }
+    },
+    "BatchDeleteAgentErrors":{
+      "type":"list",
+      "member":{"shape":"BatchDeleteAgentError"}
+    },
+    "BatchDeleteAgentsRequest":{
+      "type":"structure",
+      "required":["deleteAgents"],
+      "members":{
+        "deleteAgents":{"shape":"DeleteAgents"}
+      }
+    },
+    "BatchDeleteAgentsResponse":{
+      "type":"structure",
+      "members":{
+        "errors":{"shape":"BatchDeleteAgentErrors"}
+      }
+    },
+    "BatchDeleteConfigurationTask":{
+      "type":"structure",
+      "members":{
+        "taskId":{"shape":"UUID"},
+        "status":{"shape":"BatchDeleteConfigurationTaskStatus"},
+        "startTime":{"shape":"TimeStamp"},
+        "endTime":{"shape":"TimeStamp"},
+        "configurationType":{"shape":"DeletionConfigurationItemType"},
+        "requestedConfigurations":{"shape":"ConfigurationIdList"},
+        "deletedConfigurations":{"shape":"ConfigurationIdList"},
+        "failedConfigurations":{"shape":"FailedConfigurationList"},
+        "deletionWarnings":{"shape":"DeletionWarningsList"}
+      }
+    },
+    "BatchDeleteConfigurationTaskStatus":{
+      "type":"string",
+      "enum":[
+        "INITIALIZING",
+        "VALIDATING",
+        "DELETING",
+        "COMPLETED",
+        "FAILED"
+      ]
+    },
+    "BatchDeleteImportDataError":{
+      "type":"structure",
+      "members":{
+        "importTaskId":{"shape":"ImportTaskIdentifier"},
+        "errorCode":{"shape":"BatchDeleteImportDataErrorCode"},
+        "errorDescription":{"shape":"BatchDeleteImportDataErrorDescription"}
+      }
+    },
+    "BatchDeleteImportDataErrorCode":{
+      "type":"string",
+      "enum":[
+        "NOT_FOUND",
+        "INTERNAL_SERVER_ERROR",
+        "OVER_LIMIT"
+      ]
+    },
+    "BatchDeleteImportDataErrorDescription":{"type":"string"},
+    "BatchDeleteImportDataErrorList":{
+      "type":"list",
+      "member":{"shape":"BatchDeleteImportDataError"}
+    },
+    "BatchDeleteImportDataRequest":{
+      "type":"structure",
+      "required":["importTaskIds"],
+      "members":{
+        "importTaskIds":{"shape":"ToDeleteIdentifierList"},
+        "deleteHistory":{"shape":"Boolean"}
+      }
+    },
+    "BatchDeleteImportDataResponse":{
+      "type":"structure",
+      "members":{
+        "errors":{"shape":"BatchDeleteImportDataErrorList"}
+      }
+    },
     "Boolean":{"type":"boolean"},
     "BoxedInteger":{
       "type":"integer",
       "box":true
     },
-    "Condition":{"type":"string"},
+    "ClientRequestToken":{
+      "type":"string",
+      "max":100,
+      "min":1
+    },
+    "Condition":{
+      "type":"string",
+      "max":200,
+      "pattern":"\\S+"
+    },
     "Configuration":{
       "type":"map",
       "key":{"shape":"String"},
       "value":{"shape":"String"}
     },
-    "ConfigurationId":{"type":"string"},
+    "ConfigurationId":{
+      "type":"string",
+      "max":200,
+      "pattern":"\\S*"
+    },
     "ConfigurationIdList":{
       "type":"list",
       "member":{"shape":"ConfigurationId"}
@@ -429,23 +723,64 @@
     },
     "ConfigurationTagSet":{
       "type":"list",
-      "member":{
-        "shape":"ConfigurationTag",
-        "locationName":"item"
-      }
+      "member":{"shape":"ConfigurationTag"}
     },
     "Configurations":{
       "type":"list",
       "member":{"shape":"Configuration"}
     },
     "ConfigurationsDownloadUrl":{"type":"string"},
-    "ConfigurationsExportId":{"type":"string"},
+    "ConfigurationsExportId":{
+      "type":"string",
+      "max":200,
+      "pattern":"\\S*"
+    },
+    "ConflictErrorException":{
+      "type":"structure",
+      "members":{
+        "message":{"shape":"Message"}
+      },
+      "exception":true
+    },
+    "ContinuousExportDescription":{
+      "type":"structure",
+      "members":{
+        "exportId":{"shape":"ConfigurationsExportId"},
+        "status":{"shape":"ContinuousExportStatus"},
+        "statusDetail":{"shape":"StringMax255"},
+        "s3Bucket":{"shape":"S3Bucket"},
+        "startTime":{"shape":"TimeStamp"},
+        "stopTime":{"shape":"TimeStamp"},
+        "dataSource":{"shape":"DataSource"},
+        "schemaStorageConfig":{"shape":"SchemaStorageConfig"}
+      }
+    },
+    "ContinuousExportDescriptions":{
+      "type":"list",
+      "member":{"shape":"ContinuousExportDescription"}
+    },
+    "ContinuousExportIds":{
+      "type":"list",
+      "member":{"shape":"ConfigurationsExportId"}
+    },
+    "ContinuousExportStatus":{
+      "type":"string",
+      "enum":[
+        "START_IN_PROGRESS",
+        "START_FAILED",
+        "ACTIVE",
+        "ERROR",
+        "STOP_IN_PROGRESS",
+        "STOP_FAILED",
+        "INACTIVE"
+      ]
+    },
     "CreateApplicationRequest":{
       "type":"structure",
       "required":["name"],
       "members":{
-        "name":{"shape":"String"},
-        "description":{"shape":"String"}
+        "name":{"shape":"ApplicationName"},
+        "description":{"shape":"ApplicationDescription"}
       }
     },
     "CreateApplicationResponse":{
@@ -491,6 +826,27 @@
         "unknownAgents":{"shape":"Integer"}
       }
     },
+    "CustomerAgentlessCollectorInfo":{
+      "type":"structure",
+      "required":[
+        "activeAgentlessCollectors",
+        "healthyAgentlessCollectors",
+        "denyListedAgentlessCollectors",
+        "shutdownAgentlessCollectors",
+        "unhealthyAgentlessCollectors",
+        "totalAgentlessCollectors",
+        "unknownAgentlessCollectors"
+      ],
+      "members":{
+        "activeAgentlessCollectors":{"shape":"Integer"},
+        "healthyAgentlessCollectors":{"shape":"Integer"},
+        "denyListedAgentlessCollectors":{"shape":"Integer"},
+        "shutdownAgentlessCollectors":{"shape":"Integer"},
+        "unhealthyAgentlessCollectors":{"shape":"Integer"},
+        "totalAgentlessCollectors":{"shape":"Integer"},
+        "unknownAgentlessCollectors":{"shape":"Integer"}
+      }
+    },
     "CustomerConnectorInfo":{
       "type":"structure",
       "required":[
@@ -511,6 +867,58 @@
         "totalConnectors":{"shape":"Integer"},
         "unknownConnectors":{"shape":"Integer"}
       }
+    },
+    "CustomerMeCollectorInfo":{
+      "type":"structure",
+      "required":[
+        "activeMeCollectors",
+        "healthyMeCollectors",
+        "denyListedMeCollectors",
+        "shutdownMeCollectors",
+        "unhealthyMeCollectors",
+        "totalMeCollectors",
+        "unknownMeCollectors"
+      ],
+      "members":{
+        "activeMeCollectors":{"shape":"Integer"},
+        "healthyMeCollectors":{"shape":"Integer"},
+        "denyListedMeCollectors":{"shape":"Integer"},
+        "shutdownMeCollectors":{"shape":"Integer"},
+        "unhealthyMeCollectors":{"shape":"Integer"},
+        "totalMeCollectors":{"shape":"Integer"},
+        "unknownMeCollectors":{"shape":"Integer"}
+      }
+    },
+    "DataSource":{
+      "type":"string",
+      "enum":["AGENT"]
+    },
+    "DatabaseName":{
+      "type":"string",
+      "max":252,
+      "min":1
+    },
+    "DeleteAgent":{
+      "type":"structure",
+      "required":["agentId"],
+      "members":{
+        "agentId":{"shape":"AgentId"},
+        "force":{"shape":"Boolean"}
+      }
+    },
+    "DeleteAgentErrorCode":{
+      "type":"string",
+      "enum":[
+        "NOT_FOUND",
+        "INTERNAL_SERVER_ERROR",
+        "AGENT_IN_USE"
+      ]
+    },
+    "DeleteAgents":{
+      "type":"list",
+      "member":{"shape":"DeleteAgent"},
+      "max":50,
+      "min":1
     },
     "DeleteApplicationsRequest":{
       "type":"structure",
@@ -537,6 +945,22 @@
       "members":{
       }
     },
+    "DeletionConfigurationItemType":{
+      "type":"string",
+      "enum":["SERVER"]
+    },
+    "DeletionWarning":{
+      "type":"structure",
+      "members":{
+        "configurationId":{"shape":"ConfigurationId"},
+        "warningCode":{"shape":"WarningCode"},
+        "warningText":{"shape":"WarningText"}
+      }
+    },
+    "DeletionWarningsList":{
+      "type":"list",
+      "member":{"shape":"DeletionWarning"}
+    },
     "DescribeAgentsRequest":{
       "type":"structure",
       "members":{
@@ -551,6 +975,19 @@
       "members":{
         "agentsInfo":{"shape":"AgentsInfo"},
         "nextToken":{"shape":"NextToken"}
+      }
+    },
+    "DescribeBatchDeleteConfigurationTaskRequest":{
+      "type":"structure",
+      "required":["taskId"],
+      "members":{
+        "taskId":{"shape":"UUID"}
+      }
+    },
+    "DescribeBatchDeleteConfigurationTaskResponse":{
+      "type":"structure",
+      "members":{
+        "task":{"shape":"BatchDeleteConfigurationTask"}
       }
     },
     "DescribeConfigurationsAttribute":{
@@ -573,6 +1010,27 @@
       "type":"structure",
       "members":{
         "configurations":{"shape":"DescribeConfigurationsAttributes"}
+      }
+    },
+    "DescribeContinuousExportsMaxResults":{
+      "type":"integer",
+      "box":true,
+      "max":100,
+      "min":1
+    },
+    "DescribeContinuousExportsRequest":{
+      "type":"structure",
+      "members":{
+        "exportIds":{"shape":"ContinuousExportIds"},
+        "maxResults":{"shape":"DescribeContinuousExportsMaxResults"},
+        "nextToken":{"shape":"NextToken"}
+      }
+    },
+    "DescribeContinuousExportsResponse":{
+      "type":"structure",
+      "members":{
+        "descriptions":{"shape":"ContinuousExportDescriptions"},
+        "nextToken":{"shape":"NextToken"}
       }
     },
     "DescribeExportConfigurationsRequest":{
@@ -606,6 +1064,31 @@
         "nextToken":{"shape":"NextToken"}
       }
     },
+    "DescribeImportTasksFilterList":{
+      "type":"list",
+      "member":{"shape":"ImportTaskFilter"}
+    },
+    "DescribeImportTasksMaxResults":{
+      "type":"integer",
+      "box":true,
+      "max":100,
+      "min":1
+    },
+    "DescribeImportTasksRequest":{
+      "type":"structure",
+      "members":{
+        "filters":{"shape":"DescribeImportTasksFilterList"},
+        "maxResults":{"shape":"DescribeImportTasksMaxResults"},
+        "nextToken":{"shape":"NextToken"}
+      }
+    },
+    "DescribeImportTasksResponse":{
+      "type":"structure",
+      "members":{
+        "nextToken":{"shape":"NextToken"},
+        "tasks":{"shape":"ImportTaskList"}
+      }
+    },
     "DescribeTagsRequest":{
       "type":"structure",
       "members":{
@@ -637,6 +1120,30 @@
       "members":{
       }
     },
+    "EC2InstanceType":{
+      "type":"string",
+      "max":25,
+      "min":1,
+      "pattern":"[a-zA-Z0-9\\d\\.\\-]+"
+    },
+    "Ec2RecommendationsExportPreferences":{
+      "type":"structure",
+      "members":{
+        "enabled":{"shape":"ExportEnabled"},
+        "cpuPerformanceMetricBasis":{"shape":"UsageMetricBasis"},
+        "ramPerformanceMetricBasis":{"shape":"UsageMetricBasis"},
+        "tenancy":{"shape":"Tenancy"},
+        "excludedInstanceTypes":{"shape":"ExcludedInstanceTypes"},
+        "preferredRegion":{"shape":"UserPreferredRegion"},
+        "reservedInstanceOptions":{"shape":"ReservedInstanceOptions"}
+      }
+    },
+    "ErrorMessage":{"type":"string"},
+    "ErrorStatusCode":{"type":"integer"},
+    "ExcludedInstanceTypes":{
+      "type":"list",
+      "member":{"shape":"EC2InstanceType"}
+    },
     "ExportConfigurationsResponse":{
       "type":"structure",
       "members":{
@@ -645,15 +1152,13 @@
     },
     "ExportDataFormat":{
       "type":"string",
-      "enum":[
-        "CSV",
-        "GRAPHML"
-      ]
+      "enum":["CSV"]
     },
     "ExportDataFormats":{
       "type":"list",
       "member":{"shape":"ExportDataFormat"}
     },
+    "ExportEnabled":{"type":"boolean"},
     "ExportFilter":{
       "type":"structure",
       "required":[
@@ -694,6 +1199,13 @@
         "requestedEndTime":{"shape":"TimeStamp"}
       }
     },
+    "ExportPreferences":{
+      "type":"structure",
+      "members":{
+        "ec2RecommendationsPreferences":{"shape":"Ec2RecommendationsExportPreferences"}
+      },
+      "union":true
+    },
     "ExportRequestTime":{"type":"timestamp"},
     "ExportStatus":{
       "type":"string",
@@ -708,6 +1220,18 @@
       "type":"list",
       "member":{"shape":"ExportInfo"}
     },
+    "FailedConfiguration":{
+      "type":"structure",
+      "members":{
+        "configurationId":{"shape":"ConfigurationId"},
+        "errorStatusCode":{"shape":"ErrorStatusCode"},
+        "errorMessage":{"shape":"ErrorMessage"}
+      }
+    },
+    "FailedConfigurationList":{
+      "type":"list",
+      "member":{"shape":"FailedConfiguration"}
+    },
     "Filter":{
       "type":"structure",
       "required":[
@@ -721,14 +1245,19 @@
         "condition":{"shape":"Condition"}
       }
     },
-    "FilterName":{"type":"string"},
-    "FilterValue":{"type":"string"},
+    "FilterName":{
+      "type":"string",
+      "max":1000,
+      "pattern":"[\\s\\S]*\\S[\\s\\S]*"
+    },
+    "FilterValue":{
+      "type":"string",
+      "max":1000,
+      "pattern":"(^$|[\\s\\S]*\\S[\\s\\S]*)"
+    },
     "FilterValues":{
       "type":"list",
-      "member":{
-        "shape":"FilterValue",
-        "locationName":"item"
-      }
+      "member":{"shape":"FilterValue"}
     },
     "Filters":{
       "type":"list",
@@ -747,8 +1276,98 @@
         "serversMappedToApplications":{"shape":"Long"},
         "serversMappedtoTags":{"shape":"Long"},
         "agentSummary":{"shape":"CustomerAgentInfo"},
-        "connectorSummary":{"shape":"CustomerConnectorInfo"}
+        "connectorSummary":{"shape":"CustomerConnectorInfo"},
+        "meCollectorSummary":{"shape":"CustomerMeCollectorInfo"},
+        "agentlessCollectorSummary":{"shape":"CustomerAgentlessCollectorInfo"}
       }
+    },
+    "HomeRegionNotSetException":{
+      "type":"structure",
+      "members":{
+        "message":{"shape":"Message"}
+      },
+      "exception":true
+    },
+    "ImportStatus":{
+      "type":"string",
+      "enum":[
+        "IMPORT_IN_PROGRESS",
+        "IMPORT_COMPLETE",
+        "IMPORT_COMPLETE_WITH_ERRORS",
+        "IMPORT_FAILED",
+        "IMPORT_FAILED_SERVER_LIMIT_EXCEEDED",
+        "IMPORT_FAILED_RECORD_LIMIT_EXCEEDED",
+        "DELETE_IN_PROGRESS",
+        "DELETE_COMPLETE",
+        "DELETE_FAILED",
+        "DELETE_FAILED_LIMIT_EXCEEDED",
+        "INTERNAL_ERROR"
+      ]
+    },
+    "ImportTask":{
+      "type":"structure",
+      "members":{
+        "importTaskId":{"shape":"ImportTaskIdentifier"},
+        "clientRequestToken":{"shape":"ClientRequestToken"},
+        "name":{"shape":"ImportTaskName"},
+        "importUrl":{"shape":"ImportURL"},
+        "status":{"shape":"ImportStatus"},
+        "importRequestTime":{"shape":"TimeStamp"},
+        "importCompletionTime":{"shape":"TimeStamp"},
+        "importDeletedTime":{"shape":"TimeStamp"},
+        "serverImportSuccess":{"shape":"Integer"},
+        "serverImportFailure":{"shape":"Integer"},
+        "applicationImportSuccess":{"shape":"Integer"},
+        "applicationImportFailure":{"shape":"Integer"},
+        "errorsAndFailedEntriesZip":{"shape":"S3PresignedUrl"}
+      }
+    },
+    "ImportTaskFilter":{
+      "type":"structure",
+      "members":{
+        "name":{"shape":"ImportTaskFilterName"},
+        "values":{"shape":"ImportTaskFilterValueList"}
+      }
+    },
+    "ImportTaskFilterName":{
+      "type":"string",
+      "enum":[
+        "IMPORT_TASK_ID",
+        "STATUS",
+        "NAME"
+      ]
+    },
+    "ImportTaskFilterValue":{
+      "type":"string",
+      "max":255,
+      "min":1
+    },
+    "ImportTaskFilterValueList":{
+      "type":"list",
+      "member":{"shape":"ImportTaskFilterValue"},
+      "max":100,
+      "min":1
+    },
+    "ImportTaskIdentifier":{
+      "type":"string",
+      "max":200,
+      "pattern":"^import-task-[a-fA-F0-9]{32}$"
+    },
+    "ImportTaskList":{
+      "type":"list",
+      "member":{"shape":"ImportTask"}
+    },
+    "ImportTaskName":{
+      "type":"string",
+      "max":255,
+      "min":1,
+      "pattern":"[\\s\\S]*\\S[\\s\\S]*"
+    },
+    "ImportURL":{
+      "type":"string",
+      "max":4000,
+      "min":1,
+      "pattern":"\\S+://\\S+/[\\s\\S]*\\S[\\s\\S]*"
     },
     "Integer":{"type":"integer"},
     "InvalidParameterException":{
@@ -759,6 +1378,13 @@
       "exception":true
     },
     "InvalidParameterValueException":{
+      "type":"structure",
+      "members":{
+        "message":{"shape":"Message"}
+      },
+      "exception":true
+    },
+    "LimitExceededException":{
       "type":"structure",
       "members":{
         "message":{"shape":"Message"}
@@ -825,6 +1451,13 @@
       "member":{"shape":"NeighborConnectionDetail"}
     },
     "NextToken":{"type":"string"},
+    "OfferingClass":{
+      "type":"string",
+      "enum":[
+        "STANDARD",
+        "CONVERTIBLE"
+      ]
+    },
     "OperationNotPermittedException":{
       "type":"structure",
       "members":{
@@ -836,13 +1469,46 @@
       "type":"structure",
       "required":["fieldName"],
       "members":{
-        "fieldName":{"shape":"String"},
+        "fieldName":{"shape":"OrderByElementFieldName"},
         "sortOrder":{"shape":"orderString"}
       }
+    },
+    "OrderByElementFieldName":{
+      "type":"string",
+      "max":1000,
+      "pattern":"[\\s\\S]*\\S[\\s\\S]*"
     },
     "OrderByList":{
       "type":"list",
       "member":{"shape":"OrderByElement"}
+    },
+    "PurchasingOption":{
+      "type":"string",
+      "enum":[
+        "ALL_UPFRONT",
+        "PARTIAL_UPFRONT",
+        "NO_UPFRONT"
+      ]
+    },
+    "ReservedInstanceOptions":{
+      "type":"structure",
+      "required":[
+        "purchasingOption",
+        "offeringClass",
+        "termLength"
+      ],
+      "members":{
+        "purchasingOption":{"shape":"PurchasingOption"},
+        "offeringClass":{"shape":"OfferingClass"},
+        "termLength":{"shape":"TermLength"}
+      }
+    },
+    "ResourceInUseException":{
+      "type":"structure",
+      "members":{
+        "message":{"shape":"Message"}
+      },
+      "exception":true
     },
     "ResourceNotFoundException":{
       "type":"structure",
@@ -851,6 +1517,13 @@
       },
       "exception":true
     },
+    "S3Bucket":{"type":"string"},
+    "S3PresignedUrl":{"type":"string"},
+    "SchemaStorageConfig":{
+      "type":"map",
+      "key":{"shape":"DatabaseName"},
+      "value":{"shape":"String"}
+    },
     "ServerInternalErrorException":{
       "type":"structure",
       "members":{
@@ -858,6 +1531,38 @@
       },
       "exception":true,
       "fault":true
+    },
+    "StartBatchDeleteConfigurationTaskRequest":{
+      "type":"structure",
+      "required":[
+        "configurationType",
+        "configurationIds"
+      ],
+      "members":{
+        "configurationType":{"shape":"DeletionConfigurationItemType"},
+        "configurationIds":{"shape":"ConfigurationIdList"}
+      }
+    },
+    "StartBatchDeleteConfigurationTaskResponse":{
+      "type":"structure",
+      "members":{
+        "taskId":{"shape":"UUID"}
+      }
+    },
+    "StartContinuousExportRequest":{
+      "type":"structure",
+      "members":{
+      }
+    },
+    "StartContinuousExportResponse":{
+      "type":"structure",
+      "members":{
+        "exportId":{"shape":"ConfigurationsExportId"},
+        "s3Bucket":{"shape":"S3Bucket"},
+        "startTime":{"shape":"TimeStamp"},
+        "dataSource":{"shape":"DataSource"},
+        "schemaStorageConfig":{"shape":"SchemaStorageConfig"}
+      }
     },
     "StartDataCollectionByAgentIdsRequest":{
       "type":"structure",
@@ -878,13 +1583,49 @@
         "exportDataFormat":{"shape":"ExportDataFormats"},
         "filters":{"shape":"ExportFilters"},
         "startTime":{"shape":"TimeStamp"},
-        "endTime":{"shape":"TimeStamp"}
+        "endTime":{"shape":"TimeStamp"},
+        "preferences":{"shape":"ExportPreferences"}
       }
     },
     "StartExportTaskResponse":{
       "type":"structure",
       "members":{
         "exportId":{"shape":"ConfigurationsExportId"}
+      }
+    },
+    "StartImportTaskRequest":{
+      "type":"structure",
+      "required":[
+        "name",
+        "importUrl"
+      ],
+      "members":{
+        "clientRequestToken":{
+          "shape":"ClientRequestToken",
+          "idempotencyToken":true
+        },
+        "name":{"shape":"ImportTaskName"},
+        "importUrl":{"shape":"ImportURL"}
+      }
+    },
+    "StartImportTaskResponse":{
+      "type":"structure",
+      "members":{
+        "task":{"shape":"ImportTask"}
+      }
+    },
+    "StopContinuousExportRequest":{
+      "type":"structure",
+      "required":["exportId"],
+      "members":{
+        "exportId":{"shape":"ConfigurationsExportId"}
+      }
+    },
+    "StopContinuousExportResponse":{
+      "type":"structure",
+      "members":{
+        "startTime":{"shape":"TimeStamp"},
+        "stopTime":{"shape":"TimeStamp"}
       }
     },
     "StopDataCollectionByAgentIdsRequest":{
@@ -900,7 +1641,17 @@
         "agentsConfigurationStatus":{"shape":"AgentConfigurationStatusList"}
       }
     },
-    "String":{"type":"string"},
+    "String":{
+      "type":"string",
+      "max":10000,
+      "pattern":"[\\s\\S]*"
+    },
+    "StringMax255":{
+      "type":"string",
+      "max":255,
+      "min":1,
+      "pattern":"[\\s\\S]*\\S[\\s\\S]*"
+    },
     "Tag":{
       "type":"structure",
       "required":[
@@ -930,20 +1681,41 @@
     "TagKey":{"type":"string"},
     "TagSet":{
       "type":"list",
-      "member":{
-        "shape":"Tag",
-        "locationName":"item"
-      }
+      "member":{"shape":"Tag"}
     },
     "TagValue":{"type":"string"},
+    "Tenancy":{
+      "type":"string",
+      "enum":[
+        "DEDICATED",
+        "SHARED"
+      ]
+    },
+    "TermLength":{
+      "type":"string",
+      "enum":[
+        "ONE_YEAR",
+        "THREE_YEAR"
+      ]
+    },
     "TimeStamp":{"type":"timestamp"},
+    "ToDeleteIdentifierList":{
+      "type":"list",
+      "member":{"shape":"ImportTaskIdentifier"},
+      "max":10,
+      "min":1
+    },
+    "UUID":{
+      "type":"string",
+      "pattern":"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+    },
     "UpdateApplicationRequest":{
       "type":"structure",
       "required":["configurationId"],
       "members":{
         "configurationId":{"shape":"ApplicationId"},
-        "name":{"shape":"String"},
-        "description":{"shape":"String"}
+        "name":{"shape":"ApplicationName"},
+        "description":{"shape":"ApplicationDescription"}
       }
     },
     "UpdateApplicationResponse":{
@@ -951,6 +1723,30 @@
       "members":{
       }
     },
+    "UsageMetricBasis":{
+      "type":"structure",
+      "members":{
+        "name":{"shape":"UsageMetricBasisName"},
+        "percentageAdjust":{"shape":"UsageMetricPercentageAdjust"}
+      }
+    },
+    "UsageMetricBasisName":{
+      "type":"string",
+      "pattern":"^(p(\\d{1,2}|100)|AVG|SPEC|MAX)$"
+    },
+    "UsageMetricPercentageAdjust":{
+      "type":"double",
+      "max":100.0,
+      "min":0.0
+    },
+    "UserPreferredRegion":{
+      "type":"string",
+      "max":30,
+      "min":1,
+      "pattern":"[a-z]{2}-[a-z\\-]+-[0-9]+"
+    },
+    "WarningCode":{"type":"integer"},
+    "WarningText":{"type":"string"},
     "orderString":{
       "type":"string",
       "enum":[

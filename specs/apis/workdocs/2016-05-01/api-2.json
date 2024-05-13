@@ -6,6 +6,7 @@
     "jsonVersion":"1.1",
     "protocol":"rest-json",
     "serviceFullName":"Amazon WorkDocs",
+    "serviceId":"WorkDocs",
     "signatureVersion":"v4",
     "uid":"workdocs-2016-05-01"
   },
@@ -24,7 +25,8 @@
         {"shape":"UnauthorizedOperationException"},
         {"shape":"UnauthorizedResourceAccessException"},
         {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"ConcurrentModificationException"}
       ]
     },
     "ActivateUser":{
@@ -57,7 +59,8 @@
         {"shape":"UnauthorizedOperationException"},
         {"shape":"UnauthorizedResourceAccessException"},
         {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"ProhibitedStateException"}
       ]
     },
     "CreateComment":{
@@ -76,7 +79,8 @@
         {"shape":"UnauthorizedResourceAccessException"},
         {"shape":"FailedDependencyException"},
         {"shape":"ServiceUnavailableException"},
-        {"shape":"DocumentLockedForCommentsException"}
+        {"shape":"DocumentLockedForCommentsException"},
+        {"shape":"InvalidCommentOperationException"}
       ]
     },
     "CreateCustomMetadata":{
@@ -111,6 +115,8 @@
         {"shape":"EntityNotExistsException"},
         {"shape":"EntityAlreadyExistsException"},
         {"shape":"ProhibitedStateException"},
+        {"shape":"ConflictingOperationException"},
+        {"shape":"ConcurrentModificationException"},
         {"shape":"LimitExceededException"},
         {"shape":"UnauthorizedOperationException"},
         {"shape":"UnauthorizedResourceAccessException"},
@@ -148,7 +154,8 @@
       "errors":[
         {"shape":"UnauthorizedResourceAccessException"},
         {"shape":"TooManySubscriptionsException"},
-        {"shape":"ServiceUnavailableException"}
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"InvalidArgumentException"}
       ]
     },
     "CreateUser":{
@@ -230,12 +237,33 @@
       "input":{"shape":"DeleteDocumentRequest"},
       "errors":[
         {"shape":"EntityNotExistsException"},
+        {"shape":"LimitExceededException"},
         {"shape":"ProhibitedStateException"},
+        {"shape":"ConflictingOperationException"},
         {"shape":"ConcurrentModificationException"},
         {"shape":"UnauthorizedOperationException"},
         {"shape":"UnauthorizedResourceAccessException"},
         {"shape":"FailedDependencyException"},
         {"shape":"ServiceUnavailableException"}
+      ]
+    },
+    "DeleteDocumentVersion":{
+      "name":"DeleteDocumentVersion",
+      "http":{
+        "method":"DELETE",
+        "requestUri":"/api/v1/documentVersions/{DocumentId}/versions/{VersionId}",
+        "responseCode":204
+      },
+      "input":{"shape":"DeleteDocumentVersionRequest"},
+      "errors":[
+        {"shape":"EntityNotExistsException"},
+        {"shape":"ProhibitedStateException"},
+        {"shape":"ConflictingOperationException"},
+        {"shape":"ConcurrentModificationException"},
+        {"shape":"UnauthorizedResourceAccessException"},
+        {"shape":"FailedDependencyException"},
+        {"shape":"InvalidOperationException"},
+        {"shape":"UnauthorizedOperationException"}
       ]
     },
     "DeleteFolder":{
@@ -248,7 +276,9 @@
       "input":{"shape":"DeleteFolderRequest"},
       "errors":[
         {"shape":"EntityNotExistsException"},
+        {"shape":"LimitExceededException"},
         {"shape":"ProhibitedStateException"},
+        {"shape":"ConflictingOperationException"},
         {"shape":"ConcurrentModificationException"},
         {"shape":"UnauthorizedOperationException"},
         {"shape":"UnauthorizedResourceAccessException"},
@@ -266,6 +296,8 @@
       "input":{"shape":"DeleteFolderContentsRequest"},
       "errors":[
         {"shape":"EntityNotExistsException"},
+        {"shape":"ProhibitedStateException"},
+        {"shape":"ConflictingOperationException"},
         {"shape":"UnauthorizedOperationException"},
         {"shape":"UnauthorizedResourceAccessException"},
         {"shape":"FailedDependencyException"},
@@ -286,7 +318,8 @@
         {"shape":"UnauthorizedOperationException"},
         {"shape":"UnauthorizedResourceAccessException"},
         {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"ProhibitedStateException"}
       ]
     },
     "DeleteNotificationSubscription":{
@@ -371,7 +404,8 @@
         {"shape":"InvalidArgumentException"},
         {"shape":"FailedDependencyException"},
         {"shape":"ServiceUnavailableException"},
-        {"shape":"ProhibitedStateException"}
+        {"shape":"ProhibitedStateException"},
+        {"shape":"InvalidPasswordException"}
       ]
     },
     "DescribeFolderContents":{
@@ -390,6 +424,22 @@
         {"shape":"FailedDependencyException"},
         {"shape":"ServiceUnavailableException"},
         {"shape":"ProhibitedStateException"}
+      ]
+    },
+    "DescribeGroups":{
+      "name":"DescribeGroups",
+      "http":{
+        "method":"GET",
+        "requestUri":"/api/v1/groups",
+        "responseCode":200
+      },
+      "input":{"shape":"DescribeGroupsRequest"},
+      "output":{"shape":"DescribeGroupsResponse"},
+      "errors":[
+        {"shape":"UnauthorizedOperationException"},
+        {"shape":"UnauthorizedResourceAccessException"},
+        {"shape":"FailedDependencyException"},
+        {"shape":"ServiceUnavailableException"}
       ]
     },
     "DescribeNotificationSubscriptions":{
@@ -417,6 +467,7 @@
       "input":{"shape":"DescribeResourcePermissionsRequest"},
       "output":{"shape":"DescribeResourcePermissionsResponse"},
       "errors":[
+        {"shape":"InvalidArgumentException"},
         {"shape":"UnauthorizedOperationException"},
         {"shape":"UnauthorizedResourceAccessException"},
         {"shape":"FailedDependencyException"},
@@ -450,11 +501,13 @@
       "input":{"shape":"DescribeUsersRequest"},
       "output":{"shape":"DescribeUsersResponse"},
       "errors":[
+        {"shape":"EntityNotExistsException"},
         {"shape":"UnauthorizedOperationException"},
         {"shape":"UnauthorizedResourceAccessException"},
         {"shape":"FailedDependencyException"},
         {"shape":"ServiceUnavailableException"},
-        {"shape":"InvalidArgumentException"}
+        {"shape":"InvalidArgumentException"},
+        {"shape":"RequestedEntityTooLargeException"}
       ]
     },
     "GetCurrentUser":{
@@ -489,7 +542,8 @@
         {"shape":"UnauthorizedResourceAccessException"},
         {"shape":"InvalidArgumentException"},
         {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+        {"shape":"ServiceUnavailableException"},
+        {"shape":"InvalidPasswordException"}
       ]
     },
     "GetDocumentPath":{
@@ -524,7 +578,8 @@
         {"shape":"UnauthorizedResourceAccessException"},
         {"shape":"FailedDependencyException"},
         {"shape":"ServiceUnavailableException"},
-        {"shape":"ProhibitedStateException"}
+        {"shape":"ProhibitedStateException"},
+        {"shape":"InvalidPasswordException"}
       ]
     },
     "GetFolder":{
@@ -563,6 +618,23 @@
         {"shape":"ServiceUnavailableException"}
       ]
     },
+    "GetResources":{
+      "name":"GetResources",
+      "http":{
+        "method":"GET",
+        "requestUri":"/api/v1/resources",
+        "responseCode":200
+      },
+      "input":{"shape":"GetResourcesRequest"},
+      "output":{"shape":"GetResourcesResponse"},
+      "errors":[
+        {"shape":"UnauthorizedResourceAccessException"},
+        {"shape":"UnauthorizedOperationException"},
+        {"shape":"InvalidArgumentException"},
+        {"shape":"FailedDependencyException"},
+        {"shape":"ServiceUnavailableException"}
+      ]
+    },
     "InitiateDocumentVersionUpload":{
       "name":"InitiateDocumentVersionUpload",
       "http":{
@@ -577,13 +649,16 @@
         {"shape":"EntityAlreadyExistsException"},
         {"shape":"StorageLimitExceededException"},
         {"shape":"StorageLimitWillExceedException"},
+        {"shape":"LimitExceededException"},
         {"shape":"ProhibitedStateException"},
         {"shape":"UnauthorizedOperationException"},
         {"shape":"UnauthorizedResourceAccessException"},
         {"shape":"FailedDependencyException"},
         {"shape":"ServiceUnavailableException"},
         {"shape":"DraftUploadOutOfSyncException"},
-        {"shape":"ResourceAlreadyCheckedOutException"}
+        {"shape":"ResourceAlreadyCheckedOutException"},
+        {"shape":"InvalidPasswordException"},
+        {"shape":"InvalidArgumentException"}
       ]
     },
     "RemoveAllResourcePermissions":{
@@ -616,6 +691,41 @@
         {"shape":"ServiceUnavailableException"}
       ]
     },
+    "RestoreDocumentVersions":{
+      "name":"RestoreDocumentVersions",
+      "http":{
+        "method":"POST",
+        "requestUri":"/api/v1/documentVersions/restore/{DocumentId}",
+        "responseCode":204
+      },
+      "input":{"shape":"RestoreDocumentVersionsRequest"},
+      "errors":[
+        {"shape":"EntityNotExistsException"},
+        {"shape":"ProhibitedStateException"},
+        {"shape":"ConflictingOperationException"},
+        {"shape":"ConcurrentModificationException"},
+        {"shape":"UnauthorizedResourceAccessException"},
+        {"shape":"FailedDependencyException"},
+        {"shape":"InvalidOperationException"},
+        {"shape":"UnauthorizedOperationException"}
+      ]
+    },
+    "SearchResources":{
+      "name":"SearchResources",
+      "http":{
+        "method":"POST",
+        "requestUri":"/api/v1/search",
+        "responseCode":200
+      },
+      "input":{"shape":"SearchResourcesRequest"},
+      "output":{"shape":"SearchResourcesResponse"},
+      "errors":[
+        {"shape":"InvalidArgumentException"},
+        {"shape":"UnauthorizedResourceAccessException"},
+        {"shape":"UnauthorizedOperationException"},
+        {"shape":"ServiceUnavailableException"}
+      ]
+    },
     "UpdateDocument":{
       "name":"UpdateDocument",
       "http":{
@@ -629,6 +739,7 @@
         {"shape":"EntityAlreadyExistsException"},
         {"shape":"LimitExceededException"},
         {"shape":"ProhibitedStateException"},
+        {"shape":"ConflictingOperationException"},
         {"shape":"ConcurrentModificationException"},
         {"shape":"UnauthorizedOperationException"},
         {"shape":"UnauthorizedResourceAccessException"},
@@ -667,6 +778,7 @@
         {"shape":"EntityNotExistsException"},
         {"shape":"EntityAlreadyExistsException"},
         {"shape":"ProhibitedStateException"},
+        {"shape":"ConflictingOperationException"},
         {"shape":"ConcurrentModificationException"},
         {"shape":"LimitExceededException"},
         {"shape":"UnauthorizedOperationException"},
@@ -689,9 +801,11 @@
         {"shape":"UnauthorizedOperationException"},
         {"shape":"UnauthorizedResourceAccessException"},
         {"shape":"IllegalUserStateException"},
+        {"shape":"ProhibitedStateException"},
         {"shape":"FailedDependencyException"},
         {"shape":"ServiceUnavailableException"},
-        {"shape":"DeactivatingLastSystemUserException"}
+        {"shape":"DeactivatingLastSystemUserException"},
+        {"shape":"InvalidArgumentException"}
       ]
     }
   },
@@ -747,6 +861,7 @@
       "members":{
         "Type":{"shape":"ActivityType"},
         "TimeStamp":{"shape":"TimestampType"},
+        "IsIndirectActivity":{"shape":"BooleanType"},
         "OrganizationId":{"shape":"IdType"},
         "Initiator":{"shape":"UserMetadata"},
         "Participants":{"shape":"Participants"},
@@ -754,6 +869,12 @@
         "OriginalParent":{"shape":"ResourceMetadata"},
         "CommentMetadata":{"shape":"CommentMetadata"}
       }
+    },
+    "ActivityNamesFilterType":{
+      "type":"string",
+      "max":1024,
+      "min":1,
+      "pattern":"[\\w,]+"
     },
     "ActivityType":{
       "type":"string",
@@ -763,6 +884,8 @@
         "DOCUMENT_RENAMED",
         "DOCUMENT_VERSION_UPLOADED",
         "DOCUMENT_VERSION_DELETED",
+        "DOCUMENT_VERSION_VIEWED",
+        "DOCUMENT_VERSION_DOWNLOADED",
         "DOCUMENT_RECYCLED",
         "DOCUMENT_RESTORED",
         "DOCUMENT_REVERTED",
@@ -808,7 +931,8 @@
           "location":"uri",
           "locationName":"ResourceId"
         },
-        "Principals":{"shape":"SharePrincipalList"}
+        "Principals":{"shape":"SharePrincipalList"},
+        "NotificationOptions":{"shape":"NotificationOptions"}
       }
     },
     "AddResourcePermissionsResponse":{
@@ -817,11 +941,26 @@
         "ShareResults":{"shape":"ShareResultsList"}
       }
     },
+    "AdditionalResponseFieldType":{
+      "type":"string",
+      "enum":["WEBURL"]
+    },
+    "AdditionalResponseFieldsList":{
+      "type":"list",
+      "member":{"shape":"AdditionalResponseFieldType"}
+    },
     "AuthenticationHeaderType":{
       "type":"string",
       "max":8199,
       "min":1,
       "sensitive":true
+    },
+    "BooleanEnumType":{
+      "type":"string",
+      "enum":[
+        "TRUE",
+        "FALSE"
+      ]
     },
     "BooleanType":{"type":"boolean"},
     "Comment":{
@@ -856,7 +995,8 @@
         "Contributor":{"shape":"User"},
         "CreatedTimestamp":{"shape":"TimestampType"},
         "CommentStatus":{"shape":"CommentStatusType"},
-        "RecipientId":{"shape":"IdType"}
+        "RecipientId":{"shape":"IdType"},
+        "ContributorId":{"shape":"IdType"}
       }
     },
     "CommentStatusType":{
@@ -887,6 +1027,28 @@
       },
       "error":{"httpStatusCode":409},
       "exception":true
+    },
+    "ConflictingOperationException":{
+      "type":"structure",
+      "members":{
+        "Message":{"shape":"ErrorMessageType"}
+      },
+      "error":{"httpStatusCode":409},
+      "exception":true
+    },
+    "ContentCategoryType":{
+      "type":"string",
+      "enum":[
+        "IMAGE",
+        "DOCUMENT",
+        "PDF",
+        "SPREADSHEET",
+        "PRESENTATION",
+        "AUDIO",
+        "VIDEO",
+        "SOURCE_CODE",
+        "OTHER"
+      ]
     },
     "CreateCommentRequest":{
       "type":"structure",
@@ -985,7 +1147,7 @@
           "location":"uri",
           "locationName":"ResourceId"
         },
-        "Labels":{"shape":"Labels"},
+        "Labels":{"shape":"SharedLabels"},
         "AuthenticationToken":{
           "shape":"AuthenticationHeaderType",
           "location":"header",
@@ -1084,6 +1246,13 @@
       "max":256,
       "min":1,
       "pattern":"[a-zA-Z0-9._+-/=][a-zA-Z0-9 ._+-/=]*"
+    },
+    "DateRangeType":{
+      "type":"structure",
+      "members":{
+        "StartValue":{"shape":"TimestampType"},
+        "EndValue":{"shape":"TimestampType"}
+      }
     },
     "DeactivateUserRequest":{
       "type":"structure",
@@ -1190,6 +1359,36 @@
         }
       }
     },
+    "DeleteDocumentVersionRequest":{
+      "type":"structure",
+      "required":[
+        "DocumentId",
+        "VersionId",
+        "DeletePriorVersions"
+      ],
+      "members":{
+        "AuthenticationToken":{
+          "shape":"AuthenticationHeaderType",
+          "location":"header",
+          "locationName":"Authentication"
+        },
+        "DocumentId":{
+          "shape":"ResourceIdType",
+          "location":"uri",
+          "locationName":"DocumentId"
+        },
+        "VersionId":{
+          "shape":"DocumentVersionIdType",
+          "location":"uri",
+          "locationName":"VersionId"
+        },
+        "DeletePriorVersions":{
+          "shape":"BooleanType",
+          "location":"querystring",
+          "locationName":"deletePriorVersions"
+        }
+      }
+    },
     "DeleteFolderContentsRequest":{
       "type":"structure",
       "required":["FolderId"],
@@ -1237,7 +1436,7 @@
           "locationName":"Authentication"
         },
         "Labels":{
-          "shape":"Labels",
+          "shape":"SharedLabels",
           "location":"querystring",
           "locationName":"labels"
         },
@@ -1311,10 +1510,25 @@
           "location":"querystring",
           "locationName":"organizationId"
         },
+        "ActivityTypes":{
+          "shape":"ActivityNamesFilterType",
+          "location":"querystring",
+          "locationName":"activityTypes"
+        },
+        "ResourceId":{
+          "shape":"IdType",
+          "location":"querystring",
+          "locationName":"resourceId"
+        },
         "UserId":{
           "shape":"IdType",
           "location":"querystring",
           "locationName":"userId"
+        },
+        "IncludeIndirectActivities":{
+          "shape":"BooleanType",
+          "location":"querystring",
+          "locationName":"includeIndirectActivities"
         },
         "Limit":{
           "shape":"LimitType",
@@ -1322,7 +1536,7 @@
           "locationName":"limit"
         },
         "Marker":{
-          "shape":"MarkerType",
+          "shape":"SearchMarkerType",
           "location":"querystring",
           "locationName":"marker"
         }
@@ -1332,7 +1546,7 @@
       "type":"structure",
       "members":{
         "UserActivities":{"shape":"UserActivities"},
-        "Marker":{"shape":"MarkerType"}
+        "Marker":{"shape":"SearchMarkerType"}
       }
     },
     "DescribeCommentsRequest":{
@@ -1473,6 +1687,44 @@
         "Marker":{"shape":"PageMarkerType"}
       }
     },
+    "DescribeGroupsRequest":{
+      "type":"structure",
+      "required":["SearchQuery"],
+      "members":{
+        "AuthenticationToken":{
+          "shape":"AuthenticationHeaderType",
+          "location":"header",
+          "locationName":"Authentication"
+        },
+        "SearchQuery":{
+          "shape":"SearchQueryType",
+          "location":"querystring",
+          "locationName":"searchQuery"
+        },
+        "OrganizationId":{
+          "shape":"IdType",
+          "location":"querystring",
+          "locationName":"organizationId"
+        },
+        "Marker":{
+          "shape":"MarkerType",
+          "location":"querystring",
+          "locationName":"marker"
+        },
+        "Limit":{
+          "shape":"PositiveIntegerType",
+          "location":"querystring",
+          "locationName":"limit"
+        }
+      }
+    },
+    "DescribeGroupsResponse":{
+      "type":"structure",
+      "members":{
+        "Groups":{"shape":"GroupMetadataList"},
+        "Marker":{"shape":"MarkerType"}
+      }
+    },
     "DescribeNotificationSubscriptionsRequest":{
       "type":"structure",
       "required":["OrganizationId"],
@@ -1514,6 +1766,11 @@
           "shape":"ResourceIdType",
           "location":"uri",
           "locationName":"ResourceId"
+        },
+        "PrincipalId":{
+          "shape":"IdType",
+          "location":"querystring",
+          "locationName":"principalId"
         },
         "Limit":{
           "shape":"LimitType",
@@ -1621,7 +1878,10 @@
       "type":"structure",
       "members":{
         "Users":{"shape":"OrganizationUserList"},
-        "TotalNumberOfUsers":{"shape":"SizeType"},
+        "TotalNumberOfUsers":{
+          "shape":"SizeType",
+          "deprecated":true
+        },
         "Marker":{"shape":"PageMarkerType"}
       }
     },
@@ -1648,7 +1908,7 @@
         "ModifiedTimestamp":{"shape":"TimestampType"},
         "LatestVersionMetadata":{"shape":"DocumentVersionMetadata"},
         "ResourceState":{"shape":"ResourceStateType"},
-        "Labels":{"shape":"Labels"}
+        "Labels":{"shape":"SharedLabels"}
       }
     },
     "DocumentMetadataList":{
@@ -1731,7 +1991,8 @@
       "type":"string",
       "max":256,
       "min":1,
-      "pattern":"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
+      "pattern":"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}",
+      "sensitive":true
     },
     "EntityAlreadyExistsException":{
       "type":"structure",
@@ -1769,6 +2030,21 @@
       "min":1,
       "pattern":"[\\w,]+"
     },
+    "Filters":{
+      "type":"structure",
+      "members":{
+        "TextLocales":{"shape":"TextLocaleTypeList"},
+        "ContentCategories":{"shape":"SearchContentCategoryTypeList"},
+        "ResourceTypes":{"shape":"SearchResourceTypeList"},
+        "Labels":{"shape":"SearchLabelList"},
+        "Principals":{"shape":"SearchPrincipalTypeList"},
+        "AncestorIds":{"shape":"SearchAncestorIdList"},
+        "SearchCollectionTypes":{"shape":"SearchCollectionTypeList"},
+        "SizeRange":{"shape":"LongRangeType"},
+        "CreatedRange":{"shape":"DateRangeType"},
+        "ModifiedRange":{"shape":"DateRangeType"}
+      }
+    },
     "FolderContentType":{
       "type":"string",
       "enum":[
@@ -1788,7 +2064,7 @@
         "ModifiedTimestamp":{"shape":"TimestampType"},
         "ResourceState":{"shape":"ResourceStateType"},
         "Signature":{"shape":"HashType"},
-        "Labels":{"shape":"Labels"},
+        "Labels":{"shape":"SharedLabels"},
         "Size":{"shape":"SizeType"},
         "LatestVersionSize":{"shape":"SizeType"}
       }
@@ -1985,6 +2261,44 @@
         "CustomMetadata":{"shape":"CustomMetadataMap"}
       }
     },
+    "GetResourcesRequest":{
+      "type":"structure",
+      "members":{
+        "AuthenticationToken":{
+          "shape":"AuthenticationHeaderType",
+          "location":"header",
+          "locationName":"Authentication"
+        },
+        "UserId":{
+          "shape":"IdType",
+          "location":"querystring",
+          "locationName":"userId"
+        },
+        "CollectionType":{
+          "shape":"ResourceCollectionType",
+          "location":"querystring",
+          "locationName":"collectionType"
+        },
+        "Limit":{
+          "shape":"LimitType",
+          "location":"querystring",
+          "locationName":"limit"
+        },
+        "Marker":{
+          "shape":"PageMarkerType",
+          "location":"querystring",
+          "locationName":"marker"
+        }
+      }
+    },
+    "GetResourcesResponse":{
+      "type":"structure",
+      "members":{
+        "Folders":{"shape":"FolderMetadataList"},
+        "Documents":{"shape":"DocumentMetadataList"},
+        "Marker":{"shape":"PageMarkerType"}
+      }
+    },
     "GroupMetadata":{
       "type":"structure",
       "members":{
@@ -2030,7 +2344,6 @@
     },
     "InitiateDocumentVersionUploadRequest":{
       "type":"structure",
-      "required":["ParentFolderId"],
       "members":{
         "AuthenticationToken":{
           "shape":"AuthenticationHeaderType",
@@ -2061,6 +2374,14 @@
       "error":{"httpStatusCode":400},
       "exception":true
     },
+    "InvalidCommentOperationException":{
+      "type":"structure",
+      "members":{
+        "Message":{"shape":"ErrorMessageType"}
+      },
+      "error":{"httpStatusCode":409},
+      "exception":true
+    },
     "InvalidOperationException":{
       "type":"structure",
       "members":{
@@ -2069,16 +2390,49 @@
       "error":{"httpStatusCode":405},
       "exception":true
     },
-    "Label":{
-      "type":"string",
-      "max":32,
-      "min":1,
-      "pattern":"[a-zA-Z0-9._+-/=][a-zA-Z0-9 ._+-/=]*"
+    "InvalidPasswordException":{
+      "type":"structure",
+      "members":{
+        "Message":{"shape":"ErrorMessageType"}
+      },
+      "error":{"httpStatusCode":401},
+      "exception":true
     },
-    "Labels":{
-      "type":"list",
-      "member":{"shape":"Label"},
-      "max":20
+    "LanguageCodeType":{
+      "type":"string",
+      "enum":[
+        "AR",
+        "BG",
+        "BN",
+        "DA",
+        "DE",
+        "CS",
+        "EL",
+        "EN",
+        "ES",
+        "FA",
+        "FI",
+        "FR",
+        "HI",
+        "HU",
+        "ID",
+        "IT",
+        "JA",
+        "KO",
+        "LT",
+        "LV",
+        "NL",
+        "NO",
+        "PT",
+        "RO",
+        "RU",
+        "SV",
+        "SW",
+        "TH",
+        "TR",
+        "ZH",
+        "DEFAULT"
+      ]
     },
     "LimitExceededException":{
       "type":"structure",
@@ -2109,6 +2463,14 @@
         "default"
       ]
     },
+    "LongRangeType":{
+      "type":"structure",
+      "members":{
+        "StartValue":{"shape":"LongType"},
+        "EndValue":{"shape":"LongType"}
+      }
+    },
+    "LongType":{"type":"long"},
     "MarkerType":{
       "type":"string",
       "max":2048,
@@ -2120,6 +2482,29 @@
       "max":2048,
       "min":0,
       "sensitive":true
+    },
+    "NextMarkerType":{
+      "type":"string",
+      "max":2048,
+      "min":1,
+      "pattern":"[\\d]+"
+    },
+    "NotificationOptions":{
+      "type":"structure",
+      "members":{
+        "SendEmail":{"shape":"BooleanType"},
+        "EmailMessage":{"shape":"MessageType"}
+      }
+    },
+    "OrderByFieldType":{
+      "type":"string",
+      "enum":[
+        "RELEVANCE",
+        "NAME",
+        "SIZE",
+        "CREATED_TIMESTAMP",
+        "MODIFIED_TIMESTAMP"
+      ]
     },
     "OrderType":{
       "type":"string",
@@ -2162,6 +2547,10 @@
       "type":"list",
       "member":{"shape":"PermissionInfo"}
     },
+    "PositiveIntegerType":{
+      "type":"integer",
+      "min":1
+    },
     "PositiveSizeType":{
       "type":"long",
       "min":0
@@ -2177,6 +2566,15 @@
     "PrincipalList":{
       "type":"list",
       "member":{"shape":"Principal"}
+    },
+    "PrincipalRoleType":{
+      "type":"string",
+      "enum":[
+        "VIEWER",
+        "CONTRIBUTOR",
+        "OWNER",
+        "COOWNER"
+      ]
     },
     "PrincipalType":{
       "type":"string",
@@ -2241,6 +2639,14 @@
         }
       }
     },
+    "RequestedEntityTooLargeException":{
+      "type":"structure",
+      "members":{
+        "Message":{"shape":"ErrorMessageType"}
+      },
+      "error":{"httpStatusCode":413},
+      "exception":true
+    },
     "ResourceAlreadyCheckedOutException":{
       "type":"structure",
       "members":{
@@ -2248,6 +2654,10 @@
       },
       "error":{"httpStatusCode":409},
       "exception":true
+    },
+    "ResourceCollectionType":{
+      "type":"string",
+      "enum":["SHARED_WITH_ME"]
     },
     "ResourceIdType":{
       "type":"string",
@@ -2271,7 +2681,8 @@
       "type":"string",
       "max":255,
       "min":1,
-      "pattern":"[\\u0020-\\u202D\\u202F-\\uFFFF]+"
+      "pattern":"[\\u0020-\\u202D\\u202F-\\uFFFF]+",
+      "sensitive":true
     },
     "ResourcePath":{
       "type":"structure",
@@ -2313,6 +2724,54 @@
         "DOCUMENT"
       ]
     },
+    "ResponseItem":{
+      "type":"structure",
+      "members":{
+        "ResourceType":{"shape":"ResponseItemType"},
+        "WebUrl":{"shape":"ResponseItemWebUrl"},
+        "DocumentMetadata":{"shape":"DocumentMetadata"},
+        "FolderMetadata":{"shape":"FolderMetadata"},
+        "CommentMetadata":{"shape":"CommentMetadata"},
+        "DocumentVersionMetadata":{"shape":"DocumentVersionMetadata"}
+      }
+    },
+    "ResponseItemType":{
+      "type":"string",
+      "enum":[
+        "DOCUMENT",
+        "FOLDER",
+        "COMMENT",
+        "DOCUMENT_VERSION"
+      ]
+    },
+    "ResponseItemWebUrl":{
+      "type":"string",
+      "max":512,
+      "min":1,
+      "pattern":"[\\u0020-\\uFFFF]+",
+      "sensitive":true
+    },
+    "ResponseItemsList":{
+      "type":"list",
+      "member":{"shape":"ResponseItem"},
+      "max":100
+    },
+    "RestoreDocumentVersionsRequest":{
+      "type":"structure",
+      "required":["DocumentId"],
+      "members":{
+        "AuthenticationToken":{
+          "shape":"AuthenticationHeaderType",
+          "location":"header",
+          "locationName":"Authentication"
+        },
+        "DocumentId":{
+          "shape":"ResourceIdType",
+          "location":"uri",
+          "locationName":"DocumentId"
+        }
+      }
+    },
     "RolePermissionType":{
       "type":"string",
       "enum":[
@@ -2329,12 +2788,141 @@
         "COOWNER"
       ]
     },
+    "SearchAncestorId":{
+      "type":"string",
+      "max":128,
+      "min":1
+    },
+    "SearchAncestorIdList":{
+      "type":"list",
+      "member":{"shape":"SearchAncestorId"},
+      "max":10
+    },
+    "SearchCollectionType":{
+      "type":"string",
+      "enum":[
+        "OWNED",
+        "SHARED_WITH_ME"
+      ]
+    },
+    "SearchCollectionTypeList":{
+      "type":"list",
+      "member":{"shape":"SearchCollectionType"},
+      "max":2
+    },
+    "SearchContentCategoryTypeList":{
+      "type":"list",
+      "member":{"shape":"ContentCategoryType"},
+      "max":9
+    },
+    "SearchLabel":{
+      "type":"string",
+      "max":128,
+      "min":1
+    },
+    "SearchLabelList":{
+      "type":"list",
+      "member":{"shape":"SearchLabel"},
+      "max":10
+    },
+    "SearchMarkerType":{
+      "type":"string",
+      "max":12288,
+      "min":1,
+      "pattern":"[\\u0000-\\u00FF]+"
+    },
+    "SearchPrincipalRoleList":{
+      "type":"list",
+      "member":{"shape":"PrincipalRoleType"},
+      "max":4
+    },
+    "SearchPrincipalType":{
+      "type":"structure",
+      "required":["Id"],
+      "members":{
+        "Id":{"shape":"IdType"},
+        "Roles":{"shape":"SearchPrincipalRoleList"}
+      }
+    },
+    "SearchPrincipalTypeList":{
+      "type":"list",
+      "member":{"shape":"SearchPrincipalType"},
+      "max":10
+    },
+    "SearchQueryScopeType":{
+      "type":"string",
+      "enum":[
+        "NAME",
+        "CONTENT"
+      ]
+    },
+    "SearchQueryScopeTypeList":{
+      "type":"list",
+      "member":{"shape":"SearchQueryScopeType"},
+      "max":2
+    },
     "SearchQueryType":{
       "type":"string",
       "max":512,
       "min":1,
       "pattern":"[\\u0020-\\uFFFF]+",
       "sensitive":true
+    },
+    "SearchResourceType":{
+      "type":"string",
+      "enum":[
+        "FOLDER",
+        "DOCUMENT",
+        "COMMENT",
+        "DOCUMENT_VERSION"
+      ]
+    },
+    "SearchResourceTypeList":{
+      "type":"list",
+      "member":{"shape":"SearchResourceType"},
+      "max":4
+    },
+    "SearchResourcesRequest":{
+      "type":"structure",
+      "members":{
+        "AuthenticationToken":{
+          "shape":"AuthenticationHeaderType",
+          "location":"header",
+          "locationName":"Authentication"
+        },
+        "QueryText":{"shape":"SearchQueryType"},
+        "QueryScopes":{"shape":"SearchQueryScopeTypeList"},
+        "OrganizationId":{"shape":"IdType"},
+        "AdditionalResponseFields":{"shape":"AdditionalResponseFieldsList"},
+        "Filters":{"shape":"Filters"},
+        "OrderBy":{"shape":"SearchResultSortList"},
+        "Limit":{"shape":"SearchResultsLimitType"},
+        "Marker":{"shape":"NextMarkerType"}
+      }
+    },
+    "SearchResourcesResponse":{
+      "type":"structure",
+      "members":{
+        "Items":{"shape":"ResponseItemsList"},
+        "Marker":{"shape":"NextMarkerType"}
+      }
+    },
+    "SearchResultSortList":{
+      "type":"list",
+      "member":{"shape":"SearchSortResult"},
+      "max":1
+    },
+    "SearchResultsLimitType":{
+      "type":"integer",
+      "max":100,
+      "min":1
+    },
+    "SearchSortResult":{
+      "type":"structure",
+      "members":{
+        "Field":{"shape":"OrderByFieldType"},
+        "Order":{"shape":"SortOrder"}
+      }
     },
     "ServiceUnavailableException":{
       "type":"structure",
@@ -2366,6 +2954,7 @@
       "type":"structure",
       "members":{
         "PrincipalId":{"shape":"IdType"},
+        "InviteePrincipalId":{"shape":"IdType"},
         "Role":{"shape":"RoleType"},
         "Status":{"shape":"ShareStatusType"},
         "ShareId":{"shape":"ResourceIdType"},
@@ -2383,12 +2972,30 @@
         "FAILURE"
       ]
     },
+    "SharedLabel":{
+      "type":"string",
+      "max":32,
+      "min":1,
+      "pattern":"[a-zA-Z0-9._+-/=][a-zA-Z0-9 ._+-/=]*"
+    },
+    "SharedLabels":{
+      "type":"list",
+      "member":{"shape":"SharedLabel"},
+      "max":20
+    },
     "SignedHeaderMap":{
       "type":"map",
       "key":{"shape":"HeaderNameType"},
       "value":{"shape":"HeaderValueType"}
     },
     "SizeType":{"type":"long"},
+    "SortOrder":{
+      "type":"string",
+      "enum":[
+        "ASC",
+        "DESC"
+      ]
+    },
     "StorageLimitExceededException":{
       "type":"structure",
       "members":{
@@ -2439,11 +3046,19 @@
     },
     "SubscriptionProtocolType":{
       "type":"string",
-      "enum":["HTTPS"]
+      "enum":[
+        "HTTPS",
+        "SQS"
+      ]
     },
     "SubscriptionType":{
       "type":"string",
       "enum":["ALL"]
+    },
+    "TextLocaleTypeList":{
+      "type":"list",
+      "member":{"shape":"LanguageCodeType"},
+      "max":1
     },
     "TimeZoneIdType":{
       "type":"string",
@@ -2564,7 +3179,8 @@
         "Type":{"shape":"UserType"},
         "StorageRule":{"shape":"StorageRuleType"},
         "TimeZoneId":{"shape":"TimeZoneIdType"},
-        "Locale":{"shape":"LocaleType"}
+        "Locale":{"shape":"LocaleType"},
+        "GrantPoweruserPrivileges":{"shape":"BooleanEnumType"}
       }
     },
     "UpdateUserResponse":{
@@ -2613,7 +3229,8 @@
     "UserAttributeValueType":{
       "type":"string",
       "max":64,
-      "min":1
+      "min":1,
+      "sensitive":true
     },
     "UserFilterType":{
       "type":"string",
@@ -2671,14 +3288,18 @@
       "type":"string",
       "enum":[
         "USER",
-        "ADMIN"
+        "ADMIN",
+        "POWERUSER",
+        "MINIMALUSER",
+        "WORKSPACESUSER"
       ]
     },
     "UsernameType":{
       "type":"string",
       "max":256,
       "min":1,
-      "pattern":"[\\w\\-+.]+(@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]+)?"
+      "pattern":"[\\w\\-+.]+(@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]+)?",
+      "sensitive":true
     }
   }
 }

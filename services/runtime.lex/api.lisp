@@ -7,18 +7,25 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/runtime.lex/api)
-(common-lisp:progn
- (common-lisp:defclass runtime.lex-request (aws-sdk/request:request)
-                       common-lisp:nil
-                       (:default-initargs :service "runtime.lex"))
- (common-lisp:export 'runtime.lex-request))
 (common-lisp:progn
  (common-lisp:define-condition runtime.lex-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'runtime.lex-error))
+(common-lisp:progn
+ (common-lisp:defclass runtime.lex-request
+                       (aws-sdk/generator/service::rest-json-request)
+                       common-lisp:nil
+                       (:default-initargs :service "runtime.lex" :api-version
+                        "2016-11-28" :host-prefix "runtime.lex" :signing-name
+                        "lex" :global-host common-lisp:nil))
+ (common-lisp:export 'runtime.lex-request))
 (common-lisp:defvar *error-map*
   '(("BadGatewayException" . bad-gateway-exception)
     ("BadRequestException" . bad-request-exception)
@@ -32,6 +39,110 @@
     ("RequestTimeoutException" . request-timeout-exception)
     ("UnsupportedMediaTypeException" . unsupported-media-type-exception)))
 (common-lisp:deftype accept () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:defstruct
+     (active-context (:copier common-lisp:nil)
+      (:conc-name "struct-shape-active-context-"))
+   (name (common-lisp:error ":name is required") :type
+    (common-lisp:or active-context-name common-lisp:null))
+   (time-to-live (common-lisp:error ":timetolive is required") :type
+    (common-lisp:or active-context-time-to-live common-lisp:null))
+   (parameters (common-lisp:error ":parameters is required") :type
+    (common-lisp:or active-context-parameters-map common-lisp:null)))
+ (common-lisp:export (common-lisp:list 'active-context 'make-active-context))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input active-context))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input active-context))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'time-to-live))
+      (common-lisp:list
+       (common-lisp:cons "timeToLive"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'parameters))
+      (common-lisp:list
+       (common-lisp:cons "parameters"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input active-context))
+   common-lisp:nil))
+(common-lisp:deftype active-context-name () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:deftype active-context-parameters-map () 'common-lisp:hash-table)
+ (common-lisp:defun make-active-context-parameters-map
+                    (aws-sdk/generator/shape::key-values)
+   (common-lisp:etypecase aws-sdk/generator/shape::key-values
+     (common-lisp:hash-table aws-sdk/generator/shape::key-values)
+     (common-lisp:list
+      (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (active-context-time-to-live (:copier common-lisp:nil)
+      (:conc-name "struct-shape-active-context-time-to-live-"))
+   (time-to-live-in-seconds common-lisp:nil :type
+    (common-lisp:or active-context-time-to-live-in-seconds common-lisp:null))
+   (turns-to-live common-lisp:nil :type
+    (common-lisp:or active-context-turns-to-live common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'active-context-time-to-live
+                    'make-active-context-time-to-live))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          active-context-time-to-live))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          active-context-time-to-live))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'time-to-live-in-seconds))
+      (common-lisp:list
+       (common-lisp:cons "timeToLiveInSeconds"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'turns-to-live))
+      (common-lisp:list
+       (common-lisp:cons "turnsToLive"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          active-context-time-to-live))
+   common-lisp:nil))
+(common-lisp:deftype active-context-time-to-live-in-seconds ()
+  'common-lisp:integer)
+(common-lisp:deftype active-context-turns-to-live () 'common-lisp:integer)
+(common-lisp:progn
+ (common-lisp:deftype active-contexts-list ()
+   '(trivial-types:proper-list active-context))
+ (common-lisp:defun make-active-contexts-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list active-context))
+   aws-sdk/generator/shape::members))
+(common-lisp:deftype active-contexts-string () 'common-lisp:string)
+(common-lisp:deftype attributes-string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:define-condition bad-gateway-exception
      (runtime.lex-error)
@@ -50,6 +161,7 @@
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:deftype bot-alias () 'common-lisp:string)
 (common-lisp:deftype bot-name () 'common-lisp:string)
+(common-lisp:deftype bot-version () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (button (:copier common-lisp:nil) (:conc-name "struct-shape-button-"))
@@ -83,6 +195,7 @@
    common-lisp:nil))
 (common-lisp:deftype button-text-string-with-length () 'common-lisp:string)
 (common-lisp:deftype button-value-string-with-length () 'common-lisp:string)
+(common-lisp:deftype confirmation-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:define-condition conflict-exception
      (runtime.lex-error)
@@ -92,6 +205,87 @@
   (common-lisp:list 'conflict-exception 'conflict-exception-message)))
 (common-lisp:deftype content-type () 'common-lisp:string)
 (common-lisp:progn
+ (common-lisp:defstruct
+     (delete-session-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-session-request-"))
+   (bot-name (common-lisp:error ":botname is required") :type
+    (common-lisp:or bot-name common-lisp:null))
+   (bot-alias (common-lisp:error ":botalias is required") :type
+    (common-lisp:or bot-alias common-lisp:null))
+   (user-id (common-lisp:error ":userid is required") :type
+    (common-lisp:or user-id common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'delete-session-request 'make-delete-session-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-session-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-session-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-session-request))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (delete-session-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-session-response-"))
+   (bot-name common-lisp:nil :type (common-lisp:or bot-name common-lisp:null))
+   (bot-alias common-lisp:nil :type
+    (common-lisp:or bot-alias common-lisp:null))
+   (user-id common-lisp:nil :type (common-lisp:or user-id common-lisp:null))
+   (session-id common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'delete-session-response 'make-delete-session-response))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-session-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-session-response))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'bot-name))
+      (common-lisp:list
+       (common-lisp:cons "botName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'bot-alias))
+      (common-lisp:list
+       (common-lisp:cons "botAlias"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'user-id))
+      (common-lisp:list
+       (common-lisp:cons "userId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'session-id))
+      (common-lisp:list
+       (common-lisp:cons "sessionId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-session-response))
+   common-lisp:nil))
+(common-lisp:progn
  (common-lisp:define-condition dependency-failed-exception
      (runtime.lex-error)
      ((message :initarg :message :initform common-lisp:nil :reader
@@ -99,8 +293,86 @@
  (common-lisp:export
   (common-lisp:list 'dependency-failed-exception
                     'dependency-failed-exception-message)))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (dialog-action (:copier common-lisp:nil)
+      (:conc-name "struct-shape-dialog-action-"))
+   (type (common-lisp:error ":type is required") :type
+    (common-lisp:or dialog-action-type common-lisp:null))
+   (intent-name common-lisp:nil :type
+    (common-lisp:or intent-name common-lisp:null))
+   (slots common-lisp:nil :type (common-lisp:or string-map common-lisp:null))
+   (slot-to-elicit common-lisp:nil :type
+    (common-lisp:or string common-lisp:null))
+   (fulfillment-state common-lisp:nil :type
+    (common-lisp:or fulfillment-state common-lisp:null))
+   (message common-lisp:nil :type (common-lisp:or text common-lisp:null))
+   (message-format common-lisp:nil :type
+    (common-lisp:or message-format-type common-lisp:null)))
+ (common-lisp:export (common-lisp:list 'dialog-action 'make-dialog-action))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input dialog-action))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input dialog-action))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'type))
+      (common-lisp:list
+       (common-lisp:cons "type"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'intent-name))
+      (common-lisp:list
+       (common-lisp:cons "intentName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'slots))
+      (common-lisp:list
+       (common-lisp:cons "slots"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'slot-to-elicit))
+      (common-lisp:list
+       (common-lisp:cons "slotToElicit"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'fulfillment-state))
+      (common-lisp:list
+       (common-lisp:cons "fulfillmentState"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message-format))
+      (common-lisp:list
+       (common-lisp:cons "messageFormat"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input dialog-action))
+   common-lisp:nil))
+(common-lisp:deftype dialog-action-type () 'common-lisp:string)
 (common-lisp:deftype dialog-state () 'common-lisp:string)
+(common-lisp:deftype double () 'common-lisp:double-float)
 (common-lisp:deftype error-message () 'common-lisp:string)
+(common-lisp:deftype fulfillment-state () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (generic-attachment (:copier common-lisp:nil)
@@ -161,8 +433,207 @@
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input generic-attachment))
    common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (get-session-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-session-request-"))
+   (bot-name (common-lisp:error ":botname is required") :type
+    (common-lisp:or bot-name common-lisp:null))
+   (bot-alias (common-lisp:error ":botalias is required") :type
+    (common-lisp:or bot-alias common-lisp:null))
+   (user-id (common-lisp:error ":userid is required") :type
+    (common-lisp:or user-id common-lisp:null))
+   (checkpoint-label-filter common-lisp:nil :type
+    (common-lisp:or intent-summary-checkpoint-label common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'get-session-request 'make-get-session-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input get-session-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input get-session-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input get-session-request))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (get-session-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-session-response-"))
+   (recent-intent-summary-view common-lisp:nil :type
+    (common-lisp:or intent-summary-list common-lisp:null))
+   (session-attributes common-lisp:nil :type
+    (common-lisp:or string-map common-lisp:null))
+   (session-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
+   (dialog-action common-lisp:nil :type
+    (common-lisp:or dialog-action common-lisp:null))
+   (active-contexts common-lisp:nil :type
+    (common-lisp:or active-contexts-list common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'get-session-response 'make-get-session-response))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input get-session-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input get-session-response))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'recent-intent-summary-view))
+      (common-lisp:list
+       (common-lisp:cons "recentIntentSummaryView"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'session-attributes))
+      (common-lisp:list
+       (common-lisp:cons "sessionAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'session-id))
+      (common-lisp:list
+       (common-lisp:cons "sessionId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'dialog-action))
+      (common-lisp:list
+       (common-lisp:cons "dialogAction"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'active-contexts))
+      (common-lisp:list
+       (common-lisp:cons "activeContexts"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input get-session-response))
+   common-lisp:nil))
 (common-lisp:deftype http-content-type () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:defstruct
+     (intent-confidence (:copier common-lisp:nil)
+      (:conc-name "struct-shape-intent-confidence-"))
+   (score common-lisp:nil :type (common-lisp:or double common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'intent-confidence 'make-intent-confidence))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input intent-confidence))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input intent-confidence))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'score))
+      (common-lisp:list
+       (common-lisp:cons "score"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input intent-confidence))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:deftype intent-list ()
+   '(trivial-types:proper-list predicted-intent))
+ (common-lisp:defun make-intent-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list predicted-intent))
+   aws-sdk/generator/shape::members))
 (common-lisp:deftype intent-name () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:defstruct
+     (intent-summary (:copier common-lisp:nil)
+      (:conc-name "struct-shape-intent-summary-"))
+   (intent-name common-lisp:nil :type
+    (common-lisp:or intent-name common-lisp:null))
+   (checkpoint-label common-lisp:nil :type
+    (common-lisp:or intent-summary-checkpoint-label common-lisp:null))
+   (slots common-lisp:nil :type (common-lisp:or string-map common-lisp:null))
+   (confirmation-status common-lisp:nil :type
+    (common-lisp:or confirmation-status common-lisp:null))
+   (dialog-action-type (common-lisp:error ":dialogactiontype is required")
+    :type (common-lisp:or dialog-action-type common-lisp:null))
+   (fulfillment-state common-lisp:nil :type
+    (common-lisp:or fulfillment-state common-lisp:null))
+   (slot-to-elicit common-lisp:nil :type
+    (common-lisp:or string common-lisp:null)))
+ (common-lisp:export (common-lisp:list 'intent-summary 'make-intent-summary))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input intent-summary))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input intent-summary))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'intent-name))
+      (common-lisp:list
+       (common-lisp:cons "intentName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'checkpoint-label))
+      (common-lisp:list
+       (common-lisp:cons "checkpointLabel"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'slots))
+      (common-lisp:list
+       (common-lisp:cons "slots"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'confirmation-status))
+      (common-lisp:list
+       (common-lisp:cons "confirmationStatus"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'dialog-action-type))
+      (common-lisp:list
+       (common-lisp:cons "dialogActionType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'fulfillment-state))
+      (common-lisp:list
+       (common-lisp:cons "fulfillmentState"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'slot-to-elicit))
+      (common-lisp:list
+       (common-lisp:cons "slotToElicit"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input intent-summary))
+   common-lisp:nil))
+(common-lisp:deftype intent-summary-checkpoint-label () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:deftype intent-summary-list ()
+   '(trivial-types:proper-list intent-summary))
+ (common-lisp:defun make-intent-summary-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list intent-summary))
+   aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:define-condition internal-failure-exception
      (runtime.lex-error)
@@ -189,6 +660,7 @@
        loop-detected-exception-message)))
  (common-lisp:export
   (common-lisp:list 'loop-detected-exception 'loop-detected-exception-message)))
+(common-lisp:deftype message-format-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:define-condition not-acceptable-exception
      (runtime.lex-error)
@@ -204,6 +676,7 @@
        not-found-exception-message)))
  (common-lisp:export
   (common-lisp:list 'not-found-exception 'not-found-exception-message)))
+(common-lisp:deftype parameter-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (post-content-request (:copier common-lisp:nil)
@@ -215,12 +688,16 @@
    (user-id (common-lisp:error ":userid is required") :type
     (common-lisp:or user-id common-lisp:null))
    (session-attributes common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:or attributes-string common-lisp:null))
+   (request-attributes common-lisp:nil :type
+    (common-lisp:or attributes-string common-lisp:null))
    (content-type (common-lisp:error ":contenttype is required") :type
     (common-lisp:or http-content-type common-lisp:null))
    (accept common-lisp:nil :type (common-lisp:or accept common-lisp:null))
    (input-stream (common-lisp:error ":inputstream is required") :type
-    (common-lisp:or blob-stream common-lisp:null)))
+    (common-lisp:or blob-stream common-lisp:null))
+   (active-contexts common-lisp:nil :type
+    (common-lisp:or active-contexts-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'post-content-request 'make-post-content-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -233,12 +710,22 @@
                         aws-sdk/generator/shape::value))
     (alexandria:when-let (aws-sdk/generator/shape::value
                           (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'request-attributes))
+      (common-lisp:cons "x-amz-lex-request-attributes"
+                        aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
                            aws-sdk/generator/shape::input 'content-type))
       (common-lisp:cons "Content-Type" aws-sdk/generator/shape::value))
     (alexandria:when-let (aws-sdk/generator/shape::value
                           (common-lisp:slot-value
                            aws-sdk/generator/shape::input 'accept))
-      (common-lisp:cons "Accept" aws-sdk/generator/shape::value))))
+      (common-lisp:cons "Accept" aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'active-contexts))
+      (common-lisp:cons "x-amz-lex-active-contexts"
+                        aws-sdk/generator/shape::value))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-params
                         ((aws-sdk/generator/shape::input post-content-request))
    (common-lisp:append
@@ -260,18 +747,35 @@
     (common-lisp:or http-content-type common-lisp:null))
    (intent-name common-lisp:nil :type
     (common-lisp:or intent-name common-lisp:null))
+   (nlu-intent-confidence common-lisp:nil :type
+    (common-lisp:or string common-lisp:null))
+   (alternative-intents common-lisp:nil :type
+    (common-lisp:or string common-lisp:null))
    (slots common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (session-attributes common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
+   (sentiment-response common-lisp:nil :type
+    (common-lisp:or string common-lisp:null))
    (message common-lisp:nil :type (common-lisp:or text common-lisp:null))
+   (encoded-message common-lisp:nil :type
+    (common-lisp:or sensitive-string common-lisp:null))
+   (message-format common-lisp:nil :type
+    (common-lisp:or message-format-type common-lisp:null))
    (dialog-state common-lisp:nil :type
     (common-lisp:or dialog-state common-lisp:null))
    (slot-to-elicit common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (input-transcript common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
+   (encoded-input-transcript common-lisp:nil :type
+    (common-lisp:or sensitive-string-unbounded common-lisp:null))
    (audio-stream common-lisp:nil :type
-    (common-lisp:or blob-stream common-lisp:null)))
+    (common-lisp:or blob-stream common-lisp:null))
+   (bot-version common-lisp:nil :type
+    (common-lisp:or bot-version common-lisp:null))
+   (session-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
+   (active-contexts common-lisp:nil :type
+    (common-lisp:or active-contexts-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'post-content-response 'make-post-content-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -290,6 +794,17 @@
                         aws-sdk/generator/shape::value))
     (alexandria:when-let (aws-sdk/generator/shape::value
                           (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'nlu-intent-confidence))
+      (common-lisp:cons "x-amz-lex-nlu-intent-confidence"
+                        aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'alternative-intents))
+      (common-lisp:cons "x-amz-lex-alternative-intents"
+                        aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
                            aws-sdk/generator/shape::input 'slots))
       (common-lisp:cons "x-amz-lex-slots" aws-sdk/generator/shape::value))
     (alexandria:when-let (aws-sdk/generator/shape::value
@@ -299,8 +814,22 @@
                         aws-sdk/generator/shape::value))
     (alexandria:when-let (aws-sdk/generator/shape::value
                           (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'sentiment-response))
+      (common-lisp:cons "x-amz-lex-sentiment" aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
                            aws-sdk/generator/shape::input 'message))
       (common-lisp:cons "x-amz-lex-message" aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'encoded-message))
+      (common-lisp:cons "x-amz-lex-encoded-message"
+                        aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message-format))
+      (common-lisp:cons "x-amz-lex-message-format"
+                        aws-sdk/generator/shape::value))
     (alexandria:when-let (aws-sdk/generator/shape::value
                           (common-lisp:slot-value
                            aws-sdk/generator/shape::input 'dialog-state))
@@ -315,6 +844,26 @@
                           (common-lisp:slot-value
                            aws-sdk/generator/shape::input 'input-transcript))
       (common-lisp:cons "x-amz-lex-input-transcript"
+                        aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'encoded-input-transcript))
+      (common-lisp:cons "x-amz-lex-encoded-input-transcript"
+                        aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'bot-version))
+      (common-lisp:cons "x-amz-lex-bot-version"
+                        aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'session-id))
+      (common-lisp:cons "x-amz-lex-session-id" aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'active-contexts))
+      (common-lisp:cons "x-amz-lex-active-contexts"
                         aws-sdk/generator/shape::value))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-params
                         (
@@ -345,8 +894,12 @@
     (common-lisp:or user-id common-lisp:null))
    (session-attributes common-lisp:nil :type
     (common-lisp:or string-map common-lisp:null))
+   (request-attributes common-lisp:nil :type
+    (common-lisp:or string-map common-lisp:null))
    (input-text (common-lisp:error ":inputtext is required") :type
-    (common-lisp:or text common-lisp:null)))
+    (common-lisp:or text common-lisp:null))
+   (active-contexts common-lisp:nil :type
+    (common-lisp:or active-contexts-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'post-text-request 'make-post-text-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -364,9 +917,23 @@
                           aws-sdk/generator/shape::value))))
     (alexandria:when-let (aws-sdk/generator/shape::value
                           (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'request-attributes))
+      (common-lisp:list
+       (common-lisp:cons "requestAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
                            aws-sdk/generator/shape::input 'input-text))
       (common-lisp:list
        (common-lisp:cons "inputText"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'active-contexts))
+      (common-lisp:list
+       (common-lisp:cons "activeContexts"
                          (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
@@ -378,16 +945,29 @@
       (:conc-name "struct-shape-post-text-response-"))
    (intent-name common-lisp:nil :type
     (common-lisp:or intent-name common-lisp:null))
+   (nlu-intent-confidence common-lisp:nil :type
+    (common-lisp:or intent-confidence common-lisp:null))
+   (alternative-intents common-lisp:nil :type
+    (common-lisp:or intent-list common-lisp:null))
    (slots common-lisp:nil :type (common-lisp:or string-map common-lisp:null))
    (session-attributes common-lisp:nil :type
     (common-lisp:or string-map common-lisp:null))
    (message common-lisp:nil :type (common-lisp:or text common-lisp:null))
+   (sentiment-response common-lisp:nil :type
+    (common-lisp:or sentiment-response common-lisp:null))
+   (message-format common-lisp:nil :type
+    (common-lisp:or message-format-type common-lisp:null))
    (dialog-state common-lisp:nil :type
     (common-lisp:or dialog-state common-lisp:null))
    (slot-to-elicit common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (response-card common-lisp:nil :type
-    (common-lisp:or response-card common-lisp:null)))
+    (common-lisp:or response-card common-lisp:null))
+   (session-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
+   (bot-version common-lisp:nil :type
+    (common-lisp:or bot-version common-lisp:null))
+   (active-contexts common-lisp:nil :type
+    (common-lisp:or active-contexts-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'post-text-response 'make-post-text-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -401,6 +981,21 @@
                            aws-sdk/generator/shape::input 'intent-name))
       (common-lisp:list
        (common-lisp:cons "intentName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'nlu-intent-confidence))
+      (common-lisp:list
+       (common-lisp:cons "nluIntentConfidence"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'alternative-intents))
+      (common-lisp:list
+       (common-lisp:cons "alternativeIntents"
                          (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))
     (alexandria:when-let (aws-sdk/generator/shape::value
@@ -426,6 +1021,20 @@
                           aws-sdk/generator/shape::value))))
     (alexandria:when-let (aws-sdk/generator/shape::value
                           (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'sentiment-response))
+      (common-lisp:list
+       (common-lisp:cons "sentimentResponse"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message-format))
+      (common-lisp:list
+       (common-lisp:cons "messageFormat"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
                            aws-sdk/generator/shape::input 'dialog-state))
       (common-lisp:list
        (common-lisp:cons "dialogState"
@@ -444,10 +1053,230 @@
       (common-lisp:list
        (common-lisp:cons "responseCard"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'session-id))
+      (common-lisp:list
+       (common-lisp:cons "sessionId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'bot-version))
+      (common-lisp:list
+       (common-lisp:cons "botVersion"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'active-contexts))
+      (common-lisp:list
+       (common-lisp:cons "activeContexts"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input post-text-response))
    common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (predicted-intent (:copier common-lisp:nil)
+      (:conc-name "struct-shape-predicted-intent-"))
+   (intent-name common-lisp:nil :type
+    (common-lisp:or intent-name common-lisp:null))
+   (nlu-intent-confidence common-lisp:nil :type
+    (common-lisp:or intent-confidence common-lisp:null))
+   (slots common-lisp:nil :type (common-lisp:or string-map common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'predicted-intent 'make-predicted-intent))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input predicted-intent))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input predicted-intent))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'intent-name))
+      (common-lisp:list
+       (common-lisp:cons "intentName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'nlu-intent-confidence))
+      (common-lisp:list
+       (common-lisp:cons "nluIntentConfidence"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'slots))
+      (common-lisp:list
+       (common-lisp:cons "slots"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input predicted-intent))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (put-session-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-put-session-request-"))
+   (bot-name (common-lisp:error ":botname is required") :type
+    (common-lisp:or bot-name common-lisp:null))
+   (bot-alias (common-lisp:error ":botalias is required") :type
+    (common-lisp:or bot-alias common-lisp:null))
+   (user-id (common-lisp:error ":userid is required") :type
+    (common-lisp:or user-id common-lisp:null))
+   (session-attributes common-lisp:nil :type
+    (common-lisp:or string-map common-lisp:null))
+   (dialog-action common-lisp:nil :type
+    (common-lisp:or dialog-action common-lisp:null))
+   (recent-intent-summary-view common-lisp:nil :type
+    (common-lisp:or intent-summary-list common-lisp:null))
+   (accept common-lisp:nil :type (common-lisp:or accept common-lisp:null))
+   (active-contexts common-lisp:nil :type
+    (common-lisp:or active-contexts-list common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'put-session-request 'make-put-session-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input put-session-request))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'accept))
+      (common-lisp:cons "Accept" aws-sdk/generator/shape::value))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input put-session-request))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'session-attributes))
+      (common-lisp:list
+       (common-lisp:cons "sessionAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'dialog-action))
+      (common-lisp:list
+       (common-lisp:cons "dialogAction"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'recent-intent-summary-view))
+      (common-lisp:list
+       (common-lisp:cons "recentIntentSummaryView"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'active-contexts))
+      (common-lisp:list
+       (common-lisp:cons "activeContexts"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input put-session-request))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (put-session-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-put-session-response-"))
+   (content-type common-lisp:nil :type
+    (common-lisp:or http-content-type common-lisp:null))
+   (intent-name common-lisp:nil :type
+    (common-lisp:or intent-name common-lisp:null))
+   (slots common-lisp:nil :type (common-lisp:or string common-lisp:null))
+   (session-attributes common-lisp:nil :type
+    (common-lisp:or string common-lisp:null))
+   (message common-lisp:nil :type (common-lisp:or text common-lisp:null))
+   (encoded-message common-lisp:nil :type
+    (common-lisp:or sensitive-string common-lisp:null))
+   (message-format common-lisp:nil :type
+    (common-lisp:or message-format-type common-lisp:null))
+   (dialog-state common-lisp:nil :type
+    (common-lisp:or dialog-state common-lisp:null))
+   (slot-to-elicit common-lisp:nil :type
+    (common-lisp:or string common-lisp:null))
+   (audio-stream common-lisp:nil :type
+    (common-lisp:or blob-stream common-lisp:null))
+   (session-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
+   (active-contexts common-lisp:nil :type
+    (common-lisp:or active-contexts-string common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'put-session-response 'make-put-session-response))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input put-session-response))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'content-type))
+      (common-lisp:cons "Content-Type" aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'intent-name))
+      (common-lisp:cons "x-amz-lex-intent-name"
+                        aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'slots))
+      (common-lisp:cons "x-amz-lex-slots" aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'session-attributes))
+      (common-lisp:cons "x-amz-lex-session-attributes"
+                        aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:cons "x-amz-lex-message" aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'encoded-message))
+      (common-lisp:cons "x-amz-lex-encoded-message"
+                        aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message-format))
+      (common-lisp:cons "x-amz-lex-message-format"
+                        aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'dialog-state))
+      (common-lisp:cons "x-amz-lex-dialog-state"
+                        aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'slot-to-elicit))
+      (common-lisp:cons "x-amz-lex-slot-to-elicit"
+                        aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'session-id))
+      (common-lisp:cons "x-amz-lex-session-id" aws-sdk/generator/shape::value))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'active-contexts))
+      (common-lisp:cons "x-amz-lex-active-contexts"
+                        aws-sdk/generator/shape::value))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input put-session-response))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'audio-stream))
+      (common-lisp:list
+       (common-lisp:cons "audioStream"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input put-session-response))
+   (common-lisp:slot-value aws-sdk/generator/shape::input 'audio-stream)))
 (common-lisp:progn
  (common-lisp:define-condition request-timeout-exception
      (runtime.lex-error)
@@ -496,10 +1325,47 @@
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input response-card))
    common-lisp:nil))
+(common-lisp:deftype sensitive-string () 'common-lisp:string)
+(common-lisp:deftype sensitive-string-unbounded () 'common-lisp:string)
+(common-lisp:deftype sentiment-label () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:defstruct
+     (sentiment-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-sentiment-response-"))
+   (sentiment-label common-lisp:nil :type
+    (common-lisp:or sentiment-label common-lisp:null))
+   (sentiment-score common-lisp:nil :type
+    (common-lisp:or sentiment-score common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'sentiment-response 'make-sentiment-response))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input sentiment-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input sentiment-response))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'sentiment-label))
+      (common-lisp:list
+       (common-lisp:cons "sentimentLabel"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'sentiment-score))
+      (common-lisp:list
+       (common-lisp:cons "sentimentScore"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input sentiment-response))
+   common-lisp:nil))
+(common-lisp:deftype sentiment-score () 'common-lisp:string)
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype string-map () 'common-lisp:hash-table)
- (common-lisp:defun |make-string-map| (aws-sdk/generator/shape::key-values)
+ (common-lisp:defun make-string-map (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
      (common-lisp:list
@@ -519,27 +1385,100 @@
 (common-lisp:progn
  (common-lisp:deftype |genericAttachmentList| ()
    '(trivial-types:proper-list generic-attachment))
- (common-lisp:defun |make-genericattachmentlist|
+ (common-lisp:defun make-genericattachmentlist
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list generic-attachment))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:deftype |listOfButtons| () '(trivial-types:proper-list button))
- (common-lisp:defun |make-listofbuttons|
+ (common-lisp:defun make-listofbuttons
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list button))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
+ (common-lisp:defun delete-session
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key bot-name bot-alias user-id)
+   (common-lisp:declare (common-lisp:ignorable bot-name bot-alias user-id))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-delete-session-request
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'runtime.lex-request
+                                                        aws-sdk/generator/operation::input
+                                                        "DELETE"
+                                                        (common-lisp:lambda
+                                                            (
+                                                             aws-sdk/generator/operation::input)
+                                                          (common-lisp:format
+                                                           common-lisp:nil
+                                                           "/bot/~A/alias/~A/user/~A/session"
+                                                           (quri.encode:url-encode
+                                                            (common-lisp:slot-value
+                                                             aws-sdk/generator/operation::input
+                                                             'bot-name))
+                                                           (quri.encode:url-encode
+                                                            (common-lisp:slot-value
+                                                             aws-sdk/generator/operation::input
+                                                             'bot-alias))
+                                                           (quri.encode:url-encode
+                                                            (common-lisp:slot-value
+                                                             aws-sdk/generator/operation::input
+                                                             'user-id))))
+                                                        "DeleteSession"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'delete-session))
+(common-lisp:progn
+ (common-lisp:defun get-session
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key bot-name bot-alias user-id
+                     checkpoint-label-filter)
+   (common-lisp:declare
+    (common-lisp:ignorable bot-name bot-alias user-id checkpoint-label-filter))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-get-session-request
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'runtime.lex-request
+                                                        aws-sdk/generator/operation::input
+                                                        "GET"
+                                                        (common-lisp:lambda
+                                                            (
+                                                             aws-sdk/generator/operation::input)
+                                                          (common-lisp:format
+                                                           common-lisp:nil
+                                                           "/bot/~A/alias/~A/user/~A/session/"
+                                                           (quri.encode:url-encode
+                                                            (common-lisp:slot-value
+                                                             aws-sdk/generator/operation::input
+                                                             'bot-name))
+                                                           (quri.encode:url-encode
+                                                            (common-lisp:slot-value
+                                                             aws-sdk/generator/operation::input
+                                                             'bot-alias))
+                                                           (quri.encode:url-encode
+                                                            (common-lisp:slot-value
+                                                             aws-sdk/generator/operation::input
+                                                             'user-id))))
+                                                        "GetSession"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'get-session))
+(common-lisp:progn
  (common-lisp:defun post-content
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
                      common-lisp:&key bot-name bot-alias user-id
-                     session-attributes content-type accept input-stream)
+                     session-attributes request-attributes content-type accept
+                     input-stream active-contexts)
    (common-lisp:declare
     (common-lisp:ignorable bot-name bot-alias user-id session-attributes
-     content-type accept input-stream))
+     request-attributes content-type accept input-stream active-contexts))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-post-content-request
                                          aws-sdk/generator/operation::args)))
@@ -566,8 +1505,7 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'user-id))))
-                                                        "PostContent"
-                                                        "2016-11-28")
+                                                        "PostContent")
        :want-stream common-lisp:t)
       "blob" common-lisp:nil *error-map*)))
  (common-lisp:export 'post-content))
@@ -576,10 +1514,11 @@
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
                      common-lisp:&key bot-name bot-alias user-id
-                     session-attributes input-text)
+                     session-attributes request-attributes input-text
+                     active-contexts)
    (common-lisp:declare
     (common-lisp:ignorable bot-name bot-alias user-id session-attributes
-     input-text))
+     request-attributes input-text active-contexts))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-post-text-request
                                          aws-sdk/generator/operation::args)))
@@ -606,7 +1545,46 @@
                                                             (common-lisp:slot-value
                                                              aws-sdk/generator/operation::input
                                                              'user-id))))
-                                                        "PostText"
-                                                        "2016-11-28"))
+                                                        "PostText"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'post-text))
+(common-lisp:progn
+ (common-lisp:defun put-session
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key bot-name bot-alias user-id
+                     session-attributes dialog-action
+                     recent-intent-summary-view accept active-contexts)
+   (common-lisp:declare
+    (common-lisp:ignorable bot-name bot-alias user-id session-attributes
+     dialog-action recent-intent-summary-view accept active-contexts))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-put-session-request
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'runtime.lex-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST"
+                                                        (common-lisp:lambda
+                                                            (
+                                                             aws-sdk/generator/operation::input)
+                                                          (common-lisp:format
+                                                           common-lisp:nil
+                                                           "/bot/~A/alias/~A/user/~A/session"
+                                                           (quri.encode:url-encode
+                                                            (common-lisp:slot-value
+                                                             aws-sdk/generator/operation::input
+                                                             'bot-name))
+                                                           (quri.encode:url-encode
+                                                            (common-lisp:slot-value
+                                                             aws-sdk/generator/operation::input
+                                                             'bot-alias))
+                                                           (quri.encode:url-encode
+                                                            (common-lisp:slot-value
+                                                             aws-sdk/generator/operation::input
+                                                             'user-id))))
+                                                        "PutSession")
+       :want-stream common-lisp:t)
+      "blob" common-lisp:nil *error-map*)))
+ (common-lisp:export 'put-session))

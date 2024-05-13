@@ -7,9 +7,9 @@
     "protocol":"json",
     "serviceAbbreviation":"Amazon SWF",
     "serviceFullName":"Amazon Simple Workflow Service",
+    "serviceId":"SWF",
     "signatureVersion":"v4",
     "targetPrefix":"SimpleWorkflowService",
-    "timestampFormat":"unixTimestamp",
     "uid":"swf-2012-01-25"
   },
   "operations":{
@@ -220,6 +220,20 @@
         {"shape":"OperationNotPermittedFault"}
       ]
     },
+    "ListTagsForResource":{
+      "name":"ListTagsForResource",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListTagsForResourceInput"},
+      "output":{"shape":"ListTagsForResourceOutput"},
+      "errors":[
+        {"shape":"UnknownResourceFault"},
+        {"shape":"LimitExceededFault"},
+        {"shape":"OperationNotPermittedFault"}
+      ]
+    },
     "ListWorkflowTypes":{
       "name":"ListWorkflowTypes",
       "http":{
@@ -298,7 +312,8 @@
       "errors":[
         {"shape":"DomainAlreadyExistsFault"},
         {"shape":"LimitExceededFault"},
-        {"shape":"OperationNotPermittedFault"}
+        {"shape":"OperationNotPermittedFault"},
+        {"shape":"TooManyTagsFault"}
       ]
     },
     "RegisterWorkflowType":{
@@ -404,6 +419,20 @@
         {"shape":"DefaultUndefinedFault"}
       ]
     },
+    "TagResource":{
+      "name":"TagResource",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"TagResourceInput"},
+      "errors":[
+        {"shape":"UnknownResourceFault"},
+        {"shape":"TooManyTagsFault"},
+        {"shape":"LimitExceededFault"},
+        {"shape":"OperationNotPermittedFault"}
+      ]
+    },
     "TerminateWorkflowExecution":{
       "name":"TerminateWorkflowExecution",
       "http":{
@@ -413,6 +442,58 @@
       "input":{"shape":"TerminateWorkflowExecutionInput"},
       "errors":[
         {"shape":"UnknownResourceFault"},
+        {"shape":"OperationNotPermittedFault"}
+      ]
+    },
+    "UndeprecateActivityType":{
+      "name":"UndeprecateActivityType",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UndeprecateActivityTypeInput"},
+      "errors":[
+        {"shape":"UnknownResourceFault"},
+        {"shape":"TypeAlreadyExistsFault"},
+        {"shape":"OperationNotPermittedFault"}
+      ]
+    },
+    "UndeprecateDomain":{
+      "name":"UndeprecateDomain",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UndeprecateDomainInput"},
+      "errors":[
+        {"shape":"UnknownResourceFault"},
+        {"shape":"DomainAlreadyExistsFault"},
+        {"shape":"OperationNotPermittedFault"}
+      ]
+    },
+    "UndeprecateWorkflowType":{
+      "name":"UndeprecateWorkflowType",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UndeprecateWorkflowTypeInput"},
+      "errors":[
+        {"shape":"UnknownResourceFault"},
+        {"shape":"TypeAlreadyExistsFault"},
+        {"shape":"OperationNotPermittedFault"}
+      ]
+    },
+    "UntagResource":{
+      "name":"UntagResource",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UntagResourceInput"},
+      "errors":[
+        {"shape":"UnknownResourceFault"},
+        {"shape":"LimitExceededFault"},
         {"shape":"OperationNotPermittedFault"}
       ]
     }
@@ -963,7 +1044,9 @@
       "members":{
         "executionContext":{"shape":"Data"},
         "scheduledEventId":{"shape":"EventId"},
-        "startedEventId":{"shape":"EventId"}
+        "startedEventId":{"shape":"EventId"},
+        "taskList":{"shape":"TaskList"},
+        "taskListScheduleToStartTimeout":{"shape":"DurationInSecondsOptional"}
       }
     },
     "DecisionTaskScheduledEventAttributes":{
@@ -972,7 +1055,8 @@
       "members":{
         "taskList":{"shape":"TaskList"},
         "taskPriority":{"shape":"TaskPriority"},
-        "startToCloseTimeout":{"shape":"DurationInSecondsOptional"}
+        "startToCloseTimeout":{"shape":"DurationInSecondsOptional"},
+        "scheduleToStartTimeout":{"shape":"DurationInSecondsOptional"}
       }
     },
     "DecisionTaskStartedEventAttributes":{
@@ -998,7 +1082,10 @@
     },
     "DecisionTaskTimeoutType":{
       "type":"string",
-      "enum":["START_TO_CLOSE"]
+      "enum":[
+        "START_TO_CLOSE",
+        "SCHEDULE_TO_START"
+      ]
     },
     "DecisionType":{
       "type":"string",
@@ -1139,7 +1226,8 @@
       "members":{
         "name":{"shape":"DomainName"},
         "status":{"shape":"RegistrationStatus"},
-        "description":{"shape":"Description"}
+        "description":{"shape":"Description"},
+        "arn":{"shape":"Arn"}
       }
     },
     "DomainInfoList":{
@@ -1545,6 +1633,19 @@
         "executionFilter":{"shape":"WorkflowExecutionFilter"}
       }
     },
+    "ListTagsForResourceInput":{
+      "type":"structure",
+      "required":["resourceArn"],
+      "members":{
+        "resourceArn":{"shape":"Arn"}
+      }
+    },
+    "ListTagsForResourceOutput":{
+      "type":"structure",
+      "members":{
+        "tags":{"shape":"ResourceTagList"}
+      }
+    },
     "ListWorkflowTypesInput":{
       "type":"structure",
       "required":[
@@ -1635,7 +1736,8 @@
         "identity":{"shape":"Identity"},
         "nextPageToken":{"shape":"PageToken"},
         "maximumPageSize":{"shape":"PageSize"},
-        "reverseOrder":{"shape":"ReverseOrder"}
+        "reverseOrder":{"shape":"ReverseOrder"},
+        "startAtPreviousStartedEvent":{"shape":"StartAtPreviousStartedEvent"}
       }
     },
     "RecordActivityTaskHeartbeatInput":{
@@ -1700,7 +1802,8 @@
       "members":{
         "name":{"shape":"DomainName"},
         "description":{"shape":"Description"},
-        "workflowExecutionRetentionPeriodInDays":{"shape":"DurationInDays"}
+        "workflowExecutionRetentionPeriodInDays":{"shape":"DurationInDays"},
+        "tags":{"shape":"ResourceTagList"}
       }
     },
     "RegisterWorkflowTypeInput":{
@@ -1816,6 +1919,31 @@
         "runId":{"shape":"WorkflowRunIdOptional"}
       }
     },
+    "ResourceTag":{
+      "type":"structure",
+      "required":["key"],
+      "members":{
+        "key":{"shape":"ResourceTagKey"},
+        "value":{"shape":"ResourceTagValue"}
+      }
+    },
+    "ResourceTagKey":{
+      "type":"string",
+      "max":128,
+      "min":1
+    },
+    "ResourceTagKeyList":{
+      "type":"list",
+      "member":{"shape":"ResourceTagKey"}
+    },
+    "ResourceTagList":{
+      "type":"list",
+      "member":{"shape":"ResourceTag"}
+    },
+    "ResourceTagValue":{
+      "type":"string",
+      "max":256
+    },
     "RespondActivityTaskCanceledInput":{
       "type":"structure",
       "required":["taskToken"],
@@ -1847,7 +1975,9 @@
       "members":{
         "taskToken":{"shape":"TaskToken"},
         "decisions":{"shape":"DecisionList"},
-        "executionContext":{"shape":"Data"}
+        "executionContext":{"shape":"Data"},
+        "taskList":{"shape":"TaskList"},
+        "taskListScheduleToStartTimeout":{"shape":"DurationInSecondsOptional"}
       }
     },
     "ReverseOrder":{"type":"boolean"},
@@ -2020,6 +2150,7 @@
         "input":{"shape":"Data"}
       }
     },
+    "StartAtPreviousStartedEvent":{"type":"boolean"},
     "StartChildWorkflowExecutionDecisionAttributes":{
       "type":"structure",
       "required":[
@@ -2182,6 +2313,17 @@
       "member":{"shape":"Tag"},
       "max":5
     },
+    "TagResourceInput":{
+      "type":"structure",
+      "required":[
+        "resourceArn",
+        "tags"
+      ],
+      "members":{
+        "resourceArn":{"shape":"Arn"},
+        "tags":{"shape":"ResourceTagList"}
+      }
+    },
     "TaskList":{
       "type":"structure",
       "required":["name"],
@@ -2258,6 +2400,13 @@
       }
     },
     "Timestamp":{"type":"timestamp"},
+    "TooManyTagsFault":{
+      "type":"structure",
+      "members":{
+        "message":{"shape":"ErrorMessage"}
+      },
+      "exception":true
+    },
     "Truncated":{"type":"boolean"},
     "TypeAlreadyExistsFault":{
       "type":"structure",
@@ -2273,12 +2422,52 @@
       },
       "exception":true
     },
+    "UndeprecateActivityTypeInput":{
+      "type":"structure",
+      "required":[
+        "domain",
+        "activityType"
+      ],
+      "members":{
+        "domain":{"shape":"DomainName"},
+        "activityType":{"shape":"ActivityType"}
+      }
+    },
+    "UndeprecateDomainInput":{
+      "type":"structure",
+      "required":["name"],
+      "members":{
+        "name":{"shape":"DomainName"}
+      }
+    },
+    "UndeprecateWorkflowTypeInput":{
+      "type":"structure",
+      "required":[
+        "domain",
+        "workflowType"
+      ],
+      "members":{
+        "domain":{"shape":"DomainName"},
+        "workflowType":{"shape":"WorkflowType"}
+      }
+    },
     "UnknownResourceFault":{
       "type":"structure",
       "members":{
         "message":{"shape":"ErrorMessage"}
       },
       "exception":true
+    },
+    "UntagResourceInput":{
+      "type":"structure",
+      "required":[
+        "resourceArn",
+        "tagKeys"
+      ],
+      "members":{
+        "resourceArn":{"shape":"Arn"},
+        "tagKeys":{"shape":"ResourceTagKeyList"}
+      }
     },
     "Version":{
       "type":"string",

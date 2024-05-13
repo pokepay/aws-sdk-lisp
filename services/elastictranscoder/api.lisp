@@ -7,18 +7,26 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/elastictranscoder/api)
-(common-lisp:progn
- (common-lisp:defclass elastictranscoder-request (aws-sdk/request:request)
-                       common-lisp:nil
-                       (:default-initargs :service "elastictranscoder"))
- (common-lisp:export 'elastictranscoder-request))
 (common-lisp:progn
  (common-lisp:define-condition elastictranscoder-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'elastictranscoder-error))
+(common-lisp:progn
+ (common-lisp:defclass elastictranscoder-request
+                       (aws-sdk/generator/service::rest-json-request)
+                       common-lisp:nil
+                       (:default-initargs :service "elastictranscoder"
+                        :api-version "2012-09-25" :host-prefix
+                        "elastictranscoder" :signing-name common-lisp:nil
+                        :global-host common-lisp:nil))
+ (common-lisp:export 'elastictranscoder-request))
 (common-lisp:defvar *error-map*
   '(("AccessDeniedException" . access-denied-exception)
     ("IncompatibleVersionException" . incompatible-version-exception)
@@ -31,7 +39,7 @@
 (common-lisp:progn
  (common-lisp:deftype access-controls ()
    '(trivial-types:proper-list access-control))
- (common-lisp:defun |make-access-controls|
+ (common-lisp:defun make-access-controls
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list access-control))
@@ -119,7 +127,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype artworks () '(trivial-types:proper-list artwork))
- (common-lisp:defun |make-artworks|
+ (common-lisp:defun make-artworks
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list artwork))
@@ -334,7 +342,7 @@
 (common-lisp:progn
  (common-lisp:deftype caption-formats ()
    '(trivial-types:proper-list caption-format))
- (common-lisp:defun |make-caption-formats|
+ (common-lisp:defun make-caption-formats
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list caption-format))
@@ -399,7 +407,7 @@
 (common-lisp:progn
  (common-lisp:deftype caption-sources ()
    '(trivial-types:proper-list caption-source))
- (common-lisp:defun |make-caption-sources|
+ (common-lisp:defun make-caption-sources
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list caption-source))
@@ -469,14 +477,14 @@
 (common-lisp:deftype codec-option () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype codec-options () 'common-lisp:hash-table)
- (common-lisp:defun |make-codec-options| (aws-sdk/generator/shape::key-values)
+ (common-lisp:defun make-codec-options (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
  (common-lisp:deftype composition () '(trivial-types:proper-list clip))
- (common-lisp:defun |make-composition|
+ (common-lisp:defun make-composition
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list clip))
@@ -595,7 +603,7 @@
 (common-lisp:progn
  (common-lisp:deftype create-job-outputs ()
    '(trivial-types:proper-list create-job-output))
- (common-lisp:defun |make-create-job-outputs|
+ (common-lisp:defun make-create-job-outputs
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list create-job-output))
@@ -663,7 +671,7 @@
 (common-lisp:progn
  (common-lisp:deftype create-job-playlists ()
    '(trivial-types:proper-list create-job-playlist))
- (common-lisp:defun |make-create-job-playlists|
+ (common-lisp:defun make-create-job-playlists
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list create-job-playlist))
@@ -1224,7 +1232,7 @@
 (common-lisp:progn
  (common-lisp:deftype exception-messages ()
    '(trivial-types:proper-list string))
- (common-lisp:defun |make-exception-messages|
+ (common-lisp:defun make-exception-messages
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
@@ -1608,7 +1616,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype job-inputs () '(trivial-types:proper-list job-input))
- (common-lisp:defun |make-job-inputs|
+ (common-lisp:defun make-job-inputs
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list job-input))
@@ -1814,7 +1822,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype job-outputs () '(trivial-types:proper-list job-output))
- (common-lisp:defun |make-job-outputs|
+ (common-lisp:defun make-job-outputs
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list job-output))
@@ -1864,14 +1872,14 @@
 (common-lisp:progn
  (common-lisp:deftype job-watermarks ()
    '(trivial-types:proper-list job-watermark))
- (common-lisp:defun |make-job-watermarks|
+ (common-lisp:defun make-job-watermarks
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list job-watermark))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:deftype jobs () '(trivial-types:proper-list job))
- (common-lisp:defun |make-jobs|
+ (common-lisp:defun make-jobs
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list job))
@@ -2197,7 +2205,7 @@
 (common-lisp:deftype opacity () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype output-keys () '(trivial-types:proper-list key))
- (common-lisp:defun |make-output-keys|
+ (common-lisp:defun make-output-keys
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list key))
@@ -2245,7 +2253,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype permissions () '(trivial-types:proper-list permission))
- (common-lisp:defun |make-permissions|
+ (common-lisp:defun make-permissions
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list permission))
@@ -2408,7 +2416,7 @@
 (common-lisp:deftype pipeline-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype pipelines () '(trivial-types:proper-list pipeline))
- (common-lisp:defun |make-pipelines|
+ (common-lisp:defun make-pipelines
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list pipeline))
@@ -2562,7 +2570,7 @@
 (common-lisp:deftype playlist-format () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype playlists () '(trivial-types:proper-list playlist))
- (common-lisp:defun |make-playlists|
+ (common-lisp:defun make-playlists
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list playlist))
@@ -2766,14 +2774,14 @@
 (common-lisp:progn
  (common-lisp:deftype preset-watermarks ()
    '(trivial-types:proper-list preset-watermark))
- (common-lisp:defun |make-preset-watermarks|
+ (common-lisp:defun make-preset-watermarks
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list preset-watermark))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:deftype presets () '(trivial-types:proper-list preset))
- (common-lisp:defun |make-presets|
+ (common-lisp:defun make-presets
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list preset))
@@ -2935,7 +2943,7 @@
 (common-lisp:deftype sns-topic () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype sns-topics () '(trivial-types:proper-list sns-topic))
- (common-lisp:defun |make-sns-topics|
+ (common-lisp:defun make-sns-topics
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list sns-topic))
@@ -3434,7 +3442,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype user-metadata () 'common-lisp:hash-table)
- (common-lisp:defun |make-user-metadata| (aws-sdk/generator/shape::key-values)
+ (common-lisp:defun make-user-metadata (aws-sdk/generator/shape::key-values)
    (common-lisp:etypecase aws-sdk/generator/shape::key-values
      (common-lisp:hash-table aws-sdk/generator/shape::key-values)
      (common-lisp:list
@@ -3628,7 +3636,7 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype warnings () '(trivial-types:proper-list warning))
- (common-lisp:defun |make-warnings|
+ (common-lisp:defun make-warnings
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list warning))
@@ -3655,7 +3663,7 @@
                               (quri.encode:url-encode
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input 'id))))
-        "CancelJob" "2012-09-25"))
+        "CancelJob"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'cancel-job))
 (common-lisp:progn
@@ -3674,7 +3682,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elastictranscoder-request aws-sdk/generator/operation::input "POST"
-        "/2012-09-25/jobs" "CreateJob" "2012-09-25"))
+        "/2012-09-25/jobs" "CreateJob"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-job))
 (common-lisp:progn
@@ -3694,7 +3702,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elastictranscoder-request aws-sdk/generator/operation::input "POST"
-        "/2012-09-25/pipelines" "CreatePipeline" "2012-09-25"))
+        "/2012-09-25/pipelines" "CreatePipeline"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-pipeline))
 (common-lisp:progn
@@ -3712,7 +3720,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elastictranscoder-request aws-sdk/generator/operation::input "POST"
-        "/2012-09-25/presets" "CreatePreset" "2012-09-25"))
+        "/2012-09-25/presets" "CreatePreset"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'create-preset))
 (common-lisp:progn
@@ -3733,7 +3741,7 @@
                               (quri.encode:url-encode
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input 'id))))
-        "DeletePipeline" "2012-09-25"))
+        "DeletePipeline"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-pipeline))
 (common-lisp:progn
@@ -3754,7 +3762,7 @@
                               (quri.encode:url-encode
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input 'id))))
-        "DeletePreset" "2012-09-25"))
+        "DeletePreset"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-preset))
 (common-lisp:progn
@@ -3777,7 +3785,7 @@
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input
                                 'pipeline-id))))
-        "ListJobsByPipeline" "2012-09-25"))
+        "ListJobsByPipeline"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-jobs-by-pipeline))
 (common-lisp:progn
@@ -3798,7 +3806,7 @@
                               (quri.encode:url-encode
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input 'status))))
-        "ListJobsByStatus" "2012-09-25"))
+        "ListJobsByStatus"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-jobs-by-status))
 (common-lisp:progn
@@ -3814,7 +3822,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elastictranscoder-request aws-sdk/generator/operation::input "GET"
-        "/2012-09-25/pipelines" "ListPipelines" "2012-09-25"))
+        "/2012-09-25/pipelines" "ListPipelines"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-pipelines))
 (common-lisp:progn
@@ -3830,7 +3838,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elastictranscoder-request aws-sdk/generator/operation::input "GET"
-        "/2012-09-25/presets" "ListPresets" "2012-09-25"))
+        "/2012-09-25/presets" "ListPresets"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-presets))
 (common-lisp:progn
@@ -3851,7 +3859,7 @@
                               (quri.encode:url-encode
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input 'id))))
-        "ReadJob" "2012-09-25"))
+        "ReadJob"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'read-job))
 (common-lisp:progn
@@ -3872,7 +3880,7 @@
                               (quri.encode:url-encode
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input 'id))))
-        "ReadPipeline" "2012-09-25"))
+        "ReadPipeline"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'read-pipeline))
 (common-lisp:progn
@@ -3893,7 +3901,7 @@
                               (quri.encode:url-encode
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input 'id))))
-        "ReadPreset" "2012-09-25"))
+        "ReadPreset"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'read-preset))
 (common-lisp:progn
@@ -3910,7 +3918,7 @@
       (aws-sdk/api:aws-request
        (aws-sdk/generator/shape:make-request-with-input
         'elastictranscoder-request aws-sdk/generator/operation::input "POST"
-        "/2012-09-25/roleTests" "TestRole" "2012-09-25"))
+        "/2012-09-25/roleTests" "TestRole"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'test-role))
 (common-lisp:progn
@@ -3934,7 +3942,7 @@
                               (quri.encode:url-encode
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input 'id))))
-        "UpdatePipeline" "2012-09-25"))
+        "UpdatePipeline"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-pipeline))
 (common-lisp:progn
@@ -3957,7 +3965,7 @@
                               (quri.encode:url-encode
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input 'id))))
-        "UpdatePipelineNotifications" "2012-09-25"))
+        "UpdatePipelineNotifications"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-pipeline-notifications))
 (common-lisp:progn
@@ -3978,6 +3986,6 @@
                               (quri.encode:url-encode
                                (common-lisp:slot-value
                                 aws-sdk/generator/operation::input 'id))))
-        "UpdatePipelineStatus" "2012-09-25"))
+        "UpdatePipelineStatus"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'update-pipeline-status))

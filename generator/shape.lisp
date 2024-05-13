@@ -38,17 +38,17 @@
 (defgeneric input-headers (input))
 (defgeneric input-payload (input))
 
-(defun make-request-with-input (request-class input method path-conversion action version)
+(defun make-request-with-input (request-class input method path-conversion action)
   (make-instance request-class
                  :method method
                  :path (etypecase path-conversion
                          (string path-conversion)
                          (function (funcall path-conversion input))
                          (null "/"))
-                 :params (append `(("Action" . ,action) ("Version" . ,version))
-                                 (input-params input))
+                 :params (input-params input)
                  :headers (input-headers input)
-                 :payload (input-payload input)))
+                 :payload (input-payload input)
+                 :operation action))
 
 (defun filter-member (key value members)
   (loop for member-name being each hash-key of members
@@ -119,14 +119,14 @@
 (defun compile-list-shape (name member)
   `(progn
      (deftype ,(lispify* name) () '(proper-list ,(lispify* member)))
-     (defun ,(intern (format nil "~A-~A" '#:make (lispify* name))) (&rest members)
+     (defun ,(intern (format nil "~:@(~A-~A~)" '#:make (lispify* name))) (&rest members)
        (check-type members (proper-list ,(lispify* member)))
        members)))
 
 (defun compile-map-shape (name)
   `(progn
      (deftype ,(lispify* name) () 'hash-table)
-     (defun ,(intern (format nil "~A-~A" '#:make (lispify* name))) (key-values)
+     (defun ,(intern (format nil "~:@(~A-~A~)" '#:make (lispify* name))) (key-values)
        (etypecase key-values
          (hash-table key-values)
          (list (alist-hash-table key-values))))))

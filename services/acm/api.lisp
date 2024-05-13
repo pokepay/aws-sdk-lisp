@@ -7,28 +7,51 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
   (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/json-request)
+  (:import-from #:aws-sdk/rest-json-request)
+  (:import-from #:aws-sdk/rest-xml-request)
+  (:import-from #:aws-sdk/query-request)
   (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/acm/api)
-(common-lisp:progn
- (common-lisp:defclass acm-request (aws-sdk/request:request) common-lisp:nil
-                       (:default-initargs :service "acm"))
- (common-lisp:export 'acm-request))
 (common-lisp:progn
  (common-lisp:define-condition acm-error
      (aws-sdk/error:aws-error)
      common-lisp:nil)
  (common-lisp:export 'acm-error))
+(common-lisp:progn
+ (common-lisp:defclass acm-request (aws-sdk/json-request:json-request)
+                       common-lisp:nil
+                       (:default-initargs :service "acm" :api-version
+                        "2015-12-08" :host-prefix "acm" :signing-name
+                        common-lisp:nil :global-host common-lisp:nil
+                        :target-prefix "CertificateManager" :json-version
+                        "1.1"))
+ (common-lisp:export 'acm-request))
 (common-lisp:defvar *error-map*
-  '(("InvalidArnException" . invalid-arn-exception)
+  '(("AccessDeniedException" . access-denied-exception)
+    ("ConflictException" . conflict-exception)
+    ("InvalidArgsException" . invalid-args-exception)
+    ("InvalidArnException" . invalid-arn-exception)
     ("InvalidDomainValidationOptionsException"
      . invalid-domain-validation-options-exception)
+    ("InvalidParameterException" . invalid-parameter-exception)
     ("InvalidStateException" . invalid-state-exception)
     ("InvalidTagException" . invalid-tag-exception)
     ("LimitExceededException" . limit-exceeded-exception)
     ("RequestInProgressException" . request-in-progress-exception)
     ("ResourceInUseException" . resource-in-use-exception)
     ("ResourceNotFoundException" . resource-not-found-exception)
-    ("TooManyTagsException" . too-many-tags-exception)))
+    ("TagPolicyException" . tag-policy-exception)
+    ("ThrottlingException" . throttling-exception)
+    ("TooManyTagsException" . too-many-tags-exception)
+    ("ValidationException" . validation-exception)))
+(common-lisp:progn
+ (common-lisp:define-condition access-denied-exception
+     (acm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       access-denied-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'access-denied-exception 'access-denied-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (add-tags-to-certificate-request (:copier common-lisp:nil)
@@ -70,6 +93,7 @@
                           add-tags-to-certificate-request))
    common-lisp:nil))
 (common-lisp:deftype arn () 'common-lisp:string)
+(common-lisp:deftype availability-error-message () 'common-lisp:string)
 (common-lisp:deftype certificate-body () 'common-lisp:string)
 (common-lisp:deftype certificate-body-blob ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
@@ -112,7 +136,17 @@
    (type common-lisp:nil :type
     (common-lisp:or certificate-type common-lisp:null))
    (renewal-summary common-lisp:nil :type
-    (common-lisp:or renewal-summary common-lisp:null)))
+    (common-lisp:or renewal-summary common-lisp:null))
+   (key-usages common-lisp:nil :type
+    (common-lisp:or key-usage-list common-lisp:null))
+   (extended-key-usages common-lisp:nil :type
+    (common-lisp:or extended-key-usage-list common-lisp:null))
+   (certificate-authority-arn common-lisp:nil :type
+    (common-lisp:or arn common-lisp:null))
+   (renewal-eligibility common-lisp:nil :type
+    (common-lisp:or renewal-eligibility common-lisp:null))
+   (options common-lisp:nil :type
+    (common-lisp:or certificate-options common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'certificate-detail 'make-certificate-detail))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -269,15 +303,77 @@
       (common-lisp:list
        (common-lisp:cons "RenewalSummary"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'key-usages))
+      (common-lisp:list
+       (common-lisp:cons "KeyUsages"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'extended-key-usages))
+      (common-lisp:list
+       (common-lisp:cons "ExtendedKeyUsages"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'certificate-authority-arn))
+      (common-lisp:list
+       (common-lisp:cons "CertificateAuthorityArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'renewal-eligibility))
+      (common-lisp:list
+       (common-lisp:cons "RenewalEligibility"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'options))
+      (common-lisp:list
+       (common-lisp:cons "Options"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input certificate-detail))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (certificate-options (:copier common-lisp:nil)
+      (:conc-name "struct-shape-certificate-options-"))
+   (certificate-transparency-logging-preference common-lisp:nil :type
+    (common-lisp:or certificate-transparency-logging-preference
+                    common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'certificate-options 'make-certificate-options))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input certificate-options))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input certificate-options))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'certificate-transparency-logging-preference))
+      (common-lisp:list
+       (common-lisp:cons "CertificateTransparencyLoggingPreference"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input certificate-options))
    common-lisp:nil))
 (common-lisp:deftype certificate-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype certificate-statuses ()
    '(trivial-types:proper-list certificate-status))
- (common-lisp:defun |make-certificate-statuses|
+ (common-lisp:defun make-certificate-statuses
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list certificate-status))
@@ -289,7 +385,33 @@
    (certificate-arn common-lisp:nil :type
     (common-lisp:or arn common-lisp:null))
    (domain-name common-lisp:nil :type
-    (common-lisp:or domain-name-string common-lisp:null)))
+    (common-lisp:or domain-name-string common-lisp:null))
+   (subject-alternative-name-summaries common-lisp:nil :type
+    (common-lisp:or domain-list common-lisp:null))
+   (has-additional-subject-alternative-names common-lisp:nil :type
+    (common-lisp:or nullable-boolean common-lisp:null))
+   (status common-lisp:nil :type
+    (common-lisp:or certificate-status common-lisp:null))
+   (type common-lisp:nil :type
+    (common-lisp:or certificate-type common-lisp:null))
+   (key-algorithm common-lisp:nil :type
+    (common-lisp:or key-algorithm common-lisp:null))
+   (key-usages common-lisp:nil :type
+    (common-lisp:or key-usage-names common-lisp:null))
+   (extended-key-usages common-lisp:nil :type
+    (common-lisp:or extended-key-usage-names common-lisp:null))
+   (in-use common-lisp:nil :type
+    (common-lisp:or nullable-boolean common-lisp:null))
+   (exported common-lisp:nil :type
+    (common-lisp:or nullable-boolean common-lisp:null))
+   (renewal-eligibility common-lisp:nil :type
+    (common-lisp:or renewal-eligibility common-lisp:null))
+   (not-before common-lisp:nil :type (common-lisp:or tstamp common-lisp:null))
+   (not-after common-lisp:nil :type (common-lisp:or tstamp common-lisp:null))
+   (created-at common-lisp:nil :type (common-lisp:or tstamp common-lisp:null))
+   (issued-at common-lisp:nil :type (common-lisp:or tstamp common-lisp:null))
+   (imported-at common-lisp:nil :type (common-lisp:or tstamp common-lisp:null))
+   (revoked-at common-lisp:nil :type (common-lisp:or tstamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'certificate-summary 'make-certificate-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -311,6 +433,120 @@
       (common-lisp:list
        (common-lisp:cons "DomainName"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'subject-alternative-name-summaries))
+      (common-lisp:list
+       (common-lisp:cons "SubjectAlternativeNameSummaries"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'has-additional-subject-alternative-names))
+      (common-lisp:list
+       (common-lisp:cons "HasAdditionalSubjectAlternativeNames"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'status))
+      (common-lisp:list
+       (common-lisp:cons "Status"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'type))
+      (common-lisp:list
+       (common-lisp:cons "Type"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'key-algorithm))
+      (common-lisp:list
+       (common-lisp:cons "KeyAlgorithm"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'key-usages))
+      (common-lisp:list
+       (common-lisp:cons "KeyUsages"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'extended-key-usages))
+      (common-lisp:list
+       (common-lisp:cons "ExtendedKeyUsages"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'in-use))
+      (common-lisp:list
+       (common-lisp:cons "InUse"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'exported))
+      (common-lisp:list
+       (common-lisp:cons "Exported"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'renewal-eligibility))
+      (common-lisp:list
+       (common-lisp:cons "RenewalEligibility"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'not-before))
+      (common-lisp:list
+       (common-lisp:cons "NotBefore"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'not-after))
+      (common-lisp:list
+       (common-lisp:cons "NotAfter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'created-at))
+      (common-lisp:list
+       (common-lisp:cons "CreatedAt"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'issued-at))
+      (common-lisp:list
+       (common-lisp:cons "IssuedAt"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'imported-at))
+      (common-lisp:list
+       (common-lisp:cons "ImportedAt"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'revoked-at))
+      (common-lisp:list
+       (common-lisp:cons "RevokedAt"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input certificate-summary))
@@ -318,12 +554,21 @@
 (common-lisp:progn
  (common-lisp:deftype certificate-summary-list ()
    '(trivial-types:proper-list certificate-summary))
- (common-lisp:defun |make-certificate-summary-list|
+ (common-lisp:defun make-certificate-summary-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list certificate-summary))
    aws-sdk/generator/shape::members))
+(common-lisp:deftype certificate-transparency-logging-preference ()
+  'common-lisp:string)
 (common-lisp:deftype certificate-type () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:define-condition conflict-exception
+     (acm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       conflict-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'conflict-exception 'conflict-exception-message)))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-certificate-request (:copier common-lisp:nil)
@@ -420,7 +665,7 @@
 (common-lisp:progn
  (common-lisp:deftype domain-list ()
    '(trivial-types:proper-list domain-name-string))
- (common-lisp:defun |make-domain-list|
+ (common-lisp:defun make-domain-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list domain-name-string))
@@ -438,7 +683,11 @@
    (validation-domain common-lisp:nil :type
     (common-lisp:or domain-name-string common-lisp:null))
    (validation-status common-lisp:nil :type
-    (common-lisp:or domain-status common-lisp:null)))
+    (common-lisp:or domain-status common-lisp:null))
+   (resource-record common-lisp:nil :type
+    (common-lisp:or resource-record common-lisp:null))
+   (validation-method common-lisp:nil :type
+    (common-lisp:or validation-method common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'domain-validation 'make-domain-validation))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -474,6 +723,20 @@
       (common-lisp:list
        (common-lisp:cons "ValidationStatus"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'resource-record))
+      (common-lisp:list
+       (common-lisp:cons "ResourceRecord"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'validation-method))
+      (common-lisp:list
+       (common-lisp:cons "ValidationMethod"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input domain-validation))
@@ -481,7 +744,7 @@
 (common-lisp:progn
  (common-lisp:deftype domain-validation-list ()
    '(trivial-types:proper-list domain-validation))
- (common-lisp:defun |make-domain-validation-list|
+ (common-lisp:defun make-domain-validation-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list domain-validation))
@@ -528,13 +791,261 @@
 (common-lisp:progn
  (common-lisp:deftype domain-validation-option-list ()
    '(trivial-types:proper-list domain-validation-option))
- (common-lisp:defun |make-domain-validation-option-list|
+ (common-lisp:defun make-domain-validation-option-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list
                             domain-validation-option))
    aws-sdk/generator/shape::members))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (expiry-events-configuration (:copier common-lisp:nil)
+      (:conc-name "struct-shape-expiry-events-configuration-"))
+   (days-before-expiry common-lisp:nil :type
+    (common-lisp:or positive-integer common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'expiry-events-configuration
+                    'make-expiry-events-configuration))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          expiry-events-configuration))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          expiry-events-configuration))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'days-before-expiry))
+      (common-lisp:list
+       (common-lisp:cons "DaysBeforeExpiry"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          expiry-events-configuration))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (export-certificate-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-export-certificate-request-"))
+   (certificate-arn (common-lisp:error ":certificate-arn is required") :type
+    (common-lisp:or arn common-lisp:null))
+   (passphrase (common-lisp:error ":passphrase is required") :type
+    (common-lisp:or passphrase-blob common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'export-certificate-request
+                    'make-export-certificate-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          export-certificate-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          export-certificate-request))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'certificate-arn))
+      (common-lisp:list
+       (common-lisp:cons "CertificateArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'passphrase))
+      (common-lisp:list
+       (common-lisp:cons "Passphrase"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          export-certificate-request))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (export-certificate-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-export-certificate-response-"))
+   (certificate common-lisp:nil :type
+    (common-lisp:or certificate-body common-lisp:null))
+   (certificate-chain common-lisp:nil :type
+    (common-lisp:or certificate-chain common-lisp:null))
+   (private-key common-lisp:nil :type
+    (common-lisp:or private-key common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'export-certificate-response
+                    'make-export-certificate-response))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          export-certificate-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          export-certificate-response))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'certificate))
+      (common-lisp:list
+       (common-lisp:cons "Certificate"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'certificate-chain))
+      (common-lisp:list
+       (common-lisp:cons "CertificateChain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'private-key))
+      (common-lisp:list
+       (common-lisp:cons "PrivateKey"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          export-certificate-response))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (extended-key-usage (:copier common-lisp:nil)
+      (:conc-name "struct-shape-extended-key-usage-"))
+   (name common-lisp:nil :type
+    (common-lisp:or extended-key-usage-name common-lisp:null))
+   (oid common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'extended-key-usage 'make-extended-key-usage))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input extended-key-usage))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input extended-key-usage))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "Name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'oid))
+      (common-lisp:list
+       (common-lisp:cons "OID"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input extended-key-usage))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:deftype extended-key-usage-filter-list ()
+   '(trivial-types:proper-list extended-key-usage-name))
+ (common-lisp:defun make-extended-key-usage-filter-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list extended-key-usage-name))
+   aws-sdk/generator/shape::members))
+(common-lisp:progn
+ (common-lisp:deftype extended-key-usage-list ()
+   '(trivial-types:proper-list extended-key-usage))
+ (common-lisp:defun make-extended-key-usage-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list extended-key-usage))
+   aws-sdk/generator/shape::members))
+(common-lisp:deftype extended-key-usage-name () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:deftype extended-key-usage-names ()
+   '(trivial-types:proper-list extended-key-usage-name))
+ (common-lisp:defun make-extended-key-usage-names
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list extended-key-usage-name))
+   aws-sdk/generator/shape::members))
 (common-lisp:deftype failure-reason () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:defstruct
+     (filters (:copier common-lisp:nil) (:conc-name "struct-shape-filters-"))
+   (extended-key-usage common-lisp:nil :type
+    (common-lisp:or extended-key-usage-filter-list common-lisp:null))
+   (key-usage common-lisp:nil :type
+    (common-lisp:or key-usage-filter-list common-lisp:null))
+   (key-types common-lisp:nil :type
+    (common-lisp:or key-algorithm-list common-lisp:null)))
+ (common-lisp:export (common-lisp:list 'filters 'make-filters))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input filters))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input filters))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'extended-key-usage))
+      (common-lisp:list
+       (common-lisp:cons "extendedKeyUsage"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'key-usage))
+      (common-lisp:list
+       (common-lisp:cons "keyUsage"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'key-types))
+      (common-lisp:list
+       (common-lisp:cons "keyTypes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input filters))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (get-account-configuration-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-account-configuration-response-"))
+   (expiry-events common-lisp:nil :type
+    (common-lisp:or expiry-events-configuration common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'get-account-configuration-response
+                    'make-get-account-configuration-response))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-account-configuration-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-account-configuration-response))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'expiry-events))
+      (common-lisp:list
+       (common-lisp:cons "ExpiryEvents"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-account-configuration-response))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-certificate-request (:copier common-lisp:nil)
@@ -616,7 +1127,8 @@
    (private-key (common-lisp:error ":private-key is required") :type
     (common-lisp:or private-key-blob common-lisp:null))
    (certificate-chain common-lisp:nil :type
-    (common-lisp:or certificate-chain-blob common-lisp:null)))
+    (common-lisp:or certificate-chain-blob common-lisp:null))
+   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'import-certificate-request
                     'make-import-certificate-request))
@@ -657,6 +1169,13 @@
       (common-lisp:list
        (common-lisp:cons "CertificateChain"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tags))
+      (common-lisp:list
+       (common-lisp:cons "Tags"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         (
@@ -696,11 +1215,18 @@
    common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype in-use-list () '(trivial-types:proper-list string))
- (common-lisp:defun |make-in-use-list|
+ (common-lisp:defun make-in-use-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
+(common-lisp:progn
+ (common-lisp:define-condition invalid-args-exception
+     (acm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-args-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-args-exception 'invalid-args-exception-message)))
 (common-lisp:progn
  (common-lisp:define-condition invalid-arn-exception
      (acm-error)
@@ -717,6 +1243,14 @@
   (common-lisp:list 'invalid-domain-validation-options-exception
                     'invalid-domain-validation-options-exception-message)))
 (common-lisp:progn
+ (common-lisp:define-condition invalid-parameter-exception
+     (acm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-parameter-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'invalid-parameter-exception
+                    'invalid-parameter-exception-message)))
+(common-lisp:progn
  (common-lisp:define-condition invalid-state-exception
      (acm-error)
      ((message :initarg :message :initform common-lisp:nil :reader
@@ -732,6 +1266,61 @@
   (common-lisp:list 'invalid-tag-exception 'invalid-tag-exception-message)))
 (common-lisp:deftype key-algorithm () 'common-lisp:string)
 (common-lisp:progn
+ (common-lisp:deftype key-algorithm-list ()
+   '(trivial-types:proper-list key-algorithm))
+ (common-lisp:defun make-key-algorithm-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list key-algorithm))
+   aws-sdk/generator/shape::members))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (key-usage (:copier common-lisp:nil)
+      (:conc-name "struct-shape-key-usage-"))
+   (name common-lisp:nil :type
+    (common-lisp:or key-usage-name common-lisp:null)))
+ (common-lisp:export (common-lisp:list 'key-usage 'make-key-usage))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input key-usage))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input key-usage))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "Name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input key-usage))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:deftype key-usage-filter-list ()
+   '(trivial-types:proper-list key-usage-name))
+ (common-lisp:defun make-key-usage-filter-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list key-usage-name))
+   aws-sdk/generator/shape::members))
+(common-lisp:progn
+ (common-lisp:deftype key-usage-list () '(trivial-types:proper-list key-usage))
+ (common-lisp:defun make-key-usage-list
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list key-usage))
+   aws-sdk/generator/shape::members))
+(common-lisp:deftype key-usage-name () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:deftype key-usage-names ()
+   '(trivial-types:proper-list key-usage-name))
+ (common-lisp:defun make-key-usage-names
+                    (common-lisp:&rest aws-sdk/generator/shape::members)
+   (common-lisp:check-type aws-sdk/generator/shape::members
+                           (trivial-types:proper-list key-usage-name))
+   aws-sdk/generator/shape::members))
+(common-lisp:progn
  (common-lisp:define-condition limit-exceeded-exception
      (acm-error)
      ((message :initarg :message :initform common-lisp:nil :reader
@@ -745,10 +1334,14 @@
       (:conc-name "struct-shape-list-certificates-request-"))
    (certificate-statuses common-lisp:nil :type
     (common-lisp:or certificate-statuses common-lisp:null))
+   (includes common-lisp:nil :type (common-lisp:or filters common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-items common-lisp:nil :type
-    (common-lisp:or max-items common-lisp:null)))
+    (common-lisp:or max-items common-lisp:null))
+   (sort-by common-lisp:nil :type (common-lisp:or sort-by common-lisp:null))
+   (sort-order common-lisp:nil :type
+    (common-lisp:or sort-order common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-certificates-request
                     'make-list-certificates-request))
@@ -772,6 +1365,13 @@
                           aws-sdk/generator/shape::value))))
     (alexandria:when-let (aws-sdk/generator/shape::value
                           (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'includes))
+      (common-lisp:list
+       (common-lisp:cons "Includes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
                            aws-sdk/generator/shape::input 'next-token))
       (common-lisp:list
        (common-lisp:cons "NextToken"
@@ -782,6 +1382,20 @@
                            aws-sdk/generator/shape::input 'max-items))
       (common-lisp:list
        (common-lisp:cons "MaxItems"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'sort-by))
+      (common-lisp:list
+       (common-lisp:cons "SortBy"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'sort-order))
+      (common-lisp:list
+       (common-lisp:cons "SortOrder"
                          (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
@@ -893,8 +1507,55 @@
    common-lisp:nil))
 (common-lisp:deftype max-items () 'common-lisp:integer)
 (common-lisp:deftype next-token () 'common-lisp:string)
+(common-lisp:deftype nullable-boolean () 'common-lisp:boolean)
+(common-lisp:deftype passphrase-blob ()
+  '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
+(common-lisp:deftype pca-arn () 'common-lisp:string)
+(common-lisp:deftype positive-integer () 'common-lisp:integer)
+(common-lisp:deftype private-key () 'common-lisp:string)
 (common-lisp:deftype private-key-blob ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (put-account-configuration-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-put-account-configuration-request-"))
+   (expiry-events common-lisp:nil :type
+    (common-lisp:or expiry-events-configuration common-lisp:null))
+   (idempotency-token (common-lisp:error ":idempotency-token is required")
+    :type (common-lisp:or idempotency-token common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'put-account-configuration-request
+                    'make-put-account-configuration-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          put-account-configuration-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          put-account-configuration-request))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'expiry-events))
+      (common-lisp:list
+       (common-lisp:cons "ExpiryEvents"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'idempotency-token))
+      (common-lisp:list
+       (common-lisp:cons "IdempotencyToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          put-account-configuration-request))
+   common-lisp:nil))
+(common-lisp:deftype record-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-tags-from-certificate-request (:copier common-lisp:nil)
@@ -935,6 +1596,38 @@
                          (aws-sdk/generator/shape::input
                           remove-tags-from-certificate-request))
    common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (renew-certificate-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-renew-certificate-request-"))
+   (certificate-arn (common-lisp:error ":certificate-arn is required") :type
+    (common-lisp:or arn common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'renew-certificate-request
+                    'make-renew-certificate-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          renew-certificate-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          renew-certificate-request))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'certificate-arn))
+      (common-lisp:list
+       (common-lisp:cons "CertificateArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          renew-certificate-request))
+   common-lisp:nil))
+(common-lisp:deftype renewal-eligibility () 'common-lisp:string)
 (common-lisp:deftype renewal-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -944,7 +1637,11 @@
     (common-lisp:or renewal-status common-lisp:null))
    (domain-validation-options
     (common-lisp:error ":domain-validation-options is required") :type
-    (common-lisp:or domain-validation-list common-lisp:null)))
+    (common-lisp:or domain-validation-list common-lisp:null))
+   (renewal-status-reason common-lisp:nil :type
+    (common-lisp:or failure-reason common-lisp:null))
+   (updated-at (common-lisp:error ":updated-at is required") :type
+    (common-lisp:or tstamp common-lisp:null)))
  (common-lisp:export (common-lisp:list 'renewal-summary 'make-renewal-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input renewal-summary))
@@ -966,6 +1663,21 @@
       (common-lisp:list
        (common-lisp:cons "DomainValidationOptions"
                          (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'renewal-status-reason))
+      (common-lisp:list
+       (common-lisp:cons "RenewalStatusReason"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'updated-at))
+      (common-lisp:list
+       (common-lisp:cons "UpdatedAt"
+                         (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         ((aws-sdk/generator/shape::input renewal-summary))
@@ -976,12 +1688,21 @@
       (:conc-name "struct-shape-request-certificate-request-"))
    (domain-name (common-lisp:error ":domain-name is required") :type
     (common-lisp:or domain-name-string common-lisp:null))
+   (validation-method common-lisp:nil :type
+    (common-lisp:or validation-method common-lisp:null))
    (subject-alternative-names common-lisp:nil :type
     (common-lisp:or domain-list common-lisp:null))
    (idempotency-token common-lisp:nil :type
     (common-lisp:or idempotency-token common-lisp:null))
    (domain-validation-options common-lisp:nil :type
-    (common-lisp:or domain-validation-option-list common-lisp:null)))
+    (common-lisp:or domain-validation-option-list common-lisp:null))
+   (options common-lisp:nil :type
+    (common-lisp:or certificate-options common-lisp:null))
+   (certificate-authority-arn common-lisp:nil :type
+    (common-lisp:or pca-arn common-lisp:null))
+   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
+   (key-algorithm common-lisp:nil :type
+    (common-lisp:or key-algorithm common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'request-certificate-request
                     'make-request-certificate-request))
@@ -1000,6 +1721,13 @@
                            aws-sdk/generator/shape::input 'domain-name))
       (common-lisp:list
        (common-lisp:cons "DomainName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'validation-method))
+      (common-lisp:list
+       (common-lisp:cons "ValidationMethod"
                          (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))
     (alexandria:when-let (aws-sdk/generator/shape::value
@@ -1023,6 +1751,35 @@
                            'domain-validation-options))
       (common-lisp:list
        (common-lisp:cons "DomainValidationOptions"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'options))
+      (common-lisp:list
+       (common-lisp:cons "Options"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'certificate-authority-arn))
+      (common-lisp:list
+       (common-lisp:cons "CertificateAuthorityArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tags))
+      (common-lisp:list
+       (common-lisp:cons "Tags"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'key-algorithm))
+      (common-lisp:list
+       (common-lisp:cons "KeyAlgorithm"
                          (aws-sdk/generator/shape::input-params
                           aws-sdk/generator/shape::value))))))
  (common-lisp:defmethod aws-sdk/generator/shape::input-payload
@@ -1134,7 +1891,51 @@
  (common-lisp:export
   (common-lisp:list 'resource-not-found-exception
                     'resource-not-found-exception-message)))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (resource-record (:copier common-lisp:nil)
+      (:conc-name "struct-shape-resource-record-"))
+   (name (common-lisp:error ":name is required") :type
+    (common-lisp:or string common-lisp:null))
+   (type (common-lisp:error ":type is required") :type
+    (common-lisp:or record-type common-lisp:null))
+   (value (common-lisp:error ":value is required") :type
+    (common-lisp:or string common-lisp:null)))
+ (common-lisp:export (common-lisp:list 'resource-record 'make-resource-record))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input resource-record))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input resource-record))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "Name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'type))
+      (common-lisp:list
+       (common-lisp:cons "Type"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'value))
+      (common-lisp:list
+       (common-lisp:cons "Value"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input resource-record))
+   common-lisp:nil))
 (common-lisp:deftype revocation-reason () 'common-lisp:string)
+(common-lisp:deftype service-error-message () 'common-lisp:string)
+(common-lisp:deftype sort-by () 'common-lisp:string)
+(common-lisp:deftype sort-order () 'common-lisp:string)
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:deftype tstamp () 'common-lisp:string)
 (common-lisp:progn
@@ -1170,12 +1971,26 @@
 (common-lisp:deftype tag-key () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype tag-list () '(trivial-types:proper-list tag))
- (common-lisp:defun |make-tag-list|
+ (common-lisp:defun make-tag-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list tag))
    aws-sdk/generator/shape::members))
+(common-lisp:progn
+ (common-lisp:define-condition tag-policy-exception
+     (acm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       tag-policy-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'tag-policy-exception 'tag-policy-exception-message)))
 (common-lisp:deftype tag-value () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:define-condition throttling-exception
+     (acm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       throttling-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'throttling-exception 'throttling-exception-message)))
 (common-lisp:progn
  (common-lisp:define-condition too-many-tags-exception
      (acm-error)
@@ -1184,13 +1999,62 @@
  (common-lisp:export
   (common-lisp:list 'too-many-tags-exception 'too-many-tags-exception-message)))
 (common-lisp:progn
+ (common-lisp:defstruct
+     (update-certificate-options-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-update-certificate-options-request-"))
+   (certificate-arn (common-lisp:error ":certificate-arn is required") :type
+    (common-lisp:or arn common-lisp:null))
+   (options (common-lisp:error ":options is required") :type
+    (common-lisp:or certificate-options common-lisp:null)))
+ (common-lisp:export
+  (common-lisp:list 'update-certificate-options-request
+                    'make-update-certificate-options-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          update-certificate-options-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          update-certificate-options-request))
+   (common-lisp:append
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'certificate-arn))
+      (common-lisp:list
+       (common-lisp:cons "CertificateArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'options))
+      (common-lisp:list
+       (common-lisp:cons "Options"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          update-certificate-options-request))
+   common-lisp:nil))
+(common-lisp:progn
  (common-lisp:deftype validation-email-list ()
    '(trivial-types:proper-list string))
- (common-lisp:defun |make-validation-email-list|
+ (common-lisp:defun make-validation-email-list
                     (common-lisp:&rest aws-sdk/generator/shape::members)
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
+(common-lisp:progn
+ (common-lisp:define-condition validation-exception
+     (acm-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       validation-exception-message)))
+ (common-lisp:export
+  (common-lisp:list 'validation-exception 'validation-exception-message)))
+(common-lisp:deftype validation-exception-message () 'common-lisp:string)
+(common-lisp:deftype validation-method () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defun add-tags-to-certificate
                     (
@@ -1205,8 +2069,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'acm-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "AddTagsToCertificate"
-                                                        "2015-12-08"))
+                                                        "AddTagsToCertificate"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'add-tags-to-certificate))
 (common-lisp:progn
@@ -1223,8 +2086,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'acm-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DeleteCertificate"
-                                                        "2015-12-08"))
+                                                        "DeleteCertificate"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'delete-certificate))
 (common-lisp:progn
@@ -1241,10 +2103,34 @@
        (aws-sdk/generator/shape:make-request-with-input 'acm-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "DescribeCertificate"
-                                                        "2015-12-08"))
+                                                        "DescribeCertificate"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'describe-certificate))
+(common-lisp:progn
+ (common-lisp:defun export-certificate
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key certificate-arn passphrase)
+   (common-lisp:declare (common-lisp:ignorable certificate-arn passphrase))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-export-certificate-request
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'acm-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "ExportCertificate"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'export-certificate))
+(common-lisp:progn
+ (common-lisp:defun get-account-configuration ()
+   (aws-sdk/generator/operation::parse-response
+    (aws-sdk/api:aws-request
+     (common-lisp:make-instance 'acm-request :method "POST" :path "/"
+                                :operation "GetAccountConfiguration"))
+    common-lisp:nil common-lisp:nil *error-map*))
+ (common-lisp:export 'get-account-configuration))
 (common-lisp:progn
  (common-lisp:defun get-certificate
                     (
@@ -1259,8 +2145,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'acm-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "GetCertificate"
-                                                        "2015-12-08"))
+                                                        "GetCertificate"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'get-certificate))
 (common-lisp:progn
@@ -1268,10 +2153,10 @@
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
                      common-lisp:&key certificate-arn certificate private-key
-                     certificate-chain)
+                     certificate-chain tags)
    (common-lisp:declare
     (common-lisp:ignorable certificate-arn certificate private-key
-     certificate-chain))
+     certificate-chain tags))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-import-certificate-request
                                          aws-sdk/generator/operation::args)))
@@ -1280,18 +2165,18 @@
        (aws-sdk/generator/shape:make-request-with-input 'acm-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "ImportCertificate"
-                                                        "2015-12-08"))
+                                                        "ImportCertificate"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'import-certificate))
 (common-lisp:progn
  (common-lisp:defun list-certificates
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
-                     common-lisp:&key certificate-statuses next-token
-                     max-items)
+                     common-lisp:&key certificate-statuses includes next-token
+                     max-items sort-by sort-order)
    (common-lisp:declare
-    (common-lisp:ignorable certificate-statuses next-token max-items))
+    (common-lisp:ignorable certificate-statuses includes next-token max-items
+     sort-by sort-order))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-list-certificates-request
                                          aws-sdk/generator/operation::args)))
@@ -1300,8 +2185,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'acm-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "ListCertificates"
-                                                        "2015-12-08"))
+                                                        "ListCertificates"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-certificates))
 (common-lisp:progn
@@ -1319,10 +2203,28 @@
        (aws-sdk/generator/shape:make-request-with-input 'acm-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "ListTagsForCertificate"
-                                                        "2015-12-08"))
+                                                        "ListTagsForCertificate"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'list-tags-for-certificate))
+(common-lisp:progn
+ (common-lisp:defun put-account-configuration
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key expiry-events idempotency-token)
+   (common-lisp:declare
+    (common-lisp:ignorable expiry-events idempotency-token))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply
+                       'make-put-account-configuration-request
+                       aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'acm-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "PutAccountConfiguration"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'put-account-configuration))
 (common-lisp:progn
  (common-lisp:defun remove-tags-from-certificate
                     (
@@ -1338,19 +2240,38 @@
        (aws-sdk/generator/shape:make-request-with-input 'acm-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "RemoveTagsFromCertificate"
-                                                        "2015-12-08"))
+                                                        "RemoveTagsFromCertificate"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'remove-tags-from-certificate))
+(common-lisp:progn
+ (common-lisp:defun renew-certificate
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key certificate-arn)
+   (common-lisp:declare (common-lisp:ignorable certificate-arn))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply 'make-renew-certificate-request
+                                         aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'acm-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "RenewCertificate"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'renew-certificate))
 (common-lisp:progn
  (common-lisp:defun request-certificate
                     (
                      common-lisp:&rest aws-sdk/generator/operation::args
-                     common-lisp:&key domain-name subject-alternative-names
-                     idempotency-token domain-validation-options)
+                     common-lisp:&key domain-name validation-method
+                     subject-alternative-names idempotency-token
+                     domain-validation-options options
+                     certificate-authority-arn tags key-algorithm)
    (common-lisp:declare
-    (common-lisp:ignorable domain-name subject-alternative-names
-     idempotency-token domain-validation-options))
+    (common-lisp:ignorable domain-name validation-method
+     subject-alternative-names idempotency-token domain-validation-options
+     options certificate-authority-arn tags key-algorithm))
    (common-lisp:let ((aws-sdk/generator/operation::input
                       (common-lisp:apply 'make-request-certificate-request
                                          aws-sdk/generator/operation::args)))
@@ -1359,8 +2280,7 @@
        (aws-sdk/generator/shape:make-request-with-input 'acm-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "RequestCertificate"
-                                                        "2015-12-08"))
+                                                        "RequestCertificate"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'request-certificate))
 (common-lisp:progn
@@ -1378,7 +2298,24 @@
        (aws-sdk/generator/shape:make-request-with-input 'acm-request
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/"
-                                                        "ResendValidationEmail"
-                                                        "2015-12-08"))
+                                                        "ResendValidationEmail"))
       common-lisp:nil common-lisp:nil *error-map*)))
  (common-lisp:export 'resend-validation-email))
+(common-lisp:progn
+ (common-lisp:defun update-certificate-options
+                    (
+                     common-lisp:&rest aws-sdk/generator/operation::args
+                     common-lisp:&key certificate-arn options)
+   (common-lisp:declare (common-lisp:ignorable certificate-arn options))
+   (common-lisp:let ((aws-sdk/generator/operation::input
+                      (common-lisp:apply
+                       'make-update-certificate-options-request
+                       aws-sdk/generator/operation::args)))
+     (aws-sdk/generator/operation::parse-response
+      (aws-sdk/api:aws-request
+       (aws-sdk/generator/shape:make-request-with-input 'acm-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "UpdateCertificateOptions"))
+      common-lisp:nil common-lisp:nil *error-map*)))
+ (common-lisp:export 'update-certificate-options))
