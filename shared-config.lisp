@@ -45,7 +45,7 @@
   (assume-role nil :type (or assume-role-config null)))
 
 (defun make-shared-config (&rest args &key credentials-path config-path profile)
-  (declare (ignore credentials-path config-path profile))
+  (declare (ignorable credentials-path config-path profile))
   (let* ((shared-config (apply #'%make-shared-config args))
          (base-config-section (with-slots (config-path profile) shared-config
                                 (when (and config-path
