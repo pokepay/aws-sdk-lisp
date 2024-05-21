@@ -32,7 +32,7 @@ You can also configure AWS-SDK to use a configured profile for authentication:
 (setf aws:*session* (aws:make-session :profile "profile_name_here"))
 ```
 
-You can _also_ also use the `LOG-IN` function as shorthand:
+You can _also_ also use the `LOG-IN` macro as shorthand:
 
 ``` common-lisp
 (log-in :profile "profile_name_here")
