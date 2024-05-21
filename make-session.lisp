@@ -1,6 +1,7 @@
 (defpackage #:aws-sdk/make-session
   (:use #:cl)
   (:import-from #:aws-sdk/session
+                #:*session*
                 #:%make-session)
   (:import-from #:aws-sdk/credentials
                 #:credentials
@@ -24,7 +25,8 @@
                 #:getenv)
   (:import-from #:assoc-utils
                 #:aget)
-  (:export #:make-session))
+  (:export #:make-session
+           #:log-in))
 (in-package #:aws-sdk/make-session)
 
 (defun make-session (&key credentials region (profile *aws-profile*))
@@ -51,3 +53,6 @@
      :region (or region
                  (shared-config-region shared-config)
                  (getenv "AWS_REGION")))))
+
+(defmacro log-in (&rest args)
+  `(setf *session* (funcall #'make-session ,@args)))
