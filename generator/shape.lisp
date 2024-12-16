@@ -6,6 +6,8 @@
                 #:ensure-car
                 #:alist-hash-table
                 #:when-let)
+  (:import-from #:quri)
+  (:import-from #:closer-mop)
   (:export #:compile-shape
            #:make-request-with-input))
 (in-package #:aws-sdk/generator/shape)
@@ -38,13 +40,27 @@
 (defgeneric input-headers (input))
 (defgeneric input-payload (input))
 
+(defun add-query-with-input (uri input)
+  (quri:make-uri :defaults uri
+                 :query
+                 (append
+                  (loop :for slot :in (c2mop:class-direct-slots (class-of input))
+                        :for slot-name := (c2mop:slot-definition-name slot)
+                        :when (and (slot-value input slot-name)
+                                   (equal "querystring" (member-slot-location slot)))
+                        :collect (cons (member-slot-location-name slot)
+                                       (slot-value input slot-name)))
+                  (quri:uri-query-params (quri:uri uri)))))
+
 (defun make-request-with-input (request-class input method path-conversion action)
   (make-instance request-class
                  :method method
-                 :path (etypecase path-conversion
-                         (string path-conversion)
-                         (function (funcall path-conversion input))
-                         (null "/"))
+                 :path (add-query-with-input
+                        (etypecase path-conversion
+                          (string path-conversion)
+                          (function (funcall path-conversion input))
+                          (null "/"))
+                        input)
                  :params (input-params input)
                  :headers (input-headers input)
                  :payload (input-payload input)
@@ -59,44 +75,55 @@
 (defun compile-structure-shape (name &key required members payload)
   (let ((shape-name (lispify* name)))
     `(progn
-       (defstruct (,shape-name (:copier nil) (:conc-name ,(format nil "struct-shape-~A-" shape-name)))
-         ,@(loop for key being each hash-key of members
-                 using (hash-value value)
-                 collect `(,(lispify key)
-                            ,(if (find key required :test #'string=)
-                                 `(error ,(format nil ":~A is required" (lispify* key)))
-                                 nil)
-                            :type (or ,(lispify* (gethash "shape" value))
-                                      ,@(when (gethash "streaming" value)
-                                          '(stream pathname string))
-                                      null))))
+       (defclass ,shape-name ()
+         ,(loop for key being each hash-key of members
+                using (hash-value value)
+                collect `(,(lispify key)
+                          :initarg ,(lispify key :keyword)
+                          ,@(if (find key required :test #'string=)
+                                `(:initform (error ,(format nil ":~A is required" (lispify* key))))
+                                `(:initform nil))
+                          :type (or ,(lispify* (gethash "shape" value))
+                                    ,@(when (gethash "streaming" value)
+                                        '(stream pathname string))
+                                    null)
+                          :accessor ,(intern (string-upcase (format nil
+                                                                    "struct-shape-~A-~A"
+                                                                    shape-name
+                                                                    (lispify key))))
+                          :shape ,(gethash "shape" value)
+                          :location ,(gethash "location" value)
+                          :location-name ,(gethash "locationName" value)))
+         (:metaclass members-class))
+       (defun ,(alexandria:symbolicate '#:make- shape-name) (&rest args)
+         (apply #'make-instance ',shape-name args))
        (export (list ',shape-name
                      ',(intern (format nil "~:@(~A-~A~)" '#:make shape-name))))
        (defmethod input-headers ((input ,shape-name))
          (append
-           ,@(mapcar
-               (lambda (key-value)
-                 (destructuring-bind (key . value) key-value
-                   `(when-let (value (slot-value input ',(lispify key)))
-                      (cons ,(gethash "locationName" value) value))))
-               (filter-member "location" "header" members))
-           ,@(mapcar
-               (lambda (key-value)
-                 (destructuring-bind (key . value) key-value
-                   `(when (slot-value input ',(lispify key))
-                      (loop for key being each hash-key of (slot-value input ',(lispify key))
-                            using (hash-value value)
-                            collect (cons (format nil "~A~A" ,(gethash "locationName" value) key)
-                                          value)))))
-               (filter-member "location" "headers" members))))
+          ,@(mapcar
+             (lambda (key-value)
+               (destructuring-bind (key . value) key-value
+                 `(when-let (value (slot-value input ',(lispify key)))
+                    (cons ,(gethash "locationName" value) value))))
+             (filter-member "location" "header" members))
+          ,@(mapcar
+             (lambda (key-value)
+               (destructuring-bind (key . value) key-value
+                 `(when (slot-value input ',(lispify key))
+                    (loop for key being each hash-key of (slot-value input ',(lispify key))
+                          using (hash-value value)
+                          collect (cons (format nil "~A~A" ,(gethash "locationName" value) key)
+                                        value)))))
+             (filter-member "location" "headers" members))))
        (defmethod input-params ((input ,shape-name))
          (append
-           ,@(loop for key being each hash-key of members
-                   using (hash-value value)
-                   if (not (or (gethash "location" value)
-                               (gethash "streaming" value)))
-                   collect `(when-let (value (slot-value input ',(lispify key)))
-                              (list (cons ,key (input-params value)))))))
+          ,@(loop for key being each hash-key of members
+                  using (hash-value value)
+                  if (not (or (gethash "location" value)
+                              (gethash "streaming" value)))
+                  collect `(when-let (value (slot-value input ',(lispify key)))
+                             (list (cons ,key (input-params value)))))))
        (defmethod input-payload ((input ,shape-name))
          ,(if payload
               `(slot-value input ',(lispify payload))
@@ -161,3 +188,27 @@
                                     :payload (gethash "payload" options))))
       (t
        (compile-otherwise name type)))))
+
+;;;
+(defclass members-class (c2mop:standard-class) ())
+
+(defmethod c2mop:validate-superclass ((class members-class)
+                                      (super c2mop:standard-class))
+  t)
+
+(defmethod c2mop:validate-superclass ((class c2mop:standard-class)
+                                      (super members-class))
+  t)
+
+(defclass member-slot (c2mop:standard-direct-slot-definition)
+  ((shape :initarg :shape
+          :reader member-slot-shape)
+   (location :initarg :location
+             :reader member-slot-location)
+   (location-name :initarg :location-name
+                  :reader member-slot-location-name)))
+
+(defmethod c2mop:direct-slot-definition-class ((class members-class)
+                                               &rest initargs)
+  (declare (ignore initargs))
+  (find-class 'member-slot))
